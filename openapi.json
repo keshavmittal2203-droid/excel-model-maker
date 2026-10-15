@@ -1,0 +1,77 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Excel Model Maker shared workspace API",
+    "version": "0.1.0-draft",
+    "description": "Contract for implementation. No production server is deployed. All providers use the same workspace. Ready publication is reserved for the trusted validation service."
+  },
+  "security": [{"workspaceBearer": []}],
+  "paths": {
+    "/v1/assets/uploads": {
+      "post": {
+        "operationId": "createAssetUpload",
+        "summary": "Allocate an immutable versioned asset upload",
+        "parameters": [{"$ref": "#/components/parameters/idempotencyKey"}],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {
+          "type": "object", "required": ["workspace_id", "filename", "sha256", "size_bytes"], "additionalProperties": false,
+          "properties": {"workspace_id": {"type": "string", "format": "uuid"}, "filename": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/components/schemas/hash"}, "size_bytes": {"type": "integer", "minimum": 1}}
+        }}}},
+        "responses": {"201": {"description": "Upload URL, asset ID and expiry; object remains pending until server verifies hash and size"}, "409": {"description": "Idempotency key reused with a different payload"}}
+      }
+    },
+    "/v1/assets/{asset_id}/finalize": {
+      "post": {
+        "operationId": "finalizeAsset",
+        "parameters": [{"name": "asset_id", "in": "path", "required": true, "schema": {"type": "string", "format": "uuid"}}],
+        "responses": {"200": {"description": "Server verified object hash, size and workspace ownership; asset is immutable"}, "422": {"description": "Asset hash, format or size mismatch"}}
+      }
+    },
+    "/v1/model-packs/{pack_id}": {
+      "get": {
+        "operationId": "getModelPack",
+        "parameters": [{"$ref": "#/components/parameters/packId"}],
+        "responses": {"200": {"description": "Current approved revision, immutable template asset hash and ETag"}, "404": {"description": "Not accessible in this workspace"}}
+      },
+      "put": {
+        "operationId": "proposeModelPackRevision",
+        "parameters": [{"$ref": "#/components/parameters/packId"}, {"name": "If-Match", "in": "header", "required": true, "schema": {"type": "string"}}],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "description": "A candidate model pack matching model-pack.schema.json; approval is server-controlled"}}}},
+        "responses": {"201": {"description": "New immutable candidate revision; approval is a separate reviewer action"}, "412": {"description": "Revision conflict; reread and reconcile"}}
+      }
+    },
+    "/v1/builds": {
+      "post": {
+        "operationId": "createBuild",
+        "parameters": [{"$ref": "#/components/parameters/idempotencyKey"}],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {
+          "type": "object", "required": ["workspace_id", "approved_pack_revision", "inputs_asset_id"], "additionalProperties": false,
+          "properties": {"workspace_id": {"type": "string", "format": "uuid"}, "approved_pack_revision": {"type": "string", "format": "uuid"}, "inputs_asset_id": {"type": "string", "format": "uuid"}}
+        }}}},
+        "responses": {"202": {"description": "Queued build ID; approved pack, inputs and template versions pinned"}, "409": {"description": "Conflicting retry payload"}, "422": {"description": "Pack is unapproved or inputs/asset versions do not match"}}
+      }
+    },
+    "/v1/builds/{build_id}": {
+      "get": {
+        "operationId": "getBuild",
+        "parameters": [{"$ref": "#/components/parameters/buildId"}],
+        "responses": {"200": {"description": "Build state, pinned inputs, immutable output references, blockers and validation report ID"}, "404": {"description": "Not accessible in this workspace"}}
+      }
+    },
+    "/v1/builds/{build_id}/validation": {
+      "get": {
+        "operationId": "getValidationReport",
+        "parameters": [{"$ref": "#/components/parameters/buildId"}],
+        "responses": {"200": {"description": "Evidence tied to output SHA-256, engine/version, independent checks, renders, unresolved issues and trusted validator identity"}, "202": {"description": "Validation is pending"}, "404": {"description": "Not accessible in this workspace"}}
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {"workspaceBearer": {"type": "http", "scheme": "bearer"}},
+    "schemas": {"hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+    "parameters": {
+      "idempotencyKey": {"name": "Idempotency-Key", "in": "header", "required": true, "schema": {"type": "string", "minLength": 16, "maxLength": 128}},
+      "packId": {"name": "pack_id", "in": "path", "required": true, "schema": {"type": "string", "format": "uuid"}},
+      "buildId": {"name": "build_id", "in": "path", "required": true, "schema": {"type": "string", "format": "uuid"}}
+    }
+  }
+}

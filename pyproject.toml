@@ -1,0 +1,9 @@
+[project]
+name = "excel-model-maker-core"
+version = "0.1.0"
+description = "Template-preserving numeric-input composer and workbook preflight"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.unittest]
+start-directory = "."

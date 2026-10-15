@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+*.xlsx
+*.xlsm
+*.xlsb
+*.pdf
+*.mp4
+artifacts/
+scratch/
+*.manifest.json
+
+# Binary source/output assets belong in versioned cloud object storage.
