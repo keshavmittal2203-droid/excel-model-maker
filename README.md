@@ -6,7 +6,7 @@ Build financial models inside approved Excel templates, with traceable inputs an
 
 The Python core inspects XLSX files and fills **existing numeric input cells** from an approved template map. It preserves other ZIP package parts, formula expressions, formatting, charts, and workbook layout. It removes stale formula caches and requests full recalculation. Every generated workbook is a **candidate requiring recalculation**. No production release or error-free claim is implemented.
 
-This limited first slice intentionally stops when a workbook needs unsupported features. Real user templates and course materials have not yet been onboarded. They determine the next supported model family and calculation engine.
+This limited first slice stops when a workbook needs unsupported features. Six user source files are catalogued in [SOURCES.md](SOURCES.md); the workbook needs a special-formula adapter and approved input map before generation. Run `python verify_sources.py` to restore and verify the original files after cloning.
 
 ## Run
 
