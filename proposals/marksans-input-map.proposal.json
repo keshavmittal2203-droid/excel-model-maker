@@ -1,0 +1,67 @@
+{
+  "_comment": "PROPOSAL ONLY - not an approved model pack. reviewer/approved_at are placeholders pending human review per QUALITY.md. Do not treat as approved.",
+  "schema_version": 1,
+  "template_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
+  "approval": {
+    "reviewer": "PENDING human reviewer (proposal fixture)",
+    "approved_at": "2026-10-16T00:00:00Z",
+    "template_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a"
+  },
+  "inputs": [
+    {
+      "name": "terminal_growth",
+      "sheet": "DCF 2nd way",
+      "cell": "D10",
+      "kind": "number",
+      "unit": "fraction per year",
+      "minimum": 0,
+      "maximum": 0.5,
+      "role": "assumption",
+      "note": "Defined name 'tgr'; feeds N56 terminal value = N53*(1+tgr)/(wacc-tgr) and the DCF 2nd way valuation tail."
+    },
+    {
+      "name": "terminal_growth_first_method",
+      "sheet": "DCF 1st way",
+      "cell": "E20",
+      "kind": "number",
+      "unit": "fraction per year",
+      "minimum": 0,
+      "maximum": 0.2,
+      "role": "assumption",
+      "note": "Feeds E25 = K13*(1+E27) and the what-if data table row input (r1)."
+    },
+    {
+      "name": "cost_of_debt_pre_tax",
+      "sheet": "WACC-DCF",
+      "cell": "E22",
+      "kind": "number",
+      "unit": "fraction per year",
+      "minimum": 0,
+      "maximum": 0.3,
+      "role": "assumption",
+      "note": "E24 = E22*(1-E23) after-tax cost of debt, one component of WACC in J39."
+    },
+    {
+      "name": "risk_free_rate",
+      "sheet": "WACC-DCF",
+      "cell": "J22",
+      "kind": "number",
+      "unit": "fraction per year",
+      "minimum": 0,
+      "maximum": 0.2,
+      "role": "assumption",
+      "note": "J25 = J22 + J24*J23 CAPM cost of equity, one component of WACC in J39."
+    }
+  ],
+  "checks": [
+    {"name": "wacc_supproduct_identity", "sheet": "WACC-DCF", "cell": "J39", "expected": 0.121074044712989, "abs_tolerance": 0.000001},
+    {"name": "weights_sum_to_one", "sheet": "WACC-DCF", "cell": "E32", "expected": 1, "abs_tolerance": 1e-09},
+    {"name": "capm_identity", "sheet": "WACC-DCF", "cell": "J25", "expected": 0.12256495669962, "abs_tolerance": 0.000001},
+    {"name": "dcf2_terminal_value", "sheet": "DCF 2nd way", "cell": "N56", "expected": 514.570144284491, "abs_tolerance": 0.01},
+    {"name": "dcf2_equity_value", "sheet": "DCF 2nd way", "cell": "N61", "expected": 978.215940912137, "abs_tolerance": 0.01},
+    {"name": "dcf2_per_share", "sheet": "DCF 2nd way", "cell": "N63", "expected": 21.5863703488504, "abs_tolerance": 0.01},
+    {"name": "dcf1_enterprise_value", "sheet": "DCF 1st way", "cell": "E36", "expected": 2976.45654093353, "abs_tolerance": 0.01},
+    {"name": "dcf1_per_share", "sheet": "DCF 1st way", "cell": "E42", "expected": 79.9429998168729, "abs_tolerance": 0.01},
+    {"name": "dcf1_terminal_value", "sheet": "DCF 1st way", "cell": "E29", "expected": 3765.94028983659, "abs_tolerance": 0.01}
+  ]
+}

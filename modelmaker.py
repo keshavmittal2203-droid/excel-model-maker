@@ -15,6 +15,8 @@ import xml.etree.ElementTree as ET
 import zipfile
 import zlib
 
+import formula_adapter
+
 NS = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
 REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 PKG_REL = "http://schemas.openxmlformats.org/package/2006/relationships"
@@ -156,6 +158,7 @@ class Package:
             self.sheets[name] = (part, tree)
         if not self.sheets:
             raise ModelError("Workbook has no worksheets")
+        self.formula_reports = {name: formula_adapter.classify(tree, name) for name, (_, tree) in self.sheets.items()}
 
     def blockers(self) -> list[str]:
         blockers = []
@@ -169,12 +172,23 @@ class Package:
         for sheet, (_, tree) in self.sheets.items():
             if tree.find(f"{{{NS}}}sheetProtection") is not None:
                 blockers.append(f"Protected worksheet: {sheet}")
+            report = self.formula_reports[sheet]
+            blockers.extend(report.problems)
             for formula in tree.iter(f"{{{NS}}}f"):
-                if formula.get("t", "normal") != "normal" or formula.attrib:
-                    blockers.append(f"Special formula requires compatibility adapter: {sheet}")
                 if "#REF!" in (formula.text or "").upper():
                     blockers.append(f"Broken formula reference: {sheet}")
         return sorted(set(blockers))
+
+    def special_formulas(self) -> dict:
+        result = {}
+        for name, report in self.formula_reports.items():
+            special = {kind: count for kind, count in report.counts.items() if kind != "normal"}
+            if special:
+                result[name] = special
+        return result
+
+    def protected_zones(self) -> dict:
+        return {name: list(report.protected_zones) for name, report in self.formula_reports.items() if report.protected_zones}
 
     def summary(self) -> dict:
         sheets = []
@@ -183,7 +197,7 @@ class Package:
             errors = [{"cell": c.get("r"), "error": c.findtext(f"{{{NS}}}v")} for c in cells if c.get("t") == "e"]
             formulas = [c for c in cells if c.find(f"{{{NS}}}f") is not None]
             sheets.append({"name": name, "cells": len(cells), "formulas": len(formulas), "cached_errors": errors})
-        return {"sha256": sha(self.data), "sheets": sheets, "unsupported_features": self.blockers(), "financial_correctness": "not_evaluated"}
+        return {"sha256": sha(self.data), "sheets": sheets, "special_formulas": self.special_formulas(), "unsupported_features": self.blockers(), "financial_correctness": "not_evaluated"}
 
 
 def validate_pack(pack: dict, package: Package) -> list[dict]:
@@ -267,13 +281,25 @@ def input_cells(package: Package, fields: list[dict], supplied: dict) -> tuple[d
             b = coordinate(bounds[-1])
             if a[0] <= col <= b[0] and a[1] <= row <= b[1]:
                 raise ModelError("Mapped input intersects a merged range")
+        zone = formula_adapter.zone_contains(package.formula_reports[field["sheet"]].protected_zones, field["cell"])
+        if zone:
+            raise ModelError(f"Mapped input intersects a protected array/data-table zone {zone}: {field['cell']}")
         edits.setdefault(part, {})[field["cell"]] = str(number).encode("ascii")
         audit.append({"name": field["name"], "sheet": field["sheet"], "cell": field["cell"], "value_decimal": str(number), "unit": field["unit"], "source": item["source"]})
     return edits, audit
 
 
 def edit_sheet(data: bytes, edits: dict[str, bytes]) -> bytes:
-    if b"<worksheet" not in data or re.search(rb"<[A-Za-z_][\w.-]*:(?:c|f|v)\b", data) or b"<!--" in data or b"<![CDATA[" in data:
+    if b"<worksheet" not in data:
+        raise ModelError("Nonstandard worksheet XML requires a dedicated adapter")
+    sheet_data = list(re.finditer(rb"<sheetData\b[^>]*?/>|<sheetData\b[^>]*>.*?</sheetData>", data, re.S))
+    if len(sheet_data) != 1:
+        raise ModelError("Worksheet must contain exactly one supported sheetData element")
+    region = sheet_data[0]
+    # Only the sheetData region is rewritten, so only that region must use
+    # plain, unprefixed cell/formula/value elements. Prefixed tags elsewhere
+    # (for example <xm:f> inside x14 sparkline extensions) are preserved.
+    if re.search(rb"<[A-Za-z_][\w.-]*:(?:c|f|v)\b", region[0]) or b"<!--" in region[0] or b"<![CDATA[" in region[0]:
         raise ModelError("Nonstandard worksheet XML requires a dedicated adapter")
     found = set()
 
@@ -296,10 +322,6 @@ def edit_sheet(data: bytes, edits: dict[str, bytes]) -> bytes:
             return opening + VALUE.sub(b"", fragment[opening_end:])
         return fragment
 
-    sheet_data = list(re.finditer(rb"<sheetData\b[^>]*?/>|<sheetData\b[^>]*>.*?</sheetData>", data, re.S))
-    if len(sheet_data) != 1:
-        raise ModelError("Worksheet must contain exactly one supported sheetData element")
-    region = sheet_data[0]
     replacement = CELL.sub(replace, region[0])
     result = data[:region.start()] + replacement + data[region.end():]
     if found != set(edits):
@@ -307,7 +329,7 @@ def edit_sheet(data: bytes, edits: dict[str, bytes]) -> bytes:
     return result
 
 
-def verify_sheet_changes(original: bytes, candidate: bytes, edited: set[str]) -> None:
+def verify_sheet_changes(original: bytes, candidate: bytes, edited: set[str], extra_stripped: set[str] = frozenset()) -> None:
     """Compare all worksheet XML semantics except explicitly allowed value/cache edits."""
     trees = [deepcopy(xml(original)), deepcopy(xml(candidate))]
     for index, tree in enumerate(trees):
@@ -315,10 +337,10 @@ def verify_sheet_changes(original: bytes, candidate: bytes, edited: set[str]) ->
             is_formula = cell.find(f"{{{NS}}}f") is not None
             if index == 1 and is_formula and cell.find(f"{{{NS}}}v") is not None:
                 raise ModelError("A formula cache survived invalidation")
-            if is_formula or cell.get("r") in edited:
+            if is_formula or cell.get("r") in edited or cell.get("r") in extra_stripped:
                 for value in list(cell.findall(f"{{{NS}}}v")):
                     cell.remove(value)
-            if is_formula:
+            if is_formula or cell.get("r") in extra_stripped:
                 cell.attrib.pop("t", None)
         for node in tree.iter():
             if node.tail and not node.tail.strip():
@@ -333,16 +355,20 @@ def calculation_flags(data: bytes) -> bytes:
     if b"<workbook" not in data:
         raise ModelError("Prefixed workbook XML requires a dedicated adapter")
     pattern = re.compile(rb"<calcPr\b[^>]*?/>|<calcPr\b[^>]*>.*?</calcPr>", re.S)
+    prefixed = re.compile(rb"<[A-Za-z_][\w.-]*:calcPr\b[^>]*?/>|<[A-Za-z_][\w.-]*:calcPr\b[^>]*>.*?</[A-Za-z_][\w.-]*:calcPr>", re.S)
     matches = list(pattern.finditer(data))
-    if len(matches) > 1:
+    prefixed_matches = list(prefixed.finditer(data))
+    if len(matches) + len(prefixed_matches) > 1:
         raise ModelError("Duplicate calculation properties")
-    if matches:
-        tag = matches[0][0]
-        if not tag.endswith(b"/>"):
-            raise ModelError("Unsupported calculation-properties shape")
-        for key, value in (("calcMode", b"auto"), ("fullCalcOnLoad", b"1"), ("forceFullCalc", b"1")):
-            tag = set_attribute(tag, key, value)
-        return data[:matches[0].start()] + tag + data[matches[0].end():]
+    updates = (("calcMode", b"auto"), ("fullCalcOnLoad", b"1"), ("forceFullCalc", b"1"))
+    for hits in (matches, prefixed_matches):
+        if hits:
+            tag = hits[0][0]
+            if not tag.endswith(b"/>"):
+                raise ModelError("Unsupported calculation-properties shape")
+            for key, value in updates:
+                tag = set_attribute(tag, key, value)
+            return data[:hits[0].start()] + tag + data[hits[0].end():]
     tag = b'<calcPr calcMode="auto" fullCalcOnLoad="1" forceFullCalc="1"/>'
     successor = re.search(rb"<(?:oleSize|customWorkbookViews|pivotCaches|smartTagPr|smartTagTypes|webPublishing|fileRecoveryPr|webPublishObjects|extLst)\b|</workbook>", data)
     if not successor:
@@ -363,9 +389,13 @@ def compose(template: bytes, pack: dict, supplied: dict) -> tuple[bytes, dict]:
     fields = validate_pack(pack, package)
     edits, audit = input_cells(package, fields, supplied)
     changed = dict(package.parts)
+    stale = {package.sheets[name][0]: report.stale_cells for name, report in package.formula_reports.items() if report.stale_cells}
     for part, _ in package.sheets.values():
         changed[part] = edit_sheet(changed[part], edits.get(part, {}))
-        verify_sheet_changes(package.parts[part], changed[part], set(edits.get(part, {})))
+        changed[part] = formula_adapter.strip_stale(changed[part], stale.get(part, set()))
+        verify_sheet_changes(package.parts[part], changed[part], set(edits.get(part, {})), stale.get(part, set()))
+        if formula_adapter.formula_fragments(package.parts[part]) != formula_adapter.formula_fragments(changed[part]):
+            raise ModelError(f"Formula preservation check failed: {part}")
     changed["xl/workbook.xml"] = calculation_flags(changed["xl/workbook.xml"])
     changed.pop("xl/calcChain.xml", None)
     rel_name = "xl/_rels/workbook.xml.rels"
@@ -397,6 +427,9 @@ def compose(template: bytes, pack: dict, supplied: dict) -> tuple[bytes, dict]:
         "changed_inputs": audit,
         "changed_parts": sorted(k for k, v in changed.items() if v != package.parts.get(k)),
         "removed_parts": sorted(set(package.parts) - set(changed)),
+        "special_formulas_preserved": package.special_formulas(),
+        "protected_zones": {name: zones for name, zones in package.protected_zones().items()},
+        "stale_cache_cells_stripped": sorted({cell for cells in stale.values() for cell in cells}),
         "pending_gates": ["engine_recalculation", "formula_error_scan", "independent_model_checks", "input_perturbation_and_restoration", "render_review"],
     }
     return output, manifest

@@ -142,8 +142,9 @@ class CoreTests(unittest.TestCase):
             data = fixture(extra={part: b'<test/>'})
             with self.subTest(part=part), self.assertRaises(ModelError): self.build(data=data, pack=pack(data))
 
-    def test_shared_array_data_table_and_broken_formulas_are_blocked(self):
-        for formula in ('<f t="shared" si="0">B2*100</f>', '<f t="array" ref="C2">B2*100</f>', '<f t="dataTable"/>', '<f>#REF!*100</f>'):
+    def test_malformed_special_and_broken_formulas_are_blocked(self):
+        for formula in ('<f t="shared" si="0">B2*100</f>', '<f t="array">B2*100</f>', '<f t="dataTable"/>',
+                        '<f ca="1">B2*100</f>', '<f t="dataTable2">B2*100</f>', '<f>#REF!*100</f>'):
             sheet = f'<worksheet xmlns="{NS}"><sheetData><row r="2"><c r="B2"><v>1</v></c><c r="C2">{formula}<v>2</v></c></row></sheetData></worksheet>'.encode()
             data = fixture(sheet=sheet)
             with self.subTest(formula=formula), self.assertRaises(ModelError): self.build(data=data, pack=pack(data))
