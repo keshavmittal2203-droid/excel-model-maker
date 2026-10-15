@@ -142,11 +142,118 @@ class CoreTests(unittest.TestCase):
             data = fixture(extra={part: b'<test/>'})
             with self.subTest(part=part), self.assertRaises(ModelError): self.build(data=data, pack=pack(data))
 
-    def test_shared_array_data_table_and_broken_formulas_are_blocked(self):
-        for formula in ('<f t="shared" si="0">B2*100</f>', '<f t="array" ref="C2">B2*100</f>', '<f t="dataTable"/>', '<f>#REF!*100</f>'):
+    def test_malformed_and_broken_formulas_are_blocked(self):
+        for formula in ('<f t="shared" si="0">B2*100</f>', '<f t="array">B2*100</f>', '<f t="dataTable"/>', '<f>#REF!*100</f>', '<f t="unsupported">B2*100</f>'):
             sheet = f'<worksheet xmlns="{NS}"><sheetData><row r="2"><c r="B2"><v>1</v></c><c r="C2">{formula}<v>2</v></c></row></sheetData></worksheet>'.encode()
             data = fixture(sheet=sheet)
             with self.subTest(formula=formula), self.assertRaises(ModelError): self.build(data=data, pack=pack(data))
+
+    def test_special_formulas_are_supported_and_preserved(self):
+        sheet = (
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2">'
+            f'<c r="B2"><v>1</v></c>'
+            f'<c r="C2"><f t="shared" ref="C2:C3" si="0">B2*10</f><v>10</v></c>'
+            f'<c r="D2"><f t="array" ref="D2">B2*20</f><v>20</v></c>'
+            f'<c r="E2"><f t="dataTable" ref="E2:F3" dt2D="1" dtr="1" r1="B2" r2="B2" ca="1"/><v>30</v></c>'
+            f'</row>'
+            f'<row r="3">'
+            f'<c r="C3"><f t="shared" si="0"/><v>10</v></c>'
+            f'<c r="E3"><v>40</v></c>'
+            f'</row>'
+            f'</sheetData></worksheet>'
+        ).encode()
+        data = fixture(sheet=sheet)
+        output, report = self.build(data=data, pack=pack(data), inputs=inputs(0.5))
+        self.assertEqual(report['status'], 'needs_recalculation')
+        cand_pkg = Package(output)
+        cand_sheet = cand_pkg.parts['xl/worksheets/sheet1.xml']
+        self.assertIn(b'<f t="shared" ref="C2:C3" si="0">B2*10</f>', cand_sheet)
+        self.assertIn(b'<f t="shared" si="0"/>', cand_sheet)
+        self.assertIn(b'<f t="array" ref="D2">B2*20</f>', cand_sheet)
+        self.assertIn(b'<f t="dataTable" ref="E2:F3" dt2D="1" dtr="1" r1="B2" r2="B2" ca="1"/>', cand_sheet)
+        self.assertNotIn(b'<c r="C2"><f t="shared" ref="C2:C3" si="0">B2*10</f><v>', cand_sheet)
+        self.assertNotIn(b'<c r="C3"><f t="shared" si="0"/><v>', cand_sheet)
+        self.assertNotIn(b'<c r="D2"><f t="array" ref="D2">B2*20</f><v>', cand_sheet)
+        self.assertIn(b'<c r="B2"><v>0.5</v></c>', cand_sheet)
+
+    def test_mapped_inputs_colliding_with_formula_ranges_are_rejected(self):
+        sheet = (
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2">'
+            f'<c r="B2"><v>1</v></c>'
+            f'<c r="C2"><f t="shared" ref="C2:C3" si="0">B2*10</f><v>10</v></c>'
+            f'<c r="D2"><f t="array" ref="D2:D3">B2*20</f><v>20</v></c>'
+            f'<c r="E2"><f t="dataTable" ref="E2:E3" dt2D="1" dtr="1" r1="B2" r2="B2" ca="1"/><v>30</v></c>'
+            f'</row>'
+            f'<row r="3">'
+            f'<c r="C3"><f t="shared" si="0"/><v>10</v></c>'
+            f'<c r="D3"><v>20</v></c>'
+            f'<c r="E3"><v>30</v></c>'
+            f'</row>'
+            f'</sheetData></worksheet>'
+        ).encode()
+        data = fixture(sheet=sheet)
+        for target in ('C2', 'C3', 'D2', 'D3', 'E2', 'E3'):
+            p = deepcopy(self.pack)
+            p['inputs'][0]['cell'] = target
+            with self.subTest(target=target), self.assertRaises(ModelError):
+                self.build(data=data, pack=p)
+
+    def test_marksans_workbook_compatibility_and_composition(self):
+        marksans_path = Path(__file__).resolve().parent / 'originals' / 'Marksans Keshav.xlsx'
+        if not marksans_path.exists():
+            return
+        data = marksans_path.read_bytes()
+        pkg = Package(data)
+        self.assertEqual(pkg.blockers(), [])
+        summary = pkg.summary()
+        self.assertEqual(len(summary['special_formulas']), 10)
+        self.assertEqual(summary['unsupported_features'], [])
+
+        digest = sha(data)
+        m_pack = {
+            'schema_version': 1,
+            'template_sha256': digest,
+            'approval': {
+                'template_sha256': digest,
+                'reviewer': 'Antigravity',
+                'approved_at': '2026-10-16T01:30:00+05:30'
+            },
+            'inputs': [
+                {
+                    'name': 'tax_rate',
+                    'sheet': 'Intrinsic Growth',
+                    'cell': 'E47',
+                    'kind': 'number',
+                    'unit': 'ratio',
+                    'minimum': 0,
+                    'maximum': 1
+                }
+            ],
+            'checks': [
+                {
+                    'name': 'sales_check',
+                    'sheet': 'Data Sheet',
+                    'cell': 'B8',
+                    'expected': Decimal('325.6'),
+                    'abs_tolerance': Decimal('0.01')
+                }
+            ]
+        }
+        m_inputs = {
+            'values': {
+                'tax_rate': {
+                    'value': Decimal('0.28'),
+                    'source': 'Revised tax assumption'
+                }
+            }
+        }
+        output, manifest = compose(data, m_pack, m_inputs)
+        self.assertEqual(manifest['status'], 'needs_recalculation')
+        self.assertFalse(manifest['ready'])
+        out_pkg = Package(output)
+        self.assertEqual(out_pkg.blockers(), [])
 
     def test_protection_and_iteration_are_blocked(self):
         data = fixture(calc='<calcPr iterate="1"/>')
