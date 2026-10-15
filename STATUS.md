@@ -32,7 +32,7 @@ Updated: 2026-10-16, Asia/Calcutta (second agent session, adapter + recalc work)
 
 ## Current limits / blockers
 
-- **This agent cannot read or push to the private GitHub repo**: the only stored GitHub credential on this machine is `keshavop1441-sudo`, a different account that the project rules forbid using for pushes, and it gets HTTP 404 for `keshavmittal2203-droid/excel-model-maker`. All adapter/recalc work was therefore done on a local copy of main (recorded final commit `6d10f4e8d8017f4fd6b73f71a210e4cde8b661ea`) and is committed locally on branch `agent/deepseek-continue`, ready to push and open a PR the moment access is granted (collaborator invite to `keshavop1441-sudo`, a PAT for `keshavmittal2203-droid`, or another verified write path).
+- Repository access is resolved: the repo was made public for read and the agent account was granted write. This work is pushed on branch `agent/deepseek-continue` (commit `997887a` on top of main `6d10f4e8d8017f4fd6b73f71a210e4cde8b661ea`) with **PR #1 open**: https://github.com/keshavmittal2203-droid/excel-model-maker/pull/1. The PR is not merged, per the no-merge rule; human review is required.
 - No deployed API/MCP service, shared runtime database, calculation worker, or approved real model pack yet. The desktop-Excel recalculation path is local evidence only, not a cloud worker.
 - Many label cells in the supplied workbook are empty strings; cell roles were derived from formula structure and need human confirmation.
 - Date-valued inputs and peer/sector data refresh are out of scope of the current pack contract (documented in the map proposal).
