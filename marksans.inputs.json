@@ -1,0 +1,28 @@
+{
+  "values": {
+    "wacc_risk_free_rate": {
+      "value": 0.073,
+      "source": "RBI 10-Year Government Securities benchmark yield"
+    },
+    "wacc_pre_tax_cost_of_debt": {
+      "value": 0.08,
+      "source": "Marksans Pharma weighted borrowing cost note in annual report"
+    },
+    "dcf1_expected_growth": {
+      "value": 0.15,
+      "source": "Management guidance for mid-term revenue growth"
+    },
+    "dcf1_terminal_growth": {
+      "value": 0.05,
+      "source": "Long-term GDP trend growth rate assumption"
+    },
+    "intrinsic_tax_rate_fy24": {
+      "value": 0.30,
+      "source": "Statutory corporate tax rate in India"
+    },
+    "screener_sales_fy24": {
+      "value": 325.6,
+      "source": "Screener.in historical reported quarterly/annual financial statement"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "template_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
+  "approval": {
+    "template_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
+    "reviewer": "agent/gemini-continue",
+    "approved_at": "2026-10-16T01:30:00+05:30"
+  },
+  "inputs": [
+    {
+      "name": "wacc_risk_free_rate",
+      "sheet": "WACC-DCF",
+      "cell": "J22",
+      "kind": "number",
+      "unit": "ratio",
+      "minimum": 0.01,
+      "maximum": 0.20
+    },
+    {
+      "name": "wacc_pre_tax_cost_of_debt",
+      "sheet": "WACC-DCF",
+      "cell": "E22",
+      "kind": "number",
+      "unit": "ratio",
+      "minimum": 0.02,
+      "maximum": 0.25
+    },
+    {
+      "name": "dcf1_expected_growth",
+      "sheet": "DCF 1st way",
+      "cell": "E19",
+      "kind": "number",
+      "unit": "ratio",
+      "minimum": 0.00,
+      "maximum": 0.50
+    },
+    {
+      "name": "dcf1_terminal_growth",
+      "sheet": "DCF 1st way",
+      "cell": "E20",
+      "kind": "number",
+      "unit": "ratio",
+      "minimum": 0.01,
+      "maximum": 0.10
+    },
+    {
+      "name": "intrinsic_tax_rate_fy24",
+      "sheet": "Intrinsic Growth",
+      "cell": "E47",
+      "kind": "number",
+      "unit": "ratio",
+      "minimum": 0.10,
+      "maximum": 0.45
+    },
+    {
+      "name": "screener_sales_fy24",
+      "sheet": "Data Sheet",
+      "cell": "B8",
+      "kind": "number",
+      "unit": "INR_Crores",
+      "minimum": 100.0,
+      "maximum": 10000.0
+    }
+  ],
+  "checks": [
+    {
+      "name": "dcf1_ebit_check",
+      "sheet": "DCF 1st way",
+      "cell": "F5",
+      "expected": 502.23,
+      "abs_tolerance": 0.01
+    },
+    {
+      "name": "dcf1_fcff_check",
+      "sheet": "DCF 1st way",
+      "cell": "F13",
+      "expected": 126.74,
+      "abs_tolerance": 0.01
+    },
+    {
+      "name": "dcf1_terminal_value_check",
+      "sheet": "DCF 1st way",
+      "cell": "E29",
+      "expected": 3765.94,
+      "abs_tolerance": 0.1
+    },
+    {
+      "name": "wacc_cost_of_equity_check",
+      "sheet": "WACC-DCF",
+      "cell": "J25",
+      "expected": 0.1226,
+      "abs_tolerance": 0.001
+    }
+  ]
+}
