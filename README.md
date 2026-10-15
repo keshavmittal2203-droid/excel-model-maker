@@ -4,9 +4,9 @@ Build financial models inside approved Excel templates, with traceable inputs an
 
 ## Current working slice
 
-The Python core inspects XLSX files and fills **existing numeric input cells** from an approved template map. It preserves other ZIP package parts, formula expressions, formatting, charts, and workbook layout. It removes stale formula caches and requests full recalculation. Every generated workbook is a **candidate requiring recalculation**. No production release or error-free claim is implemented.
+The Python core inspects XLSX files and fills **existing numeric input cells** from an approved template map. It preserves other ZIP package parts, formula expressions, formatting, charts, and workbook layout. It removes stale formula caches and requests full recalculation. A preservation-compatible adapter (`formula_adapter.py`) now supports well-formed shared, array, and dataTable formula structures with protected zones, and `financial_checks.py` provides independent checks that run only against actually recalculated files. Every generated workbook is a **candidate requiring recalculation**. No production release or error-free claim is implemented.
 
-This limited first slice stops when a workbook needs unsupported features. Six user source files are catalogued in [SOURCES.md](SOURCES.md); the workbook needs a special-formula adapter and approved input map before generation. Run `python verify_sources.py` to restore and verify the original files after cloning.
+Six user source files are catalogued in [SOURCES.md](SOURCES.md); the Marksans workbook passes the adapter gate, and an explicit-but-unapproved editable-input map proposal lives in [docs/editable-input-map.md](docs/editable-input-map.md). Run `python verify_sources.py` to restore and verify the original files after cloning.
 
 ## Run
 

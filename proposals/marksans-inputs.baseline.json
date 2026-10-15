@@ -1,0 +1,8 @@
+{
+  "values": {
+    "terminal_growth": {"value": 0.06, "source": "Baseline terminal-growth value carried from the supplied workbook"},
+    "terminal_growth_first_method": {"value": 0.05, "source": "Baseline value carried from the supplied workbook"},
+    "cost_of_debt_pre_tax": {"value": 0.08, "source": "Baseline value carried from the supplied workbook"},
+    "risk_free_rate": {"value": 0.073, "source": "Baseline value carried from the supplied workbook"}
+  }
+}
