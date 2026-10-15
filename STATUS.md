@@ -5,10 +5,11 @@ Updated: 2026-10-16, Asia/Calcutta.
 ## Implemented
 
 - Dependency-free Python XLSX inspector and conservative existing-numeric-input composer.
+- Styled report builder (`cli.py` + `reportmaker/`): strict JSON spec validation, colored bold headers, frozen panes, banded rows, number/currency/percent/date formats, estimated widths, SUM totals as real Excel formulas, conditional formatting, embedded chart; refuses to overwrite without `--force`; openpyxl pinned in requirements.txt.
 - Template/approval hashes, exact input mapping, numeric bounds/precision checks, source references, original/output overwrite protection.
 - Formula-cache invalidation, calculation-chain cleanup, recalculation flags, semantic worksheet-change guard, and unchanged native package-part preservation.
 - Explicit needs_recalculation output. No ready/error-free release transition.
-- 23 focused tests passed locally, including CLI build/overwrite behavior on synthetic fixtures.
+- 30 focused tests passed locally, including CLI build/overwrite behavior and generated-workbook round-trip checks on synthetic fixtures.
 - Model-pack schema, draft OpenAPI contract, workbook quality policy, agent collaboration rules, and AI connection/build smoke-check prompt.
 
 ## Next steps

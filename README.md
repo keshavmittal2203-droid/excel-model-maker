@@ -2,15 +2,26 @@
 
 Build financial models inside approved Excel templates, with traceable inputs and explicit validation evidence. Designed for a shared cloud workspace usable by OpenAI, Gemini, DeepSeek, Claude, and other clients that support HTTP tools or MCP.
 
+It also ships a standalone styled report builder: turn a JSON spec into a professional Excel report with `python cli.py --input data.json --output report.xlsx`.
+
 ## Current working slice
 
 The Python core inspects XLSX files and fills **existing numeric input cells** from an approved template map. It preserves other ZIP package parts, formula expressions, formatting, charts, and workbook layout. It removes stale formula caches and requests full recalculation. Every generated workbook is a **candidate requiring recalculation**. No production release or error-free claim is implemented.
 
 This limited first slice stops when a workbook needs unsupported features. Six user source files are catalogued in [SOURCES.md](SOURCES.md); the workbook needs a special-formula adapter and approved input map before generation. Run `python verify_sources.py` to restore and verify the original files after cloning.
 
+## Styled report builder
+
+`cli.py` builds a new, standalone presentation workbook from a JSON spec: colored bold headers, frozen header row, banded rows, number/currency/percent/date formats, estimated column widths, SUM totals as real Excel formulas, conditional formatting, and an embedded chart. It never edits templates and never evaluates formulas; Excel computes the totals when the file is opened.
+
+    pip install -r requirements.txt
+    python cli.py --input report.example.json --output report.xlsx
+
+The command refuses to overwrite an existing file unless `--force` is passed. The spec format, rules, and a full example are in [AGENTS.md](AGENTS.md); a working spec ships as [report.example.json](report.example.json).
+
 ## Run
 
-Python 3.11 or later; no third-party runtime dependencies.
+Python 3.11 or later. The template composer has no third-party runtime dependencies; the styled report builder uses openpyxl (`pip install -r requirements.txt`).
 
     python modelmaker.py inspect template.xlsx
     python modelmaker.py build --template template.xlsx --pack pack.json --inputs inputs.json --output candidate.xlsx
