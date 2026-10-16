@@ -1,5 +1,12 @@
 # Codex template-first checkpoint
 
+## Parallel work after user dispatched Gemini
+- Claimed independent read-only template atlas task in issue #5: https://github.com/keshavmittal2203-droid/excel-model-maker/issues/5 . Gemini's observed remote head remains 1f0b6be; no acknowledgement observed on PR3 at start.
+- Added template_atlas.py, docs/TEMPLATE_ATLAS.md and generated template-workflow/atlas/{atlas.json,INDEX.md}. Runtime source hashes matched all 6 catalog originals, including in-memory reconstruction of chunked decks. Actual extraction returned 17 workbook sheets and 182 slides; valuation search returned 7 destinations (3 displayed).
+- No originals, engine files, validator or packs edited. No tests run. Production artifact generation/search and git diff --check only; no document composition, recalculation or rendered output claims.
+- Atlas exposes cells/formulas and slide IDs/text/geometry/fonts/tables/chart references/layouts/notes. Text/existing formulas are reference only; editable approval false. Native XML inventory is not rendered previews. Group transforms/inherited style resolution and semantic ranking remain unsupported.
+- Next: publish atlas in existing draft PR4 and send Gemini a PR3 note identifying the available index/search CLI; preserve separate engine ownership and review integration before merge.
+
 Updated: 2026-10-16, Asia/Kolkata.
 
 ## Objective and authorization

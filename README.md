@@ -2,6 +2,8 @@
 
 ## User template workflow
 
+**Find existing layouts first:** [Uploaded template atlas](docs/TEMPLATE_ATLAS.md) indexes all 17 workbook sheets and 182 slides. Use its CLI search to locate real cells, slide/shape IDs and source layouts before proposing edits.
+
 Financial models should follow the uploaded workbook; presentations should use the uploaded decks as their design sources. Read [Template-first delivery](docs/TEMPLATE_FIRST.md) before choosing a generator. The standalone report builder below is a separate tool, not the default financial-model route. [User-supplied modelling course](docs/COURSE_REFERENCE.md) records the YouTube playlist and the evidence needed to turn lessons into reviewed model rules.
 
 `python template_plan.py --request template-workflow/excel-request.example.json` produces a preflight content map, not a workbook. A matching PPT example is provided. Both are fictional examples; planning never certifies an output. Universal Excel derivatives and cross-deck assembly remain future adapters.
