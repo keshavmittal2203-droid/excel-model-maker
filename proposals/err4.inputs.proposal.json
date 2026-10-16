@@ -341,9 +341,9 @@
         "Australia & NZ",
         "Rest of World"
       ],
-      "series_name": "Revenue Mix (%)",
-      "chart_title": "Revenue Mix (in %)",
-      "source": "Marksans Investor Presentation FY25 & Annual Report [Geographical Revenue Breakdown]"
+      "series_name": "Unverified (Primary Filing Not Uploaded)",
+      "chart_title": "Geographic Revenue Mix (Unavailable — Pending Primary Filing)",
+      "source": "UNVERIFIED_EXTERNAL_CLAIM: No primary investor presentation or statutory annual report in repository originals"
     },
     "slide1_logo_suppress": {
       "value": "suppress",

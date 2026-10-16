@@ -83,13 +83,23 @@ def check_com_capabilities() -> dict[str, Any]:
     try:
         pythoncom.CoInitialize()
         try:
-            pythoncom.CLSIDFromProgID("Excel.Application")
+            if hasattr(pythoncom, "CLSIDFromProgID"):
+                pythoncom.CLSIDFromProgID("Excel.Application")
+            else:
+                import winreg
+                with winreg.OpenKey(winreg.HKEY_CLASSES_ROOT, "Excel.Application"):
+                    pass
             capabilities["excel_com"] = True
         except Exception as e:
             capabilities["excel_error"] = str(e)
 
         try:
-            pythoncom.CLSIDFromProgID("PowerPoint.Application")
+            if hasattr(pythoncom, "CLSIDFromProgID"):
+                pythoncom.CLSIDFromProgID("PowerPoint.Application")
+            else:
+                import winreg
+                with winreg.OpenKey(winreg.HKEY_CLASSES_ROOT, "PowerPoint.Application"):
+                    pass
             capabilities["powerpoint_com"] = True
         except Exception as e:
             capabilities["powerpoint_error"] = str(e)

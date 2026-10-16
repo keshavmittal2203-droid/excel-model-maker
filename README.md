@@ -25,19 +25,30 @@ Six user source files are catalogued in [SOURCES.md](SOURCES.md). Run `python ve
 
 The command refuses to overwrite an existing file unless `--force` is passed. The spec format, rules, and a full example are in [AGENTS.md](AGENTS.md); a working spec ships as [report.example.json](report.example.json).
 
-## Run
+## Environment & Software Dependencies
 
-Python 3.11 or later. The template composer has no third-party runtime dependencies; the styled report builder uses openpyxl (`pip install -r requirements.txt`).
+The repository is self-contained with respect to templates, references, and test fixtures (verified by `python verify_sources.py`). Runtime execution has standard software dependencies:
+- **Python**: Python 3.11 or later (`openpyxl`, `Pillow`).
+- **Microsoft Office (Windows)**: Excel and PowerPoint (Office 16.0+) for live workbook recalculation, PDF schedule export, and slide PNG preview rendering via `pywin32`.
+- When Office COM is absent or non-Windows, core OOXML inspection and composition run with `--skip-com`.
+
+## Package Build Command
+
+To generate a complete, reconciled financial model and 5-slide executive presentation:
 
     python verify_sources.py
-    python modelmaker.py inspect "originals/Marksans Keshav.xlsx"
-    python modelmaker.py build --template "originals/Marksans Keshav.xlsx" --pack marksans.model-pack.json --inputs marksans.inputs.json --output candidates/Marksans-Candidate.xlsx
-    python modelmaker.py validate candidates/Marksans-Candidate.xlsx --pack marksans.model-pack.json --recalculate --recalculated-output candidates/Marksans-Recalculated.xlsx --perturb-check --template "originals/Marksans Keshav.xlsx" --inputs marksans.inputs.json
-    python pptmaker.py inspect "originals/ERR-4.pptx"
-    python pptmaker.py build --template "originals/ERR-4.pptx" --pack err4.deck-pack.json --inputs err4.inputs.json --workbook candidates/Marksans-Recalculated.xlsx --output candidates/ERR-4-Marksans-Candidate.pptx
-    python -m unittest -v
+    python build_package.py --request examples/marksans-package.json --output-dir dist/marksans-run-01 --allow-proposal
 
-Build prints a JSON manifest containing template/input/output hashes, changed inputs/slots, source references, and status. Save that manifest beside the workbook or deck in cloud storage. Inspect is read-only. Build refuses to overwrite either the template or an existing output.
+**Important**: Each package run requires a **fresh, non-existent output directory** (e.g. `dist/marksans-run-01`, `dist/marksans-run-02`). Per safety rules, existing output files and non-empty directories are never overwritten, even with `--force`.
+
+## Individual Tool Commands
+
+    python modelmaker.py inspect "originals/Marksans Keshav.xlsx"
+    python modelmaker.py build --template "originals/Marksans Keshav.xlsx" --pack proposals/marksans.model-pack.proposal.json --inputs marksans.inputs.json --output dist/Marksans-Candidate.xlsx
+    python modelmaker.py validate dist/Marksans-Candidate.xlsx --pack proposals/marksans.model-pack.proposal.json --recalculate --recalculated-output dist/Marksans-Recalculated.xlsx --perturb-check --template "originals/Marksans Keshav.xlsx" --inputs marksans.inputs.json
+    python pptmaker.py inspect "originals/ERR-4.pptx"
+    python pptmaker.py build --template "originals/ERR-4.pptx" --pack proposals/err4.deck-pack.proposal.json --inputs proposals/err4.inputs.proposal.json --workbook dist/Marksans-Recalculated.xlsx --output dist/Marksans-Pharma-Overview.pptx
+    python -m unittest discover -v
 
 ## Cloud source of truth
 

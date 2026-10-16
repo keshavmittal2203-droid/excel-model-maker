@@ -49,23 +49,38 @@
 - Created `docs/provenance_ledger.json` and `docs/PROVENANCE_LEDGER.md` documenting 18 key metrics across valuation schedules and deck slides.
 - Established explicit valuation snapshot cutoff dates:
   - Audited historical financials cutoff: FY25 ending 2025-03-31.
-  - Market pricing snapshot: 2025-10-05 (CMP ₹309.10, Market Cap ₹14,002.74 Cr).
+  - Market data retrieval date: 2025-10-05 (Sunday Screener.in snapshot).
+  - Effective trading session observation date: 2025-10-03 (Friday closing CMP ₹309.10, Market Cap ₹14,002.74 Cr).
   - Forecast horizon start: FY2026E.
-- Fully traced target capital structure: 5 peer comparables in `peerdata!G5:G9` and `E5:E9`. Median Debt/Capital is 2.2398% (Laurus Labs). Implied D/E is 0.022911. Target debt weight is 2.24%, equity weight is 97.76%.
-- Traced unrounded CAPM derivation: $R_f = 7.30\%$ (10-Yr G-Sec), $R_m = 16.3692\%$ (26-year historical Nifty 50 average 15.15% + 1.22% dividend yield), ERP $= 9.0692\%$, re-levered Hamada beta $= 0.546518$, yielding exact unrounded $K_e = 12.2565\% \to 12.26\%$.
-- Flagged `slide1_chart_revenue_mix` as `unresolved_external_claim` pending primary investor presentation filing.
+- Methodology notes:
+  - Nifty 50: 26-year (2000-2025) arithmetic average of Price Return (PR) index returns (15.15%) + 1.22% dividend yield assumption = 16.37% (arithmetic average, no dividend double-counting).
+  - Capital structure: 5-peer median debt/capital (2.2398%, Laurus Labs) yielding target debt weight 2.24%, equity weight 97.76%, target D/E 0.022911 following Damodaran pure-play methodology.
+- Strictly classified all 18 ledger metrics into standard canonical categories: `externally_verified_fact`, `inherited_template_value`, `calculated_estimate`, `analyst_assumption`, or `unresolved_claim`.
+- Resolved Geographic Revenue Evidence Gap: Slide 1 Chart 0 figures `[43.1, 41.7, 9.8, 5.4]` are absent from `originals/`. Retitled chart to `Geographic Revenue Mix (Unavailable — Pending Primary Filing)`, series to `Unverified (Primary Filing Not Uploaded)`, and classified as `unresolved_claim`.
 
-### 5. Clean-Checkout Reproducibility & Multi-Run Demonstration
-- Decoupled `build_package.py` and `work/generate_wacc_images.py` from hardcoded candidate paths and absolute Windows paths.
-- Added portable font discovery across Windows, Linux, and macOS.
-- Dynamically derived slide preview dimensions from `<p:sldSz>` in presentation template (1080x1440 for portrait ERR-4).
-- Added strict directory safety checks: protects repo roots and system roots; enforces manifest ownership before allowing `--force`.
-- Recorded COM capabilities (`excel_com`, `powerpoint_com`) in the package manifest.
-- Excluded `package.manifest.json` from `output_artifacts` to prevent self-referential hash loops.
-- Successfully executed two independent runs on the same uploaded templates:
-  - **Baseline**: $R_f = 7.30\%$, pre-tax $K_d = 8.00\%$, growth $= 15.00\% \to K_e = 12.26\%$, post-tax $K_d = 5.60\%$, $\text{WACC} = 12.11\%$.
-  - **Scenario B**: $R_f = 8.00\%$, pre-tax $K_d = 9.00\%$, growth $= 12.00\% \to K_e = 12.57\%$, post-tax $K_d = 6.30\%$, $\text{WACC} = 12.43\%$, valuation per share $\downarrow$ from ₹83.87 to ₹70.01, with verified directional effects while historical schedules (Slides 1, 2, 14, 16) remain 100% identical.
+### 5. Codex Critical Safety Patch (PR #7) Integration
+- Cleanly cherry-picked Codex PR #7 (`1395b247d4a1e87ef83b4938c47a88be200b8b4f`) onto `agent/argon-continue`.
+- Hardened `build_package.py`:
+  - Path safety: pre-write validation rejecting traversal (`../`), absolute paths, Windows device names (`CON`), and alternate data streams (`file:stream`).
+  - Output immutability: existing files are never overwritten; non-empty run directories are rejected even with `--force`.
+  - Non-activating COM probe: inspects Windows registry via `winreg` / mocked `CLSIDFromProgID` without activating or quitting user Office sessions.
+  - Process isolation: dedicated Excel `DispatchEx` instance with links/macros disabled; PowerPoint closes only its owned presentation without calling application `Quit()`.
+  - Run-local image containment: dynamic visual assets generate exclusively inside `candidates/<run_dir>/assets/` with zero writes to `work/assets/`.
+- 8 new safety regression tests in `test_package_safety.py`. Full test suite now passes: **69/69 tests**.
 
-### 6. Verification & Test Suite
+### 6. Fresh Native Builds & COM Export Verification
+- Built baseline into fresh directory:
+  `python build_package.py --request examples/marksans-package.json --output-dir candidates/run_native_baseline --allow-proposal`
+  - Recalculated 17-sheet candidate workbook with Excel COM (WACC: 12.11%).
+  - Composed 5-slide presentation with PowerPoint COM.
+  - Exported 5 high-resolution slide PNGs (1080x1440) and 6 worksheet schedule PDFs.
+  - Generated `package.manifest.json` recording 13 artifact SHA-256 hashes, with `ready: false`, pending gates: `["human_pack_approval", "render_review"]`.
+- Built Scenario B into fresh directory:
+  `python build_package.py --request examples/scenario-b-package.json --output-dir candidates/run_native_scenario_b --allow-proposal`
+  - Re-evaluated DCF model under stressed parameters ($R_f=8.00\%$, pre-tax $K_d=9.00\%$, growth=$12.00\% \to \text{WACC}=12.43\%$, implied value ₹70.01/share).
+  - Composed presentation, exported slide PNGs and sheet PDFs, generated manifest with 13 artifacts, `ready: false`.
+
+### 7. Verification & Clean-Checkout Reproducibility
 - `python verify_sources.py`: All 6 original template hashes verified byte-for-byte.
-- `python -m unittest discover -v`: 61/61 tests passing cleanly across modelmaker, pptmaker, build_package, and reportmaker.
+- `python -m unittest discover -v`: 69/69 tests passing cleanly.
+- Verified that builds into fresh output directories require only committed files and standard software dependencies (Python 3.11+, Microsoft Office on Windows).
