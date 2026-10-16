@@ -605,17 +605,7 @@
       "shape_name": "Table 0",
       "row": 5,
       "col": 1,
-      "description": "Working capital changes, net (\u20b9 Cr) FY18 in Slide 14 Table 0",
-      "workbook_binding": {
-        "sheet": "Cash Flow",
-        "cell": "F12",
-        "scale": 1,
-        "decimals": 2,
-        "abs_tolerance": 0.01,
-        "workbook_sha256": "ef5d6d5acb66e771abcb23df8151ff7835958d7a3c7e79452d088e314cbddd85",
-        "unit": "INR_Cr",
-        "period": "FY18"
-      }
+      "description": "Working capital changes, net (\u20b9 Cr) FY18 in Slide 14 Table 0"
     },
     {
       "name": "slide14_wc_changes_fy19",
@@ -625,17 +615,7 @@
       "shape_name": "Table 0",
       "row": 5,
       "col": 2,
-      "description": "Working capital changes, net (\u20b9 Cr) FY19 in Slide 14 Table 0",
-      "workbook_binding": {
-        "sheet": "Cash Flow",
-        "cell": "G12",
-        "scale": 1,
-        "decimals": 2,
-        "abs_tolerance": 0.01,
-        "workbook_sha256": "ef5d6d5acb66e771abcb23df8151ff7835958d7a3c7e79452d088e314cbddd85",
-        "unit": "INR_Cr",
-        "period": "FY19"
-      }
+      "description": "Working capital changes, net (\u20b9 Cr) FY19 in Slide 14 Table 0"
     },
     {
       "name": "slide14_wc_changes_fy20",
@@ -645,17 +625,7 @@
       "shape_name": "Table 0",
       "row": 5,
       "col": 3,
-      "description": "Working capital changes, net (\u20b9 Cr) FY20 in Slide 14 Table 0",
-      "workbook_binding": {
-        "sheet": "Cash Flow",
-        "cell": "H12",
-        "scale": 1,
-        "decimals": 2,
-        "abs_tolerance": 0.01,
-        "workbook_sha256": "ef5d6d5acb66e771abcb23df8151ff7835958d7a3c7e79452d088e314cbddd85",
-        "unit": "INR_Cr",
-        "period": "FY20"
-      }
+      "description": "Working capital changes, net (\u20b9 Cr) FY20 in Slide 14 Table 0"
     },
     {
       "name": "slide14_wc_changes_fy21",
@@ -665,17 +635,7 @@
       "shape_name": "Table 0",
       "row": 5,
       "col": 4,
-      "description": "Working capital changes, net (\u20b9 Cr) FY21 in Slide 14 Table 0",
-      "workbook_binding": {
-        "sheet": "Cash Flow",
-        "cell": "I12",
-        "scale": 1,
-        "decimals": 2,
-        "abs_tolerance": 0.01,
-        "workbook_sha256": "ef5d6d5acb66e771abcb23df8151ff7835958d7a3c7e79452d088e314cbddd85",
-        "unit": "INR_Cr",
-        "period": "FY21"
-      }
+      "description": "Working capital changes, net (\u20b9 Cr) FY21 in Slide 14 Table 0"
     },
     {
       "name": "slide14_wc_changes_fy22",
@@ -685,17 +645,7 @@
       "shape_name": "Table 0",
       "row": 5,
       "col": 5,
-      "description": "Working capital changes, net (\u20b9 Cr) FY22 in Slide 14 Table 0",
-      "workbook_binding": {
-        "sheet": "Cash Flow",
-        "cell": "J12",
-        "scale": 1,
-        "decimals": 2,
-        "abs_tolerance": 0.01,
-        "workbook_sha256": "ef5d6d5acb66e771abcb23df8151ff7835958d7a3c7e79452d088e314cbddd85",
-        "unit": "INR_Cr",
-        "period": "FY22"
-      }
+      "description": "Working capital changes, net (\u20b9 Cr) FY22 in Slide 14 Table 0"
     },
     {
       "name": "slide14_wc_changes_fy23",
@@ -705,17 +655,7 @@
       "shape_name": "Table 0",
       "row": 5,
       "col": 6,
-      "description": "Working capital changes, net (\u20b9 Cr) FY23 in Slide 14 Table 0",
-      "workbook_binding": {
-        "sheet": "Cash Flow",
-        "cell": "K12",
-        "scale": 1,
-        "decimals": 2,
-        "abs_tolerance": 0.01,
-        "workbook_sha256": "ef5d6d5acb66e771abcb23df8151ff7835958d7a3c7e79452d088e314cbddd85",
-        "unit": "INR_Cr",
-        "period": "FY23"
-      }
+      "description": "Working capital changes, net (\u20b9 Cr) FY23 in Slide 14 Table 0"
     },
     {
       "name": "slide14_wc_changes_fy24",
@@ -725,17 +665,7 @@
       "shape_name": "Table 0",
       "row": 5,
       "col": 7,
-      "description": "Working capital changes, net (\u20b9 Cr) FY24 in Slide 14 Table 0",
-      "workbook_binding": {
-        "sheet": "Cash Flow",
-        "cell": "L12",
-        "scale": 1,
-        "decimals": 2,
-        "abs_tolerance": 0.01,
-        "workbook_sha256": "ef5d6d5acb66e771abcb23df8151ff7835958d7a3c7e79452d088e314cbddd85",
-        "unit": "INR_Cr",
-        "period": "FY24"
-      }
+      "description": "Working capital changes, net (\u20b9 Cr) FY24 in Slide 14 Table 0"
     },
     {
       "name": "slide14_wc_changes_fy25",
@@ -745,17 +675,7 @@
       "shape_name": "Table 0",
       "row": 5,
       "col": 8,
-      "description": "Working capital changes, net (\u20b9 Cr) FY25 in Slide 14 Table 0",
-      "workbook_binding": {
-        "sheet": "Cash Flow",
-        "cell": "M12",
-        "scale": 1,
-        "decimals": 2,
-        "abs_tolerance": 0.01,
-        "workbook_sha256": "ef5d6d5acb66e771abcb23df8151ff7835958d7a3c7e79452d088e314cbddd85",
-        "unit": "INR_Cr",
-        "period": "FY25"
-      }
+      "description": "Working capital changes, net (\u20b9 Cr) FY25 in Slide 14 Table 0"
     },
     {
       "name": "slide14_direct_taxes_fy18",

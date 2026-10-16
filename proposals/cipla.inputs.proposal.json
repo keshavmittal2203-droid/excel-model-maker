@@ -57,7 +57,7 @@
       "source": "BSE / NSE Ticker Registration"
     },
     "slide14_narrative": {
-      "value": "Cipla Limited's consolidated cash flow from operations reached ₹5,005 crore in FY25, supported by profit before tax of ₹6,660 crore and disciplined working capital control. Net cash flow for FY25 stood at ₹30 crore after self-funding ₹1,240 crore in net capital expenditure and returning ₹1,048 crore to shareholders via dividends. Cipla maintains an exceptional net-cash balance sheet with minimal external borrowings (₹438 crore) and total cash and liquid investments exceeding ₹8,000 crore.",
+      "value": "Cipla Limited's consolidated cash flow from operations reached ₹5,005 crore in FY25, supported by profit before tax of ₹6,660 crore and disciplined operational cash generation. Net cash flow for FY25 stood at ₹30 crore after self-funding ₹1,240 crore in net capital expenditure and returning ₹1,048 crore to shareholders via dividends. Cipla maintains an exceptional net-cash balance sheet with minimal external borrowings (₹438 crore) and total cash and liquid investments exceeding ₹8,000 crore. Granular sub-schedule breakdown rows are marked '—' pending manual digitization of primary statutory filings.",
       "source": "Cipla-Recalculated.xlsx (Data Sheet rows 28, 59, 82, 85)"
     },
     "slide14_pbt_fy18": {
@@ -65,12 +65,12 @@
       "source": "Cipla-Recalculated.xlsx!Data Sheet!C28"
     },
     "slide14_non_cash_fy18": {
-      "value": 87.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_wc_changes_fy18": {
-      "value": -36.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!F12"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_direct_taxes_fy18": {
       "value": -279.0,
@@ -85,20 +85,20 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!F15"
     },
     "slide14_net_inv_fy18": {
-      "value": 0.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!F17:18"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_other_investing_fy18": {
-      "value": 16.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cfi_fy18": {
       "value": -834.0,
       "source": "Cipla-Recalculated.xlsx!Data Sheet!C83"
     },
     "slide14_net_borrow_fy18": {
-      "value": 0.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!F25:26"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_finance_costs_fy18": {
       "value": -170.0,
@@ -109,8 +109,8 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!F28"
     },
     "slide14_other_financing_fy18": {
-      "value": -317.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cff_fy18": {
       "value": -729.0,
@@ -125,12 +125,12 @@
       "source": "Cipla-Recalculated.xlsx!Data Sheet!D28"
     },
     "slide14_non_cash_fy19": {
-      "value": 281.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_wc_changes_fy19": {
-      "value": -82.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!G12"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_direct_taxes_fy19": {
       "value": -588.0,
@@ -145,20 +145,20 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!G15"
     },
     "slide14_net_inv_fy19": {
-      "value": 0.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!G17:18"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_other_investing_fy19": {
-      "value": -768.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cfi_fy19": {
       "value": -1688.0,
       "source": "Cipla-Recalculated.xlsx!Data Sheet!D83"
     },
     "slide14_net_borrow_fy19": {
-      "value": -6.68,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!G25:26"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_finance_costs_fy19": {
       "value": -168.0,
@@ -169,8 +169,8 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!G28"
     },
     "slide14_other_financing_fy19": {
-      "value": 313.68,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cff_fy19": {
       "value": -103.0,
@@ -185,12 +185,12 @@
       "source": "Cipla-Recalculated.xlsx!Data Sheet!E28"
     },
     "slide14_non_cash_fy20": {
-      "value": 1462.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_wc_changes_fy20": {
-      "value": 59.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!H12"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_direct_taxes_fy20": {
       "value": -853.0,
@@ -205,20 +205,20 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!H15"
     },
     "slide14_net_inv_fy20": {
-      "value": 0.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!H17:18"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_other_investing_fy20": {
-      "value": 1094.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cfi_fy20": {
       "value": 114.0,
       "source": "Cipla-Recalculated.xlsx!Data Sheet!E83"
     },
     "slide14_net_borrow_fy20": {
-      "value": -70.31,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!H25:26"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_finance_costs_fy20": {
       "value": -197.0,
@@ -229,8 +229,8 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!H28"
     },
     "slide14_other_financing_fy20": {
-      "value": -2672.69,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cff_fy20": {
       "value": -3182.0,
@@ -245,12 +245,12 @@
       "source": "Cipla-Recalculated.xlsx!Data Sheet!F28"
     },
     "slide14_non_cash_fy21": {
-      "value": 1482.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_wc_changes_fy21": {
-      "value": -132.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!I12"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_direct_taxes_fy21": {
       "value": -1051.0,
@@ -265,20 +265,20 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!I15"
     },
     "slide14_net_inv_fy21": {
-      "value": 0.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!I17:18"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_other_investing_fy21": {
-      "value": -1354.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cfi_fy21": {
       "value": -2374.0,
       "source": "Cipla-Recalculated.xlsx!Data Sheet!F83"
     },
     "slide14_net_borrow_fy21": {
-      "value": -0.1,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!I25:26"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_finance_costs_fy21": {
       "value": -161.0,
@@ -289,8 +289,8 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!I28"
     },
     "slide14_other_financing_fy21": {
-      "value": -674.9,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cff_fy21": {
       "value": -1240.0,
@@ -305,12 +305,12 @@
       "source": "Cipla-Recalculated.xlsx!Data Sheet!G28"
     },
     "slide14_non_cash_fy22": {
-      "value": 920.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_wc_changes_fy22": {
-      "value": -111.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!J12"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_direct_taxes_fy22": {
       "value": -1299.0,
@@ -325,20 +325,20 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!J15"
     },
     "slide14_net_inv_fy22": {
-      "value": 0.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!J17:18"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_other_investing_fy22": {
-      "value": -778.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cfi_fy22": {
       "value": -1858.0,
       "source": "Cipla-Recalculated.xlsx!Data Sheet!G83"
     },
     "slide14_net_borrow_fy22": {
-      "value": 22.55,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!J25:26"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_finance_costs_fy22": {
       "value": -106.0,
@@ -349,8 +349,8 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!J28"
     },
     "slide14_other_financing_fy22": {
-      "value": -1112.55,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cff_fy22": {
       "value": -1600.0,
@@ -365,12 +365,12 @@
       "source": "Cipla-Recalculated.xlsx!Data Sheet!H28"
     },
     "slide14_non_cash_fy23": {
-      "value": 547.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_wc_changes_fy23": {
-      "value": -111.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!K12"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_direct_taxes_fy23": {
       "value": -1381.0,
@@ -385,20 +385,20 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!K15"
     },
     "slide14_net_inv_fy23": {
-      "value": 0.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!K17:18"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_other_investing_fy23": {
-      "value": -1236.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cfi_fy23": {
       "value": -2376.0,
       "source": "Cipla-Recalculated.xlsx!Data Sheet!H83"
     },
     "slide14_net_borrow_fy23": {
-      "value": 5.3,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!K25:26"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_finance_costs_fy23": {
       "value": -110.0,
@@ -409,8 +409,8 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!K28"
     },
     "slide14_other_financing_fy23": {
-      "value": -449.3,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cff_fy23": {
       "value": -958.0,
@@ -425,12 +425,12 @@
       "source": "Cipla-Recalculated.xlsx!Data Sheet!I28"
     },
     "slide14_non_cash_fy24": {
-      "value": 138.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_wc_changes_fy24": {
-      "value": -126.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!L12"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_direct_taxes_fy24": {
       "value": -1692.0,
@@ -445,20 +445,20 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!L15"
     },
     "slide14_net_inv_fy24": {
-      "value": -26.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!L17:18"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_other_investing_fy24": {
-      "value": -1746.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cfi_fy24": {
       "value": -2982.0,
       "source": "Cipla-Recalculated.xlsx!Data Sheet!I83"
     },
     "slide14_net_borrow_fy24": {
-      "value": -12.5,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!L25:26"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_finance_costs_fy24": {
       "value": -112.0,
@@ -469,8 +469,8 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!L28"
     },
     "slide14_other_financing_fy24": {
-      "value": -27.5,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cff_fy24": {
       "value": -1200.0,
@@ -485,12 +485,12 @@
       "source": "Cipla-Recalculated.xlsx!Data Sheet!J28"
     },
     "slide14_non_cash_fy25": {
-      "value": 373.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_wc_changes_fy25": {
-      "value": -241.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!M12"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_direct_taxes_fy25": {
       "value": -1787.0,
@@ -505,20 +505,20 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!M15"
     },
     "slide14_net_inv_fy25": {
-      "value": 27.0,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!M17:18"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_other_investing_fy25": {
-      "value": -2469.0,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cfi_fy25": {
       "value": -3682.0,
       "source": "Cipla-Recalculated.xlsx!Data Sheet!J83"
     },
     "slide14_net_borrow_fy25": {
-      "value": -6.01,
-      "source": "Cipla-Recalculated.xlsx!Cash Flow!M25:26"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_finance_costs_fy25": {
       "value": -98.0,
@@ -529,8 +529,8 @@
       "source": "Cipla-Recalculated.xlsx!Cash Flow!M28"
     },
     "slide14_other_financing_fy25": {
-      "value": -140.99,
-      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
     },
     "slide14_cff_fy25": {
       "value": -1293.0,

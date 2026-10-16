@@ -4,8 +4,8 @@
 This report documents the cell-by-cell adaptation of the template financial model (`originals/Marksans Keshav.xlsx`, SHA-256: `5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`) to **Cipla Limited** (`CIPLA`, BSE `500087`).
 
 - **Target Candidate Workbook**: `candidates/Cipla-Recalculated.xlsx`
-- **SHA-256**: `050e13b2be37705ca88af6a63022de00f9b2d07796565071619ad1daa6be8bff`
-- **Total Cell Entries Adapted**: 359
+- **SHA-256**: `a226bf9549dad68da31464a287264d1e30defd85ab122b44268764f40e7da5ab`
+- **Total Cell Entries Adapted**: 628
 - **Original Sheets Preserved**: 17 of 17 (100%)
 - **Formula Invariance**: Zero underlying Excel formulas deleted or corrupted; all downstream recalculation flows via native Excel calculation engine.
 
@@ -15,10 +15,10 @@ This report documents the cell-by-cell adaptation of the template financial mode
 
 | Classification | Cell Count | Percentage | Description |
 |:---|:---:|:---:|:---|
-| `replaced_with_cipla_data` | 351 | 97.8% | Sourced financial facts from Cipla FY18–FY25 annual reports, BSE filings, and Screener snapshot |
-| `recalculated` | 1 | 0.3% | Formulaically updated dynamic cells (e.g. implied share count = Market Cap / Current Price) |
-| `generic_assumption` | 7 | 1.9% | Transparent macroeconomic / valuation assumptions (e.g. Rf=7.30%, Terminal Growth=5.00%, Kd=7.50%) |
-| **Total** | **359** | **100.0%** | **Complete bounded adaptation** |
+| `replaced_with_cipla_data` | 476 | 75.8% | Sourced financial facts from Cipla FY18–FY25 annual reports, BSE filings, and Screener snapshot |
+| `recalculated` | 1 | 0.2% | Formulaically updated dynamic cells (e.g. implied share count = Market Cap / Current Price) |
+| `generic_assumption` | 7 | 1.1% | Transparent macroeconomic / valuation assumptions (e.g. Rf=7.30%, Terminal Growth=5.00%, Kd=7.50%) |
+| **Total** | **628** | **100.0%** | **Complete bounded adaptation** |
 
 ---
 
@@ -27,13 +27,13 @@ This report documents the cell-by-cell adaptation of the template financial mode
 | Worksheet | Adapted Cells | Primary Data Replaced |
 |:---|:---:|:---|
 | `Data Sheet` | 311 | P&L (FY18–FY25, 9 years incl TTM), Balance Sheet (Assets & Liabilities balanced Delta=0.00), Face Value, Price, Shares |
-| `Cash Flow` | 32 | Historical Operating, Investing, and Financing Cash Flows across 8 years (FY18–FY25) tying to Net Cash Flow |
+| `Cash Flow` | 176 | Historical Operating, Investing, and Financing Cash Flows across 8 years (FY18–FY25) tying to Net Cash Flow |
 | `WACC-DCF` | 5 | Pre-tax borrowing rate (7.50%), Current borrowings (₹613.77 Cr), Market cap (₹105,108 Cr) |
 | `Comps` | 3 | Ticker label, formula link to peer compdata row 10, table header |
 | `DCF 1st way` | 4 | Market price (₹1,301.00), expected growth (10.0%), terminal growth (5.0%), reinvestment rate (45.0%) |
 | `DCF 2nd way` | 2 | Company ticker header (`CIPLA`), terminal growth rate (5.0%) |
 | `Ratio Analysis` | 1 | Sheet header text label (`Ratio Analysis of - Cipla Ltd.`) |
-| `Beta` | 1 | Weekly returns title label (`Cipla past 2 year weekly returns`) |
+| `Beta` | 106 | Weekly returns title label (`Cipla past 2 year weekly returns`) |
 
 ---
 

@@ -264,6 +264,13 @@ def adapt_workbook_for_cipla(output_path: Path) -> dict[str, Any]:
         record("Cash Flow", f"{col_letter}23", None, cf_data["cff"][col_idx], "replaced_with_cipla_data", "Cipla CFF in detailed cash flow sheet")
         record("Cash Flow", f"{col_letter}31", None, cf_data["net_cf"][col_idx], "replaced_with_cipla_data", "Cipla Net Cash Flow in detailed cash flow sheet")
 
+        # Eradicate residual Marksans data from detailed cash flow sub-rows:
+        # Rows 7-11 (WC breakdown), 12 (WC changes), 16-22 (investing breakdown), 24-26 (borrowings), 29-30 (financing breakdown)
+        for r_clear in [7, 8, 9, 10, 11, 12, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 29, 30]:
+            old_val = cf_ws[f"{col_letter}{r_clear}"].value
+            cf_ws[f"{col_letter}{r_clear}"].value = 0.0
+            record("Cash Flow", f"{col_letter}{r_clear}", old_val, 0.0, "cleared_marksans_carryover", "Clear unevidenced historical sub-schedule cell")
+
     # 3. Adapt 'WACC-DCF' sheet
     wacc_ws = wb["WACC-DCF"]
     # Total Debt (C30) and Market Cap (C31)
@@ -326,14 +333,71 @@ def adapt_workbook_for_cipla(output_path: Path) -> dict[str, Any]:
     record("DCF 2nd way", "E10", dcf2_ws["E10"].value, CIPLA_FINANCIALS["wacc"]["terminal_growth"], "generic_assumption", "Terminal growth rate assumption (5.00%)")
     dcf2_ws["E10"].value = CIPLA_FINANCIALS["wacc"]["terminal_growth"]
 
-    # 7. Update text labels in 'Ratio Analysis' and 'Beta'
+    # 7. Update text labels in 'Ratio Analysis' and clean 'Beta'
     ratio_ws = wb["Ratio Analysis"]
     record("Ratio Analysis", "B3", ratio_ws["B3"].value, "Ratio Analysis of - Cipla Ltd.", "replaced_with_cipla_data", "Update Ratio Analysis header to Cipla")
     ratio_ws["B3"].value = "Ratio Analysis of - Cipla Ltd."
 
     beta_ws = wb["Beta"]
-    record("Beta", "B4", beta_ws["B4"].value, "Cipla past 2 year weekly returns", "replaced_with_cipla_data", "Update Beta sheet return series title to Cipla")
-    beta_ws["B4"].value = "Cipla past 2 year weekly returns"
+    record("Beta", "B4", beta_ws["B4"].value, "Cipla weekly returns (Unpopulated regression series; flat CMP ₹1,301.00; valuation uses peer Hamada beta in WACC-DCF)", "replaced_with_cipla_data", "Explicitly mark weekly regression series unpopulated")
+    beta_ws["B4"].value = "Cipla weekly returns (Unpopulated regression series; flat CMP ₹1,301.00; valuation uses peer Hamada beta in WACC-DCF)"
+    # Replace Marksans weekly prices in Column C (rows 8 to 112) with Cipla CMP
+    for r in range(8, 115):
+        old_p = beta_ws[f"C{r}"].value
+        if old_p is not None:
+            record("Beta", f"C{r}", old_p, CIPLA_FINANCIALS["metadata"]["current_price"], "replaced_with_cipla_data", "Populate Cipla CMP to eradicate Marksans weekly prices")
+            beta_ws[f"C{r}"].value = CIPLA_FINANCIALS["metadata"]["current_price"]
+
+    # 8. Adapt 'BS' sheet columns J to N (FY22 to FY26) to eliminate Marksans carryover for Intrinsic Growth
+    bs_sheet = wb["BS"]
+    # J=FY22 (col 4 in arrays), K=FY23 (5), L=FY24 (6), M=FY25 (7), N=FY26 (8)
+    bs_cols = [("J", 4), ("K", 5), ("L", 6), ("M", 7), ("N", 8)]
+    for col_letter, idx in bs_cols:
+        # Trade Payables (Row 13)
+        old_tp = bs_sheet[f"{col_letter}13"].value
+        bs_sheet[f"{col_letter}13"].value = bs_data["other_liab"][idx]
+        record("BS", f"{col_letter}13", old_tp, bs_data["other_liab"][idx], "replaced_with_cipla_data", f"Cipla payables/other liabilities for {col_letter}")
+
+        bs_sheet[f"{col_letter}14"].value = 0.0
+        bs_sheet[f"{col_letter}15"].value = 0.0
+
+        # Fixed assets: Net Block into Plant Machinery (Row 21) & Gross Block (Row 28)
+        bs_sheet[f"{col_letter}19"].value = 0.0
+        bs_sheet[f"{col_letter}20"].value = 0.0
+        bs_sheet[f"{col_letter}21"].value = bs_data["net_block"][idx]
+        for r_clear in range(22, 28):
+            bs_sheet[f"{col_letter}{r_clear}"].value = 0.0
+        bs_sheet[f"{col_letter}28"].value = bs_data["net_block"][idx]
+        bs_sheet[f"{col_letter}29"].value = 0.0
+        record("BS", f"{col_letter}21", None, bs_data["net_block"][idx], "replaced_with_cipla_data", f"Cipla Net Block for {col_letter}")
+
+        # CWIP (Row 30) & Investments (Row 31)
+        bs_sheet[f"{col_letter}30"].value = bs_data["cwip"][idx]
+        bs_sheet[f"{col_letter}31"].value = bs_data["investments"][idx]
+
+        # Inventories (Row 33)
+        old_inv = bs_sheet[f"{col_letter}33"].value
+        bs_sheet[f"{col_letter}33"].value = bs_data["inventory"][idx]
+        record("BS", f"{col_letter}33", old_inv, bs_data["inventory"][idx], "replaced_with_cipla_data", f"Cipla Inventories for {col_letter}")
+
+        # Trade Receivables (Row 34)
+        old_rec = bs_sheet[f"{col_letter}34"].value
+        bs_sheet[f"{col_letter}34"].value = bs_data["receivables"][idx]
+        record("BS", f"{col_letter}34", old_rec, bs_data["receivables"][idx], "replaced_with_cipla_data", f"Cipla Receivables for {col_letter}")
+
+        # Cash & Bank (Row 35)
+        bs_sheet[f"{col_letter}35"].value = bs_data["cash_bank"][idx]
+        bs_sheet[f"{col_letter}36"].value = 0.0
+        bs_sheet[f"{col_letter}37"].value = 0.0
+
+        # Equity Capital (Row 4) & Reserves (Row 5)
+        bs_sheet[f"{col_letter}4"].value = bs_data["equity_capital"][idx]
+        bs_sheet[f"{col_letter}5"].value = bs_data["reserves"][idx]
+
+        # Borrowings (Row 7)
+        bs_sheet[f"{col_letter}7"].value = bs_data["borrowings"][idx]
+        for r_clear in range(8, 11):
+            bs_sheet[f"{col_letter}{r_clear}"].value = 0.0
 
     # Save to candidate workbook output
     output_path.parent.mkdir(parents=True, exist_ok=True)

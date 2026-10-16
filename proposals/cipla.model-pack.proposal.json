@@ -1441,14 +1441,14 @@
       "name": "ig_4yr_avg_reinvestment_rate",
       "sheet": "Intrinsic Growth",
       "cell": "I54",
-      "expected": -0.01153,
+      "expected": 0.04208,
       "abs_tolerance": 0.0001
     },
     {
       "name": "ig_4yr_avg_intrinsic_growth",
       "sheet": "Intrinsic Growth",
       "cell": "I64",
-      "expected": 0.01776,
+      "expected": 0.01226,
       "abs_tolerance": 0.0001
     },
     {
@@ -1504,35 +1504,35 @@
       "name": "dcf2_terminal_value",
       "sheet": "DCF 2nd way",
       "cell": "N56",
-      "expected": 130483.20574,
+      "expected": 132870.98249,
       "abs_tolerance": 0.01
     },
     {
       "name": "dcf2_pv_of_terminal_value",
       "sheet": "DCF 2nd way",
       "cell": "N57",
-      "expected": 73711.45384,
+      "expected": 75060.33621,
       "abs_tolerance": 0.01
     },
     {
       "name": "dcf2_enterprise_value",
       "sheet": "DCF 2nd way",
       "cell": "N58",
-      "expected": 95802.15193,
+      "expected": 97645.1113,
       "abs_tolerance": 0.01
     },
     {
       "name": "dcf2_equity_value",
       "sheet": "DCF 2nd way",
       "cell": "N61",
-      "expected": 96495.80193,
+      "expected": 98338.7613,
       "abs_tolerance": 0.01
     },
     {
       "name": "dcf2_value_per_share",
       "sheet": "DCF 2nd way",
       "cell": "N63",
-      "expected": 1194.4028,
+      "expected": 1217.21452,
       "abs_tolerance": 0.01
     }
   ]

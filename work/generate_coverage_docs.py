@@ -38,7 +38,7 @@ md_lines = [
     "This report documents the cell-by-cell adaptation of the template financial model (`originals/Marksans Keshav.xlsx`, SHA-256: `5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`) to **Cipla Limited** (`CIPLA`, BSE `500087`).",
     "",
     "- **Target Candidate Workbook**: `candidates/Cipla-Recalculated.xlsx`",
-    "- **SHA-256**: `050e13b2be37705ca88af6a63022de00f9b2d07796565071619ad1daa6be8bff`",
+    "- **SHA-256**: `a226bf9549dad68da31464a287264d1e30defd85ab122b44268764f40e7da5ab`",
     f"- **Total Cell Entries Adapted**: {len(coverage)}",
     "- **Original Sheets Preserved**: 17 of 17 (100%)",
     "- **Formula Invariance**: Zero underlying Excel formulas deleted or corrupted; all downstream recalculation flows via native Excel calculation engine.",

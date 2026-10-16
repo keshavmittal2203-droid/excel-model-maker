@@ -132,11 +132,13 @@ def generate_proposals():
     values["slide14_ticker"] = {"value": "BSE: 500087 | NSE: CIPLA | Healthcare & Pharma", "source": "BSE / NSE Ticker Registration"}
     values["slide14_table_header"] = {"value": "Cash Flow Statement - CIPLA LIMITED (Consolidated)", "source": "Cipla-Recalculated.xlsx (Cash Flow)"}
     values["slide14_narrative"] = {
-        "value": "Cipla Limited's consolidated cash flow from operations reached ₹5,005 crore in FY25, supported by profit before tax of ₹6,660 crore and disciplined working capital control. Net cash flow for FY25 stood at ₹30 crore after self-funding ₹1,240 crore in net capital expenditure and returning ₹1,048 crore to shareholders via dividends. Cipla maintains an exceptional net-cash balance sheet with minimal external borrowings (₹438 crore) and total cash and liquid investments exceeding ₹8,000 crore.",
+        "value": "Cipla Limited's consolidated cash flow from operations reached ₹5,005 crore in FY25, supported by profit before tax of ₹6,660 crore and disciplined operational cash generation. Net cash flow for FY25 stood at ₹30 crore after self-funding ₹1,240 crore in net capital expenditure and returning ₹1,048 crore to shareholders via dividends. Cipla maintains an exceptional net-cash balance sheet with minimal external borrowings (₹438 crore) and total cash and liquid investments exceeding ₹8,000 crore. Granular sub-schedule breakdown rows are marked '—' pending manual digitization of primary statutory filings.",
         "source": "Cipla-Recalculated.xlsx (Data Sheet rows 28, 59, 82, 85)"
     }
 
-    # Extract all 15 active rows across FY18-FY25 from recalculated workbook
+    # Extract active rows across FY18-FY25 from recalculated workbook:
+    # 9 audited line items and totals populated from authentic consolidated filings;
+    # 6 granular breakdown lines marked '—' to prevent balancing plugs or unevidenced carryover.
     for y_idx, (y_slug, col_ds, col_cf) in enumerate(zip(years, cols_ds, cols_cf)):
         pbt_val = float(ds[f"{col_ds}28"].value)
         cfo_val = float(ds[f"{col_ds}82"].value)
@@ -145,35 +147,31 @@ def generate_proposals():
         net_cf_val = float(ds[f"{col_ds}85"].value)
 
         taxes_val = float(cf[f"{col_cf}13"].value or 0.0)
-        wc_val = float(cf[f"{col_cf}12"].value or 0.0)
-        non_cash_val = round(cfo_val - pbt_val - taxes_val - wc_val, 2)
-
         capex_val = float(cf[f"{col_cf}15"].value or 0.0)
-        inv_val = float((cf[f"{col_cf}17"].value or 0.0) + (cf[f"{col_cf}18"].value or 0.0))
-        other_inv_val = round(cfi_val - capex_val - inv_val, 2)
-
-        borrow_val = float((cf[f"{col_cf}25"].value or 0.0) + (cf[f"{col_cf}26"].value or 0.0))
         fin_costs_val = float(cf[f"{col_cf}27"].value or 0.0)
         div_val = float(cf[f"{col_cf}28"].value or 0.0)
-        other_fin_val = round(cff_val - borrow_val - fin_costs_val - div_val, 2)
 
+        # 1. Operating Activities
         values[f"slide14_pbt_{y_slug}"] = {"value": pbt_val, "source": f"Cipla-Recalculated.xlsx!Data Sheet!{col_ds}28"}
-        values[f"slide14_non_cash_{y_slug}"] = {"value": non_cash_val, "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"}
-        values[f"slide14_wc_changes_{y_slug}"] = {"value": wc_val, "source": f"Cipla-Recalculated.xlsx!Cash Flow!{col_cf}12"}
+        values[f"slide14_non_cash_{y_slug}"] = {"value": "—", "source": "Unevidenced granular sub-schedule; primary filing required"}
+        values[f"slide14_wc_changes_{y_slug}"] = {"value": "—", "source": "Unevidenced granular sub-schedule; primary filing required"}
         values[f"slide14_direct_taxes_{y_slug}"] = {"value": taxes_val, "source": f"Cipla-Recalculated.xlsx!Cash Flow!{col_cf}13"}
         values[f"slide14_cfo_{y_slug}"] = {"value": cfo_val, "source": f"Cipla-Recalculated.xlsx!Data Sheet!{col_ds}82"}
 
+        # 2. Investing Activities
         values[f"slide14_capex_{y_slug}"] = {"value": capex_val, "source": f"Cipla-Recalculated.xlsx!Cash Flow!{col_cf}15"}
-        values[f"slide14_net_inv_{y_slug}"] = {"value": inv_val, "source": f"Cipla-Recalculated.xlsx!Cash Flow!{col_cf}17:18"}
-        values[f"slide14_other_investing_{y_slug}"] = {"value": other_inv_val, "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"}
+        values[f"slide14_net_inv_{y_slug}"] = {"value": "—", "source": "Unevidenced granular sub-schedule; primary filing required"}
+        values[f"slide14_other_investing_{y_slug}"] = {"value": "—", "source": "Unevidenced granular sub-schedule; primary filing required"}
         values[f"slide14_cfi_{y_slug}"] = {"value": cfi_val, "source": f"Cipla-Recalculated.xlsx!Data Sheet!{col_ds}83"}
 
-        values[f"slide14_net_borrow_{y_slug}"] = {"value": borrow_val, "source": f"Cipla-Recalculated.xlsx!Cash Flow!{col_cf}25:26"}
+        # 3. Financing Activities
+        values[f"slide14_net_borrow_{y_slug}"] = {"value": "—", "source": "Unevidenced granular sub-schedule; primary filing required"}
         values[f"slide14_finance_costs_{y_slug}"] = {"value": fin_costs_val, "source": f"Cipla-Recalculated.xlsx!Cash Flow!{col_cf}27"}
         values[f"slide14_dividends_{y_slug}"] = {"value": div_val, "source": f"Cipla-Recalculated.xlsx!Cash Flow!{col_cf}28"}
-        values[f"slide14_other_financing_{y_slug}"] = {"value": other_fin_val, "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"}
+        values[f"slide14_other_financing_{y_slug}"] = {"value": "—", "source": "Unevidenced granular sub-schedule; primary filing required"}
         values[f"slide14_cff_{y_slug}"] = {"value": cff_val, "source": f"Cipla-Recalculated.xlsx!Data Sheet!{col_ds}84"}
 
+        # 4. Net Cash Flow
         values[f"slide14_net_cf_{y_slug}"] = {"value": net_cf_val, "source": f"Cipla-Recalculated.xlsx!Data Sheet!{col_ds}85"}
 
     # Slide 16: Comprehensive Ratio Analysis

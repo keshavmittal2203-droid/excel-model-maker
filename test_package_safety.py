@@ -140,6 +140,94 @@ class PackageSafetyTests(unittest.TestCase):
         workbook.Close.assert_called_once_with(SaveChanges=False)
         app.Quit.assert_called_once()
 
+    def test_unregistered_adapter_rejected(self):
+        """Unregistered adapter scripts must be rejected before execution."""
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            req = {
+                "workbook": {
+                    "source": "originals/Marksans Keshav.xlsx",
+                    "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
+                    "model_pack": "proposals/cipla.model-pack.proposal.json",
+                    "adapter": "work/evil_adapter.py",
+                },
+                "presentation": {
+                    "template": "originals/ERR-4.pptx",
+                    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+                    "deck_pack": "proposals/err4.deck-pack.proposal.json",
+                    "deck_inputs": "proposals/cipla.inputs.proposal.json",
+                },
+            }
+            req_file = root / "bad_adapter.json"
+            req_file.write_text(json.dumps(req), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "Unregistered or forbidden workbook adapter"):
+                package.validate_package_request(req, req_file)
+
+    def test_adapter_path_traversal_rejected(self):
+        """Adapter paths containing directory traversal must be rejected."""
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            for bad_path in ("../evil.py", "..\\evil.py", "/evil.py", "\\evil.py"):
+                with self.subTest(bad_path=bad_path):
+                    req = {
+                        "workbook": {
+                            "source": "originals/Marksans Keshav.xlsx",
+                            "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
+                            "model_pack": "proposals/cipla.model-pack.proposal.json",
+                            "adapter": bad_path,
+                        },
+                        "presentation": {
+                            "template": "originals/ERR-4.pptx",
+                            "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+                            "deck_pack": "proposals/err4.deck-pack.proposal.json",
+                            "deck_inputs": "proposals/cipla.inputs.proposal.json",
+                        },
+                    }
+                    req_file = root / "traversal.json"
+                    req_file.write_text(json.dumps(req), encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, "Path traversal detected"):
+                        package.validate_package_request(req, req_file)
+
+    def test_candidate_source_path_traversal_rejected(self):
+        """Candidate source paths escaping repository root must be rejected."""
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            req = {
+                "workbook": {
+                    "source": "originals/Marksans Keshav.xlsx",
+                    "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
+                    "model_pack": "proposals/cipla.model-pack.proposal.json",
+                    "candidate_source": "../outside.xlsx",
+                },
+                "presentation": {
+                    "template": "originals/ERR-4.pptx",
+                    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+                    "deck_pack": "proposals/err4.deck-pack.proposal.json",
+                    "deck_inputs": "proposals/cipla.inputs.proposal.json",
+                },
+            }
+            req_file = root / "cand_traversal.json"
+            req_file.write_text(json.dumps(req), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "Path traversal detected"):
+                package.validate_package_request(req, req_file)
+
+    def test_check_only_preflight_mode(self):
+        """Preflight mode must validate request and return status without disk writes or COM activation."""
+        req_path = package.ROOT / "examples" / "cipla-package.json"
+        with tempfile.TemporaryDirectory() as temp:
+            out_dir = Path(temp) / "preflight_run"
+            res = package.build_package(
+                request_path=req_path,
+                output_dir=out_dir,
+                check_only=True,
+            )
+            self.assertEqual(res["status"], "preflight_passed")
+            self.assertFalse(res["ready"])
+            self.assertEqual(res["package_id"], "cipla-overview-fy25")
+            self.assertIn("com_capabilities", res)
+            # Preflight must NOT write candidate artifacts or directories
+            self.assertFalse(out_dir.exists())
+
 
 if __name__ == "__main__":
     unittest.main()

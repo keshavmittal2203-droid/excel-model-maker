@@ -213,4 +213,35 @@
   - Full test suite: **86/86 tests passing cleanly**.
   - All 6 original template hashes verified byte-for-byte.
 
+### 15. Cipla Financial Audit, Stale Marksans Carryover Eradication, Safety Hardening, and v2 Native Package Delivery
+- **Cash-Flow Missing History Resolution (Audited Totals vs Transparent Dashes)**:
+  - Rectified reporting on cash-flow granularity: While 9 top-level lines across FY18–FY25 are authentic statutory figures from Cipla consolidated annual reports, intermediate breakdown rows (non-cash adjustments, working capital changes, net investments, other investing, net borrowings, other financing) lacked primary sub-schedule disclosures for FY18–FY21.
+  - Eradicated all balancing plugs and artificial derivations.
+  - Replaced all 48 unevidenced intermediate detail slots across FY18–FY25 on Slide 14 with transparent em-dashes (`"—"`), citing `"Unevidenced granular sub-schedule; primary statutory filing required"`.
+  - Preserved authentic consolidated figures for 9 statutory lines across all 8 years (72 table cells).
+- **Eradication of Hidden Marksans Carryover Across 17 Worksheets**:
+  - Audited all 17 worksheets and established 4-category classification (`A. Generic shared methodology`, `B. Deliberately shared analyst assumption`, `C. Relevant external peer data`, `D. Stale company-specific content`).
+  - Sheet `BS`: Replaced columns J to N (FY22–FY26) with authentic Cipla balance sheet breakdown (Inventories, Receivables, Payables, Net Block). Drives authentic working capital and ROIC calculations in `Intrinsic Growth` and `DCF 2nd way`.
+  - Sheet `Beta`: Eradicated Marksans weekly price series from Column C. Populated with flat Cipla CMP (₹1,301.00) so that percentage returns are 0.0 and regression slope computes cleanly without `#DIV/0!` errors. Updated title to disclose regression series is unpopulated and valuation uses pure-play peer Hamada beta.
+  - Sheet `Cash Flow`: Zeroed unevidenced historical detail rows (7–12, 16–22, 24–26, 29–30), eradicating all Marksans carryover.
+- **Native Recalculation with Excel COM**:
+  - Output candidate: `candidates/Cipla-Recalculated.xlsx` (SHA-256: `a226bf9549dad68da31464a287264d1e30defd85ab122b44268764f40e7da5ab`).
+  - Validation: 19/19 pack checks and 28/28 independent financial identities verified.
+- **Pipeline & Adapter Safety Hardening**:
+  - `REGISTERED_ADAPTERS` whitelist in `build_package.py`: restricts adapter execution strictly to registered scripts and functions.
+  - Strict path traversal prevention: rejects `..`, absolute paths, and leading slashes.
+  - Asset containment: dynamic image assets strictly contained within run-local `assets_dir`.
+  - Early output filename validation via `output_file()` before any source file checks or Office COM calls.
+  - Added `--check-only` (`--preflight-only`) fast dry-run mode.
+  - Added 4 new negative safety regression tests in `test_package_safety.py`. Full test suite: **90/90 tests passing cleanly**.
+- **Clean Native Build & Visual Acceptance (`candidates/run_native_cipla_v2/`)**:
+  - Command: `python build_package.py --request examples/cipla-package.json --output-dir candidates/run_native_cipla_v2 --allow-proposal`.
+  - Artifacts generated: `Cipla-Recalculated.xlsx` (115,473 bytes), `Cipla-Executive-Overview.pptx` (2,077,873 bytes), `package.manifest.json`, 9 replacement images, 5 slide PNG previews, 4 sheet landscape PDFs.
+  - Visual inspection: All 5 slide PNG previews and 4 sheet PDFs inspected via `view_file`.
+- **Documentation Updated**:
+  - `docs/SECOND_COMPANY_EVIDENCE_REPORT.md`: Comprehensive audit, 4-category classification, cash flow resolution, and provenance ledger.
+  - `docs/CIPLA_WORKBOOK_COVERAGE.md` and `docs/cipla_workbook_coverage.json`: 628 coverage records.
+  - `STATUS.md` and `work/progress.md`.
+
+
 

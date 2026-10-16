@@ -42,6 +42,10 @@ FORBIDDEN_PARENT_DIRS = {
     (ROOT / ".git").resolve(),
 }
 
+REGISTERED_ADAPTERS: dict[str, str] = {
+    "work/adapt_cipla_workbook.py": "adapt_workbook_for_cipla",
+}
+
 
 def compute_file_sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -607,6 +611,36 @@ def validate_package_request(req: dict[str, Any], request_path: Path) -> None:
                         f"Company mismatch: request company is {comp['name']!r} but deck inputs specify {deck_comp_val!r}"
                     )
 
+    # Validate workbook adapter registration and path safety
+    if "adapter" in wb_spec:
+        adapter_rel = wb_spec["adapter"]
+        if not isinstance(adapter_rel, str) or not adapter_rel.strip():
+            raise ValueError("Adapter path must be a non-empty string")
+        if ".." in adapter_rel or adapter_rel.startswith(("/", "\\")):
+            raise ValueError(f"Path traversal detected in adapter path: {adapter_rel!r}")
+        norm_adapter = adapter_rel.replace("\\", "/")
+        if norm_adapter not in REGISTERED_ADAPTERS:
+            raise ValueError(
+                f"Unregistered or forbidden workbook adapter: {adapter_rel!r}. "
+                f"Adapters must be registered in REGISTERED_ADAPTERS whitelist."
+            )
+        adapter_path = (ROOT / adapter_rel).resolve()
+        if not adapter_path.is_relative_to((ROOT / "work").resolve()):
+            raise ValueError(f"Adapter path {adapter_path} escapes allowed directory work/")
+        if not adapter_path.exists():
+            raise FileNotFoundError(f"Registered adapter script not found: {adapter_path}")
+
+    # Validate candidate_source containment
+    if "candidate_source" in wb_spec:
+        cand_src = wb_spec["candidate_source"]
+        if not isinstance(cand_src, str) or not cand_src.strip():
+            raise ValueError("candidate_source must be a non-empty string")
+        if ".." in cand_src or cand_src.startswith(("/", "\\")):
+            raise ValueError(f"Path traversal detected in candidate_source: {cand_src!r}")
+        cand_path = (ROOT / cand_src).resolve()
+        if not cand_path.is_relative_to(ROOT.resolve()):
+            raise ValueError(f"candidate_source path {cand_path} escapes repository root")
+
 
 def build_package(
     request_path: Path,
@@ -615,6 +649,7 @@ def build_package(
     allow_proposal: bool = False,
     force: bool = False,
     skip_com: bool = False,
+    check_only: bool = False,
 ) -> dict[str, Any]:
     """Execute repeatable build according to request specification."""
     req_text = request_path.read_text(encoding="utf-8")
@@ -629,15 +664,6 @@ def build_package(
     # Validate request before directory creation or Office activation
     validate_package_request(req, request_path)
 
-    # 1. Directory safety verification
-    verify_output_directory(output_dir, force=force)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    previews_dir = output_dir / "previews"
-    previews_dir.mkdir(parents=True, exist_ok=True)
-    assets_dir = output_dir / "assets"
-    assets_dir.mkdir(parents=True, exist_ok=True)
-
-    # 2. Pin and verify source hashes
     wb_spec = req["workbook"]
     pres_spec = req["presentation"]
     exp_spec = req.get("exports", {})
@@ -648,18 +674,48 @@ def build_package(
     deck_pack_path = (ROOT / pres_spec["deck_pack"]).resolve()
     deck_inputs_path = (ROOT / pres_spec["deck_inputs"]).resolve()
 
+    actual_wb_src_sha = compute_file_sha(wb_src_path)
+    actual_tpl_sha = compute_file_sha(pres_tpl_path)
+
+    com_caps = check_com_capabilities()
+
+    # Pre-flight only mode: verifies request validity, hashes, and COM capabilities without disk writes
+    if check_only:
+        print("Preflight checks passed: request valid, source hashes verified, packs present.")
+        return {
+            "status": "preflight_passed",
+            "ready": False,
+            "package_id": req.get("package_id"),
+            "name": req.get("name"),
+            "com_capabilities": com_caps,
+            "source_hashes": {
+                "workbook_source": actual_wb_src_sha,
+                "presentation_template": actual_tpl_sha,
+                "model_pack": compute_file_sha(model_pack_path),
+                "deck_pack": compute_file_sha(deck_pack_path),
+                "deck_inputs": compute_file_sha(deck_inputs_path),
+            },
+        }
+
+    # 1. Directory safety verification
+    verify_output_directory(output_dir, force=force)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    previews_dir = output_dir / "previews"
+    previews_dir.mkdir(parents=True, exist_ok=True)
+    assets_dir = output_dir / "assets"
+    assets_dir.mkdir(parents=True, exist_ok=True)
+
+    # 2. Pin and verify source hashes
     if not wb_src_path.exists():
         raise FileNotFoundError(f"Workbook source not found: {wb_src_path}")
     if not pres_tpl_path.exists():
         raise FileNotFoundError(f"Presentation template not found: {pres_tpl_path}")
 
-    actual_wb_src_sha = compute_file_sha(wb_src_path)
     if actual_wb_src_sha != wb_spec["source_sha256"]:
         raise ValueError(
             f"Workbook source SHA mismatch: expected {wb_spec['source_sha256']}, got {actual_wb_src_sha}"
         )
 
-    actual_tpl_sha = compute_file_sha(pres_tpl_path)
     if actual_tpl_sha != pres_spec["template_sha256"]:
         raise ValueError(
             f"Presentation template SHA mismatch: expected {pres_spec['template_sha256']}, got {actual_tpl_sha}"
@@ -678,29 +734,30 @@ def build_package(
         shutil.copy2(cand_path, wb_out_path)
     else:
         # Check COM availability before recalculation
-        com_caps = check_com_capabilities()
         if not com_caps["excel_com"]:
             raise RuntimeError(
                 f"Excel COM is required for workbook recalculation but is not available on this system ({com_caps.get('excel_error')})."
             )
 
         if adapter_rel:
+            norm_adapter = adapter_rel.replace("\\", "/")
+            if norm_adapter not in REGISTERED_ADAPTERS:
+                raise ValueError(f"Unregistered workbook adapter: {adapter_rel}")
+            expected_func = REGISTERED_ADAPTERS[norm_adapter]
             adapter_path = (ROOT / adapter_rel).resolve()
             if not adapter_path.exists():
                 raise FileNotFoundError(f"Configured workbook adapter not found: {adapter_path}")
-            print(f"Running workbook adapter {adapter_path}...")
+            print(f"Running registered workbook adapter {adapter_path} ({expected_func})...")
             with tempfile.TemporaryDirectory() as td:
                 staged_path = Path(td) / "staged_adapted.xlsx"
                 import importlib.util
                 spec = importlib.util.spec_from_file_location("wb_adapter", adapter_path)
                 mod = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(mod)
-                if hasattr(mod, "adapt_workbook_for_cipla"):
-                    mod.adapt_workbook_for_cipla(staged_path)
-                elif hasattr(mod, "adapt_workbook"):
-                    mod.adapt_workbook(wb_src_path, staged_path)
-                else:
-                    raise AttributeError(f"Adapter module {adapter_path} missing adapt_workbook_for_cipla or adapt_workbook")
+                adapter_fn = getattr(mod, expected_func, None)
+                if adapter_fn is None:
+                    raise AttributeError(f"Adapter module {adapter_path} missing registered function {expected_func}")
+                adapter_fn(staged_path)
                 print(f"Recalculating adapted workbook to {wb_out_path}...")
                 validate_candidate(
                     workbook_path=staged_path,
@@ -775,7 +832,9 @@ def build_package(
                 "image22_cipla.png", "image23_cipla.png", "image24_cipla.png",
                 "image22.png", "image23.png", "image24.png",
             ] or ("image2" in filename and filename.endswith(".png")):
-                target_asset = assets_dir / filename
+                target_asset = (assets_dir / filename).resolve()
+                if not target_asset.is_relative_to(assets_dir.resolve()):
+                    raise ValueError(f"Asset path {target_asset} escapes run assets directory {assets_dir}")
                 if target_asset.exists():
                     v["value"] = str(target_asset.resolve())
 
@@ -910,6 +969,7 @@ def main() -> int:
     parser.add_argument("--allow-proposal", action="store_true", help="Allow building with proposal model/deck packs")
     parser.add_argument("--force", action="store_true", help="Legacy option; non-empty run directories are never overwritten")
     parser.add_argument("--skip-com", action="store_true", help="Skip PowerPoint and Excel COM preview exports")
+    parser.add_argument("--check-only", "--preflight-only", action="store_true", help="Fast preflight request and template validation without Office COM activation or file generation")
     args = parser.parse_args()
 
     try:
@@ -919,7 +979,16 @@ def main() -> int:
             allow_proposal=args.allow_proposal,
             force=args.force,
             skip_com=args.skip_com,
+            check_only=args.check_only,
         )
+        if args.check_only:
+            print(json.dumps({
+                "status": manifest["status"],
+                "ready": manifest["ready"],
+                "package_id": manifest["package_id"],
+                "com_capabilities": manifest["com_capabilities"],
+            }, indent=2))
+            return 0
         print(json.dumps({
             "status": manifest["status"],
             "ready": manifest["ready"],
