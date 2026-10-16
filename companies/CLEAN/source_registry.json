@@ -75,19 +75,21 @@
     "statement_location": "Notes to Consolidated Financial Statements: Share Capital",
     "reported_unit": "Crore Shares",
     "reported_value": 10.62,
+    "workbook_cell": "'Manufacturing DCF Valuation'!B23",
     "status": "primary_sourced_statutory"
   },
   {
-    "metric": "Current Market Price (CMP)",
+    "metric": "Historical Market Snapshot Price (15-Oct-2025 NSE Close)",
     "legal_entity": "Clean Science and Technology Limited",
     "consolidation_basis": "Trading Session Snapshot",
-    "reporting_period": "October 2026 Snapshot",
+    "reporting_period": "October 15, 2025 Historical Snapshot",
     "source_org": "BSE / NSE India",
-    "document_title": "BSE Stock Price Quotation",
-    "statement_location": "BSE / NSE Trading Session Quotation",
+    "document_title": "BSE / NSE Stock Price Quotation",
+    "statement_location": "BSE / NSE Trading Session Quotation (15-Oct-2025 Close)",
     "official_url": "https://www.bseindia.com/stock-share-price/clean-science-and-technology-ltd/clean/543318/",
     "reported_unit": "INR (₹) per share",
     "reported_value": 784.0,
-    "status": "market_snapshot"
+    "workbook_cell": "'Manufacturing DCF Valuation'!B25",
+    "status": "historical_market_snapshot"
   }
 ]

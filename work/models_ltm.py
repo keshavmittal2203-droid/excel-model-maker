@@ -386,7 +386,7 @@ def build_ltm_workbook(dest_path: Path):
     # Sheet 6: FCFF Valuation
     # -------------------------------------------------------------
     ws_val = wb.create_sheet(title="FCFF Valuation")
-    apply_title_block(ws_val, "LTIMindtree Limited — Unlevered Free Cash Flow (FCFF) DCF Valuation", "Discounted Cash Flow Model (WACC: 11.5%, TGR: 5.0%) | Peer Trading Multiples", 6)
+    apply_title_block(ws_val, "LTIMindtree Limited — Unlevered Free Cash Flow (FCFF) DCF Valuation", "Historical Market Snapshot (15-Oct-2025 Close) | FCFF DCF (WACC: 11.5%, TGR: 5.0%) | Peer Trading Multiples", 6)
 
     # 5 Forecast Years: FY26, FY27, FY28, FY29, FY30
     fc_cols = ["Valuation Metric (₹ Cr)", "FY26E", "FY27E", "FY28E", "FY29E", "FY30E"]
@@ -498,15 +498,15 @@ def build_ltm_workbook(dest_path: Path):
     c.border = BORDER_TOTAL
     c.number_format = FMT_DECIMAL
 
-    ws_val.cell(25, 1, "Current Market Price (CMP: 15-Oct-2025 NSE)").font = FONT_BOLD
+    ws_val.cell(25, 1, "Historical Snapshot Price (15-Oct-2025 NSE Close)").font = FONT_BOLD
     ws_val.cell(25, 2, 4390.00).number_format = FMT_DECIMAL
 
-    ws_val.cell(26, 1, "Implied Premium / (Discount) vs. CMP").font = FONT_BOLD
+    ws_val.cell(26, 1, "Implied Premium / (Discount) vs. 15-Oct-2025 Snapshot").font = FONT_BOLD
     c = ws_val.cell(26, 2, "=(B24/B25)-1")
     c.font = FONT_BOLD
     c.number_format = FMT_PERCENT
 
-    ws_val.cell(27, 1, "Analyst Assumptions: Constant currency growth 5.0%, software professional utilization 86.5%, headcount 84,307, WACC 11.5%, Terminal Growth 5.0%. Proximity to CMP (₹4,390.00 as of 15-Oct-2025 NSE) is an observation, not model validation.").font = Font(name="Calibri", size=9, italic=True)
+    ws_val.cell(27, 1, "Historical Market Snapshot Notice: Model reflects a point-in-time snapshot as of October 15, 2025, and is NOT a current real-time valuation. Analyst Assumptions: Constant currency growth 5.0%, software professional utilization 86.5%, headcount 84,307, WACC 11.5%, Terminal Growth 5.0%. Proximity to snapshot price (₹4,390.00 as of 15-Oct-2025 NSE) is an observation, not model validation.").font = Font(name="Calibri", size=9, italic=True)
     ws_val.merge_cells("A27:E27")
 
     # FCFF Sensitivity Matrix

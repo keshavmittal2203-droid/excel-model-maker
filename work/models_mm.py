@@ -456,7 +456,7 @@ def build_mm_workbook(dest_path: Path):
     # Sheet 6: SOTP Valuation
     # -------------------------------------------------------------
     ws_sotp = wb.create_sheet(title="SOTP Valuation")
-    apply_title_block(ws_sotp, "Mahindra & Mahindra Limited — Sum-of-the-Parts (SOTP) Valuation", "Disclosed Segments + Listed Subsidiaries & Associates | Holding Company Discount Applied", 5)
+    apply_title_block(ws_sotp, "Mahindra & Mahindra Limited — Sum-of-the-Parts (SOTP) Valuation", "Historical Market Snapshot (15-Oct-2025 Close) | Disclosed Segments + Listed Stakes | HoldCo Discount Applied", 5)
     
     headers_sotp = ["Valuation Component", "Valuation Metric / Base", "Applied Multiple / Stake", "Holding Co. Discount", "Implied Value (₹ Cr)"]
     style_header_row(ws_sotp, 3, headers_sotp)
@@ -527,16 +527,16 @@ def build_mm_workbook(dest_path: Path):
     c.border = BORDER_TOTAL
     c.number_format = FMT_DECIMAL
 
-    ws_sotp.cell(13, 1, "Current Market Price (CMP: 15-Oct-2025 NSE)").font = FONT_BOLD
+    ws_sotp.cell(13, 1, "Historical Snapshot Price (15-Oct-2025 NSE Close)").font = FONT_BOLD
     ws_sotp.cell(13, 5, 2921.00).font = FONT_BOLD
     ws_sotp.cell(13, 5).number_format = FMT_DECIMAL
 
-    ws_sotp.cell(14, 1, "Implied Premium / (Discount) vs. CMP").font = FONT_BOLD
+    ws_sotp.cell(14, 1, "Implied Premium / (Discount) vs. 15-Oct-2025 Snapshot").font = FONT_BOLD
     c = ws_sotp.cell(14, 5, "=(E12/E13)-1")
     c.font = FONT_BOLD
     c.number_format = FMT_PERCENT
 
-    ws_sotp.cell(15, 1, "Note on Minor Holdings: Listed stakes in Mahindra Lifespaces (51.2%) and Mahindra Logistics (58.1%) are conservatively excluded from the core valuation to eliminate speculative stub plugs; their omission provides an additional margin of safety.").font = Font(name="Calibri", size=9, italic=True)
+    ws_sotp.cell(15, 1, "Historical Snapshot Notice: Model reflects a point-in-time snapshot as of October 15, 2025, and is NOT a current real-time valuation. Note on Minor Holdings: Listed stakes in Mahindra Lifespaces (51.2%) and Mahindra Logistics (58.1%) are conservatively excluded from the core valuation to eliminate speculative stub plugs; their omission provides an additional margin of safety.").font = Font(name="Calibri", size=9, italic=True)
     ws_sotp.merge_cells("A15:E15")
 
     # SOTP Sensitivity Matrix

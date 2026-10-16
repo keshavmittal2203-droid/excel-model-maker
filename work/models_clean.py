@@ -395,7 +395,7 @@ def build_clean_workbook(dest_path: Path):
     # Sheet 6: Manufacturing DCF Valuation
     # -------------------------------------------------------------
     ws_val = wb.create_sheet(title="Manufacturing DCF Valuation")
-    apply_title_block(ws_val, "Clean Science and Technology Limited — Manufacturing FCFF DCF Valuation", "Discounted Cash Flow Model (WACC: 12.0%, TGR: 5.0%) | HALS Expansion Normalization", 6)
+    apply_title_block(ws_val, "Clean Science and Technology Limited — Manufacturing FCFF DCF Valuation", "Historical Market Snapshot (15-Oct-2025 Close) | Manufacturing DCF (WACC: 12.0%, TGR: 5.0%) | HALS Expansion Normalization", 6)
 
     fc_cols = ["Valuation Metric (₹ Cr)", "FY26E", "FY27E", "FY28E", "FY29E", "FY30E"]
     style_header_row(ws_val, 3, fc_cols)
@@ -506,15 +506,15 @@ def build_clean_workbook(dest_path: Path):
     c.border = BORDER_TOTAL
     c.number_format = FMT_DECIMAL
 
-    ws_val.cell(25, 1, "Current Market Price (CMP: 15-Oct-2025 NSE)").font = FONT_BOLD
+    ws_val.cell(25, 1, "Historical Snapshot Price (15-Oct-2025 NSE Close)").font = FONT_BOLD
     ws_val.cell(25, 2, 784.00).number_format = FMT_DECIMAL
 
-    ws_val.cell(26, 1, "Implied Premium / (Discount) vs. CMP").font = FONT_BOLD
+    ws_val.cell(26, 1, "Implied Premium / (Discount) vs. 15-Oct-2025 Snapshot").font = FONT_BOLD
     c = ws_val.cell(26, 2, "=(B24/B25)-1")
     c.font = FONT_BOLD
     c.number_format = FMT_PERCENT
 
-    ws_val.cell(27, 1, "Analyst Assumptions: Kurkumbh Unit 4 Clean Fino-Chem 10,500 MTPA HALS capacity, commercial utilization ramp (35% FY24, 55% FY25, 75% FY27), WACC 12.0%, Terminal Growth 5.0%. Proximity to CMP (₹784.00 as of 15-Oct-2025 NSE) is an observation, not model validation.").font = Font(name="Calibri", size=9, italic=True)
+    ws_val.cell(27, 1, "Historical Market Snapshot Notice: Model reflects a point-in-time snapshot as of October 15, 2025, and is NOT a current real-time valuation. Analyst Assumptions: Kurkumbh Unit 4 Clean Fino-Chem 10,500 MTPA HALS capacity, commercial utilization ramp (35% FY24, 55% FY25, 75% FY27), WACC 12.0%, Terminal Growth 5.0%. Proximity to snapshot price (₹784.00 as of 15-Oct-2025 NSE) is an observation, not model validation.").font = Font(name="Calibri", size=9, italic=True)
     ws_val.merge_cells("A27:E27")
 
     # FCFF Sensitivity Matrix

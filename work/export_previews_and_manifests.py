@@ -140,10 +140,12 @@ def export_all():
                 "status": info["valuation_status"],
                 "implied_value_per_share": info["implied_value"],
                 "market_price_snapshot": info["cmp"],
+                "market_price_observation_date": "2025-10-15 (NSE Close)",
+                "market_price_nature": "historical_point_in_time_snapshot",
                 "methodological_notes": (
-                    "Industrial FCFF DCF is strictly withheld and blocked for Edelweiss as methodologically invalid for financial institutions with debt-funded balance sheets. SOTP is the only supported approach."
+                    "Industrial FCFF DCF is strictly withheld and blocked for Edelweiss as methodologically invalid for financial institutions with debt-funded balance sheets. SOTP is the only supported approach. All market prices are historical point-in-time snapshots as of October 15, 2025, and explicitly not current real-time valuations."
                     if key == "EDELWEISS"
-                    else "Full valuation schedule articulated with explicit growth, margin, and discount parameters."
+                    else "Full valuation schedule articulated with explicit growth, margin, and discount parameters. All market prices are historical point-in-time snapshots as of October 15, 2025, and explicitly not current real-time valuations."
                 ),
             },
             "previews": exported,

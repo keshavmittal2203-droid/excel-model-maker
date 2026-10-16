@@ -15,10 +15,11 @@
 | **Consolidated Net Profit (PAT) (FY25)** | FY25 | Clean Science and Technology Limited Audited Financial Statements (Consolidated Statement of Profit and Loss (Line: Profit for the year)) | ₹ in Crores (Audited Filing) | `'Income Statement'!H17` | `primary_sourced` |
 | **Total Assets & Total Liabilities (FY25)** | As of March 31, 2025 | Clean Science and Technology Limited Audited Balance Sheet (Consolidated Balance Sheet) | ₹ in Crores (Audited Filing) | `'Balance Sheet'!H10 and H16` | `primary_sourced_identity_verified` |
 | **Cash from Operating Activities (CFO) (FY25)** | FY25 | Clean Science and Technology Limited Audited Cash Flow Statement (Consolidated Statement of Cash Flows) | ₹ in Crores (Audited Filing) | `'Cash Flow'!H5` | `primary_sourced` |
-| **Diluted Equity Share Count** | FY25 Close | Clean Science and Technology Limited Note on Share Capital (Notes to Consolidated Financial Statements: Share Capital) | Crore Shares (10.62) | `N/A` | `primary_sourced_statutory` |
-| **Current Market Price (CMP)** | October 2026 Snapshot | BSE Stock Price Quotation (BSE / NSE Trading Session Quotation) | INR (₹) per share (784.0) | `N/A` | `market_snapshot` |
+| **Diluted Equity Share Count** | FY25 Close | Clean Science and Technology Limited Note on Share Capital (Notes to Consolidated Financial Statements: Share Capital) | Crore Shares (10.62) | `'Manufacturing DCF Valuation'!B23` | `primary_sourced_statutory` |
+| **Historical Market Snapshot Price (15-Oct-2025 NSE Close)** | October 15, 2025 Historical Snapshot | BSE / NSE Stock Price Quotation (BSE / NSE Trading Session Quotation (15-Oct-2025 Close)) | INR (₹) per share (784.0) | `'Manufacturing DCF Valuation'!B25` | `historical_market_snapshot` |
 
 ## 2. Valuation Methodology & Governance Notes
 - **Valuation Approach**: `Manufacturing FCFF DCF Valuation`
 - **Valuation Status**: `supported`
-- **Implied Value Per Share**: ₹343.93 (vs. CMP ₹784.00)
+- **Implied Value Per Share**: ₹343.93 (vs. Historical Snapshot Price ₹784.00 as of 15-Oct-2025)
+- **Pricing Date & Real-Time Valuation Notice**: All market prices, multiples, and implied premiums/discounts reflect historical point-in-time market snapshots as of **October 15, 2025 (NSE Close)**. These models are explicitly point-in-time historical snapshots and are NOT current real-time valuations.

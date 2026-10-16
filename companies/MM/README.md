@@ -26,7 +26,8 @@
 - **Farm Equipment Sector**: Global market leader in tractors. FY25 revenue: ₹35,375 Cr (+6% YoY); volumes: 424,641 units.
 - **Financial Services**: 52.2% stake in Mahindra & Mahindra Financial Services Limited (MMFS).
 - **Valuation**: Sum-of-the-Parts (SOTP) approach valuing Automotive Core (12x EV/EBITDA), Farm Equipment Core (14x EV/EBITDA), MMFS stake (20% HoldCo discount), and Tech Mahindra (25.5% stake, 20% discount).
-- **Intrinsic Fair Value**: **₹2,966.18 per share** (vs CMP ₹2,921.00).
+- **Intrinsic Fair Value**: **₹2,929.98 per share** (vs Historical Snapshot Price ₹2,921.00 as of 15-Oct-2025 NSE Close).
+- **Market Snapshot Nature**: Point-in-time historical snapshot dated October 15, 2025; explicitly NOT a current real-time valuation.
 
 ## 3. Fast Verification Commands
 ```powershell

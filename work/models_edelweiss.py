@@ -379,7 +379,7 @@ def build_edelweiss_workbook(dest_path: Path):
     # Sheet 6: SOTP Valuation
     # -------------------------------------------------------------
     ws_val = wb.create_sheet(title="SOTP Valuation")
-    apply_title_block(ws_val, "Edelweiss Financial Services Limited — Sum-of-the-Parts (SOTP) Valuation", "Segment-Appropriate Financial Services Multiples (P/E, P/B, AUM %) | Industrial FCFF Withheld", 5)
+    apply_title_block(ws_val, "Edelweiss Financial Services Limited — Sum-of-the-Parts (SOTP) Valuation", "Historical Market Snapshot (15-Oct-2025 Close) | SOTP Financial Services Multiples | Industrial FCFF Withheld", 5)
 
     # Formal Notice Blocking Industrial FCFF
     ws_val.merge_cells("A3:E3")
@@ -465,16 +465,16 @@ def build_edelweiss_workbook(dest_path: Path):
     c.border = BORDER_TOTAL
     c.number_format = FMT_DECIMAL
 
-    ws_val.cell(16, 1, "Current Market Price (CMP: 15-Oct-2025 NSE)").font = FONT_BOLD
+    ws_val.cell(16, 1, "Historical Snapshot Price (15-Oct-2025 NSE Close)").font = FONT_BOLD
     ws_val.cell(16, 5, 135.00).font = FONT_BOLD
     ws_val.cell(16, 5).number_format = FMT_DECIMAL
 
-    ws_val.cell(17, 1, "Implied Premium / (Discount) vs. CMP").font = FONT_BOLD
+    ws_val.cell(17, 1, "Implied Premium / (Discount) vs. 15-Oct-2025 Snapshot").font = FONT_BOLD
     c = ws_val.cell(17, 5, "=(E15/E16)-1")
     c.font = FONT_BOLD
     c.number_format = FMT_PERCENT
 
-    ws_val.cell(18, 1, "Analyst Assumptions: EAAA valued at 22x P/E, EARCL at 1.20x P/B, EAML at 4.0% of AAUM, Insurance at ₹1,500 Cr book proxy, Credit book at 0.80x P/B, Standalone HoldCo Net Debt -₹5,500 Cr. Industrial FCFF is strictly withheld. Proximity to CMP (₹135.00 as of 15-Oct-2025 NSE) is an observation, not model validation.").font = Font(name="Calibri", size=9, italic=True)
+    ws_val.cell(18, 1, "Historical Market Snapshot Notice: Model reflects a point-in-time snapshot as of October 15, 2025, and is NOT a current real-time valuation. Analyst Assumptions: EAAA valued at 22x P/E, EARCL at 1.20x P/B, EAML at 4.0% of AAUM, Insurance at ₹1,500 Cr book proxy, Credit book at 0.80x P/B, Standalone HoldCo Net Debt -₹5,500 Cr. Industrial FCFF is strictly withheld. Proximity to snapshot price (₹135.00 as of 15-Oct-2025 NSE) is an observation, not model validation.").font = Font(name="Calibri", size=9, italic=True)
     ws_val.merge_cells("A18:E18")
 
     # SOTP Sensitivity Matrix

@@ -10,6 +10,8 @@
     "reporting_unit": "INR_CRORES",
     "shares_outstanding_cr": 29.6,
     "market_price": 4390.0,
+    "market_price_date": "2025-10-15 (NSE Close)",
+    "market_price_nature": "historical_point_in_time_snapshot",
     "source_data": {
       "user_supplied_facts": {
         "company_name": "LTIMindtree Limited",
