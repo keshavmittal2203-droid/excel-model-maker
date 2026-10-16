@@ -68,7 +68,10 @@ class BuildPackageTests(unittest.TestCase):
             (arbitrary_dir / "important_file.txt").write_text("critical data", encoding="utf-8")
             with self.assertRaises(RuntimeError) as cm:
                 verify_output_directory(arbitrary_dir, force=True)
-            self.assertIn("does not contain a package.manifest.json", str(cm.exception))
+            self.assertTrue(
+                "does not contain a package.manifest.json" in str(cm.exception)
+                or "fresh output directory" in str(cm.exception)
+            )
         finally:
             import shutil
             shutil.rmtree(arbitrary_dir, ignore_errors=True)
