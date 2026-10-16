@@ -1,6 +1,6 @@
 ## Summary of Implementation & Curated Package Delivery
 
-Substantiates and hardens PR #3 as the implementation owner, reconciling `main`'s standalone styled report builder, integrating Codex PR #4 (`agent/codex-template-first`) and Codex Critical Safety PR #7 (`1395b247...`), resolving the geographic revenue chart evidence gap, and delivering a clean-checkout reproducible Marksans Excel-and-PPT package on `agent/argon-continue` (commit `bf29ed8`).
+Substantiates and hardens PR #3 as the implementation owner, reconciling `main`'s standalone styled report builder, integrating Codex PR #4 (`agent/codex-template-first`) and Codex Critical Safety PR #7 (`1395b247...`), resolving the geographic revenue chart evidence gap, and delivering a clean-checkout reproducible Marksans Excel-and-PPT package on `agent/argon-continue` (commit `e0327da`).
 
 ### 1. Repeatable Build Orchestrator (`build_package.py`)
 - Created unified build orchestrator with formal request schema (`package-request.schema.json`) and shipped package requests (`examples/marksans-package.json`, `examples/scenario-b-package.json`).
@@ -58,5 +58,5 @@ The deck is explicitly defined as a **"5-Slide Marksans Pharma Financial Overvie
 ## Verification & Test Suite
 - `python verify_sources.py`: All 6 original template hashes verified byte-for-byte.
 - `python -m unittest discover -v`: **69/69 unit and regression tests pass cleanly** (8 in `test_package_safety.py`, 10 in `test_build_package.py`, 33 in `test_modelmaker.py`, 11 in `test_pptmaker.py`, 7 in `test_reportmaker.py`).
-- Clean checkout reproducibility: Tested from a clean clone at commit `bf29ed8` with independent build execution.
+- Clean checkout reproducibility: Tested from a clean clone at commit `e0327da` with independent build execution.
 - Manifest readiness: `ready: false`, pending gates: `["human_pack_approval", "render_review"]`.
