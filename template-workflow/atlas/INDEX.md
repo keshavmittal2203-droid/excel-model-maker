@@ -1,0 +1,412 @@
+# Uploaded template atlas
+
+Native XML inventory only. Not rendered previews, approved mappings or financial validation.
+
+## originals/Marksans Keshav.xlsx
+
+SHA-256: `5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`
+
+- **Model ->** — visible, 0 formula cells, 0 non-formula populated cells; range A1.
+- **Main Financials** — visible, 725 formula cells, 86 non-formula populated cells; range A7:J148.
+- **Ratio Analysis** — visible, 190 formula cells, 28 non-formula populated cells; range B3:L34.
+- **Intrinsic Growth** — visible, 181 formula cells, 52 non-formula populated cells; range B4:K65.
+- **Comps** — visible, 132 formula cells, 33 non-formula populated cells; range B3:P34.
+- **WACC-DCF** — visible, 58 formula cells, 83 non-formula populated cells; range B3:T40.
+- **DCF 1st way** — visible, 51 formula cells, 87 non-formula populated cells; range A2:M45.
+- **DCF 2nd way** — visible, 305 formula cells, 150 non-formula populated cells; range A1:AD97.
+- **Data ->** — visible, 0 formula cells, 0 non-formula populated cells; range A1.
+- **compdata** — visible, 32 formula cells, 130 non-formula populated cells; range B2:M25.
+- **Data Sheet** — visible, 22 formula cells, 554 non-formula populated cells; range A1:K93.
+- **BS** — visible, 0 formula cells, 407 non-formula populated cells; range B2:N41.
+- **Beta** — visible, 213 formula cells, 392 non-formula populated cells; range B2:V112.
+- **RM** — visible, 2 formula cells, 59 non-formula populated cells; range B8:I35.
+- **peerdata** — visible, 0 formula cells, 36 non-formula populated cells; range B4:G9.
+- **Cash Flow** — visible, 0 formula cells, 389 non-formula populated cells; range A1:N38.
+- **sectordata** — visible, 0 formula cells, 1069 non-formula populated cells; range B2:L100.
+
+## originals/ERR-4.pptx
+
+SHA-256: `9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba`
+
+- **Slide 1**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 7, 12, 11, 14, 18, 20, 13; tables 0; charts 1.
+  - Content excerpts (not inferred topics): INTRODUCTION Sun Pharma started as a domestic branded-formulations player and scaled largely through acquisitions: US entry via Caraco (1998), Taro for US dermatology (FY10, fully absorbed FY24), DUSA / BUSINESS MODEL • India Branded Formulations: Prescription-led, highest-margin business with strong market leadership.• US Formulations: Generics and higher-margin Innovative Medicines, now the larger  / BRAND PORTFOLIO • Specialty Portfolio: Ilumya (psoriasis), Winlevi (acne), Cequa (dry eye), Odomzo (oncology), Leqselvi (alopecia areata), and Unloxcyt (cutaneous squamous cell carcinoma).• Consumer/O / PRODUCT ECOSYSTEM • Dosage Forms: Tablets, capsules, injectables, inhalers, ointments, creams, and liquids.• Product Categories: Generics, branded generics, specialty, OTC, ARVs, and APIs.• Pipeline: 
+- **Slide 2**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 7, 12, 9, 14; tables 0; charts 2.
+  - Content excerpts (not inferred topics): Sun Pharmaceutical Industries Ltd. (NSE: SUNPHARMA) is India's largest pharma company and the largest Indian player in the US market. FY26 consolidated revenue grew 11.9% YoY to ~₹58,220 crore, EBITDA / • Revenue: ₹58,220 crore (+11.9% YoY); Net Profit: ₹11,479 crore (+5% YoY)• India Formulations: ₹19,290 crore (+14%), contributing 33% of sales• US Formulations: ~₹16,370 crore (-0.9%), contributing ~ / Executive Summary / Key Highlights
+- **Slide 3**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 9, 13, 15, 17, 19; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Industry Overview / The global pharmaceutical industry, typically analysed across branded, generic, and specialty medicine segments, is projected to reach an estimated market size of approximately US 1.76 trillion in 202 / Industry Size (2026) / The global pharmaceutical industry is projected to grow at a CAGR of approximately 6%–9% from 2024 to 2028. This range is derived from recent global pharmaceutical market estimates, which reflect an u
+- **Slide 4**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 9, 8, 26, 28, 34; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Industry Overview / The "Pharmerging" markets, led by India, China, and other Asian and Latin American nations, are the primary volume growth engines, while mature markets like North America and Western Europe see slower / Industry Overview / Global Market Share by Region (2025)
+- **Slide 5**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 12, 17, 9; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Key Growth Drivers / Aging Population & Demographics: The expanding global geriatric population is a primary growth engine for the industry. By 2030, 1 in 6 people globally will be aged 60 or older, and the population of  / Some Major Indian Players
+- **Slide 6**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 6, 31, 37, 39, 45, 47, 30, 58, 67, 70; tables 0; charts 0.
+  - Content excerpts (not inferred topics): PORTER’S FIVE FORCES / High Capital and Regulatory Requirement: Entering the global pharmaceutical market requires massive financial investments in R&D (Sun Pharma consistently invests 6-8% of its annual revenues), complex  / Economies of Scale and Vertical Integration: Established leaders possess extensive vertically integrated operations—manufacturing both finished formulations and their own Active Pharmaceutical Ingredi / Bargaining Power of Suppliers: Low to Medium
+- **Slide 7**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 6, 20, 22, 24, 26, 28, 35; tables 0; charts 0.
+  - Content excerpts (not inferred topics): PORTER’S FIVE FORCES / Threat of Substitute Products: Medium to High / Competitive Rivalry: High / Severe Customer Consolidation: In key developed markets like the US, the consolidation of buying consortiums, wholesalers, and chain drugstores has significantly increased buyer power. This leads to a
+- **Slide 8**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 74, 78, 82, 84, 86, 88, 90, 100, 104, 112, 114, 116, 120, 9, 11, 13, 15, 27, 39; tables 0; charts 0.
+  - Content excerpts (not inferred topics): STRENGTHS / OPPORTUNITIES / THREATS / ROBUST R&D CAPABLITY AND INNOVATION Backed by over 3,000 global scientists, Sun Pharma consistently invests 6% to 8% of its annual revenues into R&D to develop complex generics, expand its specialty p
+- **Slide 9**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 17, 6; tables 0; charts 1.
+  - Content excerpts (not inferred topics): 7 / QUARTERLY PERFORMANCE / Sun Pharma delivered a strong Q4 FY25, with Revenue from Operations rising 8.96% YoY to ₹129,588 million. Profit Before Tax grew 15.59% YoY to ₹32,544 million, while Net Profit After Tax increased 18.
+- **Slide 10**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 16, 7; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 7 / INCOME STATEMENT / INCOME STATEMENT ANALYSIS
+- **Slide 11**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 15, 16, 17, 7; tables 0; charts 3.
+  - Content excerpts (not inferred topics): 7 / Sales Volume Sun Pharma's revenue growth has been primarily driven by higher sales volumes across its branded formulations, specialty products, and international businesses rather than price-led expan / Revenue Revenue from operations has demonstrated a strong and consistent upward trajectory, increasing from ₹264,895 million in FY2018 to ₹584,620 million in FY2026, reflecting a CAGR of approximately / Profitability Profitability improved significantly over the study period. Net Profit After Tax increased from ₹21,616 million in FY2018 to approximately ₹118,762 million in FY2026, while Profit Before
+- **Slide 12**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 14, 8; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 7 / BALANCE SHEET ANALYSIS / BALANCE SHEET
+- **Slide 13**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 23, 58, 60, 97, 99; tables 0; charts 4.
+  - Content excerpts (not inferred topics): 7 / Borrowings Borrowings declined substantially from ₹97,518 million in FY2018 to ₹40,504 million in FY2026. Although borrowings temporarily increased during FY2023 due to financing requirements related  / Current Assets Current assets grew significantly from ₹316,359 million in FY2018 to ₹491,435.20 million in FY2026, mainly driven by higher cash & cash equivalents and healthy working capital. This imp / Equity & Liabilities Total Equity increased consistently from ₹419,847 million in FY2018 to ₹838,797 million in FY2026, reflecting sustained profitability and strong retained earnings. The continuous 
+- **Slide 14**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 15, 11, 7; tables 1; charts 0.
+  - Content excerpts (not inferred topics): Particulars (₹ Crore) FY18 FY19 FY20 FY21 FY22 FY23 FY24 FY25 Operating Activities Profit before tax 3,479.0 3,810.2 5,009.6 2,799.4 4,481.3 9,408.4 11,087.9 13,752.1 Non-cash adjustments (net) 1,382. / Sun Pharma's consolidated cash flow from operating activities has grown from ₹3,907 crore in FY18 to ₹14,072 crore in FY25, a more than 3.6x increase, driven primarily by strong growth in profit befor / CASH FLOW STATEMENT ANALYSIS / CASH FLOW FROM OPERATING ACTIVITY
+- **Slide 15**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 7, 12, 9, 14; tables 0; charts 2.
+  - Content excerpts (not inferred topics): Sun Pharma recorded a net cash outflow of ₹5,306 crore from investing activities in FY25, mainly driven by capital expenditure of ₹2,068 crore towards manufacturing capacity and R&D infrastructure, al / Financing activities used ₹7,906 crore of cash in FY25, primarily on account of ₹3,617 crore in dividend payments and ₹2,900 crore towards buy-back of shares held by non-controlling interests in subsi / CASH FLOW FROM INVESTING ACTIVITY / CASH FLOW FROM INVESTING ACTIVITY
+- **Slide 16**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 11, 15, 7, 12, 16; tables 1; charts 2.
+  - Content excerpts (not inferred topics): Ratio Analysis – SUN PHARMA (Consolidated) FY18 FY19 FY20 FY21 FY22 FY23 FY24 FY25 Current Ratio (x) 1.59 1.79 2.02 1.89 2.04 2.00 2.56 2.89 Quick Ratio (x) 1.25 1.34 1.51 1.33 1.51 1.47 1.98 2.33 Deb / Sun Pharma's current ratio has improved steadily from 1.59x in FY18 to 2.89x in FY25, reflecting a consistent build-up of current assets; particularly investments and cash relative to current liabilit / The quick ratio, which excludes inventory, has more than doubled from 1.25x in FY18 to 2.33x in FY25. Even excluding stock-in-trade, Sun Pharma has held enough liquid current assets to cover short-ter / RATIO ANALYSIS
+- **Slide 17**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 6, 9, 11, 13, 15, 17; tables 0; charts 3.
+  - Content excerpts (not inferred topics): Sun Pharma has sharply deleveraged over the period, with debt-to-equity falling from 0.23x in FY18 to just 0.03x in FY25. Total borrowings have shrunk in absolute terms even as equity has nearly doubl / Sun Pharma's Interest Coverage Ratio has improved dramatically, rising from 7.72x in FY18 to 60.44x in FY25, nearly an eightfold increase as falling finance costs and rapidly expanding EBIT worked tog / Unlike consumer-facing businesses, Sun Pharma's Cash Conversion Cycle is structurally high and positive, ranging between 215 and 295 days, driven mainly by long inventory holding periods (314-353 days / DEBT TO EQUITY RATIO
+- **Slide 18**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 7, 8, 9, 10, 13, 47, 49, 37, 38, 41, 45, 54; tables 0; charts 5.
+  - Content excerpts (not inferred topics): Net Profit / Average Total Assets / ROE(%) / ROA(%)
+- **Slide 19**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 9, 8; tables 0; charts 0.
+  - Content excerpts (not inferred topics): The ROE of Sun Pharma has remained resilient over the last decade, recovering from a low of 5.60% in FY18 to 14.74% in FY26. This improvement reflects stronger shareholder value creation, supported pr / COMMENTARY
+- **Slide 20**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 5, 40, 41, 57, 63, 11, 75, 7, 9, 13, 15, 19; tables 0; charts 0.
+  - Content excerpts (not inferred topics): COFFEE CAN INVESTMENT FRAMEWORK / The "Coffee Can Investing Strategy" focuses on holding fundamentally strong companies for the long term with minimal intervention. It emphasizes consistent growth, efficient capital allocation, strong / Sun Pharma: Non-Coffee Can but a Quality Structural Compounder Sun Pharma does not qualify as a strict Coffee Can stock due to inconsistent Revenue Growth and ROCE during FY18–FY21. However, its succe / 1. The company should have been in existence for at least 10 years. Sun Pharma satisfies this criterion with a continuous 10-year financial track record (FY16–FY25). 2. Revenue should have grown at le
+- **Slide 21**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 21, 22, 23, 24, 27, 31, 38, 3, 5, 4; tables 0; charts 1.
+  - Content excerpts (not inferred topics): WARREN BUFFETT'S $1 TEST / The "One Dollar Test" is a concept attributed to Warren Buffett that evaluates whether management creates shareholder value through retained earnings. The principle states that for every ₹1 retained i / ➤ Cumulative Retained Earnings = ₹413,112 Mn ➤ Increase in Market Capitalisation = ₹2,566,000 Mn $1 Test Value Test Statistic = Change in Market Capitalisation ÷ Retained Earnings / Conclusion Sun Pharmaceutical Industries Ltd. successfully passes Warren Buffett's $1 Test. Sun Pharma generated ₹6.21 of market value for every ₹1 of retained earnings, far exceeding Buffett's benchm
+- **Slide 22**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 21, 22, 23, 24, 27, 31, 34, 3; tables 0; charts 1.
+  - Content excerpts (not inferred topics): Key Takeaways Sun Pharma delivered strong long-term outperformance driven by its successful Global Specialty strategy and resilient domestic business. While the pharmaceutical sector faced pricing pre / MARKET INDEX ANALYSIS / Sun Pharma Alpha The company's long-term outperformance has been driven by the successful transition from traditional generics to a Global Specialty business, reducing dependence on pricing-sensitive 
+- **Slide 23**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 21, 22, 23, 24, 27, 34; tables 0; charts 0.
+  - Content excerpts (not inferred topics): DISCOUNTED CASHFLOW VALUATION - WACС
+- **Slide 24**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 12, 13, 14, 15, 18; tables 0; charts 0.
+- **Slide 25**: Sun Pharmaceutical Industries Ltd. — text shape IDs: 7, 8, 9, 10, 13; tables 0; charts 0.
+
+## originals/GMCC 2023 (Bharat, Kanishk).pptx
+
+SHA-256: `bd6f3920bf32986f6930de011065ebba2c9dd45aba3c8416b6803d9a415f854f`
+
+- **Slide 1**: GLOBAL MICROFINANCE CASE COMPETITION 2023 — text shape IDs: 3, 4; tables 0; charts 0.
+  - Content excerpts (not inferred topics): GLOBAL MICROFINANCE CASE COMPETITION 2023 / Team Trade Blazers Jatin Singh Bharat Kukreja Shubh Gupta Kanishk Chhatwal
+- **Slide 2**: CURRENT ANALYSIS KEY PROBLEMS PROPOSED SOLUTION IMPLEMENTATION & RISK — text shape IDs: 3; tables 0; charts 0.
+  - Content excerpts (not inferred topics): CURRENT ANALYSIS KEY PROBLEMS PROPOSED SOLUTION IMPLEMENTATION & RISK
+- **Slide 3**: Country Overview — text shape IDs: 2, 3, 9, 10, 13, 19, 20, 22, 23, 25, 27, 29, 31, 35, 36, 38, 40, 42, 43, 45, 47, 48, 50, 55, 56, 57, 58, 59, 60, 61, 62, 63; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Country Overview / A large economically insecure population with immense need of microfinance / 71.6% / Internet Penetration across Indonesia
+- **Slide 4**: Company Analysis — text shape IDs: 2, 4, 5, 6, 9, 14, 16, 17, 26, 30, 34, 36, 37, 38, 39, 41, 44, 45, 46, 51, 52, 53, 54, 55, 56, 57; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Company Analysis / Current Market / UFH started its operations from Java and expanded to Sumatra, it can now look at lesser sunda and sulawesi / Potential Market
+- **Slide 5**: CURRENT ANALYSIS KEY PROBLEMS — text shape IDs: 3, 4; tables 0; charts 0.
+  - Content excerpts (not inferred topics): CURRENT ANALYSIS KEY PROBLEMS / PROPOSED SOLUTION IMPLEMENTATION & RISK
+- **Slide 6**: Key Problems Identified — text shape IDs: 3, 31, 32, 33, 34, 35, 36, 37, 38, 47, 48, 49, 50, 51, 56, 57, 58, 59, 60, 61, 62; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Key Problems Identified / Fall in Customers Loan repayment rate and acceptance rate has fallen over the years leading to decline in revenues / Operational Inefficiencies Company is dealing through physical filing, cash handling and manual risk assessment / Lack of Employee Training Employees are under skilled which is depicted by decreasing acceptance rate even after rise in agents
+- **Slide 7**: Prioritizing problems for UFH — text shape IDs: 2, 7, 18, 19, 20, 22, 26, 31, 35, 36, 42, 45, 52, 53, 55, 57, 58, 59, 64, 65, 66, 67, 68, 69, 70; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Prioritizing problems for UFH / Strategical assessment of possible solutions with their estimated impact and feasibility / Impact / Feasibility
+- **Slide 8**: CURRENT ANALYSIS KEY PROBLEMS PROPOSED SOLUTION — text shape IDs: 8, 9; tables 0; charts 0.
+  - Content excerpts (not inferred topics): CURRENT ANALYSIS KEY PROBLEMS PROPOSED SOLUTION / IMPLEMENTATION & RISK
+- **Slide 9**: Solution Overview — text shape IDs: 14, 19, 24, 25, 26, 28, 30, 31, 34, 35, 36, 37, 38, 39, 40, 41, 46, 47, 48, 49, 50, 51, 52; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 6. / 7. / 4 / .
+- **Slide 10**: Technology Inclusion (1/2) — text shape IDs: 2, 9, 10, 11, 12, 13, 14, 16, 18, 19, 21, 25, 27, 29, 31, 35, 40, 41, 46, 47, 48, 49, 50, 51, 52; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Technology Inclusion (1/2) / PROBLEMS / SOLUTIONS / RATIONALE
+- **Slide 11**: Technology Inclusion (2/2) — text shape IDs: 2, 3, 8, 9, 13, 19, 20, 40, 42, 44, 46, 48, 50, 51, 53, 55, 59, 60, 65, 66, 67, 72, 73, 74, 75, 76, 77, 78; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Technology Inclusion (2/2) / Risk and Credit score assessment using 360 degree data / 70% / of the users of microfinance are “Credit Invisible” that is they do not have the credit history or financial documentation for risk assessment
+- **Slide 12**: Combining Carbon Credits — text shape IDs: 2, 4, 9, 16, 21, 26, 31, 34, 35, 37, 38, 39, 40, 41, 42, 46, 57, 58, 59, 64, 65, 66, 67, 68, 69, 70; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Combining Carbon Credits / Creating an additional revenue stream by generating 38.4 million IDR annually. / 01 / Reduced paper consumption in loan application and EMI processes, saving 132,880 sheets of paper every year
+- **Slide 13**: Modifying Product Offerings — text shape IDs: 2, 4, 6, 8, 9, 10, 11, 12, 15, 18, 20, 25, 26, 30, 31, 35, 36, 37, 38, 39, 40, 45, 46, 47, 48, 49, 50, 51; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Modifying Product Offerings / Diversifying in Microinsurance / Introducing Blue Finance / Barnaby Robson Insurance, KPMG
+- **Slide 14**: Decentralized Functioning of Units — text shape IDs: 2, 3, 4, 5, 9, 10, 11, 12, 13, 17, 19, 21, 22, 24, 28, 32, 36, 38, 40, 41, 42, 43, 50, 52, 53, 54, 59, 60, 61, 62, 63, 64, 65; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Decentralized Functioning of Units / PROBLEM / Revised way of functioning of UFH to speed up loan process along with better control / Lack of accessibility of credit and lesser role of agents due to lack of training
+- **Slide 15**: Financials — text shape IDs: 8, 9, 14, 15, 16, 17, 18, 19, 20, 24, 26, 27, 28; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Financials / 11 / Projected Growth over 5 Year Period / IDR 4.89 Bn Interest by 2028
+- **Slide 16**: CURRENT ANALYSIS KEY PROBLEMS PROPOSED SOLUTION IMPLEMENTATION & RISK — text shape IDs: 3; tables 0; charts 0.
+  - Content excerpts (not inferred topics): CURRENT ANALYSIS KEY PROBLEMS PROPOSED SOLUTION IMPLEMENTATION & RISK
+- **Slide 17**: Mitigating The Risk — text shape IDs: 7, 9, 10, 12, 16, 17, 18, 20, 21, 23, 26, 27, 31, 32, 33, 34, 36, 37, 42, 43, 44, 45, 46, 47, 48; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Mitigating The Risk / RISK / MITIGATION / Regular check-ups and monitoring of instruments and servers by professionals. Replacing outdated equipment with new ones
+- **Slide 18**: Implementation and Forecasted Timeline — text shape IDs: 2, 39, 41, 43, 44, 52, 57, 58, 59, 60, 61, 62, 63, 66, 68; tables 1; charts 0.
+  - Content excerpts (not inferred topics): Implementation and Forecasted Timeline / 2023 2024 2025 2026 2027 2028 2029 2030 / PH 2 / Setting up new branches Digitalising the loan process AI assisted quality checks Training native and existing agents Uploading existing documents to cloud Organising bootcamps
+- **Slide 19**: Fostering Sustainable Development — text shape IDs: 20, 22, 24, 26, 28, 35, 36, 43, 44, 50, 54, 59, 63, 68, 72, 77, 81, 89, 91, 102, 103, 108, 109, 110, 111, 112, 113, 114, 115, 116; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 3+ Diversification of product portfolio with more product offerings - Micro insurance & Blue Finance / Decentralization / 45 Mini branches to be set up in Indonesia by UFH to decentralize the operations and bringing efficiency / Carbon Credits
+- **Slide 20**: Impact Generated — text shape IDs: 2, 3, 4, 5, 6, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 28; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Impact Generated / 15 / 10 Sustainable Development Goals impacted 41,850KG Carbon emission reduction p.a. / 134K
+- **Slide 21**: THANK YOU — text shape IDs: 6; tables 0; charts 0.
+  - Content excerpts (not inferred topics): THANK YOU
+- **Slide 22**: Extra Revenue Source : Carbon Credits Rationale Paper required for current system Sheets required for EMI Payment Total EMIs over loan life Additional Sheets required at time of application 2 Assuming one sheet per EMI repayment and 30 — text shape IDs: 3; tables 1; charts 0.
+  - Content excerpts (not inferred topics): Extra Revenue Source : Carbon Credits Rationale Paper required for current system Sheets required for EMI Payment Total EMIs over loan life Additional Sheets required at time of application 2 Assuming / Appendix – Financials Carbon credit sales revenue
+- **Slide 23**: In Millions IDR 2019A 2020A 2021A 2022A 2023A 2024F 2025F 2026F 2027F 2028F Rationale Employee Costs Calculated as Geometric mean of 7.82%historical data outreaching costs will fall drastically due 4.57% to multiple lieracy str — text shape IDs: 3; tables 1; charts 0.
+  - Content excerpts (not inferred topics): In Millions IDR 2019A 2020A 2021A 2022A 2023A 2024F 2025F 2026F 2027F 2028F Rationale Employee Costs Calculated as Geometric mean of 7.82%historical data outreaching costs will fall drastically due 4. / Appendix – Financials Employee cost forecast
+- **Slide 24**: Outreaching clients Without Strategy Dolphin 144 155 168 181 195 With Strategy Dolphin 140 146 153 160 167 Managing clients Without Strategy Dolphin 421 440 455 476 497 With Strategy Dolphin 410 418 420 428 435 Collecting interest — text shape IDs: 3; tables 1; charts 0.
+  - Content excerpts (not inferred topics): Outreaching clients Without Strategy Dolphin 144 155 168 181 195 With Strategy Dolphin 140 146 153 160 167 Managing clients Without Strategy Dolphin 421 440 455 476 497 With Strategy Dolphin 410 418 4 / Appendix – Financials Employee cost forecast
+- **Slide 25**: In Millions IDR 2019A 2020A 2021A 2022A 2023A 2024F 2025F 2026F 2027F 2028F Rationale ADDITIONAL EXPENSES Constant rise in maintenance cost with 5% increased requirements After initial investment, only some costs 9.50% for upgrade — text shape IDs: 4; tables 1; charts 0.
+  - Content excerpts (not inferred topics): In Millions IDR 2019A 2020A 2021A 2022A 2023A 2024F 2025F 2026F 2027F 2028F Rationale ADDITIONAL EXPENSES Constant rise in maintenance cost with 5% increased requirements After initial investment, onl / Appendix – Financials Expense forecast
+- **Slide 26**: In Millions IDR 2019A 2020A 2021A 2022A 2023A 2024F 2025F 2026F 2027F 2028F Loans and Advances Without Strategy Dolphin 9582 10,071 10,645 11,127 11,679 12,265 With Strategy Dolphin 10,382 11,292 12,333 13,930 15,951 Net — text shape IDs: 5; tables 1; charts 0.
+  - Content excerpts (not inferred topics): In Millions IDR 2019A 2020A 2021A 2022A 2023A 2024F 2025F 2026F 2027F 2028F Loans and Advances Without Strategy Dolphin 9582 10,071 10,645 11,127 11,679 12,265 With Strategy Dolphin 10,382 11,292 12,3 / Appendix – Financials Revenue forecast
+- **Slide 27**: Appendix – Financials Cash flow projections (without strategy Dolphin) In Millions IDR 2019A 2020A 2021A 2022A 2023A 2024F 2025F 2026F 2027F 2028F Without Interest Income Earned 2,216 2,342 2,448 2,569 2,698 Other Revenue — text shape IDs: ; tables 1; charts 0.
+  - Content excerpts (not inferred topics): Appendix – Financials Cash flow projections (without strategy Dolphin) In Millions IDR 2019A 2020A 2021A 2022A 2023A 2024F 2025F 2026F 2027F 2028F Without Interest Income Earned 2,216 2,342 2,448 2,56
+- **Slide 28**: Appendix – Financials Cash flow projections (with strategy Dolphin) — text shape IDs: 2; tables 2; charts 0.
+  - Content excerpts (not inferred topics): Appendix – Financials Cash flow projections (with strategy Dolphin) / In Millions IDR 2019A 2020A 2021A 2022A 2023A 2024F 2025F 2026F 2027F 2028F / With Interest Income Earned 2,403 2,790 3,135 4,114 4,891 Other Revenue 48 56 220 255 282 Cash Flow from Lending 2,452 2,846 3,355 4,368 5,173 Employee Costs 1,793 1,845 1,905 1,973 2,045 Cash Flows a
+- **Slide 29**: In Millions IDR 2024F 2025F 2026F 2027F 2028F Net Cash Flow 413 770 1,203 2,131 2,846 Year 1 2 3 4 5 PV of Future Cash Flows 380 651 936 1,526 1,874 — text shape IDs: 5; tables 3; charts 0.
+  - Content excerpts (not inferred topics): In Millions IDR 2024F 2025F 2026F 2027F 2028F Net Cash Flow 413 770 1,203 2,131 2,846 Year 1 2 3 4 5 PV of Future Cash Flows 380 651 936 1,526 1,874 / Terminal Value Intrinsic Value Terminal Growth Rate 5.79% WACC 8.71% Terminal Value 67,907 PV of Terminal Value 44,720 NPV 50,087 CAGR 38% / Cost of Equity Risk-free Rate 3.74% US Implied ERP 4.24% Country Risk Premium 7.89% Beta 0.41 Cost of Equity (CAPM) 8.71% Since debt doesnt exist Cost Of Equity will be used as discount rate / Appendix – Financials NPP IRR CAPM
+- **Slide 30**: Estimation of Microinsurance customers Current Clients of UFH Individual Loan 1051 Small Enterprise Loan 671 Established Client Loan 54 SUM 1776 Customers are estimated to be same as of 2023 however, this customer base is for 2026 Peopl — text shape IDs: 3; tables 1; charts 0.
+  - Content excerpts (not inferred topics): Estimation of Microinsurance customers Current Clients of UFH Individual Loan 1051 Small Enterprise Loan 671 Established Client Loan 54 SUM 1776 Customers are estimated to be same as of 2023 however,  / Appendix – Financials Micro-Insurance Userbase
+- **Slide 31**: Appendix – Carbon Credits — text shape IDs: 2, 5; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Appendix – Carbon Credits / Carbon credits are measurable, verifiable emission reductions from certified climate action projects. These projects reduce, remove or avoid greenhouse gas (GHG) emissions. But they also bring a whole
+- **Slide 32**: Appendix – Blue Finance — text shape IDs: 2, 3, 5, 6; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Appendix – Blue Finance / Indonesia's dependence on Oceans With more than 17,500 islands, 108,000 kilometers of coastline, and three-quarters of its territory at sea, oceans are essential to Indonesia's economic prosperity thr / Blue Bonds and Blue Loans are innovative financing instruments that allocate funds solely for ocean-friendly initiatives and the protection of vital pure water resources. In general, the market has wi / Blue Financing Instruments
+- **Slide 33**: Appendix – Micro Insurance Challenges — text shape IDs: 5, 10; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Distribution/Scale: Indonesia is an archipelago spreading across 17,000 islands with greater than 50% of residents living in rural areas. Creating products that can grow to scale is challenging from a / Appendix – Micro Insurance Challenges
+- **Slide 34**: Appendix – Distribution Channels — text shape IDs: 3; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Appendix – Distribution Channels
+- **Slide 35**: Appendix – Micro insurance importance — text shape IDs: 3; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Appendix – Micro insurance importance
+- **Slide 36**: Appendix – Bibliography (1/2) — text shape IDs: 2, 3; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Appendix – Bibliography (1/2) / https://databankfiles.worldbank.org/public/ddpext_download/poverty/987B9C90-CB9F-4D93-AE8C-750588BF00QA/current/Global_POVEQ_IDN.pdf https://www.climatepolicyinitiative.org/wp-content/uploads/2022/06/
+- **Slide 37**: Appendix – Bibliography (2/2) — text shape IDs: 2, 3; tables 0; charts 0.
+  - Content excerpts (not inferred topics): https://www.adb.org/sites/default/files/institutional-document/183339/ino-water-assessment.pdf https://carboncredits.com/the-ultimate-guide-to-understanding-carbon-credits/ https://research.aimultiple / Appendix – Bibliography (2/2)
+
+## originals/GMCC 2023 (Bhavika, Falak).pptx
+
+SHA-256: `f19c7335e6514ef60a8109d2bf0021ba46f1752ae9be0ad3ad94ab5cd48ae331`
+
+- **Slide 1**: Team: The Big Four Bhavika Rajora Falak Kalra Ishan Anand Parth Khanna — text shape IDs: 6, 9; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Team: The Big Four Bhavika Rajora Falak Kalra Ishan Anand Parth Khanna / Global Microfinance Case Competition 2023 UFH: Towards an Inclusive and Sustainable Financial Network
+- **Slide 2**: Analysing the landscape Problems Solutions Implementation and Impact Appendix — text shape IDs: 6; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Analysing the landscape Problems Solutions Implementation and Impact Appendix
+- **Slide 3**: SOCIOECONOMIC ANALYSIS Assessing Indonesia’s Macroeconomic Challenges To bridge gaps through proposed strategy — text shape IDs: 4, 5, 6, 15, 22, 23, 24, 27, 29, 32, 34, 38, 40, 41, 47, 48, 56, 57, 58, 59, 60, 62, 64, 65, 66, 70, 71, 72, 73, 74; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 1. / SOCIOECONOMIC ANALYSIS Assessing Indonesia’s Macroeconomic Challenges To bridge gaps through proposed strategy / Macroeconomic Indicators / Economic insecurity coupled with after-effects of Covid-19 has degenerated financial inclusion in Indonesia and the only way out is a decentralised Sustainable Credit Inclusion Grid (CREDILINK)
+- **Slide 4**: EXPLORING THE MICROFINANCE LANDSCAPE IN INDONESIA — text shape IDs: 3, 5, 6, 7, 9, 11, 14, 16, 18, 19, 20, 21, 22, 23, 24, 25, 41, 44, 46, 47, 48, 49, 50, 56, 69, 73, 74, 75, 76, 79; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 2. / EXPLORING THE MICROFINANCE LANDSCAPE IN INDONESIA / Analyzing Indonesia’s financial profile and addressing key challenges through proposed strategy / Sources: GBG Indonesia, McKinsey reports
+- **Slide 5**: Analysing The Landscape Problems Solutions Impact Appendix — text shape IDs: 5; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Analysing The Landscape Problems Solutions Impact Appendix
+- **Slide 6**: LENDING IN JAVA AND SUMATRA Arduous Loan Application and Operational Inefficiency backend procedures Chokepoints — text shape IDs: 18, 25, 26, 28, 32, 33, 34, 35, 36, 61, 62, 63, 64, 65, 69, 70, 71, 72, 73, 74, 80, 81, 82, 83, 84, 89, 90, 91, 92, 93; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Targeted Solution: Phoenix / 3. / LENDING IN JAVA AND SUMATRA Arduous Loan Application and Operational Inefficiency backend procedures Chokepoints / Loan Application
+- **Slide 7**: Analysing The Landscape Problems Solutions Implementation and Impact Appendix — text shape IDs: 5; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Analysing The Landscape Problems Solutions Implementation and Impact Appendix
+- **Slide 8**: INTRODUCING PHOENIX Implementation and Impact Assessment through breakdown of Strategy Phoenix — text shape IDs: 4, 5, 37, 38, 39, 40, 41, 42; tables 3; charts 0.
+  - Content excerpts (not inferred topics): 4. / INTRODUCING PHOENIX Implementation and Impact Assessment through breakdown of Strategy Phoenix / Immediate solutions Potential solutions or micro-battles Parameters of Assessment Overall Attractiveness Investment Required (CapEx: Small/Medium/Large) Degree of Impact Complexity of Implementation D / High Medium Low
+- **Slide 9**: FACILITATING FINANCIAL INCLUSION AND EXPANSION OF UFH Phased implementation of Lending Circles leading to financial inclusion of 800k+ people in the regions — text shape IDs: 9, 10, 16, 17, 18, 19, 22, 27, 31, 35, 36, 46, 51, 52, 53, 54, 55, 57, 58, 59, 60, 61, 62, 63, 65, 66, 70, 73, 74, 75; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 5. / FACILITATING FINANCIAL INCLUSION AND EXPANSION OF UFH Phased implementation of Lending Circles leading to financial inclusion of 800k+ people in the regions / Sumatra / Java
+- **Slide 10**: UFH’s CREDIT SCORING — text shape IDs: 13, 14, 15, 20, 36, 37, 38, 39, 40, 43, 44, 45, 46, 50, 51, 52, 53, 54, 55, 56, 57, 68, 69, 70, 71, 72, 73, 74, 76, 82; tables 2; charts 0.
+  - Content excerpts (not inferred topics): 6. / UFH’s CREDIT SCORING / Unveiling The Potential Of Automated Processing And An All-encompassing Credit Score / AI-volution: Optimising the Loan Procedure
+- **Slide 11**: INTRODUCING CREDILINK : THE 3- PRONGED FINANCE (1/4) — text shape IDs: 4, 5, 9, 13, 28, 29, 30, 31, 32, 35, 38, 41, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 55, 56, 57, 58, 59; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 7. / INTRODUCING CREDILINK : THE 3- PRONGED FINANCE (1/4) / Adika 28 year Old Farmer / Transforming the Micro Loan procedure through Overview of Functioning of Credilink Loan proposal of IDR 3.5 mn
+- **Slide 12**: CREDILINK : THE IDENTIFICATION LAYER (2/4) — text shape IDs: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 34, 36, 38, 43, 45, 46, 48, 49, 58, 60, 62, 63, 64, 66, 68, 70, 75, 77, 78, 79, 80, 82, 88, 90, 94, 100, 101, 102, 103, 104; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 8. / CREDILINK : THE IDENTIFICATION LAYER (2/4) / E-KYC: Addressing the Inefficiencies of the Current Credit Lending System by Addressing the Current Players / E-money players
+- **Slide 13**: CREDILINK : THE PAYMENT LAYER (3/4) Moving Away From Legacy Systems And Leveraging The BI – Fast Service For Loan Disbursement — text shape IDs: 4, 5, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 49, 50, 51, 52, 53, 54, 55, 56, 76, 77, 78, 80, 81, 82, 83, 84, 85, 89, 90, 91, 92; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 9. / CREDILINK : THE PAYMENT LAYER (3/4) Moving Away From Legacy Systems And Leveraging The BI – Fast Service For Loan Disbursement / Why partner with AyoConnect ? / Licensed by Bank Indonesia
+- **Slide 14**: CREDILINK: THE DATA LAYER(4/4) — text shape IDs: 4, 5, 6, 7, 8, 9, 10, 11, 14, 27, 28, 29, 30, 48, 49, 62, 64, 65, 67, 70, 71, 72, 80, 81, 82; tables 1; charts 0.
+  - Content excerpts (not inferred topics): 10. / CREDILINK: THE DATA LAYER(4/4) / Leveraging Bank Indonesia's BI- FAST Service To Facilitate Real Time Transfer Of Micro Loans / Virtuous Cycle for an MSME Entrepreneur
+- **Slide 15**: A DEEPER LOOK INTO THE PRODUCT OFFERINGS — text shape IDs: 4, 5, 6, 8, 10, 11, 13, 16, 19, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 38, 39, 40, 43, 49, 50, 51, 52, 53, 54, 55, 56, 57, 59, 61, 68, 69, 70, 80, 81, 82, 83, 84, 85, 90, 94; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 11. / A DEEPER LOOK INTO THE PRODUCT OFFERINGS / Agriculture Financing enables tapping Unexplored Market Potential and facilitates Expansion / Current Offerings
+- **Slide 16**: SCALING AND EXPANSION — text shape IDs: 13, 14, 15, 19, 20, 25, 26, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 44, 45, 46, 47, 48, 49, 66, 67, 69, 70, 71, 77, 78, 79, 80, 81, 82; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 12. / SCALING AND EXPANSION / Papua's Untapped Potential: Agricultural Diversification for Sustainable Household and Business Growth / 3%
+- **Slide 17**: Analysing The Landscape Problems Solutions Implementation and Impact Appendix — text shape IDs: 5; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Analysing The Landscape Problems Solutions Implementation and Impact Appendix
+- **Slide 18**: RISK ANALYSIS AND MITIGATION Suitable Strategies to help UFH preemptively tackle risks due to external and operational factors — text shape IDs: 2, 23, 24, 25, 29, 30, 54, 55, 56, 57, 60, 61, 62, 63, 64, 65, 66, 67, 69, 70, 71, 73, 77, 79, 83, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94; tables 0; charts 0.
+  - Content excerpts (not inferred topics): IMPACT / 4 / 3 / 1
+- **Slide 19**: IMPLEMENTATION TIMELINE — text shape IDs: 6, 7, 8, 9, 10, 11, 12, 13, 14, 31, 38, 42, 43, 44, 45, 50, 55, 56, 60, 61, 65, 66, 67, 68, 69, 70, 71, 77; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 14. / IMPLEMENTATION TIMELINE / Decoding the step by step formulation and implementation of Strategy Phoenix / Stage
+- **Slide 20**: FINANCIAL ANALYSIS OF THE PROPOSED STRATEGY — text shape IDs: 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 40, 41, 42, 43, 44, 45, 48, 50, 51, 53, 55, 57, 58, 59, 60, 61, 62, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 15. / FINANCIAL ANALYSIS OF THE PROPOSED STRATEGY / Leveraging the need of the hour to get a high positive NPV through Phoenix / Sources: Team Analysis
+- **Slide 21**: Analysing The Landscape Problems Solutions — text shape IDs: 2, 3; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Analysing The Landscape Problems Solutions / Implementation and Impact Appendix
+- **Slide 22**: APPENDIX: AUTOMATION — text shape IDs: 4, 5, 8; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: AUTOMATION / Unveiling the potential of automated processing and an all encompassing credit score Cost and time savings via automation (Automation leads to a 30% fall in the time taken to complete each step, on an / Improvement in Financial Inclusion via Organic Growth of our Credit Reimagined Policy
+- **Slide 23**: APPENDIX: LENDING CIRCLES — text shape IDs: 3, 4, 8, 9, 11, 12, 14, 15, 16, 19; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: LENDING CIRCLES / Exploring the mechanism / Personal and Beneficiary Details Financial Details / Lending Circles
+- **Slide 24**: APPENDIX: CREDIT SCORING Unveiling the potential of automated processing and an all encompassing credit score — text shape IDs: 2, 10, 11, 18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 31; tables 1; charts 0.
+  - Content excerpts (not inferred topics): Based on the final Credit Score, the following alternatives are recommended / LOW SCORE / HIGH SCORE / PROGRESSIVE LENDING
+- **Slide 25**: APPENDIX: PRODUCT OFFERINGS Exploring the attractiveness of Agriculture Value Chain Loans — text shape IDs: 3, 4, 8, 9, 10, 11, 12, 13, 14, 18; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: PRODUCT OFFERINGS Exploring the attractiveness of Agriculture Value Chain Loans / …Existing Loan Products available to small farmers in Indonesia(focus on Papua) / Current situation of farmers… / Only seven per cent of farmers interviewed had taken out a loan from a formal institution.
+- **Slide 26**: APPENDIX: CREDILINK — text shape IDs: 3, 4, 21, 22; tables 1; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: CREDILINK / Choice of Account Aggregator and Key Savings through utilization of e-KYC Choice of Account Aggregator / Account Aggregator Ease of Use Data cleanliness API Offerings Breadth of Connections Finantier FinFini Musoni Oradien / Choosing the Account Aggregator Finantier
+- **Slide 27**: APPENDIX: Quantitatively Analysing Reasons for Expansion Exploring the untapped SME loan potential of East Nusa Tengarra — text shape IDs: 3, 12; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: Quantitatively Analysing Reasons for Expansion Exploring the untapped SME loan potential of East Nusa Tengarra / Unmet Demand and High Growth Potential Low disbursal of MSME loans Highest Annual Growth Rate of loans Lowest Productivity and Highest Competitiveness
+- **Slide 28**: APPENDIX: ASSUMPTIONS preliminary clarifications for assessing targeted market growth rate — text shape IDs: 2; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: ASSUMPTIONS preliminary clarifications for assessing targeted market growth rate
+- **Slide 29**: APPENDIX: CASH FLOW PROJECTIONS Impact Assessment on the basis of Cash Flow Projections — text shape IDs: 3; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: CASH FLOW PROJECTIONS Impact Assessment on the basis of Cash Flow Projections
+- **Slide 30**: APPENDIX: CASH FLOW PROJECTIONS Impact Assessment on the basis of Cash Flow Projections — text shape IDs: 4; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: CASH FLOW PROJECTIONS Impact Assessment on the basis of Cash Flow Projections
+- **Slide 31**: APPENDIX: KEY CALCULATIONS Important financial indicators to justify out strategy — text shape IDs: 3; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: KEY CALCULATIONS Important financial indicators to justify out strategy
+- **Slide 32**: APPENDIX: CALCULATIONS FOR CREDILINK Justifying Credilink’s 3-pronged costing strategy — text shape IDs: 4, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: CALCULATIONS FOR CREDILINK Justifying Credilink’s 3-pronged costing strategy / 767.23 / 758.51 / 770.42
+- **Slide 33**: APPENDIX: LOAN BREAKDOWN AND CLIENT OUTREACH — text shape IDs: 5, 6, 9, 10; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: LOAN BREAKDOWN AND CLIENT OUTREACH / Assessing the effect of Credilink on credit lending in Indonesia / Client Outreach Projections / Loan Breakdown
+- **Slide 34**: APPENDIX: MARKET PENETRATION Estimating Market Size with Phoenix — text shape IDs: 4; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: MARKET PENETRATION Estimating Market Size with Phoenix
+- **Slide 35**: APPENDIX: FAILED INITIATIVE - KUR Analysing Micro KUR requirements — text shape IDs: 3; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: FAILED INITIATIVE - KUR Analysing Micro KUR requirements
+- **Slide 36**: APPENDIX: REFERENCES — text shape IDs: 3, 4; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX: REFERENCES / The sources we referred to https://www.ey.com/en_id/banking-capital-markets/riding-the-wave-of-indonesias-financial-services-growth https://www.povertyactionlab.org/blog/2-12-21/strengthening-indonesi
+- **Slide 37**: Thank you — text shape IDs: 6; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Thank you
+
+## originals/GMCC 2023 (Pratiksha, Prakhar).pptx
+
+SHA-256: `c3b8e389ae2b3cfec1731a795efe70df310b962e45487243af2a1499c8537592`
+
+- **Slide 1**: MICROFINANCE — text shape IDs: 5, 6, 7; tables 0; charts 0.
+  - Content excerpts (not inferred topics): MICROFINANCE / GLOBAL / CASE COMPETITION 2023 Team PPNK Krish Gupta Nikhil Jain Prakhar Singh Pratiksha Satapathy
+- **Slide 2**: Overview — text shape IDs: 3, 5; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Overview / A glimpse into the offerings and operations of UFH paired with the proposed solutions
+- **Slide 3**: Bird's Eye View: United for Hope Microfinance An insight into United for Hope Microfinance — text shape IDs: 7, 11, 12, 13, 14, 16, 25, 26, 27, 28, 29, 30, 37, 39, 41, 42, 44, 45, 46, 47, 48, 49, 57, 58, 59, 64, 65, 66, 67, 68, 69, 75, 76, 77, 78, 79, 80, 81, 82, 92, 93, 94, 95, 96, 97, 98, 102, 103; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 15%- 22.5% / Loan Offerings / Individual Loans / Small Enterprise
+- **Slide 4**: Dual Obstacle Perspective Issues experienced by the two parties in Microfinance loan transactions — text shape IDs: 8, 10, 11, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 78, 79, 85, 86, 96, 97, 98, 99, 100, 101, 102, 106, 107; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 01 / CUSTOMER’S SIDE PROBLEM / COMPANY’S SIDE PROBLEM / 02
+- **Slide 5**: Empowering Futures: Revolutionizing Microfinance for Lasting Impact A brief run-through of common problems and the respective strategies to rectify the situation — text shape IDs: 5, 9, 15, 16, 20, 21, 25, 26, 30, 31, 39, 40, 41, 42, 43, 45, 47, 49, 50, 51, 52, 53, 58, 60, 61, 62, 63, 64, 68, 69; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Empowering Futures: Revolutionizing Microfinance for Lasting Impact A brief run-through of common problems and the respective strategies to rectify the situation / Common Problems faced / 1 / Difficulty in obtaining loans due to manual processing
+- **Slide 6**: Roadmap to Responsible Organisational Profitability Increase — text shape IDs: 12, 13, 14, 15, 20, 25, 26, 27, 33, 35, 37, 38, 43, 44, 45, 46, 47, 48, 49, 50, 51; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 1 / FinTech Collaborations and Operational Changes / Collaborate with TBOP to optimize operations Allow flexible lending amounts Modified credit score ratings / Country wide expansion
+- **Slide 7**: Mitra Kredit — text shape IDs: 4, 6, 11, 12, 13, 14, 15, 16, 17; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Mitra Kredit / Optimizing the operations of UFH to make microfinance more accessible / 1 / FinTech Collaborations
+- **Slide 8**: Potential FinTech Collaborations — text shape IDs: 6, 7, 8, 9, 10, 11, 127, 128, 129, 130, 131, 132, 133, 134, 138, 139; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Companies / Low Bandwidth Productivity / Automated upgradation / MIS efficiency
+- **Slide 9**: Prodigy: TBOP's financial services software for MFIs Outline of interface and features of the Indonesian-centric platform — text shape IDs: 8, 9, 10, 17, 18, 19, 20, 24, 25, 26, 30, 31; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Loan Seeker / Field Officer / Decision Terminal / Boots on the Ground Approach Low Bandwidth Audit Trails
+- **Slide 10**: Prodigy: TBOP's financial services software for MFIs Digitisation from grass-root level to increase efficiency and reduce loan application time — text shape IDs: 51, 52, 53, 57, 59, 60, 62, 63, 64, 65, 66, 69, 70, 71, 72, 73, 74, 75, 79, 80; tables 1; charts 0.
+  - Content excerpts (not inferred topics): Terminals / Bank Office Terminals / Bank Office / to collect interests or loan applications in order to prevent any manual error Receipts are given through Bluetooth connected printers to ensure accountability
+- **Slide 11**: Mitra Kredit — text shape IDs: 6, 10, 11, 12, 13, 14, 15, 16, 17, 18; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Optimizing the operations of UFH to make microfinance more accessible / 2 / FinTech Collaboration / Credit Ratings
+- **Slide 12**: Traditional vs Contemporary Credit Systems — text shape IDs: 10, 11, 12, 13, 17, 19, 20, 21, 22, 23, 27, 30, 32, 33, 34, 35, 40, 41, 42, 47, 48, 49, 50, 51, 52, 53, 54, 58, 59; tables 1; charts 0.
+  - Content excerpts (not inferred topics): Lacks Literacy Aspect / Potential Earning / Lack of Standardization / Lack of Transparency
+- **Slide 13**: SEUR: The Socio-Economic Underprivilege Ratio — text shape IDs: 3, 4, 5, 6, 7, 8, 12, 14, 17, 18, 22, 23, 25, 26, 27, 28, 30, 37, 38, 45, 46, 47, 48, 49, 53, 54, 55, 57, 58, 59, 60, 64, 65; tables 0; charts 0.
+  - Content excerpts (not inferred topics): SEUR: The Socio-Economic Underprivilege Ratio / UFH aims to be profitable while servicing underprivileged households who have little access to financial services / UFH aims to be profitable while being equitable in its activities. Existing measures of credit scoring are limited in their scope while incorporating socio-economic measures. SEUR is a measure of leve / Relative to every area. Weights are inversely proportional to total population. This increases the SEUR of minorities. In Indonesia, all ethnicities can be broadly categorized within 6 categories. Cal
+- **Slide 14**: Credit Score Mapping Consumer routes for different credit score alternatives — text shape IDs: 9, 11, 16, 24, 33, 34, 35, 36, 37, 38, 39, 43, 45, 47, 48, 50, 52, 53, 59, 60, 61, 62, 63, 64, 65, 69, 70; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Credit Score Ratings / Low Credit Score / Flexible Lending / Group Borrowing
+- **Slide 15**: Mitra Kredit — text shape IDs: 5, 10, 11, 12, 13, 14, 15, 16, 17, 18; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Optimizing the operations of UFH to make microfinance more accessible / 3 / Alternate Lending / Credit Ratings
+- **Slide 16**: Alternate Lending Holistic approaches to reduce default rates — text shape IDs: 6, 23, 24, 25, 26, 36, 44, 54, 62, 63, 65, 66, 67, 68, 70, 81, 82, 83, 84, 85, 86, 87, 92, 93, 94, 95, 96, 101, 103, 105, 110, 111, 112, 118, 119, 120, 121, 125, 126, 127, 128, 132, 133; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Alternate Lending Holistic approaches to reduce default rates / 1 / 2 / 3
+- **Slide 17**: Mitra Kredit — text shape IDs: 5, 10, 11, 12, 13, 14, 15, 16, 17, 18; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Optimizing the operations of UFH to make microfinance more accessible / 4 / FinTech Collaboration / Credit Ratings
+- **Slide 18**: Modernising Subaks: Revitalising a traditional irrigiation system Farmers in Indonesia typically depend on rainfall and most of them do not have access to costly modern irrigation practices — text shape IDs: 3, 5, 7, 9, 11, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 44, 46, 47, 49, 50, 52, 54, 58, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 78, 79; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Providing irrigation facilities at affordable rates. / Water inlet is started around the month of December, is stored until the month of June and is then distributed / Select areas where Subaks are to be introduced using 3 variables: geographical location, , and external threat. / Meetings where we introduce this technology and discuss it with the farmers
+- **Slide 19**: Impact Assessment — text shape IDs: 3, 5; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Impact Assessment / Gauging the impact of Mitra Kredit over the years FY24-FY28
+- **Slide 20**: Timeline Year wise implementation with feedback and corrective blocks of Mitra Kredit — text shape IDs: 46, 47, 50, 60, 61, 63, 65, 67, 68, 69, 73, 74, 75, 76, 77, 78, 79, 83, 84; tables 1; charts 0.
+  - Content excerpts (not inferred topics): 2023 2024 2025 2026 2027 2028 2029 2030 / Flexible Loans Group Loans TBOP collab Credit rating revolution / Expansion in 3 provinces 3 Subaks developed Leasing out agricultural tools / Expansion in other provinces of Indonesia More Subaks developed
+- **Slide 21**: 1 — text shape IDs: 2, 3, 4, 5, 6, 7, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 44, 45, 46, 48, 51, 53, 55, 56, 57, 58, 59, 62, 64, 65, 67, 68, 69, 70, 71, 72, 73, 77, 78; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 1 / 2 / 3 / 5
+- **Slide 22**: Financial Impact Assessing the economic feasibility for the next 5 year — text shape IDs: 3, 4, 14, 15, 19, 20, 24, 25, 32, 33, 34, 35, 36, 37, 41, 42; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Financial Impact Assessing the economic feasibility for the next 5 year / PROJECTED GROWTH OVER 5 YEAR PERIOD / 1 / +2064 Users by 2028
+- **Slide 23**: Thank You! — text shape IDs: 2; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Thank You!
+- **Slide 24**: Appendix — text shape IDs: 3, 5; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Appendix / Assessing the feasibility of the proposed solutions
+- **Slide 25**: APPENDIX Index — text shape IDs: 2; tables 1; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Index / S. No. Topic 1 Income Expenditure 2 Overall Admin Cost 3 Java and Sumatra Employee Cost 4 Cash Flow and NPV Calculation 5 CAPM and Terminal Value Calculation 6 Cash Flow estimation without Mitra 7 Emp
+- **Slide 26**: APPENDIX Financials: Income Statement post effect of Mitra Kredit — text shape IDs: 6, 9, 10; tables 1; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Financials: Income Statement post effect of Mitra Kredit / WITH MITRA KREDIT Income Statement ACTUAL ESTIMATED Particulars FY19 FY20 FY21 FY22 FY23 FY24 (E) FY25 (E) FY26 (E) FY27 (E) FY28 (E) Interest Revenue 2011.00 1876.00 2043.00 2094.00 2143.00 2391.18 3 / TBOP collaboration cost These costs are ascertained by taking a proxy for the Artoo case study 2015 in which Ujjiwan, an Indian MFI collaborated with Artoo, a software based cloud storage firm to digi / Source https://artoo.com/Accion-Case-Study.pdf
+- **Slide 27**: Particulars FY19 FY20 FY21 FY22 FY23 FY24 (E) FY25 (E) FY26 (E) FY27 (E) FY28 (E) Outreaching clients 113.00 109.00 115.00 121.00 135.00 144.45 357.06 420.33 581.06 853.67 (Java & Sumatra) 113.00 109.00 115.00 121.00 135.00 144.45 154.56 16 — text shape IDs: 4; tables 1; charts 0.
+  - Content excerpts (not inferred topics): Particulars FY19 FY20 FY21 FY22 FY23 FY24 (E) FY25 (E) FY26 (E) FY27 (E) FY28 (E) Outreaching clients 113.00 109.00 115.00 121.00 135.00 144.45 357.06 420.33 581.06 853.67 (Java & Sumatra) 113.00 109. / APPENDIX Financials: Income Statement post effect of Mitra Kredit
+- **Slide 28**: APPENDIX Financials: Income statement before Mitra Kredit — text shape IDs: 2; tables 1; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Financials: Income statement before Mitra Kredit / WITHOUT MITRA KREDIT Income Statement Particulars FY19 FY20 FY21 FY22 FY23 FY24E FY25E FY26E FY27E FY28E Interest Revenue 2011 1876 2043 2094 2143 2193.147 2244.467 2296.988 2350.738 2405.745 Other Re
+- **Slide 29**: APPENDIX Financials: Administrative Expense Forecast (Java and Sumatra) — text shape IDs: 2; tables 7; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Financials: Administrative Expense Forecast (Java and Sumatra) / STORAGE SPACE FOR PHYSICAL FILINGS FY23 FY24 (E) FY25 (E) FY26 (E) FY27 (E) FY28 (E) 24.00 16.80 7.20 9.00 9.00 9.00 / RENT FY23 FY24 (E) FY25 (E) FY26 (E) FY27 (E) FY28 (E) 33.00 34.43 35.98 94.14 98.66 103.59 / INSURANCE FY23 FY24 (E) FY25 (E) FY26 (E) FY27 (E) FY28 (E) 20.00 20.87 21.80 57.05 59.79 62.78
+- **Slide 30**: APPENDIX Financials: Number of Employees and Outreaching Cost Related to them in Java and Sumatra — text shape IDs: 3, 15, 16; tables 10; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Financials: Number of Employees and Outreaching Cost Related to them in Java and Sumatra / NO. OF EMPLOYEES PER FIRM (JAVA AND SUMATRA) FY23 FY24 (E) FY25 (E) FY26 (E) FY27 (E) FY28 (E) Total Employees 15 19 13 9 10 11 Outreaching Clients 2 2 2 2 3 3 Collecting Interest 3 6 4 2 2 3 Managing / No. of offices (per province) 4 No. of provinces 2 Total offices 8 / OUTREACHING EMPLOYEES FY23 FY24 (E) FY25 (E) FY26 (E) FY27 (E) FY28 (E) 135.00 144.45 154.56 166.93 181.95 200.14
+- **Slide 31**: APPENDIX Financials: Expenditure related to collecting interest in Java and Sumatra — text shape IDs: 3, 12, 13; tables 7; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Financials: Expenditure related to collecting interest in Java and Sumatra / COLLECTING INTERESTS FY23 FY24 (E) FY25 (E) FY26 (E) FY27 (E) FY28 (E) 121.00 222.66 156.25 90.83 85.58 101.18 / FY 23 Employees 24 No. of Clients 191 No. of clients of physical loans 191 No. of clients/emp 8 / FY 24 Employees 44 No. of Clients 391 No. of clients of physical loans 351 No. of clients/emp 8
+- **Slide 32**: APPENDIX Financials: Expenditure related to loan application process in Java and Sumatra — text shape IDs: 11, 12, 13; tables 7; charts 0.
+  - Content excerpts (not inferred topics): MANAGING AND LOAN APPLICATION PROCESS FY23 FY24 (E) FY25 (E) FY26 (E) FY27 (E) FY28 (E) 1219.00 1474.00 718.18 418.13 488.20 572.04 / FY 23 Employees 40 No. of Clients 329 No. of clients of physical loans 329 No. of clients/emp 8 / FY 24 Employees 48 No. of Clients 568 No. of clients of physical loans 398 No. of clients/emp 8 / FY 25 Employees 24 No. of Clients 646 No. of clients of physical loans 194 No. of clients/emp 8
+- **Slide 33**: APPENDIX Financials: Expenditure related to general admin and others in Java and Sumatra — text shape IDs: 5, 6, 14, 15, 16; tables 8; charts 0.
+  - Content excerpts (not inferred topics): GENERAL ADMIN FY23 FY24 (E) FY25 (E) FY26 (E) FY27 (E) FY28 (E) 181.00 218.86 106.64 62.08 72.49 84.94 / Rational: The no. of clients of physical loans would decrease over time declining the general admin costs / Rationale / FY 23 Employees 24 No. of Clients 329 No. of clients of physical loans 329 No. of clients/emp 14
+- **Slide 34**: APPENDIX Financials: NPV calculations with Mitra — text shape IDs: 2; tables 2; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Financials: NPV calculations with Mitra / Years FY24 (F) FY25 (F) FY26 (F) FY27 (F) FY28 (F) Interest Income Earned (In IDR Mn) With Mitra Kredit 4596.18 6091.02 7075.53 8169.59 9877.51 Cash Flows From Lending 4596.18 6091.02 7075.53 8169.59  / Years FY24 (F) FY25 (F) FY26 (F) FY27 (F) FY28 (F) Cash Flows 1272.80 3008.13 5071.17 6130.86 6992.94 Disc Rate 1.079832 1.166037 1.259124 1.359642631 1.468185622 Present Value 1178.701826 2579.786 40
+- **Slide 35**: APPENDIX Financials: CAPM and Terminal Value calculations with Mitra — text shape IDs: 3, 5, 9; tables 3; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Financials: CAPM and Terminal Value calculations with Mitra / Only equity in the financial structure so only the Cost of Equity calculated. All measures taken from the website of Aswath Damodaran / Cost of Equity Risk Free Rate 6.41% Beta 0.36 Country Risk Premium 2.89% Indonesia ERP 7.89% Cost of Equity (CAPM) 7.98% / Terminal Value (In IDR Mn) FCFF (Last) 6992.94 Growth Rate 5% CAPM 7.98% Terminal Value 275484.83 PV of Terminal Value (NPV) 173764.29
+- **Slide 36**: APPENDIX Financials: Cash flow estimation without Mitra — text shape IDs: 2; tables 1; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Financials: Cash flow estimation without Mitra / Years FY24 (F) FY25 (F) FY26 (F) FY27 (F) FY28 (F) Interest Income Earned (In IDR Mn) Without Mitra Kredit 2193.147 2244.467 2296.988 2350.738 2405.745 Cash Flows From Lending 2193.147 2244.467 2296.9
+- **Slide 37**: APPENDIX Financials: Outreaching cost in 3 new provinces — text shape IDs: 3, 10, 11; tables 5; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Financials: Outreaching cost in 3 new provinces / CLIENT BASE APPLIED ACCEPTED 2025 640 138 85 2026 800 189 121 2027 1261 289 193 2028 2064 457 320 / FY 25 Outreaching Employees 24 No. of Clients 640 No. of clients/employee 27 FY 27 Outreaching Employees 47 No. of Clients 1261 No. of clients/employee 27 / FY 26 Outreaching Employees 30 No. of Clients 800 No. of clients/employee 27 FY 28 Outreaching Employees 77 No. of Clients 2064 No. of clients/employee 27
+- **Slide 38**: APPENDIX Financials: Collecting interest cost in 3 new provinces — text shape IDs: 7, 8, 9, 12, 13; tables 5; charts 0.
+  - Content excerpts (not inferred topics): COLLECTING INTERESTS FY23 FY24 (E) FY25 (E) FY26 (E) FY27 (E) FY28 (E) 0.00 0.00 29.65 29.65 23.72 39.24 / FY 25 FY 26 Employees 36 Employees 22 No. of Clients 85 No. of Clients 121 No. of clients of physical loans 60 No. of clients of physical loans 36 No. of clients/emp 2 No. of clients/emp 2 / FY 27 FY 28 Employees 17 Employees 29 No. of Clients 193 No. of Clients 320 No. of clients of physical loans 29 No. of clients of physical loans 48 No. of clients/emp 2 No. of clients/emp 2 / Rational: The no. of physical loans would decrease subsequently over the periods because of the collaboration with Tbop but would remain fixed after a certain time period because people won't switch t
+- **Slide 39**: APPENDIX Financials: General admin cost in 3 new provinces — text shape IDs: 6, 7, 9, 11, 12, 13, 14; tables 4; charts 0.
+  - Content excerpts (not inferred topics): GENERAL ADMIN FY23 FY24 (E) FY25 (E) FY26 (E) FY27 (E) FY28 (E) 0.00 0.00 351.87 132.10 104.03 170.34 / FY 25 FY 26 Employees 36 Employees 14 No. of Clients 640 No. of Clients 800 No. of clients of physical loans 640 No. of clients of physical loans 240 No. of clients/emp 18 No. of clients/emp 18 FY 27  / Rational: The no. of clients of physical loans would decrease over time declining the general admin costs / APPENDIX Financials: General admin cost in 3 new provinces
+- **Slide 40**: APPENDIX Financials: Potential clients estimation in the new provinces — text shape IDs: 7; tables 2; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Financials: Potential clients estimation in the new provinces / South Sulawesi West Kalimantan East Nusa Tenggara Males 4580221 2849410 2663771 Females 4645526 2691966 2661795 Total 9225747 5541376 5325566 Rural Population 3773331 2266423 2178156 % people engaged  / 2025 South Sulawesi West Kalimantan East Nusa Farmers requiring Credit 1182109 640937 575033 40% require credit Non Farmers requiring Credit (Women) 163612 132816 148115 20% require credit OUR POTENTI
+- **Slide 41**: APPENDIX Financials: Estimated number of target population per province — text shape IDs: 3, 9, 10, 11, 12, 15; tables 5; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Financials: Estimated number of target population per province / 2023 2024 2025 2026 2027 2028 Java and Sumatra CLIENT BASE 1776 1865 1958 2076 2206 2350 APPLIED 329 355 421 490 505 520 ACCEPTED 191 213 261 313 338 364 RATIO 0.58 0.60 0.62 0.64 0.67 0.70 / 2025 20226 2027 2028 CLIENT BASE 303 379 597 977 South Sulawesi APPLIED 65 89 137 216 ACCEPTED 40 57 92 151 RATIO 0.62 0.64 0.67 0.70 / 2025 20226 2027 2028 West Kalimantan CLIENT BASE 174 218 343 562 APPLIED 37 51 79 124 ACCEPTED 23 33 53 87 RATIO 0.62 0.64 0.67 0.70
+- **Slide 42**: APPENDIX Financials: Estimation of each loan category takers in each province — text shape IDs: 2; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Financials: Estimation of each loan category takers in each province
+- **Slide 43**: APPENDIX Financials: Subak's cost and revenue projections — text shape IDs: 2, 7; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Financials: Subak's cost and revenue projections / Sources Subak Flowchart Subak Operations
+- **Slide 44**: APPENDIX Sources — text shape IDs: 3, 5; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Sources / https://www.ripublication.com/gjmbs_spl/gjmbsv3n5_12.pdf https://artoo.com/Accion-Case-Study.pdf https://content.centerforfinancialinclusion.org/wp-content/uploads/sites/2/2018/08/IIF-CFI_FI-Fintech_P
+- **Slide 45**: APPENDIX Sources — text shape IDs: 3, 5; tables 0; charts 0.
+  - Content excerpts (not inferred topics): APPENDIX Sources / https://binarapps.com/what-is-branchless-banking-what-are-the-benefits/ https://cn.knoema.com/atlas/%e5%8d%b0%e5%ba%a6%e5%b0%bc%e8%a5%bf%e4%ba%9a/East-Nusa-Tenggara/topics/Demographics/Population/Male
+
+## originals/Healthcare and Pharma Industry Primer Final.pptx
+
+SHA-256: `0c2c84cea14ef51af7ad15a32dfc8c10b8e0f6acca68ff0ef50bfa6faa343f32`
+
+- **Slide 1**: Heading — text shape IDs: 9, 12, 16, 20, 3; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Heading / (brief intro) / Source: / 01
+- **Slide 2**: Source: IBEF; McKinsey — text shape IDs: 16, 20, 22, 29; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: IBEF; McKinsey / 02 / RESEARCH ABSTRACT / This report examines the historical evolution of the healthcare and pharmaceutical sectors, current market dynamics, and future growth pathways shaped by digital transformation, changing consumer beha
+- **Slide 3**: 03 — text shape IDs: 20, 10, 13, 3, 48, 67; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 03 / Our Achievements / Our Live Projects / Founded as one of SSCBS’s oldest societies with a rich legacy spanning over 19 years, built on the belief that a strong institution needs more than just recognition, it needs a team that can think str
+- **Slide 4**: 04 — text shape IDs: 20, 48, 12, 61, 62, 63, 68, 69, 70, 71, 9, 10; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 04 / ACKNOWLEDGEMENT / CO-AUTHORS / Chinar Ahuja Coordinator
+- **Slide 5**: INDUSTRY LANDSCAPE — text shape IDs: 14, 16; tables 0; charts 0.
+  - Content excerpts (not inferred topics): INDUSTRY LANDSCAPE / Industry Overview (Global) Industry Overview (India) Evolution of the Industry Key Stages in Evolution of Industry (Global)
+- **Slide 6**: INDUSTRY OVERVIEW (GLOBAL) — text shape IDs: 7, 15, 19, 23, 25, 31, 34, 37, 41, 44, 46, 48, 50, 52, 201, 202, 204, 206, 8; tables 0; charts 1.
+  - Content excerpts (not inferred topics): INDUSTRY OVERVIEW (GLOBAL) / Source: Bain & Company, Global Healthcare Private Equity Report 2026 / 06 / Global healthcare and biopharma spending grew to US$11.2 trillion by 2026, driven by investments, R&D, and patent cliffs
+- **Slide 7**: Source: IBEF — text shape IDs: 15, 19, 25, 31, 34, 37, 41, 44, 46, 48, 50, 52, 201, 202, 204, 206, 236, 4, 8; tables 0; charts 1.
+  - Content excerpts (not inferred topics): Source: IBEF / 07 / MARKET SIZE ($) / 17.5-22.5% CAGR
+- **Slide 8**: Source: Deloitte, "A Brief History of the Pharmaceutical Industry" — text shape IDs: 37, 41, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 3, 5; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: Deloitte, "A Brief History of the Pharmaceutical Industry" / 08 / Pre-Industrial Era / Roots trace to apothecaries and pharmacies offering traditional remedies based on centuries of folk knowledge, dating back to the middle ages
+- **Slide 9**: RESPONSIBLE BUSINESS & REGULATORY TRANSPARENCY — text shape IDs: 30, 31, 32, 33, 35, 37, 52, 53, 54, 55, 56, 58, 59, 73, 77, 81, 83, 85, 6, 39; tables 0; charts 0.
+  - Content excerpts (not inferred topics): RESPONSIBLE BUSINESS & REGULATORY TRANSPARENCY / 01 / 03 / 05
+- **Slide 10**: INDUSTRY SEGMENTATION — text shape IDs: 14, 16; tables 0; charts 0.
+  - Content excerpts (not inferred topics): INDUSTRY SEGMENTATION / Industry Segmentation Global Regional Diversity India's Regional Diversity
+- **Slide 11**: Source: — text shape IDs: 16, 20, 33, 38, 40, 42, 44, 45, 50, 52, 54, 56, 63, 68, 70, 75, 80, 86, 87, 4, 8; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: / 11 / UPSTREAM / R&D & Discovery
+- **Slide 12**: Source: — text shape IDs: 16, 20, 15, 24, 28, 30, 32, 36, 40, 22, 26, 34, 38, 48, 17, 23; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: / 12 / REGIONAL DIVERSITY / The US remains the global leader in biopharma innovation Blockbusters & mega blockbusters account for ~90% of top firms' sales Primary site for high-capital manufacturing projects amid shifting trade 
+- **Slide 13**: Source: — text shape IDs: 16, 20, 45, 50, 51, 52, 53, 54, 55, 56, 57, 114, 116, 135, 8, 39; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: / 13 / BARRIERS / Urban India (~30% of population) holds ~80% of healthcare infrastructure; rural India (~70%) relies on reactive, symptom-triggered care.
+- **Slide 14**: CUSTOMER ECOSYSTEM — text shape IDs: 14, 16; tables 0; charts 0.
+  - Content excerpts (not inferred topics): CUSTOMER ECOSYSTEM / Customer Behavior Customer Psychology in Healthcare & Pharma B2B Customer Segmentation B2C Customer Segmentation
+- **Slide 15**: Source: — text shape IDs: 10, 12, 53, 58, 66, 68, 70, 72, 74, 76, 78, 80, 85, 3, 15; tables 1; charts 1.
+  - Content excerpts (not inferred topics): Source: / 15 / Metric Explanation APAC DIGITAL WILLINGNESS Highest digital-health appetite of any region APAC DIGITAL-FIRST PREFERENCE Nearly half now prefer digital as their first point of contact US EXECUTIVE PRIO / HEALTH METRICS ANALYSIS
+- **Slide 16**: 16 — text shape IDs: 12, 26, 33, 34, 35, 36, 37, 38, 46, 47, 48, 49, 50, 51, 59, 60, 61, 62, 63, 64, 89, 91, 15, 17; tables 0; charts 0.
+  - Content excerpts (not inferred topics): 16 / HEADING / The physician remains the single most important trust driver, especially in APAC, often dictating choice of hospital and pharma brand / In high-OOPE markets like India, price is a major psychological barrier; trust builds when a brand is perceived as 'high value
+- **Slide 17**: Source: — text shape IDs: 10, 12, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 59, 16, 19; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: / 17 / HOSPITALS & HEALTH SYSTEMS / Focus on clinical outcomes, cost-effectiveness, and reliability of supply. Growing shift to value-based procurement over lowest upfront price
+- **Slide 18**: Source: — text shape IDs: 10, 12, 20, 22, 24, 46, 48, 50, 52, 54, 56, 65, 67, 68, 69, 23, 33, 37, 45, 49, 53, 71, 25, 27; tables 0; charts 1.
+  - Content excerpts (not inferred topics): Source: / 18 / SEGMENTATION BY INCOME TIER / URBAN VS. RURAL DIVIDE
+- **Slide 19**: SUPPLY CHAIN — text shape IDs: 14, 16; tables 0; charts 0.
+  - Content excerpts (not inferred topics): SUPPLY CHAIN / Supply Chain Dynamics Distribution Channels
+- **Slide 20**: Source: EY Parthenon, Dr. Reddy’s Laboratories Limited, Cipla Limited — text shape IDs: 16, 20, 3, 4, 6, 8, 10, 32, 34, 36, 38, 40, 42, 52, 83, 84, 85, 86, 87, 88, 100, 103, 104, 82, 53, 55; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: EY Parthenon, Dr. Reddy’s Laboratories Limited, Cipla Limited / 20 / Standardized frameworks enforce strict ESG compliance Audited suppliers drive sustainable procurement practices Targeted corrective actions mitigate high-risk vulnerabilities / Legislative shifts create global market opportunities Local sourcing mitigates currency and lead time risks Alternative suppliers prevent critical manufacturing disruption
+- **Slide 21**: Source: BCG, EY Parthenon, Bain & Company — text shape IDs: 16, 20, 47, 50, 78, 79, 81, 90, 92, 93, 101, 102, 109, 110, 143, 155, 157, 158, 196, 8, 15, 19, 23, 25, 113, 114, 115, 116, 27, 41; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: BCG, EY Parthenon, Bain & Company / 21 / TRADITIONAL CHANNEL / MODERN CHANNELS
+- **Slide 22**: EMERGING INDUSTRY TRENDS — text shape IDs: 14, 16; tables 0; charts 0.
+  - Content excerpts (not inferred topics): EMERGING INDUSTRY TRENDS / Global Trends Emerging Trends Technological Evolution of Industry AI Revolution in Industry
+- **Slide 23**: Source: Deloitte, EY Parthenon, Bain & Company — text shape IDs: 16, 20, 71, 77, 126, 127, 130, 132, 203, 208, 209, 210, 211, 220, 224, 227, 232, 237, 238, 3, 6; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: Deloitte, EY Parthenon, Bain & Company / 23 / Digital Transformation and AI Integration / Strategic Supply Chain Realignment
+- **Slide 24**: Source: IBEF, KPMG, Bain & Company — text shape IDs: 16, 20, 3, 182, 183, 184, 185, 186, 4, 8; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: IBEF, KPMG, Bain & Company / 24 / KEY INSIGHTS OF EMERGING TRENDS IN HEALTHCARE AND PHARMACEUTICALS INDUSTRY / The "China + 1" StrategyUS BIOSECURE legislation forces supply chain shifts, making India a primary alternative for manufacturing
+- **Slide 25**: Source: McKinsey, Pwc — text shape IDs: 16, 20, 4, 13, 24, 25, 26, 35, 37, 40, 41, 42, 43, 46, 58, 198, 199, 200, 201, 23, 49; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: McKinsey, Pwc / 25 / WAVES IN TECHNOLOGICAL ADVANCEMENT / TIMELINE OF THE WAVES
+- **Slide 26**: Source: PwC, EY Parthenon - OPPI, Deloitte — text shape IDs: 16, 20, 245, 247, 248, 249, 250, 251, 252, 253, 255, 3, 6; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: PwC, EY Parthenon - OPPI, Deloitte / 26 / AI and machine learning are revolutionising drug discovery by shifting the paradigm from "discovery by accident" to rational, data-driven design Accelerating Timelines: Artificial intelligence tools c / TRANSFORMING R&D AND DRUG DISCOVERY
+- **Slide 27**: INVESTMENT LANDSCAPE — text shape IDs: 14, 16; tables 0; charts 0.
+  - Content excerpts (not inferred topics): INVESTMENT LANDSCAPE / Emerging Investment Markets — Global Emerging Investment Markets — India Investment Segments
+- **Slide 28**: Source: EY-OPPI, BCG: Bio Pharma Trends 2026 — text shape IDs: 16, 20, 26, 30, 46, 50, 79, 82, 83, 87, 90, 98, 99, 100, 103, 111, 122, 124; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: EY-OPPI, BCG: Bio Pharma Trends 2026 / 28 / EMERGING INVESTMENT MARKETS — GLOBAL / China leads global biopharma innovation, while emerging markets expand and India experiences robust healthcare growth
+- **Slide 29**: Source: IBEF, EY-OPPI — text shape IDs: 16, 20, 6, 19, 29, 39, 40, 41, 51, 52, 55, 57, 68, 69, 72, 73, 77, 26, 30; tables 0; charts 3.
+  - Content excerpts (not inferred topics): Source: IBEF, EY-OPPI / 29 / India's manufacturing strength enhances global competitiveness. / CRDMO Growth (CAGR%) Biologics are growing over 2x faster than small molecules
+- **Slide 30**: Source: IBEF, KPMG, BCG — text shape IDs: 15, 2, 30, 31, 34, 35, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 55, 56, 58, 60, 62, 63, 64, 76, 77, 78, 79, 80, 90, 93, 94, 96, 100, 33, 91, 110, 112; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: IBEF, KPMG, BCG / INDUSTRY SEGMENTS / CRDMO / Medical Devices
+- **Slide 31**: EXTERNAL FACTORS — text shape IDs: 14, 16; tables 0; charts 0.
+  - Content excerpts (not inferred topics): EXTERNAL FACTORS / Political and Legal Factors Environmental Factors
+- **Slide 32**: Source: IBEF, EY-OPPI, KPMG — text shape IDs: 15, 4, 6, 8, 10, 12, 14, 16, 18, 24, 26, 28, 38, 39, 40, 41, 48, 58, 60, 62, 64, 66, 35, 45, 52, 55, 67, 69; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: IBEF, EY-OPPI, KPMG / US MFN pricing and the Inflation Reduction Act increase pricing pressure on pharmaceutical companies / PLI Scheme, Biopharma Shakti and Bulk Drug Parks promote domestic manufacturing and biologics expansion / Developed economies encourage domestic manufacturing to improve healthcare security and supply resilience
+- **Slide 33**: Source: IBEF, Deloitte — text shape IDs: 15, 14, 16, 18, 19, 20, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 10, 45, 51, 53, 57, 63; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: IBEF, Deloitte / ESG & Carbon Commitments / Water & Waste Management / Green Manufacturing
+- **Slide 34**: FUTURE OUTLOOK — text shape IDs: 14, 16; tables 0; charts 0.
+  - Content excerpts (not inferred topics): FUTURE OUTLOOK / Challenges And Recommendations Market Growth & Innovation Industry Transformation & Consumer Shifts
+- **Slide 35**: Source: IBEF, EY Parthenon-OPPI — text shape IDs: 15, 27, 47, 49, 51, 53, 55, 57, 59, 61, 37, 52, 63, 66, 70; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: IBEF, EY Parthenon-OPPI / RECOMMENDATIONS / Pricing & Margin Pressure US generic price erosion, DPCO controls and Trade Margin Rationalisation continue to compress industry margins / Regulatory & Compliance Risks USFDA observations, evolving regulations and pricing litigation increase operational and compliance challenges
+- **Slide 36**: Source: IBEF, EY-OPPI, KPMG — text shape IDs: 15, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 108, 118, 119, 120, 122, 134, 10, 16, 22; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: IBEF, EY-OPPI, KPMG / Key Aspect / Impact / Growth Indicator
+- **Slide 37**: Source: Bain & Company, Deloitte — text shape IDs: 15, 32, 48, 49, 50, 57, 67, 68, 69, 85, 86, 87, 88, 111, 112, 114, 116, 118, 120, 63, 64, 66, 71, 73; tables 0; charts 0.
+  - Content excerpts (not inferred topics): Source: Bain & Company, Deloitte / Preventive Healthcare / Digital- First Healthcare / Patient-Centric Care
+- **Slide 38**: THANK YOU — text shape IDs: 6; tables 0; charts 0.
+  - Content excerpts (not inferred topics): THANK YOU

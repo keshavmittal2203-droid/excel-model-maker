@@ -16,11 +16,13 @@ import zipfile
 from modelmaker import NS as XLSX_NS, sha
 from pptmaker import (
     A_NS,
+    C_NS,
     DeckError,
     P_NS,
     PptxPackage,
     R_NS,
     compose_deck,
+    parse_xml,
     verify_slide_changes,
 )
 from test_modelmaker import fixture as xlsx_fixture
@@ -390,20 +392,298 @@ class PptMakerTests(unittest.TestCase):
         self.assertIn("render_review", manifest["pending_gates"])
         self.assertIn("human_pack_approval", manifest["pending_gates"])
         self.assertEqual(len(manifest["changed_slots"]), len(deck_pack["slots"]))
-        self.assertEqual(len(manifest["changed_slots"]), 59)
+        self.assertEqual(len(manifest["changed_slots"]), 75)
+        self.assertEqual(manifest["retained_slides"], [1, 2, 14, 16, 23])
+        self.assertEqual(len(manifest["source_slide_lineage"]), 5)
+        self.assertIn("ppt/media/image22.png", manifest["changed_parts"])
+        self.assertIn("ppt/charts/chart14.xml", manifest["changed_parts"])
+        self.assertIn("ppt/embeddings/Microsoft_Excel_Worksheet13.xlsx", manifest["changed_parts"])
+        out_summary = PptxPackage(out_bytes).summary()
+        self.assertEqual(out_summary["slide_count"], 5)
+
+
+    def test_picture_replacement_chart_data_and_shape_suppression(self):
+        s1_xml = (
+            f'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            f'<p:sld xmlns:a="{A_NS}" xmlns:r="{R_NS}" xmlns:p="{P_NS}">'
+            f'<p:cSld><p:spTree>'
+            f'<p:sp>'
+            f'<p:nvSpPr><p:cNvPr id="10" name="Title 1"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>'
+            f'<p:spPr><a:xfrm><a:off x="100" y="200"/></a:xfrm></p:spPr>'
+            f'<p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:t>Original Title</a:t></a:r></a:p></p:txBody>'
+            f'</p:sp>'
+            f'<p:sp>'
+            f'<p:nvSpPr><p:cNvPr id="11" name="Logo to Suppress"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>'
+            f'<p:spPr/>'
+            f'<p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:t>Stale Logo</a:t></a:r></a:p></p:txBody>'
+            f'</p:sp>'
+            f'<p:pic>'
+            f'<p:nvPicPr><p:cNvPr id="30" name="Table Pic"/><p:cNvPicPr/><p:nvPr/></p:nvPicPr>'
+            f'<p:blipFill><a:blip r:embed="rId3"/></p:blipFill>'
+            f'<p:spPr><a:xfrm><a:off x="50" y="50"/><a:ext cx="200" cy="100"/></a:xfrm></p:spPr>'
+            f'</p:pic>'
+            f'<p:graphicFrame>'
+            f'<p:nvGraphicFramePr><p:cNvPr id="40" name="Financial Chart"/><p:cNvGraphicFramePr/><p:nvPr/></p:nvGraphicFramePr>'
+            f'<p:xfrm/>'
+            f'<a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/chart">'
+            f'<c:chart xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" r:id="rId4"/>'
+            f'</a:graphicData></a:graphic>'
+            f'</p:graphicFrame>'
+            f'</p:spTree></p:cSld></p:sld>'
+        ).encode("utf-8")
+
+        s1_rels = (
+            b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            b'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+            b'<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout" Target="../slideLayouts/slideLayout1.xml"/>'
+            b'<Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="../media/image1.png"/>'
+            b'<Relationship Id="rId4" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/chart" Target="../charts/chart1.xml"/>'
+            b'</Relationships>'
+        )
+
+        chart1_xml = (
+            b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            b'<c:chartSpace xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart">'
+            b'<c:chart><c:plotArea><c:barChart>'
+            b'<c:ser>'
+            b'<c:tx><c:v>Old Series</c:v></c:tx>'
+            b'<c:cat><c:strRef><c:strCache><c:ptCount val="2"/><c:pt idx="0"><c:v>Cat 1</c:v></c:pt><c:pt idx="1"><c:v>Cat 2</c:v></c:pt></c:strCache></c:strRef></c:cat>'
+            b'<c:val><c:numRef><c:numCache><c:ptCount val="2"/><c:pt idx="0"><c:v>1.0</c:v></c:pt><c:pt idx="1"><c:v>2.0</c:v></c:pt></c:numCache></c:numRef></c:val>'
+            b'</c:ser>'
+            b'</c:barChart></c:plotArea></c:chart></c:chartSpace>'
+        )
+
+        chart1_rels = (
+            b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            b'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+            b'<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/package" Target="../embeddings/Microsoft_Excel_Worksheet1.xlsx"/>'
+            b'</Relationships>'
+        )
+
+        pptx_bytes = pptx_fixture(
+            slide1_xml=s1_xml,
+            extra={
+                "ppt/slides/_rels/slide1.xml.rels": s1_rels,
+                "ppt/charts/chart1.xml": chart1_xml,
+                "ppt/charts/_rels/chart1.xml.rels": chart1_rels,
+                "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx": xlsx_fixture(),
+            },
+        )
+
+        new_img = b"\x89PNG\r\n\x1a\nNEW_IMAGE_BYTES_12345"
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tf:
+            tf.write(new_img)
+            new_img_path = tf.name
+
+        try:
+            pack = {
+                "schema_version": 1,
+                "template_sha256": sha(pptx_bytes),
+                "approval": {
+                    "reviewer": "Unit Test Reviewer",
+                    "approved_at": "2026-10-16T00:00:00Z",
+                    "template_sha256": sha(pptx_bytes),
+                },
+                "slots": [
+                    {
+                        "name": "suppress_stale_logo",
+                        "slide": 1,
+                        "target_type": "suppress_shape",
+                        "shape_id": 11,
+                        "shape_name": "Logo to Suppress",
+                    },
+                    {
+                        "name": "replace_table_image",
+                        "slide": 1,
+                        "target_type": "picture_replacement",
+                        "shape_id": 30,
+                        "shape_name": "Table Pic",
+                    },
+                    {
+                        "name": "update_chart",
+                        "slide": 1,
+                        "target_type": "chart_data",
+                        "shape_id": 40,
+                        "shape_name": "Financial Chart",
+                        "categories": ["Q1", "Q2", "Q3"],
+                        "series_name": "Revenue Growth",
+                    },
+                ],
+            }
+
+            inputs = {
+                "values": {
+                    "suppress_stale_logo": {
+                        "value": "suppress",
+                        "source": "Audit policy: remove unverified logo",
+                    },
+                    "replace_table_image": {
+                        "value": new_img_path,
+                        "source": "WACC DCF generated table image",
+                    },
+                    "update_chart": {
+                        "value": [15.2, 25.4, 35.6],
+                        "source": "Recalculated model sheet",
+                    },
+                }
+            }
+
+            out_bytes, manifest = compose_deck(pptx_bytes, pack, inputs)
+            self.assertEqual(manifest["status"], "composed_pending_render_review")
+            self.assertFalse(manifest["ready"])
+
+            out_pkg = PptxPackage(out_bytes)
+            s1_out = out_pkg.slides[0][2]
+
+            all_shape_ids = [
+                int(elem.find(f".//{{{P_NS}}}cNvPr").get("id", "-1"))
+                for elem in s1_out.findall(f".//{{{P_NS}}}sp")
+                + s1_out.findall(f".//{{{P_NS}}}pic")
+                + s1_out.findall(f".//{{{P_NS}}}graphicFrame")
+            ]
+            self.assertNotIn(11, all_shape_ids)
+            self.assertIn(10, all_shape_ids)
+            self.assertIn(30, all_shape_ids)
+            self.assertIn(40, all_shape_ids)
+
+            self.assertEqual(out_pkg.parts["ppt/media/image1.png"], new_img)
+
+            chart_tree = parse_xml(out_pkg.parts["ppt/charts/chart1.xml"])
+            num_cache = chart_tree.find(f".//{{{C_NS}}}val//{{{C_NS}}}numCache")
+            self.assertEqual(num_cache.find(f"{{{C_NS}}}ptCount").get("val"), "3")
+            pts = [p.findtext(f"{{{C_NS}}}v") for p in num_cache.findall(f"{{{C_NS}}}pt")]
+            self.assertEqual(pts, ["15.2", "25.4", "35.6"])
+
+            str_cache = chart_tree.find(f".//{{{C_NS}}}cat//{{{C_NS}}}strCache")
+            cats = [p.findtext(f"{{{C_NS}}}v") for p in str_cache.findall(f"{{{C_NS}}}pt")]
+            self.assertEqual(cats, ["Q1", "Q2", "Q3"])
+
+            tx_v = chart_tree.findtext(f".//{{{C_NS}}}ser/{{{C_NS}}}tx/{{{C_NS}}}v")
+            self.assertEqual(tx_v, "Revenue Growth")
+
+            emb_wb = out_pkg.parts["ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx"]
+            with zipfile.ZipFile(io.BytesIO(emb_wb)) as z_emb:
+                sheet_xml = parse_xml(z_emb.read("xl/worksheets/sheet1.xml"))
+                b2 = next((c for c in sheet_xml.iter(f"{{{XLSX_NS}}}c") if c.get("r") == "B2"), None)
+                self.assertIsNotNone(b2)
+                self.assertEqual(b2.findtext(f"{{{XLSX_NS}}}v"), "15.2")
+                b3 = next((c for c in sheet_xml.iter(f"{{{XLSX_NS}}}c") if c.get("r") == "B3"), None)
+                self.assertEqual(b3.findtext(f"{{{XLSX_NS}}}v"), "25.4")
+        finally:
+            Path(new_img_path).unlink(missing_ok=True)
+
+    def test_retained_slides_assembly_and_pruning(self):
+        s3_xml = (
+            f'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            f'<p:sld xmlns:a="{A_NS}" xmlns:r="{R_NS}" xmlns:p="{P_NS}">'
+            f'<p:cSld><p:spTree>'
+            f'<p:sp><p:nvSpPr><p:cNvPr id="99" name="Slide 3 Text"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>'
+            f'<p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:t>Slide 3 Original</a:t></a:r></a:p></p:txBody></p:sp>'
+            f'</p:spTree></p:cSld></p:sld>'
+        ).encode("utf-8")
+
+        pres_3slides = (
+            f'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            f'<p:presentation xmlns:a="{A_NS}" xmlns:r="{R_NS}" xmlns:p="{P_NS}">'
+            f'<p:sldIdLst>'
+            f'<p:sldId id="256" r:id="rId1"/>'
+            f'<p:sldId id="257" r:id="rId2"/>'
+            f'<p:sldId id="258" r:id="rId3"/>'
+            f'</p:sldIdLst>'
+            f'</p:presentation>'
+        ).encode("utf-8"),
+
+        pres_rels_3slides = (
+            b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            b'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+            b'<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide" Target="slides/slide1.xml"/>'
+            b'<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide" Target="slides/slide2.xml"/>'
+            b'<Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide" Target="slides/slide3.xml"/>'
+            b'</Relationships>'
+        )
+
+        ct_3slides = (
+            b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+            b'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+            b'<Override PartName="/ppt/presentation.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml"/>'
+            b'<Override PartName="/ppt/slides/slide1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>'
+            b'<Override PartName="/ppt/slides/slide2.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>'
+            b'<Override PartName="/ppt/slides/slide3.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>'
+            b'</Types>'
+        )
+
+        pptx_bytes = pptx_fixture(
+            extra={
+                "[Content_Types].xml": ct_3slides,
+                "ppt/presentation.xml": pres_3slides[0] if isinstance(pres_3slides, tuple) else pres_3slides,
+                "ppt/_rels/presentation.xml.rels": pres_rels_3slides,
+                "ppt/slides/slide3.xml": s3_xml,
+            }
+        )
+
+        self.assertEqual(PptxPackage(pptx_bytes).summary()["slide_count"], 3)
+
+        pack = {
+            "schema_version": 1,
+            "template_sha256": sha(pptx_bytes),
+            "retained_slides": [3, 1],
+            "approval": {
+                "reviewer": "Unit Test Reviewer",
+                "approved_at": "2026-10-16T00:00:00Z",
+                "template_sha256": sha(pptx_bytes),
+            },
+            "slots": [
+                {
+                    "name": "slide3_text",
+                    "slide": 3,
+                    "target_type": "shape_text",
+                    "shape_id": 99,
+                    "shape_name": "Slide 3 Text",
+                },
+                {
+                    "name": "slide1_text",
+                    "slide": 1,
+                    "target_type": "shape_text",
+                    "shape_id": 10,
+                    "shape_name": "Title 1",
+                },
+            ],
+        }
+
+        bad_pack = deepcopy(pack)
+        bad_pack["slots"].append({
+            "name": "slide2_text",
+            "slide": 2,
+            "target_type": "shape_text",
+            "shape_id": 5,
+        })
+        with self.assertRaises(DeckError):
+            compose_deck(pptx_bytes, bad_pack, {"values": {}})
+
+        inputs = {
+            "values": {
+                "slide3_text": {"value": "Curated Slide 1", "source": "Narrative"},
+                "slide1_text": {"value": "Curated Slide 2", "source": "Narrative"},
+            }
+        }
+        out_bytes, manifest = compose_deck(pptx_bytes, pack, inputs)
+        self.assertEqual(manifest["retained_slides"], [3, 1])
         self.assertEqual(
-            manifest["changed_parts"],
+            manifest["source_slide_lineage"],
             [
-                "ppt/slides/slide1.xml",
-                "ppt/slides/slide14.xml",
-                "ppt/slides/slide16.xml",
-                "ppt/slides/slide2.xml",
-                "ppt/slides/slide23.xml",
+                {"curated_slide": 1, "source_slide": 3},
+                {"curated_slide": 2, "source_slide": 1},
             ],
         )
-        out_summary = PptxPackage(out_bytes).summary()
-        self.assertEqual(out_summary["slide_count"], 25)
-        self.assertEqual(out_summary["chart_count"], 25)
+
+        out_pkg = PptxPackage(out_bytes)
+        self.assertEqual(len(out_pkg.slides), 2)
+        self.assertEqual(out_pkg.slides[0][0], 1)
+        self.assertEqual(out_pkg.slides[0][1], "ppt/slides/slide3.xml")
+        self.assertEqual(out_pkg.slides[1][0], 2)
+        self.assertEqual(out_pkg.slides[1][1], "ppt/slides/slide1.xml")
+        self.assertNotIn("ppt/slides/slide2.xml", out_pkg.parts)
+        self.assertNotIn("/ppt/slides/slide2.xml", out_pkg.parts["[Content_Types].xml"].decode())
 
 
 if __name__ == "__main__":

@@ -1,9 +1,16 @@
 {
   "schema_version": 1,
   "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
-  "approval": null,
   "status": "proposal",
-  "proposal_notes": "Refined ERR-4 deck pack proposal for Marksans Pharma. Full historical cash flow coverage (FY18-FY25), aligned text boxes, narrative commentary, and multi-slide header bindings. Requires independent human approval.",
+  "approval": null,
+  "proposal_notes": "Curated 5-slide Marksans Pharma research package derived from originals/ERR-4.pptx (Slides 1, 2, 14, 16, 23). Includes complete profile, executive summary, 8-year historical cash flow schedule, balance sheet ratios with native charts, DCF valuation with high-resolution WACC tables, and unverified logo suppression.",
+  "retained_slides": [
+    1,
+    2,
+    14,
+    16,
+    23
+  ],
   "slots": [
     {
       "name": "slide1_company_name",
@@ -110,7 +117,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "C28",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -130,7 +137,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "D28",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -150,7 +157,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "E28",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -170,7 +177,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "F28",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -190,7 +197,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "G28",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -210,7 +217,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "H28",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -230,7 +237,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "I28",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -250,7 +257,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "J28",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -270,7 +277,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "C82",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -290,7 +297,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "D82",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -310,7 +317,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "E82",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -330,7 +337,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "F82",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -350,7 +357,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "G82",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -370,7 +377,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "H82",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -390,7 +397,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "I82",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -410,7 +417,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "J82",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -430,7 +437,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "C83",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -450,7 +457,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "D83",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -470,7 +477,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "E83",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -490,7 +497,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "F83",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -510,7 +517,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "G83",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -530,7 +537,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "H83",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -550,7 +557,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "I83",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -570,7 +577,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "J83",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -590,7 +597,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "C84",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -610,7 +617,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "D84",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -630,7 +637,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "E84",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -650,7 +657,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "F84",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -670,7 +677,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "G84",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -690,7 +697,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "H84",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -710,7 +717,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "I84",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -730,7 +737,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "J84",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -750,7 +757,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "C85",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -770,7 +777,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "D85",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -790,7 +797,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "E85",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -810,7 +817,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "F85",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -830,7 +837,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "G85",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -850,7 +857,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "H85",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -870,7 +877,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "I85",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -890,7 +897,7 @@
       "workbook_binding": {
         "sheet": "Data Sheet",
         "cell": "J85",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -952,7 +959,7 @@
       "workbook_binding": {
         "sheet": "WACC-DCF",
         "cell": "E34",
-        "scale": 1.0,
+        "scale": 1,
         "decimals": 2,
         "abs_tolerance": 0.01,
         "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
@@ -976,6 +983,180 @@
       "shape_id": 23,
       "shape_name": "object 41",
       "description": "Exchange ticker banner on Slide 23"
+    },
+    {
+      "name": "slide1_business_model",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 12,
+      "shape_name": "object 18",
+      "paragraph_index": 1,
+      "description": "Business Model regulated markets and formulations mix on Slide 1"
+    },
+    {
+      "name": "slide1_brand_portfolio",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 11,
+      "shape_name": "object 18",
+      "paragraph_index": 1,
+      "description": "Brand Portfolio and therapeutic focus on Slide 1"
+    },
+    {
+      "name": "slide1_product_ecosystem",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 14,
+      "shape_name": "object 18",
+      "paragraph_index": 1,
+      "description": "Product Ecosystem dosage forms and global regulatory compliance on Slide 1"
+    },
+    {
+      "name": "slide1_strategic_approach",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 20,
+      "shape_name": "TextBox 19",
+      "paragraph_index": 0,
+      "description": "Strategic Approach backward integration and Teva Goa site expansion on Slide 1"
+    },
+    {
+      "name": "slide1_logo_suppress",
+      "slide": 1,
+      "target_type": "suppress_shape",
+      "shape_id": 59,
+      "shape_name": "Picture 58",
+      "reason": "Omit unverified Sun Pharma corporate logo pending verified Marksans vector asset",
+      "description": "Suppress unverified corporate logo on Slide 1"
+    },
+    {
+      "name": "slide2_chart_revenue",
+      "slide": 2,
+      "target_type": "chart_data",
+      "shape_id": 13,
+      "shape_name": "Chart 0",
+      "categories": [
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Revenue (\u20b9 Cr)",
+      "description": "Historical 5-year Revenue progression from Data Sheet row 17 / row 28"
+    },
+    {
+      "name": "slide2_chart_snapshot",
+      "slide": 2,
+      "target_type": "chart_data",
+      "shape_id": 16,
+      "shape_name": "Chart 1",
+      "categories": [
+        "Revenue",
+        "EBITDA",
+        "Net Profit",
+        "CFO"
+      ],
+      "series_name": "FY25 Actual (\u20b9 Cr)",
+      "description": "FY25 Key Financial Snapshot metrics from Data Sheet & Cash Flow"
+    },
+    {
+      "name": "slide2_logo_suppress",
+      "slide": 2,
+      "target_type": "suppress_shape",
+      "shape_id": 59,
+      "shape_name": "Picture 58",
+      "reason": "Omit unverified Sun Pharma corporate logo pending verified Marksans vector asset",
+      "description": "Suppress unverified corporate logo on Slide 2"
+    },
+    {
+      "name": "slide14_logo_suppress",
+      "slide": 14,
+      "target_type": "suppress_shape",
+      "shape_id": 59,
+      "shape_name": "Picture 58",
+      "reason": "Omit unverified Sun Pharma corporate logo pending verified Marksans vector asset",
+      "description": "Suppress unverified corporate logo on Slide 14"
+    },
+    {
+      "name": "slide16_chart_cr",
+      "slide": 16,
+      "target_type": "chart_data",
+      "shape_id": 14,
+      "shape_name": "Chart 0",
+      "categories": [
+        "FY18",
+        "FY19",
+        "FY20",
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Current Ratio",
+      "description": "Historical Current Ratio FY18-FY25 from Marksans Data Sheet"
+    },
+    {
+      "name": "slide16_chart_qr",
+      "slide": 16,
+      "target_type": "chart_data",
+      "shape_id": 17,
+      "shape_name": "Chart 0",
+      "categories": [
+        "FY18",
+        "FY19",
+        "FY20",
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Quick Ratio",
+      "description": "Historical Quick Ratio FY18-FY25 from Marksans Data Sheet"
+    },
+    {
+      "name": "slide16_logo_suppress",
+      "slide": 16,
+      "target_type": "suppress_shape",
+      "shape_id": 59,
+      "shape_name": "Picture 58",
+      "reason": "Omit unverified Sun Pharma corporate logo pending verified Marksans vector asset",
+      "description": "Suppress unverified corporate logo on Slide 16"
+    },
+    {
+      "name": "slide23_table_ke",
+      "slide": 23,
+      "target_type": "picture_replacement",
+      "shape_id": 7,
+      "shape_name": "Picture 6",
+      "description": "Cost of Equity schedule replacement table image bound to WACC-DCF J22:J25"
+    },
+    {
+      "name": "slide23_table_kd",
+      "slide": 23,
+      "target_type": "picture_replacement",
+      "shape_id": 9,
+      "shape_name": "Picture 8",
+      "description": "Post-tax Cost of Debt schedule replacement table image bound to WACC-DCF E22:E24"
+    },
+    {
+      "name": "slide23_table_wacc",
+      "slide": 23,
+      "target_type": "picture_replacement",
+      "shape_id": 11,
+      "shape_name": "Picture 10",
+      "description": "WACC calculation table replacement image bound to WACC-DCF C30:J39"
+    },
+    {
+      "name": "slide23_logo_suppress",
+      "slide": 23,
+      "target_type": "suppress_shape",
+      "shape_id": 25,
+      "shape_name": "Picture 24",
+      "reason": "Omit unverified Sun Pharma corporate logo pending verified Marksans vector asset",
+      "description": "Suppress unverified corporate logo on Slide 23"
     }
   ]
 }

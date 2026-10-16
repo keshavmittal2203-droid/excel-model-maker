@@ -21,24 +21,29 @@
   - Report: `candidates/Marksans-Validation-Report.json` (19/19 pack checks, 29/29 independent financial identities, 0 errors, 0 stale caches, perturbation and byte-identical restoration confirmed).
   - Status: `recalculated_checks_passed`, `ready: false`, `pending_gates: ["human_pack_approval"]`.
 
-### 3. PowerPoint Composer & Visual Alignment
-- Hardened `pptmaker.py`: added missing `re` import, workbook SHA-256 hash binding, scale/decimals/unit/period verification, and CLI overwrite protection.
-- Refined ERR-4 deck pack proposal (`proposals/err4.deck-pack.proposal.json`) to 59 verified slots:
-  - Slide 1: Aligned "About The Company" intro paragraph with zero banner overlap; preserved "INTRODUCTION" sub-heading.
-  - Slide 2: Resolved font overflow and line spacing in "Executive Summary" and "Key Highlights"; text fits cleanly above segment charts.
-  - Slide 14: Header ticker updated to Marksans; Cash Flow table populated across all 8 historical years (FY18–FY25) for PBT, CFO, CFI, CFF, and Net Cash Flow, completely eliminating chimeric Sun Pharma / Marksans numbers; commentary narrative updated to Marksans cash flow.
-  - Slide 16: Company name, ticker banner, table header, current ratio narrative, and quick ratio narrative updated and visually aligned with charts.
-  - Slide 23: Header updated; documented that the WACC table is an embedded screenshot image (`<p:pic>`) in the original deck.
+### 3. PowerPoint Composer & Curated Marksans Package
+- Hardened `pptmaker.py` with full OOXML engine extensions:
+  - Picture replacement (`target_type: "picture_replacement"`): Replaces embedded screenshot images (`<p:pic>`), checks cross-slide sharing safety, and verifies geometry.
+  - Native chart data (`target_type: "chart_data"` / `"chart_series"`): Synchronously updates `<c:numCache>`, `<c:strCache>`, `<c:tx>`, and embedded workbook (`xl/worksheets/sheet1.xml` inside `Microsoft_Excel_WorksheetN.xlsx`).
+  - Shape suppression (`target_type: "suppress_shape"`): Safely suppresses unverified corporate logos pending authentic brand assets.
+  - Curated deck assembly (`retained_slides: [1, 2, 14, 16, 23]`): Re-orders `<p:sldIdLst>`, cleans `presentation.xml.rels`, prunes unreferenced slide parts from package and `[Content_Types].xml`, and preserves exact shape layout.
+  - Full DrawingML/Chart XML serialization: Registered complete namespaces (`c`, `a`, `r`, `mc`, `c14`, `c15`, `c16`, `c16r2`, `c16r3`, `p14`, `p15`) preventing XML schema reader failure in PowerPoint.
+- Built curated 5-slide research deck proposal in `proposals/err4.deck-pack.proposal.json` and `proposals/err4.inputs.proposal.json` (75 verified slots):
+  - Slide 1: Company Profile, Business Model, Brand Portfolio, Product Ecosystem, Strategic Approach; corporate logo suppressed.
+  - Slide 2: Executive Summary, Key Highlights; native 5-year Revenue by Segment column chart and FY26 Snapshot chart updated from recalculated workbook.
+  - Slide 3 (orig 14): 8-Year Historical Cash Flow Statement (FY18–FY25) and operating cash flow analysis.
+  - Slide 4 (orig 16): Comprehensive Ratio Analysis schedule (Current Ratio, Quick Ratio, D/E, ICR, Working Capital Days) and native Current & Quick Ratio trend line charts.
+  - Slide 5 (orig 23): WACC & DCF Valuation with bounded high-resolution replacement table pictures (Cost of Equity: Ke=12.26%, Cost of Debt: Kd=5.60%, WACC Schedule: WACC=12.11%).
 - Composed candidate deck: `candidates/ERR-4-Marksans-Candidate.pptx`.
-- Rendered slide PNG previews (`slide_1.png`, `slide_2.png`, `slide_14.png`, `slide_16.png`, `slide_23.png`) and worksheet PDFs via local COM automation.
-- Inspected rendered visuals: confirmed zero text collisions and coherent layouts.
-- Output manifest: `status: "composed_pending_render_review"`, `ready: false`, `pending_gates: ["human_pack_approval", "render_review"]`.
+- Rendered slide PNG previews (`slide_1.png` to `slide_5.png`) via local PowerPoint COM and 6 worksheet PDFs via Excel COM.
+- Visually reviewed rendered slides: confirmed perfect layout alignment, zero text collisions, crisp WACC tables, correct chart lines/bars, and clean logo suppression.
+- Manifest status: `status: "composed_pending_render_review"`, `ready: false`, `pending_gates: ["human_pack_approval", "render_review"]`.
 
-### 4. Course Reference Recovery
-- Extracted 34-lesson inventory from live YouTube playlist into `docs/course_lessons.json`.
+### 4. Course Reference Recovery & Provenance Tiering
+- Extracted 34-lesson video inventory from live YouTube playlist into `docs/course_lessons.json`.
 - Mapped sessions 4–20 directly to the 17 sheets in `Marksans Keshav.xlsx` in `docs/COURSE_REFERENCE.md`.
-- Documented technical access limitation for YouTube caption tracks.
+- Established explicit 3-tier provenance definitions: Playlist Metadata (verified externally), Inferred Sheet Mappings (deduced from titles/indices), and Transcript-Verified Rules (blocked pending human transcription).
 
 ### 5. Verification & Test Suite
 - `python verify_sources.py`: All 6 original template hashes verified byte-for-byte.
-- `python -m unittest -v`: 47/47 tests passing cleanly across modelmaker, pptmaker, and reportmaker.
+- `python -m unittest -v`: 49/49 tests passing cleanly across modelmaker, pptmaker, and reportmaker (including new regression tests for picture replacement, chart data caching, shape suppression, and retained-slides assembly).

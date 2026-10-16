@@ -30,11 +30,17 @@ The core 3-statement financial modelling and equity research modules (Sessions 4
 | Session 20 | Altman's Z-Score Modelling | `13YAACEFamQ` | `Ratio Analysis` | Distress prediction modeling for manufacturing / non-manufacturing firms |
 | Sessions 21–34 | Profile, LBO & Special Topics | Various | Reference only | One-page company profile, LBO modeling, and IPO analysis |
 
-## Access & Transcription Note
+## Evidence Provenance Tiers & Transcription Note
 
-- Complete 34-lesson video metadata (titles, IDs, URLs) is preserved in `docs/course_lessons.json`.
-- **Transcript Access Limitation**: YouTube video watch pages do not embed static timedtext/caption tracks in raw server-delivered HTML; captions require client-side dynamic session hydration or authorized API access. In local execution environments without browser-hydration proxies, transcripts cannot be automatically pulled via raw HTTP requests.
-- No course content is claimed to have been autonomously transcribed or verified beyond the structural alignment to the 17 sheets of `Marksans Keshav.xlsx`.
+To maintain documentation integrity across autonomous contributions, course references are categorized into three explicit evidence tiers:
+
+1. **Tier 1: Harvested Playlist Metadata (Verified)**
+   - Lesson video IDs, canonical playlist URLs, and raw video titles were extracted directly from the public playlist HTML metadata into `docs/course_lessons.json` (34 total lessons).
+2. **Tier 2: Inferred Sheet Mappings (Structural Hypothesis)**
+   - The sheet-to-session mappings in the table above represent inferred structural alignment based on matching module titles to sheet names in `originals/Marksans Keshav.xlsx`. These serve as guidance and contextual references, not authoritative accounting proofs.
+3. **Tier 3: Transcript-Verified Rules (None Currently Verified)**
+   - **Access Limitation**: YouTube watch pages do not deliver raw static caption/timedtext tracks via HTTP without JavaScript hydration or authorized API tokens. Consequently, no granular modelling formulas or verbal assertions have been autonomously transcribed or verified from audio.
+   - Any agent proposing a rule in `template-workflow/course-rule.example.json` format must cite local timestamped verbatim transcripts rather than asserting unverified spoken rules.
 
 ## Course Onboarding for AI Contributors
 

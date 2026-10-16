@@ -23,6 +23,7 @@ A_NS = "http://schemas.openxmlformats.org/drawingml/2006/main"
 R_NS = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 PKG_REL_NS = "http://schemas.openxmlformats.org/package/2006/relationships"
 C_NS = "http://schemas.openxmlformats.org/drawingml/2006/chart"
+PACKAGE_REL_TYPE = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/package"
 
 MAX_PPTX_SIZE = 300 * 1024 * 1024
 MAX_PPTX_ENTRIES = 10000
@@ -358,6 +359,17 @@ def validate_deck_pack(pack: dict, package: PptxPackage, *, allow_proposal: bool
     if not isinstance(slots, list) or not slots:
         raise DeckError("Deck pack requires a non-empty slots list")
 
+    retained_slides = pack.get("retained_slides")
+    if retained_slides is not None:
+        if not isinstance(retained_slides, list) or not retained_slides:
+            raise DeckError("retained_slides must be a non-empty list of integers")
+        all_slide_nums = {s_num for s_num, _, _ in package.slides}
+        for s_num in retained_slides:
+            if type(s_num) is not int or s_num not in all_slide_nums:
+                raise DeckError(f"retained_slides contains invalid slide number: {s_num}")
+        if len(set(retained_slides)) != len(retained_slides):
+            raise DeckError("Duplicate slide numbers in retained_slides")
+
     slide_map = {s_num: tree for s_num, _, tree in package.slides}
     names = set()
     targets = set()
@@ -372,6 +384,8 @@ def validate_deck_pack(pack: dict, package: PptxPackage, *, allow_proposal: bool
         slide_num = slot.get("slide")
         if type(slide_num) is not int or slide_num not in slide_map:
             raise DeckError(f"Invalid slide number in slot {name!r}: {slide_num!r}")
+        if retained_slides is not None and slide_num not in retained_slides:
+            raise DeckError(f"Slot {name!r} references pruned slide {slide_num}")
         slide_tree = slide_map[slide_num]
 
         target_type = slot.get("target_type")
@@ -413,6 +427,45 @@ def validate_deck_pack(pack: dict, package: PptxPackage, *, allow_proposal: bool
             if col_idx >= len(tcs):
                 raise DeckError(f"Col {col_idx} out of range for table {shape_id} on slide {slide_num}")
             t_key = (slide_num, "table_cell", shape_id, row_idx, col_idx)
+        elif target_type == "picture_replacement":
+            pic = next((p for p in slide_tree.findall(f".//{{{P_NS}}}pic") if int(p.find(f"{{{P_NS}}}nvPicPr/{{{P_NS}}}cNvPr").get("id", "-1")) == shape_id), None)
+            if pic is None:
+                raise DeckError(f"Picture shape {shape_id} not found on slide {slide_num}")
+            if shape_name is not None:
+                p_name = pic.find(f"{{{P_NS}}}nvPicPr/{{{P_NS}}}cNvPr").get("name")
+                if p_name != shape_name:
+                    raise DeckError(f"Picture shape id={shape_id} has name {p_name!r}, expected {shape_name!r}")
+            blip = pic.find(f".//{{{A_NS}}}blip")
+            if blip is None or not blip.get(f"{{{R_NS}}}embed"):
+                raise DeckError(f"Picture shape {shape_id} on slide {slide_num} has no blip embed reference")
+            t_key = (slide_num, "picture_replacement", shape_id)
+        elif target_type in ("chart_series", "chart_data"):
+            gf = next((g for g in slide_tree.findall(f".//{{{P_NS}}}graphicFrame") if int(g.find(f"{{{P_NS}}}nvGraphicFramePr/{{{P_NS}}}cNvPr").get("id", "-1")) == shape_id), None)
+            if gf is None:
+                raise DeckError(f"GraphicFrame shape {shape_id} not found on slide {slide_num}")
+            if shape_name is not None:
+                g_name = gf.find(f"{{{P_NS}}}nvGraphicFramePr/{{{P_NS}}}cNvPr").get("name")
+                if g_name != shape_name:
+                    raise DeckError(f"GraphicFrame shape id={shape_id} has name {g_name!r}, expected {shape_name!r}")
+            chart_elem = gf.find(f".//{{{C_NS}}}chart")
+            if chart_elem is None or not chart_elem.get(f"{{{R_NS}}}id"):
+                raise DeckError(f"Shape {shape_id} on slide {slide_num} is not a chart or missing chart relationship")
+            t_key = (slide_num, "chart_data", shape_id)
+        elif target_type == "suppress_shape":
+            found = False
+            for tag in ("sp", "pic", "graphicFrame"):
+                for elem in slide_tree.findall(f".//{{{P_NS}}}{tag}"):
+                    cnv = elem.find(f".//{{{P_NS}}}cNvPr")
+                    if cnv is not None and int(cnv.get("id", "-1")) == shape_id:
+                        if shape_name is not None and cnv.get("name") != shape_name:
+                            raise DeckError(f"Shape id={shape_id} has name {cnv.get('name')!r}, expected {shape_name!r}")
+                        found = True
+                        break
+                if found:
+                    break
+            if not found:
+                raise DeckError(f"Shape to suppress {shape_id} not found on slide {slide_num}")
+            t_key = (slide_num, "suppress_shape", shape_id)
         else:
             raise DeckError(f"Unsupported target_type in slot {name!r}: {target_type!r}")
 
@@ -466,11 +519,112 @@ def _resolve_workbook_binding(
     suffix = binding.get("suffix", "")
     return scaled, f"{prefix}{formatted_num}{suffix}"
 
+PML_NAMESPACES = {
+    "a": A_NS,
+    "a14": "http://schemas.microsoft.com/office/drawing/2010/main",
+    "a16": "http://schemas.microsoft.com/office/drawing/2014/main",
+    "c": C_NS,
+    "c14": "http://schemas.microsoft.com/office/drawing/2007/8/2/chart",
+    "c15": "http://schemas.microsoft.com/office/drawing/2012/chart",
+    "c16": "http://schemas.microsoft.com/office/drawing/2014/chart",
+    "c16r2": "http://schemas.microsoft.com/office/drawing/2015/06/chart",
+    "c16r3": "http://schemas.microsoft.com/office/drawing/2017/03/chart",
+    "mc": "http://schemas.openxmlformats.org/markup-compatibility/2006",
+    "p": P_NS,
+    "p14": "http://schemas.microsoft.com/office/powerpoint/2010/main",
+    "p15": "http://schemas.microsoft.com/office/powerpoint/2012/main",
+    "r": R_NS,
+}
 
-def verify_slide_changes(original: bytes, candidate: bytes, approved_shape_ids: set[int]) -> None:
+
+def serialize_pml(root: ET.Element) -> bytes:
+    for prefix, uri in PML_NAMESPACES.items():
+        ET.register_namespace(prefix, uri)
+    return ET.tostring(root, encoding="utf-8", xml_declaration=True)
+
+
+def serialize_rels(root: ET.Element) -> bytes:
+    ET.register_namespace("", PKG_REL_NS)
+    return ET.tostring(root, encoding="utf-8", xml_declaration=True)
+
+
+def serialize_content_types(root: ET.Element) -> bytes:
+    ET.register_namespace("", "http://schemas.openxmlformats.org/package/2006/content-types")
+    return ET.tostring(root, encoding="utf-8", xml_declaration=True)
+
+
+def serialize_xlsx(root: ET.Element) -> bytes:
+    ET.register_namespace("", XLSX_NS)
+    return ET.tostring(root, encoding="utf-8", xml_declaration=True)
+
+
+def _update_embedded_xlsx(
+    data: bytes,
+    values: list[Decimal],
+    categories: list[str] | None = None,
+) -> bytes:
+    """Update values (column B) and categories (column A) in embedded worksheet."""
+    with zipfile.ZipFile(io.BytesIO(data)) as z_in:
+        wb_parts = {name: z_in.read(name) for name in z_in.namelist()}
+    sheet_name = "xl/worksheets/sheet1.xml"
+    if sheet_name not in wb_parts:
+        return data
+    sheet_tree = parse_xml(wb_parts[sheet_name])
+    sheet_data = sheet_tree.find(f"{{{XLSX_NS}}}sheetData")
+    if sheet_data is None:
+        return data
+    row_map = {int(r.get("r", "0")): r for r in sheet_data.findall(f"{{{XLSX_NS}}}row")}
+    for idx, val in enumerate(values):
+        row_num = 2 + idx
+        if row_num not in row_map:
+            row_elem = ET.SubElement(sheet_data, f"{{{XLSX_NS}}}row", r=str(row_num))
+            row_map[row_num] = row_elem
+        row_elem = row_map[row_num]
+        cell_ref = f"B{row_num}"
+        c_elem = next((c for c in row_elem.findall(f"{{{XLSX_NS}}}c") if c.get("r") == cell_ref), None)
+        if c_elem is None:
+            c_elem = ET.SubElement(row_elem, f"{{{XLSX_NS}}}c", r=cell_ref)
+        if "t" in c_elem.attrib:
+            del c_elem.attrib["t"]
+        v_elem = c_elem.find(f"{{{XLSX_NS}}}v")
+        if v_elem is None:
+            v_elem = ET.SubElement(c_elem, f"{{{XLSX_NS}}}v")
+        v_elem.text = str(val)
+        if categories and idx < len(categories):
+            cat_ref = f"A{row_num}"
+            cat_elem = next((c for c in row_elem.findall(f"{{{XLSX_NS}}}c") if c.get("r") == cat_ref), None)
+            if cat_elem is None:
+                cat_elem = ET.SubElement(row_elem, f"{{{XLSX_NS}}}c", r=cat_ref)
+            cat_elem.attrib["t"] = "inlineStr"
+            for child in list(cat_elem):
+                cat_elem.remove(child)
+            is_elem = ET.SubElement(cat_elem, f"{{{XLSX_NS}}}is")
+            t_elem = ET.SubElement(is_elem, f"{{{XLSX_NS}}}t")
+            t_elem.text = str(categories[idx])
+    wb_parts[sheet_name] = serialize_xlsx(sheet_tree)
+    out_buf = io.BytesIO()
+    with zipfile.ZipFile(out_buf, "w", compression=zipfile.ZIP_DEFLATED) as z_out:
+        for name, b_data in wb_parts.items():
+            z_out.writestr(name, b_data)
+    return out_buf.getvalue()
+
+
+def verify_slide_changes(
+    original: bytes,
+    candidate: bytes,
+    approved_shape_ids: set[int],
+    suppressed_shape_ids: set[int] | None = None,
+) -> None:
     """Ensure no unapproved shapes, styles, or run formatting properties (<a:rPr>) were altered."""
     trees = [deepcopy(parse_xml(original)), deepcopy(parse_xml(candidate))]
+    suppressed = suppressed_shape_ids or set()
     for tree in trees:
+        # Strip suppressed shapes completely
+        for sp_tree in tree.findall(f".//{{{P_NS}}}spTree"):
+            for child in list(sp_tree):
+                cnv = child.find(f".//{{{P_NS}}}cNvPr")
+                if cnv is not None and int(cnv.get("id", "-1")) in suppressed:
+                    sp_tree.remove(child)
         for sp in tree.findall(f".//{{{P_NS}}}sp"):
             c_nv_pr = sp.find(f"{{{P_NS}}}nvSpPr/{{{P_NS}}}cNvPr")
             if c_nv_pr is not None and int(c_nv_pr.get("id", "-1")) in approved_shape_ids:
@@ -486,6 +640,12 @@ def verify_slide_changes(original: bytes, candidate: bytes, approved_shape_ids: 
                     if tx_body is not None:
                         for p in list(tx_body.findall(f"{{{A_NS}}}p")):
                             tx_body.remove(p)
+        for pic in tree.findall(f".//{{{P_NS}}}pic"):
+            c_nv_pr = pic.find(f"{{{P_NS}}}nvPicPr/{{{P_NS}}}cNvPr")
+            if c_nv_pr is not None and int(c_nv_pr.get("id", "-1")) in approved_shape_ids:
+                blip = pic.find(f".//{{{A_NS}}}blip")
+                if blip is not None:
+                    blip.attrib.clear()
         for node in tree.iter():
             if node.tail and not node.tail.strip():
                 node.tail = None
@@ -525,7 +685,9 @@ def compose_deck(
 
     slide_part_map = {s_num: (s_part, deepcopy(tree)) for s_num, s_part, tree in package.slides}
     approved_shapes_per_slide: dict[int, set[int]] = {}
+    suppressed_shapes_per_slide: dict[int, set[int]] = {}
     audit: list[dict[str, Any]] = []
+    changed = dict(package.parts)
 
     for slot in slots:
         name = slot["name"]
@@ -533,13 +695,222 @@ def compose_deck(
         if (
             not isinstance(item, dict)
             or not {"value", "source"}.issubset(set(item))
-            or set(item) - {"value", "source", "unit", "period"}
+            or set(item) - {"value", "source", "unit", "period", "categories", "series_name"}
             or not isinstance(item["source"], str)
             or not item["source"].strip()
         ):
             raise DeckError(f"Slot {name!r} requires a value and a non-empty source reference")
 
         raw_val = item["value"]
+        slide_num = slot["slide"]
+        shape_id = slot["shape_id"]
+        shape_name = slot.get("shape_name")
+        target_type = slot["target_type"]
+        s_part, slide_tree = slide_part_map[slide_num]
+
+        if target_type == "suppress_shape":
+            removed = False
+            for sp_tree in slide_tree.findall(f".//{{{P_NS}}}spTree"):
+                for child in list(sp_tree):
+                    cnv = child.find(f".//{{{P_NS}}}cNvPr")
+                    if cnv is not None and int(cnv.get("id", "-1")) == shape_id:
+                        sp_tree.remove(child)
+                        removed = True
+                        break
+                if removed:
+                    break
+            if not removed:
+                raise DeckError(f"Shape {shape_id} on slide {slide_num} could not be suppressed")
+            suppressed_shapes_per_slide.setdefault(slide_num, set()).add(shape_id)
+            audit.append({
+                "name": name,
+                "slide": slide_num,
+                "target_type": "suppress_shape",
+                "shape_id": shape_id,
+                "action": "suppressed",
+                "source": item["source"],
+            })
+            continue
+
+        if target_type == "picture_replacement":
+            if isinstance(raw_val, str):
+                p_asset = Path(raw_val)
+                if not p_asset.exists():
+                    raise DeckError(f"Image asset file not found: {raw_val}")
+                new_img_bytes = p_asset.read_bytes()
+            elif isinstance(raw_val, bytes):
+                new_img_bytes = raw_val
+            else:
+                raise DeckError(f"Picture replacement value must be a path string or bytes: {raw_val!r}")
+            new_img_sha = sha(new_img_bytes)
+
+            pic = next((p for p in slide_tree.findall(f".//{{{P_NS}}}pic") if int(p.find(f"{{{P_NS}}}nvPicPr/{{{P_NS}}}cNvPr").get("id", "-1")) == shape_id), None)
+            if pic is None:
+                raise DeckError(f"Picture shape {shape_id} not found on slide {slide_num}")
+            blip = pic.find(f".//{{{A_NS}}}blip")
+            r_embed = blip.get(f"{{{R_NS}}}embed")
+
+            s_rels_part = posixpath.join(posixpath.dirname(s_part), "_rels", posixpath.basename(s_part) + ".rels")
+            if s_rels_part not in changed:
+                raise DeckError(f"Missing slide rels part: {s_rels_part}")
+            s_rels = parse_xml(changed[s_rels_part])
+            rel = next((r for r in s_rels if r.get("Id") == r_embed), None)
+            if rel is None:
+                raise DeckError(f"Relationship {r_embed} not found in {s_rels_part}")
+            orig_media_part = resolve_rel_target(s_part, rel.get("Target"))
+            orig_bytes = package.parts[orig_media_part]
+            orig_sha = sha(orig_bytes)
+
+            ref_count = 0
+            for part_name, part_content in package.parts.items():
+                if part_name.endswith(".rels"):
+                    r_root = parse_xml(part_content)
+                    for r in r_root:
+                        if r.get("TargetMode") == "External":
+                            continue
+                        tgt = r.get("Target")
+                        if not tgt or "\\" in tgt or "://" in tgt:
+                            continue
+                        try:
+                            if resolve_rel_target(posixpath.dirname(part_name), tgt) == orig_media_part:
+                                ref_count += 1
+                        except DeckError:
+                            continue
+
+            if ref_count > 1:
+                ext = posixpath.splitext(orig_media_part)[1] or ".png"
+                new_media_part = f"ppt/media/img_s{slide_num}_sh{shape_id}_{new_img_sha[:8]}{ext}"
+                changed[new_media_part] = new_img_bytes
+                rel_target = posixpath.relpath(new_media_part, posixpath.dirname(s_part)).replace("\\", "/")
+                rel.set("Target", rel_target)
+                changed[s_rels_part] = serialize_rels(s_rels)
+                final_media = new_media_part
+            else:
+                changed[orig_media_part] = new_img_bytes
+                final_media = orig_media_part
+
+            approved_shapes_per_slide.setdefault(slide_num, set()).add(shape_id)
+            audit.append({
+                "name": name,
+                "slide": slide_num,
+                "target_type": "picture_replacement",
+                "shape_id": shape_id,
+                "original_media": orig_media_part,
+                "original_sha256": orig_sha,
+                "new_media": final_media,
+                "new_sha256": new_img_sha,
+                "source": item["source"],
+                "workbook_binding": slot.get("workbook_binding"),
+            })
+            continue
+
+        if target_type in ("chart_series", "chart_data"):
+            if isinstance(raw_val, list):
+                vals = [Decimal(str(v)) for v in raw_val]
+            elif isinstance(raw_val, (int, float, Decimal, str)):
+                vals = [Decimal(str(raw_val))]
+            else:
+                raise DeckError(f"Chart slot {name!r} value must be a number or list of numbers")
+
+            gf = next((g for g in slide_tree.findall(f".//{{{P_NS}}}graphicFrame") if int(g.find(f"{{{P_NS}}}nvGraphicFramePr/{{{P_NS}}}cNvPr").get("id", "-1")) == shape_id), None)
+            if gf is None:
+                raise DeckError(f"GraphicFrame shape {shape_id} not found on slide {slide_num}")
+            chart_elem = gf.find(f".//{{{C_NS}}}chart")
+            chart_rid = chart_elem.get(f"{{{R_NS}}}id")
+
+            s_rels_part = posixpath.join(posixpath.dirname(s_part), "_rels", posixpath.basename(s_part) + ".rels")
+            s_rels = parse_xml(changed[s_rels_part])
+            rel = next((r for r in s_rels if r.get("Id") == chart_rid), None)
+            if rel is None:
+                raise DeckError(f"Chart relationship {chart_rid} not found in {s_rels_part}")
+            chart_part = resolve_rel_target(s_part, rel.get("Target"))
+
+            chart_root = parse_xml(changed[chart_part])
+            series_list = chart_root.findall(f".//{{{C_NS}}}ser")
+            ser_idx = slot.get("series_index", 0)
+            if ser_idx >= len(series_list):
+                raise DeckError(f"Series index {ser_idx} out of range (found {len(series_list)} series)")
+            ser = series_list[ser_idx]
+
+            num_cache = ser.find(f".//{{{C_NS}}}val//{{{C_NS}}}numCache")
+            if num_cache is None:
+                val_node = ser.find(f"{{{C_NS}}}val")
+                if val_node is None:
+                    val_node = ET.SubElement(ser, f"{{{C_NS}}}val")
+                num_ref = val_node.find(f"{{{C_NS}}}numRef")
+                if num_ref is None:
+                    num_ref = ET.SubElement(val_node, f"{{{C_NS}}}numRef")
+                num_cache = ET.SubElement(num_ref, f"{{{C_NS}}}numCache")
+
+            pt_count = num_cache.find(f"{{{C_NS}}}ptCount")
+            if pt_count is None:
+                pt_count = ET.SubElement(num_cache, f"{{{C_NS}}}ptCount")
+            pt_count.set("val", str(len(vals)))
+            for pt in list(num_cache.findall(f"{{{C_NS}}}pt")):
+                num_cache.remove(pt)
+            for idx, v in enumerate(vals):
+                pt = ET.SubElement(num_cache, f"{{{C_NS}}}pt", idx=str(idx))
+                v_node = ET.SubElement(pt, f"{{{C_NS}}}v")
+                v_node.text = str(v)
+
+            categories = slot.get("categories") or item.get("categories")
+            if categories:
+                str_cache = ser.find(f".//{{{C_NS}}}cat//{{{C_NS}}}strCache")
+                if str_cache is None:
+                    cat_node = ser.find(f"{{{C_NS}}}cat")
+                    if cat_node is None:
+                        cat_node = ET.SubElement(ser, f"{{{C_NS}}}cat")
+                    str_ref = cat_node.find(f"{{{C_NS}}}strRef")
+                    if str_ref is None:
+                        str_ref = ET.SubElement(cat_node, f"{{{C_NS}}}strRef")
+                    str_cache = ET.SubElement(str_ref, f"{{{C_NS}}}strCache")
+                c_pt_count = str_cache.find(f"{{{C_NS}}}ptCount")
+                if c_pt_count is None:
+                    c_pt_count = ET.SubElement(str_cache, f"{{{C_NS}}}ptCount")
+                c_pt_count.set("val", str(len(categories)))
+                for pt in list(str_cache.findall(f"{{{C_NS}}}pt")):
+                    str_cache.remove(pt)
+                for idx, c in enumerate(categories):
+                    pt = ET.SubElement(str_cache, f"{{{C_NS}}}pt", idx=str(idx))
+                    v_node = ET.SubElement(pt, f"{{{C_NS}}}v")
+                    v_node.text = str(c)
+
+            ser_name = slot.get("series_name") or item.get("series_name")
+            if ser_name:
+                tx = ser.find(f"{{{C_NS}}}tx")
+                if tx is not None:
+                    tx_v = tx.find(f"{{{C_NS}}}v")
+                    if tx_v is None:
+                        tx_v = tx.find(f".//{{{C_NS}}}pt/{{{C_NS}}}v")
+                    if tx_v is not None:
+                        tx_v.text = str(ser_name)
+
+            changed[chart_part] = serialize_pml(chart_root)
+
+            c_rels_part = posixpath.join(posixpath.dirname(chart_part), "_rels", posixpath.basename(chart_part) + ".rels")
+            emb_part = None
+            if c_rels_part in changed:
+                c_rels = parse_xml(changed[c_rels_part])
+                pkg_rel = next((r for r in c_rels if r.get("Type") == PACKAGE_REL_TYPE or (r.get("Type") or "").endswith("/package")), None)
+                if pkg_rel is not None:
+                    emb_part = resolve_rel_target(chart_part, pkg_rel.get("Target"))
+                    if emb_part in changed:
+                        changed[emb_part] = _update_embedded_xlsx(changed[emb_part], vals, categories)
+
+            approved_shapes_per_slide.setdefault(slide_num, set()).add(shape_id)
+            audit.append({
+                "name": name,
+                "slide": slide_num,
+                "target_type": target_type,
+                "shape_id": shape_id,
+                "chart_part": chart_part,
+                "embedded_workbook": emb_part,
+                "series_index": ser_idx,
+                "values_count": len(vals),
+                "source": item["source"],
+            })
+            continue
+
         if isinstance(raw_val, bool) or raw_val is None:
             raise DeckError(f"Slot {name!r} value must be a string or finite number")
 
@@ -572,11 +943,6 @@ def compose_deck(
             if not text_val.strip():
                 raise DeckError(f"Slot {name!r} replacement text cannot be empty")
 
-        slide_num = slot["slide"]
-        shape_id = slot["shape_id"]
-        shape_name = slot.get("shape_name")
-        target_type = slot["target_type"]
-        _, slide_tree = slide_part_map[slide_num]
         approved_shapes_per_slide.setdefault(slide_num, set()).add(shape_id)
 
         if target_type == "shape_text":
@@ -608,28 +974,67 @@ def compose_deck(
             "workbook_binding": binding,
         })
 
-    ET.register_namespace("a", A_NS)
-    ET.register_namespace("r", R_NS)
-    ET.register_namespace("p", P_NS)
-    ET.register_namespace("c", C_NS)
+    retained_slides = pack.get("retained_slides")
+    for slide_num, (s_part, mod_tree) in slide_part_map.items():
+        if retained_slides is not None and slide_num not in retained_slides:
+            continue
+        shape_ids = approved_shapes_per_slide.get(slide_num, set())
+        suppressed_ids = suppressed_shapes_per_slide.get(slide_num, set())
+        if shape_ids or suppressed_ids:
+            mod_bytes = serialize_pml(mod_tree)
+            verify_slide_changes(package.parts[s_part], mod_bytes, shape_ids, suppressed_ids)
+            changed[s_part] = mod_bytes
 
-    changed = dict(package.parts)
-    for slide_num, shape_ids in approved_shapes_per_slide.items():
-        s_part, mod_tree = slide_part_map[slide_num]
-        mod_bytes = ET.tostring(mod_tree, encoding="utf-8", xml_declaration=True)
-        verify_slide_changes(package.parts[s_part], mod_bytes, shape_ids)
-        changed[s_part] = mod_bytes
+    if retained_slides is not None:
+        pres_tree = parse_xml(changed["ppt/presentation.xml"])
+        sld_id_lst = pres_tree.find(f"{{{P_NS}}}sldIdLst")
+        orig_sld_ids = list(sld_id_lst.findall(f"{{{P_NS}}}sldId")) if sld_id_lst is not None else []
+        idx_to_sld_elem = {s_num: orig_sld_ids[s_num - 1] for s_num, _, _ in package.slides}
+        for elem in list(sld_id_lst):
+            sld_id_lst.remove(elem)
+        for s_num in retained_slides:
+            sld_id_lst.append(idx_to_sld_elem[s_num])
+        changed["ppt/presentation.xml"] = serialize_pml(pres_tree)
+
+        pres_rels_tree = parse_xml(changed["ppt/_rels/presentation.xml.rels"])
+        retained_rids = {idx_to_sld_elem[s_num].get(f"{{{R_NS}}}id") for s_num in retained_slides}
+        for rel in list(pres_rels_tree):
+            rtype = rel.get("Type") or ""
+            if rtype.endswith("/slide") and rel.get("Id") not in retained_rids:
+                pres_rels_tree.remove(rel)
+        changed["ppt/_rels/presentation.xml.rels"] = serialize_rels(pres_rels_tree)
+
+        pruned_slide_parts = set()
+        for s_num, s_part, _ in package.slides:
+            if s_num not in retained_slides:
+                pruned_slide_parts.add(s_part)
+                if s_part in changed:
+                    del changed[s_part]
+                s_rels = posixpath.join(posixpath.dirname(s_part), "_rels", posixpath.basename(s_part) + ".rels")
+                if s_rels in changed:
+                    del changed[s_rels]
+
+        ct_tree = parse_xml(changed["[Content_Types].xml"])
+        for override in list(ct_tree.findall("{http://schemas.openxmlformats.org/package/2006/content-types}Override")):
+            part_name = override.get("PartName", "").lstrip("/")
+            if part_name in pruned_slide_parts:
+                ct_tree.remove(override)
+        changed["[Content_Types].xml"] = serialize_content_types(ct_tree)
 
     stream = io.BytesIO()
     with zipfile.ZipFile(stream, "w") as archive:
         for entry in package.entries:
             if entry.filename in changed:
                 archive.writestr(copy(entry), changed[entry.filename])
+        for new_file, new_bytes in changed.items():
+            if new_file not in package.parts:
+                archive.writestr(new_file, new_bytes)
     output = stream.getvalue()
 
     result_pkg = PptxPackage(output)
-    if len(result_pkg.slides) != len(package.slides):
-        raise DeckError("Post-write slide count mismatch")
+    expected_slide_count = len(retained_slides) if retained_slides is not None else len(package.slides)
+    if len(result_pkg.slides) != expected_slide_count:
+        raise DeckError(f"Post-write slide count mismatch: expected {expected_slide_count}, got {len(result_pkg.slides)}")
 
     is_proposal = pack.get("status") == "proposal" or pack.get("approval") is None
     pending_gates = ["render_review"]
@@ -650,6 +1055,12 @@ def compose_deck(
         "preserved_part_count": sum(1 for k, v in changed.items() if v == package.parts.get(k)),
         "pending_gates": pending_gates,
     }
+    if retained_slides is not None:
+        manifest["retained_slides"] = retained_slides
+        manifest["source_slide_lineage"] = [
+            {"curated_slide": i + 1, "source_slide": s_num}
+            for i, s_num in enumerate(retained_slides)
+        ]
     return output, manifest
 
 
