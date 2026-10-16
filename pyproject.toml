@@ -1,9 +1,12 @@
 [project]
 name = "excel-model-maker-core"
-version = "0.1.0"
-description = "Template-preserving numeric-input composer and workbook preflight"
+version = "0.2.0"
+description = "Template-preserving numeric-input composer and styled JSON-to-XLSX report builder"
 requires-python = ">=3.11"
 dependencies = []
+
+[project.optional-dependencies]
+report = ["openpyxl>=3.1,<4"]
 
 [tool.unittest]
 start-directory = "."

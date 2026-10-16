@@ -1,0 +1,25 @@
+{
+  "title": "H1 FY2027 Monthly Sales Report",
+  "sheet_name": "H1 FY2027 Sales",
+  "columns": [
+    { "key": "month", "label": "Month", "type": "date" },
+    { "key": "units", "label": "Units Sold", "type": "integer", "total": true },
+    { "key": "revenue", "label": "Revenue (USD)", "type": "currency", "total": true },
+    { "key": "growth", "label": "MoM Growth", "type": "percent", "conditional": "color_scale" },
+    { "key": "margin", "label": "Gross Margin", "type": "percent", "conditional": "data_bar" }
+  ],
+  "rows": [
+    { "month": "2026-01-01", "units": 1180, "revenue": 40630.0, "growth": 0.041, "margin": 0.372 },
+    { "month": "2026-02-01", "units": 1245, "revenue": 42890.5, "growth": 0.055, "margin": 0.381 },
+    { "month": "2026-03-01", "units": 1372, "revenue": 47420.75, "growth": 0.106, "margin": 0.394 },
+    { "month": "2026-04-01", "units": 1290, "revenue": 44860.0, "growth": -0.054, "margin": 0.368 },
+    { "month": "2026-05-01", "units": 1418, "revenue": 49215.25, "growth": 0.097, "margin": 0.402 },
+    { "month": "2026-06-01", "units": 1503, "revenue": 52340.0, "growth": 0.063, "margin": 0.415 }
+  ],
+  "chart": {
+    "type": "bar",
+    "title": "Revenue by Month",
+    "categories": "month",
+    "series": ["revenue"]
+  }
+}

@@ -7,12 +7,29 @@ __pycache__/
 *.xlsx
 *.xlsm
 *.xlsb
+*.pptx
+!originals/ERR-4.pptx
 *.pdf
 *.mp4
 artifacts/
 scratch/
 candidates/
+generated/
 *.manifest.json
+
+# Generated report outputs and Excel lock files
+~$*
+*.tmp
+
+# OS and tool junk
+.DS_Store
+Thumbs.db
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
 
 # Binary source/output assets belong in versioned cloud object storage.
 
