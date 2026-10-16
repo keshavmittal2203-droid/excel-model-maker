@@ -8,7 +8,8 @@ import hashlib
 import io
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
+import re
 import shutil
 import sys
 import tempfile
@@ -45,6 +46,21 @@ def compute_file_sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def output_file(output_dir: Path, name: str, suffix: str) -> Path:
+    """Allow only a new leaf filename, never a request-controlled filesystem path."""
+    if (not isinstance(name, str) or not name or name != name.strip()
+            or name.endswith((".", " ")) or any(c in name for c in '/\\:\x00')
+            or PureWindowsPath(name).is_absolute() or Path(name).suffix.lower() != suffix
+            or re.match(r"^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\.|$)", name, re.I)):
+        raise ValueError(f"Invalid output_name: expected a plain {suffix} filename")
+    target = output_dir / name
+    if target.is_symlink() or target.exists():
+        raise ValueError(f"Output file already exists and will not be overwritten: {target}")
+    if target.resolve().parent != output_dir.resolve():
+        raise ValueError("Output filename escapes the package directory")
+    return target
+
+
 def check_com_capabilities() -> dict[str, Any]:
     """Inspect COM automation capabilities on the host environment."""
     capabilities: dict[str, Any] = {
@@ -67,18 +83,14 @@ def check_com_capabilities() -> dict[str, Any]:
     try:
         pythoncom.CoInitialize()
         try:
-            xl = win32com.client.Dispatch("Excel.Application")
+            pythoncom.CLSIDFromProgID("Excel.Application")
             capabilities["excel_com"] = True
-            capabilities["excel_version"] = str(getattr(xl, "Version", "unknown"))
-            xl.Quit()
         except Exception as e:
             capabilities["excel_error"] = str(e)
 
         try:
-            ppt = win32com.client.Dispatch("PowerPoint.Application")
+            pythoncom.CLSIDFromProgID("PowerPoint.Application")
             capabilities["powerpoint_com"] = True
-            capabilities["powerpoint_version"] = str(getattr(ppt, "Version", "unknown"))
-            ppt.Quit()
         except Exception as e:
             capabilities["powerpoint_error"] = str(e)
         finally:
@@ -86,6 +98,7 @@ def check_com_capabilities() -> dict[str, Any]:
     except Exception as e:
         capabilities["com_init_error"] = str(e)
 
+    capabilities["detection"] = "COM registration only; activation and engine version are not established"
     return capabilities
 
 
@@ -103,7 +116,7 @@ def verify_output_directory(output_dir: Path, force: bool = False) -> None:
     if res.exists() and any(res.iterdir()):
         if not force:
             raise RuntimeError(
-                f"Output directory {output_dir} already exists and is not empty. Use --force to allow overwriting."
+                f"Output directory {output_dir} already exists and is not empty. Choose a fresh run; --force does not permit overwriting."
             )
         # Check ownership when --force is supplied
         manifest_file = res / "package.manifest.json"
@@ -126,6 +139,7 @@ def verify_output_directory(output_dir: Path, force: bool = False) -> None:
                 f"Directory {output_dir} exists and is not empty, but does not contain a package.manifest.json. "
                 "Overwriting arbitrary non-package directories is prohibited even with --force."
             )
+        raise RuntimeError("Output directory already exists and is not empty; --force cannot safely reuse a run. Choose a fresh output directory.")
 
 
 def get_presentation_dimensions(pres_path: Path) -> tuple[int, int]:
@@ -166,9 +180,10 @@ def export_slide_previews_com(
         return exported
 
     pythoncom.CoInitialize()
-    ppt_app = win32com.client.Dispatch("PowerPoint.Application")
+    ppt_app = None
     pres = None
     try:
+        ppt_app = win32com.client.DispatchEx("PowerPoint.Application")
         pres = ppt_app.Presentations.Open(
             str(presentation_path.resolve()),
             ReadOnly=True,
@@ -186,10 +201,13 @@ def export_slide_previews_com(
                 "sha256": compute_file_sha(out_png),
             })
     finally:
-        if pres is not None:
-            pres.Close()
-        ppt_app.Quit()
-        pythoncom.CoUninitialize()
+        try:
+            if pres is not None:
+                pres.Close()
+        finally:
+            # PowerPoint may share one process even with DispatchEx. Close only
+            # our presentation, never the user's other presentations via Quit.
+            pythoncom.CoUninitialize()
     return exported
 
 
@@ -211,12 +229,15 @@ def export_sheet_previews_com(
         return exported
 
     pythoncom.CoInitialize()
-    xl_app = win32com.client.Dispatch("Excel.Application")
-    xl_app.Visible = False
-    xl_app.DisplayAlerts = False
+    xl_app = None
     wb = None
     try:
-        wb = xl_app.Workbooks.Open(str(workbook_path.resolve()), ReadOnly=True)
+        xl_app = win32com.client.DispatchEx("Excel.Application")
+        xl_app.Visible = False
+        xl_app.DisplayAlerts = False
+        xl_app.AskToUpdateLinks = False
+        xl_app.AutomationSecurity = 3
+        wb = xl_app.Workbooks.Open(str(workbook_path.resolve()), ReadOnly=True, UpdateLinks=0)
         for sname in sheets:
             try:
                 ws = wb.Sheets(sname)
@@ -237,10 +258,15 @@ def export_sheet_previews_com(
             except Exception as e:
                 print(f"Warning: Failed to export sheet {sname} to PDF: {e}")
     finally:
-        if wb is not None:
-            wb.Close(SaveChanges=False)
-        xl_app.Quit()
-        pythoncom.CoUninitialize()
+        try:
+            if wb is not None:
+                wb.Close(SaveChanges=False)
+        finally:
+            try:
+                if xl_app is not None:
+                    xl_app.Quit()
+            finally:
+                pythoncom.CoUninitialize()
     return exported
 
 
@@ -404,6 +430,12 @@ def build_package(
     req_text = request_path.read_text(encoding="utf-8")
     req = json.loads(req_text)
 
+    # Validate both output names before directory writes or Office activation.
+    wb_out_name = req["workbook"].get("output_name", "Marksans-Recalculated.xlsx")
+    pres_out_name = req["presentation"].get("output_name", "Marksans-Pharma-Overview.pptx")
+    wb_out_path = output_file(output_dir, wb_out_name, ".xlsx")
+    pres_out_path = output_file(output_dir, pres_out_name, ".pptx")
+
     # 1. Directory safety verification
     verify_output_directory(output_dir, force=force)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -441,13 +473,8 @@ def build_package(
         )
 
     # 3. Handle Workbook Composition and Recalculation
-    wb_out_name = wb_spec.get("output_name", "Marksans-Recalculated.xlsx")
-    wb_out_path = output_dir / wb_out_name
     expected_recalc_sha = wb_spec.get("expected_recalculated_sha256")
     candidate_src_rel = wb_spec.get("candidate_source")
-
-    if wb_out_path.exists():
-        wb_out_path.unlink()
 
     cand_path = (ROOT / candidate_src_rel).resolve() if candidate_src_rel else None
     if cand_path and cand_path.exists():
@@ -508,15 +535,7 @@ def build_package(
     from work.generate_wacc_images import generate_images
     generate_images(assets_dir=assets_dir, workbook_path=wb_out_path)
 
-    # Also synchronize to work/assets for legacy relative references
-    shared_assets_dir = ROOT / "work" / "assets"
-    if shared_assets_dir.resolve() != assets_dir.resolve():
-        generate_images(assets_dir=shared_assets_dir, workbook_path=wb_out_path)
-
     # 5. Compose Presentation Deck
-    pres_out_name = pres_spec.get("output_name", "Marksans-Pharma-Overview.pptx")
-    pres_out_path = output_dir / pres_out_name
-
     tpl_bytes = pres_tpl_path.read_bytes()
     deck_pack = read_json(str(deck_pack_path))
     deck_inputs = read_json(str(deck_inputs_path))
@@ -547,7 +566,8 @@ def build_package(
         workbook_bytes=wb_bytes,
         allow_proposal=allow_proposal,
     )
-    pres_out_path.write_bytes(composed_bytes)
+    with pres_out_path.open("xb") as destination:
+        destination.write(composed_bytes)
     pres_out_sha = compute_file_sha(pres_out_path)
 
     # 6. Export Previews (Slide PNGs and Sheet PDFs)
@@ -665,7 +685,7 @@ def main() -> int:
     parser.add_argument("--request", required=True, help="Path to package request JSON")
     parser.add_argument("--output-dir", required=True, help="Target output directory for the package build")
     parser.add_argument("--allow-proposal", action="store_true", help="Allow building with proposal model/deck packs")
-    parser.add_argument("--force", action="store_true", help="Allow overwriting an existing non-empty output directory")
+    parser.add_argument("--force", action="store_true", help="Legacy option; non-empty run directories are never overwritten")
     parser.add_argument("--skip-com", action="store_true", help="Skip PowerPoint and Excel COM preview exports")
     args = parser.parse_args()
 

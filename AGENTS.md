@@ -120,4 +120,6 @@ Format rules that matter:
 
 ## 7. Current status
 
+Package safety: build_package.py accepts plain output filenames only and requires a fresh run directory; --force does not allow nonempty run reuse. Capability probing checks COM registration without activating Office. Excel preview export uses DispatchEx with links/macros disabled; PowerPoint export closes only the presentation opened by the exporter, never the application. Replacement assets remain inside each run. See docs/CRITICAL_SAFETY_REVIEW.md and test_package_safety.py.
+
 STATUS.md is the current truth for what is implemented and what is blocked; ROADMAP.md is the plan; QUALITY.md is the release policy. To start from any coding assistant: connect it to this GitHub repository, ask it to read this file, then give it a separate issue.
