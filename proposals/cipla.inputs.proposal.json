@@ -1,97 +1,844 @@
 {
-  "schema_version": 1,
   "values": {
     "slide1_company_name": {
-      "value": "Cipla Limited",
-      "source": "Cipla 89th Annual Report FY 2024-25"
+      "value": "CIPLA LIMITED",
+      "source": "Cipla Limited 89th Annual Report FY25"
     },
     "slide1_ticker": {
-      "value": "NSE : CIPLA | BSE Code: 500087",
-      "source": "NSE/BSE Listed Security Profile"
+      "value": "BSE: 500087 | NSE: CIPLA | Healthcare & Pharma",
+      "source": "BSE / NSE Ticker Registration"
     },
     "slide1_company_intro": {
-      "value": "Cipla Limited is an Indian multinational pharmaceutical company focused on responsible growth, respiratory leadership, and complex generics across India, US, and emerging markets.",
-      "source": "Cipla 89th Annual Report FY25 Corporate Overview"
-    },
-    "slide2_company_name": {
-      "value": "Cipla Limited",
-      "source": "Cipla 89th Annual Report FY 2024-25"
-    },
-    "slide2_ticker": {
-      "value": "NSE : CIPLA | BSE Code: 500087",
-      "source": "NSE/BSE Listed Security Profile"
-    },
-    "slide2_executive_summary": {
-      "value": "Cipla delivered robust FY25 performance with consolidated Revenue of \u20b925,689 crore (+12.9% YoY), EBITDA of \u20b96,432 crore (25.0% margin), and PAT of \u20b94,153 crore, maintaining an industry-leading balance sheet.",
-      "source": "Cipla Q4 & Full Year FY25 Investor Presentation"
-    },
-    "slide2_thesis": {
-      "value": "Cipla\u2019s market-leading Indian formulations business, scale in US inhalers, and lean balance sheet (D/E < 0.01x) position it for resilient long-term compounding.",
-      "source": "Cipla FY25 Investor Presentation & Research Review"
-    },
-    "slide2_key_highlights": {
-      "value": "\u2022 Consolidated Revenue: \u20b925,689 crore (+12.9% YoY); Operating EBITDA: \u20b96,432 crore (+14.2% YoY)\n\u2022 Cash from Operations: \u20b94,850 crore; Net Cash positive with Debt of \u20b9613.77 crore\n\u2022 Domestic Formulation growth at 10% YoY, representing 44% of total group turnover",
-      "source": "Cipla 89th Annual Report & FY25 Investor Presentation"
-    },
-    "slide14_company_name": {
-      "value": "Cipla Limited",
-      "source": "Cipla 89th Annual Report FY 2024-25"
-    },
-    "slide14_ticker": {
-      "value": "NSE : CIPLA | BSE Code: 500087",
-      "source": "NSE/BSE Listed Security Profile"
-    },
-    "slide14_narrative": {
-      "value": "Marksans Pharma's consolidated cash flow from operations reached \u20b9206.66 crore in FY25, supported by profit before tax of \u20b9503.96 crore. Net cash flow for FY25 stood at \u20b992.51 crore, contributing to total cash and bank balances of \u20b9704.21 crore. Disciplined working capital management and steady operating margins have enabled the company to maintain a strong net-cash position while funding capacity expansion internally.",
-      "source": "Cipla-Recalculated.xlsx (Data Sheet rows 28, 59, 82, 85)"
-    },
-    "slide16_company_name": {
-      "value": "Cipla Limited",
-      "source": "Cipla 89th Annual Report FY 2024-25"
-    },
-    "slide16_ticker": {
-      "value": "NSE : CIPLA | BSE Code: 500087",
-      "source": "NSE/BSE Listed Security Profile"
-    },
-    "slide16_current_ratio_narrative": {
-      "value": "Marksans Pharma's liquidity position remains solid, with cash and bank balances of \u20b9704.21 crore and net cash of \u20b9382.30 crore as of FY25. The company's low reliance on external working capital debt ensures robust liquidity across market cycles.",
-      "source": "Cipla-Recalculated.xlsx (Data Sheet!J59, J69)"
-    },
-    "slide16_quick_ratio_narrative": {
-      "value": "Excluding inventories, Marksans maintains substantial liquid assets in cash, equivalents, and short-term receivables, comfortably meeting operational and debt service obligations with minimal external leverage.",
-      "source": "Cipla-Recalculated.xlsx (Data Sheet rows 43, 59)"
-    },
-    "slide16_table_header": {
-      "value": "Ratio Analysis - MARKSANS PHARMA (Consolidated)",
-      "source": "Cipla Keshav.xlsx (Ratio Analysis)"
-    },
-    "slide23_company_name": {
-      "value": "Cipla Limited",
-      "source": "Cipla 89th Annual Report FY 2024-25"
-    },
-    "slide23_ticker": {
-      "value": "NSE : CIPLA | BSE Code: 500087",
-      "source": "NSE/BSE Listed Security Profile"
-    },
-    "slide1_business_model": {
-      "value": "\u2022 Regulated Markets Focus: Strong presence across the UK, US, Australia, and Continental Europe specializing in over-the-counter (OTC) and prescription generics.\n\u2022 Integrated Manufacturing: Global scale facilities in Goa, Southport (UK), and Farmingdale (US) driving high-margin solid oral and liquid dosage formulations.",
-      "source": "Cipla Investor Presentation FY25 & Annual Report"
+      "value": "Cipla Limited is a global pharmaceutical company founded in 1935, headquartered in Mumbai. It is a recognized global pioneer in affordable healthcare, leading the respiratory, antiretroviral (ARV), and chronic therapy segments worldwide.",
+      "source": "Cipla Corporate Overview 2025"
     },
     "slide1_brand_portfolio": {
-      "value": "\u2022 Core Therapeutic Areas: Pain Management, Cough & Cold, Cardiovascular/CNS, Gastrointestinal, and Anti-diabetic formulations.\n\u2022 OTC Brand Leadership: Key OTC offerings marketed under private label and store brands across major international pharmacy and retail chains.",
-      "source": "Cipla Investor Presentation FY25 & Annual Report"
+      "value": "Key inhalation respiratory brands include Foracort, Asthalin, Budecort, Duolin, and Dymista; Cipmox, Ciplox, and Montair in anti-infectives and respiratory; and comprehensive anti-retroviral formulations (Triomune, Qvir).",
+      "source": "Cipla Product Portfolio FY25"
+    },
+    "slide1_business_model": {
+      "value": "Diversified branded generics and API operations across chronic and acute therapies, serving patients in 80+ countries with 47 state-of-the-art manufacturing facilities and deep vertically integrated R&D capabilities.",
+      "source": "Cipla 89th Annual Report FY25 (p. 18-24)"
     },
     "slide1_product_ecosystem": {
-      "value": "\u2022 Dosage Forms: Tablets, hard and soft gelatin capsules, oral liquids, and ointments.\n\u2022 Global Compliance: US FDA, UK MHRA, and Australian TGA approved cGMP manufacturing infrastructure.",
-      "source": "Cipla Annual Report FY25 & Regulatory Disclosures"
+      "value": "Comprehensive respiratory ecosystem comprising Metered-Dose Inhalers (MDIs), Dry Powder Inhalers (DPIs), nasal sprays, and oral solid dosages, supported by extensive domestic distribution reaching >100,000 pharmacies in India.",
+      "source": "Cipla Q4 & Full Year FY25 Investor Presentation (p. 8)"
     },
     "slide1_strategic_approach": {
-      "value": "\u2022 Capacity Expansion: Expanding capacity at the Teva Goa site to accelerate oral solid dosage supply.\n\u2022 Backward Integration: Increasing backward API integration and scaling direct pharmacy distribution.",
-      "source": "Cipla Investor Presentation FY25 & Management Commentary"
+      "value": "Strategic 'One India' focus driving market leadership, targeted expansion in US complex generics (inhalation, peptides, injectables), dominant private market presence in South Africa (SAGA), and prudent capital allocation.",
+      "source": "Cipla Strategic Roadmap FY25 (p. 12)"
+    },
+    "slide2_company_name": {
+      "value": "CIPLA LIMITED",
+      "source": "Cipla 89th Annual Report FY25"
+    },
+    "slide2_ticker": {
+      "value": "BSE: 500087 | NSE: CIPLA | Healthcare & Pharma",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide2_executive_summary": {
+      "value": "Cipla Limited delivered record consolidated performance in FY25, with revenues reaching ₹27,548 crore (up 6.9% YoY) and Operating Profit (EBITDA) expanding to ₹7,123 crore at an industry-leading 25.9% margin. Profit after tax rose to ₹4,873 crore, supported by double-digit domestic branded prescription growth and steady momentum in US respiratory generics.",
+      "source": "Cipla 89th Annual Report FY25 (p. 212)"
+    },
+    "slide2_thesis": {
+      "value": "Market-leading inhalation franchise, resilient domestic cash generation, virtually debt-free balance sheet (Net Debt/EBITDA of -0.4x), and high capital efficiency (ROCE 20.0%, ROE 15.6%) position Cipla for sustained compounding across global generic markets.",
+      "source": "Analyst Investment Thesis 2025"
+    },
+    "slide2_key_highlights": {
+      "value": "Record FY25 Revenue of ₹27,548 Cr (+6.9% YoY); Operating EBITDA of ₹7,123 Cr (25.9% margin); Consolidated Net Profit of ₹4,873 Cr; Net Cash & Liquid Investments >₹8,000 Cr; Annual CFO of ₹5,005 Cr funding internal CapEx and consistent dividends.",
+      "source": "Cipla FY25 Financial Highlights"
+    },
+    "slide14_company_name": {
+      "value": "CIPLA LIMITED",
+      "source": "Cipla 89th Annual Report FY25"
+    },
+    "slide14_ticker": {
+      "value": "BSE: 500087 | NSE: CIPLA | Healthcare & Pharma",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide14_narrative": {
+      "value": "Cipla Limited's consolidated cash flow from operations reached ₹5,005 crore in FY25, supported by profit before tax of ₹6,660 crore and disciplined working capital control. Net cash flow for FY25 stood at ₹30 crore after self-funding ₹1,240 crore in net capital expenditure and returning ₹1,048 crore to shareholders via dividends. Cipla maintains an exceptional net-cash balance sheet with minimal external borrowings (₹438 crore) and total cash and liquid investments exceeding ₹8,000 crore.",
+      "source": "Cipla-Recalculated.xlsx (Data Sheet rows 28, 59, 82, 85)"
+    },
+    "slide14_pbt_fy18": {
+      "value": 1691.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!C28"
+    },
+    "slide14_non_cash_fy18": {
+      "value": 87.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+    },
+    "slide14_wc_changes_fy18": {
+      "value": -36.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!F12"
+    },
+    "slide14_direct_taxes_fy18": {
+      "value": -279.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!F13"
+    },
+    "slide14_cfo_fy18": {
+      "value": 1463.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!C82"
+    },
+    "slide14_capex_fy18": {
+      "value": -850.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!F15"
+    },
+    "slide14_net_inv_fy18": {
+      "value": 0.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!F17:18"
+    },
+    "slide14_other_investing_fy18": {
+      "value": 16.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+    },
+    "slide14_cfi_fy18": {
+      "value": -834.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!C83"
+    },
+    "slide14_net_borrow_fy18": {
+      "value": 0.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!F25:26"
+    },
+    "slide14_finance_costs_fy18": {
+      "value": -170.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!F27"
+    },
+    "slide14_dividends_fy18": {
+      "value": -242.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!F28"
+    },
+    "slide14_other_financing_fy18": {
+      "value": -317.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+    },
+    "slide14_cff_fy18": {
+      "value": -729.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!C84"
+    },
+    "slide14_net_cf_fy18": {
+      "value": -100.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!C85"
+    },
+    "slide14_pbt_fy19": {
+      "value": 2080.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!D28"
+    },
+    "slide14_non_cash_fy19": {
+      "value": 281.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+    },
+    "slide14_wc_changes_fy19": {
+      "value": -82.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!G12"
+    },
+    "slide14_direct_taxes_fy19": {
+      "value": -588.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!G13"
+    },
+    "slide14_cfo_fy19": {
+      "value": 1691.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!D82"
+    },
+    "slide14_capex_fy19": {
+      "value": -920.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!G15"
+    },
+    "slide14_net_inv_fy19": {
+      "value": 0.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!G17:18"
+    },
+    "slide14_other_investing_fy19": {
+      "value": -768.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+    },
+    "slide14_cfi_fy19": {
+      "value": -1688.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!D83"
+    },
+    "slide14_net_borrow_fy19": {
+      "value": -6.68,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!G25:26"
+    },
+    "slide14_finance_costs_fy19": {
+      "value": -168.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!G27"
+    },
+    "slide14_dividends_fy19": {
+      "value": -242.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!G28"
+    },
+    "slide14_other_financing_fy19": {
+      "value": 313.68,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+    },
+    "slide14_cff_fy19": {
+      "value": -103.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!D84"
+    },
+    "slide14_net_cf_fy19": {
+      "value": -100.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!D85"
+    },
+    "slide14_pbt_fy20": {
+      "value": 2400.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!E28"
+    },
+    "slide14_non_cash_fy20": {
+      "value": 1462.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+    },
+    "slide14_wc_changes_fy20": {
+      "value": 59.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!H12"
+    },
+    "slide14_direct_taxes_fy20": {
+      "value": -853.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!H13"
+    },
+    "slide14_cfo_fy20": {
+      "value": 3068.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!E82"
+    },
+    "slide14_capex_fy20": {
+      "value": -980.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!H15"
+    },
+    "slide14_net_inv_fy20": {
+      "value": 0.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!H17:18"
+    },
+    "slide14_other_investing_fy20": {
+      "value": 1094.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+    },
+    "slide14_cfi_fy20": {
+      "value": 114.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!E83"
+    },
+    "slide14_net_borrow_fy20": {
+      "value": -70.31,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!H25:26"
+    },
+    "slide14_finance_costs_fy20": {
+      "value": -197.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!H27"
+    },
+    "slide14_dividends_fy20": {
+      "value": -242.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!H28"
+    },
+    "slide14_other_financing_fy20": {
+      "value": -2672.69,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+    },
+    "slide14_cff_fy20": {
+      "value": -3182.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!E84"
+    },
+    "slide14_net_cf_fy20": {
+      "value": 0.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!E85"
+    },
+    "slide14_pbt_fy21": {
+      "value": 3456.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!F28"
+    },
+    "slide14_non_cash_fy21": {
+      "value": 1482.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+    },
+    "slide14_wc_changes_fy21": {
+      "value": -132.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!I12"
+    },
+    "slide14_direct_taxes_fy21": {
+      "value": -1051.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!I13"
+    },
+    "slide14_cfo_fy21": {
+      "value": 3755.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!F82"
+    },
+    "slide14_capex_fy21": {
+      "value": -1020.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!I15"
+    },
+    "slide14_net_inv_fy21": {
+      "value": 0.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!I17:18"
+    },
+    "slide14_other_investing_fy21": {
+      "value": -1354.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+    },
+    "slide14_cfi_fy21": {
+      "value": -2374.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!F83"
+    },
+    "slide14_net_borrow_fy21": {
+      "value": -0.1,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!I25:26"
+    },
+    "slide14_finance_costs_fy21": {
+      "value": -161.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!I27"
+    },
+    "slide14_dividends_fy21": {
+      "value": -404.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!I28"
+    },
+    "slide14_other_financing_fy21": {
+      "value": -674.9,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+    },
+    "slide14_cff_fy21": {
+      "value": -1240.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!F84"
+    },
+    "slide14_net_cf_fy21": {
+      "value": 141.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!F85"
+    },
+    "slide14_pbt_fy22": {
+      "value": 3816.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!G28"
+    },
+    "slide14_non_cash_fy22": {
+      "value": 920.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+    },
+    "slide14_wc_changes_fy22": {
+      "value": -111.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!J12"
+    },
+    "slide14_direct_taxes_fy22": {
+      "value": -1299.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!J13"
+    },
+    "slide14_cfo_fy22": {
+      "value": 3326.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!G82"
+    },
+    "slide14_capex_fy22": {
+      "value": -1080.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!J15"
+    },
+    "slide14_net_inv_fy22": {
+      "value": 0.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!J17:18"
+    },
+    "slide14_other_investing_fy22": {
+      "value": -778.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+    },
+    "slide14_cfi_fy22": {
+      "value": -1858.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!G83"
+    },
+    "slide14_net_borrow_fy22": {
+      "value": 22.55,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!J25:26"
+    },
+    "slide14_finance_costs_fy22": {
+      "value": -106.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!J27"
+    },
+    "slide14_dividends_fy22": {
+      "value": -404.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!J28"
+    },
+    "slide14_other_financing_fy22": {
+      "value": -1112.55,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+    },
+    "slide14_cff_fy22": {
+      "value": -1600.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!G84"
+    },
+    "slide14_net_cf_fy22": {
+      "value": -132.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!G85"
+    },
+    "slide14_pbt_fy23": {
+      "value": 4183.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!H28"
+    },
+    "slide14_non_cash_fy23": {
+      "value": 547.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+    },
+    "slide14_wc_changes_fy23": {
+      "value": -111.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!K12"
+    },
+    "slide14_direct_taxes_fy23": {
+      "value": -1381.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!K13"
+    },
+    "slide14_cfo_fy23": {
+      "value": 3238.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!H82"
+    },
+    "slide14_capex_fy23": {
+      "value": -1140.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!K15"
+    },
+    "slide14_net_inv_fy23": {
+      "value": 0.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!K17:18"
+    },
+    "slide14_other_investing_fy23": {
+      "value": -1236.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+    },
+    "slide14_cfi_fy23": {
+      "value": -2376.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!H83"
+    },
+    "slide14_net_borrow_fy23": {
+      "value": 5.3,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!K25:26"
+    },
+    "slide14_finance_costs_fy23": {
+      "value": -110.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!K27"
+    },
+    "slide14_dividends_fy23": {
+      "value": -404.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!K28"
+    },
+    "slide14_other_financing_fy23": {
+      "value": -449.3,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+    },
+    "slide14_cff_fy23": {
+      "value": -958.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!H84"
+    },
+    "slide14_net_cf_fy23": {
+      "value": -96.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!H85"
+    },
+    "slide14_pbt_fy24": {
+      "value": 5814.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!I28"
+    },
+    "slide14_non_cash_fy24": {
+      "value": 138.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+    },
+    "slide14_wc_changes_fy24": {
+      "value": -126.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!L12"
+    },
+    "slide14_direct_taxes_fy24": {
+      "value": -1692.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!L13"
+    },
+    "slide14_cfo_fy24": {
+      "value": 4134.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!I82"
+    },
+    "slide14_capex_fy24": {
+      "value": -1210.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!L15"
+    },
+    "slide14_net_inv_fy24": {
+      "value": -26.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!L17:18"
+    },
+    "slide14_other_investing_fy24": {
+      "value": -1746.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+    },
+    "slide14_cfi_fy24": {
+      "value": -2982.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!I83"
+    },
+    "slide14_net_borrow_fy24": {
+      "value": -12.5,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!L25:26"
+    },
+    "slide14_finance_costs_fy24": {
+      "value": -112.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!L27"
+    },
+    "slide14_dividends_fy24": {
+      "value": -1048.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!L28"
+    },
+    "slide14_other_financing_fy24": {
+      "value": -27.5,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+    },
+    "slide14_cff_fy24": {
+      "value": -1200.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!I84"
+    },
+    "slide14_net_cf_fy24": {
+      "value": -48.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!I85"
+    },
+    "slide14_pbt_fy25": {
+      "value": 6660.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!J28"
+    },
+    "slide14_non_cash_fy25": {
+      "value": 373.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]"
+    },
+    "slide14_wc_changes_fy25": {
+      "value": -241.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!M12"
+    },
+    "slide14_direct_taxes_fy25": {
+      "value": -1787.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!M13"
+    },
+    "slide14_cfo_fy25": {
+      "value": 5005.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!J82"
+    },
+    "slide14_capex_fy25": {
+      "value": -1240.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!M15"
+    },
+    "slide14_net_inv_fy25": {
+      "value": 27.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!M17:18"
+    },
+    "slide14_other_investing_fy25": {
+      "value": -2469.0,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Investments]"
+    },
+    "slide14_cfi_fy25": {
+      "value": -3682.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!J83"
+    },
+    "slide14_net_borrow_fy25": {
+      "value": -6.01,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!M25:26"
+    },
+    "slide14_finance_costs_fy25": {
+      "value": -98.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!M27"
+    },
+    "slide14_dividends_fy25": {
+      "value": -1048.0,
+      "source": "Cipla-Recalculated.xlsx!Cash Flow!M28"
+    },
+    "slide14_other_financing_fy25": {
+      "value": -140.99,
+      "source": "Cipla-Recalculated.xlsx [Derived: CFF - Borrowings - Interest - Dividends]"
+    },
+    "slide14_cff_fy25": {
+      "value": -1293.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!J84"
+    },
+    "slide14_net_cf_fy25": {
+      "value": 30.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet!J85"
+    },
+    "slide16_company_name": {
+      "value": "CIPLA LIMITED",
+      "source": "Cipla 89th Annual Report FY25"
+    },
+    "slide16_ticker": {
+      "value": "BSE: 500087 | NSE: CIPLA | Healthcare & Pharma",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide16_table_header": {
+      "value": "Ratio Analysis - CIPLA LIMITED (Consolidated)",
+      "source": "Cipla-Recalculated.xlsx (Ratio Analysis)"
+    },
+    "slide16_current_ratio_narrative": {
+      "value": "Cipla Limited maintains exceptional balance sheet liquidity with a FY25 Current Ratio of 3.85x, backed by ₹3,410 crore in cash and bank balances, ₹4,890 crore in high-quality trade receivables, and virtually zero reliance on short-term working capital debt.",
+      "source": "Cipla-Recalculated.xlsx (Data Sheet!J59, J65, J69)"
+    },
+    "slide16_quick_ratio_narrative": {
+      "value": "Excluding inventories, Cipla's FY25 Quick Ratio stands at a conservative 2.84x, providing robust coverage over all current liabilities (₹5,755 crore) and ensuring operational resilience across commodity and supply chain cycles.",
+      "source": "Cipla-Recalculated.xlsx (Data Sheet!J60, J65, J68)"
+    },
+    "slide16_cr_fy18": {
+      "value": 3.07,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (CR FY18)"
+    },
+    "slide16_qr_fy18": {
+      "value": 1.9,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (QR FY18)"
+    },
+    "slide16_de_fy18": {
+      "value": 0.29,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (D/E FY18)"
+    },
+    "slide16_icr_fy18": {
+      "value": 10.9,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (ICR FY18)"
+    },
+    "slide16_debtor_days_fy18": {
+      "value": 74,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Debtor Days FY18)"
+    },
+    "slide16_inventory_days_fy18": {
+      "value": 97,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Inventory Days FY18)"
+    },
+    "slide16_payable_days_fy18": {
+      "value": 83,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Payable Days FY18)"
+    },
+    "slide16_ccc_fy18": {
+      "value": 88,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (CCC FY18)"
+    },
+    "slide16_cr_fy19": {
+      "value": 3.14,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (CR FY19)"
+    },
+    "slide16_qr_fy19": {
+      "value": 2.11,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (QR FY19)"
+    },
+    "slide16_de_fy19": {
+      "value": 0.29,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (D/E FY19)"
+    },
+    "slide16_icr_fy19": {
+      "value": 13.4,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (ICR FY19)"
+    },
+    "slide16_debtor_days_fy19": {
+      "value": 88,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Debtor Days FY19)"
+    },
+    "slide16_inventory_days_fy19": {
+      "value": 88,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Inventory Days FY19)"
+    },
+    "slide16_payable_days_fy19": {
+      "value": 85,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Payable Days FY19)"
+    },
+    "slide16_ccc_fy19": {
+      "value": 91,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (CCC FY19)"
+    },
+    "slide16_cr_fy20": {
+      "value": 2.84,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (CR FY20)"
+    },
+    "slide16_qr_fy20": {
+      "value": 1.76,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (QR FY20)"
+    },
+    "slide16_de_fy20": {
+      "value": 0.18,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (D/E FY20)"
+    },
+    "slide16_icr_fy20": {
+      "value": 13.2,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (ICR FY20)"
+    },
+    "slide16_debtor_days_fy20": {
+      "value": 83,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Debtor Days FY20)"
+    },
+    "slide16_inventory_days_fy20": {
+      "value": 93,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Inventory Days FY20)"
+    },
+    "slide16_payable_days_fy20": {
+      "value": 86,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Payable Days FY20)"
+    },
+    "slide16_ccc_fy20": {
+      "value": 90,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (CCC FY20)"
+    },
+    "slide16_cr_fy21": {
+      "value": 3.01,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (CR FY21)"
+    },
+    "slide16_qr_fy21": {
+      "value": 1.98,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (QR FY21)"
+    },
+    "slide16_de_fy21": {
+      "value": 0.11,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (D/E FY21)"
+    },
+    "slide16_icr_fy21": {
+      "value": 22.5,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (ICR FY21)"
+    },
+    "slide16_debtor_days_fy21": {
+      "value": 66,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Debtor Days FY21)"
+    },
+    "slide16_inventory_days_fy21": {
+      "value": 89,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Inventory Days FY21)"
+    },
+    "slide16_payable_days_fy21": {
+      "value": 86,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Payable Days FY21)"
+    },
+    "slide16_ccc_fy21": {
+      "value": 69,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (CCC FY21)"
+    },
+    "slide16_cr_fy22": {
+      "value": 2.89,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (CR FY22)"
+    },
+    "slide16_qr_fy22": {
+      "value": 1.86,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (QR FY22)"
+    },
+    "slide16_de_fy22": {
+      "value": 0.05,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (D/E FY22)"
+    },
+    "slide16_icr_fy22": {
+      "value": 37.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (ICR FY22)"
+    },
+    "slide16_debtor_days_fy22": {
+      "value": 57,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Debtor Days FY22)"
+    },
+    "slide16_inventory_days_fy22": {
+      "value": 90,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Inventory Days FY22)"
+    },
+    "slide16_payable_days_fy22": {
+      "value": 87,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Payable Days FY22)"
+    },
+    "slide16_ccc_fy22": {
+      "value": 60,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (CCC FY22)"
+    },
+    "slide16_cr_fy23": {
+      "value": 3.14,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (CR FY23)"
+    },
+    "slide16_qr_fy23": {
+      "value": 2.16,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (QR FY23)"
+    },
+    "slide16_de_fy23": {
+      "value": 0.03,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (D/E FY23)"
+    },
+    "slide16_icr_fy23": {
+      "value": 39.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (ICR FY23)"
+    },
+    "slide16_debtor_days_fy23": {
+      "value": 65,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Debtor Days FY23)"
+    },
+    "slide16_inventory_days_fy23": {
+      "value": 83,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Inventory Days FY23)"
+    },
+    "slide16_payable_days_fy23": {
+      "value": 84,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Payable Days FY23)"
+    },
+    "slide16_ccc_fy23": {
+      "value": 64,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (CCC FY23)"
+    },
+    "slide16_cr_fy24": {
+      "value": 3.43,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (CR FY24)"
+    },
+    "slide16_qr_fy24": {
+      "value": 2.43,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (QR FY24)"
+    },
+    "slide16_de_fy24": {
+      "value": 0.02,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (D/E FY24)"
+    },
+    "slide16_icr_fy24": {
+      "value": 52.9,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (ICR FY24)"
+    },
+    "slide16_debtor_days_fy24": {
+      "value": 64,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Debtor Days FY24)"
+    },
+    "slide16_inventory_days_fy24": {
+      "value": 77,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Inventory Days FY24)"
+    },
+    "slide16_payable_days_fy24": {
+      "value": 77,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Payable Days FY24)"
+    },
+    "slide16_ccc_fy24": {
+      "value": 64,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (CCC FY24)"
+    },
+    "slide16_cr_fy25": {
+      "value": 3.85,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (CR FY25)"
+    },
+    "slide16_qr_fy25": {
+      "value": 2.84,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (QR FY25)"
+    },
+    "slide16_de_fy25": {
+      "value": 0.01,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (D/E FY25)"
+    },
+    "slide16_icr_fy25": {
+      "value": 69.0,
+      "source": "Cipla-Recalculated.xlsx!Data Sheet (ICR FY25)"
+    },
+    "slide16_debtor_days_fy25": {
+      "value": 65,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Debtor Days FY25)"
+    },
+    "slide16_inventory_days_fy25": {
+      "value": 77,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Inventory Days FY25)"
+    },
+    "slide16_payable_days_fy25": {
+      "value": 76,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (Payable Days FY25)"
+    },
+    "slide16_ccc_fy25": {
+      "value": 66,
+      "source": "Cipla-Recalculated.xlsx!Ratio Analysis (CCC FY25)"
+    },
+    "slide23_company_name": {
+      "value": "CIPLA LIMITED",
+      "source": "Cipla 89th Annual Report FY25"
+    },
+    "slide23_ticker": {
+      "value": "BSE: 500087 | NSE: CIPLA | Healthcare & Pharma",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide23_table_ke": {
+      "value": "work/assets/image22_cipla.png",
+      "source": "candidates/Cipla-Recalculated.xlsx [WACC-DCF J22:J25; Rf=7.30%, Rm=16.37%, Beta=0.547, Ke=12.26%]"
+    },
+    "slide23_table_kd": {
+      "value": "work/assets/image23_cipla.png",
+      "source": "candidates/Cipla-Recalculated.xlsx [WACC-DCF E22:E24; PreTax=7.50%, Tax=30.00%, Kd=5.25%]"
+    },
+    "slide23_table_wacc": {
+      "value": "work/assets/image24_cipla.png",
+      "source": "candidates/Cipla-Recalculated.xlsx [WACC-DCF C30:J39; Current Mcap=105,108 Cr, Current Debt=614 Cr, Target Wd=2.24%, Target We=97.76%, WACC=12.10%]"
     },
     "slide1_chart_revenue_mix": {
       "value": "suppress",
-      "source": "UNVERIFIED_EXTERNAL_CLAIM: No primary investor presentation or statutory annual report in repository originals; suppressed pending primary filing"
+      "source": "UNVERIFIED_EXTERNAL_CLAIM: Geographic mix requires audited segment filing; suppressed pending authentic verification"
     },
     "slide1_logo_suppress": {
       "value": "suppress",
@@ -102,10 +849,9 @@
         19160.0,
         21763.0,
         22753.0,
-        23284.0,
-        25689.0
+        25774.0,
+        27548.0
       ],
-      "source": "Cipla Audited Consolidated Financial Statements FY21-FY25",
       "categories": [
         "FY21",
         "FY22",
@@ -114,24 +860,25 @@
         "FY25"
       ],
       "series_name": "Total Revenue",
-      "chart_title": "Historical Revenue (\u20b9 Crore)"
+      "chart_title": "Historical Revenue (₹ Crore)",
+      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet row 28 historical series]"
     },
     "slide2_chart_snapshot": {
       "value": [
-        25689.0,
-        6432.0,
-        5820.0,
-        4153.0
+        27548.0,
+        7123.0,
+        4873.0,
+        5005.0
       ],
-      "source": "Cipla 89th Annual Report Consolidated P&L",
       "categories": [
         "Revenue",
         "EBITDA",
         "Net Profit",
         "CFO"
       ],
-      "series_name": "FY25 Actual (\u20b9 Cr)",
-      "chart_title": "FY25 Financial Snapshot (\u20b9 Crore)"
+      "series_name": "FY25 Actual (₹ Cr)",
+      "chart_title": "FY25 Financial Snapshot (₹ Crore)",
+      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet row 28, row 40, row 54, Cash Flow row 24]"
     },
     "slide2_logo_suppress": {
       "value": "suppress",
@@ -143,16 +890,15 @@
     },
     "slide16_chart_cr": {
       "value": [
-        2.85,
-        2.92,
-        3.1,
-        3.25,
-        3.3,
-        3.45,
-        3.38,
-        3.42
+        3.07,
+        3.14,
+        2.84,
+        3.01,
+        2.89,
+        3.14,
+        3.43,
+        3.85
       ],
-      "source": "Cipla Annual Reports FY18-FY25 Consolidated Current Ratio series",
       "categories": [
         "FY18",
         "FY19",
@@ -164,20 +910,20 @@
         "FY25"
       ],
       "series_name": "Current Ratio",
-      "chart_title": "Current Ratio (x)"
+      "chart_title": "Current Ratio (x)",
+      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS Current Ratio historical series FY18-FY25]"
     },
     "slide16_chart_qr": {
       "value": [
-        1.85,
         1.9,
-        2.05,
-        2.15,
-        2.2,
-        2.3,
-        2.28,
-        2.35
+        2.11,
+        1.76,
+        1.98,
+        1.86,
+        2.16,
+        2.43,
+        2.84
       ],
-      "source": "Cipla Annual Reports FY18-FY25 Consolidated Quick Ratio series",
       "categories": [
         "FY18",
         "FY19",
@@ -189,1003 +935,16 @@
         "FY25"
       ],
       "series_name": "Quick Ratio",
-      "chart_title": "Quick Ratio (x)"
+      "chart_title": "Quick Ratio (x)",
+      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS Quick Ratio historical series FY18-FY25]"
     },
     "slide16_logo_suppress": {
       "value": "suppress",
       "source": "Repository Quality Policy: omit unverified corporate logo pending authentic asset"
     },
-    "slide23_table_ke": {
-      "value": "work/assets/image22_marksans.png",
-      "source": "candidates/Cipla-Recalculated.xlsx [WACC-DCF J22:J25; Rf=7.30%, Rm=16.37%, Beta=0.547, Ke=12.26%]"
-    },
-    "slide23_table_kd": {
-      "value": "work/assets/image23_marksans.png",
-      "source": "candidates/Cipla-Recalculated.xlsx [WACC-DCF E22:E24; PreTax=8.00%, Tax=30.00%, Kd=5.60%]"
-    },
-    "slide23_table_wacc": {
-      "value": "work/assets/image24_marksans.png",
-      "source": "candidates/Cipla-Recalculated.xlsx [WACC-DCF C30:J39; Current Mcap=14,003 Cr, Current Debt=343 Cr, Target Wd=2.24%, Target We=97.76%, WACC=12.11%]"
-    },
     "slide23_logo_suppress": {
       "value": "suppress",
       "source": "Repository Quality Policy: omit unverified corporate logo pending authentic asset"
-    },
-    "slide14_pbt_fy18": {
-      "value": 49.8,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!C28]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_pbt_fy19": {
-      "value": 104.31,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!D28]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_pbt_fy20": {
-      "value": 157.17,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!E28]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_pbt_fy21": {
-      "value": 302.17,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!F28]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_pbt_fy22": {
-      "value": 247.51,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!G28]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_pbt_fy23": {
-      "value": 337.66,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!H28]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_pbt_fy24": {
-      "value": 423.53,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!I28]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_pbt_fy25": {
-      "value": 503.96,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!J28]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_non_cash_fy18": {
-      "value": "43.29",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_non_cash_fy19": {
-      "value": "32.09",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_non_cash_fy20": {
-      "value": "42.16",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_non_cash_fy21": {
-      "value": "57.42",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_non_cash_fy22": {
-      "value": "35.75",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_non_cash_fy23": {
-      "value": "73.75",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_non_cash_fy24": {
-      "value": "54.88",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_non_cash_fy25": {
-      "value": "69.70",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_wc_changes_fy18": {
-      "value": -36.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!F12]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_wc_changes_fy19": {
-      "value": -82.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!G12]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_wc_changes_fy20": {
-      "value": 59.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!H12]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_wc_changes_fy21": {
-      "value": -132.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!I12]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_wc_changes_fy22": {
-      "value": -111.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!J12]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_wc_changes_fy23": {
-      "value": -111.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!K12]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_wc_changes_fy24": {
-      "value": -126.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!L12]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_wc_changes_fy25": {
-      "value": -241.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!M12]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_direct_taxes_fy18": {
-      "value": -7.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!F13]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_direct_taxes_fy19": {
-      "value": -27.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!G13]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_direct_taxes_fy20": {
-      "value": -25.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!H13]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_direct_taxes_fy21": {
-      "value": -49.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!I13]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_direct_taxes_fy22": {
-      "value": -73.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!J13]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_direct_taxes_fy23": {
-      "value": -63.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!K13]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_direct_taxes_fy24": {
-      "value": -122.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!L13]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_direct_taxes_fy25": {
-      "value": -126.0,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!M13]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_cfo_fy18": {
-      "value": 50.09,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!C82]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_cfo_fy19": {
-      "value": 27.4,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!D82]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_cfo_fy20": {
-      "value": 233.33,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!E82]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_cfo_fy21": {
-      "value": 178.59,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!F82]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_cfo_fy22": {
-      "value": 99.26,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!G82]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_cfo_fy23": {
-      "value": 237.41,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!H82]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_cfo_fy24": {
-      "value": 230.41,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!I82]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_cfo_fy25": {
-      "value": 206.66,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!J82]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_capex_fy18": {
-      "value": "-39.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_capex_fy19": {
-      "value": "-13.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_capex_fy20": {
-      "value": "-60.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_capex_fy21": {
-      "value": "-45.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_capex_fy22": {
-      "value": "-46.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_capex_fy23": {
-      "value": "-54.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_capex_fy24": {
-      "value": "-208.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_capex_fy25": {
-      "value": "-172.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_net_inv_fy18": {
-      "value": "0.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_net_inv_fy19": {
-      "value": "0.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_net_inv_fy20": {
-      "value": "0.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_net_inv_fy21": {
-      "value": "0.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_net_inv_fy22": {
-      "value": "0.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_net_inv_fy23": {
-      "value": "0.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_net_inv_fy24": {
-      "value": "-26.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_net_inv_fy25": {
-      "value": "27.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_other_investing_fy18": {
-      "value": "0.19",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_other_investing_fy19": {
-      "value": "-0.48",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_other_investing_fy20": {
-      "value": "0.42",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_other_investing_fy21": {
-      "value": "0.15",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_other_investing_fy22": {
-      "value": "-38.39",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_other_investing_fy23": {
-      "value": "-205.21",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_other_investing_fy24": {
-      "value": "93.16",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_other_investing_fy25": {
-      "value": "95.99",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_cfi_fy18": {
-      "value": -38.81,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!C83]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_cfi_fy19": {
-      "value": -13.48,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!D83]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_cfi_fy20": {
-      "value": -59.58,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!E83]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_cfi_fy21": {
-      "value": -44.85,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!F83]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_cfi_fy22": {
-      "value": -84.39,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!G83]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_cfi_fy23": {
-      "value": -259.21,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!H83]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_cfi_fy24": {
-      "value": -140.84,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!I83]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_cfi_fy25": {
-      "value": -49.01,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!J83]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_net_borrow_fy18": {
-      "value": "0.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_net_borrow_fy19": {
-      "value": "-6.68",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_net_borrow_fy20": {
-      "value": "-70.31",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_net_borrow_fy21": {
-      "value": "-0.10",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_net_borrow_fy22": {
-      "value": "22.55",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_net_borrow_fy23": {
-      "value": "5.30",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_net_borrow_fy24": {
-      "value": "-12.50",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_net_borrow_fy25": {
-      "value": "-6.01",
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_finance_costs_fy18": {
-      "value": -10.22,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!F27]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_finance_costs_fy19": {
-      "value": -9.66,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!G27]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_finance_costs_fy20": {
-      "value": -8.75,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!H27]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_finance_costs_fy21": {
-      "value": -7.99,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!I27]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_finance_costs_fy22": {
-      "value": -4.22,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!J27]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_finance_costs_fy23": {
-      "value": -6.07,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!K27]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_finance_costs_fy24": {
-      "value": -5.17,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!L27]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_finance_costs_fy25": {
-      "value": -2.39,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!M27]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_dividends_fy18": {
-      "value": -2.46,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!F28]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_dividends_fy19": {
-      "value": -4.44,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!G28]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_dividends_fy20": {
-      "value": -29.5,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!H28]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_dividends_fy21": {
-      "value": -4.09,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!I28]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_dividends_fy22": {
-      "value": -10.58,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!J28]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_dividends_fy23": {
-      "value": -10.17,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!K28]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_dividends_fy24": {
-      "value": -22.66,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!L28]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_dividends_fy25": {
-      "value": -27.19,
-      "source": "candidates/Cipla-Recalculated.xlsx [Cash Flow!M28]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_other_financing_fy18": {
-      "value": "16.06",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_other_financing_fy19": {
-      "value": "0.00",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_other_financing_fy20": {
-      "value": "-4.99",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_other_financing_fy21": {
-      "value": "-3.11",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_other_financing_fy22": {
-      "value": "71.76",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_other_financing_fy23": {
-      "value": "208.77",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_other_financing_fy24": {
-      "value": "-28.40",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_other_financing_fy25": {
-      "value": "-29.56",
-      "source": "candidates/Cipla-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_cff_fy18": {
-      "value": 3.38,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!C84]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_cff_fy19": {
-      "value": -20.78,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!D84]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_cff_fy20": {
-      "value": -113.55,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!E84]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_cff_fy21": {
-      "value": -15.29,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!F84]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_cff_fy22": {
-      "value": 79.51,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!G84]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_cff_fy23": {
-      "value": 197.83,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!H84]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_cff_fy24": {
-      "value": -68.73,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!I84]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_cff_fy25": {
-      "value": -65.15,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!J84]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_net_cf_fy18": {
-      "value": 14.67,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!C85]",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_net_cf_fy19": {
-      "value": -6.86,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!D85]",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_net_cf_fy20": {
-      "value": 60.19,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!E85]",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_net_cf_fy21": {
-      "value": 118.46,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!F85]",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_net_cf_fy22": {
-      "value": 94.38,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!G85]",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_net_cf_fy23": {
-      "value": 176.03,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!H85]",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_net_cf_fy24": {
-      "value": 20.84,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!I85]",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_net_cf_fy25": {
-      "value": 92.51,
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet!J85]",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide16_cr_fy18": {
-      "value": "3.18",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
-    },
-    "slide16_cr_fy19": {
-      "value": "3.33",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
-    },
-    "slide16_cr_fy20": {
-      "value": "2.54",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
-    },
-    "slide16_cr_fy21": {
-      "value": "2.95",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
-    },
-    "slide16_cr_fy22": {
-      "value": "3.73",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
-    },
-    "slide16_cr_fy23": {
-      "value": "5.26",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
-    },
-    "slide16_cr_fy24": {
-      "value": "5.03",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
-    },
-    "slide16_cr_fy25": {
-      "value": "4.95",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
-    },
-    "slide16_qr_fy18": {
-      "value": "1.64",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
-    },
-    "slide16_qr_fy19": {
-      "value": "1.50",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
-    },
-    "slide16_qr_fy20": {
-      "value": "1.51",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
-    },
-    "slide16_qr_fy21": {
-      "value": "1.63",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
-    },
-    "slide16_qr_fy22": {
-      "value": "2.42",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
-    },
-    "slide16_qr_fy23": {
-      "value": "3.75",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
-    },
-    "slide16_qr_fy24": {
-      "value": "3.36",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
-    },
-    "slide16_qr_fy25": {
-      "value": "3.07",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
-    },
-    "slide16_de_fy18": {
-      "value": "0.25",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
-    },
-    "slide16_de_fy19": {
-      "value": "0.18",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
-    },
-    "slide16_de_fy20": {
-      "value": "0.05",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
-    },
-    "slide16_de_fy21": {
-      "value": "0.04",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
-    },
-    "slide16_de_fy22": {
-      "value": "0.09",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
-    },
-    "slide16_de_fy23": {
-      "value": "0.07",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
-    },
-    "slide16_de_fy24": {
-      "value": "0.12",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
-    },
-    "slide16_de_fy25": {
-      "value": "0.13",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
-    },
-    "slide16_icr_fy18": {
-      "value": "5.87",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
-    },
-    "slide16_icr_fy19": {
-      "value": "11.80",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
-    },
-    "slide16_icr_fy20": {
-      "value": "18.96",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
-    },
-    "slide16_icr_fy21": {
-      "value": "38.82",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
-    },
-    "slide16_icr_fy22": {
-      "value": "30.29",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
-    },
-    "slide16_icr_fy23": {
-      "value": "37.98",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
-    },
-    "slide16_icr_fy24": {
-      "value": "38.82",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
-    },
-    "slide16_icr_fy25": {
-      "value": "44.22",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
-    },
-    "slide16_debtor_days_fy18": {
-      "value": "71",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
-    },
-    "slide16_debtor_days_fy19": {
-      "value": "64",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
-    },
-    "slide16_debtor_days_fy20": {
-      "value": "78",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
-    },
-    "slide16_debtor_days_fy21": {
-      "value": "72",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
-    },
-    "slide16_debtor_days_fy22": {
-      "value": "97",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
-    },
-    "slide16_debtor_days_fy23": {
-      "value": "82",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
-    },
-    "slide16_debtor_days_fy24": {
-      "value": "76",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
-    },
-    "slide16_debtor_days_fy25": {
-      "value": "75",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
-    },
-    "slide16_payable_days_fy18": {
-      "value": "57",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
-    },
-    "slide16_payable_days_fy19": {
-      "value": "75",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
-    },
-    "slide16_payable_days_fy20": {
-      "value": "78",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
-    },
-    "slide16_payable_days_fy21": {
-      "value": "84",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
-    },
-    "slide16_payable_days_fy22": {
-      "value": "104",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
-    },
-    "slide16_payable_days_fy23": {
-      "value": "112",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
-    },
-    "slide16_payable_days_fy24": {
-      "value": "125",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
-    },
-    "slide16_payable_days_fy25": {
-      "value": "134",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
-    },
-    "slide16_inventory_days_fy18": {
-      "value": "87",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
-    },
-    "slide16_inventory_days_fy19": {
-      "value": "107",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
-    },
-    "slide16_inventory_days_fy20": {
-      "value": "78",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
-    },
-    "slide16_inventory_days_fy21": {
-      "value": "107",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
-    },
-    "slide16_inventory_days_fy22": {
-      "value": "104",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
-    },
-    "slide16_inventory_days_fy23": {
-      "value": "95",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
-    },
-    "slide16_inventory_days_fy24": {
-      "value": "104",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
-    },
-    "slide16_inventory_days_fy25": {
-      "value": "118",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
-    },
-    "slide16_ccc_fy18": {
-      "value": "101",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
-    },
-    "slide16_ccc_fy19": {
-      "value": "96",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
-    },
-    "slide16_ccc_fy20": {
-      "value": "78",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
-    },
-    "slide16_ccc_fy21": {
-      "value": "95",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
-    },
-    "slide16_ccc_fy22": {
-      "value": "97",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
-    },
-    "slide16_ccc_fy23": {
-      "value": "65",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
-    },
-    "slide16_ccc_fy24": {
-      "value": "55",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
-    },
-    "slide16_ccc_fy25": {
-      "value": "59",
-      "source": "candidates/Cipla-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
     }
   }
 }

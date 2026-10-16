@@ -591,6 +591,21 @@ def validate_package_request(req: dict[str, Any], request_path: Path) -> None:
                         f"Missing mapping for deck slot {s_name!r}: slot is not in supplied values "
                         f"and has no workbook binding. Missing values must never silently become zero or retain another company's data."
                     )
+                if has_val:
+                    val_entry = supplied_vals[s_name]
+                    v_val = val_entry.get("value") if isinstance(val_entry, dict) else val_entry
+                    if v_val is None or (isinstance(v_val, str) and not v_val.strip()):
+                        raise ValueError(f"Unmapped or empty value for deck slot {s_name!r}")
+
+            # Check company consistency between request and deck inputs
+            if "company" in req and "slide1_company_name" in supplied_vals:
+                req_comp_name = comp["name"].lower()
+                deck_comp_val = str(supplied_vals["slide1_company_name"].get("value", "")).lower()
+                if ("cipla" in req_comp_name and "marksans" in deck_comp_val) or \
+                   ("marksans" in req_comp_name and "cipla" in deck_comp_val):
+                    raise ValueError(
+                        f"Company mismatch: request company is {comp['name']!r} but deck inputs specify {deck_comp_val!r}"
+                    )
 
 
 def build_package(
@@ -653,6 +668,7 @@ def build_package(
     # 3. Handle Workbook Composition and Recalculation
     expected_recalc_sha = wb_spec.get("expected_recalculated_sha256")
     candidate_src_rel = wb_spec.get("candidate_source")
+    adapter_rel = wb_spec.get("adapter")
 
     cand_path = (ROOT / candidate_src_rel).resolve() if candidate_src_rel else None
     if cand_path and cand_path.exists():
@@ -668,18 +684,24 @@ def build_package(
                 f"Excel COM is required for workbook recalculation but is not available on this system ({com_caps.get('excel_error')})."
             )
 
-        # Check if custom model inputs are supplied in request (e.g. Scenario B)
-        wb_inputs_path = (ROOT / wb_spec["inputs"]).resolve() if "inputs" in wb_spec else None
-        if wb_inputs_path and wb_inputs_path.exists():
-            print(f"Composing workbook inputs from {wb_inputs_path} into template...")
-            tpl_bytes = wb_src_path.read_bytes()
-            model_pack = read_json(str(model_pack_path))
-            wb_inputs = read_json(str(wb_inputs_path))
-            composed_bytes, _ = compose(tpl_bytes, model_pack, wb_inputs, allow_proposal=allow_proposal)
+        if adapter_rel:
+            adapter_path = (ROOT / adapter_rel).resolve()
+            if not adapter_path.exists():
+                raise FileNotFoundError(f"Configured workbook adapter not found: {adapter_path}")
+            print(f"Running workbook adapter {adapter_path}...")
             with tempfile.TemporaryDirectory() as td:
-                staged_path = Path(td) / "staged_composed.xlsx"
-                staged_path.write_bytes(composed_bytes)
-                print(f"Recalculating composed workbook to {wb_out_path}...")
+                staged_path = Path(td) / "staged_adapted.xlsx"
+                import importlib.util
+                spec = importlib.util.spec_from_file_location("wb_adapter", adapter_path)
+                mod = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(mod)
+                if hasattr(mod, "adapt_workbook_for_cipla"):
+                    mod.adapt_workbook_for_cipla(staged_path)
+                elif hasattr(mod, "adapt_workbook"):
+                    mod.adapt_workbook(wb_src_path, staged_path)
+                else:
+                    raise AttributeError(f"Adapter module {adapter_path} missing adapt_workbook_for_cipla or adapt_workbook")
+                print(f"Recalculating adapted workbook to {wb_out_path}...")
                 validate_candidate(
                     workbook_path=staged_path,
                     pack_path=model_pack_path,
@@ -688,14 +710,34 @@ def build_package(
                     allow_proposal=allow_proposal,
                 )
         else:
-            print(f"Recalculating workbook to {wb_out_path}...")
-            validate_candidate(
-                workbook_path=wb_src_path,
-                pack_path=model_pack_path,
-                recalculate=True,
-                recalculated_output=wb_out_path,
-                allow_proposal=allow_proposal,
-            )
+            # Check if custom model inputs are supplied in request (e.g. Scenario B)
+            wb_inputs_path = (ROOT / wb_spec["inputs"]).resolve() if "inputs" in wb_spec else None
+            if wb_inputs_path and wb_inputs_path.exists():
+                print(f"Composing workbook inputs from {wb_inputs_path} into template...")
+                tpl_bytes = wb_src_path.read_bytes()
+                model_pack = read_json(str(model_pack_path))
+                wb_inputs = read_json(str(wb_inputs_path))
+                composed_bytes, _ = compose(tpl_bytes, model_pack, wb_inputs, allow_proposal=allow_proposal)
+                with tempfile.TemporaryDirectory() as td:
+                    staged_path = Path(td) / "staged_composed.xlsx"
+                    staged_path.write_bytes(composed_bytes)
+                    print(f"Recalculating composed workbook to {wb_out_path}...")
+                    validate_candidate(
+                        workbook_path=staged_path,
+                        pack_path=model_pack_path,
+                        recalculate=True,
+                        recalculated_output=wb_out_path,
+                        allow_proposal=allow_proposal,
+                    )
+            else:
+                print(f"Recalculating workbook to {wb_out_path}...")
+                validate_candidate(
+                    workbook_path=wb_src_path,
+                    pack_path=model_pack_path,
+                    recalculate=True,
+                    recalculated_output=wb_out_path,
+                    allow_proposal=allow_proposal,
+                )
 
     # Validate the generated candidate workbook against its model pack
     print(f"Validating workbook {wb_out_path}...")
@@ -727,12 +769,15 @@ def build_package(
     for k, v in deck_inputs_copy.get("values", {}).items():
         if isinstance(v, dict) and "value" in v:
             val_str = str(v["value"])
-            if "image22_marksans.png" in val_str:
-                v["value"] = str((assets_dir / "image22_marksans.png").resolve())
-            elif "image23_marksans.png" in val_str:
-                v["value"] = str((assets_dir / "image23_marksans.png").resolve())
-            elif "image24_marksans.png" in val_str:
-                v["value"] = str((assets_dir / "image24_marksans.png").resolve())
+            filename = Path(val_str).name
+            if filename in [
+                "image22_marksans.png", "image23_marksans.png", "image24_marksans.png",
+                "image22_cipla.png", "image23_cipla.png", "image24_cipla.png",
+                "image22.png", "image23.png", "image24.png",
+            ] or ("image2" in filename and filename.endswith(".png")):
+                target_asset = assets_dir / filename
+                if target_asset.exists():
+                    v["value"] = str(target_asset.resolve())
 
     wb_bytes = wb_out_path.read_bytes()
 

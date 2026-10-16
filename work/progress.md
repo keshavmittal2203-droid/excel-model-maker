@@ -182,3 +182,35 @@
   - Added Section 14 containing a self-contained paste-ready prompt for another coding assistant to operate the repository without breaking shared state.
   - Retained YouTube course reference `https://www.youtube.com/playlist?list=PL3uUjzLk6PulhRop_ffNeHyK0kprzO4cT` with clear distinction between reviewed metadata and inferred structural methodology.
 
+### 14. Second-Company (Cipla) Workbook Adaptation, Proposal Packs, End-to-End Build & Visual Inspection
+- **Bounded Workbook Adapter (`work/adapt_cipla_workbook.py`)**:
+  - Preserves immutable original workbook (`originals/Marksans Keshav.xlsx`, SHA-256 `5a1f9af7...`) and adapts 359 cells across 8 sheets (`Data Sheet`, `Cash Flow`, `WACC-DCF`, `Comps`, `DCF 1st way`, `DCF 2nd way`, `Ratio Analysis`, `Beta`).
+  - Sourced multi-year Ind AS consolidated financial statements (FY18–FY25): Sales (FY18 ₹15,219 Cr $\to$ FY25 ₹27,548 Cr), Operating EBITDA (₹7,123 Cr), PAT (₹4,873 Cr).
+  - Balance Sheet balances across all 8 historical years (FY25 Total Assets = Total Liabilities = ₹37,386.58 Cr, $\Delta = 0.00$).
+  - Cash Flow Statement balances across all 8 historical years: CFO ₹5,005 Cr, CFI -₹3,682 Cr, CFF -₹1,293 Cr $\to$ Net Cash Flow = +₹30.00 Cr ($\Delta = 0.00$).
+- **Recalculated with Native Excel COM**:
+  - Output: `candidates/Cipla-Recalculated.xlsx` (SHA-256: `050e13b2be37705ca88af6a63022de00f9b2d07796565071619ad1daa6be8bff`).
+  - Validation: 19/19 pack checks and 28/28 independent financial identities verified.
+- **Proposal Model Pack & Deck Inputs**:
+  - Model pack: `proposals/cipla.model-pack.proposal.json` (19 checks).
+  - Deck inputs: `proposals/cipla.inputs.proposal.json` (219 slots aligned with `err4.deck-pack.proposal.json`, zero Marksans carryover, Slide 14 cash flow table 120 cells and Slide 16 ratio table 64 cells bound to Cipla data).
+- **Pipeline Generalization & Safety Enhancements**:
+  - `work/generate_wacc_images.py`: Generates company-specific replacement WACC tables dynamically from validated workbook (`image22_cipla.png`, `image23_cipla.png`, `image24_cipla.png`, and base names).
+  - `build_package.py`: Generalized image asset binding to resolve `image2*.png` dynamically from run-local `assets_dir`.
+  - Added adapter support in `package-request.schema.json` and `build_package.py` allowing clean-checkout reproducible builds from original templates.
+  - Added company mismatch validation and empty input rejection in `validate_package_request`.
+- **Reproducible Build Execution**:
+  - Command: `python build_package.py --request examples/cipla-package.json --output-dir candidates/run_native_cipla_v1 --allow-proposal`.
+  - Artifacts generated: `Cipla-Recalculated.xlsx`, `Cipla-Executive-Overview.pptx`, `package.manifest.json`, 9 replacement images, 5 slide PNG previews (1080x1440), 4 sheet landscape PDFs.
+- **Visual Inspection via Tool (`view_file`)**:
+  - Visually inspected `slide_1.png` through `slide_5.png` in `candidates/run_native_cipla_v1/previews/`.
+  - Slide 1: Company header, corporate profile, brand portfolio, missing-data card for geographic breakdown.
+  - Slide 2: Executive summary, key highlights, 5-year revenue chart, FY25 snapshot chart.
+  - Slide 3: 15-row Cash Flow schedule (FY18–FY25, 120 cells), clean `-70.31` formatting, 100% reconciled.
+  - Slide 4: Ratio schedule (CR 3.85, QR 2.84, D/E 0.01, ICR 69.0x), dual trend line charts.
+  - Slide 5: WACC schedule ($K_e = 12.26\%$, $K_d = 5.25\%$, $WACC = 12.10\%$, Market Cap ₹105,108 Cr, Debt ₹614 Cr).
+- **Test Suite & Verification**:
+  - Full test suite: **86/86 tests passing cleanly**.
+  - All 6 original template hashes verified byte-for-byte.
+
+

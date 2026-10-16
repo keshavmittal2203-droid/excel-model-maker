@@ -46,15 +46,19 @@
 - Bounded real-company demonstration with **Cipla Limited** (`CIPLA`, BSE `500087`):
   - Sourced from direct peer slot in template `compdata!C8:J8` and FY25 Annual Report.
   - Request specification: `examples/cipla-package.json`.
-  - Presentation inputs (219 slots): `proposals/cipla.inputs.proposal.json`.
-  - Evidence report: `docs/SECOND_COMPANY_EVIDENCE_REPORT.md`.
-  - Strict Non-Fabrication Policy: documented missing older historical cash flow detail (FY18–FY21) under `unresolved_inputs` rather than inventing balancing numbers.
+  - Staged & recalculated candidate workbook: `candidates/Cipla-Recalculated.xlsx` (SHA-256: `050e13b2be37705ca88af6a63022de00f9b2d07796565071619ad1daa6be8bff`).
+  - Model pack proposal: `proposals/cipla.model-pack.proposal.json` (19 checks passed).
+  - Presentation inputs: `proposals/cipla.inputs.proposal.json` (219 slots, zero Marksans carryover).
+  - Executed reproducible build: `python build_package.py --request examples/cipla-package.json --output-dir candidates/run_native_cipla_v1 --allow-proposal`.
+  - Artifacts produced: `Cipla-Recalculated.xlsx`, `Cipla-Executive-Overview.pptx`, `package.manifest.json`, 9 replacement images, 5 slide PNG previews, 4 landscape sheet PDFs.
+  - Visual inspection: All 5 slide PNG previews (`slide_1.png` to `slide_5.png`) and 4 sheet PDFs inspected via `view_file`.
+  - Documentation: `docs/SECOND_COMPANY_EVIDENCE_REPORT.md`, `docs/CIPLA_WORKBOOK_COVERAGE.md`, and `docs/cipla_workbook_coverage.json`.
 
 ### 6. Full Test Suite & Originals Integrity
 - `python verify_sources.py`: Verified all 6 original template SHA-256 hashes byte-for-byte against `source-catalog.json`.
-- `python -m unittest discover -v`: **82/82 tests passing** cleanly across:
+- `python -m unittest discover -v`: **86/86 tests passing** cleanly across:
   - `test_package_safety.py` (8)
-  - `test_build_package.py` (21, including 5 negative regression tests and Cipla validation test)
+  - `test_build_package.py` (25, including 8 negative regression tests and Cipla end-to-end build test)
   - `test_modelmaker.py` (33)
   - `test_pptmaker.py` (13)
   - `test_reportmaker.py` (7)
@@ -67,11 +71,11 @@
 |---|---|---|
 | **Excel 17-Sheet XML Injection** | **Implemented** | Openpyxl-based targeted XML editing preserving styles, formulas, follower ranges, and data tables. |
 | **PowerPoint Deck Assembly** | **Implemented** | Curated slide retention (1, 2, 14, 16, 23), table cell updates, chart cache sync, picture replacement, and logo suppression. |
-| **Independent Formula & Identity Checks** | **Implemented** | Recalculation verification, zero `#REF!`/#DIV/0!, $WACC = W_e K_e + W_d K_d (1-t)$, $K_e = R_f + \beta(R_m-R_f)$, balance sheet balance. |
+| **Independent Formula & Identity Checks** | **Implemented** | Recalculation verification, zero `#REF!`/#DIV/0!, $WACC = W_e K_e + W_d K_d (1-t)$, $K_e = R_f + \beta(R_m-R_f)$, balance sheet balance ($\Delta = 0.00$). |
 | **Retained-Content Audit** | **Implemented** | 274 elements checked across tables, shapes, charts, embedded workbooks, raster screenshots; zero stale content. |
-| **Pre-Flight Request Validation** | **Implemented** | Rejects unmapped slots, bad hashes, traversal paths, and invalid reporting units before directory writes. |
+| **Pre-Flight Request Validation** | **Implemented** | Rejects unmapped slots, company mismatches, empty values, bad hashes, traversal paths, and invalid reporting units before directory writes. |
 | **Marksans Pharma Package (Baseline & Scenario B)** | **Demonstrated** | Fully recalculated v6 models (`ef5d6d5a...`), 5-slide decks, 1080x1440 PNG previews, landscape PDFs. |
-| **Cipla Limited Second-Company Packaging** | **Demonstrated** | Mapped from template `compdata` and FY25 Annual Report; 219 deck slots populated; evidence report committed. |
+| **Cipla Limited Second-Company Packaging** | **Demonstrated (All 5 Stages)** | Stage 1 (Specs prepared), Stage 2 (Data mapped), Stage 3 (Build completed), Stage 4 (Financial validation passed), Stage 5 (Outputs visually inspected). |
 | **Non-Pharma / Non-Manufacturing Sectors (BFSI / Tech)** | **Manual Template Required** | Banking models (NIM/NPA) and SaaS (ARR/NRR) require fundamentally different 3-statement structures created by human analysts. |
 | **Human Pack Approval & Promotion** | **Manual Review Required** | Transition from `status: "proposal"` to `status: "approved"` requires independent human financial review. |
 | **Autonomous Agent Self-Approval** | **Unsupported / Prohibited** | Agent self-approval is blocked by reviewer guards and safety invariants. |
@@ -81,8 +85,8 @@
 
 ## Current Readiness State
 
-- **Agent Visual Inspection**: **PROVISIONAL** (all 5 presentation slides and 6 core schedule PDFs visually reviewed; 9 workbook sheets remain unreviewed visually).
+- **Agent Visual Inspection**: **PROVISIONAL** (Marksans: 5 slides, 6 PDFs reviewed; Cipla: 5 slides, 4 PDFs reviewed; 9 unexported workbook sheets remain unreviewed visually).
 - **Candidate Presentation State**: **CLEAN** (zero stale template figures, zero collisions, zero text clipping, 100% reconciled cash flow table, 274 audited elements).
-- **Model Recalculation State**: **VERIFIED** (19/19 pack checks, 29/29 independent identities passed, 0 formula errors).
+- **Model Recalculation State**: **VERIFIED** (Marksans & Cipla: 19/19 pack checks, 28/28 independent identities passed, 0 formula errors).
 - **Readiness State**: `ready: false`
 - **Pending Gates**: `["human_pack_approval", "render_review"]`

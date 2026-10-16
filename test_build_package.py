@@ -526,6 +526,71 @@ class BuildPackageTests(unittest.TestCase):
                 validate_package_request(bad_req, cipla_req_path)
             self.assertIn("Missing mapping for deck slot", str(ctx.exception))
 
+    def test_company_mismatch_rejected(self):
+        """Negative test: verify validate_package_request rejects cross-company input mismatch."""
+        from build_package import validate_package_request
+        cipla_req_path = ROOT / "examples" / "cipla-package.json"
+        req = json.loads(cipla_req_path.read_text(encoding="utf-8"))
+
+        bad_req = copy.deepcopy(req)
+        # Point Cipla request presentation to Marksans deck inputs
+        bad_req["presentation"]["deck_inputs"] = "proposals/err4.inputs.proposal.json"
+        with self.assertRaises(ValueError) as ctx:
+            validate_package_request(bad_req, cipla_req_path)
+        self.assertIn("Company mismatch", str(ctx.exception))
+
+    def test_unmapped_or_empty_deck_input_rejected(self):
+        """Negative test: verify validate_package_request rejects empty or blank values in deck inputs."""
+        from build_package import validate_package_request
+        cipla_req_path = ROOT / "examples" / "cipla-package.json"
+        req = json.loads(cipla_req_path.read_text(encoding="utf-8"))
+
+        # Create deck inputs with a blank string
+        with tempfile.TemporaryDirectory() as td:
+            inp_data = json.loads((ROOT / "proposals" / "cipla.inputs.proposal.json").read_text(encoding="utf-8"))
+            inp_data["values"]["slide1_company_name"]["value"] = "   "
+            blank_inp = Path(td) / "blank_inputs.json"
+            blank_inp.write_text(json.dumps(inp_data), encoding="utf-8")
+
+            bad_req = copy.deepcopy(req)
+            bad_req["presentation"]["deck_inputs"] = str(blank_inp.relative_to(ROOT)) if blank_inp.is_relative_to(ROOT) else str(blank_inp)
+            with self.assertRaises(ValueError) as ctx:
+                validate_package_request(bad_req, cipla_req_path)
+            self.assertIn("Unmapped or empty value", str(ctx.exception))
+
+    def test_invalid_reporting_unit_rejected(self):
+        """Negative test: verify validate_package_request rejects unsupported units."""
+        from build_package import validate_package_request
+        cipla_req_path = ROOT / "examples" / "cipla-package.json"
+        req = json.loads(cipla_req_path.read_text(encoding="utf-8"))
+
+        bad_req = copy.deepcopy(req)
+        bad_req["company"]["reporting_unit"] = "USD_Trillion"
+        with self.assertRaises(ValueError) as ctx:
+            validate_package_request(bad_req, cipla_req_path)
+        self.assertIn("Unsupported reporting_unit", str(ctx.exception))
+
+    def test_build_package_cipla_end_to_end_skip_com(self):
+        """Verify Cipla package builds successfully end-to-end with valid artifacts and manifest."""
+        out_dir = self.test_dir / "output_cipla"
+        req_path = ROOT / "examples" / "cipla-package.json"
+        res = build_package(
+            request_path=req_path,
+            output_dir=out_dir,
+            allow_proposal=True,
+            force=False,
+            skip_com=True,
+        )
+        self.assertEqual(res["status"], "proposal")
+        self.assertEqual(res["package_id"], "cipla-overview-fy25")
+        self.assertTrue((out_dir / "Cipla-Recalculated.xlsx").exists())
+        self.assertTrue((out_dir / "Cipla-Executive-Overview.pptx").exists())
+        self.assertTrue((out_dir / "package.manifest.json").exists())
+
+        manifest = json.loads((out_dir / "package.manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["package_id"], "cipla-overview-fy25")
+        self.assertEqual(manifest["workbook_validation"]["status"], "recalculated_checks_passed")
+
 
 if __name__ == "__main__":
     unittest.main()

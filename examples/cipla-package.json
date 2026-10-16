@@ -86,7 +86,10 @@
   "workbook": {
     "source": "originals/Marksans Keshav.xlsx",
     "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
-    "model_pack": "proposals/marksans.model-pack.proposal.json",
+    "candidate_source": "candidates/Cipla-Recalculated.xlsx",
+    "expected_recalculated_sha256": "050e13b2be37705ca88af6a63022de00f9b2d07796565071619ad1daa6be8bff",
+    "adapter": "work/adapt_cipla_workbook.py",
+    "model_pack": "proposals/cipla.model-pack.proposal.json",
     "output_name": "Cipla-Recalculated.xlsx"
   },
   "presentation": {

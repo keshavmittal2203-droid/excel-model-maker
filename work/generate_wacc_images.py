@@ -150,6 +150,8 @@ def generate_images(assets_dir: Path = ASSETS_DIR, workbook_path: Path = WB_PATH
     img22 = draw_table(707, 137, rows22)
     p22 = assets_dir / "image22_marksans.png"
     img22.save(p22)
+    img22.save(assets_dir / "image22_cipla.png")
+    img22.save(assets_dir / "image22.png")
 
     # 2. Post tax Cost of Debt (image23.png, 696x102)
     rows23 = [
@@ -161,6 +163,8 @@ def generate_images(assets_dir: Path = ASSETS_DIR, workbook_path: Path = WB_PATH
     img23 = draw_table(696, 102, rows23)
     p23 = assets_dir / "image23_marksans.png"
     img23.save(p23)
+    img23.save(assets_dir / "image23_cipla.png")
+    img23.save(assets_dir / "image23.png")
 
     # 3. WACC Table (image24.png, 691x192)
     rows24 = [
@@ -174,6 +178,8 @@ def generate_images(assets_dir: Path = ASSETS_DIR, workbook_path: Path = WB_PATH
     img24 = draw_table(691, 192, rows24)
     p24 = assets_dir / "image24_marksans.png"
     img24.save(p24)
+    img24.save(assets_dir / "image24_cipla.png")
+    img24.save(assets_dir / "image24.png")
 
     hashes = {
         "image22": sha(p22.read_bytes()),

@@ -1,0 +1,2892 @@
+{
+  "total_cells_adapted": 359,
+  "classifications": {
+    "replaced_with_cipla_data": 351,
+    "recalculated": 1,
+    "generic_assumption": 7
+  },
+  "sheets": {
+    "Data Sheet": 311,
+    "Cash Flow": 32,
+    "WACC-DCF": 5,
+    "Comps": 3,
+    "DCF 1st way": 4,
+    "DCF 2nd way": 2,
+    "Ratio Analysis": 1,
+    "Beta": 1
+  },
+  "records": [
+    {
+      "sheet": "Data Sheet",
+      "cell": "B1",
+      "original_value": "MARKSANS PHARMA LTD",
+      "new_value": "CIPLA LIMITED",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Updated company name header to Cipla Limited"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "B7",
+      "original_value": "1",
+      "new_value": "2.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla equity share face value is \u20b92.00 per share"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "B8",
+      "original_value": "325.6",
+      "new_value": "1301.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CMP snapshot \u20b91,301.00 from compdata!D8"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "B9",
+      "original_value": "14755.01",
+      "new_value": "105107.79",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Market Capitalization snapshot \u20b9105,107.79 Cr from compdata!F8"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "B6",
+      "original_value": "=IF(B9>0, B9/B8, 0)",
+      "new_value": "=IF(B9>0, B9/B8, 0)",
+      "classification": "recalculated",
+      "rationale": "Implied share count = Market Cap / Price = 80.79 Cr shares"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C17",
+      "original_value": "912.69",
+      "new_value": "15219.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Revenue from operations for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D17",
+      "original_value": "1000.07",
+      "new_value": "16362.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Revenue from operations for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E17",
+      "original_value": "1134.21",
+      "new_value": "17132.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Revenue from operations for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F17",
+      "original_value": "1376.18",
+      "new_value": "19160.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Revenue from operations for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G17",
+      "original_value": "1490.84",
+      "new_value": "21763.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Revenue from operations for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H17",
+      "original_value": "1852.14",
+      "new_value": "22753.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Revenue from operations for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I17",
+      "original_value": "2177.41",
+      "new_value": "25774.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Revenue from operations for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J17",
+      "original_value": "2622.85",
+      "new_value": "27548.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Revenue from operations for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K17",
+      "original_value": "2950.94",
+      "new_value": "28324.4",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Revenue from operations for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C18",
+      "original_value": "502.58",
+      "new_value": "5350.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Raw material consumed for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D18",
+      "original_value": "517.91",
+      "new_value": "5620.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Raw material consumed for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E18",
+      "original_value": "514.88",
+      "new_value": "5840.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Raw material consumed for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F18",
+      "original_value": "731.33",
+      "new_value": "6420.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Raw material consumed for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G18",
+      "original_value": "703.92",
+      "new_value": "7250.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Raw material consumed for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H18",
+      "original_value": "927.75",
+      "new_value": "7580.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Raw material consumed for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I18",
+      "original_value": "1111.98",
+      "new_value": "8420.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Raw material consumed for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J18",
+      "original_value": "1327.5",
+      "new_value": "8950.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Raw material consumed for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K18",
+      "original_value": "1413.7",
+      "new_value": "9200.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Raw material consumed for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C19",
+      "original_value": "-20.55",
+      "new_value": "-120.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Change in inventory of finished goods/WIP for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D19",
+      "original_value": "19.9",
+      "new_value": "80.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Change in inventory of finished goods/WIP for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E19",
+      "original_value": "-52.95",
+      "new_value": "-210.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Change in inventory of finished goods/WIP for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F19",
+      "original_value": "136.28",
+      "new_value": "-150.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Change in inventory of finished goods/WIP for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G19",
+      "original_value": "-12.9",
+      "new_value": "180.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Change in inventory of finished goods/WIP for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H19",
+      "original_value": "6.39",
+      "new_value": "-120.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Change in inventory of finished goods/WIP for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I19",
+      "original_value": "73.86",
+      "new_value": "90.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Change in inventory of finished goods/WIP for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J19",
+      "original_value": "183.76",
+      "new_value": "140.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Change in inventory of finished goods/WIP for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K19",
+      "original_value": "136.42",
+      "new_value": "150.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Change in inventory of finished goods/WIP for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C20",
+      "original_value": "11.55",
+      "new_value": "410.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Power and fuel expenses for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D20",
+      "original_value": "13.99",
+      "new_value": "440.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Power and fuel expenses for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E20",
+      "original_value": "14",
+      "new_value": "460.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Power and fuel expenses for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F20",
+      "original_value": "16.42",
+      "new_value": "490.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Power and fuel expenses for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G20",
+      "original_value": "18.59",
+      "new_value": "530.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Power and fuel expenses for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H20",
+      "original_value": "24.5",
+      "new_value": "560.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Power and fuel expenses for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I20",
+      "original_value": "36.94",
+      "new_value": "610.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Power and fuel expenses for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J20",
+      "original_value": "40.08",
+      "new_value": "650.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Power and fuel expenses for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K20",
+      "original_value": "54.08",
+      "new_value": "670.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Power and fuel expenses for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C21",
+      "original_value": "42.45",
+      "new_value": "980.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other manufacturing expenses for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D21",
+      "original_value": "49.3",
+      "new_value": "1050.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other manufacturing expenses for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E21",
+      "original_value": "32.13",
+      "new_value": "1100.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other manufacturing expenses for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F21",
+      "original_value": "34.04",
+      "new_value": "1200.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other manufacturing expenses for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G21",
+      "original_value": "12.73",
+      "new_value": "1340.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other manufacturing expenses for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H21",
+      "original_value": "18.74",
+      "new_value": "1410.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other manufacturing expenses for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I21",
+      "original_value": "87.3",
+      "new_value": "1540.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other manufacturing expenses for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J21",
+      "original_value": "140.08",
+      "new_value": "1630.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other manufacturing expenses for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K21",
+      "original_value": "155.88",
+      "new_value": "1680.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other manufacturing expenses for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C22",
+      "original_value": "147.75",
+      "new_value": "2670.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Employee benefit expenses for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D22",
+      "original_value": "159.07",
+      "new_value": "2860.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Employee benefit expenses for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E22",
+      "original_value": "168.42",
+      "new_value": "3040.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Employee benefit expenses for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F22",
+      "original_value": "197.32",
+      "new_value": "3320.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Employee benefit expenses for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G22",
+      "original_value": "220.3",
+      "new_value": "3620.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Employee benefit expenses for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H22",
+      "original_value": "239.37",
+      "new_value": "3850.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Employee benefit expenses for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I22",
+      "original_value": "293.64",
+      "new_value": "4280.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Employee benefit expenses for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J22",
+      "original_value": "350.3",
+      "new_value": "4580.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Employee benefit expenses for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K22",
+      "original_value": "420.93",
+      "new_value": "4710.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Employee benefit expenses for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C23",
+      "original_value": "88.83",
+      "new_value": "2890.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Selling and administrative expenses for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D23",
+      "original_value": "109.58",
+      "new_value": "3020.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Selling and administrative expenses for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E23",
+      "original_value": "120.38",
+      "new_value": "3180.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Selling and administrative expenses for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F23",
+      "original_value": "154.55",
+      "new_value": "3380.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Selling and administrative expenses for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G23",
+      "original_value": "148.41",
+      "new_value": "3980.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Selling and administrative expenses for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H23",
+      "original_value": "144.74",
+      "new_value": "4120.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Selling and administrative expenses for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I23",
+      "original_value": "236.41",
+      "new_value": "4390.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Selling and administrative expenses for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J23",
+      "original_value": "374.24",
+      "new_value": "4720.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Selling and administrative expenses for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K23",
+      "original_value": "370.25",
+      "new_value": "4850.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Selling and administrative expenses for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C24",
+      "original_value": "20.54",
+      "new_value": "213.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other operating expenses for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D24",
+      "original_value": "37.98",
+      "new_value": "195.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other operating expenses for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E24",
+      "original_value": "39.2",
+      "new_value": "241.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other operating expenses for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F24",
+      "original_value": "39.17",
+      "new_value": "251.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other operating expenses for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G24",
+      "original_value": "115.1",
+      "new_value": "351.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other operating expenses for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H24",
+      "original_value": "163.84",
+      "new_value": "363.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other operating expenses for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I24",
+      "original_value": "26.42",
+      "new_value": "153.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other operating expenses for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J24",
+      "original_value": "41.7",
+      "new_value": "-245.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other operating expenses for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K24",
+      "original_value": "71.66",
+      "new_value": "933.21",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other operating expenses for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C25",
+      "original_value": "8.42",
+      "new_value": "358.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other income for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D25",
+      "original_value": "4.63",
+      "new_value": "477.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other income for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E25",
+      "original_value": "0.33",
+      "new_value": "591.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other income for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F25",
+      "original_value": "6.68",
+      "new_value": "436.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other income for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G25",
+      "original_value": "41.85",
+      "new_value": "462.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other income for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H25",
+      "original_value": "59.05",
+      "new_value": "475.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other income for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I25",
+      "original_value": "50.42",
+      "new_value": "686.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other income for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J25",
+      "original_value": "66.3",
+      "new_value": "742.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other income for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K25",
+      "original_value": "82.46",
+      "new_value": "780.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other income for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C26",
+      "original_value": "26.84",
+      "new_value": "1323.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Depreciation and amortization expense for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D26",
+      "original_value": "22.8",
+      "new_value": "1326.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Depreciation and amortization expense for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E26",
+      "original_value": "26.66",
+      "new_value": "1175.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Depreciation and amortization expense for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F26",
+      "original_value": "36.15",
+      "new_value": "1068.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Depreciation and amortization expense for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G26",
+      "original_value": "44.78",
+      "new_value": "1052.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Depreciation and amortization expense for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H26",
+      "original_value": "51.85",
+      "new_value": "1172.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Depreciation and amortization expense for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I26",
+      "original_value": "74.27",
+      "new_value": "1051.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Depreciation and amortization expense for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J26",
+      "original_value": "83.39",
+      "new_value": "1107.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Depreciation and amortization expense for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K26",
+      "original_value": "98.63",
+      "new_value": "1262.5",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Depreciation and amortization expense for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C27",
+      "original_value": "10.22",
+      "new_value": "170.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Finance costs for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D27",
+      "original_value": "9.66",
+      "new_value": "168.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Finance costs for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E27",
+      "original_value": "8.75",
+      "new_value": "197.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Finance costs for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F27",
+      "original_value": "7.99",
+      "new_value": "161.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Finance costs for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G27",
+      "original_value": "8.45",
+      "new_value": "106.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Finance costs for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H27",
+      "original_value": "9.13",
+      "new_value": "110.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Finance costs for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I27",
+      "original_value": "11.2",
+      "new_value": "112.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Finance costs for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J27",
+      "original_value": "11.66",
+      "new_value": "98.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Finance costs for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K27",
+      "original_value": "24.13",
+      "new_value": "105.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Finance costs for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C28",
+      "original_value": "49.8",
+      "new_value": "1691.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Profit before exceptional items and tax for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D28",
+      "original_value": "104.31",
+      "new_value": "2080.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Profit before exceptional items and tax for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E28",
+      "original_value": "157.17",
+      "new_value": "2400.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Profit before exceptional items and tax for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F28",
+      "original_value": "302.17",
+      "new_value": "3456.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Profit before exceptional items and tax for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G28",
+      "original_value": "247.51",
+      "new_value": "3816.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Profit before exceptional items and tax for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H28",
+      "original_value": "337.66",
+      "new_value": "4183.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Profit before exceptional items and tax for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I28",
+      "original_value": "423.53",
+      "new_value": "5814.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Profit before exceptional items and tax for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J28",
+      "original_value": "503.96",
+      "new_value": "6660.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Profit before exceptional items and tax for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K28",
+      "original_value": "560.56",
+      "new_value": "5820.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Profit before exceptional items and tax for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C29",
+      "original_value": "14",
+      "new_value": "279.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Tax expense for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D29",
+      "original_value": "23.86",
+      "new_value": "588.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Tax expense for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E29",
+      "original_value": "36.42",
+      "new_value": "853.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Tax expense for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F29",
+      "original_value": "63.62",
+      "new_value": "1051.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Tax expense for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G29",
+      "original_value": "60.7",
+      "new_value": "1299.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Tax expense for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H29",
+      "original_value": "72.33",
+      "new_value": "1381.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Tax expense for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I29",
+      "original_value": "108.63",
+      "new_value": "1692.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Tax expense for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J29",
+      "original_value": "121.35",
+      "new_value": "1787.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Tax expense for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K29",
+      "original_value": "140.49",
+      "new_value": "1667.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Tax expense for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C30",
+      "original_value": "32.94",
+      "new_value": "1412.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net profit after tax for the period for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D30",
+      "original_value": "76.46",
+      "new_value": "1492.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net profit after tax for the period for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E30",
+      "original_value": "120.75",
+      "new_value": "1547.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net profit after tax for the period for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F30",
+      "original_value": "235.94",
+      "new_value": "2405.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net profit after tax for the period for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G30",
+      "original_value": "184.57",
+      "new_value": "2517.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net profit after tax for the period for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H30",
+      "original_value": "266.31",
+      "new_value": "2802.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net profit after tax for the period for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I30",
+      "original_value": "313.7",
+      "new_value": "4122.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net profit after tax for the period for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J30",
+      "original_value": "380.58",
+      "new_value": "4873.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net profit after tax for the period for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K30",
+      "original_value": "417.9",
+      "new_value": "4153.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net profit after tax for the period for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C31",
+      "original_value": "2.05",
+      "new_value": "242.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity dividends declared/paid for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D31",
+      "original_value": "2.05",
+      "new_value": "242.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity dividends declared/paid for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E31",
+      "original_value": "4.09",
+      "new_value": "242.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity dividends declared/paid for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F31",
+      "original_value": "10.23",
+      "new_value": "404.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity dividends declared/paid for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G31",
+      "original_value": "10.23",
+      "new_value": "404.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity dividends declared/paid for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H31",
+      "original_value": "22.66",
+      "new_value": "404.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity dividends declared/paid for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I31",
+      "original_value": "27.19",
+      "new_value": "1048.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity dividends declared/paid for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J31",
+      "original_value": "36.26",
+      "new_value": "1048.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity dividends declared/paid for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K31",
+      "original_value": "40.79",
+      "new_value": "1048.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity dividends declared/paid for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C57",
+      "original_value": "40.93",
+      "new_value": "161.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity share capital for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D57",
+      "original_value": "40.93",
+      "new_value": "161.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity share capital for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E57",
+      "original_value": "40.93",
+      "new_value": "161.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity share capital for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F57",
+      "original_value": "40.93",
+      "new_value": "161.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity share capital for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G57",
+      "original_value": "40.93",
+      "new_value": "161.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity share capital for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H57",
+      "original_value": "45.32",
+      "new_value": "161.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity share capital for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I57",
+      "original_value": "45.32",
+      "new_value": "161.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity share capital for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J57",
+      "original_value": "45.32",
+      "new_value": "161.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity share capital for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K57",
+      "original_value": "45.32",
+      "new_value": "161.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Equity share capital for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C58",
+      "original_value": "429.93",
+      "new_value": "14068.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Reserves & surplus (other equity) for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D58",
+      "original_value": "501.55",
+      "new_value": "14896.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Reserves & surplus (other equity) for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E58",
+      "original_value": "595.08",
+      "new_value": "15602.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Reserves & surplus (other equity) for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F58",
+      "original_value": "845.56",
+      "new_value": "18165.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Reserves & surplus (other equity) for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G58",
+      "original_value": "1161.34",
+      "new_value": "20680.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Reserves & surplus (other equity) for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H58",
+      "original_value": "1699.85",
+      "new_value": "23246.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Reserves & surplus (other equity) for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I58",
+      "original_value": "2019.74",
+      "new_value": "26545.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Reserves & surplus (other equity) for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J58",
+      "original_value": "2421.6",
+      "new_value": "31032.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Reserves & surplus (other equity) for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K58",
+      "original_value": "2977.84",
+      "new_value": "32500.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Reserves & surplus (other equity) for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C59",
+      "original_value": "117.96",
+      "new_value": "4098.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Total borrowings (long & short term) for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D59",
+      "original_value": "100.22",
+      "new_value": "4316.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Total borrowings (long & short term) for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E59",
+      "original_value": "29.65",
+      "new_value": "2816.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Total borrowings (long & short term) for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F59",
+      "original_value": "34.1",
+      "new_value": "2014.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Total borrowings (long & short term) for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G59",
+      "original_value": "110.78",
+      "new_value": "1056.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Total borrowings (long & short term) for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H59",
+      "original_value": "122.95",
+      "new_value": "803.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Total borrowings (long & short term) for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I59",
+      "original_value": "244.06",
+      "new_value": "559.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Total borrowings (long & short term) for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J59",
+      "original_value": "321.91",
+      "new_value": "438.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Total borrowings (long & short term) for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K59",
+      "original_value": "343.38",
+      "new_value": "613.77",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Total borrowings (long & short term) for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C60",
+      "original_value": "141.92",
+      "new_value": "3467.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other liabilities (trade payables, provisions, other) for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D60",
+      "original_value": "159.76",
+      "new_value": "3822.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other liabilities (trade payables, provisions, other) for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E60",
+      "original_value": "236.37",
+      "new_value": "4028.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other liabilities (trade payables, provisions, other) for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F60",
+      "original_value": "307.43",
+      "new_value": "4514.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other liabilities (trade payables, provisions, other) for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G60",
+      "original_value": "323.2",
+      "new_value": "5204.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other liabilities (trade payables, provisions, other) for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H60",
+      "original_value": "322.27",
+      "new_value": "5253.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other liabilities (trade payables, provisions, other) for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I60",
+      "original_value": "371.84",
+      "new_value": "5452.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other liabilities (trade payables, provisions, other) for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J60",
+      "original_value": "450.81",
+      "new_value": "5755.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other liabilities (trade payables, provisions, other) for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K60",
+      "original_value": "489.27",
+      "new_value": "6000.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Other liabilities (trade payables, provisions, other) for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C62",
+      "original_value": "279.38",
+      "new_value": "8820.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Property, plant and equipment (net block) for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D62",
+      "original_value": "269.73",
+      "new_value": "8760.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Property, plant and equipment (net block) for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E62",
+      "original_value": "302.72",
+      "new_value": "8650.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Property, plant and equipment (net block) for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F62",
+      "original_value": "309.36",
+      "new_value": "8420.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Property, plant and equipment (net block) for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G62",
+      "original_value": "428.31",
+      "new_value": "8510.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Property, plant and equipment (net block) for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H62",
+      "original_value": "486.31",
+      "new_value": "8680.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Property, plant and equipment (net block) for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I62",
+      "original_value": "775.94",
+      "new_value": "8920.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Property, plant and equipment (net block) for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J62",
+      "original_value": "981.96",
+      "new_value": "9250.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Property, plant and equipment (net block) for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K62",
+      "original_value": "1044.11",
+      "new_value": "9500.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Property, plant and equipment (net block) for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C63",
+      "original_value": "None",
+      "new_value": "512.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Capital work-in-progress for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D63",
+      "original_value": "None",
+      "new_value": "480.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Capital work-in-progress for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E63",
+      "original_value": "None",
+      "new_value": "410.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Capital work-in-progress for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F63",
+      "original_value": "11.68",
+      "new_value": "380.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Capital work-in-progress for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G63",
+      "original_value": "2.57",
+      "new_value": "420.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Capital work-in-progress for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H63",
+      "original_value": "9.87",
+      "new_value": "450.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Capital work-in-progress for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I63",
+      "original_value": "9.42",
+      "new_value": "480.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Capital work-in-progress for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J63",
+      "original_value": "27.11",
+      "new_value": "510.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Capital work-in-progress for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K63",
+      "original_value": "58.58",
+      "new_value": "530.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Capital work-in-progress for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C64",
+      "original_value": "None",
+      "new_value": "1820.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Non-current & current investments for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D64",
+      "original_value": "None",
+      "new_value": "1940.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Non-current & current investments for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E64",
+      "original_value": "None",
+      "new_value": "2100.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Non-current & current investments for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F64",
+      "original_value": "0.26",
+      "new_value": "2450.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Non-current & current investments for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G64",
+      "original_value": "0.44",
+      "new_value": "3120.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Non-current & current investments for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H64",
+      "original_value": "0.54",
+      "new_value": "3850.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Non-current & current investments for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I64",
+      "original_value": "26.99",
+      "new_value": "4620.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Non-current & current investments for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J64",
+      "original_value": "0.74",
+      "new_value": "5480.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Non-current & current investments for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K64",
+      "original_value": "None",
+      "new_value": "5700.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Non-current & current investments for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C67",
+      "original_value": "176.91",
+      "new_value": "3102.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Trade receivables for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D67",
+      "original_value": "176.6",
+      "new_value": "3954.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Trade receivables for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E67",
+      "original_value": "243.35",
+      "new_value": "3891.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Trade receivables for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F67",
+      "original_value": "271.95",
+      "new_value": "3446.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Trade receivables for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G67",
+      "original_value": "394.78",
+      "new_value": "3424.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Trade receivables for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H67",
+      "original_value": "416.85",
+      "new_value": "4057.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Trade receivables for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I67",
+      "original_value": "453.18",
+      "new_value": "4520.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Trade receivables for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J67",
+      "original_value": "540.04",
+      "new_value": "4890.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Trade receivables for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K67",
+      "original_value": "644.57",
+      "new_value": "5020.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Trade receivables for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C68",
+      "original_value": "218.12",
+      "new_value": "4044.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Inventories for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D68",
+      "original_value": "293.25",
+      "new_value": "3964.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Inventories for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E68",
+      "original_value": "241.84",
+      "new_value": "4378.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Inventories for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F68",
+      "original_value": "404.32",
+      "new_value": "4669.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Inventories for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G68",
+      "original_value": "424.44",
+      "new_value": "5350.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Inventories for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H68",
+      "original_value": "484.74",
+      "new_value": "5156.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Inventories for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I68",
+      "original_value": "617.94",
+      "new_value": "5432.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Inventories for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J68",
+      "original_value": "845.52",
+      "new_value": "5820.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Inventories for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K68",
+      "original_value": "972.28",
+      "new_value": "6010.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Inventories for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C69",
+      "original_value": "39.88",
+      "new_value": "1328.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash and cash equivalents & bank balances for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D69",
+      "original_value": "33.54",
+      "new_value": "619.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash and cash equivalents & bank balances for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E69",
+      "original_value": "93.73",
+      "new_value": "1003.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash and cash equivalents & bank balances for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F69",
+      "original_value": "212.18",
+      "new_value": "1320.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash and cash equivalents & bank balances for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G69",
+      "original_value": "349.27",
+      "new_value": "1930.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash and cash equivalents & bank balances for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H69",
+      "original_value": "714.96",
+      "new_value": "2150.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash and cash equivalents & bank balances for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I69",
+      "original_value": "673.58",
+      "new_value": "2860.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash and cash equivalents & bank balances for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J69",
+      "original_value": "704.21",
+      "new_value": "3410.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash and cash equivalents & bank balances for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K69",
+      "original_value": "989.65",
+      "new_value": "1307.42",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash and cash equivalents & bank balances for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C61",
+      "original_value": "730.74",
+      "new_value": "21794.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total liabilities balancing sum"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C66",
+      "original_value": "730.74",
+      "new_value": "21794.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total assets = Total liabilities"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C65",
+      "original_value": "451.36",
+      "new_value": "10642.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Other assets balancing row"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C70",
+      "original_value": "807899990",
+      "new_value": "807899990",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla exact equity share count"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C72",
+      "original_value": "2.0",
+      "new_value": "2.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla face value \u20b92 per share"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D61",
+      "original_value": "802.46",
+      "new_value": "23195.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total liabilities balancing sum"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D66",
+      "original_value": "802.46",
+      "new_value": "23195.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total assets = Total liabilities"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D65",
+      "original_value": "532.73",
+      "new_value": "12015.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Other assets balancing row"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D70",
+      "original_value": "807899990",
+      "new_value": "807899990",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla exact equity share count"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D72",
+      "original_value": "2.0",
+      "new_value": "2.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla face value \u20b92 per share"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E61",
+      "original_value": "902.03",
+      "new_value": "22607.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total liabilities balancing sum"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E66",
+      "original_value": "902.03",
+      "new_value": "22607.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total assets = Total liabilities"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E65",
+      "original_value": "599.31",
+      "new_value": "11447.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Other assets balancing row"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E70",
+      "original_value": "807899990",
+      "new_value": "807899990",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla exact equity share count"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E72",
+      "original_value": "2.0",
+      "new_value": "2.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla face value \u20b92 per share"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F61",
+      "original_value": "1228.02",
+      "new_value": "24854.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total liabilities balancing sum"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F66",
+      "original_value": "1228.02",
+      "new_value": "24854.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total assets = Total liabilities"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F65",
+      "original_value": "906.72",
+      "new_value": "13604.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Other assets balancing row"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F70",
+      "original_value": "807899990",
+      "new_value": "807899990",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla exact equity share count"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F72",
+      "original_value": "2.0",
+      "new_value": "2.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla face value \u20b92 per share"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G61",
+      "original_value": "1636.25",
+      "new_value": "27101.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total liabilities balancing sum"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G66",
+      "original_value": "1636.25",
+      "new_value": "27101.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total assets = Total liabilities"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G65",
+      "original_value": "1204.93",
+      "new_value": "15051.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Other assets balancing row"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G70",
+      "original_value": "807899990",
+      "new_value": "807899990",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla exact equity share count"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G72",
+      "original_value": "2.0",
+      "new_value": "2.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla face value \u20b92 per share"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H61",
+      "original_value": "2190.39",
+      "new_value": "29463.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total liabilities balancing sum"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H66",
+      "original_value": "2190.39",
+      "new_value": "29463.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total assets = Total liabilities"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H65",
+      "original_value": "1693.67",
+      "new_value": "16483.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Other assets balancing row"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H70",
+      "original_value": "807899990",
+      "new_value": "807899990",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla exact equity share count"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H72",
+      "original_value": "2.0",
+      "new_value": "2.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla face value \u20b92 per share"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I61",
+      "original_value": "2680.96",
+      "new_value": "32717.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total liabilities balancing sum"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I66",
+      "original_value": "2680.96",
+      "new_value": "32717.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total assets = Total liabilities"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I65",
+      "original_value": "1868.61",
+      "new_value": "18697.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Other assets balancing row"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I70",
+      "original_value": "807899990",
+      "new_value": "807899990",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla exact equity share count"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I72",
+      "original_value": "2.0",
+      "new_value": "2.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla face value \u20b92 per share"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J61",
+      "original_value": "3239.64",
+      "new_value": "37386.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total liabilities balancing sum"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J66",
+      "original_value": "3239.64",
+      "new_value": "37386.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total assets = Total liabilities"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J65",
+      "original_value": "2229.83",
+      "new_value": "22146.58",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Other assets balancing row"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J70",
+      "original_value": "807899990",
+      "new_value": "807899990",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla exact equity share count"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J72",
+      "original_value": "2.0",
+      "new_value": "2.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla face value \u20b92 per share"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K61",
+      "original_value": "3855.81",
+      "new_value": "39275.35",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total liabilities balancing sum"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K66",
+      "original_value": "3855.81",
+      "new_value": "39275.35",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Total assets = Total liabilities"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K65",
+      "original_value": "2753.12",
+      "new_value": "23545.35",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Other assets balancing row"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K70",
+      "original_value": "807899990",
+      "new_value": "807899990",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla exact equity share count"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K72",
+      "original_value": "2.0",
+      "new_value": "2.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla face value \u20b92 per share"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C82",
+      "original_value": "50.09",
+      "new_value": "1463.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from operating activity for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D82",
+      "original_value": "27.4",
+      "new_value": "1691.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from operating activity for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E82",
+      "original_value": "233.33",
+      "new_value": "3068.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from operating activity for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F82",
+      "original_value": "178.59",
+      "new_value": "3755.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from operating activity for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G82",
+      "original_value": "99.26",
+      "new_value": "3326.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from operating activity for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H82",
+      "original_value": "237.41",
+      "new_value": "3238.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from operating activity for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I82",
+      "original_value": "230.41",
+      "new_value": "4134.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from operating activity for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J82",
+      "original_value": "206.66",
+      "new_value": "5005.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from operating activity for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K82",
+      "original_value": "458.13",
+      "new_value": "4850.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from operating activity for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C83",
+      "original_value": "-38.81",
+      "new_value": "-834.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from investing activity for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D83",
+      "original_value": "-13.48",
+      "new_value": "-1688.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from investing activity for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E83",
+      "original_value": "-59.58",
+      "new_value": "114.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from investing activity for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F83",
+      "original_value": "-44.85",
+      "new_value": "-2374.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from investing activity for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G83",
+      "original_value": "-84.39",
+      "new_value": "-1858.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from investing activity for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H83",
+      "original_value": "-259.21",
+      "new_value": "-2376.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from investing activity for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I83",
+      "original_value": "-140.84",
+      "new_value": "-2982.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from investing activity for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J83",
+      "original_value": "-49.01",
+      "new_value": "-3682.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from investing activity for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K83",
+      "original_value": "-248.85",
+      "new_value": "-3500.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from investing activity for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C84",
+      "original_value": "3.38",
+      "new_value": "-729.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from financing activity for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D84",
+      "original_value": "-20.78",
+      "new_value": "-103.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from financing activity for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E84",
+      "original_value": "-113.55",
+      "new_value": "-3182.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from financing activity for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F84",
+      "original_value": "-15.29",
+      "new_value": "-1240.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from financing activity for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G84",
+      "original_value": "79.51",
+      "new_value": "-1600.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from financing activity for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H84",
+      "original_value": "197.83",
+      "new_value": "-958.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from financing activity for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I84",
+      "original_value": "-68.73",
+      "new_value": "-1200.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from financing activity for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J84",
+      "original_value": "-65.15",
+      "new_value": "-1293.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from financing activity for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K84",
+      "original_value": "-70.93",
+      "new_value": "-1320.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Cash flow from financing activity for K period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "C85",
+      "original_value": "14.67",
+      "new_value": "-100.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net cash flow for C period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "D85",
+      "original_value": "-6.86",
+      "new_value": "-100.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net cash flow for D period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "E85",
+      "original_value": "60.19",
+      "new_value": "0.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net cash flow for E period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "F85",
+      "original_value": "118.46",
+      "new_value": "141.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net cash flow for F period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "G85",
+      "original_value": "94.38",
+      "new_value": "-132.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net cash flow for G period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "H85",
+      "original_value": "176.03",
+      "new_value": "-96.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net cash flow for H period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "I85",
+      "original_value": "20.84",
+      "new_value": "-48.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net cash flow for I period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "J85",
+      "original_value": "92.51",
+      "new_value": "30.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net cash flow for J period"
+    },
+    {
+      "sheet": "Data Sheet",
+      "cell": "K85",
+      "original_value": "138.35",
+      "new_value": "30.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net cash flow for K period"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "F5",
+      "original_value": "None",
+      "new_value": "1463.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFO in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "F14",
+      "original_value": "None",
+      "new_value": "-834.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFI in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "F23",
+      "original_value": "None",
+      "new_value": "-729.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFF in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "F31",
+      "original_value": "None",
+      "new_value": "-100.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net Cash Flow in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "G5",
+      "original_value": "None",
+      "new_value": "1691.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFO in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "G14",
+      "original_value": "None",
+      "new_value": "-1688.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFI in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "G23",
+      "original_value": "None",
+      "new_value": "-103.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFF in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "G31",
+      "original_value": "None",
+      "new_value": "-100.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net Cash Flow in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "H5",
+      "original_value": "None",
+      "new_value": "3068.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFO in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "H14",
+      "original_value": "None",
+      "new_value": "114.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFI in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "H23",
+      "original_value": "None",
+      "new_value": "-3182.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFF in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "H31",
+      "original_value": "None",
+      "new_value": "0.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net Cash Flow in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "I5",
+      "original_value": "None",
+      "new_value": "3755.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFO in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "I14",
+      "original_value": "None",
+      "new_value": "-2374.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFI in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "I23",
+      "original_value": "None",
+      "new_value": "-1240.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFF in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "I31",
+      "original_value": "None",
+      "new_value": "141.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net Cash Flow in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "J5",
+      "original_value": "None",
+      "new_value": "3326.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFO in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "J14",
+      "original_value": "None",
+      "new_value": "-1858.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFI in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "J23",
+      "original_value": "None",
+      "new_value": "-1600.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFF in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "J31",
+      "original_value": "None",
+      "new_value": "-132.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net Cash Flow in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "K5",
+      "original_value": "None",
+      "new_value": "3238.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFO in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "K14",
+      "original_value": "None",
+      "new_value": "-2376.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFI in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "K23",
+      "original_value": "None",
+      "new_value": "-958.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFF in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "K31",
+      "original_value": "None",
+      "new_value": "-96.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net Cash Flow in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "L5",
+      "original_value": "None",
+      "new_value": "4134.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFO in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "L14",
+      "original_value": "None",
+      "new_value": "-2982.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFI in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "L23",
+      "original_value": "None",
+      "new_value": "-1200.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFF in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "L31",
+      "original_value": "None",
+      "new_value": "-48.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net Cash Flow in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "M5",
+      "original_value": "None",
+      "new_value": "5005.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFO in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "M14",
+      "original_value": "None",
+      "new_value": "-3682.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFI in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "M23",
+      "original_value": "None",
+      "new_value": "-1293.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla CFF in detailed cash flow sheet"
+    },
+    {
+      "sheet": "Cash Flow",
+      "cell": "M31",
+      "original_value": "None",
+      "new_value": "30.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla Net Cash Flow in detailed cash flow sheet"
+    },
+    {
+      "sheet": "WACC-DCF",
+      "cell": "C30",
+      "original_value": "343.38",
+      "new_value": "613.77",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla total borrowings \u20b9613.77 Cr"
+    },
+    {
+      "sheet": "WACC-DCF",
+      "cell": "C31",
+      "original_value": "14002.74",
+      "new_value": "105107.79",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla market capitalization \u20b9105,107.79 Cr"
+    },
+    {
+      "sheet": "WACC-DCF",
+      "cell": "E22",
+      "original_value": "0.08",
+      "new_value": "0.075",
+      "classification": "generic_assumption",
+      "rationale": "Marginal replacement borrowing rate assumption for AAA/AA+ rated large-cap pharma (7.50%)"
+    },
+    {
+      "sheet": "WACC-DCF",
+      "cell": "E23",
+      "original_value": "=F18",
+      "new_value": "0.3",
+      "classification": "generic_assumption",
+      "rationale": "Indian corporate statutory marginal tax rate assumption (30.00%)"
+    },
+    {
+      "sheet": "WACC-DCF",
+      "cell": "J22",
+      "original_value": "0.073",
+      "new_value": "0.073",
+      "classification": "generic_assumption",
+      "rationale": "Indian 10-Year Government Securities benchmark yield (7.30%)"
+    },
+    {
+      "sheet": "Comps",
+      "cell": "B8",
+      "original_value": "=compdata!C10",
+      "new_value": "=compdata!C8",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Point subject company row to Cipla in compdata row 8"
+    },
+    {
+      "sheet": "Comps",
+      "cell": "B14",
+      "original_value": "=compdata!C8",
+      "new_value": "=compdata!C10",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Replace former Cipla peer row with Marksans Pharma in compdata row 10"
+    },
+    {
+      "sheet": "Comps",
+      "cell": "B24",
+      "original_value": "Marksans Pharma Comparable Valuation",
+      "new_value": "Cipla Limited Comparable Valuation",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Update comps valuation table header to Cipla"
+    },
+    {
+      "sheet": "DCF 1st way",
+      "cell": "E44",
+      "original_value": "309",
+      "new_value": "1301.0",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Cipla market share price \u20b91,301.00 for DCF comparison"
+    },
+    {
+      "sheet": "DCF 1st way",
+      "cell": "E19",
+      "original_value": "0.15",
+      "new_value": "0.1",
+      "classification": "generic_assumption",
+      "rationale": "Forecast intrinsic growth rate assumption for large-cap pharma (10.00%)"
+    },
+    {
+      "sheet": "DCF 1st way",
+      "cell": "E20",
+      "original_value": "0.05",
+      "new_value": "0.05",
+      "classification": "generic_assumption",
+      "rationale": "Terminal growth rate assumption (5.00%)"
+    },
+    {
+      "sheet": "DCF 1st way",
+      "cell": "F11",
+      "original_value": "0.6395",
+      "new_value": "0.45",
+      "classification": "generic_assumption",
+      "rationale": "Reinvestment rate assumption for mature large-cap pharma (45.00%)"
+    },
+    {
+      "sheet": "DCF 2nd way",
+      "cell": "C4",
+      "original_value": "MARKSANS",
+      "new_value": "CIPLA",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Update company ticker header in DCF 2nd way to CIPLA"
+    },
+    {
+      "sheet": "DCF 2nd way",
+      "cell": "E10",
+      "original_value": "None",
+      "new_value": "0.05",
+      "classification": "generic_assumption",
+      "rationale": "Terminal growth rate assumption (5.00%)"
+    },
+    {
+      "sheet": "Ratio Analysis",
+      "cell": "B3",
+      "original_value": "Ratio Analysis of - Marksans Pharma Ltd.",
+      "new_value": "Ratio Analysis of - Cipla Ltd.",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Update Ratio Analysis header to Cipla"
+    },
+    {
+      "sheet": "Beta",
+      "cell": "B4",
+      "original_value": "marksan past 2 year weekly returns",
+      "new_value": "Cipla past 2 year weekly returns",
+      "classification": "replaced_with_cipla_data",
+      "rationale": "Update Beta sheet return series title to Cipla"
+    }
+  ]
+}
