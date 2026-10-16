@@ -10,13 +10,16 @@ A provider-neutral, reproducible guide for any autonomous agent or human enginee
 - **Core Engine (Linux, macOS, Windows)**:
   - Python 3.10+ (tested through Python 3.14 on Windows).
   - Openpyxl, Pillow, jsonschema.
-  - Generates complete candidate `.xlsx` and `.pptx` files, validates formulas and shared-formula followers, verifies hashes, and performs full unittests.
+  - Generates candidate `.xlsx` and `.pptx` files, validates formulas and shared-formula followers, verifies hashes, and executes unit tests.
 - **Native COM Rendering (Windows Only)**:
   - Microsoft Office 16.0+ (Excel & PowerPoint desktop applications).
-  - `pywin32` / `pythoncom` / `winreg`.
+  - `pywin32` (`pythoncom` / `win32com`) and `winreg`.
   - Recalculates candidate workbooks via `CalculateFullRebuild()` without macros or external link prompts.
   - Exports slide PNG previews (1080x1440) and multi-column landscape schedule PDFs (`FitToPagesWide = 1`).
-  - *Non-Windows Fallback*: If Office COM is not available, pass `--skip-com`. Recalculation caches and PDF/PNG previews will require Windows COM or manual Office review before production release.
+- **Platform Limitations & `--skip-com`**:
+  - `pywin32` is a Windows-only library. On Linux and macOS, install only `openpyxl Pillow jsonschema`.
+  - Passing `--skip-com` skips PowerPoint slide PNG exports and Excel sheet PDF exports during package builds.
+  - *Important*: `--skip-com` does **not** bypass the Windows Excel COM recalculation requirement in `validate_workbook.py` when recalculating a fresh workbook from scratch. Full recalculation validation requires a Windows environment with Excel installed.
 
 ### Setup Commands
 ```bash
@@ -26,13 +29,16 @@ cd excel-model-maker
 
 # Optional: Create and activate virtual environment
 python -m venv .venv
-# On Windows:
-.venv\Scripts\activate
+# On Windows PowerShell:
+.venv\Scripts\Activate.ps1
 # On Linux/macOS:
 source .venv/bin/activate
 
-# Install dependencies
+# Install dependencies:
+# On Windows:
 pip install openpyxl Pillow jsonschema pywin32
+# On Linux / macOS (pywin32 is omitted):
+pip install openpyxl Pillow jsonschema
 ```
 
 ---
@@ -45,13 +51,13 @@ Execute source verification before touching any model or presentation:
 ```bash
 python verify_sources.py
 ```
-This script checks and reconstructs all six templates, verifying their SHA-256 hashes byte-for-byte:
-1. `originals/Marksans Keshav.xlsx` (`5a1f9af7e53f7c469b7668fc795be246479b1dfb5c777e5d2634eec3b09ce1eb`)
-2. `originals/ERR-4.pptx` (`9d41ec9990b7a8fa1947a8bc6173003004b3eb8cf145d4bb3ae0e4ba7ca6aa2d`)
-3. `originals/GMCC 2023 - Track 1 - Finalist Presentation - Team 10.pptx` (`e6ecdbef456fa31505c83cf8257d07997a3875326588647e38e68cf74eb430e3`)
-4. `originals/GMCC 2023 - Track 1 - Finalist Presentation - Team 28.pptx` (`b4461a293dc2ef252654c606dbaf59cb638a169b50db117565eb63158c56fa76`)
-5. `originals/GMCC 2023 - Track 1 - Finalist Presentation - Team 5.pptx` (`2bfb19904944d182283e7a17dd1878d06ee0fc4e94b15ce807e3768dd678d484`)
-6. `originals/Healthcare and Pharma Industry Primer Final.pptx` (`1bc6f402fbe8b5ea3c75d3a5ca1207e2a939f6046e7f8303d790d9f0fc7eb8b1`)
+This script checks and reconstructs all six templates, verifying their SHA-256 hashes byte-for-byte against `source-catalog.json`:
+1. `originals/Marksans Keshav.xlsx` (`5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`)
+2. `originals/ERR-4.pptx` (`9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba`)
+3. `originals/GMCC 2023 (Bharat, Kanishk).pptx` (`bd6f3920bf32986f6930de011065ebba2c9dd45aba3c8416b6803d9a415f854f`)
+4. `originals/GMCC 2023 (Bhavika, Falak).pptx` (`f19c7335e6514ef60a8109d2bf0021ba46f1752ae9be0ad3ad94ab5cd48ae331`)
+5. `originals/GMCC 2023 (Pratiksha, Prakhar).pptx` (`c3b8e389ae2b3cfec1731a795efe70df310b962e45487243af2a1499c8537592`)
+6. `originals/Healthcare and Pharma Industry Primer Final.pptx` (`0c2c84cea14ef51af7ad15a32dfc8c10b8e0f6acca68ff0ef50bfa6faa343f32`)
 
 ---
 
@@ -71,9 +77,12 @@ This inspects the 5 presentation templates (182 total slides) and indexes availa
 ## 4. Supported Cells, Shapes & Layout Engine Capabilities
 
 ### Excel Engine (`modelmaker.py`)
-- **Template-Preserving XML Transformation**: Edits only cells explicitly declared in a versioned model pack. Preserves all other 17 worksheets, custom formatting, styles, grid lines, and formulas.
+- **Template-Preserving XML Transformation**: Edits only cells explicitly declared in a versioned model pack. Preserves all other worksheets across the 17-sheet model, custom formatting, styles, grid lines, and formulas.
 - **Formula Integrity**: Rejects arbitrary formula tampering. Validates shared-formula ranges, follower cell offsets, and data table attributes (`{=TABLE()}`).
-- **Cell Mapping Discovery**: Use `python modelmaker.py inspect originals/Marksans\ Keshav.xlsx` to inspect sheets, formulas, and cells.
+- **Cell Mapping Discovery**: Quote paths containing spaces in PowerShell:
+  ```powershell
+  python modelmaker.py inspect 'originals/Marksans Keshav.xlsx'
+  ```
 
 ### PowerPoint Engine (`pptmaker.py`)
 - **Slide Retention & Pruning**: Assembles curated decks (`retained_slides`) by re-ordering slide IDs, pruning unreferenced slide parts from the archive, and updating `[Content_Types].xml`.
@@ -121,26 +130,52 @@ A package build request is defined in a JSON file conforming to `package-request
 - Baseline Marksans: `examples/marksans-package.json`
 - Stressed Scenario B: `examples/scenario-b-package.json`
 
-Example Request:
+### Baseline Request Format (`examples/marksans-package.json`)
+The request format uses nested `workbook`, `presentation`, and `exports` objects:
 ```json
 {
-  "$schema": "./package-request.schema.json",
+  "$schema": "../package-request.schema.json",
+  "schema_version": 1,
   "package_id": "marksans-curated-overview-2025",
-  "company_name": "Marksans Pharma Ltd.",
-  "ticker": "NSE: MARKSANS | BSE: 524404",
-  "source_workbook": "originals/Marksans Keshav.xlsx",
-  "source_presentation": "originals/ERR-4.pptx",
-  "model_pack": "proposals/marksans.model-pack.proposal.json",
-  "model_inputs": "proposals/marksans.inputs.proposal.json",
-  "deck_pack": "proposals/err4.deck-pack.proposal.json",
-  "deck_inputs": "proposals/err4.inputs.proposal.json",
-  "outputs": {
-    "workbook_name": "Marksans-Recalculated.xlsx",
-    "presentation_name": "Marksans-Pharma-Overview.pptx",
-    "manifest_name": "package.manifest.json"
+  "name": "Marksans Pharma Financial Model & 5-Slide Executive Overview",
+  "description": "Repeatable template-driven package generating reconciled Excel financial model and 5-slide PowerPoint deck from originals/ERR-4.pptx.",
+  "workbook": {
+    "source": "originals/Marksans Keshav.xlsx",
+    "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
+    "model_pack": "proposals/marksans.model-pack.proposal.json",
+    "output_name": "Marksans-Recalculated.xlsx",
+    "expected_recalculated_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8"
+  },
+  "presentation": {
+    "template": "originals/ERR-4.pptx",
+    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+    "deck_pack": "proposals/err4.deck-pack.proposal.json",
+    "deck_inputs": "proposals/err4.inputs.proposal.json",
+    "output_name": "Marksans-Pharma-Overview.pptx"
+  },
+  "exports": {
+    "export_slide_pngs": true,
+    "png_width": 1080,
+    "png_height": 1440,
+    "export_sheet_pdfs": true,
+    "pdf_sheets": [
+      "Data Sheet",
+      "Ratio Analysis",
+      "Intrinsic Growth",
+      "WACC-DCF",
+      "DCF 1st way",
+      "DCF 2nd way"
+    ],
+    "pdf_orientation": "landscape",
+    "pdf_fit_to_page_wide": 1
   }
 }
 ```
+
+### Supported Inputs Workflow
+- **Baseline Build**: Baseline model input values are declared directly inside `proposals/marksans.model-pack.proposal.json`; presentation text and chart slots are supplied in `proposals/err4.inputs.proposal.json`. No external inputs file is required.
+- **Scenario Build**: Custom or stressed assumptions supply an external inputs file mapped via `workbook.inputs`, e.g., `proposals/scenario-b.inputs.json` (as seen in `examples/scenario-b-package.json`).
+- *Note*: There is no `proposals/marksans.inputs.proposal.json`; baseline inputs reside directly within the model pack proposal.
 
 ---
 
@@ -151,19 +186,13 @@ Example Request:
 2. **Path Safety**: Traversal paths (`../`), absolute paths, Windows device names (`CON`, `PRN`), and alternate data streams (`:stream`) are rejected before any write.
 3. **Office COM Safety**: Dedicated `DispatchEx` instance is used; macros and link updates are disabled (`AutomationSecurity = 3`, `AskToUpdateLinks = False`). PowerPoint closes only its owned presentation without calling application `Quit()`.
 
-### Execution Command
-```bash
-# Build Baseline package
-python build_package.py \
-  --request examples/marksans-package.json \
-  --output-dir candidates/my_fresh_baseline_run \
-  --allow-proposal
+### Execution Commands (PowerShell / Bash)
+```powershell
+# Build Baseline package (requires fresh non-empty directory)
+python build_package.py --request examples/marksans-package.json --output-dir candidates/run_native_baseline_v4 --allow-proposal
 
 # Build Stressed Scenario B package
-python build_package.py \
-  --request examples/scenario-b-package.json \
-  --output-dir candidates/my_fresh_scenario_b_run \
-  --allow-proposal
+python build_package.py --request examples/scenario-b-package.json --output-dir candidates/run_native_scenario_b_v4 --allow-proposal
 ```
 
 ---
@@ -173,13 +202,15 @@ python build_package.py \
 ### Recalculation & Formula Checks
 The orchestrator executes native Excel full recalculation (`CalculateFullRebuild()`) and runs independent formula validation:
 - Zero Excel error values (`#REF!`, `#DIV/0!`, `#VALUE!`).
-- Identity check: $WACC = W_e \times K_e + W_d \times K_d \times (1 - t)$.
-- Identity check: Balance sheet assets balance liabilities across all 8 historical years.
-- Identity check: Enterprise Value to Equity Value bridge ties out exactly.
+- Mathematical identity check: $WACC = W_e \times K_e + W_d \times K_d \times (1 - t)$.
+- Mathematical identity check: $K_e = R_f + \beta \times (R_m - R_f)$.
+- Mathematical identity check: Target weights sum to $100\%$.
+- Identity check: Balance sheet assets balance liabilities across all historical years.
 
 ### Visual Render Review
 Inspect the generated previews inside `<output-dir>/previews/`:
 - `slide_1.png` to `slide_5.png`: High-resolution slide renders.
+- `slide_contact_sheet.png`: 2x3 composite slide contact sheet.
 - `Data_Sheet.pdf`, `WACC-DCF.pdf`, etc.: Multi-column landscape schedule PDFs.
 
 Check:
@@ -190,14 +221,20 @@ Check:
 
 ---
 
-## 10. Output Artifact Inventory & Provenance Records
+## 10. Output Artifact Inventory & File Counts
 
-A completed build produces 13 reviewable artifacts in `<output-dir>`:
-1. `Marksans-Recalculated.xlsx`: Fully recalculated 17-sheet candidate model.
+Each package run generates **18 total files on disk**, categorized as follows:
+
+### 13 Primary Output Artifacts (Cataloged in `package.manifest.json`)
+1. `Marksans-Recalculated.xlsx`: Fully recalculated candidate financial model.
 2. `Marksans-Pharma-Overview.pptx`: Curated 5-slide presentation deck.
-3. `package.manifest.json`: Cryptographic manifest recording all input and output SHA-256 hashes, COM capabilities, and financial tie-outs.
-4. `previews/slide_1.png` to `slide_5.png`: 5 presentation slide previews.
-5. `previews/*.pdf`: 6 key worksheet landscape schedules (`Data Sheet`, `Ratio Analysis`, `Intrinsic Growth`, `WACC-DCF`, `DCF 1st way`, `DCF 2nd way`).
+3. `previews/slide_1.png` to `slide_5.png`: 5 presentation slide previews.
+4. `previews/*.pdf`: 6 key worksheet landscape schedules (`Data Sheet`, `Ratio Analysis`, `Intrinsic Growth`, `WACC-DCF`, `DCF 1st way`, `DCF 2nd way`).
+
+### 5 Auxiliary & Metadata Files (On Disk)
+1. `package.manifest.json`: Cryptographic manifest recording all input and output SHA-256 hashes, COM capabilities, and financial tie-outs (excluded from self-hash to avoid circular dependencies).
+2. `previews/slide_contact_sheet.png`: 2x3 composite contact sheet for visual review.
+3. `assets/image22_marksans.png`, `image23_marksans.png`, `image24_marksans.png`: Run-local high-resolution WACC schedule replacement table images embedded into Slide 5.
 
 ---
 
@@ -219,11 +256,11 @@ A completed build produces 13 reviewable artifacts in `<output-dir>`:
 
 ### Course Evidence Tiers
 1. **Reviewed & Harvested Metadata**: All 34 lessons cataloged in `docs/course_lessons.json`.
-2. **Inferred Structural Mapping**:
+2. **Inferred Structural Mapping to 17-Sheet Workbook**:
    - Sessions 4, 11 $\to$ 3-Statement financial statements (`Data Sheet`, `BS`, `Cash Flow`, `Main Financials`).
-   - Session 5, 18-20 $\to$ Financial ratio analysis & DuPont decomposition (`Ratio Analysis`).
+   - Session 5, 18–20 $\to$ Financial ratio analysis & DuPont decomposition (`Ratio Analysis`).
    - Session 6, 12 $\to$ Top-line forecasting & intrinsic growth schedules (`Intrinsic Growth`).
    - Sessions 7, 13, 16 $\to$ Unlevered DCF modelling & sensitivity data tables (`DCF 1st way`, `DCF 2nd way`).
-   - Sessions 8-10 $\to$ WACC, CAPM, pure-play beta unlevering/re-levering (`WACC-DCF`, `Beta`, `RM`, `peerdata`).
-   - Sessions 14-15 $\to$ Comparable company relative valuation (`Comps`, `compdata`, `peerdata`).
+   - Sessions 8–10 $\to$ WACC, CAPM, pure-play beta unlevering/re-levering (`WACC-DCF`, `Beta`, `RM`, `peerdata`).
+   - Sessions 14–15 $\to$ Comparable company relative valuation (`Comps`, `compdata`, `peerdata`).
 3. **Transcript Status Note**: YouTube watch pages do not supply static transcript text tracks via plain HTTP requests. Granular spoken rules must be verified from local transcripts before being marked as transcript-verified.

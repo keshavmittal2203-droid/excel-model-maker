@@ -213,6 +213,88 @@ class BuildPackageTests(unittest.TestCase):
         self.assertEqual(reconciled_metrics["FY25 Current Ratio"]["displayed"], "4.95")
         self.assertEqual(reconciled_metrics["FY25 Quick Ratio"]["displayed"], "3.07")
 
+    def test_workbook_inventory_matches_actual_sheets(self):
+        """Regression test: verify candidate workbook has exactly 17 sheets and no hallucinated names."""
+        import openpyxl
+        wb_path = ROOT / "originals" / "Marksans Keshav.xlsx"
+        wb = openpyxl.load_workbook(str(wb_path), read_only=True)
+        actual_sheets = wb.sheetnames
+        expected_sheets = [
+            "Model ->",
+            "Main Financials",
+            "Ratio Analysis",
+            "Intrinsic Growth",
+            "Comps",
+            "WACC-DCF",
+            "DCF 1st way",
+            "DCF 2nd way",
+            "Data ->",
+            "compdata",
+            "Data Sheet",
+            "BS",
+            "Beta",
+            "RM",
+            "peerdata",
+            "Cash Flow",
+            "sectordata",
+        ]
+        self.assertEqual(actual_sheets, expected_sheets)
+        # Ensure none of the 7 hallucinated sheet names exist
+        forbidden_hallucinated = [
+            "PL",
+            "common size statement",
+            "historic forecast",
+            "FCFF",
+            "SOP",
+            "cost of capital",
+            "dividend discount model",
+        ]
+        for bad_sheet in forbidden_hallucinated:
+            self.assertNotIn(bad_sheet, actual_sheets)
+
+    def test_clean_checkout_guide_hashes_and_request_schema(self):
+        """Regression test: verify AI_CLEAN_CHECKOUT_GUIDE.md has verified source hashes and valid request JSON."""
+        import jsonschema
+        guide_text = (ROOT / "docs" / "AI_CLEAN_CHECKOUT_GUIDE.md").read_text(encoding="utf-8")
+        catalog = json.loads((ROOT / "source-catalog.json").read_text(encoding="utf-8"))
+        for item in catalog["files"]:
+            self.assertIn(
+                item["sha256"],
+                guide_text,
+                f"Source hash for {item['file']} missing from AI_CLEAN_CHECKOUT_GUIDE.md",
+            )
+
+        # Verify example JSON request in guide validates against schema
+        import re
+        m = re.search(r"```json\s*(\{[\s\S]*?\})\s*```", guide_text)
+        self.assertIsNotNone(m, "Could not find example JSON block in clean-checkout guide")
+        example_json = json.loads(m.group(1))
+        schema = json.loads((ROOT / "package-request.schema.json").read_text(encoding="utf-8"))
+        # Should validate without raising jsonschema.ValidationError
+        jsonschema.validate(instance=example_json, schema=schema)
+
+    def test_reconciliation_summary_verified_identities_and_statuses(self):
+        """Regression test: verify reconciliation summary evaluates mathematical identities and honest status labels."""
+        from build_package import evaluate_reconciliation_summary
+        wb_path = ROOT / "candidates" / "run_native_baseline_v5" / "Marksans-Recalculated.xlsx"
+        if not wb_path.exists():
+            wb_path = ROOT / "candidates" / "run_native_baseline_v4" / "Marksans-Recalculated.xlsx"
+        if not wb_path.exists():
+            wb_path = ROOT / "originals" / "Marksans Keshav.xlsx"
+        summary = evaluate_reconciliation_summary(wb_path)
+        metrics = {m["metric"]: m for m in summary}
+        self.assertEqual(metrics["Market Return (Rm)"]["status"], "verified_identity")
+        self.assertEqual(metrics["Cost of Equity (Ke)"]["status"], "verified_identity")
+        self.assertEqual(metrics["Post-tax Cost of Debt (Kd)"]["status"], "verified_identity")
+        self.assertEqual(metrics["WACC (Target-Weighted)"]["status"], "verified_identity")
+        self.assertEqual(metrics["Target Weight of Equity (Peer Median)"]["status"], "verified_identity")
+        self.assertEqual(metrics["Target Weight of Debt (Peer Median)"]["status"], "verified_identity")
+        self.assertEqual(metrics["FY25 Current Ratio"]["status"], "tied_to_presentation")
+        self.assertEqual(metrics["FY25 Quick Ratio"]["status"], "tied_to_presentation")
+        self.assertEqual(metrics["Risk-Free Rate (Rf)"]["status"], "sourced_assumption")
+        self.assertEqual(metrics["Pre-tax Cost of Debt"]["status"], "sourced_assumption")
+        self.assertEqual(metrics["Effective Tax Rate"]["status"], "statutory_assumption")
+
 
 if __name__ == "__main__":
     unittest.main()

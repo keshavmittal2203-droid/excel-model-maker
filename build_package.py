@@ -281,7 +281,7 @@ def export_sheet_previews_com(
 
 
 def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]:
-    """Dynamically evaluate reconciliation metrics from validated candidate workbook."""
+    """Dynamically evaluate reconciliation metrics and mathematical identities from validated candidate workbook."""
     import openpyxl
     wb = openpyxl.load_workbook(str(workbook_path), data_only=True)
     ws_wacc = wb["WACC-DCF"]
@@ -312,6 +312,13 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
         cr = 0.0
         qr = 0.0
 
+    # Independent mathematical checks
+    rm_check = abs(rm - (rf + erp)) <= 0.0001
+    ke_check = abs(ke - (rf + beta * erp)) <= 0.0001
+    kd_check = abs(post_tax_kd - (pre_tax_kd * (1.0 - tax_rate))) <= 0.0001
+    target_weights_sum_check = abs((w_equity + w_debt) - 1.0) <= 0.0001
+    wacc_check = abs(wacc - (w_equity * ke + w_debt * post_tax_kd)) <= 0.0001
+
     return [
         {
             "metric": "Risk-Free Rate (Rf)",
@@ -319,7 +326,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{rf:.6f}",
             "displayed": f"{rf*100:.2f}%",
             "tolerance": "0.0001",
-            "status": "reconciled",
+            "status": "sourced_assumption",
+            "verification_method": "Inherited 10-year Indian G-Sec benchmark assumption; tied to Slide 5 DCF schedule.",
         },
         {
             "metric": "Market Return (Rm)",
@@ -327,7 +335,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{rm:.6f}",
             "displayed": f"{rm*100:.2f}%",
             "tolerance": "0.0001",
-            "status": "reconciled",
+            "status": "verified_identity" if rm_check else "unreconciled",
+            "verification_method": "Verified identity: Rm = Rf + ERP (historical Nifty 50 return average + dividend yield).",
         },
         {
             "metric": "Levered Beta (Hamada)",
@@ -335,7 +344,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{beta:.6f}",
             "displayed": f"{beta:.3f}",
             "tolerance": "0.001",
-            "status": "reconciled",
+            "status": "tied_to_presentation",
+            "verification_method": "Hamada peer unlevered/relevered beta; tied to Slide 5 valuation schedule table.",
         },
         {
             "metric": "Cost of Equity (Ke)",
@@ -343,7 +353,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{ke:.6f}",
             "displayed": f"{ke*100:.2f}%",
             "tolerance": "0.0001",
-            "status": "reconciled",
+            "status": "verified_identity" if ke_check else "unreconciled",
+            "verification_method": "Verified CAPM identity: Ke = Rf + Beta * (Rm - Rf).",
         },
         {
             "metric": "Pre-tax Cost of Debt",
@@ -351,7 +362,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{pre_tax_kd:.6f}",
             "displayed": f"{pre_tax_kd*100:.2f}%",
             "tolerance": "0.0001",
-            "status": "reconciled",
+            "status": "sourced_assumption",
+            "verification_method": "Forward marginal borrowing rate assumption; tied to Slide 5 DCF schedule.",
         },
         {
             "metric": "Effective Tax Rate",
@@ -359,7 +371,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{tax_rate:.6f}",
             "displayed": f"{tax_rate*100:.2f}%",
             "tolerance": "0.0001",
-            "status": "reconciled",
+            "status": "statutory_assumption",
+            "verification_method": "Statutory Indian corporate tax rate assumption (30.00%).",
         },
         {
             "metric": "Post-tax Cost of Debt (Kd)",
@@ -367,7 +380,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{post_tax_kd:.6f}",
             "displayed": f"{post_tax_kd*100:.2f}%",
             "tolerance": "0.0001",
-            "status": "reconciled",
+            "status": "verified_identity" if kd_check else "unreconciled",
+            "verification_method": "Verified tax shield identity: PostTax_Kd = PreTax_Kd * (1 - TaxRate).",
         },
         {
             "metric": "Market Capitalization (Current)",
@@ -375,7 +389,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{mcap:.2f}",
             "displayed": f"₹{mcap:,.0f} Cr",
             "tolerance": "1.0",
-            "status": "reconciled",
+            "status": "calculated_estimate",
+            "verification_method": "Derived from Sunday Screener snapshot price (₹309.10) * 45.316 Cr shares.",
         },
         {
             "metric": "Total Debt / Borrowings (Current)",
@@ -383,7 +398,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{debt:.2f}",
             "displayed": f"₹{debt:,.0f} Cr",
             "tolerance": "1.0",
-            "status": "reconciled",
+            "status": "inherited_template_value",
+            "verification_method": "Screener audited FY25 total borrowings; tied to Slide 5 current capital structure.",
         },
         {
             "metric": "Target Weight of Equity (Peer Median)",
@@ -391,7 +407,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{w_equity:.6f}",
             "displayed": f"{w_equity*100:.2f}%",
             "tolerance": "0.0001",
-            "status": "reconciled",
+            "status": "verified_identity" if target_weights_sum_check else "unreconciled",
+            "verification_method": "Verified pure-play peer median target weight; Target_We + Target_Wd = 100%.",
         },
         {
             "metric": "Target Weight of Debt (Peer Median)",
@@ -399,7 +416,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{w_debt:.6f}",
             "displayed": f"{w_debt*100:.2f}%",
             "tolerance": "0.0001",
-            "status": "reconciled",
+            "status": "verified_identity" if target_weights_sum_check else "unreconciled",
+            "verification_method": "Verified pure-play peer median target weight; Target_We + Target_Wd = 100%.",
         },
         {
             "metric": "WACC (Target-Weighted)",
@@ -407,7 +425,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{wacc:.6f}",
             "displayed": f"{wacc*100:.2f}%",
             "tolerance": "0.0001",
-            "status": "reconciled",
+            "status": "verified_identity" if wacc_check else "unreconciled",
+            "verification_method": "Verified WACC identity: WACC = We * Ke + Wd * Kd * (1 - t).",
         },
         {
             "metric": "FY25 Current Ratio",
@@ -415,7 +434,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{cr:.4f}",
             "displayed": f"{cr:.2f}",
             "tolerance": "0.01",
-            "status": "reconciled",
+            "status": "tied_to_presentation",
+            "verification_method": "Calculated from Balance Sheet current assets / liabilities; ties to Slide 4 Table 0 & chart.",
         },
         {
             "metric": "FY25 Quick Ratio",
@@ -423,7 +443,8 @@ def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]
             "exact_value": f"{qr:.4f}",
             "displayed": f"{qr:.2f}",
             "tolerance": "0.01",
-            "status": "reconciled",
+            "status": "tied_to_presentation",
+            "verification_method": "Calculated from Balance Sheet quick assets / liabilities; ties to Slide 4 Table 0 & chart.",
         },
     ]
 

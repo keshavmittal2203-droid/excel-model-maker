@@ -100,5 +100,26 @@
 - `python -m unittest discover -v`: **70/70 tests passing** cleanly in 18s.
 - Built fresh Baseline package into `candidates/run_native_baseline_v4/` (13 reviewable artifacts, WACC 12.11%).
 - Built fresh Scenario B package into `candidates/run_native_scenario_b_v4/` (13 reviewable artifacts, WACC 12.43%, Intrinsic Value ₹70.01/share).
-- Maintained `ready: false` with pending gate `["human_pack_approval"]`. (Agent visual review marked completed).
+
+### 11. Codex Review Inconsistencies Resolved & v5 Delivery
+- **Accurate 17-Sheet Workbook Inventory**:
+  - Audited actual candidate workbook: exactly 17 sheets (2 divider tabs `Model ->` and `Data ->`, 7 substantive model sheets `Main Financials`, `Ratio Analysis`, `Intrinsic Growth`, `Comps`, `WACC-DCF`, `DCF 1st way`, `DCF 2nd way`, and 8 data sheets `compdata`, `Data Sheet`, `BS`, `Beta`, `RM`, `peerdata`, `Cash Flow`, `sectordata`).
+  - Completely purged 7 hallucinated sheet names (`PL`, `common size statement`, `historic forecast`, `FCFF`, `SOP`, `cost of capital`, `dividend discount model`) from documentation and tests.
+  - Corrected technical descriptions: 5-year forecast horizons in both DCF sheets (FY26–FY30 in 1st way, FY27–FY31 in 2nd way); both calculate terminal value using Gordon Growth perpetual formula (neither uses exit multiple); 2D data table in DCF 1st way varying WACC and TGR.
+  - Updated in `docs/VISUAL_REVIEW.md`.
+- **Repaired Clean-Checkout Guide (`docs/AI_CLEAN_CHECKOUT_GUIDE.md`)**:
+  - Pinned exact template SHA-256 hashes directly from `source-catalog.json` (`5a1f9af7d1be...` for workbook, `9d41ec99b9a4...` for ERR-4, etc.).
+  - Replaced nonfunctional request with valid `package-request.schema.json` compliant request (nested `workbook`, `presentation`, `exports`).
+  - Documented supported inputs workflow: baseline inputs embedded in model pack proposal; external inputs file (`proposals/scenario-b.inputs.json`) used for custom/stressed scenarios. Removed nonexistent `proposals/marksans.inputs.proposal.json`.
+  - Quoted PowerShell paths with spaces and fixed command syntax.
+  - Documented platform boundaries: `pywin32` is Windows-only; `--skip-com` skips preview exports but does not remove Excel COM requirement for recalculation validation.
+- **Reconciled Readiness & Mathematical Identities**:
+  - `build_package.py` evaluates independent mathematical identities within 0.0001 (CAPM Ke, Post-tax Kd, Target weights sum, WACC) and assigns honest status strings (`verified_identity`, `tied_to_presentation`, `sourced_assumption`, `statutory_assumption`, `calculated_estimate`, `inherited_template_value`).
+  - Reconciled pending gates across all files: `pending_gates: ["human_pack_approval", "render_review"]`. Agent visual review is provisional (5 slides + 6 core schedule PDFs inspected; 9 workbook sheets remain unreviewed visually).
+- **Committed Deliverable Handoff Report (`docs/DELIVERABLE_REPORT.md`)**:
+  - Authored repository deliverable report recording full absolute paths and SHA-256 hashes for Baseline (`candidates/run_native_baseline_v5/`) and Scenario B (`candidates/run_native_scenario_b_v5/`).
+  - Reconciled file counts: 13 primary deliverables in manifest, 5 auxiliary files on disk, 18 total files per candidate run.
+- **Expanded Test Suite**:
+  - Added 3 regression tests in `test_build_package.py` (`test_workbook_inventory_matches_actual_sheets`, `test_clean_checkout_guide_hashes_and_request_schema`, `test_reconciliation_summary_verified_identities_and_statuses`).
+  - Total test suite now passes: **73/73 tests**.
 
