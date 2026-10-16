@@ -44,246 +44,6 @@
       "value": "Marksans Pharma's consolidated cash flow from operations reached \u20b9206.66 crore in FY25, supported by profit before tax of \u20b9503.96 crore. Net cash flow for FY25 stood at \u20b992.51 crore, contributing to total cash and bank balances of \u20b9704.21 crore. Disciplined working capital management and steady operating margins have enabled the company to maintain a strong net-cash position while funding capacity expansion internally.",
       "source": "Marksans-Recalculated.xlsx (Data Sheet rows 28, 59, 82, 85)"
     },
-    "slide14_pbt_fy18": {
-      "value": 49.8,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!C28)",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_pbt_fy19": {
-      "value": 104.31,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!D28)",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_pbt_fy20": {
-      "value": 157.17,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!E28)",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_pbt_fy21": {
-      "value": 302.17,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!F28)",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_pbt_fy22": {
-      "value": 247.51,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!G28)",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_pbt_fy23": {
-      "value": 337.66,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!H28)",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_pbt_fy24": {
-      "value": 423.53,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!I28)",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_pbt_fy25": {
-      "value": 503.96,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!J28)",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_cfo_fy18": {
-      "value": 50.09,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!C82)",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_cfo_fy19": {
-      "value": 27.4,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!D82)",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_cfo_fy20": {
-      "value": 233.33,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!E82)",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_cfo_fy21": {
-      "value": 178.59,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!F82)",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_cfo_fy22": {
-      "value": 99.26,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!G82)",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_cfo_fy23": {
-      "value": 237.41,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!H82)",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_cfo_fy24": {
-      "value": 230.41,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!I82)",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_cfo_fy25": {
-      "value": 206.66,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!J82)",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_cfi_fy18": {
-      "value": -38.81,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!C83)",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_cfi_fy19": {
-      "value": -13.48,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!D83)",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_cfi_fy20": {
-      "value": -59.58,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!E83)",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_cfi_fy21": {
-      "value": -44.85,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!F83)",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_cfi_fy22": {
-      "value": -84.39,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!G83)",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_cfi_fy23": {
-      "value": -259.21,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!H83)",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_cfi_fy24": {
-      "value": -140.84,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!I83)",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_cfi_fy25": {
-      "value": -49.01,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!J83)",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_cff_fy18": {
-      "value": 3.38,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!C84)",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_cff_fy19": {
-      "value": -20.78,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!D84)",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_cff_fy20": {
-      "value": -113.55,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!E84)",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_cff_fy21": {
-      "value": -15.29,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!F84)",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_cff_fy22": {
-      "value": 79.51,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!G84)",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_cff_fy23": {
-      "value": 197.83,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!H84)",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_cff_fy24": {
-      "value": -68.73,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!I84)",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_cff_fy25": {
-      "value": -65.15,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!J84)",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
-    "slide14_net_cf_fy18": {
-      "value": 14.67,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!C85)",
-      "unit": "INR_Cr",
-      "period": "FY18"
-    },
-    "slide14_net_cf_fy19": {
-      "value": -6.86,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!D85)",
-      "unit": "INR_Cr",
-      "period": "FY19"
-    },
-    "slide14_net_cf_fy20": {
-      "value": 60.19,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!E85)",
-      "unit": "INR_Cr",
-      "period": "FY20"
-    },
-    "slide14_net_cf_fy21": {
-      "value": 118.46,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!F85)",
-      "unit": "INR_Cr",
-      "period": "FY21"
-    },
-    "slide14_net_cf_fy22": {
-      "value": 94.38,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!G85)",
-      "unit": "INR_Cr",
-      "period": "FY22"
-    },
-    "slide14_net_cf_fy23": {
-      "value": 176.03,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!H85)",
-      "unit": "INR_Cr",
-      "period": "FY23"
-    },
-    "slide14_net_cf_fy24": {
-      "value": 20.84,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!I85)",
-      "unit": "INR_Cr",
-      "period": "FY24"
-    },
-    "slide14_net_cf_fy25": {
-      "value": 92.51,
-      "source": "Marksans-Recalculated.xlsx (Data Sheet!J85)",
-      "unit": "INR_Cr",
-      "period": "FY25"
-    },
     "slide16_company_name": {
       "value": "Marksans Pharma Ltd.",
       "source": "Marksans Keshav.xlsx (Data Sheet!B1)"
@@ -325,7 +85,7 @@
       "source": "Marksans Annual Report FY25 & Regulatory Disclosures"
     },
     "slide1_strategic_approach": {
-      "value": "• Capacity Expansion: Expanding capacity at the Teva Goa site to accelerate oral solid dosage supply.\n• Backward Integration: Increasing backward API integration and scaling direct pharmacy distribution.",
+      "value": "\u2022 Capacity Expansion: Expanding capacity at the Teva Goa site to accelerate oral solid dosage supply.\n\u2022 Backward Integration: Increasing backward API integration and scaling direct pharmacy distribution.",
       "source": "Marksans Investor Presentation FY25 & Management Commentary"
     },
     "slide1_chart_revenue_mix": {
@@ -449,6 +209,726 @@
     "slide23_logo_suppress": {
       "value": "suppress",
       "source": "Repository Quality Policy: omit unverified corporate logo pending authentic asset"
+    },
+    "slide14_pbt_fy18": {
+      "value": 49.8,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!C28]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_pbt_fy19": {
+      "value": 104.31,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!D28]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_pbt_fy20": {
+      "value": 157.17,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!E28]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_pbt_fy21": {
+      "value": 302.17,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!F28]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_pbt_fy22": {
+      "value": 247.51,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!G28]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_pbt_fy23": {
+      "value": 337.66,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!H28]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_pbt_fy24": {
+      "value": 423.53,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!I28]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_pbt_fy25": {
+      "value": 503.96,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!J28]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_non_cash_fy18": {
+      "value": "43.29",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_non_cash_fy19": {
+      "value": "32.09",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_non_cash_fy20": {
+      "value": "42.16",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_non_cash_fy21": {
+      "value": "57.42",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_non_cash_fy22": {
+      "value": "35.75",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_non_cash_fy23": {
+      "value": "73.75",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_non_cash_fy24": {
+      "value": "54.88",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_non_cash_fy25": {
+      "value": "69.70",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_wc_changes_fy18": {
+      "value": -36.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!F12]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_wc_changes_fy19": {
+      "value": -82.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!G12]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_wc_changes_fy20": {
+      "value": 59.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!H12]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_wc_changes_fy21": {
+      "value": -132.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!I12]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_wc_changes_fy22": {
+      "value": -111.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!J12]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_wc_changes_fy23": {
+      "value": -111.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!K12]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_wc_changes_fy24": {
+      "value": -126.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!L12]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_wc_changes_fy25": {
+      "value": -241.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!M12]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_direct_taxes_fy18": {
+      "value": -7.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!F13]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_direct_taxes_fy19": {
+      "value": -27.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!G13]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_direct_taxes_fy20": {
+      "value": -25.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!H13]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_direct_taxes_fy21": {
+      "value": -49.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!I13]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_direct_taxes_fy22": {
+      "value": -73.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!J13]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_direct_taxes_fy23": {
+      "value": -63.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!K13]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_direct_taxes_fy24": {
+      "value": -122.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!L13]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_direct_taxes_fy25": {
+      "value": -126.0,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!M13]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_cfo_fy18": {
+      "value": 50.09,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!C82]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_cfo_fy19": {
+      "value": 27.4,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!D82]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_cfo_fy20": {
+      "value": 233.33,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!E82]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_cfo_fy21": {
+      "value": 178.59,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!F82]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_cfo_fy22": {
+      "value": 99.26,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!G82]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_cfo_fy23": {
+      "value": 237.41,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!H82]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_cfo_fy24": {
+      "value": 230.41,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!I82]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_cfo_fy25": {
+      "value": 206.66,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!J82]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_capex_fy18": {
+      "value": "-39.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_capex_fy19": {
+      "value": "-13.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_capex_fy20": {
+      "value": "-60.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_capex_fy21": {
+      "value": "-45.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_capex_fy22": {
+      "value": "-46.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_capex_fy23": {
+      "value": "-54.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_capex_fy24": {
+      "value": "-208.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_capex_fy25": {
+      "value": "-172.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_net_inv_fy18": {
+      "value": "0.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_net_inv_fy19": {
+      "value": "0.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_net_inv_fy20": {
+      "value": "0.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_net_inv_fy21": {
+      "value": "0.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_net_inv_fy22": {
+      "value": "0.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_net_inv_fy23": {
+      "value": "0.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_net_inv_fy24": {
+      "value": "-26.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_net_inv_fy25": {
+      "value": "27.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_other_investing_fy18": {
+      "value": "0.19",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_other_investing_fy19": {
+      "value": "-0.48",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_other_investing_fy20": {
+      "value": "0.42",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_other_investing_fy21": {
+      "value": "0.15",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_other_investing_fy22": {
+      "value": "-38.39",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_other_investing_fy23": {
+      "value": "-205.21",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_other_investing_fy24": {
+      "value": "93.16",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_other_investing_fy25": {
+      "value": "95.99",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_cfi_fy18": {
+      "value": -38.81,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!C83]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_cfi_fy19": {
+      "value": -13.48,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!D83]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_cfi_fy20": {
+      "value": -59.58,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!E83]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_cfi_fy21": {
+      "value": -44.85,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!F83]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_cfi_fy22": {
+      "value": -84.39,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!G83]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_cfi_fy23": {
+      "value": -259.21,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!H83]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_cfi_fy24": {
+      "value": -140.84,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!I83]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_cfi_fy25": {
+      "value": -49.01,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!J83]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_net_borrow_fy18": {
+      "value": "0.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_net_borrow_fy19": {
+      "value": "-6.68",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_net_borrow_fy20": {
+      "value": "-70.31",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_net_borrow_fy21": {
+      "value": "-0.10",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_net_borrow_fy22": {
+      "value": "22.55",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_net_borrow_fy23": {
+      "value": "5.30",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_net_borrow_fy24": {
+      "value": "-12.50",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_net_borrow_fy25": {
+      "value": "-6.01",
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_finance_costs_fy18": {
+      "value": -10.22,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!F27]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_finance_costs_fy19": {
+      "value": -9.66,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!G27]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_finance_costs_fy20": {
+      "value": -8.75,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!H27]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_finance_costs_fy21": {
+      "value": -7.99,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!I27]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_finance_costs_fy22": {
+      "value": -4.22,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!J27]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_finance_costs_fy23": {
+      "value": -6.07,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!K27]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_finance_costs_fy24": {
+      "value": -5.17,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!L27]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_finance_costs_fy25": {
+      "value": -2.39,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!M27]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_dividends_fy18": {
+      "value": -2.46,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!F28]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_dividends_fy19": {
+      "value": -4.44,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!G28]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_dividends_fy20": {
+      "value": -29.5,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!H28]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_dividends_fy21": {
+      "value": -4.09,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!I28]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_dividends_fy22": {
+      "value": -10.58,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!J28]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_dividends_fy23": {
+      "value": -10.17,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!K28]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_dividends_fy24": {
+      "value": -22.66,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!L28]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_dividends_fy25": {
+      "value": -27.19,
+      "source": "candidates/Marksans-Recalculated.xlsx [Cash Flow!M28]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_other_financing_fy18": {
+      "value": "16.06",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_other_financing_fy19": {
+      "value": "0.00",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_other_financing_fy20": {
+      "value": "-4.99",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_other_financing_fy21": {
+      "value": "-3.11",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_other_financing_fy22": {
+      "value": "71.76",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_other_financing_fy23": {
+      "value": "208.77",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_other_financing_fy24": {
+      "value": "-28.40",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_other_financing_fy25": {
+      "value": "-29.56",
+      "source": "candidates/Marksans-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_cff_fy18": {
+      "value": 3.38,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!C84]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_cff_fy19": {
+      "value": -20.78,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!D84]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_cff_fy20": {
+      "value": -113.55,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!E84]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_cff_fy21": {
+      "value": -15.29,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!F84]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_cff_fy22": {
+      "value": 79.51,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!G84]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_cff_fy23": {
+      "value": 197.83,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!H84]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_cff_fy24": {
+      "value": -68.73,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!I84]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_cff_fy25": {
+      "value": -65.15,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!J84]",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_net_cf_fy18": {
+      "value": 14.67,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!C85]",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_net_cf_fy19": {
+      "value": -6.86,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!D85]",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_net_cf_fy20": {
+      "value": 60.19,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!E85]",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_net_cf_fy21": {
+      "value": 118.46,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!F85]",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_net_cf_fy22": {
+      "value": 94.38,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!G85]",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_net_cf_fy23": {
+      "value": 176.03,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!H85]",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_net_cf_fy24": {
+      "value": 20.84,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!I85]",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_net_cf_fy25": {
+      "value": 92.51,
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet!J85]",
+      "unit": "INR_Cr",
+      "period": "FY25"
     },
     "slide16_cr_fy18": {
       "value": "3.18",

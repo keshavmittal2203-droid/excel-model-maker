@@ -46,6 +46,24 @@ excluded_names = {
     "slide1_strategic_approach",
 }
 
+s14_prefix_excluded = (
+    "slide14_pbt_",
+    "slide14_cfo_",
+    "slide14_cfi_",
+    "slide14_cff_",
+    "slide14_net_cf_",
+    "slide14_non_cash_",
+    "slide14_wc_",
+    "slide14_direct_taxes_",
+    "slide14_capex_",
+    "slide14_net_inv_",
+    "slide14_other_investing_",
+    "slide14_net_borrow_",
+    "slide14_finance_costs_",
+    "slide14_dividends_",
+    "slide14_other_financing_",
+)
+
 kept_slots = [
     s for s in existing_pack["slots"]
     if s["slide"] in retained_slides and s["name"] not in excluded_names and not s["name"].startswith("slide16_cr_")
@@ -53,6 +71,7 @@ kept_slots = [
     and not s["name"].startswith("slide16_icr_") and not s["name"].startswith("slide16_debtor_")
     and not s["name"].startswith("slide16_payable_") and not s["name"].startswith("slide16_inventory_")
     and not s["name"].startswith("slide16_ccc_")
+    and not any(s["name"].startswith(p) for p in s14_prefix_excluded)
 ]
 kept_values = {s["name"]: existing_inputs["values"][s["name"]] for s in kept_slots}
 
@@ -357,8 +376,89 @@ curated_values = {
     },
 }
 
-all_slots = kept_slots + curated_slots + s16_table_slots
-all_values = {**kept_values, **curated_values, **s16_table_values}
+# Slide 14 Table 0 cells (15 rows across FY18-FY25, shape_id 8)
+ds_col_letters = ["C", "D", "E", "F", "G", "H", "I", "J"]
+cf_col_letters = ["F", "G", "H", "I", "J", "K", "L", "M"]
+
+s14_rows = [
+    # Operating Activities
+    ("pbt", 3, "Profit before tax", [49.80, 104.31, 157.17, 302.17, 247.51, 337.66, 423.53, 503.96], ("Data Sheet", 28, ds_col_letters)),
+    ("non_cash", 4, "Non-cash adjustments (net)", [43.29, 32.09, 42.16, 57.42, 35.75, 73.75, 54.88, 69.70], None),
+    ("wc_changes", 5, "Working capital changes, net", [-36.00, -82.00, 59.00, -132.00, -111.00, -111.00, -126.00, -241.00], ("Cash Flow", 12, cf_col_letters)),
+    ("direct_taxes", 6, "Direct taxes paid", [-7.00, -27.00, -25.00, -49.00, -73.00, -63.00, -122.00, -126.00], ("Cash Flow", 13, cf_col_letters)),
+    ("cfo", 7, "Cash From Operating Activities", [50.09, 27.40, 233.33, 178.59, 99.26, 237.41, 230.41, 206.66], ("Data Sheet", 82, ds_col_letters)),
+
+    # Investing Activities
+    ("capex", 10, "Capital expenditure, net", [-39.00, -13.00, -60.00, -45.00, -46.00, -54.00, -208.00, -172.00], None),
+    ("net_inv", 11, "Net purchase/(sale) of investments", [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, -26.00, 27.00], None),
+    ("other_investing", 12, "Other investing items, net", [0.19, -0.48, 0.42, 0.15, -38.39, -205.21, 93.16, 95.99], None),
+    ("cfi", 13, "Cash From Investing Activities", [-38.81, -13.48, -59.58, -44.85, -84.39, -259.21, -140.84, -49.01], ("Data Sheet", 83, ds_col_letters)),
+
+    # Financing Activities
+    ("net_borrow", 16, "Net borrowings (proceeds/repay.)", [0.00, -6.68, -70.31, -0.10, 22.55, 5.30, -12.50, -6.01], None),
+    ("finance_costs", 17, "Finance costs paid", [-10.22, -9.66, -8.75, -7.99, -4.22, -6.07, -5.17, -2.39], ("Cash Flow", 27, cf_col_letters)),
+    ("dividends", 18, "Dividends paid", [-2.46, -4.44, -29.50, -4.09, -10.58, -10.17, -22.66, -27.19], ("Cash Flow", 28, cf_col_letters)),
+    ("other_financing", 19, "Other financing items, net", [16.06, 0.00, -4.99, -3.11, 71.76, 208.77, -28.40, -29.56], None),
+    ("cff", 20, "Cash From Financing Activities", [3.38, -20.78, -113.55, -15.29, 79.51, 197.83, -68.73, -65.15], ("Data Sheet", 84, ds_col_letters)),
+
+    # Net Cash Flow
+    ("net_cf", 21, "Net Cash Flow", [14.67, -6.86, 60.19, 118.46, 94.38, 176.03, 20.84, 92.51], ("Data Sheet", 85, ds_col_letters)),
+]
+
+s14_table_slots = []
+s14_table_values = {}
+
+for prefix, row_idx, metric_label, row_vals, binding_info in s14_rows:
+    for col_idx, (yr, val) in enumerate(zip(years, row_vals), start=1):
+        slot_name = f"slide14_{prefix}_{yr}"
+        slot_def = {
+            "name": slot_name,
+            "slide": 14,
+            "target_type": "table_cell",
+            "shape_id": 8,
+            "shape_name": "Table 0",
+            "row": row_idx,
+            "col": col_idx,
+            "description": f"{metric_label} (₹ Cr) {yr.upper()} in Slide 14 Table 0",
+        }
+        if binding_info is not None:
+            sheet_name, cell_row, col_map = binding_info
+            cell_ref = f"{col_map[col_idx - 1]}{cell_row}"
+            slot_def["workbook_binding"] = {
+                "sheet": sheet_name,
+                "cell": cell_ref,
+                "scale": 1,
+                "decimals": 2,
+                "abs_tolerance": 0.01,
+                "workbook_sha256": wb_sha,
+                "unit": "INR_Cr",
+                "period": yr.upper(),
+            }
+            s14_table_values[slot_name] = {
+                "value": val,
+                "source": f"candidates/Marksans-Recalculated.xlsx [{sheet_name}!{cell_ref}]",
+                "unit": "INR_Cr",
+                "period": yr.upper(),
+            }
+        else:
+            deriv_source = {
+                "non_cash": "candidates/Marksans-Recalculated.xlsx [Derived: CFO - PBT - WC - Taxes]",
+                "capex": "candidates/Marksans-Recalculated.xlsx [Cash Flow Fixed assets purchased + sold]",
+                "net_inv": "candidates/Marksans-Recalculated.xlsx [Cash Flow Investments purchased + sold]",
+                "other_investing": "candidates/Marksans-Recalculated.xlsx [Derived: CFI - CapEx - Net Investments]",
+                "net_borrow": "candidates/Marksans-Recalculated.xlsx [Cash Flow Borrowing proceeds + repayments]",
+                "other_financing": "candidates/Marksans-Recalculated.xlsx [Derived: CFF - Net Borrowings - Finance - Dividends]",
+            }[prefix]
+            s14_table_values[slot_name] = {
+                "value": f"{val:.2f}",
+                "source": deriv_source,
+                "unit": "INR_Cr",
+                "period": yr.upper(),
+            }
+        s14_table_slots.append(slot_def)
+
+all_slots = kept_slots + curated_slots + s14_table_slots + s16_table_slots
+all_values = {**kept_values, **curated_values, **s14_table_values, **s16_table_values}
 
 # Verify 1:1 mapping between slot names and value keys
 slot_names = [s["name"] for s in all_slots]
@@ -370,7 +470,7 @@ final_pack = {
     "template_sha256": template_sha,
     "status": "proposal",
     "approval": None,
-    "proposal_notes": "5-Slide Marksans Pharma Financial Overview derived from originals/ERR-4.pptx (Slides 1, 2, 14, 16, 23). Includes verified company profile, executive summary, 8-year historical cash flow schedule, balance sheet ratios with native charts, DCF valuation with reconciled WACC tables, and unverified logo suppression.",
+    "proposal_notes": "5-Slide Marksans Pharma Financial Overview derived from originals/ERR-4.pptx (Slides 1, 2, 14, 16, 23). Includes verified company profile, executive summary, 8-year historical cash flow schedule (all 15 rows completely replaced and reconciled), balance sheet ratios with native charts, DCF valuation with reconciled WACC tables, and unverified logo suppression.",
     "retained_slides": retained_slides,
     "slots": all_slots,
 }

@@ -295,6 +295,55 @@ class BuildPackageTests(unittest.TestCase):
         self.assertEqual(metrics["Pre-tax Cost of Debt"]["status"], "sourced_assumption")
         self.assertEqual(metrics["Effective Tax Rate"]["status"], "statutory_assumption")
 
+    def test_non_circular_rm_verification_and_strict_numeric_parsing(self):
+        """Regression test: verify non-circular Rm evaluation and strict rejection of None/non-numeric."""
+        from build_package import evaluate_reconciliation_summary, _parse_finite_float
+        wb_path = ROOT / "candidates" / "run_native_baseline_v5" / "Marksans-Recalculated.xlsx"
+        if not wb_path.exists():
+            wb_path = ROOT / "candidates" / "Marksans-Recalculated.xlsx"
+        if not wb_path.exists():
+            wb_path = ROOT / "originals" / "Marksans Keshav.xlsx"
+
+        summary = evaluate_reconciliation_summary(wb_path)
+        metrics = {m["metric"]: m for m in summary}
+        # Non-circular check: exact_value should match RM!F12 (0.163692)
+        self.assertEqual(metrics["Market Return (Rm)"]["exact_value"], "0.163692")
+        self.assertEqual(metrics["Market Return (Rm)"]["status"], "verified_identity")
+
+        # Test strict parsing rejects None, bool, non-numeric, or NaN/Inf
+        with self.assertRaises(ValueError):
+            _parse_finite_float(None, "Test!A1")
+        with self.assertRaises(ValueError):
+            _parse_finite_float(True, "Test!A1")
+        with self.assertRaises(ValueError):
+            _parse_finite_float("not_a_number", "Test!A1")
+        with self.assertRaises(ValueError):
+            _parse_finite_float(float("nan"), "Test!A1")
+        with self.assertRaises(ValueError):
+            _parse_finite_float(float("inf"), "Test!A1")
+
+    def test_audit_retained_content_passes_with_zero_stale_elements(self):
+        """Regression test: audit_retained_content passes with 0 unresolved stale elements."""
+        from work.audit_retained_content import audit_presentation
+        tpl_path = ROOT / "originals" / "ERR-4.pptx"
+        # Compose in-memory candidate deck
+        from pptmaker import compose_deck
+        tpl_bytes = tpl_path.read_bytes()
+        deck_pack = json.loads((ROOT / "proposals" / "err4.deck-pack.proposal.json").read_text(encoding="utf-8"))
+        deck_inputs = json.loads((ROOT / "proposals" / "err4.inputs.proposal.json").read_text(encoding="utf-8"))
+        wb_bytes = (ROOT / "candidates" / "Marksans-Recalculated.xlsx").read_bytes()
+        cand_bytes, _ = compose_deck(
+            template=tpl_bytes,
+            pack=deck_pack,
+            supplied=deck_inputs,
+            workbook_bytes=wb_bytes,
+            allow_proposal=True,
+        )
+        audit_data = audit_presentation(tpl_path, candidate_bytes=cand_bytes)
+        self.assertTrue(audit_data["audit_passed"])
+        self.assertEqual(audit_data["unresolved_stale_elements_count"], 0)
+        self.assertGreater(audit_data["total_elements_audited"], 200)
+
 
 if __name__ == "__main__":
     unittest.main()

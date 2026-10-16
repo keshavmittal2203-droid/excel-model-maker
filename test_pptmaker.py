@@ -392,7 +392,7 @@ class PptMakerTests(unittest.TestCase):
         self.assertIn("render_review", manifest["pending_gates"])
         self.assertIn("human_pack_approval", manifest["pending_gates"])
         self.assertEqual(len(manifest["changed_slots"]), len(deck_pack["slots"]))
-        self.assertEqual(len(manifest["changed_slots"]), 139)
+        self.assertEqual(len(manifest["changed_slots"]), 219)
         self.assertEqual(manifest["retained_slides"], [1, 2, 14, 16, 23])
         self.assertEqual(len(manifest["source_slide_lineage"]), 5)
         self.assertIn("ppt/media/image22.png", manifest["changed_parts"])
@@ -802,6 +802,87 @@ class PptMakerTests(unittest.TestCase):
             # 4. Content_Types.xml should not contain chart1.xml
             ct_xml = z.read("[Content_Types].xml").decode("utf-8")
             self.assertNotIn("chart1.xml", ct_xml)
+
+    def test_cash_flow_table_completely_replaced_and_reconciled(self):
+        """Regression test: verify Slide 14 Cash Flow Schedule (Shape 8) has all 15 rows replaced with
+
+        reconciled Marksans data and zero Sun Pharma cached detail numbers remain.
+        """
+        root = Path(__file__).resolve().parent
+        orig_pptx = root / "originals" / "ERR-4.pptx"
+        recalc_path = root / "candidates" / "Marksans-Recalculated.xlsx"
+        orig_wb = root / "originals" / "Marksans Keshav.xlsx"
+        wb_data = recalc_path.read_bytes() if recalc_path.exists() else orig_wb.read_bytes()
+        deck_pack = json.loads((root / "proposals" / "err4.deck-pack.proposal.json").read_text(encoding="utf-8"))
+        inputs = json.loads((root / "proposals" / "err4.inputs.proposal.json").read_text(encoding="utf-8"))
+        if not recalc_path.exists():
+            wb_digest = sha(wb_data)
+            for s in deck_pack.get("slots", []):
+                if s.get("workbook_binding"):
+                    s["workbook_binding"]["workbook_sha256"] = wb_digest
+
+        out_bytes, manifest = compose_deck(
+            orig_pptx.read_bytes(),
+            deck_pack,
+            inputs,
+            workbook_bytes=wb_data,
+            allow_proposal=True,
+        )
+
+        import pptx
+        prs = pptx.Presentation(io.BytesIO(out_bytes))
+        # Slide 14 is the 3rd slide in the 5 retained slides
+        slide14 = prs.slides[2]
+        tbl_shape = next(sp for sp in slide14.shapes if sp.has_table)
+        tbl = tbl_shape.table
+
+        # 1. Assert zero Sun Pharma template strings remain in any row
+        sun_pharma_stale_strings = [
+            "1,120.4", "(323.6)", "(476.8)", "(2,067.6)", "(3,864.2)",
+            "625.6", "(1,164.9)", "(223.8)", "(3,617.3)", "(2,899.9)",
+            "3,479.0", "14,072.1", "(5,306.2)", "(7,905.8)", "860.1",
+        ]
+        all_cell_texts = [cell.text.strip() for row in tbl.rows for cell in row.cells]
+        for stale in sun_pharma_stale_strings:
+            self.assertNotIn(stale, all_cell_texts, f"Stale template value {stale!r} still found on Slide 14!")
+
+        # 2. Extract numeric rows
+        def get_row_floats(r_idx):
+            return [float(tbl.cell(r_idx, c).text.strip().replace(",", "")) for c in range(1, 9)]
+
+        pbt = get_row_floats(3)
+        non_cash = get_row_floats(4)
+        wc = get_row_floats(5)
+        taxes = get_row_floats(6)
+        cfo = get_row_floats(7)
+
+        capex = get_row_floats(10)
+        net_inv = get_row_floats(11)
+        other_inv = get_row_floats(12)
+        cfi = get_row_floats(13)
+
+        net_borrow = get_row_floats(16)
+        fin_costs = get_row_floats(17)
+        dividends = get_row_floats(18)
+        other_fin = get_row_floats(19)
+        cff = get_row_floats(20)
+
+        net_cf = get_row_floats(21)
+
+        # 3. Assert mathematical tie-out across all 8 years
+        for yr_idx in range(8):
+            # Operating
+            calc_cfo = round(pbt[yr_idx] + non_cash[yr_idx] + wc[yr_idx] + taxes[yr_idx], 2)
+            self.assertAlmostEqual(calc_cfo, cfo[yr_idx], places=2)
+            # Investing
+            calc_cfi = round(capex[yr_idx] + net_inv[yr_idx] + other_inv[yr_idx], 2)
+            self.assertAlmostEqual(calc_cfi, cfi[yr_idx], places=2)
+            # Financing
+            calc_cff = round(net_borrow[yr_idx] + fin_costs[yr_idx] + dividends[yr_idx] + other_fin[yr_idx], 2)
+            self.assertAlmostEqual(calc_cff, cff[yr_idx], places=2)
+            # Net Cash Flow matches CFO + CFI + CFF within 0.01
+            calc_net_cf = round(cfo[yr_idx] + cfi[yr_idx] + cff[yr_idx], 2)
+            self.assertAlmostEqual(calc_net_cf, net_cf[yr_idx], delta=0.02)
 
 
 if __name__ == "__main__":

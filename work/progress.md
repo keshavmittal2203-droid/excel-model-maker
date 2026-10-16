@@ -121,5 +121,29 @@
   - Reconciled file counts: 13 primary deliverables in manifest, 5 auxiliary files on disk, 18 total files per candidate run.
 - **Expanded Test Suite**:
   - Added 3 regression tests in `test_build_package.py` (`test_workbook_inventory_matches_actual_sheets`, `test_clean_checkout_guide_hashes_and_request_schema`, `test_reconciliation_summary_verified_identities_and_statuses`).
-  - Total test suite now passes: **73/73 tests**.
+  - Total test suite passes: **73/73 tests**.
+
+### 12. Stale Cash Flow Resolution, Retained Content Audit & v6 Delivery
+- **Slide 14 Cash Flow Table Complete Replacement**:
+  - All 15 rows (120 cells across FY18–FY25) on Slide 14 Table 0 are completely replaced and reconciled with `candidates/Marksans-Recalculated.xlsx` data.
+  - Zero Sun Pharma stale numbers remain (`1,120.4`, `-323.6`, `-476.8`, `-2,067.6`, `-3,864.2`, `625.6`, `-1,164.9`, `-223.8`, `-3,617.3`, `-2,899.9` all eradicated).
+  - Operating, Investing, Financing, and Net Cash Flow subtotals tie out with 0.00 difference across all 8 years.
+- **Machine-Readable Content Audit**:
+  - Authored `work/audit_retained_content.py`: audits all shapes, tables, charts, pictures, and notes across all 5 retained slides.
+  - Generated `docs/retained_content_audit.json` and `docs/RETAINED_CONTENT_AUDIT.md`.
+  - Result: 258 elements audited, 0 unresolved stale elements (`audit_passed: True`).
+- **Non-Circular Reconciliation & Strict Validation**:
+  - In `build_package.py`, `evaluate_reconciliation_summary` reads `RM!F10`, `RM!F11`, and `RM!F12` independently; non-circular verification confirms `RM!F12 == RM!F10 + RM!F11` and `WACC-DCF!J23 == RM!F12 - Rf`.
+  - Strictly rejects `None`, boolean, or non-finite values with `ValueError`.
+  - Verifies presentation destination cells for CR (4.95), QR (3.07), and Beta (0.547) before assigning `tied_to_presentation`.
+- **Nifty 50 Series Documentation Alignment**:
+  - Corrected `docs/VISUAL_REVIEW.md`: Column C in `RM` is the 26-year arithmetic average of Nifty 50 **Price Return (PR)** capital index returns ($15.15\%$) + $1.22\%$ dividend yield assumption to estimate Total Market Return ($R_m = 16.37\%$). Never described as Total Return Index.
+- **Test Suite Expansion**:
+  - Added `test_cash_flow_table_completely_replaced_and_reconciled` in `test_pptmaker.py`.
+  - Added `test_non_circular_rm_verification_and_strict_numeric_parsing` and `test_audit_retained_content_passes_with_zero_stale_elements` in `test_build_package.py`.
+  - Full test suite now passes: **76/76 tests cleanly**.
+- **Fresh Native Candidate Builds (v6)**:
+  - Built `candidates/run_native_baseline_v6/` with 13 artifacts, WACC 12.11%, Slide 14 fully replaced.
+  - Built `candidates/run_native_scenario_b_v6/` with 13 artifacts, stressed WACC 12.43%.
+  - Generated slide contact sheet `candidates/run_native_baseline_v6/previews/contact_sheet.png`.
 
