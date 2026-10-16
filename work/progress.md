@@ -150,3 +150,35 @@
   - Re-synchronized `proposals/err4.deck-pack.proposal.json` workbook binding hashes to match candidate workbook `candidates/Marksans-Recalculated.xlsx` (`ef5d6d5acb66e771abcb23df8151ff7835958d7a3c7e79452d088e314cbddd85`).
   - Ensures clean clone / out-of-the-box test discovery passes with **76/76 tests** without needing prior dynamic patching.
 
+### 13. Retained Content Audit Hardening, Canonical Request Intake & Cipla Second-Company Demonstration
+- **Hardened Retained Content Audit (`work/audit_retained_content.py`)**:
+  - Expanded audit coverage to all 274 nested presentation elements across retained slides 1, 2, 14, 16, 23.
+  - Strict mathematical tie-outs enforced on Slide 14 Table 0 across all 8 historical years (PBT + Non-cash + WC + Direct taxes = CFO; CapEx + Net Investments + Other = CFI; Net Borrowings + Finance Costs + Dividends + Other = CFF; CFO + CFI + CFF = Net Cash Flow).
+  - Row-level template retention detection: flags any row where candidate values match original template values across all columns or intermediate sub-totals.
+  - Native chart cache validation: extracts and compares `<c:numCache>` values against original template caches and verifies synchronization with embedded Excel workbooks (`Microsoft_Excel_WorksheetN.xlsx`).
+  - Raster screenshot image verification: computes SHA-256 for Slide 23 pictures (`image22.png`, `image23.png`, `image24.png`) and fails if original template images remain unreplaced.
+  - Result on Baseline and Scenario B v6: **274 elements audited, 0 unresolved stale elements (`audit_passed: True`)**.
+- **Negative Regression Test Suite (`test_build_package.py`)**:
+  - Added targeted OOXML part mutation helper `_mutate_candidate_bytes`.
+  - Added `test_audit_fails_when_original_template_numeric_row_reintroduced` (passes).
+  - Added `test_audit_fails_when_chart_cache_or_embedded_workbook_is_stale` (passes).
+  - Added `test_audit_fails_when_destination_disagrees_with_workbook_binding` (passes).
+  - Added `test_audit_fails_when_unsupported_company_specific_claim_remains` (passes).
+  - Added `test_audit_fails_when_slide23_raster_screenshot_is_unreplaced` (passes).
+  - Added `test_second_company_cipla_request_validation_and_provenance` (passes).
+  - Total test suite now passes: **82/82 tests cleanly**.
+- **Canonical Company-Request Workflow (`package-request.schema.json` & `build_package.py`)**:
+  - Enhanced request schema with formal `company` specification (identity, valuation date, cutoff date, currency, reporting unit, fiscal year convention, source documents).
+  - Sourced data strictly segregated into: `user_supplied_facts`, `source_extracted_facts`, `analyst_assumptions`, `calculated_outputs`, and `unresolved_inputs`.
+  - Implemented pre-flight validation `validate_package_request`: executes before any directory creation or Office COM activation; validates hashes, required company fields, and ensures every deck slot is mapped to a workbook binding or supplied value. Missing inputs **never silently become zero or retain prior company data**.
+- **Second Company Demonstration: Cipla Limited (`examples/cipla-package.json`)**:
+  - Fully mapped second real company using uploaded template methodology (Company #6 in template `compdata!C8:J8`, BSE `500087` / NSE `CIPLA`).
+  - Created `examples/cipla-package.json` and `proposals/cipla.inputs.proposal.json` with 219 populated slots.
+  - Authored `docs/SECOND_COMPANY_EVIDENCE_REPORT.md` documenting primary filing citations (Annual Report p. 210, 212, 216, 238, 245; Investor Presentation Slide 8).
+  - Enforced strict non-fabrication policy: documented missing older historical cash flow schedules (FY18–FY21) under `unresolved_inputs` rather than inventing balancing numbers.
+- **Canonical AI Clean-Checkout Guide & Multi-Agent Operations**:
+  - Updated `docs/AI_CLEAN_CHECKOUT_GUIDE.md` and `AI_START_HERE.md` with copyable setup commands, request workflow, template atlas selection, directory safety invariants, and output locations.
+  - Added Section 13 detailing approval gate semantics (`ready: false`, `pending_gates: ["human_pack_approval", "render_review"]`) and prohibition on agent self-approval.
+  - Added Section 14 containing a self-contained paste-ready prompt for another coding assistant to operate the repository without breaking shared state.
+  - Retained YouTube course reference `https://www.youtube.com/playlist?list=PL3uUjzLk6PulhRop_ffNeHyK0kprzO4cT` with clear distinction between reviewed metadata and inferred structural methodology.
+

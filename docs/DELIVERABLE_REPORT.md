@@ -56,11 +56,12 @@ This report provides canonical documentation, accessible local filesystem paths,
     - $\text{Investing: } \text{Net CapEx} + \text{Net Investments} + \text{Other Investing} = \text{CFI}$ (0.00 difference).
     - $\text{Financing: } \text{Net Borrowings} + \text{Finance Costs} + \text{Dividends} + \text{Other Financing} = \text{CFF}$ (0.00 difference).
     - $\text{Net Cash Flow: } \text{CFO} + \text{CFI} + \text{CFF}$ matches `Data Sheet!85` within rounding tolerance.
-- **Machine-Readable Content Audit**:
+- **Hardened Machine-Readable Content Audit**:
   - Script: [work/audit_retained_content.py](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/work/audit_retained_content.py)
   - Full Report: [docs/RETAINED_CONTENT_AUDIT.md](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/RETAINED_CONTENT_AUDIT.md)
   - JSON Audit Ledger: [docs/retained_content_audit.json](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/retained_content_audit.json)
-  - Result: **258 elements audited, 0 unresolved stale elements**.
+  - Audits all 274 elements across retained slides 1, 2, 14, 16, 23, including mathematical balance, row-level retention checks, chart `<c:numCache>` caches, embedded workbooks, and Slide 23 picture hashes.
+  - Result: **274 elements audited, 0 unresolved stale elements (`audit_passed: True`)**.
 - **Non-Circular Reconciliation & Strict Validation**:
   - `build_package.py` reads `RM!F10`, `RM!F11`, and `RM!F12` independently; non-circular verification confirms `RM!F12 == RM!F10 + RM!F11` and `WACC-DCF!J23 == RM!F12 - Rf`.
   - Rejects `None`, boolean, or non-finite values with `ValueError`.
@@ -77,3 +78,33 @@ This report provides canonical documentation, accessible local filesystem paths,
 | `render_review` | **PENDING** | Provisional agent review complete on slides and 6 core schedule PDFs; human visual inspection required for production release. |
 | `human_pack_approval` | **PENDING** | Mandatory independent human review and approval of proposal packs (`proposals/marksans.model-pack.proposal.json` and `proposals/err4.deck-pack.proposal.json`). |
 | **Overall Release** | `ready: false` | Package remains in proposal state until both gates are cleared by human sponsor. |
+
+---
+
+## 5. Capabilities Matrix
+
+| Scope / Dimension | Classification | Description & Evidence |
+|---|---|---|
+| **Excel 17-Sheet XML Injection** | **Implemented** | Openpyxl-based targeted XML editing preserving styles, formulas, follower ranges, and data tables. |
+| **PowerPoint Deck Assembly** | **Implemented** | Curated slide retention (1, 2, 14, 16, 23), table cell updates, chart cache sync, picture replacement, and logo suppression. |
+| **Independent Formula & Identity Checks** | **Implemented** | Recalculation verification, zero `#REF!`/#DIV/0!, $WACC = W_e K_e + W_d K_d (1-t)$, $K_e = R_f + \beta(R_m-R_f)$, balance sheet balance. |
+| **Retained-Content Audit** | **Implemented** | 274 elements checked across tables, shapes, charts, embedded workbooks, raster screenshots; zero stale content. |
+| **Pre-Flight Request Validation** | **Implemented** | Rejects unmapped slots, bad hashes, traversal paths, and invalid reporting units before directory writes. |
+| **Marksans Pharma Package (Baseline & Scenario B)** | **Demonstrated** | Fully recalculated v6 models (`ef5d6d5a...`), 5-slide decks, 1080x1440 PNG previews, landscape PDFs. |
+| **Cipla Limited Second-Company Packaging** | **Demonstrated** | Mapped from template `compdata` and FY25 Annual Report; 219 deck slots populated; evidence report committed. |
+| **Non-Pharma / Non-Manufacturing Sectors (BFSI / Tech)** | **Manual Template Required** | Banking models (NIM/NPA) and SaaS (ARR/NRR) require fundamentally different 3-statement structures created by human analysts. |
+| **Human Pack Approval & Promotion** | **Manual Review Required** | Transition from `status: "proposal"` to `status: "approved"` requires independent human financial review. |
+| **Autonomous Agent Self-Approval** | **Unsupported / Prohibited** | Agent self-approval is blocked by reviewer guards and safety invariants. |
+| **Fabrication of Missing Evidence** | **Unsupported / Prohibited** | Missing primary source data is cataloged under `unresolved_inputs`; inventing balancing numbers is strictly forbidden. |
+
+---
+
+## 6. Second Company Demonstration: Cipla Limited
+
+To prove the pipeline is genuinely reusable beyond Marksans Pharma, a second real-company demonstration was implemented:
+- **Company**: Cipla Limited (BSE: `500087`, NSE: `CIPLA`).
+- **Template Fit**: Direct peer included in template `compdata!C8:J8`.
+- **Request Specification**: [examples/cipla-package.json](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/examples/cipla-package.json).
+- **Deck Slot Inputs (219 slots)**: [proposals/cipla.inputs.proposal.json](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/proposals/cipla.inputs.proposal.json).
+- **Evidence & Provenance Report**: [docs/SECOND_COMPANY_EVIDENCE_REPORT.md](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/SECOND_COMPANY_EVIDENCE_REPORT.md).
+- **Non-Fabrication Policy**: Older historical cash flow schedules (FY18–FY21) absent from FY25 consolidated filings are explicitly recorded as `unresolved_inputs` rather than inventing balancing numbers.

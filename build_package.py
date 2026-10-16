@@ -504,6 +504,95 @@ def evaluate_reconciliation_summary(
     ]
 
 
+def validate_package_request(req: dict[str, Any], request_path: Path) -> None:
+    """Validate package build request before any directory creation or Office activation."""
+    if req.get("schema_version") is not None and req.get("schema_version") != 1:
+        raise ValueError(f"Unsupported schema_version: {req.get('schema_version')}")
+    if "package_id" in req and not req.get("package_id"):
+        raise ValueError("Missing required field 'package_id'")
+    if "workbook" not in req or "presentation" not in req:
+        raise ValueError("Request must contain 'workbook' and 'presentation' sections")
+
+    wb_spec = req["workbook"]
+    pres_spec = req["presentation"]
+
+    # Validate output filenames if specified
+    wb_out_name = wb_spec.get("output_name")
+    if wb_out_name is not None and (not wb_out_name or not isinstance(wb_out_name, str)):
+        raise ValueError("Workbook output_name must be a non-empty string")
+    pres_out_name = pres_spec.get("output_name")
+    if pres_out_name is not None and (not pres_out_name or not isinstance(pres_out_name, str)):
+        raise ValueError("Presentation output_name must be a non-empty string")
+
+    # Validate template existence and integrity if specified
+    if "source" in wb_spec:
+        wb_src_path = (ROOT / wb_spec["source"]).resolve()
+        if not wb_src_path.exists():
+            raise FileNotFoundError(f"Workbook source not found: {wb_src_path}")
+        actual_wb_sha = compute_file_sha(wb_src_path)
+        if actual_wb_sha != wb_spec.get("source_sha256"):
+            raise ValueError(f"Workbook source SHA mismatch: expected {wb_spec.get('source_sha256')}, got {actual_wb_sha}")
+
+    if "template" in pres_spec:
+        pres_tpl_path = (ROOT / pres_spec["template"]).resolve()
+        if not pres_tpl_path.exists():
+            raise FileNotFoundError(f"Presentation template not found: {pres_tpl_path}")
+        actual_tpl_sha = compute_file_sha(pres_tpl_path)
+        if actual_tpl_sha != pres_spec.get("template_sha256"):
+            raise ValueError(f"Presentation template SHA mismatch: expected {pres_spec.get('template_sha256')}, got {actual_tpl_sha}")
+
+    # Validate packs and inputs existence if specified
+    if "model_pack" in wb_spec:
+        model_pack_path = (ROOT / wb_spec["model_pack"]).resolve()
+        if not model_pack_path.exists():
+            raise FileNotFoundError(f"Model pack not found: {model_pack_path}")
+    if "deck_pack" in pres_spec:
+        deck_pack_path = (ROOT / pres_spec["deck_pack"]).resolve()
+        if not deck_pack_path.exists():
+            raise FileNotFoundError(f"Deck pack not found: {deck_pack_path}")
+    if "deck_inputs" in pres_spec:
+        deck_inputs_path = (ROOT / pres_spec["deck_inputs"]).resolve()
+        if not deck_inputs_path.exists():
+            raise FileNotFoundError(f"Deck inputs not found: {deck_inputs_path}")
+
+    if "inputs" in wb_spec:
+        wb_inputs_path = (ROOT / wb_spec["inputs"]).resolve()
+        if not wb_inputs_path.exists():
+            raise FileNotFoundError(f"Workbook inputs file not found: {wb_inputs_path}")
+
+    # Validate company identity & units if provided
+    if "company" in req:
+        comp = req["company"]
+        for field in ["name", "ticker", "valuation_date", "historical_cutoff", "currency", "reporting_unit", "fiscal_year_convention"]:
+            if not comp.get(field):
+                raise ValueError(f"Missing required company field: {field}")
+
+        if comp["reporting_unit"] not in ("INR_Cr", "INR_Lakh", "USD_M", "USD_B"):
+            raise ValueError(f"Unsupported reporting_unit: {comp['reporting_unit']}")
+
+        if comp["currency"] not in ("INR", "USD", "EUR", "GBP"):
+            raise ValueError(f"Unsupported currency: {comp['currency']}")
+
+    # Validate slot mapping completeness
+    if "deck_pack" in pres_spec and "deck_inputs" in pres_spec:
+        deck_pack_path = (ROOT / pres_spec["deck_pack"]).resolve()
+        deck_inputs_path = (ROOT / pres_spec["deck_inputs"]).resolve()
+        if deck_pack_path.exists() and deck_inputs_path.exists():
+            deck_pack = read_json(str(deck_pack_path))
+            deck_inputs = read_json(str(deck_inputs_path))
+            supplied_vals = deck_inputs.get("values", {})
+
+            for slot in deck_pack.get("slots", []):
+                s_name = slot.get("name")
+                has_binding = "workbook_binding" in slot
+                has_val = s_name in supplied_vals
+                if not has_binding and not has_val:
+                    raise ValueError(
+                        f"Missing mapping for deck slot {s_name!r}: slot is not in supplied values "
+                        f"and has no workbook binding. Missing values must never silently become zero or retain another company's data."
+                    )
+
+
 def build_package(
     request_path: Path,
     output_dir: Path,
@@ -521,6 +610,9 @@ def build_package(
     pres_out_name = req["presentation"].get("output_name", "Marksans-Pharma-Overview.pptx")
     wb_out_path = output_file(output_dir, wb_out_name, ".xlsx")
     pres_out_path = output_file(output_dir, pres_out_name, ".pptx")
+
+    # Validate request before directory creation or Office activation
+    validate_package_request(req, request_path)
 
     # 1. Directory safety verification
     verify_output_directory(output_dir, force=force)

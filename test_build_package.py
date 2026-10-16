@@ -1,6 +1,7 @@
 """Unit and regression tests for build_package.py orchestrator."""
 from __future__ import annotations
 
+import copy
 import json
 from pathlib import Path
 import tempfile
@@ -322,12 +323,10 @@ class BuildPackageTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             _parse_finite_float(float("inf"), "Test!A1")
 
-    def test_audit_retained_content_passes_with_zero_stale_elements(self):
-        """Regression test: audit_retained_content passes with 0 unresolved stale elements."""
+    def _get_valid_candidate_bytes(self):
         from work.audit_retained_content import audit_presentation
-        tpl_path = ROOT / "originals" / "ERR-4.pptx"
-        # Compose in-memory candidate deck
         from pptmaker import compose_deck
+        tpl_path = ROOT / "originals" / "ERR-4.pptx"
         tpl_bytes = tpl_path.read_bytes()
         deck_pack = json.loads((ROOT / "proposals" / "err4.deck-pack.proposal.json").read_text(encoding="utf-8"))
         deck_inputs = json.loads((ROOT / "proposals" / "err4.inputs.proposal.json").read_text(encoding="utf-8"))
@@ -339,10 +338,193 @@ class BuildPackageTests(unittest.TestCase):
             workbook_bytes=wb_bytes,
             allow_proposal=True,
         )
-        audit_data = audit_presentation(tpl_path, candidate_bytes=cand_bytes)
+        return tpl_path, tpl_bytes, wb_bytes, cand_bytes
+
+    def _mutate_candidate_bytes(self, cand_bytes: bytes, part_edits: dict[str, bytes]) -> bytes:
+        import io, zipfile
+        in_buf = io.BytesIO(cand_bytes)
+        out_buf = io.BytesIO()
+        with zipfile.ZipFile(in_buf, "r") as in_zip, zipfile.ZipFile(out_buf, "w") as out_zip:
+            for item in in_zip.infolist():
+                if item.filename in part_edits:
+                    out_zip.writestr(item, part_edits[item.filename])
+                else:
+                    out_zip.writestr(item, in_zip.read(item.filename))
+            for filename, content in part_edits.items():
+                if filename not in [item.filename for item in in_zip.infolist()]:
+                    out_zip.writestr(filename, content)
+        return out_buf.getvalue()
+
+    def test_audit_retained_content_passes_with_zero_stale_elements(self):
+        """Regression test: audit_retained_content passes with 0 unresolved stale elements."""
+        from work.audit_retained_content import audit_presentation
+        tpl_path, tpl_bytes, wb_bytes, cand_bytes = self._get_valid_candidate_bytes()
+        audit_data = audit_presentation(
+            tpl_path,
+            candidate_bytes=cand_bytes,
+            candidate_workbook_bytes=wb_bytes,
+        )
         self.assertTrue(audit_data["audit_passed"])
         self.assertEqual(audit_data["unresolved_stale_elements_count"], 0)
         self.assertGreater(audit_data["total_elements_audited"], 200)
+
+    def test_audit_fails_when_original_template_numeric_row_reintroduced(self):
+        """Negative regression: audit fails if an original-company numeric row is reintroduced."""
+        import xml.etree.ElementTree as ET
+        from pptmaker import PptxPackage, serialize_pml, A_NS
+        from work.audit_retained_content import audit_presentation
+        tpl_path, tpl_bytes, wb_bytes, cand_bytes = self._get_valid_candidate_bytes()
+
+        # Mutate candidate slide 14 table: restore original template capex row
+        pkg = PptxPackage(cand_bytes)
+        s14_tree = ET.fromstring(pkg.parts["ppt/slides/slide14.xml"])
+        tbl = s14_tree.find(f".//{{{A_NS}}}tbl")
+        # Row 10 is Capital expenditure; inject original Sun Pharma template values
+        orig_capex = ["-2067.6", "-3864.2", "-1120.4", "-476.8", "-2067.6", "-3864.2", "-1120.4", "-476.8"]
+        tr_10 = tbl.findall(f"{{{A_NS}}}tr")[10]
+        for col_idx, val in enumerate(orig_capex, start=1):
+            tc = tr_10.findall(f"{{{A_NS}}}tc")[col_idx]
+            tx_node = tc.find(f".//{{{A_NS}}}t")
+            if tx_node is not None:
+                tx_node.text = val
+        mutated_bytes = self._mutate_candidate_bytes(cand_bytes, {"ppt/slides/slide14.xml": serialize_pml(s14_tree)})
+
+        audit_data = audit_presentation(tpl_path, candidate_bytes=mutated_bytes, candidate_workbook_bytes=wb_bytes)
+        self.assertFalse(audit_data["audit_passed"])
+        self.assertGreater(audit_data["unresolved_stale_elements_count"], 0)
+        stale_reasons = [e.get("provenance", "") for e in audit_data["elements"] if e["status"] == "unresolved_stale"]
+        self.assertTrue(any("retained" in r.lower() or "mathematical" in r.lower() for r in stale_reasons))
+
+    def test_audit_fails_when_chart_cache_or_embedded_workbook_is_stale(self):
+        """Negative regression: audit fails if chart cache or embedded workbook is stale."""
+        import xml.etree.ElementTree as ET
+        from pptmaker import PptxPackage, serialize_pml, C_NS
+        from work.audit_retained_content import audit_presentation
+        tpl_path, tpl_bytes, wb_bytes, cand_bytes = self._get_valid_candidate_bytes()
+
+        # Mutate candidate chart2.xml (Historical Revenue): restore original Sun Pharma numCache
+        pkg = PptxPackage(cand_bytes)
+        ch_tree = ET.fromstring(pkg.parts["ppt/charts/chart2.xml"])
+        val_node = ch_tree.find(f".//{{{C_NS}}}ser//{{{C_NS}}}val//{{{C_NS}}}numCache")
+        # Clear points and restore Sun Pharma revenue values
+        for pt in list(val_node.findall(f"{{{C_NS}}}pt")):
+            val_node.remove(pt)
+        for idx, val in enumerate(["19290", "16370", "12210", "10840", "8330"]):
+            pt = ET.SubElement(val_node, f"{{{C_NS}}}pt", idx=str(idx))
+            v = ET.SubElement(pt, f"{{{C_NS}}}v")
+            v.text = val
+        mutated_bytes = self._mutate_candidate_bytes(cand_bytes, {"ppt/charts/chart2.xml": serialize_pml(ch_tree)})
+
+        audit_data = audit_presentation(tpl_path, candidate_bytes=mutated_bytes, candidate_workbook_bytes=wb_bytes)
+        self.assertFalse(audit_data["audit_passed"])
+        self.assertGreater(audit_data["unresolved_stale_elements_count"], 0)
+        chart_stale = [e for e in audit_data["elements"] if e.get("element_type") == "native_chart" and e["status"] == "unresolved_stale"]
+        self.assertGreater(len(chart_stale), 0)
+
+    def test_audit_fails_when_destination_disagrees_with_workbook_binding(self):
+        """Negative regression: audit fails if destination cell disagrees with workbook binding."""
+        import xml.etree.ElementTree as ET
+        from pptmaker import PptxPackage, serialize_pml, A_NS
+        from work.audit_retained_content import audit_presentation
+        tpl_path, tpl_bytes, wb_bytes, cand_bytes = self._get_valid_candidate_bytes()
+
+        # Mutate slide 14 Table 0 Row 3 Col 1 (PBT FY18): change 49.80 to 9999.99
+        pkg = PptxPackage(cand_bytes)
+        s14_tree = ET.fromstring(pkg.parts["ppt/slides/slide14.xml"])
+        tbl = s14_tree.find(f".//{{{A_NS}}}tbl")
+        tr_3 = tbl.findall(f"{{{A_NS}}}tr")[3]
+        tc_1 = tr_3.findall(f"{{{A_NS}}}tc")[1]
+        tx_node = tc_1.find(f".//{{{A_NS}}}t")
+        tx_node.text = "9999.99"
+        mutated_bytes = self._mutate_candidate_bytes(cand_bytes, {"ppt/slides/slide14.xml": serialize_pml(s14_tree)})
+
+        audit_data = audit_presentation(tpl_path, candidate_bytes=mutated_bytes, candidate_workbook_bytes=wb_bytes)
+        self.assertFalse(audit_data["audit_passed"])
+        self.assertGreater(audit_data["unresolved_stale_elements_count"], 0)
+        binding_stale = [e for e in audit_data["elements"] if "binding mismatch" in e.get("provenance", "").lower()]
+        self.assertGreater(len(binding_stale), 0)
+
+    def test_audit_fails_when_unsupported_company_specific_claim_remains(self):
+        """Negative regression: audit fails if an unsupported company-specific claim/keyword remains."""
+        import xml.etree.ElementTree as ET
+        from pptmaker import PptxPackage, serialize_pml, A_NS, P_NS
+        from work.audit_retained_content import audit_presentation
+        tpl_path, tpl_bytes, wb_bytes, cand_bytes = self._get_valid_candidate_bytes()
+
+        # Mutate slide 1 text shape: inject Sun Pharma keyword
+        pkg = PptxPackage(cand_bytes)
+        s1_tree = ET.fromstring(pkg.parts["ppt/slides/slide1.xml"])
+        for sp in s1_tree.findall(f".//{{{P_NS}}}sp"):
+            t = sp.find(f".//{{{A_NS}}}t")
+            if t is not None:
+                t.text = "Sun Pharmaceutical Industries Ltd. Annual Research Analysis"
+                break
+        mutated_bytes = self._mutate_candidate_bytes(cand_bytes, {"ppt/slides/slide1.xml": serialize_pml(s1_tree)})
+
+        audit_data = audit_presentation(tpl_path, candidate_bytes=mutated_bytes, candidate_workbook_bytes=wb_bytes)
+        self.assertFalse(audit_data["audit_passed"])
+        self.assertGreater(audit_data["unresolved_stale_elements_count"], 0)
+        kw_stale = [e for e in audit_data["elements"] if "stale" in e.get("provenance", "").lower() and "keyword" in e.get("provenance", "").lower()]
+        self.assertGreater(len(kw_stale), 0)
+
+    def test_audit_fails_when_slide23_raster_screenshot_is_unreplaced(self):
+        """Negative regression: audit fails if Slide 23 retains original template raster screenshot."""
+        from pptmaker import PptxPackage
+        from work.audit_retained_content import audit_presentation
+        tpl_path, tpl_bytes, wb_bytes, cand_bytes = self._get_valid_candidate_bytes()
+
+        # Mutate candidate: replace image22 in candidate with original template image22
+        tpl_pkg = PptxPackage(tpl_bytes)
+        orig_img22_bytes = tpl_pkg.parts["ppt/media/image22.png"]
+        mutated_bytes = self._mutate_candidate_bytes(cand_bytes, {"ppt/media/image22.png": orig_img22_bytes})
+
+        audit_data = audit_presentation(tpl_path, candidate_bytes=mutated_bytes, candidate_workbook_bytes=wb_bytes)
+        self.assertFalse(audit_data["audit_passed"])
+        self.assertGreater(audit_data["unresolved_stale_elements_count"], 0)
+        pic_stale = [e for e in audit_data["elements"] if e.get("element_type") == "picture_replacement" and e["status"] == "unresolved_stale"]
+        self.assertGreater(len(pic_stale), 0)
+
+    def test_second_company_cipla_request_validation_and_provenance(self):
+        """Verify second company (Cipla) request adheres to schema, separates facts, and prevents manufactured inputs."""
+        from build_package import validate_package_request
+        cipla_req_path = ROOT / "examples" / "cipla-package.json"
+        self.assertTrue(cipla_req_path.exists())
+        req = json.loads(cipla_req_path.read_text(encoding="utf-8"))
+
+        # Verify company identity and accounting conventions
+        self.assertEqual(req["company"]["name"], "Cipla Limited")
+        self.assertEqual(req["company"]["ticker"], "CIPLA")
+        self.assertEqual(req["company"]["currency"], "INR")
+        self.assertEqual(req["company"]["reporting_unit"], "INR_Cr")
+        self.assertEqual(req["company"]["fiscal_year_convention"], "April-March")
+
+        # Verify source data segregation
+        src_data = req["company"]["source_data"]
+        self.assertIn("user_supplied_facts", src_data)
+        self.assertIn("source_extracted_facts", src_data)
+        self.assertIn("analyst_assumptions", src_data)
+        self.assertIn("calculated_outputs", src_data)
+        self.assertIn("unresolved_inputs", src_data)
+
+        # Confirm evidence report exists
+        ev_report = ROOT / "docs" / "SECOND_COMPANY_EVIDENCE_REPORT.md"
+        self.assertTrue(ev_report.exists())
+        content = ev_report.read_text(encoding="utf-8")
+        self.assertIn("Cipla Limited", content)
+        self.assertIn("compdata!C8", content)
+        self.assertIn("WACC", content)
+
+        # Negative test: verify validate_package_request rejects unmapped slots
+        bad_req = copy.deepcopy(req)
+        # Create dummy deck pack with an unmapped slot
+        with tempfile.TemporaryDirectory() as td:
+            dummy_pack = {"slots": [{"name": "unmapped_cipla_slot"}]}
+            dp_file = Path(td) / "dummy.pack.json"
+            dp_file.write_text(json.dumps(dummy_pack), encoding="utf-8")
+            bad_req["presentation"]["deck_pack"] = str(dp_file.relative_to(ROOT)) if dp_file.is_relative_to(ROOT) else str(dp_file)
+            with self.assertRaises(ValueError) as ctx:
+                validate_package_request(bad_req, cipla_req_path)
+            self.assertIn("Missing mapping for deck slot", str(ctx.exception))
 
 
 if __name__ == "__main__":

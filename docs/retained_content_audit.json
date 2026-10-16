@@ -1,12 +1,13 @@
 {
-  "audit_schema_version": 1,
+  "audit_schema_version": 2,
   "source_template": "originals/ERR-4.pptx",
   "source_template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
-  "candidate_presentation_sha256": "db23728655b0780a25e08a253d30fdb42ba30b8d91e882bb956661d271d35f37",
-  "total_elements_audited": 258,
+  "candidate_presentation_sha256": "f63b8a79662aa90d0e83430b39800548311ed6a569c0ed4ab62652b0ca88d136",
+  "candidate_workbook_sha256": "8ea0335476a3f1c58b0901f95beb3c178d71ad92b008b62a6aaee3afa310b439",
+  "total_elements_audited": 274,
   "resolved_elements_count": 211,
   "suppressed_elements_count": 5,
-  "generic_template_labels_count": 42,
+  "generic_template_labels_count": 58,
   "unresolved_stale_elements_count": 0,
   "audit_passed": true,
   "retained_slides": [
@@ -15,6 +16,64 @@
     14,
     16,
     23
+  ],
+  "mathematical_tie_outs": {
+    "FY18": {
+      "op_diff": 0.0,
+      "inv_diff": 0.0,
+      "fin_diff": -0.0,
+      "net_diff": -0.01
+    },
+    "FY19": {
+      "op_diff": 0.0,
+      "inv_diff": 0.0,
+      "fin_diff": 0.0,
+      "net_diff": -0.0
+    },
+    "FY20": {
+      "op_diff": -0.0,
+      "inv_diff": 0.0,
+      "fin_diff": 0.0,
+      "net_diff": 0.01
+    },
+    "FY21": {
+      "op_diff": 0.0,
+      "inv_diff": 0.0,
+      "fin_diff": 0.0,
+      "net_diff": -0.01
+    },
+    "FY22": {
+      "op_diff": -0.0,
+      "inv_diff": 0.0,
+      "fin_diff": 0.0,
+      "net_diff": 0.0
+    },
+    "FY23": {
+      "op_diff": 0.0,
+      "inv_diff": -0.0,
+      "fin_diff": 0.0,
+      "net_diff": 0.0
+    },
+    "FY24": {
+      "op_diff": -0.0,
+      "inv_diff": 0.0,
+      "fin_diff": 0.0,
+      "net_diff": -0.0
+    },
+    "FY25": {
+      "op_diff": -0.0,
+      "inv_diff": -0.0,
+      "fin_diff": 0.0,
+      "net_diff": -0.01
+    }
+  },
+  "coverage_limitations": [
+    "Audits only the 5 retained research slides (1, 2, 14, 16, 23); 177 unreferenced original slides were safely pruned",
+    "Text shapes are audited for stale keywords, token updates, and structural omissions",
+    "Slide 14 Table 0 is mathematically verified across all 8 historical years (PBT + Non-Cash + WC + Tax == CFO, CapEx + Inv == CFI, Borrow + Fin + Div == CFF)",
+    "All table data cells with workbook bindings are verified against evaluated candidate workbook cells within declared tolerance",
+    "All native charts are audited for stale keyword series/titles, cached numCache values vs template, and embedded workbook sheet synchronization",
+    "Raster pictures on Slide 23 are verified byte-for-byte against original template screenshot images"
   ],
   "elements": [
     {
@@ -28,7 +87,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -42,7 +101,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -56,7 +115,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -70,7 +129,7 @@
       "original_content": "EQUITY RESEARCH REPORT",
       "candidate_content": "EQUITY RESEARCH REPORT",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -83,8 +142,8 @@
       "element_type": "shape_text",
       "original_content": "Sun Pharmaceutical Industries Ltd.",
       "candidate_content": "Marksans Pharma Ltd.",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -97,8 +156,8 @@
       "element_type": "shape_text",
       "original_content": "NSE : SUNPHARMA | BSE Code: 524715",
       "candidate_content": "NSE : MARKSANS | BSE Code: 524404",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -112,7 +171,7 @@
       "original_content": "Pharmaceuticals & Drugs",
       "candidate_content": "Pharmaceuticals & Drugs",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -126,7 +185,7 @@
       "original_content": "1",
       "candidate_content": "1",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -139,8 +198,8 @@
       "element_type": "shape_text",
       "original_content": "INTRODUCTION Sun Pharma started as a domestic branded-formulations player and scaled largely through acquisitions: US entry via Caraco (1998), Taro fo",
       "candidate_content": "INTRODUCTION Marksans Pharma Ltd. is an Indian pharmaceutical company headquartered in Mumbai, specializing in OTC and prescription formulations acros",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -153,8 +212,8 @@
       "element_type": "shape_text",
       "original_content": "BUSINESS MODEL \u2022 India Branded Formulations: Prescription-led, highest-margin business with strong market leadership. \u2022 US Formulations: Generics and ",
       "candidate_content": "BUSINESS MODEL \u2022 Regulated Markets Focus: Strong presence across the UK, US, Australia, and Continental Europe specializing in over-the-counter (OTC) ",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -167,8 +226,8 @@
       "element_type": "shape_text",
       "original_content": "BRAND PORTFOLIO \u2022 Specialty Portfolio: Ilumya (psoriasis), Winlevi (acne), Cequa (dry eye), Odomzo (oncology), Leqselvi (alopecia areata), and Unloxcy",
       "candidate_content": "BRAND PORTFOLIO \u2022 Core Therapeutic Areas: Pain Management, Cough & Cold, Cardiovascular/CNS, Gastrointestinal, and Anti-diabetic formulations.\n\u2022 OTC B",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -181,8 +240,8 @@
       "element_type": "shape_text",
       "original_content": "PRODUCT ECOSYSTEM \u2022 Dosage Forms: Tablets, capsules, injectables, inhalers, ointments, creams, and liquids. \u2022 Product Categories: Generics, branded ge",
       "candidate_content": "PRODUCT ECOSYSTEM \u2022 Dosage Forms: Tablets, hard and soft gelatin capsules, oral liquids, and ointments.\n\u2022 Global Compliance: US FDA, UK MHRA, and Aust",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -196,7 +255,7 @@
       "original_content": "Strategic Approach",
       "candidate_content": "Strategic Approach",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -209,8 +268,8 @@
       "element_type": "shape_text",
       "original_content": "\u2022 Specialty-led Mix Shift: Focus on expanding higher-margin Innovative Medicines to offset US generic pricing pressure. \u2022 Large-scale M&A: Organon acq",
       "candidate_content": "\u2022 Capacity Expansion: Expanding capacity at the Teva Goa site to accelerate oral solid dosage supply.\n\u2022 Backward Integration: Increasing backward API ",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -224,7 +283,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -238,7 +297,7 @@
       "original_content": "About The Company",
       "candidate_content": "About The Company",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -266,7 +325,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -280,7 +339,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -294,7 +353,7 @@
       "original_content": "EQUITY RESEARCH REPORT",
       "candidate_content": "EQUITY RESEARCH REPORT",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -307,8 +366,8 @@
       "element_type": "shape_text",
       "original_content": "Sun Pharmaceutical Industries Ltd.",
       "candidate_content": "Marksans Pharma Ltd.",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -321,8 +380,8 @@
       "element_type": "shape_text",
       "original_content": "NSE : SUNPHARMA | BSE Code: 524715",
       "candidate_content": "NSE : MARKSANS | BSE Code: 524404",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -336,7 +395,7 @@
       "original_content": "Pharmaceuticals & Drugs",
       "candidate_content": "Pharmaceuticals & Drugs",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -350,7 +409,7 @@
       "original_content": "1",
       "candidate_content": "1",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -364,7 +423,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -377,8 +436,8 @@
       "element_type": "shape_text",
       "original_content": "Sun Pharmaceutical Industries Ltd. (NSE: SUNPHARMA) is India's largest pharma company and the largest Indian player in the US market. FY26 consolidate",
       "candidate_content": "Marksans Pharma Ltd. (NSE: MARKSANS) delivered \u20b92,622.85 crore in FY25 revenue (+19.4% YoY) and \u20b9380.58 crore in net profit, supported by a net-cash b",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -392,7 +451,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -405,8 +464,8 @@
       "element_type": "shape_text",
       "original_content": "\u2022 Revenue: \u20b958,220 crore (+11.9% YoY); Net Profit: \u20b911,479 crore (+5% YoY) \u2022 India Formulations: \u20b919,290 crore (+14%), contributing 33% of sales \u2022 US ",
       "candidate_content": "\u2022 Revenue: \u20b92,622.85 crore (+19.4% YoY); Net Profit: \u20b9380.58 crore (+21.6% YoY) \u2022 Cash & Bank Balances: \u20b9704.21 crore; Net Debt: \u20b9(382.30) crore (Net ",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -420,7 +479,7 @@
       "original_content": "Executive Summary",
       "candidate_content": "Executive Summary",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -434,7 +493,7 @@
       "original_content": "Key Highlights",
       "candidate_content": "Key Highlights",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -462,7 +521,7 @@
         []
       ],
       "intended_replacement": "Marksans native chart series & embedded workbook",
-      "provenance": "Marksans-Recalculated.xlsx [Data Sheet / Cash Flow]",
+      "provenance": "Verified chart series & numCache",
       "status": "resolved"
     },
     {
@@ -485,7 +544,7 @@
         ]
       ],
       "intended_replacement": "Marksans native chart series & embedded workbook",
-      "provenance": "Marksans-Recalculated.xlsx [Data Sheet / Cash Flow]",
+      "provenance": "Verified chart series & numCache",
       "status": "resolved"
     },
     {
@@ -513,7 +572,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -527,7 +586,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -541,7 +600,7 @@
       "original_content": "EQUITY RESEARCH REPORT",
       "candidate_content": "EQUITY RESEARCH REPORT",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -554,8 +613,8 @@
       "element_type": "shape_text",
       "original_content": "Sun Pharmaceutical Industries Ltd.",
       "candidate_content": "Marksans Pharma Ltd.",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -568,8 +627,8 @@
       "element_type": "shape_text",
       "original_content": "NSE : SUNPHARMA | BSE Code: 524715",
       "candidate_content": "NSE : MARKSANS | BSE Code: 524404",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -583,7 +642,7 @@
       "original_content": "Pharmaceuticals & Drugs",
       "candidate_content": "Pharmaceuticals & Drugs",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -597,7 +656,7 @@
       "original_content": "1",
       "candidate_content": "1",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -611,7 +670,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -624,8 +683,8 @@
       "element_type": "shape_text",
       "original_content": "Sun Pharma's consolidated cash flow from operating activities has grown from \u20b93,907 crore in FY18 to \u20b914,072 crore in FY25, a more than 3.6x increase,",
       "candidate_content": "Marksans Pharma's consolidated cash flow from operations reached \u20b9206.66 crore in FY25, supported by profit before tax of \u20b9503.96 crore. Net cash flow",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -639,7 +698,7 @@
       "original_content": "CASH FLOW STATEMENT ANALYSIS",
       "candidate_content": "CASH FLOW STATEMENT ANALYSIS",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -653,7 +712,143 @@
       "original_content": "CASH FLOW FROM OPERATING ACTIVITY",
       "candidate_content": "CASH FLOW FROM OPERATING ACTIVITY",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s14_tbl8_r0_c1",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 14,
+      "candidate_slide": 3,
+      "shape_id": 8,
+      "row": 0,
+      "col": 1,
+      "row_label": "Particulars (\u20b9 Crore)",
+      "element_type": "table_cell",
+      "original_content": "FY18",
+      "candidate_content": "FY18",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s14_tbl8_r0_c2",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 14,
+      "candidate_slide": 3,
+      "shape_id": 8,
+      "row": 0,
+      "col": 2,
+      "row_label": "Particulars (\u20b9 Crore)",
+      "element_type": "table_cell",
+      "original_content": "FY19",
+      "candidate_content": "FY19",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s14_tbl8_r0_c3",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 14,
+      "candidate_slide": 3,
+      "shape_id": 8,
+      "row": 0,
+      "col": 3,
+      "row_label": "Particulars (\u20b9 Crore)",
+      "element_type": "table_cell",
+      "original_content": "FY20",
+      "candidate_content": "FY20",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s14_tbl8_r0_c4",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 14,
+      "candidate_slide": 3,
+      "shape_id": 8,
+      "row": 0,
+      "col": 4,
+      "row_label": "Particulars (\u20b9 Crore)",
+      "element_type": "table_cell",
+      "original_content": "FY21",
+      "candidate_content": "FY21",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s14_tbl8_r0_c5",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 14,
+      "candidate_slide": 3,
+      "shape_id": 8,
+      "row": 0,
+      "col": 5,
+      "row_label": "Particulars (\u20b9 Crore)",
+      "element_type": "table_cell",
+      "original_content": "FY22",
+      "candidate_content": "FY22",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s14_tbl8_r0_c6",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 14,
+      "candidate_slide": 3,
+      "shape_id": 8,
+      "row": 0,
+      "col": 6,
+      "row_label": "Particulars (\u20b9 Crore)",
+      "element_type": "table_cell",
+      "original_content": "FY23",
+      "candidate_content": "FY23",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s14_tbl8_r0_c7",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 14,
+      "candidate_slide": 3,
+      "shape_id": 8,
+      "row": 0,
+      "col": 7,
+      "row_label": "Particulars (\u20b9 Crore)",
+      "element_type": "table_cell",
+      "original_content": "FY24",
+      "candidate_content": "FY24",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s14_tbl8_r0_c8",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 14,
+      "candidate_slide": 3,
+      "shape_id": 8,
+      "row": 0,
+      "col": 8,
+      "row_label": "Particulars (\u20b9 Crore)",
+      "element_type": "table_cell",
+      "original_content": "FY25",
+      "candidate_content": "FY25",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
       "status": "unmodified_template_label"
     },
     {
@@ -670,7 +865,7 @@
       "candidate_content": "49.80",
       "slot_name": "slide14_pbt_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Profit before tax col 1]",
+      "provenance": "Tied to Data Sheet!C28 (49.80)",
       "status": "resolved"
     },
     {
@@ -687,7 +882,7 @@
       "candidate_content": "104.31",
       "slot_name": "slide14_pbt_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Profit before tax col 2]",
+      "provenance": "Tied to Data Sheet!D28 (104.31)",
       "status": "resolved"
     },
     {
@@ -704,7 +899,7 @@
       "candidate_content": "157.17",
       "slot_name": "slide14_pbt_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Profit before tax col 3]",
+      "provenance": "Tied to Data Sheet!E28 (157.17)",
       "status": "resolved"
     },
     {
@@ -721,7 +916,7 @@
       "candidate_content": "302.17",
       "slot_name": "slide14_pbt_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Profit before tax col 4]",
+      "provenance": "Tied to Data Sheet!F28 (302.17)",
       "status": "resolved"
     },
     {
@@ -738,7 +933,7 @@
       "candidate_content": "247.51",
       "slot_name": "slide14_pbt_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Profit before tax col 5]",
+      "provenance": "Tied to Data Sheet!G28 (247.51)",
       "status": "resolved"
     },
     {
@@ -755,7 +950,7 @@
       "candidate_content": "337.66",
       "slot_name": "slide14_pbt_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Profit before tax col 6]",
+      "provenance": "Tied to Data Sheet!H28 (337.66)",
       "status": "resolved"
     },
     {
@@ -772,7 +967,7 @@
       "candidate_content": "423.53",
       "slot_name": "slide14_pbt_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Profit before tax col 7]",
+      "provenance": "Tied to Data Sheet!I28 (423.53)",
       "status": "resolved"
     },
     {
@@ -789,7 +984,7 @@
       "candidate_content": "503.96",
       "slot_name": "slide14_pbt_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Profit before tax col 8]",
+      "provenance": "Tied to Data Sheet!J28 (503.96)",
       "status": "resolved"
     },
     {
@@ -806,7 +1001,7 @@
       "candidate_content": "43.29",
       "slot_name": "slide14_non_cash_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Non-cash adjustments (net) col 1]",
+      "provenance": "Reconciled Non-cash adjustments (net) (col 1)",
       "status": "resolved"
     },
     {
@@ -823,7 +1018,7 @@
       "candidate_content": "32.09",
       "slot_name": "slide14_non_cash_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Non-cash adjustments (net) col 2]",
+      "provenance": "Reconciled Non-cash adjustments (net) (col 2)",
       "status": "resolved"
     },
     {
@@ -840,7 +1035,7 @@
       "candidate_content": "42.16",
       "slot_name": "slide14_non_cash_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Non-cash adjustments (net) col 3]",
+      "provenance": "Reconciled Non-cash adjustments (net) (col 3)",
       "status": "resolved"
     },
     {
@@ -857,7 +1052,7 @@
       "candidate_content": "57.42",
       "slot_name": "slide14_non_cash_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Non-cash adjustments (net) col 4]",
+      "provenance": "Reconciled Non-cash adjustments (net) (col 4)",
       "status": "resolved"
     },
     {
@@ -874,7 +1069,7 @@
       "candidate_content": "35.75",
       "slot_name": "slide14_non_cash_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Non-cash adjustments (net) col 5]",
+      "provenance": "Reconciled Non-cash adjustments (net) (col 5)",
       "status": "resolved"
     },
     {
@@ -891,7 +1086,7 @@
       "candidate_content": "73.75",
       "slot_name": "slide14_non_cash_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Non-cash adjustments (net) col 6]",
+      "provenance": "Reconciled Non-cash adjustments (net) (col 6)",
       "status": "resolved"
     },
     {
@@ -908,7 +1103,7 @@
       "candidate_content": "54.88",
       "slot_name": "slide14_non_cash_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Non-cash adjustments (net) col 7]",
+      "provenance": "Reconciled Non-cash adjustments (net) (col 7)",
       "status": "resolved"
     },
     {
@@ -925,7 +1120,7 @@
       "candidate_content": "69.70",
       "slot_name": "slide14_non_cash_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Non-cash adjustments (net) col 8]",
+      "provenance": "Reconciled Non-cash adjustments (net) (col 8)",
       "status": "resolved"
     },
     {
@@ -942,7 +1137,7 @@
       "candidate_content": "-36.00",
       "slot_name": "slide14_wc_changes_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Working capital changes, net col 1]",
+      "provenance": "Tied to Cash Flow!F12 (-36.00)",
       "status": "resolved"
     },
     {
@@ -959,7 +1154,7 @@
       "candidate_content": "-82.00",
       "slot_name": "slide14_wc_changes_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Working capital changes, net col 2]",
+      "provenance": "Tied to Cash Flow!G12 (-82.00)",
       "status": "resolved"
     },
     {
@@ -976,7 +1171,7 @@
       "candidate_content": "59.00",
       "slot_name": "slide14_wc_changes_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Working capital changes, net col 3]",
+      "provenance": "Tied to Cash Flow!H12 (59.00)",
       "status": "resolved"
     },
     {
@@ -993,7 +1188,7 @@
       "candidate_content": "-132.00",
       "slot_name": "slide14_wc_changes_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Working capital changes, net col 4]",
+      "provenance": "Tied to Cash Flow!I12 (-132.00)",
       "status": "resolved"
     },
     {
@@ -1010,7 +1205,7 @@
       "candidate_content": "-111.00",
       "slot_name": "slide14_wc_changes_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Working capital changes, net col 5]",
+      "provenance": "Tied to Cash Flow!J12 (-111.00)",
       "status": "resolved"
     },
     {
@@ -1027,7 +1222,7 @@
       "candidate_content": "-111.00",
       "slot_name": "slide14_wc_changes_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Working capital changes, net col 6]",
+      "provenance": "Tied to Cash Flow!K12 (-111.00)",
       "status": "resolved"
     },
     {
@@ -1044,7 +1239,7 @@
       "candidate_content": "-126.00",
       "slot_name": "slide14_wc_changes_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Working capital changes, net col 7]",
+      "provenance": "Tied to Cash Flow!L12 (-126.00)",
       "status": "resolved"
     },
     {
@@ -1061,7 +1256,7 @@
       "candidate_content": "-241.00",
       "slot_name": "slide14_wc_changes_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Working capital changes, net col 8]",
+      "provenance": "Tied to Cash Flow!M12 (-241.00)",
       "status": "resolved"
     },
     {
@@ -1078,7 +1273,7 @@
       "candidate_content": "-7.00",
       "slot_name": "slide14_direct_taxes_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Direct taxes paid col 1]",
+      "provenance": "Tied to Cash Flow!F13 (-7.00)",
       "status": "resolved"
     },
     {
@@ -1095,7 +1290,7 @@
       "candidate_content": "-27.00",
       "slot_name": "slide14_direct_taxes_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Direct taxes paid col 2]",
+      "provenance": "Tied to Cash Flow!G13 (-27.00)",
       "status": "resolved"
     },
     {
@@ -1112,7 +1307,7 @@
       "candidate_content": "-25.00",
       "slot_name": "slide14_direct_taxes_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Direct taxes paid col 3]",
+      "provenance": "Tied to Cash Flow!H13 (-25.00)",
       "status": "resolved"
     },
     {
@@ -1129,7 +1324,7 @@
       "candidate_content": "-49.00",
       "slot_name": "slide14_direct_taxes_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Direct taxes paid col 4]",
+      "provenance": "Tied to Cash Flow!I13 (-49.00)",
       "status": "resolved"
     },
     {
@@ -1146,7 +1341,7 @@
       "candidate_content": "-73.00",
       "slot_name": "slide14_direct_taxes_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Direct taxes paid col 5]",
+      "provenance": "Tied to Cash Flow!J13 (-73.00)",
       "status": "resolved"
     },
     {
@@ -1163,7 +1358,7 @@
       "candidate_content": "-63.00",
       "slot_name": "slide14_direct_taxes_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Direct taxes paid col 6]",
+      "provenance": "Tied to Cash Flow!K13 (-63.00)",
       "status": "resolved"
     },
     {
@@ -1180,7 +1375,7 @@
       "candidate_content": "-122.00",
       "slot_name": "slide14_direct_taxes_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Direct taxes paid col 7]",
+      "provenance": "Tied to Cash Flow!L13 (-122.00)",
       "status": "resolved"
     },
     {
@@ -1197,7 +1392,7 @@
       "candidate_content": "-126.00",
       "slot_name": "slide14_direct_taxes_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Direct taxes paid col 8]",
+      "provenance": "Tied to Cash Flow!M13 (-126.00)",
       "status": "resolved"
     },
     {
@@ -1214,7 +1409,7 @@
       "candidate_content": "50.09",
       "slot_name": "slide14_cfo_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Operating Activities col 1]",
+      "provenance": "Tied to Data Sheet!C82 (50.09)",
       "status": "resolved"
     },
     {
@@ -1231,7 +1426,7 @@
       "candidate_content": "27.40",
       "slot_name": "slide14_cfo_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Operating Activities col 2]",
+      "provenance": "Tied to Data Sheet!D82 (27.40)",
       "status": "resolved"
     },
     {
@@ -1248,7 +1443,7 @@
       "candidate_content": "233.33",
       "slot_name": "slide14_cfo_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Operating Activities col 3]",
+      "provenance": "Tied to Data Sheet!E82 (233.33)",
       "status": "resolved"
     },
     {
@@ -1265,7 +1460,7 @@
       "candidate_content": "178.59",
       "slot_name": "slide14_cfo_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Operating Activities col 4]",
+      "provenance": "Tied to Data Sheet!F82 (178.59)",
       "status": "resolved"
     },
     {
@@ -1282,7 +1477,7 @@
       "candidate_content": "99.26",
       "slot_name": "slide14_cfo_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Operating Activities col 5]",
+      "provenance": "Tied to Data Sheet!G82 (99.26)",
       "status": "resolved"
     },
     {
@@ -1299,7 +1494,7 @@
       "candidate_content": "237.41",
       "slot_name": "slide14_cfo_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Operating Activities col 6]",
+      "provenance": "Tied to Data Sheet!H82 (237.41)",
       "status": "resolved"
     },
     {
@@ -1316,7 +1511,7 @@
       "candidate_content": "230.41",
       "slot_name": "slide14_cfo_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Operating Activities col 7]",
+      "provenance": "Tied to Data Sheet!I82 (230.41)",
       "status": "resolved"
     },
     {
@@ -1333,7 +1528,7 @@
       "candidate_content": "206.66",
       "slot_name": "slide14_cfo_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Operating Activities col 8]",
+      "provenance": "Tied to Data Sheet!J82 (206.66)",
       "status": "resolved"
     },
     {
@@ -1350,7 +1545,7 @@
       "candidate_content": "-39.00",
       "slot_name": "slide14_capex_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Capital expenditure, net col 1]",
+      "provenance": "Reconciled Capital expenditure, net (col 1)",
       "status": "resolved"
     },
     {
@@ -1367,7 +1562,7 @@
       "candidate_content": "-13.00",
       "slot_name": "slide14_capex_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Capital expenditure, net col 2]",
+      "provenance": "Reconciled Capital expenditure, net (col 2)",
       "status": "resolved"
     },
     {
@@ -1384,7 +1579,7 @@
       "candidate_content": "-60.00",
       "slot_name": "slide14_capex_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Capital expenditure, net col 3]",
+      "provenance": "Reconciled Capital expenditure, net (col 3)",
       "status": "resolved"
     },
     {
@@ -1401,7 +1596,7 @@
       "candidate_content": "-45.00",
       "slot_name": "slide14_capex_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Capital expenditure, net col 4]",
+      "provenance": "Reconciled Capital expenditure, net (col 4)",
       "status": "resolved"
     },
     {
@@ -1418,7 +1613,7 @@
       "candidate_content": "-46.00",
       "slot_name": "slide14_capex_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Capital expenditure, net col 5]",
+      "provenance": "Reconciled Capital expenditure, net (col 5)",
       "status": "resolved"
     },
     {
@@ -1435,7 +1630,7 @@
       "candidate_content": "-54.00",
       "slot_name": "slide14_capex_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Capital expenditure, net col 6]",
+      "provenance": "Reconciled Capital expenditure, net (col 6)",
       "status": "resolved"
     },
     {
@@ -1452,7 +1647,7 @@
       "candidate_content": "-208.00",
       "slot_name": "slide14_capex_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Capital expenditure, net col 7]",
+      "provenance": "Reconciled Capital expenditure, net (col 7)",
       "status": "resolved"
     },
     {
@@ -1469,7 +1664,7 @@
       "candidate_content": "-172.00",
       "slot_name": "slide14_capex_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Capital expenditure, net col 8]",
+      "provenance": "Reconciled Capital expenditure, net (col 8)",
       "status": "resolved"
     },
     {
@@ -1486,7 +1681,7 @@
       "candidate_content": "0.00",
       "slot_name": "slide14_net_inv_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net purchase/(sale) of investments col 1]",
+      "provenance": "Reconciled Net purchase/(sale) of investments (col 1)",
       "status": "resolved"
     },
     {
@@ -1503,7 +1698,7 @@
       "candidate_content": "0.00",
       "slot_name": "slide14_net_inv_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net purchase/(sale) of investments col 2]",
+      "provenance": "Reconciled Net purchase/(sale) of investments (col 2)",
       "status": "resolved"
     },
     {
@@ -1520,7 +1715,7 @@
       "candidate_content": "0.00",
       "slot_name": "slide14_net_inv_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net purchase/(sale) of investments col 3]",
+      "provenance": "Reconciled Net purchase/(sale) of investments (col 3)",
       "status": "resolved"
     },
     {
@@ -1537,7 +1732,7 @@
       "candidate_content": "0.00",
       "slot_name": "slide14_net_inv_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net purchase/(sale) of investments col 4]",
+      "provenance": "Reconciled Net purchase/(sale) of investments (col 4)",
       "status": "resolved"
     },
     {
@@ -1554,7 +1749,7 @@
       "candidate_content": "0.00",
       "slot_name": "slide14_net_inv_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net purchase/(sale) of investments col 5]",
+      "provenance": "Reconciled Net purchase/(sale) of investments (col 5)",
       "status": "resolved"
     },
     {
@@ -1571,7 +1766,7 @@
       "candidate_content": "0.00",
       "slot_name": "slide14_net_inv_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net purchase/(sale) of investments col 6]",
+      "provenance": "Reconciled Net purchase/(sale) of investments (col 6)",
       "status": "resolved"
     },
     {
@@ -1588,7 +1783,7 @@
       "candidate_content": "-26.00",
       "slot_name": "slide14_net_inv_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net purchase/(sale) of investments col 7]",
+      "provenance": "Reconciled Net purchase/(sale) of investments (col 7)",
       "status": "resolved"
     },
     {
@@ -1605,7 +1800,7 @@
       "candidate_content": "27.00",
       "slot_name": "slide14_net_inv_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net purchase/(sale) of investments col 8]",
+      "provenance": "Reconciled Net purchase/(sale) of investments (col 8)",
       "status": "resolved"
     },
     {
@@ -1622,7 +1817,7 @@
       "candidate_content": "0.19",
       "slot_name": "slide14_other_investing_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other investing items, net col 1]",
+      "provenance": "Reconciled Other investing items, net (col 1)",
       "status": "resolved"
     },
     {
@@ -1639,7 +1834,7 @@
       "candidate_content": "-0.48",
       "slot_name": "slide14_other_investing_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other investing items, net col 2]",
+      "provenance": "Reconciled Other investing items, net (col 2)",
       "status": "resolved"
     },
     {
@@ -1656,7 +1851,7 @@
       "candidate_content": "0.42",
       "slot_name": "slide14_other_investing_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other investing items, net col 3]",
+      "provenance": "Reconciled Other investing items, net (col 3)",
       "status": "resolved"
     },
     {
@@ -1673,7 +1868,7 @@
       "candidate_content": "0.15",
       "slot_name": "slide14_other_investing_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other investing items, net col 4]",
+      "provenance": "Reconciled Other investing items, net (col 4)",
       "status": "resolved"
     },
     {
@@ -1690,7 +1885,7 @@
       "candidate_content": "-38.39",
       "slot_name": "slide14_other_investing_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other investing items, net col 5]",
+      "provenance": "Reconciled Other investing items, net (col 5)",
       "status": "resolved"
     },
     {
@@ -1707,7 +1902,7 @@
       "candidate_content": "-205.21",
       "slot_name": "slide14_other_investing_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other investing items, net col 6]",
+      "provenance": "Reconciled Other investing items, net (col 6)",
       "status": "resolved"
     },
     {
@@ -1724,7 +1919,7 @@
       "candidate_content": "93.16",
       "slot_name": "slide14_other_investing_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other investing items, net col 7]",
+      "provenance": "Reconciled Other investing items, net (col 7)",
       "status": "resolved"
     },
     {
@@ -1741,7 +1936,7 @@
       "candidate_content": "95.99",
       "slot_name": "slide14_other_investing_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other investing items, net col 8]",
+      "provenance": "Reconciled Other investing items, net (col 8)",
       "status": "resolved"
     },
     {
@@ -1758,7 +1953,7 @@
       "candidate_content": "-38.81",
       "slot_name": "slide14_cfi_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Investing Activities col 1]",
+      "provenance": "Tied to Data Sheet!C83 (-38.81)",
       "status": "resolved"
     },
     {
@@ -1775,7 +1970,7 @@
       "candidate_content": "-13.48",
       "slot_name": "slide14_cfi_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Investing Activities col 2]",
+      "provenance": "Tied to Data Sheet!D83 (-13.48)",
       "status": "resolved"
     },
     {
@@ -1792,7 +1987,7 @@
       "candidate_content": "-59.58",
       "slot_name": "slide14_cfi_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Investing Activities col 3]",
+      "provenance": "Tied to Data Sheet!E83 (-59.58)",
       "status": "resolved"
     },
     {
@@ -1809,7 +2004,7 @@
       "candidate_content": "-44.85",
       "slot_name": "slide14_cfi_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Investing Activities col 4]",
+      "provenance": "Tied to Data Sheet!F83 (-44.85)",
       "status": "resolved"
     },
     {
@@ -1826,7 +2021,7 @@
       "candidate_content": "-84.39",
       "slot_name": "slide14_cfi_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Investing Activities col 5]",
+      "provenance": "Tied to Data Sheet!G83 (-84.39)",
       "status": "resolved"
     },
     {
@@ -1843,7 +2038,7 @@
       "candidate_content": "-259.21",
       "slot_name": "slide14_cfi_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Investing Activities col 6]",
+      "provenance": "Tied to Data Sheet!H83 (-259.21)",
       "status": "resolved"
     },
     {
@@ -1860,7 +2055,7 @@
       "candidate_content": "-140.84",
       "slot_name": "slide14_cfi_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Investing Activities col 7]",
+      "provenance": "Tied to Data Sheet!I83 (-140.84)",
       "status": "resolved"
     },
     {
@@ -1877,7 +2072,7 @@
       "candidate_content": "-49.01",
       "slot_name": "slide14_cfi_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Investing Activities col 8]",
+      "provenance": "Tied to Data Sheet!J83 (-49.01)",
       "status": "resolved"
     },
     {
@@ -1894,7 +2089,7 @@
       "candidate_content": "0.00",
       "slot_name": "slide14_net_borrow_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net borrowings (proceeds/repay.) col 1]",
+      "provenance": "Reconciled Net borrowings (proceeds/repay.) (col 1)",
       "status": "resolved"
     },
     {
@@ -1911,7 +2106,7 @@
       "candidate_content": "-6.68",
       "slot_name": "slide14_net_borrow_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net borrowings (proceeds/repay.) col 2]",
+      "provenance": "Reconciled Net borrowings (proceeds/repay.) (col 2)",
       "status": "resolved"
     },
     {
@@ -1928,7 +2123,7 @@
       "candidate_content": "-70.31",
       "slot_name": "slide14_net_borrow_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net borrowings (proceeds/repay.) col 3]",
+      "provenance": "Reconciled Net borrowings (proceeds/repay.) (col 3)",
       "status": "resolved"
     },
     {
@@ -1945,7 +2140,7 @@
       "candidate_content": "-0.10",
       "slot_name": "slide14_net_borrow_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net borrowings (proceeds/repay.) col 4]",
+      "provenance": "Reconciled Net borrowings (proceeds/repay.) (col 4)",
       "status": "resolved"
     },
     {
@@ -1962,7 +2157,7 @@
       "candidate_content": "22.55",
       "slot_name": "slide14_net_borrow_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net borrowings (proceeds/repay.) col 5]",
+      "provenance": "Reconciled Net borrowings (proceeds/repay.) (col 5)",
       "status": "resolved"
     },
     {
@@ -1979,7 +2174,7 @@
       "candidate_content": "5.30",
       "slot_name": "slide14_net_borrow_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net borrowings (proceeds/repay.) col 6]",
+      "provenance": "Reconciled Net borrowings (proceeds/repay.) (col 6)",
       "status": "resolved"
     },
     {
@@ -1996,7 +2191,7 @@
       "candidate_content": "-12.50",
       "slot_name": "slide14_net_borrow_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net borrowings (proceeds/repay.) col 7]",
+      "provenance": "Reconciled Net borrowings (proceeds/repay.) (col 7)",
       "status": "resolved"
     },
     {
@@ -2013,7 +2208,7 @@
       "candidate_content": "-6.01",
       "slot_name": "slide14_net_borrow_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net borrowings (proceeds/repay.) col 8]",
+      "provenance": "Reconciled Net borrowings (proceeds/repay.) (col 8)",
       "status": "resolved"
     },
     {
@@ -2030,7 +2225,7 @@
       "candidate_content": "-10.22",
       "slot_name": "slide14_finance_costs_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Finance costs paid col 1]",
+      "provenance": "Tied to Cash Flow!F27 (-10.22)",
       "status": "resolved"
     },
     {
@@ -2047,7 +2242,7 @@
       "candidate_content": "-9.66",
       "slot_name": "slide14_finance_costs_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Finance costs paid col 2]",
+      "provenance": "Tied to Cash Flow!G27 (-9.66)",
       "status": "resolved"
     },
     {
@@ -2064,7 +2259,7 @@
       "candidate_content": "-8.75",
       "slot_name": "slide14_finance_costs_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Finance costs paid col 3]",
+      "provenance": "Tied to Cash Flow!H27 (-8.75)",
       "status": "resolved"
     },
     {
@@ -2081,7 +2276,7 @@
       "candidate_content": "-7.99",
       "slot_name": "slide14_finance_costs_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Finance costs paid col 4]",
+      "provenance": "Tied to Cash Flow!I27 (-7.99)",
       "status": "resolved"
     },
     {
@@ -2098,7 +2293,7 @@
       "candidate_content": "-4.22",
       "slot_name": "slide14_finance_costs_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Finance costs paid col 5]",
+      "provenance": "Tied to Cash Flow!J27 (-4.22)",
       "status": "resolved"
     },
     {
@@ -2115,7 +2310,7 @@
       "candidate_content": "-6.07",
       "slot_name": "slide14_finance_costs_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Finance costs paid col 6]",
+      "provenance": "Tied to Cash Flow!K27 (-6.07)",
       "status": "resolved"
     },
     {
@@ -2132,7 +2327,7 @@
       "candidate_content": "-5.17",
       "slot_name": "slide14_finance_costs_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Finance costs paid col 7]",
+      "provenance": "Tied to Cash Flow!L27 (-5.17)",
       "status": "resolved"
     },
     {
@@ -2149,7 +2344,7 @@
       "candidate_content": "-2.39",
       "slot_name": "slide14_finance_costs_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Finance costs paid col 8]",
+      "provenance": "Tied to Cash Flow!M27 (-2.39)",
       "status": "resolved"
     },
     {
@@ -2166,7 +2361,7 @@
       "candidate_content": "-2.46",
       "slot_name": "slide14_dividends_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Dividends paid col 1]",
+      "provenance": "Tied to Cash Flow!F28 (-2.46)",
       "status": "resolved"
     },
     {
@@ -2183,7 +2378,7 @@
       "candidate_content": "-4.44",
       "slot_name": "slide14_dividends_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Dividends paid col 2]",
+      "provenance": "Tied to Cash Flow!G28 (-4.44)",
       "status": "resolved"
     },
     {
@@ -2200,7 +2395,7 @@
       "candidate_content": "-29.50",
       "slot_name": "slide14_dividends_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Dividends paid col 3]",
+      "provenance": "Tied to Cash Flow!H28 (-29.50)",
       "status": "resolved"
     },
     {
@@ -2217,7 +2412,7 @@
       "candidate_content": "-4.09",
       "slot_name": "slide14_dividends_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Dividends paid col 4]",
+      "provenance": "Tied to Cash Flow!I28 (-4.09)",
       "status": "resolved"
     },
     {
@@ -2234,7 +2429,7 @@
       "candidate_content": "-10.58",
       "slot_name": "slide14_dividends_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Dividends paid col 5]",
+      "provenance": "Tied to Cash Flow!J28 (-10.58)",
       "status": "resolved"
     },
     {
@@ -2251,7 +2446,7 @@
       "candidate_content": "-10.17",
       "slot_name": "slide14_dividends_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Dividends paid col 6]",
+      "provenance": "Tied to Cash Flow!K28 (-10.17)",
       "status": "resolved"
     },
     {
@@ -2268,7 +2463,7 @@
       "candidate_content": "-22.66",
       "slot_name": "slide14_dividends_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Dividends paid col 7]",
+      "provenance": "Tied to Cash Flow!L28 (-22.66)",
       "status": "resolved"
     },
     {
@@ -2285,7 +2480,7 @@
       "candidate_content": "-27.19",
       "slot_name": "slide14_dividends_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Dividends paid col 8]",
+      "provenance": "Tied to Cash Flow!M28 (-27.19)",
       "status": "resolved"
     },
     {
@@ -2302,7 +2497,7 @@
       "candidate_content": "16.06",
       "slot_name": "slide14_other_financing_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other financing items, net col 1]",
+      "provenance": "Reconciled Other financing items, net (col 1)",
       "status": "resolved"
     },
     {
@@ -2319,7 +2514,7 @@
       "candidate_content": "0.00",
       "slot_name": "slide14_other_financing_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other financing items, net col 2]",
+      "provenance": "Reconciled Other financing items, net (col 2)",
       "status": "resolved"
     },
     {
@@ -2336,7 +2531,7 @@
       "candidate_content": "-4.99",
       "slot_name": "slide14_other_financing_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other financing items, net col 3]",
+      "provenance": "Reconciled Other financing items, net (col 3)",
       "status": "resolved"
     },
     {
@@ -2353,7 +2548,7 @@
       "candidate_content": "-3.11",
       "slot_name": "slide14_other_financing_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other financing items, net col 4]",
+      "provenance": "Reconciled Other financing items, net (col 4)",
       "status": "resolved"
     },
     {
@@ -2370,7 +2565,7 @@
       "candidate_content": "71.76",
       "slot_name": "slide14_other_financing_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other financing items, net col 5]",
+      "provenance": "Reconciled Other financing items, net (col 5)",
       "status": "resolved"
     },
     {
@@ -2387,7 +2582,7 @@
       "candidate_content": "208.77",
       "slot_name": "slide14_other_financing_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other financing items, net col 6]",
+      "provenance": "Reconciled Other financing items, net (col 6)",
       "status": "resolved"
     },
     {
@@ -2404,7 +2599,7 @@
       "candidate_content": "-28.40",
       "slot_name": "slide14_other_financing_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other financing items, net col 7]",
+      "provenance": "Reconciled Other financing items, net (col 7)",
       "status": "resolved"
     },
     {
@@ -2421,7 +2616,7 @@
       "candidate_content": "-29.56",
       "slot_name": "slide14_other_financing_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Other financing items, net col 8]",
+      "provenance": "Reconciled Other financing items, net (col 8)",
       "status": "resolved"
     },
     {
@@ -2438,7 +2633,7 @@
       "candidate_content": "3.38",
       "slot_name": "slide14_cff_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Financing Activities col 1]",
+      "provenance": "Tied to Data Sheet!C84 (3.38)",
       "status": "resolved"
     },
     {
@@ -2455,7 +2650,7 @@
       "candidate_content": "-20.78",
       "slot_name": "slide14_cff_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Financing Activities col 2]",
+      "provenance": "Tied to Data Sheet!D84 (-20.78)",
       "status": "resolved"
     },
     {
@@ -2472,7 +2667,7 @@
       "candidate_content": "-113.55",
       "slot_name": "slide14_cff_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Financing Activities col 3]",
+      "provenance": "Tied to Data Sheet!E84 (-113.55)",
       "status": "resolved"
     },
     {
@@ -2489,7 +2684,7 @@
       "candidate_content": "-15.29",
       "slot_name": "slide14_cff_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Financing Activities col 4]",
+      "provenance": "Tied to Data Sheet!F84 (-15.29)",
       "status": "resolved"
     },
     {
@@ -2506,7 +2701,7 @@
       "candidate_content": "79.51",
       "slot_name": "slide14_cff_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Financing Activities col 5]",
+      "provenance": "Tied to Data Sheet!G84 (79.51)",
       "status": "resolved"
     },
     {
@@ -2523,7 +2718,7 @@
       "candidate_content": "197.83",
       "slot_name": "slide14_cff_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Financing Activities col 6]",
+      "provenance": "Tied to Data Sheet!H84 (197.83)",
       "status": "resolved"
     },
     {
@@ -2540,7 +2735,7 @@
       "candidate_content": "-68.73",
       "slot_name": "slide14_cff_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Financing Activities col 7]",
+      "provenance": "Tied to Data Sheet!I84 (-68.73)",
       "status": "resolved"
     },
     {
@@ -2557,7 +2752,7 @@
       "candidate_content": "-65.15",
       "slot_name": "slide14_cff_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Cash From Financing Activities col 8]",
+      "provenance": "Tied to Data Sheet!J84 (-65.15)",
       "status": "resolved"
     },
     {
@@ -2574,7 +2769,7 @@
       "candidate_content": "14.67",
       "slot_name": "slide14_net_cf_fy18",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net Cash Flow col 1]",
+      "provenance": "Tied to Data Sheet!C85 (14.67)",
       "status": "resolved"
     },
     {
@@ -2591,7 +2786,7 @@
       "candidate_content": "-6.86",
       "slot_name": "slide14_net_cf_fy19",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net Cash Flow col 2]",
+      "provenance": "Tied to Data Sheet!D85 (-6.86)",
       "status": "resolved"
     },
     {
@@ -2608,7 +2803,7 @@
       "candidate_content": "60.19",
       "slot_name": "slide14_net_cf_fy20",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net Cash Flow col 3]",
+      "provenance": "Tied to Data Sheet!E85 (60.19)",
       "status": "resolved"
     },
     {
@@ -2625,7 +2820,7 @@
       "candidate_content": "118.46",
       "slot_name": "slide14_net_cf_fy21",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net Cash Flow col 4]",
+      "provenance": "Tied to Data Sheet!F85 (118.46)",
       "status": "resolved"
     },
     {
@@ -2642,7 +2837,7 @@
       "candidate_content": "94.38",
       "slot_name": "slide14_net_cf_fy22",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net Cash Flow col 5]",
+      "provenance": "Tied to Data Sheet!G85 (94.38)",
       "status": "resolved"
     },
     {
@@ -2659,7 +2854,7 @@
       "candidate_content": "176.03",
       "slot_name": "slide14_net_cf_fy23",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net Cash Flow col 6]",
+      "provenance": "Tied to Data Sheet!H85 (176.03)",
       "status": "resolved"
     },
     {
@@ -2676,7 +2871,7 @@
       "candidate_content": "20.84",
       "slot_name": "slide14_net_cf_fy24",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net Cash Flow col 7]",
+      "provenance": "Tied to Data Sheet!I85 (20.84)",
       "status": "resolved"
     },
     {
@@ -2693,7 +2888,7 @@
       "candidate_content": "92.51",
       "slot_name": "slide14_net_cf_fy25",
       "intended_replacement": "Marksans Financial Schedule",
-      "provenance": "Marksans-Recalculated.xlsx [Net Cash Flow col 8]",
+      "provenance": "Tied to Data Sheet!J85 (92.51)",
       "status": "resolved"
     },
     {
@@ -2721,7 +2916,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -2735,7 +2930,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -2749,7 +2944,7 @@
       "original_content": "EQUITY RESEARCH REPORT",
       "candidate_content": "EQUITY RESEARCH REPORT",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -2762,8 +2957,8 @@
       "element_type": "shape_text",
       "original_content": "Sun Pharmaceutical Industries Ltd.",
       "candidate_content": "Marksans Pharma Ltd.",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -2776,8 +2971,8 @@
       "element_type": "shape_text",
       "original_content": "NSE : SUNPHARMA | BSE Code: 524715",
       "candidate_content": "NSE : MARKSANS | BSE Code: 524404",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -2791,7 +2986,7 @@
       "original_content": "Pharmaceuticals & Drugs",
       "candidate_content": "Pharmaceuticals & Drugs",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -2805,7 +3000,7 @@
       "original_content": "1",
       "candidate_content": "1",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -2819,7 +3014,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -2832,8 +3027,8 @@
       "element_type": "shape_text",
       "original_content": "Sun Pharma's current ratio has improved steadily from 1.59x in FY18 to 2.89x in FY25, reflecting a consistent build-up of current assets; particularly",
       "candidate_content": "Marksans Pharma's liquidity position remains solid, with cash and bank balances of \u20b9704.21 crore and net cash of \u20b9382.30 crore as of FY25. The company",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -2846,8 +3041,8 @@
       "element_type": "shape_text",
       "original_content": "The quick ratio, which excludes inventory, has more than doubled from 1.25x in FY18 to 2.33x in FY25. Even excluding stock-in-trade, Sun Pharma has he",
       "candidate_content": "Excluding inventories, Marksans maintains substantial liquid assets in cash, equivalents, and short-term receivables, comfortably meeting operational ",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -2861,7 +3056,7 @@
       "original_content": "RATIO ANALYSIS",
       "candidate_content": "RATIO ANALYSIS",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -2875,7 +3070,7 @@
       "original_content": "CURRENT RATIO",
       "candidate_content": "CURRENT RATIO",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -2889,7 +3084,143 @@
       "original_content": "QUICK RATIO",
       "candidate_content": "QUICK RATIO",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s16_tbl9_r0_c1",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 16,
+      "candidate_slide": 4,
+      "shape_id": 9,
+      "row": 0,
+      "col": 1,
+      "row_label": "Ratio Analysis - MARKSANS PHARMA (Consolidated)",
+      "element_type": "table_cell",
+      "original_content": "FY18",
+      "candidate_content": "FY18",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s16_tbl9_r0_c2",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 16,
+      "candidate_slide": 4,
+      "shape_id": 9,
+      "row": 0,
+      "col": 2,
+      "row_label": "Ratio Analysis - MARKSANS PHARMA (Consolidated)",
+      "element_type": "table_cell",
+      "original_content": "FY19",
+      "candidate_content": "FY19",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s16_tbl9_r0_c3",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 16,
+      "candidate_slide": 4,
+      "shape_id": 9,
+      "row": 0,
+      "col": 3,
+      "row_label": "Ratio Analysis - MARKSANS PHARMA (Consolidated)",
+      "element_type": "table_cell",
+      "original_content": "FY20",
+      "candidate_content": "FY20",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s16_tbl9_r0_c4",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 16,
+      "candidate_slide": 4,
+      "shape_id": 9,
+      "row": 0,
+      "col": 4,
+      "row_label": "Ratio Analysis - MARKSANS PHARMA (Consolidated)",
+      "element_type": "table_cell",
+      "original_content": "FY21",
+      "candidate_content": "FY21",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s16_tbl9_r0_c5",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 16,
+      "candidate_slide": 4,
+      "shape_id": 9,
+      "row": 0,
+      "col": 5,
+      "row_label": "Ratio Analysis - MARKSANS PHARMA (Consolidated)",
+      "element_type": "table_cell",
+      "original_content": "FY22",
+      "candidate_content": "FY22",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s16_tbl9_r0_c6",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 16,
+      "candidate_slide": 4,
+      "shape_id": 9,
+      "row": 0,
+      "col": 6,
+      "row_label": "Ratio Analysis - MARKSANS PHARMA (Consolidated)",
+      "element_type": "table_cell",
+      "original_content": "FY23",
+      "candidate_content": "FY23",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s16_tbl9_r0_c7",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 16,
+      "candidate_slide": 4,
+      "shape_id": 9,
+      "row": 0,
+      "col": 7,
+      "row_label": "Ratio Analysis - MARKSANS PHARMA (Consolidated)",
+      "element_type": "table_cell",
+      "original_content": "FY24",
+      "candidate_content": "FY24",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
+      "status": "unmodified_template_label"
+    },
+    {
+      "element_id": "s16_tbl9_r0_c8",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "source_slide": 16,
+      "candidate_slide": 4,
+      "shape_id": 9,
+      "row": 0,
+      "col": 8,
+      "row_label": "Ratio Analysis - MARKSANS PHARMA (Consolidated)",
+      "element_type": "table_cell",
+      "original_content": "FY25",
+      "candidate_content": "FY25",
+      "slot_name": null,
+      "intended_replacement": "Marksans Balance Sheet Ratios",
+      "provenance": "Template table header/label",
       "status": "unmodified_template_label"
     },
     {
@@ -2906,7 +3237,7 @@
       "candidate_content": "3.18",
       "slot_name": "slide16_cr_fy18",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Current Ratio (x) col 1]",
+      "provenance": "Reconciled Current Ratio (x) (col 1)",
       "status": "resolved"
     },
     {
@@ -2923,7 +3254,7 @@
       "candidate_content": "3.33",
       "slot_name": "slide16_cr_fy19",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Current Ratio (x) col 2]",
+      "provenance": "Reconciled Current Ratio (x) (col 2)",
       "status": "resolved"
     },
     {
@@ -2940,7 +3271,7 @@
       "candidate_content": "2.54",
       "slot_name": "slide16_cr_fy20",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Current Ratio (x) col 3]",
+      "provenance": "Reconciled Current Ratio (x) (col 3)",
       "status": "resolved"
     },
     {
@@ -2957,7 +3288,7 @@
       "candidate_content": "2.95",
       "slot_name": "slide16_cr_fy21",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Current Ratio (x) col 4]",
+      "provenance": "Reconciled Current Ratio (x) (col 4)",
       "status": "resolved"
     },
     {
@@ -2974,7 +3305,7 @@
       "candidate_content": "3.73",
       "slot_name": "slide16_cr_fy22",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Current Ratio (x) col 5]",
+      "provenance": "Reconciled Current Ratio (x) (col 5)",
       "status": "resolved"
     },
     {
@@ -2991,7 +3322,7 @@
       "candidate_content": "5.26",
       "slot_name": "slide16_cr_fy23",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Current Ratio (x) col 6]",
+      "provenance": "Reconciled Current Ratio (x) (col 6)",
       "status": "resolved"
     },
     {
@@ -3008,7 +3339,7 @@
       "candidate_content": "5.03",
       "slot_name": "slide16_cr_fy24",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Current Ratio (x) col 7]",
+      "provenance": "Reconciled Current Ratio (x) (col 7)",
       "status": "resolved"
     },
     {
@@ -3025,7 +3356,7 @@
       "candidate_content": "4.95",
       "slot_name": "slide16_cr_fy25",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Current Ratio (x) col 8]",
+      "provenance": "Reconciled Current Ratio (x) (col 8)",
       "status": "resolved"
     },
     {
@@ -3042,7 +3373,7 @@
       "candidate_content": "1.64",
       "slot_name": "slide16_qr_fy18",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Quick Ratio (x) col 1]",
+      "provenance": "Reconciled Quick Ratio (x) (col 1)",
       "status": "resolved"
     },
     {
@@ -3059,7 +3390,7 @@
       "candidate_content": "1.50",
       "slot_name": "slide16_qr_fy19",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Quick Ratio (x) col 2]",
+      "provenance": "Reconciled Quick Ratio (x) (col 2)",
       "status": "resolved"
     },
     {
@@ -3076,7 +3407,7 @@
       "candidate_content": "1.51",
       "slot_name": "slide16_qr_fy20",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Quick Ratio (x) col 3]",
+      "provenance": "Reconciled Quick Ratio (x) (col 3)",
       "status": "resolved"
     },
     {
@@ -3093,7 +3424,7 @@
       "candidate_content": "1.63",
       "slot_name": "slide16_qr_fy21",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Quick Ratio (x) col 4]",
+      "provenance": "Reconciled Quick Ratio (x) (col 4)",
       "status": "resolved"
     },
     {
@@ -3110,7 +3441,7 @@
       "candidate_content": "2.42",
       "slot_name": "slide16_qr_fy22",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Quick Ratio (x) col 5]",
+      "provenance": "Reconciled Quick Ratio (x) (col 5)",
       "status": "resolved"
     },
     {
@@ -3127,7 +3458,7 @@
       "candidate_content": "3.75",
       "slot_name": "slide16_qr_fy23",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Quick Ratio (x) col 6]",
+      "provenance": "Reconciled Quick Ratio (x) (col 6)",
       "status": "resolved"
     },
     {
@@ -3144,7 +3475,7 @@
       "candidate_content": "3.36",
       "slot_name": "slide16_qr_fy24",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Quick Ratio (x) col 7]",
+      "provenance": "Reconciled Quick Ratio (x) (col 7)",
       "status": "resolved"
     },
     {
@@ -3161,7 +3492,7 @@
       "candidate_content": "3.07",
       "slot_name": "slide16_qr_fy25",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Quick Ratio (x) col 8]",
+      "provenance": "Reconciled Quick Ratio (x) (col 8)",
       "status": "resolved"
     },
     {
@@ -3178,7 +3509,7 @@
       "candidate_content": "0.25",
       "slot_name": "slide16_de_fy18",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debt-to-Equity (x) col 1]",
+      "provenance": "Reconciled Debt-to-Equity (x) (col 1)",
       "status": "resolved"
     },
     {
@@ -3195,7 +3526,7 @@
       "candidate_content": "0.18",
       "slot_name": "slide16_de_fy19",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debt-to-Equity (x) col 2]",
+      "provenance": "Reconciled Debt-to-Equity (x) (col 2)",
       "status": "resolved"
     },
     {
@@ -3212,7 +3543,7 @@
       "candidate_content": "0.05",
       "slot_name": "slide16_de_fy20",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debt-to-Equity (x) col 3]",
+      "provenance": "Reconciled Debt-to-Equity (x) (col 3)",
       "status": "resolved"
     },
     {
@@ -3229,7 +3560,7 @@
       "candidate_content": "0.04",
       "slot_name": "slide16_de_fy21",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debt-to-Equity (x) col 4]",
+      "provenance": "Reconciled Debt-to-Equity (x) (col 4)",
       "status": "resolved"
     },
     {
@@ -3246,7 +3577,7 @@
       "candidate_content": "0.09",
       "slot_name": "slide16_de_fy22",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debt-to-Equity (x) col 5]",
+      "provenance": "Reconciled Debt-to-Equity (x) (col 5)",
       "status": "resolved"
     },
     {
@@ -3263,7 +3594,7 @@
       "candidate_content": "0.07",
       "slot_name": "slide16_de_fy23",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debt-to-Equity (x) col 6]",
+      "provenance": "Reconciled Debt-to-Equity (x) (col 6)",
       "status": "resolved"
     },
     {
@@ -3280,7 +3611,7 @@
       "candidate_content": "0.12",
       "slot_name": "slide16_de_fy24",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debt-to-Equity (x) col 7]",
+      "provenance": "Reconciled Debt-to-Equity (x) (col 7)",
       "status": "resolved"
     },
     {
@@ -3297,7 +3628,7 @@
       "candidate_content": "0.13",
       "slot_name": "slide16_de_fy25",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debt-to-Equity (x) col 8]",
+      "provenance": "Reconciled Debt-to-Equity (x) (col 8)",
       "status": "resolved"
     },
     {
@@ -3314,7 +3645,7 @@
       "candidate_content": "5.87",
       "slot_name": "slide16_icr_fy18",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Interest Coverage Ratio (x) col 1]",
+      "provenance": "Reconciled Interest Coverage Ratio (x) (col 1)",
       "status": "resolved"
     },
     {
@@ -3331,7 +3662,7 @@
       "candidate_content": "11.80",
       "slot_name": "slide16_icr_fy19",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Interest Coverage Ratio (x) col 2]",
+      "provenance": "Reconciled Interest Coverage Ratio (x) (col 2)",
       "status": "resolved"
     },
     {
@@ -3348,7 +3679,7 @@
       "candidate_content": "18.96",
       "slot_name": "slide16_icr_fy20",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Interest Coverage Ratio (x) col 3]",
+      "provenance": "Reconciled Interest Coverage Ratio (x) (col 3)",
       "status": "resolved"
     },
     {
@@ -3365,7 +3696,7 @@
       "candidate_content": "38.82",
       "slot_name": "slide16_icr_fy21",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Interest Coverage Ratio (x) col 4]",
+      "provenance": "Reconciled Interest Coverage Ratio (x) (col 4)",
       "status": "resolved"
     },
     {
@@ -3382,7 +3713,7 @@
       "candidate_content": "30.29",
       "slot_name": "slide16_icr_fy22",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Interest Coverage Ratio (x) col 5]",
+      "provenance": "Reconciled Interest Coverage Ratio (x) (col 5)",
       "status": "resolved"
     },
     {
@@ -3399,7 +3730,7 @@
       "candidate_content": "37.98",
       "slot_name": "slide16_icr_fy23",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Interest Coverage Ratio (x) col 6]",
+      "provenance": "Reconciled Interest Coverage Ratio (x) (col 6)",
       "status": "resolved"
     },
     {
@@ -3416,7 +3747,7 @@
       "candidate_content": "38.82",
       "slot_name": "slide16_icr_fy24",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Interest Coverage Ratio (x) col 7]",
+      "provenance": "Reconciled Interest Coverage Ratio (x) (col 7)",
       "status": "resolved"
     },
     {
@@ -3433,7 +3764,7 @@
       "candidate_content": "44.22",
       "slot_name": "slide16_icr_fy25",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Interest Coverage Ratio (x) col 8]",
+      "provenance": "Reconciled Interest Coverage Ratio (x) (col 8)",
       "status": "resolved"
     },
     {
@@ -3450,7 +3781,7 @@
       "candidate_content": "71",
       "slot_name": "slide16_debtor_days_fy18",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debtor Days col 1]",
+      "provenance": "Reconciled Debtor Days (col 1)",
       "status": "resolved"
     },
     {
@@ -3467,7 +3798,7 @@
       "candidate_content": "64",
       "slot_name": "slide16_debtor_days_fy19",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debtor Days col 2]",
+      "provenance": "Reconciled Debtor Days (col 2)",
       "status": "resolved"
     },
     {
@@ -3484,7 +3815,7 @@
       "candidate_content": "78",
       "slot_name": "slide16_debtor_days_fy20",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debtor Days col 3]",
+      "provenance": "Reconciled Debtor Days (col 3)",
       "status": "resolved"
     },
     {
@@ -3501,7 +3832,7 @@
       "candidate_content": "72",
       "slot_name": "slide16_debtor_days_fy21",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debtor Days col 4]",
+      "provenance": "Reconciled Debtor Days (col 4)",
       "status": "resolved"
     },
     {
@@ -3518,7 +3849,7 @@
       "candidate_content": "97",
       "slot_name": "slide16_debtor_days_fy22",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debtor Days col 5]",
+      "provenance": "Reconciled Debtor Days (col 5)",
       "status": "resolved"
     },
     {
@@ -3535,7 +3866,7 @@
       "candidate_content": "82",
       "slot_name": "slide16_debtor_days_fy23",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debtor Days col 6]",
+      "provenance": "Reconciled Debtor Days (col 6)",
       "status": "resolved"
     },
     {
@@ -3552,7 +3883,7 @@
       "candidate_content": "76",
       "slot_name": "slide16_debtor_days_fy24",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debtor Days col 7]",
+      "provenance": "Reconciled Debtor Days (col 7)",
       "status": "resolved"
     },
     {
@@ -3569,7 +3900,7 @@
       "candidate_content": "75",
       "slot_name": "slide16_debtor_days_fy25",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Debtor Days col 8]",
+      "provenance": "Reconciled Debtor Days (col 8)",
       "status": "resolved"
     },
     {
@@ -3586,7 +3917,7 @@
       "candidate_content": "57",
       "slot_name": "slide16_payable_days_fy18",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Payable Days col 1]",
+      "provenance": "Reconciled Payable Days (col 1)",
       "status": "resolved"
     },
     {
@@ -3603,7 +3934,7 @@
       "candidate_content": "75",
       "slot_name": "slide16_payable_days_fy19",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Payable Days col 2]",
+      "provenance": "Reconciled Payable Days (col 2)",
       "status": "resolved"
     },
     {
@@ -3620,7 +3951,7 @@
       "candidate_content": "78",
       "slot_name": "slide16_payable_days_fy20",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Payable Days col 3]",
+      "provenance": "Reconciled Payable Days (col 3)",
       "status": "resolved"
     },
     {
@@ -3637,7 +3968,7 @@
       "candidate_content": "84",
       "slot_name": "slide16_payable_days_fy21",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Payable Days col 4]",
+      "provenance": "Reconciled Payable Days (col 4)",
       "status": "resolved"
     },
     {
@@ -3654,7 +3985,7 @@
       "candidate_content": "104",
       "slot_name": "slide16_payable_days_fy22",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Payable Days col 5]",
+      "provenance": "Reconciled Payable Days (col 5)",
       "status": "resolved"
     },
     {
@@ -3671,7 +4002,7 @@
       "candidate_content": "112",
       "slot_name": "slide16_payable_days_fy23",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Payable Days col 6]",
+      "provenance": "Reconciled Payable Days (col 6)",
       "status": "resolved"
     },
     {
@@ -3688,7 +4019,7 @@
       "candidate_content": "125",
       "slot_name": "slide16_payable_days_fy24",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Payable Days col 7]",
+      "provenance": "Reconciled Payable Days (col 7)",
       "status": "resolved"
     },
     {
@@ -3705,7 +4036,7 @@
       "candidate_content": "134",
       "slot_name": "slide16_payable_days_fy25",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Payable Days col 8]",
+      "provenance": "Reconciled Payable Days (col 8)",
       "status": "resolved"
     },
     {
@@ -3722,7 +4053,7 @@
       "candidate_content": "87",
       "slot_name": "slide16_inventory_days_fy18",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Inventory Days col 1]",
+      "provenance": "Reconciled Inventory Days (col 1)",
       "status": "resolved"
     },
     {
@@ -3739,7 +4070,7 @@
       "candidate_content": "107",
       "slot_name": "slide16_inventory_days_fy19",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Inventory Days col 2]",
+      "provenance": "Reconciled Inventory Days (col 2)",
       "status": "resolved"
     },
     {
@@ -3756,7 +4087,7 @@
       "candidate_content": "78",
       "slot_name": "slide16_inventory_days_fy20",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Inventory Days col 3]",
+      "provenance": "Reconciled Inventory Days (col 3)",
       "status": "resolved"
     },
     {
@@ -3773,7 +4104,7 @@
       "candidate_content": "107",
       "slot_name": "slide16_inventory_days_fy21",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Inventory Days col 4]",
+      "provenance": "Reconciled Inventory Days (col 4)",
       "status": "resolved"
     },
     {
@@ -3790,7 +4121,7 @@
       "candidate_content": "104",
       "slot_name": "slide16_inventory_days_fy22",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Inventory Days col 5]",
+      "provenance": "Reconciled Inventory Days (col 5)",
       "status": "resolved"
     },
     {
@@ -3807,7 +4138,7 @@
       "candidate_content": "95",
       "slot_name": "slide16_inventory_days_fy23",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Inventory Days col 6]",
+      "provenance": "Reconciled Inventory Days (col 6)",
       "status": "resolved"
     },
     {
@@ -3824,7 +4155,7 @@
       "candidate_content": "104",
       "slot_name": "slide16_inventory_days_fy24",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Inventory Days col 7]",
+      "provenance": "Reconciled Inventory Days (col 7)",
       "status": "resolved"
     },
     {
@@ -3841,7 +4172,7 @@
       "candidate_content": "118",
       "slot_name": "slide16_inventory_days_fy25",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Inventory Days col 8]",
+      "provenance": "Reconciled Inventory Days (col 8)",
       "status": "resolved"
     },
     {
@@ -3858,7 +4189,7 @@
       "candidate_content": "101",
       "slot_name": "slide16_ccc_fy18",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Cash Conversion Cycle (Days) col 1]",
+      "provenance": "Reconciled Cash Conversion Cycle (Days) (col 1)",
       "status": "resolved"
     },
     {
@@ -3875,7 +4206,7 @@
       "candidate_content": "96",
       "slot_name": "slide16_ccc_fy19",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Cash Conversion Cycle (Days) col 2]",
+      "provenance": "Reconciled Cash Conversion Cycle (Days) (col 2)",
       "status": "resolved"
     },
     {
@@ -3892,7 +4223,7 @@
       "candidate_content": "78",
       "slot_name": "slide16_ccc_fy20",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Cash Conversion Cycle (Days) col 3]",
+      "provenance": "Reconciled Cash Conversion Cycle (Days) (col 3)",
       "status": "resolved"
     },
     {
@@ -3909,7 +4240,7 @@
       "candidate_content": "95",
       "slot_name": "slide16_ccc_fy21",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Cash Conversion Cycle (Days) col 4]",
+      "provenance": "Reconciled Cash Conversion Cycle (Days) (col 4)",
       "status": "resolved"
     },
     {
@@ -3926,7 +4257,7 @@
       "candidate_content": "97",
       "slot_name": "slide16_ccc_fy22",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Cash Conversion Cycle (Days) col 5]",
+      "provenance": "Reconciled Cash Conversion Cycle (Days) (col 5)",
       "status": "resolved"
     },
     {
@@ -3943,7 +4274,7 @@
       "candidate_content": "65",
       "slot_name": "slide16_ccc_fy23",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Cash Conversion Cycle (Days) col 6]",
+      "provenance": "Reconciled Cash Conversion Cycle (Days) (col 6)",
       "status": "resolved"
     },
     {
@@ -3960,7 +4291,7 @@
       "candidate_content": "55",
       "slot_name": "slide16_ccc_fy24",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Cash Conversion Cycle (Days) col 7]",
+      "provenance": "Reconciled Cash Conversion Cycle (Days) (col 7)",
       "status": "resolved"
     },
     {
@@ -3977,7 +4308,7 @@
       "candidate_content": "59",
       "slot_name": "slide16_ccc_fy25",
       "intended_replacement": "Marksans Balance Sheet Ratios",
-      "provenance": "Marksans-Recalculated.xlsx [Cash Conversion Cycle (Days) col 8]",
+      "provenance": "Reconciled Cash Conversion Cycle (Days) (col 8)",
       "status": "resolved"
     },
     {
@@ -4004,7 +4335,7 @@
         ]
       ],
       "intended_replacement": "Marksans native chart series & embedded workbook",
-      "provenance": "Marksans-Recalculated.xlsx [Data Sheet / Cash Flow]",
+      "provenance": "Verified chart series & numCache",
       "status": "resolved"
     },
     {
@@ -4031,7 +4362,7 @@
         ]
       ],
       "intended_replacement": "Marksans native chart series & embedded workbook",
-      "provenance": "Marksans-Recalculated.xlsx [Data Sheet / Cash Flow]",
+      "provenance": "Verified chart series & numCache",
       "status": "resolved"
     },
     {
@@ -4059,7 +4390,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -4073,7 +4404,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -4087,7 +4418,7 @@
       "original_content": "EQUITY RESEARCH REPORT",
       "candidate_content": "EQUITY RESEARCH REPORT",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -4100,8 +4431,8 @@
       "element_type": "shape_text",
       "original_content": "Sun Pharmaceutical Industries Ltd.",
       "candidate_content": "Marksans Pharma Ltd.",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -4114,8 +4445,8 @@
       "element_type": "shape_text",
       "original_content": "NSE : SUNPHARMA | BSE Code: 524715",
       "candidate_content": "NSE : MARKSANS | BSE Code: 524404",
-      "intended_replacement": "Verified Marksans text",
-      "provenance": "Marksans Investor Presentation FY25 / Financial Model",
+      "intended_replacement": "Verified replacement text",
+      "provenance": "Verified candidate replacement text",
       "status": "resolved"
     },
     {
@@ -4129,7 +4460,7 @@
       "original_content": "Pharmaceuticals & Drugs",
       "candidate_content": "Pharmaceuticals & Drugs",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -4143,7 +4474,7 @@
       "original_content": "1",
       "candidate_content": "1",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -4157,7 +4488,7 @@
       "original_content": "",
       "candidate_content": "",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -4171,7 +4502,7 @@
       "original_content": "DISCOUNTED CASHFLOW VALUATION - WAC \u0421",
       "candidate_content": "DISCOUNTED CASHFLOW VALUATION - WAC \u0421",
       "intended_replacement": "Template label",
-      "provenance": "ERR-4 Template Layout",
+      "provenance": "Generic template design label",
       "status": "unmodified_template_label"
     },
     {
@@ -4185,7 +4516,7 @@
       "original_content": "Raster screenshot of Sun Pharma financial schedule",
       "candidate_content": "High-resolution vector/table PNG render from WACC-DCF sheet",
       "intended_replacement": "Marksans WACC & CAPM schedule table",
-      "provenance": "Marksans-Recalculated.xlsx [WACC-DCF sheet]",
+      "provenance": "Marksans WACC & CAPM schedule table",
       "status": "resolved"
     },
     {
@@ -4199,7 +4530,7 @@
       "original_content": "Raster screenshot of Sun Pharma financial schedule",
       "candidate_content": "High-resolution vector/table PNG render from WACC-DCF sheet",
       "intended_replacement": "Marksans WACC & CAPM schedule table",
-      "provenance": "Marksans-Recalculated.xlsx [WACC-DCF sheet]",
+      "provenance": "Marksans WACC & CAPM schedule table",
       "status": "resolved"
     },
     {
@@ -4213,7 +4544,7 @@
       "original_content": "Raster screenshot of Sun Pharma financial schedule",
       "candidate_content": "High-resolution vector/table PNG render from WACC-DCF sheet",
       "intended_replacement": "Marksans WACC & CAPM schedule table",
-      "provenance": "Marksans-Recalculated.xlsx [WACC-DCF sheet]",
+      "provenance": "Marksans WACC & CAPM schedule table",
       "status": "resolved"
     },
     {

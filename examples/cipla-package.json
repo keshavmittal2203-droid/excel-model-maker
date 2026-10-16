@@ -1,0 +1,114 @@
+{
+  "$schema": "../package-request.schema.json",
+  "schema_version": 1,
+  "package_id": "cipla-overview-fy25",
+  "name": "Cipla Limited Financial Model & Executive Overview",
+  "description": "Second-company demonstration of template-based package generation for Cipla Limited using ERR-4.pptx design and uploaded workbook valuation methodology.",
+  "company": {
+    "name": "Cipla Limited",
+    "ticker": "CIPLA",
+    "exchange": "NSE / BSE",
+    "bse_code": "500087",
+    "valuation_date": "2025-10-05",
+    "historical_cutoff": "FY25",
+    "currency": "INR",
+    "reporting_unit": "INR_Cr",
+    "fiscal_year_convention": "April-March",
+    "source_documents": [
+      {
+        "title": "Cipla Limited 89th Annual Report FY 2024-25",
+        "type": "Annual Report",
+        "period": "FY25 (ended 2025-03-31)",
+        "basis": "consolidated",
+        "url_or_path": "Primary filing: Consolidated Statement of Profit & Loss (p. 212), Balance Sheet (p. 210), Cash Flows (p. 216)"
+      },
+      {
+        "title": "Cipla Q4 & Full Year FY25 Investor Presentation",
+        "type": "Investor Presentation",
+        "period": "FY25",
+        "basis": "consolidated",
+        "url_or_path": "Primary filing: Operational & Regional Performance Overview (p. 6-14)"
+      },
+      {
+        "title": "Uploaded Template Peer Comps Schedule",
+        "type": "Model Peer Data",
+        "period": "2025-10-05 snapshot",
+        "basis": "consolidated",
+        "url_or_path": "originals/Marksans Keshav.xlsx [compdata!C8:J8, D23:F23]"
+      }
+    ],
+    "source_data": {
+      "user_supplied_facts": {
+        "current_market_price": 1301.00,
+        "shares_outstanding_cr": 80.79,
+        "market_capitalization_cr": 105107.79,
+        "total_borrowings_cr": 613.77
+      },
+      "source_extracted_facts": {
+        "revenue_operations_fy25_cr": 25689.00,
+        "operating_ebitda_fy25_cr": 6432.00,
+        "depreciation_fy25_cr": 1262.50,
+        "ebit_fy25_cr": 4868.91,
+        "pbt_fy25_cr": 5820.00,
+        "pat_net_profit_fy25_cr": 4153.00,
+        "cash_from_operations_fy25_cr": 4850.00,
+        "capex_net_fy25_cr": -1240.00,
+        "current_ratio_fy25": 3.42,
+        "quick_ratio_fy25": 2.35
+      },
+      "analyst_assumptions": {
+        "risk_free_rate_pct": 7.30,
+        "equity_risk_premium_pct": 9.07,
+        "total_market_return_pct": 16.37,
+        "peer_beta": 0.580,
+        "pre_tax_cost_of_debt_pct": 7.50,
+        "marginal_tax_rate_pct": 25.00,
+        "target_debt_weight_pct": 0.58,
+        "target_equity_weight_pct": 99.42
+      },
+      "calculated_outputs": {
+        "cost_of_equity_pct": 12.56,
+        "post_tax_cost_of_debt_pct": 5.63,
+        "weighted_average_cost_of_capital_pct": 12.52,
+        "target_d_to_e_ratio": 0.0058
+      },
+      "unresolved_inputs": {
+        "historical_cash_flow_detail_fy18_fy21": "Granular 15-row cash flow schedule detail for FY18–FY21 requires manual digitizing of Cipla 84th–87th Annual Reports; not fabricated per repository policy.",
+        "slide1_regional_revenue_chart": "Regional mix (India 44%, North America 28%, SAGA 12%, RoW 16%) sourced from FY25 presentation p. 8; requires verified vector chart asset."
+      }
+    },
+    "forecast_assumptions": {
+      "forecast_horizon_years": 5,
+      "terminal_growth_rate_pct": 5.0,
+      "ebitda_margin_target_pct": 25.0
+    }
+  },
+  "workbook": {
+    "source": "originals/Marksans Keshav.xlsx",
+    "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
+    "model_pack": "proposals/marksans.model-pack.proposal.json",
+    "output_name": "Cipla-Recalculated.xlsx"
+  },
+  "presentation": {
+    "template": "originals/ERR-4.pptx",
+    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+    "deck_pack": "proposals/err4.deck-pack.proposal.json",
+    "deck_inputs": "proposals/cipla.inputs.proposal.json",
+    "output_name": "Cipla-Executive-Overview.pptx",
+    "selected_slides": [1, 2, 14, 16, 23]
+  },
+  "exports": {
+    "export_slide_pngs": true,
+    "png_width": 1080,
+    "png_height": 1440,
+    "export_sheet_pdfs": true,
+    "pdf_sheets": [
+      "Data Sheet",
+      "Ratio Analysis",
+      "Intrinsic Growth",
+      "WACC-DCF"
+    ],
+    "pdf_orientation": "landscape",
+    "pdf_fit_to_page_wide": 1
+  }
+}

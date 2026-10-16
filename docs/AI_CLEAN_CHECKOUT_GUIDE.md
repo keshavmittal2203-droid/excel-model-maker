@@ -172,10 +172,48 @@ The request format uses nested `workbook`, `presentation`, and `exports` objects
 }
 ```
 
-### Supported Inputs Workflow
-- **Baseline Build**: Baseline model input values are declared directly inside `proposals/marksans.model-pack.proposal.json`; presentation text and chart slots are supplied in `proposals/err4.inputs.proposal.json`. No external inputs file is required.
-- **Scenario Build**: Custom or stressed assumptions supply an external inputs file mapped via `workbook.inputs`, e.g., `proposals/scenario-b.inputs.json` (as seen in `examples/scenario-b-package.json`).
-- *Note*: There is no `proposals/marksans.inputs.proposal.json`; baseline inputs reside directly within the model pack proposal.
+### Supported Inputs Workflow & Request Examples
+- **Baseline Build (`examples/marksans-package.json`)**: Baseline model input values are declared directly inside `proposals/marksans.model-pack.proposal.json`; presentation text and chart slots are supplied in `proposals/err4.inputs.proposal.json`. No external inputs file is required.
+- **Scenario Build (`examples/scenario-b-package.json`)**: Custom or stressed assumptions supply an external inputs file mapped via `workbook.inputs`, e.g., `proposals/scenario-b.inputs.json`.
+- **Second Company Demonstration (`examples/cipla-package.json`)**: Full company-request specification demonstrating reuse on a second real company (**Cipla Limited**, BSE `500087` / NSE `CIPLA`), mapped to `proposals/cipla.inputs.proposal.json` and documented in `docs/SECOND_COMPANY_EVIDENCE_REPORT.md`.
+
+### Canonical Company Specification (`package-request.schema.json`)
+The request schema enforces formal company metadata and segregated source provenance:
+```json
+"company": {
+  "name": "Cipla Limited",
+  "ticker": "CIPLA",
+  "bse_code": "500087",
+  "exchange": "BSE / NSE",
+  "valuation_date": "2025-10-05",
+  "historical_cutoff": "FY2025 (2025-03-31)",
+  "currency": "INR",
+  "reporting_unit": "INR_Cr",
+  "fiscal_year_convention": "April-March",
+  "source_documents": [
+    {
+      "title": "Cipla Limited 89th Annual Report FY 2024-25",
+      "type": "Annual Report",
+      "period": "FY25",
+      "basis": "consolidated"
+    }
+  ],
+  "source_data": {
+    "user_supplied_facts": { ... },
+    "source_extracted_facts": { ... },
+    "analyst_assumptions": { ... },
+    "calculated_outputs": { ... },
+    "unresolved_inputs": { ... }
+  }
+}
+```
+
+### Pre-Flight Request Validation & Non-Fabrication Policy
+Before creating directories or activating Office COM, `validate_package_request` runs strict pre-flight checks:
+1. **Schema & Integrity**: Verifies `schema_version == 1` and byte-exact SHA-256 hashes of all source models and presentation templates.
+2. **Mandatory Company Metadata**: Validates identity, valuation date, cutoff date, currency, reporting unit, and fiscal year convention.
+3. **Complete Slot Mapping**: Rejects the build if any deck slot is missing from supplied values without a declared workbook binding. Missing inputs **never silently become zero or retain another company's data**.
+4. **Strict Non-Fabrication Policy**: Where primary source evidence is absent (such as older FY18–FY21 cash flow schedule breakdowns in Cipla's FY25 annual report), data points are explicitly documented under `unresolved_inputs` in the evidence report rather than manufacturing synthetic balancing figures.
 
 ---
 
@@ -264,3 +302,51 @@ Each package run generates **18 total files on disk**, categorized as follows:
    - Sessions 8–10 $\to$ WACC, CAPM, pure-play beta unlevering/re-levering (`WACC-DCF`, `Beta`, `RM`, `peerdata`).
    - Sessions 14–15 $\to$ Comparable company relative valuation (`Comps`, `compdata`, `peerdata`).
 3. **Transcript Status Note**: YouTube watch pages do not supply static transcript text tracks via plain HTTP requests. Granular spoken rules must be verified from local transcripts before being marked as transcript-verified.
+
+---
+
+## 13. Gate Semantics & Approval Governance
+
+The repository strictly enforces a multi-tier governance model separating automated generation from human certification:
+
+### Status & Gate Invariants
+- **Unapproved Proposal State**:
+  - Model packs in `proposals/` and deck packs in `proposals/` carry `status: "proposal"`.
+  - Built package manifests declare `ready: false` with pending gates:
+    ```json
+    "pending_gates": [
+      "human_pack_approval",
+      "render_review"
+    ]
+    ```
+- **Prohibition on Autonomous Self-Approval**:
+  - Autonomous agents MUST NOT self-approve proposals or remove pending gates.
+  - Reviewer guards reject disallowed tokens (`agent`, `ai`, `bot`, `gemini`, `codex`, `claude`, `argon`, `auto`) in approval fields.
+  - Candidate builds require the explicit `--allow-proposal` CLI flag to evaluate unapproved proposal packs.
+- **Human Approval Transition**:
+  - Only human reviewers can approve proposals by updating the pack metadata (`status: "approved"`, `reviewed_by: "<human_reviewer>"`) and graduating files out of `proposals/`.
+
+---
+
+## 14. Paste-Ready Prompt for Another AI Assistant
+
+Copy and paste the prompt below into another coding assistant (such as Claude, Codex, GPT-4, or Gemini) to operate this repository cleanly without breaking safety invariants:
+
+```text
+You are pair programming in https://github.com/keshavmittal2203-droid/excel-model-maker on your assigned branch.
+
+Your core operating rules:
+1. IMMUTABLE ORIGINALS & TEMPLATES: Never edit, overwrite, or delete files in originals/. Run 'python verify_sources.py' before any work to confirm all 6 SHA-256 hashes match source-catalog.json.
+2. DIRECTORY SAFETY: Output directories must be brand new, fresh, and empty. Never overwrite existing output directories or unlink candidate files. Path traversal (../), absolute paths, and Windows device names are strictly prohibited.
+3. GOVERNANCE & GATES: Candidate manifests must maintain ready: false and pending_gates: ["human_pack_approval", "render_review"]. Do not self-approve packs or remove pending gates. Use --allow-proposal for testing unapproved candidates.
+4. FINANCIAL RIGOR & NON-FABRICATION: Never invent balancing numbers, fictitious historical rows, or placeholder zeros. Sourced data must be segregated into user_supplied_facts, source_extracted_facts, analyst_assumptions, calculated_outputs, and unresolved_inputs. Missing inputs must be cataloged in unresolved_inputs with explicit citations.
+5. COM DISPATCH SAFETY: Never call application Quit() on PowerPoint. Dedicated Excel DispatchEx instances must be used with macros and link updates disabled.
+6. TESTING: All tests must pass cleanly. Run 'python -m unittest discover' before committing. Do not force-push or merge main.
+
+To build a verified package:
+1. Check sources: python verify_sources.py
+2. Run tests: python -m unittest discover
+3. Build candidate: python build_package.py --request examples/marksans-package.json --output-dir candidates/run_<version> --allow-proposal
+4. Audit candidate: python work/audit_retained_content.py --presentation candidates/run_<version>/Marksans-Pharma-Overview.pptx --workbook candidates/run_<version>/Marksans-Recalculated.xlsx --template originals/ERR-4.pptx
+5. Inspect previews in candidates/run_<version>/previews/
+```
