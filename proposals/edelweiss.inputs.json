@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "company": "Edelweiss Financial Services Limited",
+    "ticker": "EDELWEISS",
+    "generated_at": "2026-10-16"
+  },
+  "inputs": {
+    "current_market_price": 135.0,
+    "diluted_shares_cr": 94.5,
+    "terminal_growth_rate": 0.05
+  }
+}

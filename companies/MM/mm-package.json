@@ -1,0 +1,43 @@
+{
+  "package_id": "mm-overview-fy25",
+  "name": "Mahindra & Mahindra Limited Financial Model Package",
+  "company": {
+    "name": "Mahindra & Mahindra Limited",
+    "ticker": "M&M",
+    "bse_code": "500520",
+    "nse_code": "M&M",
+    "isin": "INE146A01017",
+    "reporting_unit": "INR_CRORES",
+    "shares_outstanding_cr": 124.3,
+    "market_price": 2921.0,
+    "source_data": {
+      "user_supplied_facts": {
+        "company_name": "Mahindra & Mahindra Limited",
+        "industry": "Automotive & Farm Equipment",
+        "currency": "INR"
+      },
+      "source_extracted_facts": {
+        "primary_registry": "docs/MM_SOURCE_REGISTRY.md",
+        "bse_filings": "https://www.bseindia.com/stock-share-price/mahindra--mahindra-ltd/m&m/500520/"
+      },
+      "analyst_assumptions": {
+        "valuation_methodology": "Sum-of-the-Parts (SOTP) Valuation",
+        "terminal_growth_rate": 0.05
+      }
+    }
+  },
+  "workbook": {
+    "source": "companies/MM/MM-Financial-Model.xlsx",
+    "candidate_source": "candidates/run_native_mm/MM-Recalculated.xlsx",
+    "output_name": "MM-Financial-Model.xlsx",
+    "model_pack": "proposals/mm.model-pack.json"
+  },
+  "exports": {
+    "sheet_previews": [
+      "Cover & Notes",
+      "Income Statement",
+      "Balance Sheet",
+      "Cash Flow"
+    ]
+  }
+}

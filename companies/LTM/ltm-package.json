@@ -1,0 +1,43 @@
+{
+  "package_id": "ltm-overview-fy25",
+  "name": "LTIMindtree Limited Financial Model Package",
+  "company": {
+    "name": "LTIMindtree Limited",
+    "ticker": "LTIM",
+    "bse_code": "540005",
+    "nse_code": "LTIM",
+    "isin": "INE214T01019",
+    "reporting_unit": "INR_CRORES",
+    "shares_outstanding_cr": 29.6,
+    "market_price": 4390.0,
+    "source_data": {
+      "user_supplied_facts": {
+        "company_name": "LTIMindtree Limited",
+        "industry": "IT Services & Consulting",
+        "currency": "INR"
+      },
+      "source_extracted_facts": {
+        "primary_registry": "docs/LTM_SOURCE_REGISTRY.md",
+        "bse_filings": "https://www.bseindia.com/stock-share-price/ltimindtree-ltd/ltim/540005/"
+      },
+      "analyst_assumptions": {
+        "valuation_methodology": "Unlevered Free Cash Flow (FCFF) DCF & Multiples",
+        "terminal_growth_rate": 0.05
+      }
+    }
+  },
+  "workbook": {
+    "source": "companies/LTM/LTM-Financial-Model.xlsx",
+    "candidate_source": "candidates/run_native_ltm/LTM-Recalculated.xlsx",
+    "output_name": "LTM-Financial-Model.xlsx",
+    "model_pack": "proposals/ltm.model-pack.json"
+  },
+  "exports": {
+    "sheet_previews": [
+      "Cover & Notes",
+      "Income Statement",
+      "Balance Sheet",
+      "Cash Flow"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "company": "LTIMindtree Limited",
+    "ticker": "LTIM",
+    "generated_at": "2026-10-16"
+  },
+  "inputs": {
+    "current_market_price": 4390.0,
+    "diluted_shares_cr": 29.6,
+    "terminal_growth_rate": 0.05
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "package_id": "edelweiss-overview-fy25",
+  "name": "Edelweiss Financial Services Limited Financial Model Package",
+  "company": {
+    "name": "Edelweiss Financial Services Limited",
+    "ticker": "EDELWEISS",
+    "bse_code": "532922",
+    "nse_code": "EDELWEISS",
+    "isin": "INE532F01054",
+    "reporting_unit": "INR_CRORES",
+    "shares_outstanding_cr": 94.5,
+    "market_price": 135.0,
+    "source_data": {
+      "user_supplied_facts": {
+        "company_name": "Edelweiss Financial Services Limited",
+        "industry": "Diversified Financial Services",
+        "currency": "INR"
+      },
+      "source_extracted_facts": {
+        "primary_registry": "docs/EDELWEISS_SOURCE_REGISTRY.md",
+        "bse_filings": "https://www.bseindia.com/stock-share-price/edelweiss-financial-services-ltd/edelweiss/532922/"
+      },
+      "analyst_assumptions": {
+        "valuation_methodology": "Financial Services Sum-of-the-Parts (SOTP) Valuation",
+        "terminal_growth_rate": 0.05
+      }
+    }
+  },
+  "workbook": {
+    "source": "companies/EDELWEISS/EDELWEISS-Financial-Model.xlsx",
+    "candidate_source": "candidates/run_native_edelweiss/EDELWEISS-Recalculated.xlsx",
+    "output_name": "EDELWEISS-Financial-Model.xlsx",
+    "model_pack": "proposals/edelweiss.model-pack.json"
+  },
+  "exports": {
+    "sheet_previews": [
+      "Cover & Notes",
+      "Income Statement",
+      "Balance Sheet",
+      "Cash Flow"
+    ]
+  }
+}

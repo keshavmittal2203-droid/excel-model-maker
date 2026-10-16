@@ -1,0 +1,93 @@
+[
+  {
+    "metric": "Revenue from Operations (FY25)",
+    "legal_entity": "Clean Science and Technology Limited",
+    "consolidation_basis": "Ind AS Consolidated",
+    "reporting_period": "FY25 (Year ended March 31, 2025)",
+    "source_org": "Clean Science and Technology Limited",
+    "document_title": "Clean Science and Technology Limited Annual Integrated Report FY25",
+    "official_url": "https://cleanscience.co.in/investor-relations/",
+    "statement_location": "Consolidated Statement of Profit and Loss",
+    "reported_unit": "₹ in Crores",
+    "workbook_cell": "'Income Statement'!H5",
+    "status": "primary_sourced"
+  },
+  {
+    "metric": "Operating Profit / EBITDA (FY25)",
+    "legal_entity": "Clean Science and Technology Limited",
+    "consolidation_basis": "Ind AS Consolidated",
+    "reporting_period": "FY25",
+    "source_org": "Clean Science and Technology Limited",
+    "document_title": "Clean Science and Technology Limited Annual Report FY25",
+    "official_url": "https://cleanscience.co.in/investor-relations/",
+    "statement_location": "Consolidated P&L and Segment Disclosures",
+    "reported_unit": "₹ in Crores",
+    "workbook_cell": "'Income Statement'!H7",
+    "status": "calculated_from_statutory_pnl"
+  },
+  {
+    "metric": "Consolidated Net Profit (PAT) (FY25)",
+    "legal_entity": "Clean Science and Technology Limited",
+    "consolidation_basis": "Ind AS Consolidated",
+    "reporting_period": "FY25",
+    "source_org": "Clean Science and Technology Limited",
+    "document_title": "Clean Science and Technology Limited Audited Financial Statements",
+    "official_url": "https://cleanscience.co.in/investor-relations/",
+    "statement_location": "Consolidated Statement of Profit and Loss (Line: Profit for the year)",
+    "reported_unit": "₹ in Crores",
+    "workbook_cell": "'Income Statement'!H17",
+    "status": "primary_sourced"
+  },
+  {
+    "metric": "Total Assets & Total Liabilities (FY25)",
+    "legal_entity": "Clean Science and Technology Limited",
+    "consolidation_basis": "Ind AS Consolidated",
+    "reporting_period": "As of March 31, 2025",
+    "source_org": "Clean Science and Technology Limited",
+    "document_title": "Clean Science and Technology Limited Audited Balance Sheet",
+    "official_url": "https://cleanscience.co.in/investor-relations/",
+    "statement_location": "Consolidated Balance Sheet",
+    "reported_unit": "₹ in Crores",
+    "workbook_cell": "'Balance Sheet'!H10 and H16",
+    "status": "primary_sourced_identity_verified"
+  },
+  {
+    "metric": "Cash from Operating Activities (CFO) (FY25)",
+    "legal_entity": "Clean Science and Technology Limited",
+    "consolidation_basis": "Ind AS Consolidated",
+    "reporting_period": "FY25",
+    "source_org": "Clean Science and Technology Limited",
+    "document_title": "Clean Science and Technology Limited Audited Cash Flow Statement",
+    "official_url": "https://cleanscience.co.in/investor-relations/",
+    "statement_location": "Consolidated Statement of Cash Flows",
+    "reported_unit": "₹ in Crores",
+    "workbook_cell": "'Cash Flow'!H5",
+    "status": "primary_sourced"
+  },
+  {
+    "metric": "Diluted Equity Share Count",
+    "legal_entity": "Clean Science and Technology Limited",
+    "consolidation_basis": "Statutory Capital Note",
+    "reporting_period": "FY25 Close",
+    "source_org": "Clean Science and Technology Limited",
+    "document_title": "Clean Science and Technology Limited Note on Share Capital",
+    "official_url": "https://www.bseindia.com/stock-share-price/clean-science-and-technology-ltd/clean/543318/",
+    "statement_location": "Notes to Consolidated Financial Statements: Share Capital",
+    "reported_unit": "Crore Shares",
+    "reported_value": 10.62,
+    "status": "primary_sourced_statutory"
+  },
+  {
+    "metric": "Current Market Price (CMP)",
+    "legal_entity": "Clean Science and Technology Limited",
+    "consolidation_basis": "Trading Session Snapshot",
+    "reporting_period": "October 2026 Snapshot",
+    "source_org": "BSE / NSE India",
+    "document_title": "BSE Stock Price Quotation",
+    "statement_location": "BSE / NSE Trading Session Quotation",
+    "official_url": "https://www.bseindia.com/stock-share-price/clean-science-and-technology-ltd/clean/543318/",
+    "reported_unit": "INR (₹) per share",
+    "reported_value": 784.0,
+    "status": "market_snapshot"
+  }
+]

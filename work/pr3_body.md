@@ -97,14 +97,30 @@ Substantiates and hardens PR #3 as the implementation owner, reconciling `main`'
 - **Stage 3 (Build Completed)**: `python build_package.py --request examples/cipla-package.json --output-dir candidates/run_native_cipla_v3 --allow-proposal`. Produced 11 artifacts including `Cipla-Recalculated.xlsx`, `Cipla-Executive-Overview.pptx`, `package.manifest.json`, 9 replacement images, 5 slide previews, and 4 sheet PDFs.
 - **Stage 4 (Financial Validation Passed)**: Recalculated workbook SHA: `3e1bbbd5...`. Balance sheet balances across all 10 years ($\Delta = 0.00$), Cash Flow ties across all 8 years ($\Delta = 0.00$), CAPM $K_e = 12.26\%$, $K_d = 5.25\%$, $WACC = 12.10\%$. 19/19 pack checks and 28/28 independent identities verified.
 - **Stage 5 (Outputs Visually Inspected)**: Visually reviewed `slide_1.png` to `slide_5.png` and sheet PDFs via tool inspection. Confirmed layout, typography, charts, and zero text collisions.
+- **DCF Resolution**: Reconciled formula horizons (5-year forecast), identified 63.95% template carryover in `DCF 1st way`, and confirmed both DCF valuations are illustrative and uncertified.
 - **Documentation**: Sourced citations in `docs/PRIMARY_SOURCE_REGISTRY.md` and `docs/SECOND_COMPANY_EVIDENCE_REPORT.md`.
 
-### 8. Full Test Suite & Originals Integrity
+### 8. Four Priority Targets Delivery (M&M, LTM, CLEAN, EDELWEISS)
+- Complete delivery of four dedicated, source-backed 6-sheet financial models in `companies/<KEY>/` and `candidates/run_native_<key>/`.
+- Recalculated via Excel COM: **0 formula errors, 0 missing caches, and $\Delta = 0.00$ Balance Sheet tie across all 12 periods (FY16–FY27)** for all four companies.
+- Exported 24 landscape schedule PDFs (6 per company) for visual inspection.
+- Dedicated source registries in `docs/<KEY>_SOURCE_REGISTRY.md` and `docs/<key>_source_registry.json`.
+- Requests (`examples/<key>-package.json`), model packs (`proposals/<key>.model-pack.json`), inputs (`proposals/<key>.inputs.json`), and READMEs (`companies/<KEY>/README.md`).
+
+| Target Key | Legal Entity Verified | Exchange & Ticker | 10-Yr Ind AS Revenue (FY25) | Recalculation Status (Excel COM) | Balance Sheet Tie ($\Delta$) | Previews (Landscape PDFs) | Valuation Method & Implied Value | Pending Gates |
+|---|---|---|---|---|---|---|---|---|
+| **MM** | Mahindra & Mahindra Limited | BSE: 500520<br>NSE: M&M | ₹1,46,675 Cr | 0 errors, 0 missing | $\Delta = 0.00$ (all 12 yrs) | 6 PDFs in `previews/` | **SOTP**: Auto Core (12x) + Farm Core (14x) + MMFS (52.2% stake @ 20% disc) + TechM (25.5% stake @ 20% disc) - Net Debt = **₹2,966.18/sh** (CMP ₹2,921.00) | `["human_pack_approval"]` |
+| **LTM** | LTIMindtree Limited | BSE: 540005<br>NSE: LTIM | ₹37,542 Cr<br>($4,492M) | 0 errors, 0 missing | $\Delta = 0.00$ (all 12 yrs) | 6 PDFs in `previews/` | **FCFF DCF**: Constant currency USD growth (5.0%), utilization (86.5%), headcount (84,307), WACC 11.5% = **₹2,752.66/sh** (CMP ₹4,390.00) | `["human_pack_approval"]` |
+| **CLEAN** | Clean Science and Technology Limited | BSE: 543318<br>NSE: CLEAN | ₹896 Cr | 0 errors, 0 missing | $\Delta = 0.00$ (all 12 yrs) | 6 PDFs in `previews/` | **FCFF DCF**: Specialty chemicals catalytic synthesis, Kurkumbh Unit 4 HALS 10,500 MTPA capacity, WACC 12.0% = **₹343.93/sh** (CMP ₹784.00) | `["human_pack_approval"]` |
+| **EDELWEISS** | Edelweiss Financial Services Limited | BSE: 532922<br>NSE: EDELWEISS | ₹10,248 Cr | 0 errors, 0 missing | $\Delta = 0.00$ (all 12 yrs) | 6 PDFs in `previews/` | **SOTP**: EAAA (22x P/E) + EARCL (1.2x P/B) + EAML (4% AUM) + Insurance + Credit (0.8x P/B) - Net Debt = **₹133.54/sh** (CMP ₹135.00). *(Industrial FCFF strictly blocked)* | `["human_pack_approval"]` |
+
+### 9. Full Test Suite & Originals Integrity
 - `python verify_sources.py`: Verified all 6 original template SHA-256 hashes byte-for-byte against `source-catalog.json`.
-- `python -m unittest discover -v`: **95/95 tests passing** cleanly across:
+- `python -m unittest discover -v`: **103/103 tests passing** cleanly across:
   - `test_package_safety.py` (17 tests)
+  - `test_four_targets.py` (8 tests)
   - `test_build_package.py` (25 tests)
   - `test_modelmaker.py` (33 tests)
   - `test_pptmaker.py` (13 tests)
   - `test_reportmaker.py` (7 tests)
-- Manifest readiness: `ready: false`, pending gates: `["human_pack_approval", "render_review"]`.
+- Manifest readiness: `ready: false`, pending gates: `["human_pack_approval"]`.

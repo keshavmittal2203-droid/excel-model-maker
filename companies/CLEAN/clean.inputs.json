@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "company": "Clean Science and Technology Limited",
+    "ticker": "CLEAN",
+    "generated_at": "2026-10-16"
+  },
+  "inputs": {
+    "current_market_price": 784.0,
+    "diluted_shares_cr": 10.62,
+    "terminal_growth_rate": 0.05
+  }
+}

@@ -72,28 +72,31 @@ In strict accordance with audit mandates, all financial figures are categorized 
 
 ---
 
-## 5. Valuation Methodologies: DCF 1st Way vs. DCF 2nd Way
+## 5. Valuation Methodologies: DCF 1st Way vs. DCF 2nd Way (Both Labeled Illustrative)
 
-The template workbook contains two distinct DCF models:
+> [!WARNING]
+> **Valuation Certification Status: Illustrative Only (Certification Withheld)**
+> Neither DCF model is certified as an authentic or definitive valuation of Cipla. Market-price proximity (e.g. ₹1,217.21 vs CMP ₹1,301.00) is a descriptive observation of spreadsheet output, **not** proof of model correctness or validation. Both models contain structural artifacts inherited from the original template and are provided strictly for structural transparency.
 
-| Metric | `DCF 1st way` (Methodology 1) | `DCF 2nd way` (Methodology 2) | Analysis & Reconciliation |
+### Detailed Formula & Mechanism Audit:
+
+| Dimension | `DCF 1st way` (Methodology 1) | `DCF 2nd way` (Methodology 2) | Audit Reconciliation & Resolution |
 | :--- | :---: | :---: | :--- |
-| **Model Type** | 5-Year Simple Revenue/Margin FCFF | 10-Year Fundamental ROIC & Reinvestment | Model 2 captures fundamental capital efficiency |
-| **Forecast Horizon** | 5 Years (FY26–FY30) | 10 Years (FY26–FY35) | Standard long-term pharmaceutical cycle |
-| **Reinvestment Rate** | **Flat 45.00% assumption** | **Audited Historical Average: 4.21%** | Model 1 penalizes Cipla with huge artificial CapEx |
-| **ROIC** | Not explicitly modeled | **29.13%** (Net Block & WC driven) | Reflects high asset turnover and return on capital |
-| **Intrinsic Growth Rate** | 10.00% fixed | **1.23%** (ROIC $\times$ Reinvestment Rate) | Fundamental sustainable growth rate |
-| **WACC Discount Rate** | 12.10% | 12.10% | Pure-play peer median WACC |
-| **Terminal Growth Rate** | 5.00% | 5.00% | Long-term GDP growth proxy |
-| **Enterprise Value** | ₹25,108.22 Cr | ₹97,645.11 Cr | Model 2 reflects authentic corporate scale |
-| **Net Cash Adjustment** | +₹693.65 Cr | +₹693.65 Cr | Cash ₹1,307.42 Cr minus Debt ₹613.77 Cr |
-| **Equity Value** | ₹25,801.87 Cr | ₹98,338.76 Cr | Consistent equity bridge |
-| **Intrinsic Value Per Share** | **₹319.37** | **₹1,217.21** | **Model 2 intrinsic value is within 6.4% of CMP (₹1,301.00)** |
+| **Model Architecture** | 5-Period Simple FCFF Discounting | 5-Period Forecast (Preceded by 5 Historical Years) | Both models evaluate exactly 5 forward forecast periods |
+| **Timeline Structure** | Columns F–K (Periods 0.0, 0.5, 1.5, 2.5, 3.5, 4.5) | Historical: Cols E–I (FY22–FY26); Forecast: Cols J–N (FY27–FY31) | Row 11 labels 1–10 span historical + forecast; terminal discounting exponent is `I11` (= 5.0) |
+| **Reinvestment Assumption** | `F11` = **45.00%**; `G11:K11` = **63.95%** (Inherited Template Carryover) | CapEx and NWC modeled independently via regression | Reinvestment rates are **not comparable**: 63.95% is Marksans template carryover; `DCF 2nd way` does not use the 4.21% `Intrinsic Growth` rate |
+| **Growth Driver** | Fixed **10.00%** expected growth assumption (`E19`) | Linear `FORECAST` trend on historical revenue (`D75:D79`) | Neither growth rate is an audited company projection; both are synthetic extrapolations |
+| **WACC Discount Rate** | 12.10% (`'WACC-DCF'!J39`) | 12.10% (`'WACC-DCF'!J39`) | Peer median capital structure & Hamada beta |
+| **Terminal Value Formulation** | `=E25/(E26-E27)` discounted by `=E29*K15` | `=N53*(1+tgr)/(wacc-tgr)` discounted by `=N56/(1+wacc)^I11` | Both use Gordon Growth Terminal Value ($g = 5.0\%$) |
+| **Enterprise Value** | ₹25,108.22 Cr | ₹97,645.11 Cr | EV difference stems entirely from FCFF deductions in Methodology 1 |
+| **Net Cash Adjustment** | +₹693.65 Cr (Cash ₹1,307.42 Cr minus Debt ₹613.77 Cr) | +₹693.65 Cr (Cash ₹1,307.42 Cr minus Debt ₹613.77 Cr) | Both bridges apply identical Cash and TTM Borrowings |
+| **Equity Value** | ₹25,801.87 Cr | ₹98,338.76 Cr | Consistent equity bridge applied |
+| **Implied Value Per Share** | **₹319.37** | **₹1,217.21** | **Both figures are illustrative outputs of uncertified forecast models** |
 
-> [!NOTE]
-> **Why DCF 1st Way Evaluates to ₹319.37**:
-> The template author hardcoded an arbitrary **45% reinvestment rate** assumption in `DCF 1st way!F11`. For a mature pharmaceutical company like Cipla whose actual organic reinvestment rate is only **4.21%**, assuming that 45% of NOPAT must be drained every year into capital expenditure drastically depresses free cash flows to the firm (FCFF), resulting in an artificial intrinsic value of ₹319.37.
-> In contrast, `DCF 2nd way` evaluates Cipla's authentic balance sheet reinvestment and ROIC drivers, yielding an intrinsic value of **₹1,217.21 per share**, which aligns closely with Cipla's observed market trading range (CMP ₹1,301.00).
+### Reconciliation of Conflicting Reinvestment Figures:
+1. **The 63.95% carryover in `DCF 1st way`**: Inspection reveals that while `F11` was set to 45%, cells `G11:K11` retained the Marksans original template value of `0.6395`. This heavy 64% deduction against NOPAT substantially depressed free cash flows, pulling the implied value down to ₹319.37.
+2. **The 4.21% historical rate in `Intrinsic Growth`**: Cell `Intrinsic Growth!I43` computes historical average reinvestment from balance sheet changes. However, `DCF 2nd way` does **not** consume this 4.21% cell in its forecast formulas; instead, `DCF 2nd way` projects CapEx and NWC separately using Excel `FORECAST` linear regressions.
+3. **Conclusion**: Neither ₹319.37 nor ₹1,217.21 constitutes a validated financial valuation. Both models are maintained in the candidate workbook to demonstrate formula preservation and recalculation mechanics without certifying either as an authentic fair value.
 
 ---
 

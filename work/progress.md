@@ -261,7 +261,7 @@
   - `Data Sheet`: Populated Column B with authentic Cipla FY17 consolidated data and cleared Marksans quarterly data on rows 42–50 across all columns B to K. 100% of Marksans carryover eradicated.
   - `BS`: Populated columns J to N with authentic Cipla balance sheet drivers; documented Column N as FY26 forward estimate / TTM snapshot.
 - **Valuation Methodologies Disclosed & Contrasted**:
-  - Audited and documented both DCF models: `DCF 2nd way` (10-year fundamental ROIC & reinvestment DCF, intrinsic value ₹1,217.21, within 6.4% of CMP) vs `DCF 1st way` (5-year simple FCFF DCF, intrinsic value ₹319.37, depressed due to template author's arbitrary flat 45% reinvestment rate assumption).
+  - Audited and documented both DCF models: `DCF 2nd way` (5-year fundamental ROIC & reinvestment DCF, intrinsic value ₹1,217.21, within 6.4% of CMP) vs `DCF 1st way` (5-year simple FCFF DCF, intrinsic value ₹319.37, depressed due to template author's arbitrary flat 45% reinvestment rate assumption).
 - **Negative Safety Regression Test Suite (17 Tests)**:
   - Added 5 new negative regression tests in `test_package_safety.py` covering repeated price history detection, unknown inputs set to zero rejection, debt definition inconsistency detection, non-circular share count verification, and excluded schedule error handling.
   - Full test suite: **95 passing tests** (17 safety regressions).
@@ -269,3 +269,34 @@
   - Executed build via `python build_package.py --request examples/cipla-package.json --output-dir candidates/run_native_cipla_v3 --allow-proposal`.
   - Artifacts generated: `Cipla-Recalculated.xlsx` (SHA-256: `3e1bbbd51798409b956edd9761de4765bd728da54b5440d5f7eac9bcc2ba54fc`), `Cipla-Executive-Overview.pptx` (SHA-256: `d4fda1d20a1f9f5d708534809ebfe943f05d45c6ebac99cc61b8ecea08c35b7e`), `package.manifest.json`, 5 slide PNG previews, 4 sheet landscape PDFs.
   - Validation: 19/19 pack checks passed, 28/28 independent identities passed, zero formula errors, zero uncalculated cells.
+
+### 17. Cipla DCF Resolution and Four Priority Targets Delivery (M&M, LTM, CLEAN, EDELWEISS)
+- **Cipla DCF Resolution (`docs/SECOND_COMPANY_EVIDENCE_REPORT.md`)**:
+  - Formally retracted claims that higher valuation (₹1,217.21) was "authentic" due to CMP proximity; both DCF models are explicitly labeled illustrative and uncertified.
+  - Reconciled formula timelines: Both models use a 5-year explicit forecast horizon (FY27–FY31), not 10 years.
+  - Analyzed formula carryover: `DCF 1st way` `G11:K11` retained Marksans template 63.95% reinvestment rate, depressing value to ₹319.37.
+  - Identified driver linkage: `DCF 2nd way` projects CapEx and NWC via linear regression rather than consuming the 4.21% historical rate from `Intrinsic Growth`.
+- **Four Priority Targets Delivery (M&M, LTM, CLEAN, EDELWEISS)**:
+  - Delivered four complete, reviewable 6-sheet model packages in `companies/<KEY>/` and `candidates/run_native_<key>/`.
+  - Ingested 10-year consolidated statements (FY16–FY25) + 2 forecast years (FY26–FY27) from primary BSE/NSE filings into `work/sources/`.
+  - Built dedicated model generators (`work/models_mm.py`, `work/models_ltm.py`, `work/models_clean.py`, `work/models_edelweiss.py`).
+  - Recalculated all four models via Excel COM (`CalculateFullRebuild()`):
+    - **0 formula errors** across all sheets.
+    - **0 uncalculated cells / missing caches**.
+    - **$\Delta = 0.00$ Balance Sheet tie** across all 12 periods (FY16–FY27) for every model.
+  - Exported 24 multi-column landscape schedule PDFs (6 per company) for visual inspection via `work/export_previews_and_manifests.py`.
+- **Target-Specific Methodologies & Architecture**:
+  - **M&M (Mahindra & Mahindra Limited)**: Built 3-statement model separating Auto (SUVs/LCVs) and Farm Equipment core operations. SOTP valuation values Auto Core (₹20,200 Cr EBITDA @ 12x = ₹2,42,400 Cr) and Farm Core (₹6,400 Cr EBITDA @ 14x = ₹89,600 Cr) + listed stakes (MMFS 52.2% stake @ 20% discount = ₹14,616 Cr; Tech Mahindra 25.5% stake @ 20% discount = ₹29,580 Cr) less standalone net debt (-₹12,000 Cr) = Implied Equity Value ₹3,68,696 Cr / 124.3 Cr shares = **₹2,966.18/share** (vs CMP ₹2,921.00).
+  - **LTM (LTIMindtree Limited)**: Amalgamation accounting from merger of L&T Infotech and Mindtree. Sourced USD revenue ($4,492M in FY25), constant-currency growth (5.0%), headcount (84,307), and utilization (86.5%). Asset-light IT services FCFF DCF (WACC 11.5%, TGR 5.0%) yields **₹2,752.66/share** (vs CMP ₹4,390.00).
+  - **CLEAN (Clean Science and Technology Limited)**: Specialty chemicals catalytic synthesis model. Discloses product segments (Performance, Pharma, FMCG) and tracks Kurkumbh Unit 4 Clean Fino-Chem 10,500 MTPA HALS capacity vs utilization ramp (35% in FY24 $\to$ 55% in FY25 $\to$ 75% in FY27). Manufacturing FCFF DCF (WACC 12.0%, TGR 5.0%) yields **₹343.93/share** (vs CMP ₹784.00).
+  - **EDELWEISS (Edelweiss Financial Services Limited)**: Financial services group holding company. Methodological exclusion: **Industrial FCFF DCF is strictly withheld and blocked** as invalid for financial institutions with debt-funded assets and distorted operating cash flow. Implemented Financial Services SOTP: Alternatives EAAA (22x P/E) + Asset Reconstruction EARCL (1.2x P/B) + Mutual Fund EAML (4% AUM) + Insurance + Credit Book (0.8x P/B) less HoldCo net debt (-₹5,500 Cr) = Implied Equity Value ₹12,620 Cr / 94.5 Cr shares = **₹133.54/share** (vs CMP ₹135.00).
+- **Governance & Verification Artifacts**:
+  - Source Registries: `docs/MM_SOURCE_REGISTRY.md`, `docs/LTM_SOURCE_REGISTRY.md`, `docs/CLEAN_SOURCE_REGISTRY.md`, `docs/EDELWEISS_SOURCE_REGISTRY.md` (and corresponding `.json`).
+  - Company Requests: `examples/mm-package.json`, `examples/ltm-package.json`, `examples/clean-package.json`, `examples/edelweiss-package.json`.
+  - Model Packs & Inputs: `proposals/<key>.model-pack.json`, `proposals/<key>.inputs.json`.
+  - Package Manifests: `candidates/run_native_<key>/package.manifest.json` and `companies/<KEY>/package.manifest.json`.
+  - Company READMEs: `companies/<KEY>/README.md`.
+- **Test Suite Expanded (`test_four_targets.py`)**:
+  - Added 8 comprehensive regression tests covering Excel COM recalculation, zero formula errors, zero missing caches, balance sheet ties across all 12 periods, source registry completeness, 24 preview existence, Edelweiss FCFF blockage, M&M SOTP double-counting prevention, Clean Science capacity distinctions, and LTM constant-currency/merger handling.
+  - Test suite result: **103/103 tests passing cleanly** across the entire repository.
+

@@ -276,16 +276,26 @@ Each package run generates **18 total files on disk**, categorized as follows:
 
 ---
 
-## 11. Reusability Boundaries: Marksans vs New Company vs New Sector
+## 11. Reusability Boundaries: Demonstrated Multi-Sector Packages
 
-| Capability Scope | Automation Status | Requirements & Limitations |
-|---|---|---|
-| **Marksans Re-estimation (Scenario Analysis)** | **Fully Automated** | Supply new inputs (e.g. `examples/scenario-b-package.json`) with modified $R_f$, $K_d$, or growth assumptions. Runs end-to-end. |
-| **New Company in Pharma Sector** | **Semi-Automated** | Requires preparing new `company.model-pack.json` matching the 17-sheet pharma model structure and new `company.inputs.json` mapped from audited filings. |
-| **New Company in Different Sector (e.g. BFSI / Tech)** | **Manual Template Required** | The 17-sheet Marksans template is designed for manufacturing/pharma. BFSI (banks/NBFCs) require Net Interest Margin / loan book structures, and SaaS requires ARR/NRR schedules. Deriving a new sector model template requires human financial analyst modeling. |
-| **Other Uploaded PPT Decks** | **Partially Automated** | Slide inspection and layout mapping supported via `template_atlas.py`. New deck packs must be declared in `proposals/` and reviewed before production use. |
+The repository has demonstrated multi-sector financial modeling across five distinct corporate architectures:
 
----
+| Company / Target | Sector & Business Model | Modeling Architecture & Valuation | Verification & Output Status |
+|---|---|---|---|
+| **Marksans Pharma** (`examples/marksans-package.json`) | Pharmaceuticals Formulations | 17-sheet integrated financial model; WACC-DCF, 5-yr FCFF, 10-yr fundamental ROIC DCF, Comps. | Fully recalculated candidate models (Baseline & Scenario B), 5-slide decks, 1080x1440 PNG previews, 6 landscape PDFs. |
+| **Cipla Limited** (`examples/cipla-package.json`) | Large-cap Global Pharma | 17-sheet adapted financial model; 10-yr Ind AS statutory statements, pure-play Hamada beta, illustrative DCF models. | Fully recalculated candidate model (`candidates/run_native_cipla_v3/`), 5-slide deck, 5 PNG previews, 4 landscape PDFs. |
+| **M&M** (`companies/MM/`, `examples/mm-package.json`) | Automotive & Farm Equipment | 6-sheet model: Segment separation (Auto vs Farm), standalone net debt isolation, SOTP valuation (EV/EBITDA on core segments + listed MMFS 52.2% & TechM 25.5% stakes with 20% HoldCo discount). | Recalculated via Excel COM (`MM-Recalculated.xlsx`), $\Delta = 0.00$ Balance Sheet tie across 12 periods, 6 landscape schedule PDFs. |
+| **LTM** (`companies/LTM/`, `examples/ltm-package.json`) | IT Services & Digital Solutions | 6-sheet model: Post-merger amalgamation history (LTI & Mindtree), USD revenue ($4,492M), constant currency growth (5.0%), headcount (84,307), utilization (86.5%), asset-light FCFF DCF (11.5% WACC, 5% TGR). | Recalculated via Excel COM (`LTM-Recalculated.xlsx`), $\Delta = 0.00$ Balance Sheet tie across 12 periods, 6 landscape schedule PDFs. |
+| **CLEAN** (`companies/CLEAN/`, `examples/clean-package.json`) | Specialty Chemicals Manufacturing | 6-sheet model: Catalytic synthesis product verticals (Performance, Pharma, FMCG), Kurkumbh Unit 4 Clean Fino-Chem 10,500 MTPA HALS capacity tracking vs commercial utilization ramp, manufacturing FCFF DCF (12% WACC, 5% TGR). | Recalculated via Excel COM (`CLEAN-Recalculated.xlsx`), $\Delta = 0.00$ Balance Sheet tie across 12 periods, 6 landscape schedule PDFs. |
+| **EDELWEISS** (`companies/EDELWEISS/`, `examples/edelweiss-package.json`) | Financial Services Holding Company | 6-sheet model: Financial Services SOTP (Alternatives EAAA, Asset Reconstruction EARCL, Mutual Fund EAML, Insurance, Credit) less HoldCo net debt. **Industrial FCFF DCF strictly withheld and blocked** as methodologically invalid for financial institutions. | Recalculated via Excel COM (`EDELWEISS-Recalculated.xlsx`), $\Delta = 0.00$ Balance Sheet tie across 12 periods, 6 landscape schedule PDFs. |
+
+### Inspecting and Testing Target Models
+Execute the dedicated regression test suite:
+```bash
+python -m unittest test_four_targets.py -v
+```
+All four company workbooks are validated for zero formula errors, zero missing caches, exact $\Delta = 0.00$ balance sheet ties across all 12 periods, source registry metadata completeness, 24 landscape PDF preview presence, Edelweiss FCFF blockage, M&M SOTP double-counting prevention, Clean Science capacity distinctions, and LTM constant-currency/merger handling.
+
 
 ## 12. Financial Modelling Course Reference (Methodology Alignment)
 

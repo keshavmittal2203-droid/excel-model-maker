@@ -1,0 +1,43 @@
+{
+  "package_id": "clean-overview-fy25",
+  "name": "Clean Science and Technology Limited Financial Model Package",
+  "company": {
+    "name": "Clean Science and Technology Limited",
+    "ticker": "CLEAN",
+    "bse_code": "543318",
+    "nse_code": "CLEAN",
+    "isin": "INE227W01023",
+    "reporting_unit": "INR_CRORES",
+    "shares_outstanding_cr": 10.62,
+    "market_price": 784.0,
+    "source_data": {
+      "user_supplied_facts": {
+        "company_name": "Clean Science and Technology Limited",
+        "industry": "Specialty Chemicals",
+        "currency": "INR"
+      },
+      "source_extracted_facts": {
+        "primary_registry": "docs/CLEAN_SOURCE_REGISTRY.md",
+        "bse_filings": "https://www.bseindia.com/stock-share-price/clean-science-and-technology-ltd/clean/543318/"
+      },
+      "analyst_assumptions": {
+        "valuation_methodology": "Manufacturing FCFF DCF Valuation",
+        "terminal_growth_rate": 0.05
+      }
+    }
+  },
+  "workbook": {
+    "source": "companies/CLEAN/CLEAN-Financial-Model.xlsx",
+    "candidate_source": "candidates/run_native_clean/CLEAN-Recalculated.xlsx",
+    "output_name": "CLEAN-Financial-Model.xlsx",
+    "model_pack": "proposals/clean.model-pack.json"
+  },
+  "exports": {
+    "sheet_previews": [
+      "Cover & Notes",
+      "Income Statement",
+      "Balance Sheet",
+      "Cash Flow"
+    ]
+  }
+}
