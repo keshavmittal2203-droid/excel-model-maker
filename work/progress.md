@@ -5,7 +5,8 @@
 - Added template_atlas.py, docs/TEMPLATE_ATLAS.md and generated template-workflow/atlas/{atlas.json,INDEX.md}. Runtime source hashes matched all 6 catalog originals, including in-memory reconstruction of chunked decks. Actual extraction returned 17 workbook sheets and 182 slides; valuation search returned 7 destinations (3 displayed).
 - No originals, engine files, validator or packs edited. No tests run. Production artifact generation/search and git diff --check only; no document composition, recalculation or rendered output claims.
 - Atlas exposes cells/formulas and slide IDs/text/geometry/fonts/tables/chart references/layouts/notes. Text/existing formulas are reference only; editable approval false. Native XML inventory is not rendered previews. Group transforms/inherited style resolution and semantic ranking remain unsupported.
-- Next: publish atlas in existing draft PR4 and send Gemini a PR3 note identifying the available index/search CLI; preserve separate engine ownership and review integration before merge.
+- Publication confirmed: atlas commit 7f41f34edb627e8c45c7b9a2666bc18b9fe300a0 pushed to existing draft PR4; remote ls-remote matched. Coordination comment ID 6210993227 posted to PR3: https://github.com/keshavmittal2203-droid/excel-model-maker/pull/3#issuecomment-6210993227 . No Gemini acknowledgement observed. Main eef33cf and Gemini1f0b6be unchanged at final check.
+- Next: Gemini can integrate atlas search into content planning while keeping engine ownership separate; regression coverage and actual rendered Excel/PPT acceptance remain pending before merge.
 
 Updated: 2026-10-16, Asia/Kolkata.
 
