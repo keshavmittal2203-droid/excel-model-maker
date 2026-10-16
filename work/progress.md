@@ -25,25 +25,26 @@
 - Hardened `pptmaker.py` with full OOXML engine extensions:
   - Picture replacement (`target_type: "picture_replacement"`): Replaces embedded screenshot images (`<p:pic>`), checks cross-slide sharing safety, and verifies geometry.
   - Native chart data (`target_type: "chart_data"` / `"chart_series"`): Synchronously updates `<c:numCache>`, `<c:strCache>`, `<c:tx>`, and embedded workbook (`xl/worksheets/sheet1.xml` inside `Microsoft_Excel_WorksheetN.xlsx`).
+  - Added `chart_title` updating in `pptmaker.py` with run property preservation (`_set_paragraph_text_preserving_rpr`).
   - Shape suppression (`target_type: "suppress_shape"`): Safely suppresses unverified corporate logos pending authentic brand assets.
   - Curated deck assembly (`retained_slides: [1, 2, 14, 16, 23]`): Re-orders `<p:sldIdLst>`, cleans `presentation.xml.rels`, prunes unreferenced slide parts from package and `[Content_Types].xml`, and preserves exact shape layout.
   - Full DrawingML/Chart XML serialization: Registered complete namespaces (`c`, `a`, `r`, `mc`, `c14`, `c15`, `c16`, `c16r2`, `c16r3`, `p14`, `p15`) preventing XML schema reader failure in PowerPoint.
-- Built curated 5-slide research deck proposal in `proposals/err4.deck-pack.proposal.json` and `proposals/err4.inputs.proposal.json` (75 verified slots):
-  - Slide 1: Company Profile, Business Model, Brand Portfolio, Product Ecosystem, Strategic Approach; corporate logo suppressed.
-  - Slide 2: Executive Summary, Key Highlights; native 5-year Revenue by Segment column chart and FY26 Snapshot chart updated from recalculated workbook.
+- Built curated 5-slide research deck proposal in `proposals/err4.deck-pack.proposal.json` and `proposals/err4.inputs.proposal.json` (139 verified slots):
+  - Slide 1: Company Profile, Business Model, Brand Portfolio, Product Ecosystem, Strategic Approach; native geographic Revenue Mix chart (UK & Europe 43.1%, US 41.7%, Australia & NZ 9.8%, RoW 5.4%); corporate logo suppressed.
+  - Slide 2: Executive Summary, Key Highlights; native 5-year Historical Revenue column chart (retitled from "Revenue by Segment" to "Historical Revenue (₹ Crore)") and FY25 Financial Snapshot chart updated from recalculated workbook.
   - Slide 3 (orig 14): 8-Year Historical Cash Flow Statement (FY18–FY25) and operating cash flow analysis.
-  - Slide 4 (orig 16): Comprehensive Ratio Analysis schedule (Current Ratio, Quick Ratio, D/E, ICR, Working Capital Days) and native Current & Quick Ratio trend line charts.
-  - Slide 5 (orig 23): WACC & DCF Valuation with bounded high-resolution replacement table pictures (Cost of Equity: Ke=12.26%, Cost of Debt: Kd=5.60%, WACC Schedule: WACC=12.11%).
-- Composed candidate deck: `candidates/ERR-4-Marksans-Candidate.pptx`.
-- Rendered slide PNG previews (`slide_1.png` to `slide_5.png`) via local PowerPoint COM and 6 worksheet PDFs via Excel COM.
+  - Slide 4 (orig 16): Comprehensive Ratio Analysis schedule (Current Ratio, Quick Ratio, D/E, ICR, Working Capital Days) with all 64 cells populated, perfectly tying out with the native Current & Quick Ratio trend line charts.
+  - Slide 5 (orig 23): WACC & DCF Valuation with bounded high-resolution replacement table pictures (Cost of Equity: Ke=12.26%, Cost of Debt: Kd=5.60%, WACC Schedule: WACC=12.11%) with explicit labeling distinguishing Current capital structure from Target capital structure weights.
+- Composed candidate deck: `candidates/marksans-package-run/Marksans-Pharma-Overview.pptx`.
+- Rendered slide PNG previews (`slide_1.png` to `slide_5.png`, 1080x1440 portrait) via local PowerPoint COM and 6 worksheet landscape PDFs via Excel COM.
 - Visually reviewed rendered slides: confirmed perfect layout alignment, zero text collisions, crisp WACC tables, correct chart lines/bars, and clean logo suppression.
-- Manifest status: `status: "composed_pending_render_review"`, `ready: false`, `pending_gates: ["human_pack_approval", "render_review"]`.
 
-### 4. Course Reference Recovery & Provenance Tiering
-- Extracted 34-lesson video inventory from live YouTube playlist into `docs/course_lessons.json`.
-- Mapped sessions 4–20 directly to the 17 sheets in `Marksans Keshav.xlsx` in `docs/COURSE_REFERENCE.md`.
-- Established explicit 3-tier provenance definitions: Playlist Metadata (verified externally), Inferred Sheet Mappings (deduced from titles/indices), and Transcript-Verified Rules (blocked pending human transcription).
+### 4. Repeatable Build Orchestrator (`build_package.py`)
+- Formal request specification schema `package-request.schema.json` and request configuration `examples/marksans-package.json`.
+- Strict destination directory safety: refuses to clobber existing non-empty output directories without explicit `--force`.
+- Pinned SHA-256 hash enforcement: validates source workbook (`5a1f9af7...`) and presentation template (`9d41ec99...`) prior to execution.
+- Generates comprehensive `package.manifest.json` recording execution timestamp, source hashes, recalculated workbook validation status, financial reconciliation table, and 13 generated artifact hashes.
 
 ### 5. Verification & Test Suite
 - `python verify_sources.py`: All 6 original template hashes verified byte-for-byte.
-- `python -m unittest -v`: 49/49 tests passing cleanly across modelmaker, pptmaker, and reportmaker (including new regression tests for picture replacement, chart data caching, shape suppression, and retained-slides assembly).
+- `python -m unittest discover -v`: 56/56 tests passing cleanly across modelmaker, pptmaker, build_package, and reportmaker.

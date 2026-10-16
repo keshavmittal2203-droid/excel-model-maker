@@ -55,6 +55,7 @@
           "reason": { "type": "string" },
           "series_index": { "type": "integer", "minimum": 0 },
           "series_name": { "type": "string" },
+          "chart_title": { "type": "string" },
           "categories": {
             "type": "array",
             "items": { "type": "string" }

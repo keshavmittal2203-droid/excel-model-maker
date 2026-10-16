@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Package Build Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "package_id", "workbook", "presentation"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": 1 },
+    "package_id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "workbook": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "source_sha256", "model_pack", "output_name"],
+      "properties": {
+        "source": { "type": "string", "minLength": 1 },
+        "source_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "model_pack": { "type": "string", "minLength": 1 },
+        "output_name": { "type": "string", "minLength": 1 },
+        "expected_recalculated_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["template", "template_sha256", "deck_pack", "deck_inputs", "output_name"],
+      "properties": {
+        "template": { "type": "string", "minLength": 1 },
+        "template_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "deck_pack": { "type": "string", "minLength": 1 },
+        "deck_inputs": { "type": "string", "minLength": 1 },
+        "output_name": { "type": "string", "minLength": 1 }
+      }
+    },
+    "exports": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "export_slide_pngs": { "type": "boolean" },
+        "png_width": { "type": "integer", "minimum": 100 },
+        "png_height": { "type": "integer", "minimum": 100 },
+        "export_sheet_pdfs": { "type": "boolean" },
+        "pdf_sheets": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "pdf_orientation": { "enum": ["portrait", "landscape"] },
+        "pdf_fit_to_page_wide": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

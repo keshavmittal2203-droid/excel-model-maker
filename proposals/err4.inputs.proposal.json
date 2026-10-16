@@ -304,12 +304,6 @@
       "value": "Ratio Analysis - MARKSANS PHARMA (Consolidated)",
       "source": "Marksans Keshav.xlsx (Ratio Analysis)"
     },
-    "slide16_debt_to_equity_latest": {
-      "value": 0.02,
-      "source": "Marksans-Recalculated.xlsx (WACC-DCF!E34)",
-      "unit": "ratio",
-      "period": "FY25"
-    },
     "slide23_company_name": {
       "value": "Marksans Pharma Ltd.",
       "source": "Marksans Keshav.xlsx (Data Sheet!B1)"
@@ -334,6 +328,23 @@
       "value": "\u2022 Capacity Expansion & Forward Integration: Expanding capacity at the Teva Goa site, increasing backward API integration, and scaling direct-to-pharmacy distribution across regulated Western markets.",
       "source": "Marksans Investor Presentation FY25 & Management Commentary"
     },
+    "slide1_chart_revenue_mix": {
+      "value": [
+        43.1,
+        41.7,
+        9.8,
+        5.4
+      ],
+      "categories": [
+        "UK & Europe",
+        "US & North America",
+        "Australia & NZ",
+        "Rest of World"
+      ],
+      "series_name": "Revenue Mix (%)",
+      "chart_title": "Revenue Mix (in %)",
+      "source": "Marksans Investor Presentation FY25 & Annual Report [Geographical Revenue Breakdown]"
+    },
     "slide1_logo_suppress": {
       "value": "suppress",
       "source": "Repository Quality Policy: omit unverified corporate logo pending authentic asset"
@@ -353,7 +364,8 @@
         "FY24",
         "FY25"
       ],
-      "series_name": "Revenue (\u20b9 Cr)",
+      "series_name": "Total Revenue",
+      "chart_title": "Historical Revenue (\u20b9 Crore)",
       "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet J28 historical series]"
     },
     "slide2_chart_snapshot": {
@@ -370,6 +382,7 @@
         "CFO"
       ],
       "series_name": "FY25 Actual (\u20b9 Cr)",
+      "chart_title": "FY25 Financial Snapshot (\u20b9 Crore)",
       "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet J28, J40, J54, Cash Flow J24]"
     },
     "slide2_logo_suppress": {
@@ -382,14 +395,14 @@
     },
     "slide16_chart_cr": {
       "value": [
-        3.06,
-        3.15,
-        2.45,
-        2.89,
-        3.62,
-        5.02,
-        4.69,
-        4.64
+        3.18,
+        3.33,
+        2.54,
+        2.95,
+        3.73,
+        5.26,
+        5.03,
+        4.95
       ],
       "categories": [
         "FY18",
@@ -402,18 +415,19 @@
         "FY25"
       ],
       "series_name": "Current Ratio",
-      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet Current Ratio historical series]"
+      "chart_title": "Current Ratio (x)",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS Current Ratio historical series FY18-FY25]"
     },
     "slide16_chart_qr": {
       "value": [
-        1.53,
-        1.32,
-        1.43,
-        1.57,
-        2.3,
-        3.51,
-        3.03,
-        2.76
+        1.64,
+        1.5,
+        1.51,
+        1.63,
+        2.42,
+        3.75,
+        3.36,
+        3.07
       ],
       "categories": [
         "FY18",
@@ -426,7 +440,8 @@
         "FY25"
       ],
       "series_name": "Quick Ratio",
-      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet Quick Ratio historical series]"
+      "chart_title": "Quick Ratio (x)",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS Quick Ratio historical series FY18-FY25]"
     },
     "slide16_logo_suppress": {
       "value": "suppress",
@@ -434,19 +449,275 @@
     },
     "slide23_table_ke": {
       "value": "C:\\Users\\kesha\\Documents\\Codex\\2026-10-16\\https-x-com-painn-x-status\\outputs\\excel-model-maker\\work\\assets\\image22_marksans.png",
-      "source": "candidates/Marksans-Recalculated.xlsx [WACC-DCF J22:J25; Rf=7.30%, Rm=16.4%, Beta=0.547, Ke=12.26%]"
+      "source": "candidates/Marksans-Recalculated.xlsx [WACC-DCF J22:J25; Rf=7.30%, Rm=16.37%, Beta=0.547, Ke=12.26%]"
     },
     "slide23_table_kd": {
       "value": "C:\\Users\\kesha\\Documents\\Codex\\2026-10-16\\https-x-com-painn-x-status\\outputs\\excel-model-maker\\work\\assets\\image23_marksans.png",
-      "source": "candidates/Marksans-Recalculated.xlsx [WACC-DCF E22:E24; PreTax=8.00%, Tax=30%, Kd=5.60%]"
+      "source": "candidates/Marksans-Recalculated.xlsx [WACC-DCF E22:E24; PreTax=8.00%, Tax=30.00%, Kd=5.60%]"
     },
     "slide23_table_wacc": {
       "value": "C:\\Users\\kesha\\Documents\\Codex\\2026-10-16\\https-x-com-painn-x-status\\outputs\\excel-model-maker\\work\\assets\\image24_marksans.png",
-      "source": "candidates/Marksans-Recalculated.xlsx [WACC-DCF C30:J39; Mcap=14,003 Cr, Debt=343 Cr, Wd=2.24%, We=97.76%, WACC=12.11%]"
+      "source": "candidates/Marksans-Recalculated.xlsx [WACC-DCF C30:J39; Current Mcap=14,003 Cr, Current Debt=343 Cr, Target Wd=2.24%, Target We=97.76%, WACC=12.11%]"
     },
     "slide23_logo_suppress": {
       "value": "suppress",
       "source": "Repository Quality Policy: omit unverified corporate logo pending authentic asset"
+    },
+    "slide16_cr_fy18": {
+      "value": "3.18",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
+    },
+    "slide16_cr_fy19": {
+      "value": "3.33",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
+    },
+    "slide16_cr_fy20": {
+      "value": "2.54",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
+    },
+    "slide16_cr_fy21": {
+      "value": "2.95",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
+    },
+    "slide16_cr_fy22": {
+      "value": "3.73",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
+    },
+    "slide16_cr_fy23": {
+      "value": "5.26",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
+    },
+    "slide16_cr_fy24": {
+      "value": "5.03",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
+    },
+    "slide16_cr_fy25": {
+      "value": "4.95",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Current Ratio (x)]"
+    },
+    "slide16_qr_fy18": {
+      "value": "1.64",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
+    },
+    "slide16_qr_fy19": {
+      "value": "1.50",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
+    },
+    "slide16_qr_fy20": {
+      "value": "1.51",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
+    },
+    "slide16_qr_fy21": {
+      "value": "1.63",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
+    },
+    "slide16_qr_fy22": {
+      "value": "2.42",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
+    },
+    "slide16_qr_fy23": {
+      "value": "3.75",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
+    },
+    "slide16_qr_fy24": {
+      "value": "3.36",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
+    },
+    "slide16_qr_fy25": {
+      "value": "3.07",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Quick Ratio (x)]"
+    },
+    "slide16_de_fy18": {
+      "value": "0.25",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
+    },
+    "slide16_de_fy19": {
+      "value": "0.18",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
+    },
+    "slide16_de_fy20": {
+      "value": "0.05",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
+    },
+    "slide16_de_fy21": {
+      "value": "0.04",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
+    },
+    "slide16_de_fy22": {
+      "value": "0.09",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
+    },
+    "slide16_de_fy23": {
+      "value": "0.07",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
+    },
+    "slide16_de_fy24": {
+      "value": "0.12",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
+    },
+    "slide16_de_fy25": {
+      "value": "0.13",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debt-to-Equity (x)]"
+    },
+    "slide16_icr_fy18": {
+      "value": "5.87",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
+    },
+    "slide16_icr_fy19": {
+      "value": "11.80",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
+    },
+    "slide16_icr_fy20": {
+      "value": "18.96",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
+    },
+    "slide16_icr_fy21": {
+      "value": "38.82",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
+    },
+    "slide16_icr_fy22": {
+      "value": "30.29",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
+    },
+    "slide16_icr_fy23": {
+      "value": "37.98",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
+    },
+    "slide16_icr_fy24": {
+      "value": "38.82",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
+    },
+    "slide16_icr_fy25": {
+      "value": "44.22",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Interest Coverage Ratio (x)]"
+    },
+    "slide16_debtor_days_fy18": {
+      "value": "71",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
+    },
+    "slide16_debtor_days_fy19": {
+      "value": "64",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
+    },
+    "slide16_debtor_days_fy20": {
+      "value": "78",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
+    },
+    "slide16_debtor_days_fy21": {
+      "value": "72",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
+    },
+    "slide16_debtor_days_fy22": {
+      "value": "97",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
+    },
+    "slide16_debtor_days_fy23": {
+      "value": "82",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
+    },
+    "slide16_debtor_days_fy24": {
+      "value": "76",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
+    },
+    "slide16_debtor_days_fy25": {
+      "value": "75",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Debtor Days]"
+    },
+    "slide16_payable_days_fy18": {
+      "value": "57",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
+    },
+    "slide16_payable_days_fy19": {
+      "value": "75",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
+    },
+    "slide16_payable_days_fy20": {
+      "value": "78",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
+    },
+    "slide16_payable_days_fy21": {
+      "value": "84",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
+    },
+    "slide16_payable_days_fy22": {
+      "value": "104",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
+    },
+    "slide16_payable_days_fy23": {
+      "value": "112",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
+    },
+    "slide16_payable_days_fy24": {
+      "value": "125",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
+    },
+    "slide16_payable_days_fy25": {
+      "value": "134",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Payable Days]"
+    },
+    "slide16_inventory_days_fy18": {
+      "value": "87",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
+    },
+    "slide16_inventory_days_fy19": {
+      "value": "107",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
+    },
+    "slide16_inventory_days_fy20": {
+      "value": "78",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
+    },
+    "slide16_inventory_days_fy21": {
+      "value": "107",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
+    },
+    "slide16_inventory_days_fy22": {
+      "value": "104",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
+    },
+    "slide16_inventory_days_fy23": {
+      "value": "95",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
+    },
+    "slide16_inventory_days_fy24": {
+      "value": "104",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
+    },
+    "slide16_inventory_days_fy25": {
+      "value": "118",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Inventory Days]"
+    },
+    "slide16_ccc_fy18": {
+      "value": "101",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
+    },
+    "slide16_ccc_fy19": {
+      "value": "96",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
+    },
+    "slide16_ccc_fy20": {
+      "value": "78",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
+    },
+    "slide16_ccc_fy21": {
+      "value": "95",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
+    },
+    "slide16_ccc_fy22": {
+      "value": "97",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
+    },
+    "slide16_ccc_fy23": {
+      "value": "65",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
+    },
+    "slide16_ccc_fy24": {
+      "value": "55",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
+    },
+    "slide16_ccc_fy25": {
+      "value": "59",
+      "source": "candidates/Marksans-Recalculated.xlsx [Data Sheet & BS historical series for Cash Conversion Cycle (Days)]"
     }
   }
 }

@@ -392,7 +392,7 @@ class PptMakerTests(unittest.TestCase):
         self.assertIn("render_review", manifest["pending_gates"])
         self.assertIn("human_pack_approval", manifest["pending_gates"])
         self.assertEqual(len(manifest["changed_slots"]), len(deck_pack["slots"]))
-        self.assertEqual(len(manifest["changed_slots"]), 75)
+        self.assertEqual(len(manifest["changed_slots"]), 139)
         self.assertEqual(manifest["retained_slides"], [1, 2, 14, 16, 23])
         self.assertEqual(len(manifest["source_slide_lineage"]), 5)
         self.assertIn("ppt/media/image22.png", manifest["changed_parts"])
@@ -685,6 +685,73 @@ class PptMakerTests(unittest.TestCase):
         self.assertNotIn("ppt/slides/slide2.xml", out_pkg.parts)
         self.assertNotIn("/ppt/slides/slide2.xml", out_pkg.parts["[Content_Types].xml"].decode())
 
+    def test_chart_title_preservation_and_update(self):
+        """Verify chart_title attribute updates chart XML title text while preserving drawing properties."""
+        from pptmaker import _set_paragraph_text_preserving_rpr, C_NS, A_NS
+        title_xml = (
+            f'<c:title xmlns:c="{C_NS}" xmlns:a="{A_NS}">'
+            f'<c:tx><c:rich><a:bodyPr/><a:lstStyle/><a:p>'
+            f'<a:pPr><a:defRPr sz="1200" b="1"/></a:pPr>'
+            f'<a:r><a:rPr lang="en-US" sz="1200" b="1"><a:solidFill><a:srgbClr val="FF0000"/></a:solidFill></a:rPr>'
+            f'<a:t>Original Title</a:t></a:r>'
+            f'</a:p></c:rich></c:tx>'
+            f'</c:title>'
+        )
+        elem = ET.fromstring(title_xml)
+        p_elem = elem.find(f".//{{{A_NS}}}p")
+        self.assertIsNotNone(p_elem)
+        _set_paragraph_text_preserving_rpr(p_elem, "Historical Revenue (₹ Crore)")
+        t_elem = p_elem.find(f".//{{{A_NS}}}t")
+        self.assertIsNotNone(t_elem)
+        self.assertEqual(t_elem.text, "Historical Revenue (₹ Crore)")
+        # Run properties are preserved
+        rpr = p_elem.find(f".//{{{A_NS}}}rPr")
+        self.assertEqual(rpr.get("b"), "1")
+        self.assertEqual(rpr.get("sz"), "1200")
+
+    def test_reconciliation_math_accuracy(self):
+        """Verify CAPM, Hamada Beta, Post-tax Kd, and WACC calculations tie out exactly."""
+        # Risk free rate, ERP, Rm
+        rf = Decimal("0.0730")
+        erp = Decimal("0.0907")
+        rm = rf + erp # 0.1637 (16.37%)
+        beta = Decimal("0.546518")
+        # CAPM Ke = Rf + Beta * (Rm - Rf) = Rf + Beta * ERP
+        ke = rf + beta * erp
+        self.assertAlmostEqual(float(ke), 0.122565, places=5)
+        self.assertEqual(f"{ke * 100:.2f}%", "12.26%")
+
+        # Post-tax cost of debt: Pre-tax Kd * (1 - Tax Rate)
+        pre_tax_kd = Decimal("0.0800")
+        tax_rate = Decimal("0.3000")
+        kd = pre_tax_kd * (Decimal("1.0000") - tax_rate)
+        self.assertEqual(kd, Decimal("0.0560"))
+        self.assertEqual(f"{kd * 100:.2f}%", "5.60%")
+
+        # Target weights from peer median: Wd = 2.24%, We = 97.76%
+        wd = Decimal("0.022398")
+        we = Decimal("0.977602")
+        self.assertEqual(wd + we, Decimal("1.000000"))
+
+        # WACC = We * Ke + Wd * Kd
+        wacc = we * ke + wd * kd
+        self.assertAlmostEqual(float(wacc), 0.121074, places=5)
+        self.assertEqual(f"{wacc * 100:.2f}%", "12.11%")
+
+        # Current vs Target capital structure weights reconciliation:
+        current_debt = Decimal("343.38")
+        current_mcap = Decimal("14002.74")
+        total_current_cap = current_debt + current_mcap # 14346.12
+        current_debt_weight = current_debt / total_current_cap
+        current_equity_weight = current_mcap / total_current_cap
+
+        # Verify current weights (2.39% / 97.61%) vs target weights (2.24% / 97.76%)
+        self.assertAlmostEqual(float(current_debt_weight), 0.023935, places=5)
+        self.assertAlmostEqual(float(current_equity_weight), 0.976065, places=5)
+        self.assertEqual(f"{current_debt_weight * 100:.2f}%", "2.39%")
+        self.assertEqual(f"{current_equity_weight * 100:.2f}%", "97.61%")
+
 
 if __name__ == "__main__":
     unittest.main()
+

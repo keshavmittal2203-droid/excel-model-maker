@@ -695,7 +695,7 @@ def compose_deck(
         if (
             not isinstance(item, dict)
             or not {"value", "source"}.issubset(set(item))
-            or set(item) - {"value", "source", "unit", "period", "categories", "series_name"}
+            or set(item) - {"value", "source", "unit", "period", "categories", "series_name", "chart_title"}
             or not isinstance(item["source"], str)
             or not item["source"].strip()
         ):
@@ -884,6 +884,14 @@ def compose_deck(
                         tx_v = tx.find(f".//{{{C_NS}}}pt/{{{C_NS}}}v")
                     if tx_v is not None:
                         tx_v.text = str(ser_name)
+
+            chart_title = slot.get("chart_title") or item.get("chart_title")
+            if chart_title:
+                title_elem = chart_root.find(f".//{{{C_NS}}}title")
+                if title_elem is not None:
+                    p_elem = title_elem.find(f".//{{{A_NS}}}p")
+                    if p_elem is not None:
+                        _set_paragraph_text_preserving_rpr(p_elem, str(chart_title))
 
             changed[chart_part] = serialize_pml(chart_root)
 
