@@ -1,0 +1,15 @@
+{
+  "status": "pending_lesson_review",
+  "playlist_url": "https://www.youtube.com/playlist?list=PL3uUjzLk6PulhRop_ffNeHyK0kprzO4cT",
+  "video_url": null,
+  "video_title": null,
+  "timestamp_start_seconds": null,
+  "timestamp_end_seconds": null,
+  "rule_paraphrase": null,
+  "workbook_sheet_and_cells": [],
+  "formula": null,
+  "units_period_sign": null,
+  "independent_worked_example": null,
+  "discrepancies": [],
+  "review_status": "unreviewed"
+}

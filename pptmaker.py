@@ -10,6 +10,7 @@ import io
 import json
 from pathlib import Path, PurePosixPath
 import posixpath
+import re
 from typing import Any
 import xml.etree.ElementTree as ET
 import zipfile
@@ -323,25 +324,35 @@ def _find_table_on_slide(slide_tree: ET.Element, shape_id: int, shape_name: str 
     raise DeckError(f"Table id={shape_id} not found on slide")
 
 
-def validate_deck_pack(pack: dict, package: PptxPackage) -> list[dict]:
+def validate_deck_pack(pack: dict, package: PptxPackage, *, allow_proposal: bool = False) -> list[dict]:
+    from modelmaker import DISALLOWED_REVIEWER_TOKENS
+
     if not isinstance(pack, dict) or type(pack.get("schema_version")) is not int or pack["schema_version"] != 1:
         raise DeckError("Unsupported deck-pack schema_version")
     digest = sha(package.data)
     if pack.get("template_sha256") != digest:
         raise DeckError("Template SHA-256 does not match the approved deck pack")
+    pack_status = pack.get("status", "approved")
     approval = pack.get("approval")
-    if (
-        not isinstance(approval, dict)
-        or approval.get("template_sha256") != digest
-        or not all(isinstance(approval.get(k), str) and approval[k].strip() for k in ("reviewer", "approved_at"))
-    ):
-        raise DeckError("Deck pack requires recorded approval tied to this template hash")
-    try:
-        approved_at = datetime.fromisoformat(approval["approved_at"].replace("Z", "+00:00"))
-        if approved_at.tzinfo is None or "T" not in approval["approved_at"]:
-            raise ValueError("Timezone is required")
-    except ValueError as exc:
-        raise DeckError("Approval time must be an ISO datetime with timezone") from exc
+    if pack_status == "proposal" or approval is None:
+        if not allow_proposal:
+            raise DeckError("Deck pack is an unapproved proposal; independent human approval is required (or pass --allow-proposal for non-ready candidate testing)")
+    else:
+        if (
+            not isinstance(approval, dict)
+            or approval.get("template_sha256") != digest
+            or not all(isinstance(approval.get(k), str) and approval[k].strip() for k in ("reviewer", "approved_at"))
+        ):
+            raise DeckError("Deck pack requires recorded approval tied to this template hash")
+        reviewer_words = set(re.findall(r"[a-z0-9/]+", approval["reviewer"].lower()))
+        if reviewer_words & DISALLOWED_REVIEWER_TOKENS:
+            raise DeckError(f"Deck pack approval reviewer cannot be an agent or placeholder: {approval['reviewer']!r}")
+        try:
+            approved_at = datetime.fromisoformat(approval["approved_at"].replace("Z", "+00:00"))
+            if approved_at.tzinfo is None or "T" not in approval["approved_at"]:
+                raise ValueError("Timezone is required")
+        except ValueError as exc:
+            raise DeckError("Approval time must be an ISO datetime with timezone") from exc
 
     slots = pack.get("slots")
     if not isinstance(slots, list) or not slots:
@@ -412,9 +423,19 @@ def validate_deck_pack(pack: dict, package: PptxPackage) -> list[dict]:
     return slots
 
 
-def _resolve_workbook_binding(wb_pkg: WorkbookPackage | None, binding: dict, slot_name: str) -> tuple[Decimal, str]:
-    if wb_pkg is None:
+def _resolve_workbook_binding(
+    wb_pkg: WorkbookPackage | None,
+    wb_sha256: str | None,
+    binding: dict,
+    slot_name: str,
+) -> tuple[Decimal, str]:
+    if wb_pkg is None or wb_sha256 is None:
         raise DeckError(f"Slot {slot_name!r} has workbook_binding, so a recalculated --workbook must be provided")
+    expected_wb_sha = binding.get("workbook_sha256")
+    if expected_wb_sha is not None and expected_wb_sha != wb_sha256:
+        raise DeckError(
+            f"Slot {slot_name!r} workbook_sha256 mismatch: expected {expected_wb_sha}, got {wb_sha256}"
+        )
     sheet = binding.get("sheet")
     cell_ref = binding.get("cell")
     if not isinstance(sheet, str) or sheet not in wb_pkg.sheets or not isinstance(cell_ref, str):
@@ -455,7 +476,6 @@ def verify_slide_changes(original: bytes, candidate: bytes, approved_shape_ids: 
             if c_nv_pr is not None and int(c_nv_pr.get("id", "-1")) in approved_shape_ids:
                 tx_body = sp.find(f"{{{P_NS}}}txBody")
                 if tx_body is not None:
-                    # Preserve checks on nvSpPr and spPr; normalize <a:p> children inside approved txBody
                     for p in list(tx_body.findall(f"{{{A_NS}}}p")):
                         tx_body.remove(p)
         for gf in tree.findall(f".//{{{P_NS}}}graphicFrame"):
@@ -480,12 +500,14 @@ def compose_deck(
     pack: dict,
     supplied: dict,
     workbook_bytes: bytes | None = None,
+    *,
+    allow_proposal: bool = False,
 ) -> tuple[bytes, dict[str, Any]]:
     package = PptxPackage(template)
     blockers = package.blockers()
     if blockers:
         raise DeckError("; ".join(blockers))
-    slots = validate_deck_pack(pack, package)
+    slots = validate_deck_pack(pack, package, allow_proposal=allow_proposal)
 
     if not isinstance(supplied, dict) or set(supplied) != {"values"} or not isinstance(supplied["values"], dict):
         raise DeckError("Deck inputs must contain exactly a values object")
@@ -493,7 +515,14 @@ def compose_deck(
     if set(values) != {s["name"] for s in slots}:
         raise DeckError("Deck input names must exactly match the approved deck-pack slots")
 
-    wb_pkg = WorkbookPackage(workbook_bytes) if workbook_bytes is not None else None
+    wb_pkg: WorkbookPackage | None = None
+    wb_sha256: str | None = None
+    if workbook_bytes is not None:
+        wb_pkg = WorkbookPackage(workbook_bytes)
+        wb_sha256 = sha(workbook_bytes)
+        if wb_pkg.blockers():
+            raise DeckError(f"Bound workbook has blockers: {'; '.join(wb_pkg.blockers())}")
+
     slide_part_map = {s_num: (s_part, deepcopy(tree)) for s_num, s_part, tree in package.slides}
     approved_shapes_per_slide: dict[int, set[int]] = {}
     audit: list[dict[str, Any]] = []
@@ -503,7 +532,8 @@ def compose_deck(
         item = values[name]
         if (
             not isinstance(item, dict)
-            or set(item) != {"value", "source"}
+            or not {"value", "source"}.issubset(set(item))
+            or set(item) - {"value", "source", "unit", "period"}
             or not isinstance(item["source"], str)
             or not item["source"].strip()
         ):
@@ -515,7 +545,11 @@ def compose_deck(
 
         binding = slot.get("workbook_binding")
         if binding is not None:
-            bound_dec, bound_formatted = _resolve_workbook_binding(wb_pkg, binding, name)
+            if "unit" in binding and "unit" in item and item["unit"] != binding["unit"]:
+                raise DeckError(f"Slot {name!r} unit mismatch: expected {binding['unit']!r}, got {item['unit']!r}")
+            if "period" in binding and "period" in item and item["period"] != binding["period"]:
+                raise DeckError(f"Slot {name!r} period mismatch: expected {binding['period']!r}, got {item['period']!r}")
+            bound_dec, bound_formatted = _resolve_workbook_binding(wb_pkg, wb_sha256, binding, name)
             if isinstance(raw_val, (int, float, Decimal)):
                 supplied_dec = numeric(raw_val)
                 tol = Decimal(str(binding.get("abs_tolerance", "0.05")))
@@ -593,22 +627,28 @@ def compose_deck(
                 archive.writestr(copy(entry), changed[entry.filename])
     output = stream.getvalue()
 
-    # Reparse generated PPTX archive to verify structural validity
     result_pkg = PptxPackage(output)
     if len(result_pkg.slides) != len(package.slides):
         raise DeckError("Post-write slide count mismatch")
 
+    is_proposal = pack.get("status") == "proposal" or pack.get("approval") is None
+    pending_gates = ["render_review"]
+    if is_proposal:
+        pending_gates.insert(0, "human_pack_approval")
+
     manifest = {
-        "status": "composed",
-        "ready": True,
+        "status": "composed_pending_render_review",
+        "ready": False,
+        "pack_status": "proposal" if is_proposal else "approved",
         "template_sha256": sha(template),
         "output_sha256": sha(output),
         "pack_sha256": sha(json.dumps(pack, sort_keys=True, default=str).encode()),
         "input_sha256": sha(json.dumps(supplied, sort_keys=True, default=str).encode()),
-        "workbook_sha256": sha(workbook_bytes) if workbook_bytes is not None else None,
+        "workbook_sha256": wb_sha256,
         "changed_slots": audit,
         "changed_parts": sorted(k for k, v in changed.items() if v != package.parts.get(k)),
         "preserved_part_count": sum(1 for k, v in changed.items() if v == package.parts.get(k)),
+        "pending_gates": pending_gates,
     }
     return output, manifest
 
@@ -622,6 +662,7 @@ def main() -> int:
     for name in ("template", "pack", "inputs", "output"):
         build_cmd.add_argument("--" + name, required=True)
     build_cmd.add_argument("--workbook", help="Optional recalculated XLSX workbook for bound metrics")
+    build_cmd.add_argument("--allow-proposal", action="store_true", help="Allow building from an unapproved proposal deck pack")
     args = parser.parse_args()
     try:
         data = Path(args.template).read_bytes()
@@ -630,12 +671,15 @@ def main() -> int:
         else:
             if Path(args.template).resolve() == Path(args.output).resolve():
                 raise DeckError("Output must be different from the original template")
+            if Path(args.output).exists():
+                raise DeckError(f"Output already exists and will not be overwritten: {args.output}")
             wb_bytes = Path(args.workbook).read_bytes() if args.workbook else None
             output, manifest = compose_deck(
                 data,
                 read_json(args.pack),
                 read_json(args.inputs),
                 workbook_bytes=wb_bytes,
+                allow_proposal=args.allow_proposal,
             )
             Path(args.output).parent.mkdir(parents=True, exist_ok=True)
             with Path(args.output).open("xb") as destination:

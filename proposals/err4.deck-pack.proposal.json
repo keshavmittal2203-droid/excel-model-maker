@@ -1,0 +1,981 @@
+{
+  "schema_version": 1,
+  "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+  "approval": null,
+  "status": "proposal",
+  "proposal_notes": "Refined ERR-4 deck pack proposal for Marksans Pharma. Full historical cash flow coverage (FY18-FY25), aligned text boxes, narrative commentary, and multi-slide header bindings. Requires independent human approval.",
+  "slots": [
+    {
+      "name": "slide1_company_name",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 40,
+      "shape_name": "object 40",
+      "description": "Cover header company name on Slide 1"
+    },
+    {
+      "name": "slide1_ticker",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 41,
+      "shape_name": "object 41",
+      "description": "Exchange ticker banner on Slide 1"
+    },
+    {
+      "name": "slide1_company_intro",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 7,
+      "shape_name": "object 18",
+      "paragraph_index": 2,
+      "description": "Company introduction body paragraph on Slide 1"
+    },
+    {
+      "name": "slide2_company_name",
+      "slide": 2,
+      "target_type": "shape_token",
+      "shape_id": 40,
+      "shape_name": "object 40",
+      "token": "Sun Pharmaceutical Industries Ltd.",
+      "description": "Header company name token on Slide 2"
+    },
+    {
+      "name": "slide2_ticker",
+      "slide": 2,
+      "target_type": "shape_text",
+      "shape_id": 41,
+      "shape_name": "object 41",
+      "description": "Exchange ticker banner on Slide 2"
+    },
+    {
+      "name": "slide2_executive_summary",
+      "slide": 2,
+      "target_type": "shape_text",
+      "shape_id": 7,
+      "shape_name": "object 18",
+      "paragraph_index": 1,
+      "description": "Executive summary overview paragraph on Slide 2"
+    },
+    {
+      "name": "slide2_thesis",
+      "slide": 2,
+      "target_type": "shape_text",
+      "shape_id": 7,
+      "shape_name": "object 18",
+      "paragraph_index": 2,
+      "description": "Investment thesis paragraph on Slide 2"
+    },
+    {
+      "name": "slide2_key_highlights",
+      "slide": 2,
+      "target_type": "shape_text",
+      "shape_id": 12,
+      "shape_name": "object 18",
+      "description": "Key Highlights bullet points on Slide 2",
+      "paragraph_index": 1
+    },
+    {
+      "name": "slide14_company_name",
+      "slide": 14,
+      "target_type": "shape_text",
+      "shape_id": 40,
+      "shape_name": "object 40",
+      "description": "Header company name on Slide 14"
+    },
+    {
+      "name": "slide14_ticker",
+      "slide": 14,
+      "target_type": "shape_text",
+      "shape_id": 41,
+      "shape_name": "object 41",
+      "description": "Exchange ticker banner on Slide 14"
+    },
+    {
+      "name": "slide14_narrative",
+      "slide": 14,
+      "target_type": "shape_text",
+      "shape_id": 15,
+      "shape_name": "object 18",
+      "description": "Cash flow statement commentary narrative on Slide 14"
+    },
+    {
+      "name": "slide14_pbt_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 1,
+      "description": "Profit before tax (INR Cr) col 1 (FY18) bound to Data Sheet!C28",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "C28",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY18"
+      }
+    },
+    {
+      "name": "slide14_pbt_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 2,
+      "description": "Profit before tax (INR Cr) col 2 (FY19) bound to Data Sheet!D28",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "D28",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY19"
+      }
+    },
+    {
+      "name": "slide14_pbt_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 3,
+      "description": "Profit before tax (INR Cr) col 3 (FY20) bound to Data Sheet!E28",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "E28",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY20"
+      }
+    },
+    {
+      "name": "slide14_pbt_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 4,
+      "description": "Profit before tax (INR Cr) col 4 (FY21) bound to Data Sheet!F28",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "F28",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY21"
+      }
+    },
+    {
+      "name": "slide14_pbt_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 5,
+      "description": "Profit before tax (INR Cr) col 5 (FY22) bound to Data Sheet!G28",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "G28",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY22"
+      }
+    },
+    {
+      "name": "slide14_pbt_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 6,
+      "description": "Profit before tax (INR Cr) col 6 (FY23) bound to Data Sheet!H28",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "H28",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY23"
+      }
+    },
+    {
+      "name": "slide14_pbt_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 7,
+      "description": "Profit before tax (INR Cr) col 7 (FY24) bound to Data Sheet!I28",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "I28",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY24"
+      }
+    },
+    {
+      "name": "slide14_pbt_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 8,
+      "description": "Profit before tax (INR Cr) col 8 (FY25) bound to Data Sheet!J28",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "J28",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY25"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 1,
+      "description": "Cash From Operating Activities (INR Cr) col 1 (FY18) bound to Data Sheet!C82",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "C82",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY18"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 2,
+      "description": "Cash From Operating Activities (INR Cr) col 2 (FY19) bound to Data Sheet!D82",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "D82",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY19"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 3,
+      "description": "Cash From Operating Activities (INR Cr) col 3 (FY20) bound to Data Sheet!E82",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "E82",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY20"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 4,
+      "description": "Cash From Operating Activities (INR Cr) col 4 (FY21) bound to Data Sheet!F82",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "F82",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY21"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 5,
+      "description": "Cash From Operating Activities (INR Cr) col 5 (FY22) bound to Data Sheet!G82",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "G82",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY22"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 6,
+      "description": "Cash From Operating Activities (INR Cr) col 6 (FY23) bound to Data Sheet!H82",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "H82",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY23"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 7,
+      "description": "Cash From Operating Activities (INR Cr) col 7 (FY24) bound to Data Sheet!I82",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "I82",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY24"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 8,
+      "description": "Cash From Operating Activities (INR Cr) col 8 (FY25) bound to Data Sheet!J82",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "J82",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY25"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 1,
+      "description": "Cash From Investing Activities (INR Cr) col 1 (FY18) bound to Data Sheet!C83",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "C83",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY18"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 2,
+      "description": "Cash From Investing Activities (INR Cr) col 2 (FY19) bound to Data Sheet!D83",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "D83",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY19"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 3,
+      "description": "Cash From Investing Activities (INR Cr) col 3 (FY20) bound to Data Sheet!E83",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "E83",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY20"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 4,
+      "description": "Cash From Investing Activities (INR Cr) col 4 (FY21) bound to Data Sheet!F83",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "F83",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY21"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 5,
+      "description": "Cash From Investing Activities (INR Cr) col 5 (FY22) bound to Data Sheet!G83",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "G83",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY22"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 6,
+      "description": "Cash From Investing Activities (INR Cr) col 6 (FY23) bound to Data Sheet!H83",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "H83",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY23"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 7,
+      "description": "Cash From Investing Activities (INR Cr) col 7 (FY24) bound to Data Sheet!I83",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "I83",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY24"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 8,
+      "description": "Cash From Investing Activities (INR Cr) col 8 (FY25) bound to Data Sheet!J83",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "J83",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY25"
+      }
+    },
+    {
+      "name": "slide14_cff_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 1,
+      "description": "Cash From Financing Activities (INR Cr) col 1 (FY18) bound to Data Sheet!C84",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "C84",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY18"
+      }
+    },
+    {
+      "name": "slide14_cff_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 2,
+      "description": "Cash From Financing Activities (INR Cr) col 2 (FY19) bound to Data Sheet!D84",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "D84",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY19"
+      }
+    },
+    {
+      "name": "slide14_cff_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 3,
+      "description": "Cash From Financing Activities (INR Cr) col 3 (FY20) bound to Data Sheet!E84",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "E84",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY20"
+      }
+    },
+    {
+      "name": "slide14_cff_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 4,
+      "description": "Cash From Financing Activities (INR Cr) col 4 (FY21) bound to Data Sheet!F84",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "F84",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY21"
+      }
+    },
+    {
+      "name": "slide14_cff_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 5,
+      "description": "Cash From Financing Activities (INR Cr) col 5 (FY22) bound to Data Sheet!G84",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "G84",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY22"
+      }
+    },
+    {
+      "name": "slide14_cff_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 6,
+      "description": "Cash From Financing Activities (INR Cr) col 6 (FY23) bound to Data Sheet!H84",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "H84",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY23"
+      }
+    },
+    {
+      "name": "slide14_cff_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 7,
+      "description": "Cash From Financing Activities (INR Cr) col 7 (FY24) bound to Data Sheet!I84",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "I84",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY24"
+      }
+    },
+    {
+      "name": "slide14_cff_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 8,
+      "description": "Cash From Financing Activities (INR Cr) col 8 (FY25) bound to Data Sheet!J84",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "J84",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY25"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 1,
+      "description": "Net Cash Flow (INR Cr) col 1 (FY18) bound to Data Sheet!C85",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "C85",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY18"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 2,
+      "description": "Net Cash Flow (INR Cr) col 2 (FY19) bound to Data Sheet!D85",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "D85",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY19"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 3,
+      "description": "Net Cash Flow (INR Cr) col 3 (FY20) bound to Data Sheet!E85",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "E85",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY20"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 4,
+      "description": "Net Cash Flow (INR Cr) col 4 (FY21) bound to Data Sheet!F85",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "F85",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY21"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 5,
+      "description": "Net Cash Flow (INR Cr) col 5 (FY22) bound to Data Sheet!G85",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "G85",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY22"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 6,
+      "description": "Net Cash Flow (INR Cr) col 6 (FY23) bound to Data Sheet!H85",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "H85",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY23"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 7,
+      "description": "Net Cash Flow (INR Cr) col 7 (FY24) bound to Data Sheet!I85",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "I85",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY24"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 8,
+      "description": "Net Cash Flow (INR Cr) col 8 (FY25) bound to Data Sheet!J85",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "J85",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "INR_Cr",
+        "period": "FY25"
+      }
+    },
+    {
+      "name": "slide16_company_name",
+      "slide": 16,
+      "target_type": "shape_text",
+      "shape_id": 40,
+      "shape_name": "object 40",
+      "description": "Header company name on Slide 16"
+    },
+    {
+      "name": "slide16_ticker",
+      "slide": 16,
+      "target_type": "shape_text",
+      "shape_id": 41,
+      "shape_name": "object 41",
+      "description": "Exchange ticker banner on Slide 16"
+    },
+    {
+      "name": "slide16_current_ratio_narrative",
+      "slide": 16,
+      "target_type": "shape_text",
+      "shape_id": 11,
+      "shape_name": "object 18",
+      "description": "Current ratio liquidity commentary on Slide 16"
+    },
+    {
+      "name": "slide16_quick_ratio_narrative",
+      "slide": 16,
+      "target_type": "shape_text",
+      "shape_id": 15,
+      "shape_name": "object 10",
+      "description": "Quick ratio commentary on Slide 16"
+    },
+    {
+      "name": "slide16_table_header",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 0,
+      "col": 0,
+      "description": "Ratio Analysis table title cell on Slide 16"
+    },
+    {
+      "name": "slide16_debt_to_equity_latest",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 8,
+      "description": "Target Debt-to-Equity ratio bound to WACC-DCF!E34",
+      "workbook_binding": {
+        "sheet": "WACC-DCF",
+        "cell": "E34",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01,
+        "workbook_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8",
+        "unit": "ratio",
+        "period": "FY25"
+      }
+    },
+    {
+      "name": "slide23_company_name",
+      "slide": 23,
+      "target_type": "shape_token",
+      "shape_id": 22,
+      "shape_name": "object 40",
+      "token": "Sun Pharmaceutical Industries Ltd.",
+      "description": "Header company name on Slide 23 (DCF Valuation - WACC)"
+    },
+    {
+      "name": "slide23_ticker",
+      "slide": 23,
+      "target_type": "shape_text",
+      "shape_id": 23,
+      "shape_name": "object 41",
+      "description": "Exchange ticker banner on Slide 23"
+    }
+  ]
+}

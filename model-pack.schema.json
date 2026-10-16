@@ -27,8 +27,22 @@
           "cell": {"$ref": "#/$defs/cell"},
           "kind": {"const": "number"},
           "unit": {"type": "string", "minLength": 1},
+          "period": {"type": "string", "minLength": 1},
+          "role": {
+            "enum": [
+              "identifier_or_market_snapshot",
+              "historical_fact",
+              "peer_reference_data",
+              "sector_reference_data",
+              "valuation_assumption"
+            ]
+          },
           "minimum": {"type": "number"},
-          "maximum": {"type": "number"}
+          "maximum": {"type": "number"},
+          "description": {"type": "string"},
+          "workbook_row_label": {"type": "string"},
+          "workbook_column_header": {"type": "string"},
+          "audit_flag": {"type": "string"}
         },
         "additionalProperties": false
       }
@@ -42,7 +56,8 @@
           "sheet": {"type": "string", "minLength": 1},
           "cell": {"$ref": "#/$defs/cell"},
           "expected": {"type": "number"},
-          "abs_tolerance": {"type": "number", "minimum": 0}
+          "abs_tolerance": {"type": "number", "minimum": 0},
+          "rel_tolerance": {"type": "number", "minimum": 0}
         },
         "additionalProperties": false
       }

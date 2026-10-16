@@ -217,8 +217,9 @@ class PptMakerTests(unittest.TestCase):
             make_deck_inputs(10.0),
             workbook_bytes=self.wb,
         )
-        self.assertEqual(manifest["status"], "composed")
-        self.assertTrue(manifest["ready"])
+        self.assertEqual(manifest["status"], "composed_pending_render_review")
+        self.assertFalse(manifest["ready"])
+        self.assertIn("render_review", manifest["pending_gates"])
         self.assertEqual(manifest["changed_parts"], ["ppt/slides/slide1.xml"])
 
         orig_pkg = PptxPackage(self.pptx)
@@ -357,8 +358,9 @@ class PptMakerTests(unittest.TestCase):
         originals = root_dir / "originals"
         err4_path = originals / "ERR-4.pptx"
         wb_path = originals / "Marksans Keshav.xlsx"
-        pack_path = root_dir / "err4.deck-pack.json"
-        inputs_path = root_dir / "err4.inputs.json"
+        pack_path = root_dir / "proposals" / "err4.deck-pack.proposal.json"
+        inputs_path = root_dir / "proposals" / "err4.inputs.proposal.json"
+        recalc_path = root_dir / "candidates" / "Marksans-Recalculated.xlsx"
         if not err4_path.exists() or not wb_path.exists():
             return
 
@@ -368,15 +370,27 @@ class PptMakerTests(unittest.TestCase):
         self.assertEqual(total_slides, 182)
 
         from modelmaker import read_json
+        wb_data = recalc_path.read_bytes() if recalc_path.exists() else wb_path.read_bytes()
+        deck_pack = read_json(str(pack_path))
+        if not recalc_path.exists():
+            wb_digest = sha(wb_data)
+            for s in deck_pack.get("slots", []):
+                if s.get("workbook_binding"):
+                    s["workbook_binding"]["workbook_sha256"] = wb_digest
+
         out_bytes, manifest = compose_deck(
             err4_path.read_bytes(),
-            read_json(str(pack_path)),
+            deck_pack,
             read_json(str(inputs_path)),
-            workbook_bytes=wb_path.read_bytes(),
+            workbook_bytes=wb_data,
+            allow_proposal=True,
         )
-        self.assertEqual(manifest["status"], "composed")
-        self.assertTrue(manifest["ready"])
-        self.assertEqual(len(manifest["changed_slots"]), 18)
+        self.assertEqual(manifest["status"], "composed_pending_render_review")
+        self.assertFalse(manifest["ready"])
+        self.assertIn("render_review", manifest["pending_gates"])
+        self.assertIn("human_pack_approval", manifest["pending_gates"])
+        self.assertEqual(len(manifest["changed_slots"]), len(deck_pack["slots"]))
+        self.assertEqual(len(manifest["changed_slots"]), 59)
         self.assertEqual(
             manifest["changed_parts"],
             [

@@ -1,0 +1,322 @@
+{
+  "values": {
+    "slide1_company_name": {
+      "value": "Marksans Pharma Ltd.",
+      "source": "Marksans Keshav.xlsx (Data Sheet!B1)"
+    },
+    "slide1_ticker": {
+      "value": "NSE : MARKSANS | BSE Code: 524404",
+      "source": "NSE/BSE Listed Company Directory (Marksans Pharma Ltd.)"
+    },
+    "slide1_company_intro": {
+      "value": "Marksans Pharma Ltd. is an Indian pharmaceutical company headquartered in Mumbai, specializing in OTC and prescription formulations across key regulated markets including the UK, US, Europe, and Australia. The company operates high-compliance manufacturing facilities and focuses on sustained backward-integrated growth in major therapeutic segments.",
+      "source": "Marksans Pharma Annual Report & Equity Research Overview"
+    },
+    "slide2_company_name": {
+      "value": "Marksans Pharma Ltd.",
+      "source": "Marksans Keshav.xlsx (Data Sheet!B1)"
+    },
+    "slide2_ticker": {
+      "value": "NSE : MARKSANS | BSE Code: 524404",
+      "source": "NSE/BSE Listed Company Directory (Marksans Pharma Ltd.)"
+    },
+    "slide2_executive_summary": {
+      "value": "Marksans Pharma Ltd. (NSE: MARKSANS) delivered \u20b92,622.85 crore in FY25 revenue (+19.4% YoY) and \u20b9380.58 crore in net profit, supported by a net-cash balance sheet with \u20b9704.21 crore in cash and bank balances.",
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!J17, J30, J59)"
+    },
+    "slide2_thesis": {
+      "value": "Thesis: Marksans is expanding high-margin OTC and prescription formulations across the UK, US, and Europe. With disciplined capex, negative net debt, and steady double-digit return ratios (ROE 20.35%), the company maintains a defensive growth profile.",
+      "source": "Marksans-Recalculated.xlsx (Ratio Analysis!C23; WACC-DCF!E34)"
+    },
+    "slide2_key_highlights": {
+      "value": "\u2022 Revenue: \u20b92,622.85 crore (+19.4% YoY); Net Profit: \u20b9380.58 crore (+21.6% YoY) \u2022 Cash & Bank Balances: \u20b9704.21 crore; Net Debt: \u20b9(382.30) crore (Net Cash) \u2022 Operating Cash Flow: \u20b9206.66 crore; Net Cash Flow: \u20b992.51 crore (FY25) \u2022 EBITDA: \u20b9569.21 crore (21.7% Margin); WACC: 12.11% \u2022 Return on Equity (ROE): 20.35%; Return on Capital Employed (ROCE): 22.84% \u2022 International Footprint: Strong presence across UK, US, Australia, and Continental Europe",
+      "source": "Marksans-Recalculated.xlsx (Data Sheet, Ratio Analysis, WACC-DCF)"
+    },
+    "slide14_company_name": {
+      "value": "Marksans Pharma Ltd.",
+      "source": "Marksans Keshav.xlsx (Data Sheet!B1)"
+    },
+    "slide14_ticker": {
+      "value": "NSE : MARKSANS | BSE Code: 524404",
+      "source": "NSE/BSE Listed Company Directory (Marksans Pharma Ltd.)"
+    },
+    "slide14_narrative": {
+      "value": "Marksans Pharma's consolidated cash flow from operations reached \u20b9206.66 crore in FY25, supported by profit before tax of \u20b9503.96 crore. Net cash flow for FY25 stood at \u20b992.51 crore, contributing to total cash and bank balances of \u20b9704.21 crore. Disciplined working capital management and steady operating margins have enabled the company to maintain a strong net-cash position while funding capacity expansion internally.",
+      "source": "Marksans-Recalculated.xlsx (Data Sheet rows 28, 59, 82, 85)"
+    },
+    "slide14_pbt_fy18": {
+      "value": 49.8,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!C28)",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_pbt_fy19": {
+      "value": 104.31,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!D28)",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_pbt_fy20": {
+      "value": 157.17,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!E28)",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_pbt_fy21": {
+      "value": 302.17,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!F28)",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_pbt_fy22": {
+      "value": 247.51,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!G28)",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_pbt_fy23": {
+      "value": 337.66,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!H28)",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_pbt_fy24": {
+      "value": 423.53,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!I28)",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_pbt_fy25": {
+      "value": 503.96,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!J28)",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_cfo_fy18": {
+      "value": 50.09,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!C82)",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_cfo_fy19": {
+      "value": 27.4,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!D82)",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_cfo_fy20": {
+      "value": 233.33,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!E82)",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_cfo_fy21": {
+      "value": 178.59,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!F82)",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_cfo_fy22": {
+      "value": 99.26,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!G82)",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_cfo_fy23": {
+      "value": 237.41,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!H82)",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_cfo_fy24": {
+      "value": 230.41,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!I82)",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_cfo_fy25": {
+      "value": 206.66,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!J82)",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_cfi_fy18": {
+      "value": -38.81,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!C83)",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_cfi_fy19": {
+      "value": -13.48,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!D83)",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_cfi_fy20": {
+      "value": -59.58,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!E83)",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_cfi_fy21": {
+      "value": -44.85,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!F83)",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_cfi_fy22": {
+      "value": -84.39,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!G83)",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_cfi_fy23": {
+      "value": -259.21,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!H83)",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_cfi_fy24": {
+      "value": -140.84,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!I83)",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_cfi_fy25": {
+      "value": -49.01,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!J83)",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_cff_fy18": {
+      "value": 3.38,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!C84)",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_cff_fy19": {
+      "value": -20.78,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!D84)",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_cff_fy20": {
+      "value": -113.55,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!E84)",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_cff_fy21": {
+      "value": -15.29,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!F84)",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_cff_fy22": {
+      "value": 79.51,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!G84)",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_cff_fy23": {
+      "value": 197.83,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!H84)",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_cff_fy24": {
+      "value": -68.73,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!I84)",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_cff_fy25": {
+      "value": -65.15,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!J84)",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide14_net_cf_fy18": {
+      "value": 14.67,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!C85)",
+      "unit": "INR_Cr",
+      "period": "FY18"
+    },
+    "slide14_net_cf_fy19": {
+      "value": -6.86,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!D85)",
+      "unit": "INR_Cr",
+      "period": "FY19"
+    },
+    "slide14_net_cf_fy20": {
+      "value": 60.19,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!E85)",
+      "unit": "INR_Cr",
+      "period": "FY20"
+    },
+    "slide14_net_cf_fy21": {
+      "value": 118.46,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!F85)",
+      "unit": "INR_Cr",
+      "period": "FY21"
+    },
+    "slide14_net_cf_fy22": {
+      "value": 94.38,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!G85)",
+      "unit": "INR_Cr",
+      "period": "FY22"
+    },
+    "slide14_net_cf_fy23": {
+      "value": 176.03,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!H85)",
+      "unit": "INR_Cr",
+      "period": "FY23"
+    },
+    "slide14_net_cf_fy24": {
+      "value": 20.84,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!I85)",
+      "unit": "INR_Cr",
+      "period": "FY24"
+    },
+    "slide14_net_cf_fy25": {
+      "value": 92.51,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!J85)",
+      "unit": "INR_Cr",
+      "period": "FY25"
+    },
+    "slide16_company_name": {
+      "value": "Marksans Pharma Ltd.",
+      "source": "Marksans Keshav.xlsx (Data Sheet!B1)"
+    },
+    "slide16_ticker": {
+      "value": "NSE : MARKSANS | BSE Code: 524404",
+      "source": "NSE/BSE Listed Company Directory (Marksans Pharma Ltd.)"
+    },
+    "slide16_current_ratio_narrative": {
+      "value": "Marksans Pharma's liquidity position remains solid, with cash and bank balances of \u20b9704.21 crore and net cash of \u20b9382.30 crore as of FY25. The company's low reliance on external working capital debt ensures robust liquidity across market cycles.",
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!J59, J69)"
+    },
+    "slide16_quick_ratio_narrative": {
+      "value": "Excluding inventories, Marksans maintains substantial liquid assets in cash, equivalents, and short-term receivables, comfortably meeting operational and debt service obligations with minimal external leverage.",
+      "source": "Marksans-Recalculated.xlsx (Data Sheet rows 43, 59)"
+    },
+    "slide16_table_header": {
+      "value": "Ratio Analysis - MARKSANS PHARMA (Consolidated)",
+      "source": "Marksans Keshav.xlsx (Ratio Analysis)"
+    },
+    "slide16_debt_to_equity_latest": {
+      "value": 0.02,
+      "source": "Marksans-Recalculated.xlsx (WACC-DCF!E34)",
+      "unit": "ratio",
+      "period": "FY25"
+    },
+    "slide23_company_name": {
+      "value": "Marksans Pharma Ltd.",
+      "source": "Marksans Keshav.xlsx (Data Sheet!B1)"
+    },
+    "slide23_ticker": {
+      "value": "NSE : MARKSANS | BSE Code: 524404",
+      "source": "NSE/BSE Listed Company Directory (Marksans Pharma Ltd.)"
+    }
+  }
+}
