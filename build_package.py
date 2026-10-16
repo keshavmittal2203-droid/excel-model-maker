@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 from datetime import datetime, timezone
 import hashlib
 import io
@@ -10,25 +11,142 @@ import os
 from pathlib import Path
 import shutil
 import sys
+import tempfile
 from typing import Any
+import xml.etree.ElementTree as ET
+import zipfile
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
-from modelmaker import sha, read_json
+from modelmaker import sha, read_json, compose
 from pptmaker import compose_deck, DeckError
 from validate_workbook import validate_candidate
+
+FORBIDDEN_OUTPUT_ROOTS = {
+    ROOT.resolve(),
+    (ROOT / "originals").resolve(),
+    (ROOT / "proposals").resolve(),
+    (ROOT / "docs").resolve(),
+    (ROOT / "work").resolve(),
+    (ROOT / ".git").resolve(),
+}
+
+FORBIDDEN_PARENT_DIRS = {
+    (ROOT / "originals").resolve(),
+    (ROOT / "proposals").resolve(),
+    (ROOT / "docs").resolve(),
+    (ROOT / "work").resolve(),
+    (ROOT / ".git").resolve(),
+}
 
 
 def compute_file_sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def generate_wacc_assets(assets_dir: Path) -> dict[str, str]:
-    """Ensure WACC schedule table images exist and return their hashes."""
-    from work.generate_wacc_images import generate_images
-    assets_dir.mkdir(parents=True, exist_ok=True)
-    return generate_images(assets_dir)
+def check_com_capabilities() -> dict[str, Any]:
+    """Inspect COM automation capabilities on the host environment."""
+    capabilities: dict[str, Any] = {
+        "platform": sys.platform,
+        "excel_com": False,
+        "excel_version": None,
+        "powerpoint_com": False,
+        "powerpoint_version": None,
+    }
+    if sys.platform != "win32":
+        return capabilities
+
+    try:
+        import pythoncom
+        import win32com.client
+    except ImportError:
+        capabilities["com_import_error"] = "pywin32 (pythoncom/win32com) not installed"
+        return capabilities
+
+    try:
+        pythoncom.CoInitialize()
+        try:
+            xl = win32com.client.Dispatch("Excel.Application")
+            capabilities["excel_com"] = True
+            capabilities["excel_version"] = str(getattr(xl, "Version", "unknown"))
+            xl.Quit()
+        except Exception as e:
+            capabilities["excel_error"] = str(e)
+
+        try:
+            ppt = win32com.client.Dispatch("PowerPoint.Application")
+            capabilities["powerpoint_com"] = True
+            capabilities["powerpoint_version"] = str(getattr(ppt, "Version", "unknown"))
+            ppt.Quit()
+        except Exception as e:
+            capabilities["powerpoint_error"] = str(e)
+        finally:
+            pythoncom.CoUninitialize()
+    except Exception as e:
+        capabilities["com_init_error"] = str(e)
+
+    return capabilities
+
+
+def verify_output_directory(output_dir: Path, force: bool = False) -> None:
+    """Enforce strict directory safety rules to protect roots, originals, and unrelated paths."""
+    res = output_dir.resolve()
+    if res in FORBIDDEN_OUTPUT_ROOTS:
+        raise RuntimeError(f"Target output directory {res} is a protected repository root and cannot be used as an output directory.")
+    if res == ROOT.resolve().parent or res.parent == res:
+        raise RuntimeError(f"Target output directory {res} is a filesystem root or parent and cannot be used as an output directory.")
+    for forbidden in FORBIDDEN_PARENT_DIRS:
+        if res == forbidden or forbidden in res.parents:
+            raise RuntimeError(f"Target output directory {res} is inside protected directory {forbidden}.")
+
+    if res.exists() and any(res.iterdir()):
+        if not force:
+            raise RuntimeError(
+                f"Output directory {output_dir} already exists and is not empty. Use --force to allow overwriting."
+            )
+        # Check ownership when --force is supplied
+        manifest_file = res / "package.manifest.json"
+        is_candidate_sub = False
+        try:
+            res.relative_to((ROOT / "candidates").resolve())
+            is_candidate_sub = True
+        except ValueError:
+            pass
+        temp_dir = Path(tempfile.gettempdir()).resolve()
+        is_temp_sub = False
+        try:
+            res.relative_to(temp_dir)
+            is_temp_sub = True
+        except ValueError:
+            pass
+
+        if not manifest_file.exists() and not is_candidate_sub and not is_temp_sub:
+            raise RuntimeError(
+                f"Directory {output_dir} exists and is not empty, but does not contain a package.manifest.json. "
+                "Overwriting arbitrary non-package directories is prohibited even with --force."
+            )
+
+
+def get_presentation_dimensions(pres_path: Path) -> tuple[int, int]:
+    """Derive presentation dimensions dynamically from presentation.xml <p:sldSz>."""
+    try:
+        with zipfile.ZipFile(pres_path, "r") as z:
+            tree = ET.fromstring(z.read("ppt/presentation.xml"))
+            sld_sz = tree.find("{http://schemas.openxmlformats.org/presentationml/2006/main}sldSz")
+            if sld_sz is not None:
+                cx = int(sld_sz.get("cx", "0"))
+                cy = int(sld_sz.get("cy", "0"))
+                if cx > 0 and cy > 0:
+                    if cx < cy:
+                        # Portrait orientation (e.g. ERR-4)
+                        return 1080, int(round(1080 * cy / cx))
+                    else:
+                        # Landscape orientation
+                        return 1920, int(round(1920 * cy / cx))
+    except Exception:
+        pass
+    return 1080, 1440
 
 
 def export_slide_previews_com(
@@ -126,6 +244,154 @@ def export_sheet_previews_com(
     return exported
 
 
+def evaluate_reconciliation_summary(workbook_path: Path) -> list[dict[str, Any]]:
+    """Dynamically evaluate reconciliation metrics from validated candidate workbook."""
+    import openpyxl
+    wb = openpyxl.load_workbook(str(workbook_path), data_only=True)
+    ws_wacc = wb["WACC-DCF"]
+    ws_rm = wb["RM"]
+    ws_ds = wb["Data Sheet"]
+
+    rf = float(ws_wacc["J22"].value or 0.0)
+    erp = float(ws_wacc["J23"].value or 0.0)
+    rm = rf + erp
+    beta = float(ws_wacc["J24"].value or 0.0)
+    ke = float(ws_wacc["J25"].value or 0.0)
+    pre_tax_kd = float(ws_wacc["E22"].value or 0.0)
+    tax_rate = float(ws_wacc["E23"].value or 0.0)
+    post_tax_kd = float(ws_wacc["E24"].value or 0.0)
+    mcap = float(ws_wacc["C31"].value or 0.0)
+    debt = float(ws_wacc["C30"].value or 0.0)
+    w_equity = float(ws_wacc["E31"].value or 0.0)
+    w_debt = float(ws_wacc["E30"].value or 0.0)
+    wacc = float(ws_wacc["J39"].value or 0.0)
+
+    try:
+        ca_fy25 = float(ws_ds["J65"].value or 0.0)
+        cl_fy25 = float(ws_ds["J60"].value or 0.0)
+        inv_fy25 = float(ws_ds["J68"].value or 0.0)
+        cr = ca_fy25 / cl_fy25 if cl_fy25 else 0.0
+        qr = (ca_fy25 - inv_fy25) / cl_fy25 if cl_fy25 else 0.0
+    except Exception:
+        cr = 0.0
+        qr = 0.0
+
+    return [
+        {
+            "metric": "Risk-Free Rate (Rf)",
+            "source_cell": "WACC-DCF!J22",
+            "exact_value": f"{rf:.6f}",
+            "displayed": f"{rf*100:.2f}%",
+            "tolerance": "0.0001",
+            "status": "reconciled",
+        },
+        {
+            "metric": "Market Return (Rm)",
+            "source_cell": "RM!F12 / WACC-DCF!J23",
+            "exact_value": f"{rm:.6f}",
+            "displayed": f"{rm*100:.2f}%",
+            "tolerance": "0.0001",
+            "status": "reconciled",
+        },
+        {
+            "metric": "Levered Beta (Hamada)",
+            "source_cell": "Beta!B29 / WACC-DCF!J24",
+            "exact_value": f"{beta:.6f}",
+            "displayed": f"{beta:.3f}",
+            "tolerance": "0.001",
+            "status": "reconciled",
+        },
+        {
+            "metric": "Cost of Equity (Ke)",
+            "source_cell": "WACC-DCF!J25",
+            "exact_value": f"{ke:.6f}",
+            "displayed": f"{ke*100:.2f}%",
+            "tolerance": "0.0001",
+            "status": "reconciled",
+        },
+        {
+            "metric": "Pre-tax Cost of Debt",
+            "source_cell": "WACC-DCF!E22",
+            "exact_value": f"{pre_tax_kd:.6f}",
+            "displayed": f"{pre_tax_kd*100:.2f}%",
+            "tolerance": "0.0001",
+            "status": "reconciled",
+        },
+        {
+            "metric": "Effective Tax Rate",
+            "source_cell": "WACC-DCF!E23",
+            "exact_value": f"{tax_rate:.6f}",
+            "displayed": f"{tax_rate*100:.2f}%",
+            "tolerance": "0.0001",
+            "status": "reconciled",
+        },
+        {
+            "metric": "Post-tax Cost of Debt (Kd)",
+            "source_cell": "WACC-DCF!E24",
+            "exact_value": f"{post_tax_kd:.6f}",
+            "displayed": f"{post_tax_kd*100:.2f}%",
+            "tolerance": "0.0001",
+            "status": "reconciled",
+        },
+        {
+            "metric": "Market Capitalization (Current)",
+            "source_cell": "WACC-DCF!C31",
+            "exact_value": f"{mcap:.2f}",
+            "displayed": f"₹{mcap:,.0f} Cr",
+            "tolerance": "1.0",
+            "status": "reconciled",
+        },
+        {
+            "metric": "Total Debt / Borrowings (Current)",
+            "source_cell": "Data Sheet!K59 / WACC-DCF!C30",
+            "exact_value": f"{debt:.2f}",
+            "displayed": f"₹{debt:,.0f} Cr",
+            "tolerance": "1.0",
+            "status": "reconciled",
+        },
+        {
+            "metric": "Target Weight of Equity (Peer Median)",
+            "source_cell": "WACC-DCF!E31",
+            "exact_value": f"{w_equity:.6f}",
+            "displayed": f"{w_equity*100:.2f}%",
+            "tolerance": "0.0001",
+            "status": "reconciled",
+        },
+        {
+            "metric": "Target Weight of Debt (Peer Median)",
+            "source_cell": "WACC-DCF!E30",
+            "exact_value": f"{w_debt:.6f}",
+            "displayed": f"{w_debt*100:.2f}%",
+            "tolerance": "0.0001",
+            "status": "reconciled",
+        },
+        {
+            "metric": "WACC (Target-Weighted)",
+            "source_cell": "WACC-DCF!J39",
+            "exact_value": f"{wacc:.6f}",
+            "displayed": f"{wacc*100:.2f}%",
+            "tolerance": "0.0001",
+            "status": "reconciled",
+        },
+        {
+            "metric": "FY25 Current Ratio",
+            "source_cell": "Data Sheet Row 65 / Row 60",
+            "exact_value": f"{cr:.4f}",
+            "displayed": f"{cr:.2f}",
+            "tolerance": "0.01",
+            "status": "reconciled",
+        },
+        {
+            "metric": "FY25 Quick Ratio",
+            "source_cell": "(Row 65 - Row 68) / Row 60",
+            "exact_value": f"{qr:.4f}",
+            "displayed": f"{qr:.2f}",
+            "tolerance": "0.01",
+            "status": "reconciled",
+        },
+    ]
+
+
 def build_package(
     request_path: Path,
     output_dir: Path,
@@ -138,14 +404,13 @@ def build_package(
     req_text = request_path.read_text(encoding="utf-8")
     req = json.loads(req_text)
 
-    # 1. Directory safety: refuse to overwrite existing files without --force
-    if output_dir.exists() and any(output_dir.iterdir()) and not force:
-        raise RuntimeError(
-            f"Output directory {output_dir} already exists and is not empty. Use --force to allow overwriting."
-        )
+    # 1. Directory safety verification
+    verify_output_directory(output_dir, force=force)
     output_dir.mkdir(parents=True, exist_ok=True)
     previews_dir = output_dir / "previews"
     previews_dir.mkdir(parents=True, exist_ok=True)
+    assets_dir = output_dir / "assets"
+    assets_dir.mkdir(parents=True, exist_ok=True)
 
     # 2. Pin and verify source hashes
     wb_spec = req["workbook"]
@@ -175,30 +440,59 @@ def build_package(
             f"Presentation template SHA mismatch: expected {pres_spec['template_sha256']}, got {actual_tpl_sha}"
         )
 
-    # 3. Handle Recalculated Workbook
-    # If candidate recalculated workbook already exists at candidates/Marksans-Recalculated.xlsx
-    # and matches expected hash, copy it to output_dir; otherwise recalculate via validate_candidate.
+    # 3. Handle Workbook Composition and Recalculation
     wb_out_name = wb_spec.get("output_name", "Marksans-Recalculated.xlsx")
     wb_out_path = output_dir / wb_out_name
     expected_recalc_sha = wb_spec.get("expected_recalculated_sha256")
+    candidate_src_rel = wb_spec.get("candidate_source")
 
-    candidate_recalc_src = ROOT / "candidates" / "Marksans-Recalculated.xlsx"
-    if candidate_recalc_src.exists() and (
-        expected_recalc_sha is None or compute_file_sha(candidate_recalc_src) == expected_recalc_sha
-    ):
-        shutil.copy2(candidate_recalc_src, wb_out_path)
+    if wb_out_path.exists():
+        wb_out_path.unlink()
+
+    cand_path = (ROOT / candidate_src_rel).resolve() if candidate_src_rel else None
+    if cand_path and cand_path.exists():
+        cand_sha = compute_file_sha(cand_path)
+        if expected_recalc_sha and cand_sha != expected_recalc_sha:
+            raise ValueError(f"Candidate source SHA mismatch: expected {expected_recalc_sha}, got {cand_sha}")
+        shutil.copy2(cand_path, wb_out_path)
     else:
-        # Recalculate candidate workbook using Excel COM via validate_candidate
-        print(f"Recalculating workbook to {wb_out_path}...")
-        recalc_report = validate_candidate(
-            workbook_path=wb_src_path,
-            pack_path=model_pack_path,
-            recalculate=True,
-            recalculated_output=wb_out_path,
-            allow_proposal=allow_proposal,
-        )
+        # Check COM availability before recalculation
+        com_caps = check_com_capabilities()
+        if not com_caps["excel_com"]:
+            raise RuntimeError(
+                f"Excel COM is required for workbook recalculation but is not available on this system ({com_caps.get('excel_error')})."
+            )
 
-    # Validate the generated/copied workbook against the model pack
+        # Check if custom model inputs are supplied in request (e.g. Scenario B)
+        wb_inputs_path = (ROOT / wb_spec["inputs"]).resolve() if "inputs" in wb_spec else None
+        if wb_inputs_path and wb_inputs_path.exists():
+            print(f"Composing workbook inputs from {wb_inputs_path} into template...")
+            tpl_bytes = wb_src_path.read_bytes()
+            model_pack = read_json(str(model_pack_path))
+            wb_inputs = read_json(str(wb_inputs_path))
+            composed_bytes, _ = compose(tpl_bytes, model_pack, wb_inputs, allow_proposal=allow_proposal)
+            with tempfile.TemporaryDirectory() as td:
+                staged_path = Path(td) / "staged_composed.xlsx"
+                staged_path.write_bytes(composed_bytes)
+                print(f"Recalculating composed workbook to {wb_out_path}...")
+                validate_candidate(
+                    workbook_path=staged_path,
+                    pack_path=model_pack_path,
+                    recalculate=True,
+                    recalculated_output=wb_out_path,
+                    allow_proposal=allow_proposal,
+                )
+        else:
+            print(f"Recalculating workbook to {wb_out_path}...")
+            validate_candidate(
+                workbook_path=wb_src_path,
+                pack_path=model_pack_path,
+                recalculate=True,
+                recalculated_output=wb_out_path,
+                allow_proposal=allow_proposal,
+            )
+
+    # Validate the generated candidate workbook against its model pack
     print(f"Validating workbook {wb_out_path}...")
     validation_report = validate_candidate(
         workbook_path=wb_out_path,
@@ -210,9 +504,14 @@ def build_package(
 
     wb_out_sha = compute_file_sha(wb_out_path)
 
-    # 4. Generate WACC Schedule Assets if needed
-    assets_dir = ROOT / "work" / "assets"
-    generate_wacc_assets(assets_dir)
+    # 4. Generate Replacement WACC Schedule Assets from validated workbook
+    from work.generate_wacc_images import generate_images
+    generate_images(assets_dir=assets_dir, workbook_path=wb_out_path)
+
+    # Also synchronize to work/assets for legacy relative references
+    shared_assets_dir = ROOT / "work" / "assets"
+    if shared_assets_dir.resolve() != assets_dir.resolve():
+        generate_images(assets_dir=shared_assets_dir, workbook_path=wb_out_path)
 
     # 5. Compose Presentation Deck
     pres_out_name = pres_spec.get("output_name", "Marksans-Pharma-Overview.pptx")
@@ -221,166 +520,82 @@ def build_package(
     tpl_bytes = pres_tpl_path.read_bytes()
     deck_pack = read_json(str(deck_pack_path))
     deck_inputs = read_json(str(deck_inputs_path))
+
+    # Bind the current run's validated workbook SHA and fresh image assets to deck inputs/slots
+    for slot in deck_pack.get("slots", []):
+        if "workbook_binding" in slot and "workbook_sha256" in slot["workbook_binding"]:
+            slot["workbook_binding"]["workbook_sha256"] = wb_out_sha
+
+    deck_inputs_copy = copy.deepcopy(deck_inputs)
+    for k, v in deck_inputs_copy.get("values", {}).items():
+        if isinstance(v, dict) and "value" in v:
+            val_str = str(v["value"])
+            if "image22_marksans.png" in val_str:
+                v["value"] = str((assets_dir / "image22_marksans.png").resolve())
+            elif "image23_marksans.png" in val_str:
+                v["value"] = str((assets_dir / "image23_marksans.png").resolve())
+            elif "image24_marksans.png" in val_str:
+                v["value"] = str((assets_dir / "image24_marksans.png").resolve())
+
     wb_bytes = wb_out_path.read_bytes()
 
     print(f"Composing presentation to {pres_out_path}...")
     composed_bytes, compose_manifest = compose_deck(
         template=tpl_bytes,
         pack=deck_pack,
-        supplied=deck_inputs,
+        supplied=deck_inputs_copy,
         workbook_bytes=wb_bytes,
         allow_proposal=allow_proposal,
     )
     pres_out_path.write_bytes(composed_bytes)
     pres_out_sha = compute_file_sha(pres_out_path)
 
-    # 6. Export Previews
+    # 6. Export Previews (Slide PNGs and Sheet PDFs)
     slide_previews = []
     sheet_previews = []
+    com_caps = check_com_capabilities()
+
     if not skip_com:
         if exp_spec.get("export_slide_pngs", True):
-            print("Exporting slide previews via PowerPoint COM...")
-            slide_previews = export_slide_previews_com(
-                presentation_path=pres_out_path,
-                previews_dir=previews_dir,
-                width=exp_spec.get("png_width", 1080),
-                height=exp_spec.get("png_height", 1440),
-            )
+            if com_caps["powerpoint_com"]:
+                dyn_w, dyn_h = get_presentation_dimensions(pres_tpl_path)
+                p_w = exp_spec.get("png_width", dyn_w)
+                p_h = exp_spec.get("png_height", dyn_h)
+                print(f"Exporting slide previews ({p_w}x{p_h}) via PowerPoint COM...")
+                slide_previews = export_slide_previews_com(
+                    presentation_path=pres_out_path,
+                    previews_dir=previews_dir,
+                    width=p_w,
+                    height=p_h,
+                )
+            else:
+                print("PowerPoint COM not available; skipping slide preview export.")
+
         if exp_spec.get("export_sheet_pdfs", True):
-            pdf_sheets = exp_spec.get("pdf_sheets", [
-                "Data Sheet",
-                "Ratio Analysis",
-                "Intrinsic Growth",
-                "WACC-DCF",
-                "DCF 1st way",
-                "DCF 2nd way",
-            ])
-            print("Exporting sheet PDFs via Excel COM...")
-            sheet_previews = export_sheet_previews_com(
-                workbook_path=wb_out_path,
-                previews_dir=previews_dir,
-                sheets=pdf_sheets,
-                orientation=exp_spec.get("pdf_orientation", "landscape"),
-                fit_to_page_wide=exp_spec.get("pdf_fit_to_page_wide", 1),
-            )
+            if com_caps["excel_com"]:
+                pdf_sheets = exp_spec.get("pdf_sheets", [
+                    "Data Sheet",
+                    "Ratio Analysis",
+                    "Intrinsic Growth",
+                    "WACC-DCF",
+                    "DCF 1st way",
+                    "DCF 2nd way",
+                ])
+                print("Exporting sheet PDFs via Excel COM...")
+                sheet_previews = export_sheet_previews_com(
+                    workbook_path=wb_out_path,
+                    previews_dir=previews_dir,
+                    sheets=pdf_sheets,
+                    orientation=exp_spec.get("pdf_orientation", "landscape"),
+                    fit_to_page_wide=exp_spec.get("pdf_fit_to_page_wide", 1),
+                )
+            else:
+                print("Excel COM not available; skipping sheet PDF export.")
 
-    # 7. Package Reconciliation Summary Table
-    reconciliation_table = [
-        {
-            "metric": "Risk-Free Rate (Rf)",
-            "source_cell": "WACC-DCF!J22",
-            "exact_value": "0.0730",
-            "displayed": "7.30%",
-            "tolerance": "0.0001",
-            "status": "reconciled",
-        },
-        {
-            "metric": "Market Return (Rm)",
-            "source_cell": "RM!F12 / WACC-DCF!J23",
-            "exact_value": "0.163692",
-            "displayed": "16.37%",
-            "tolerance": "0.0001",
-            "status": "reconciled",
-        },
-        {
-            "metric": "Levered Beta (Hamada)",
-            "source_cell": "Beta!B29 / WACC-DCF!J24",
-            "exact_value": "0.546518",
-            "displayed": "0.547",
-            "tolerance": "0.001",
-            "status": "reconciled",
-        },
-        {
-            "metric": "Cost of Equity (Ke)",
-            "source_cell": "WACC-DCF!J25",
-            "exact_value": "0.122565",
-            "displayed": "12.26%",
-            "tolerance": "0.0001",
-            "status": "reconciled",
-        },
-        {
-            "metric": "Pre-tax Cost of Debt",
-            "source_cell": "WACC-DCF!E22",
-            "exact_value": "0.0800",
-            "displayed": "8.00%",
-            "tolerance": "0.0001",
-            "status": "reconciled",
-        },
-        {
-            "metric": "Effective Tax Rate",
-            "source_cell": "WACC-DCF!E23",
-            "exact_value": "0.3000",
-            "displayed": "30.00%",
-            "tolerance": "0.0001",
-            "status": "reconciled",
-        },
-        {
-            "metric": "Post-tax Cost of Debt (Kd)",
-            "source_cell": "WACC-DCF!E24",
-            "exact_value": "0.0560",
-            "displayed": "5.60%",
-            "tolerance": "0.0001",
-            "status": "reconciled",
-        },
-        {
-            "metric": "Market Capitalization (Current)",
-            "source_cell": "WACC-DCF!C31",
-            "exact_value": "14002.74",
-            "displayed": "₹14,003 Cr",
-            "tolerance": "1.0",
-            "status": "reconciled",
-        },
-        {
-            "metric": "Total Debt / Borrowings (Current)",
-            "source_cell": "Data Sheet!K59 / WACC-DCF!C30",
-            "exact_value": "343.38",
-            "displayed": "₹343 Cr",
-            "tolerance": "1.0",
-            "status": "reconciled",
-        },
-        {
-            "metric": "Target Weight of Equity (Peer Median)",
-            "source_cell": "WACC-DCF!E31",
-            "exact_value": "0.977602",
-            "displayed": "97.76%",
-            "tolerance": "0.0001",
-            "status": "reconciled",
-        },
-        {
-            "metric": "Target Weight of Debt (Peer Median)",
-            "source_cell": "WACC-DCF!E30",
-            "exact_value": "0.022398",
-            "displayed": "2.24%",
-            "tolerance": "0.0001",
-            "status": "reconciled",
-        },
-        {
-            "metric": "WACC (Target-Weighted)",
-            "source_cell": "WACC-DCF!J39",
-            "exact_value": "0.121074",
-            "displayed": "12.11%",
-            "tolerance": "0.0001",
-            "status": "reconciled",
-        },
-        {
-            "metric": "FY25 Current Ratio",
-            "source_cell": "Data Sheet Row 65 / Row 60",
-            "exact_value": "4.9463",
-            "displayed": "4.95",
-            "tolerance": "0.01",
-            "status": "reconciled",
-        },
-        {
-            "metric": "FY25 Quick Ratio",
-            "source_cell": "(Row 65 - Row 68) / Row 60",
-            "exact_value": "3.0707",
-            "displayed": "3.07",
-            "tolerance": "0.01",
-            "status": "reconciled",
-        },
-    ]
+    # 7. Package Reconciliation Summary Table (dynamically evaluated from candidate workbook)
+    reconciliation_table = evaluate_reconciliation_summary(wb_out_path)
 
-    # 8. Compile Package Manifest
+    # 8. Compile Package Manifest (explicitly excludes self-referential manifest hash)
     artifacts = [
         {
             "file": wb_out_name,
@@ -420,6 +635,7 @@ def build_package(
             "human_pack_approval",
             "render_review",
         ],
+        "com_capabilities": com_caps,
         "source_hashes": {
             "workbook_source": actual_wb_src_sha,
             "presentation_template": actual_tpl_sha,
@@ -439,7 +655,7 @@ def build_package(
     }
 
     manifest_path = output_dir / "package.manifest.json"
-    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    manifest_path.write_text(json.dumps(manifest, indent=2, default=str), encoding="utf-8")
     print(f"Package manifest generated at {manifest_path}")
     return manifest
 

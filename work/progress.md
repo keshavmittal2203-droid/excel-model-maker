@@ -39,12 +39,27 @@
 - Rendered slide PNG previews (`slide_1.png` to `slide_5.png`, 1080x1440 portrait) via local PowerPoint COM and 6 worksheet landscape PDFs via Excel COM.
 - Visually reviewed rendered slides: confirmed perfect layout alignment, zero text collisions, crisp WACC tables, correct chart lines/bars, and clean logo suppression.
 
-### 4. Repeatable Build Orchestrator (`build_package.py`)
-- Formal request specification schema `package-request.schema.json` and request configuration `examples/marksans-package.json`.
-- Strict destination directory safety: refuses to clobber existing non-empty output directories without explicit `--force`.
-- Pinned SHA-256 hash enforcement: validates source workbook (`5a1f9af7...`) and presentation template (`9d41ec99...`) prior to execution.
-- Generates comprehensive `package.manifest.json` recording execution timestamp, source hashes, recalculated workbook validation status, financial reconciliation table, and 13 generated artifact hashes.
+### 4. Financial Provenance Ledger & Valuation Snapshot
+- Created `docs/provenance_ledger.json` and `docs/PROVENANCE_LEDGER.md` documenting 18 key metrics across valuation schedules and deck slides.
+- Established explicit valuation snapshot cutoff dates:
+  - Audited historical financials cutoff: FY25 ending 2025-03-31.
+  - Market pricing snapshot: 2025-10-05 (CMP ₹309.10, Market Cap ₹14,002.74 Cr).
+  - Forecast horizon start: FY2026E.
+- Fully traced target capital structure: 5 peer comparables in `peerdata!G5:G9` and `E5:E9`. Median Debt/Capital is 2.2398% (Laurus Labs). Implied D/E is 0.022911. Target debt weight is 2.24%, equity weight is 97.76%.
+- Traced unrounded CAPM derivation: $R_f = 7.30\%$ (10-Yr G-Sec), $R_m = 16.3692\%$ (26-year historical Nifty 50 average 15.15% + 1.22% dividend yield), ERP $= 9.0692\%$, re-levered Hamada beta $= 0.546518$, yielding exact unrounded $K_e = 12.2565\% \to 12.26\%$.
+- Flagged `slide1_chart_revenue_mix` as `unresolved_external_claim` pending primary investor presentation filing.
 
-### 5. Verification & Test Suite
+### 5. Clean-Checkout Reproducibility & Multi-Run Demonstration
+- Decoupled `build_package.py` and `work/generate_wacc_images.py` from hardcoded candidate paths and absolute Windows paths.
+- Added portable font discovery across Windows, Linux, and macOS.
+- Dynamically derived slide preview dimensions from `<p:sldSz>` in presentation template (1080x1440 for portrait ERR-4).
+- Added strict directory safety checks: protects repo roots and system roots; enforces manifest ownership before allowing `--force`.
+- Recorded COM capabilities (`excel_com`, `powerpoint_com`) in the package manifest.
+- Excluded `package.manifest.json` from `output_artifacts` to prevent self-referential hash loops.
+- Successfully executed two independent runs on the same uploaded templates:
+  - **Baseline**: $R_f = 7.30\%$, pre-tax $K_d = 8.00\%$, growth $= 15.00\% \to K_e = 12.26\%$, post-tax $K_d = 5.60\%$, $\text{WACC} = 12.11\%$.
+  - **Scenario B**: $R_f = 8.00\%$, pre-tax $K_d = 9.00\%$, growth $= 12.00\% \to K_e = 12.57\%$, post-tax $K_d = 6.30\%$, $\text{WACC} = 12.43\%$, valuation per share $\downarrow$ from ₹83.87 to ₹70.01, with verified directional effects while historical schedules (Slides 1, 2, 14, 16) remain 100% identical.
+
+### 6. Verification & Test Suite
 - `python verify_sources.py`: All 6 original template hashes verified byte-for-byte.
-- `python -m unittest discover -v`: 56/56 tests passing cleanly across modelmaker, pptmaker, build_package, and reportmaker.
+- `python -m unittest discover -v`: 61/61 tests passing cleanly across modelmaker, pptmaker, build_package, and reportmaker.

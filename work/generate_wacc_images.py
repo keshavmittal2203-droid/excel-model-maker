@@ -21,12 +21,40 @@ WHITE_BG = (255, 255, 255, 255)
 BORDER_COLOR = (0, 0, 0, 255)
 TEXT_COLOR = (0, 0, 0, 255)
 
-try:
-    font_bold = ImageFont.truetype("C:/Windows/Fonts/arialbd.ttf", 15)
-    font_reg = ImageFont.truetype("C:/Windows/Fonts/arial.ttf", 14)
-except Exception:
-    font_bold = ImageFont.load_default()
-    font_reg = ImageFont.load_default()
+def _find_font(bold: bool = False, size: int = 14) -> ImageFont.ImageFont:
+    candidate_names = (
+        ["arialbd.ttf", "LiberationSans-Bold.ttf", "DejaVuSans-Bold.ttf"]
+        if bold
+        else ["arial.ttf", "LiberationSans-Regular.ttf", "DejaVuSans.ttf"]
+    )
+    for name in candidate_names:
+        try:
+            return ImageFont.truetype(name, size)
+        except Exception:
+            pass
+
+    system_font_dirs = [
+        Path("C:/Windows/Fonts"),
+        Path("/usr/share/fonts/truetype"),
+        Path("/Library/Fonts"),
+        Path("/System/Library/Fonts"),
+    ]
+    for sdir in system_font_dirs:
+        if sdir.exists():
+            for name in candidate_names:
+                p = sdir / name
+                if p.exists():
+                    try:
+                        return ImageFont.truetype(str(p), size)
+                    except Exception:
+                        pass
+                matches = list(sdir.glob(f"**/{name}"))
+                if matches:
+                    try:
+                        return ImageFont.truetype(str(matches[0]), size)
+                    except Exception:
+                        pass
+    return ImageFont.load_default()
 
 
 def draw_table(width: int, height: int, rows_data: list[tuple[str, str, tuple, bool, bool]]) -> Image.Image:
@@ -35,6 +63,8 @@ def draw_table(width: int, height: int, rows_data: list[tuple[str, str, tuple, b
     """
     im = Image.new("RGBA", (width, height), (255, 255, 255, 255))
     draw = ImageDraw.Draw(im)
+    font_bold = _find_font(bold=True, size=15)
+    font_reg = _find_font(bold=False, size=14)
     
     num_rows = len(rows_data)
     row_h = height // num_rows
@@ -66,14 +96,32 @@ def draw_table(width: int, height: int, rows_data: list[tuple[str, str, tuple, b
 
 def generate_images(assets_dir: Path = ASSETS_DIR, workbook_path: Path = WB_PATH) -> dict[str, str]:
     assets_dir.mkdir(parents=True, exist_ok=True)
-    pkg = Package(workbook_path.read_bytes())
-    ws = pkg.sheets["WACC-DCF"][1]
+    if not workbook_path.exists():
+        fallback_orig = ROOT / "originals" / "Marksans Keshav.xlsx"
+        if fallback_orig.exists():
+            workbook_path = fallback_orig
+        else:
+            raise FileNotFoundError(f"Workbook not found: {workbook_path}")
 
-    def get_num(cell: str) -> float:
-        c = next((x for x in ws.iter("{http://schemas.openxmlformats.org/spreadsheetml/2006/main}c") if x.get("r") == cell), None)
-        if c is None:
-            raise ValueError(f"Cell {cell} missing in WACC-DCF")
-        return float(c.findtext("{http://schemas.openxmlformats.org/spreadsheetml/2006/main}v") or 0.0)
+    try:
+        import openpyxl
+        wb = openpyxl.load_workbook(str(workbook_path), data_only=True)
+        ws_xl = wb["WACC-DCF"]
+
+        def get_num(cell: str) -> float:
+            val = ws_xl[cell].value
+            if val is None:
+                raise ValueError(f"Cell {cell} missing in WACC-DCF")
+            return float(val)
+    except Exception:
+        pkg = Package(workbook_path.read_bytes())
+        ws = pkg.sheets["WACC-DCF"][1]
+
+        def get_num(cell: str) -> float:
+            c = next((x for x in ws.iter("{http://schemas.openxmlformats.org/spreadsheetml/2006/main}c") if x.get("r") == cell), None)
+            if c is None:
+                raise ValueError(f"Cell {cell} missing in WACC-DCF")
+            return float(c.findtext("{http://schemas.openxmlformats.org/spreadsheetml/2006/main}v") or 0.0)
 
     rf = get_num("J22") * 100.0         # Risk Free Rate % (~7.30%)
     erp = get_num("J23") * 100.0        # ERP % (~9.07%)

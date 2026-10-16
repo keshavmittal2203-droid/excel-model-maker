@@ -735,6 +735,12 @@ def compose_deck(
         if target_type == "picture_replacement":
             if isinstance(raw_val, str):
                 p_asset = Path(raw_val)
+                if not p_asset.exists() and not p_asset.is_absolute():
+                    for base in (Path.cwd(), Path(__file__).resolve().parent):
+                        cand = (base / p_asset).resolve()
+                        if cand.exists():
+                            p_asset = cand
+                            break
                 if not p_asset.exists():
                     raise DeckError(f"Image asset file not found: {raw_val}")
                 new_img_bytes = p_asset.read_bytes()

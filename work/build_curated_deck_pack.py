@@ -339,15 +339,15 @@ curated_values = {
         "source": "Repository Quality Policy: omit unverified corporate logo pending authentic asset",
     },
     "slide23_table_ke": {
-        "value": str(ROOT / "work" / "assets" / "image22_marksans.png"),
+        "value": "work/assets/image22_marksans.png",
         "source": "candidates/Marksans-Recalculated.xlsx [WACC-DCF J22:J25; Rf=7.30%, Rm=16.37%, Beta=0.547, Ke=12.26%]",
     },
     "slide23_table_kd": {
-        "value": str(ROOT / "work" / "assets" / "image23_marksans.png"),
+        "value": "work/assets/image23_marksans.png",
         "source": "candidates/Marksans-Recalculated.xlsx [WACC-DCF E22:E24; PreTax=8.00%, Tax=30.00%, Kd=5.60%]",
     },
     "slide23_table_wacc": {
-        "value": str(ROOT / "work" / "assets" / "image24_marksans.png"),
+        "value": "work/assets/image24_marksans.png",
         "source": "candidates/Marksans-Recalculated.xlsx [WACC-DCF C30:J39; Current Mcap=14,003 Cr, Current Debt=343 Cr, Target Wd=2.24%, Target We=97.76%, WACC=12.11%]",
     },
     "slide23_logo_suppress": {
