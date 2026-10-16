@@ -146,4 +146,7 @@
   - Built `candidates/run_native_baseline_v6/` with 13 artifacts, WACC 12.11%, Slide 14 fully replaced.
   - Built `candidates/run_native_scenario_b_v6/` with 13 artifacts, stressed WACC 12.43%.
   - Generated slide contact sheet `candidates/run_native_baseline_v6/previews/contact_sheet.png`.
+- **Candidate Workbook Binding Sync (Commit 912a53a)**:
+  - Re-synchronized `proposals/err4.deck-pack.proposal.json` workbook binding hashes to match candidate workbook `candidates/Marksans-Recalculated.xlsx` (`ef5d6d5acb66e771abcb23df8151ff7835958d7a3c7e79452d088e314cbddd85`).
+  - Ensures clean clone / out-of-the-box test discovery passes with **76/76 tests** without needing prior dynamic patching.
 
