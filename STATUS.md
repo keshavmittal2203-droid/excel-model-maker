@@ -1,5 +1,9 @@
 # Current Shared Status
 
+## Codex critical safety patch (separate review branch)
+
+Based on Gemini head 8cad0cf; fixes request-controlled output path escape/unlink, Office capability probes attaching/quitting user sessions, nonempty run reuse leaving stale manifests, and cross-run shared asset writes. Added 8 mocked/temp-file safety tests. Selected 65-test non-Office suite passed after source reconstruction; all6 original hashes verified. The native Office end-to-end build tests were intentionally not run during concurrent Gemini work. See docs/CRITICAL_SAFETY_REVIEW.md. No financial-input changes, output certification or main merge.
+
 Updated: 2026-10-16, Asia/Calcutta (`agent/argon-continue`).
 
 ## Implemented & Verified

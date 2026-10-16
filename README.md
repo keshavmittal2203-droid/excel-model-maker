@@ -1,5 +1,9 @@
 # Excel Model Maker
 
+## Package build safety
+
+Use a new output directory for each package run. Output names must be plain `.xlsx` / `.pptx` filenames. Existing files and nonempty run directories are never overwritten, including with the legacy `--force` flag. COM capability checks do not launch Office; PowerPoint export closes only its own presentation, and replacement images remain isolated per run. [Safety review and actual test results](docs/CRITICAL_SAFETY_REVIEW.md).
+
 Build financial models inside approved Excel templates, with traceable inputs and explicit validation evidence. Designed for a shared cloud workspace usable by OpenAI, Gemini, DeepSeek, Claude, and other clients that support HTTP tools or MCP.
 
 It also ships a standalone styled report builder: turn a JSON spec into a professional Excel report with `python cli.py --input data.json --output report.xlsx`.
