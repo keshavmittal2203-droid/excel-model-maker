@@ -4,19 +4,25 @@ Build financial models inside approved Excel templates, with traceable inputs an
 
 ## Current working slice
 
-The Python core inspects XLSX files and fills **existing numeric input cells** from an approved template map. It preserves other ZIP package parts, formula expressions, formatting, charts, and workbook layout. It removes stale formula caches and requests full recalculation. Every generated workbook is a **candidate requiring recalculation**. No production release or error-free claim is implemented.
+The Python core inspects XLSX and PPTX files and fills **existing numeric input cells** (in `.xlsx`) and **approved text/table slots** (in `.pptx`) from explicit template packs:
+- **Excel Composer & Validator (`modelmaker.py` + `validate_workbook.py`)**: Preserves all unrelated ZIP package parts, formula expressions (including shared formulas, array formulas, and 2D what-if `dataTable` structures), formatting, sparklines, charts, and workbook layout. Strips stale formula caches (`<v>`) on `build` and transitions a candidate from `needs_recalculation` to `validated` only after actual engine recalculation, a full formula-error scan, 29 independent accounting/valuation checks, and perturbation/restoration verification.
+- **PowerPoint Inspector & Composer (`pptmaker.py`)**: Inspects `.pptx` templates (182 slides across the 5 reference decks in `originals/`) and builds candidate presentations by replacing mapped shape text, tokens, and table cells while preserving `<a:rPr>` run formatting, slide layouts, masters, charts, and media byte-for-byte. Enforces source citations and optional cell-level bindings to recalculated `.xlsx` workbooks.
 
-This limited first slice stops when a workbook needs unsupported features. Six user source files are catalogued in [SOURCES.md](SOURCES.md); the workbook needs a special-formula adapter and approved input map before generation. Run `python verify_sources.py` to restore and verify the original files after cloning.
+Six user source files are catalogued in [SOURCES.md](SOURCES.md). Run `python verify_sources.py` to restore and verify the original files after cloning.
 
 ## Run
 
 Python 3.11 or later; no third-party runtime dependencies.
 
-    python modelmaker.py inspect template.xlsx
-    python modelmaker.py build --template template.xlsx --pack pack.json --inputs inputs.json --output candidate.xlsx
+    python verify_sources.py
+    python modelmaker.py inspect "originals/Marksans Keshav.xlsx"
+    python modelmaker.py build --template "originals/Marksans Keshav.xlsx" --pack marksans.model-pack.json --inputs marksans.inputs.json --output candidates/Marksans-Candidate.xlsx
+    python modelmaker.py validate candidates/Marksans-Candidate.xlsx --pack marksans.model-pack.json --recalculate --recalculated-output candidates/Marksans-Recalculated.xlsx --perturb-check --template "originals/Marksans Keshav.xlsx" --inputs marksans.inputs.json
+    python pptmaker.py inspect "originals/ERR-4.pptx"
+    python pptmaker.py build --template "originals/ERR-4.pptx" --pack err4.deck-pack.json --inputs err4.inputs.json --workbook candidates/Marksans-Recalculated.xlsx --output candidates/ERR-4-Marksans-Candidate.pptx
     python -m unittest -v
 
-Build prints a JSON manifest containing template/input/output hashes, changed inputs, source references, and status. Save that manifest beside the workbook in cloud storage. Inspect is read-only. Build refuses to overwrite either the template or an existing output.
+Build prints a JSON manifest containing template/input/output hashes, changed inputs/slots, source references, and status. Save that manifest beside the workbook or deck in cloud storage. Inspect is read-only. Build refuses to overwrite either the template or an existing output.
 
 ## Cloud source of truth
 
@@ -30,11 +36,13 @@ Agents can work simultaneously on separate branches, tasks, and build runs. Publ
 
 ## Read next
 
+- [Universal AI Playbook (Excel + PPTX)](AI_PLAYBOOK.md)
 - [Architecture and AI access](ARCHITECTURE.md)
 - [Workbook quality policy](QUALITY.md)
 - [Agent collaboration rules](AGENTS.md)
 - [Roadmap and required inputs](ROADMAP.md)
-- [Model-pack contract](model-pack.schema.json)
+- [Excel model-pack contract](model-pack.schema.json)
+- [PowerPoint deck-pack contract](deck-pack.schema.json)
 - [Input contract](inputs.example.json)
 - [API contract](openapi.json)
 

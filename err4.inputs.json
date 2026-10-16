@@ -1,0 +1,76 @@
+{
+  "values": {
+    "slide1_company_name": {
+      "value": "Marksans Pharma Ltd.",
+      "source": "Marksans Keshav.xlsx (Data Sheet!B1)"
+    },
+    "slide1_ticker": {
+      "value": "NSE : MARKSANS | BSE Code: 524404",
+      "source": "NSE/BSE Listed Company Directory (Marksans Pharma Ltd.)"
+    },
+    "slide1_company_intro": {
+      "value": "Marksans Pharma Ltd. is an Indian pharmaceutical company focused on OTC and prescription formulations across the US, UK, Europe, Australia, and emerging markets.",
+      "source": "Marksans Pharma Annual Report & Equity Research Overview"
+    },
+    "slide2_company_name": {
+      "value": "Marksans Pharma Ltd.",
+      "source": "Marksans Keshav.xlsx (Data Sheet!B1)"
+    },
+    "slide2_ticker": {
+      "value": "NSE : MARKSANS | BSE Code: 524404",
+      "source": "NSE/BSE Listed Company Directory (Marksans Pharma Ltd.)"
+    },
+    "slide2_executive_summary": {
+      "value": "Marksans Pharma Ltd. (NSE: MARKSANS) delivered ₹2,950.94 crore in revenue and ₹417.90 crore in net profit, backed by a net-cash balance sheet (₹989.65 crore cash vs. ₹343.38 crore debt) and 12.11% WACC.",
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!K17, K30, K59, K69; WACC-DCF!J39)"
+    },
+    "slide14_company_name": {
+      "value": "Marksans Pharma Ltd.",
+      "source": "Marksans Keshav.xlsx (Data Sheet!B1)"
+    },
+    "slide14_pbt_fy21": {
+      "value": 247.51,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!G28)"
+    },
+    "slide14_pbt_fy22": {
+      "value": 337.66,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!H28)"
+    },
+    "slide14_pbt_fy23": {
+      "value": 423.53,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!I28)"
+    },
+    "slide14_pbt_fy24": {
+      "value": 503.96,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!J28)"
+    },
+    "slide14_pbt_fy25": {
+      "value": 560.56,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!K28)"
+    },
+    "slide14_cfo_fy25": {
+      "value": 458.13,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!K82)"
+    },
+    "slide14_net_cf_fy25": {
+      "value": 138.35,
+      "source": "Marksans-Recalculated.xlsx (Data Sheet!K85)"
+    },
+    "slide16_table_header": {
+      "value": "Ratio Analysis - MARKSANS PHARMA (Consolidated)",
+      "source": "Marksans Keshav.xlsx (Ratio Analysis)"
+    },
+    "slide16_debt_to_equity_latest": {
+      "value": 0.02,
+      "source": "Marksans-Recalculated.xlsx (WACC-DCF!E34)"
+    },
+    "slide23_company_name": {
+      "value": "Marksans Pharma Ltd.",
+      "source": "Marksans Keshav.xlsx (Data Sheet!B1)"
+    },
+    "slide23_ticker": {
+      "value": "NSE : MARKSANS | BSE Code: 524404",
+      "source": "NSE/BSE Listed Company Directory (Marksans Pharma Ltd.)"
+    }
+  }
+}

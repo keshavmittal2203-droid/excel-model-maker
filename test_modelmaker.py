@@ -334,6 +334,94 @@ class CoreTests(unittest.TestCase):
             self.assertEqual(second.returncode, 2)
             self.assertEqual(output.read_bytes(), before)
 
+    def test_marksans_full_93_input_pack_and_identities(self):
+        root_dir = Path(__file__).resolve().parent
+        marksans_path = root_dir / 'originals' / 'Marksans Keshav.xlsx'
+        pack_path = root_dir / 'marksans.model-pack.json'
+        inputs_path = root_dir / 'marksans.inputs.json'
+        if not marksans_path.exists() or not pack_path.exists():
+            return
+        from validate_workbook import (
+            evaluate_pack_checks,
+            run_equity_research_identities,
+            scan_formula_errors_and_missing_caches,
+        )
+        data = marksans_path.read_bytes()
+        m_pack = read_json(str(pack_path))
+        m_inputs = read_json(str(inputs_path))
+        self.assertEqual(len(m_pack['inputs']), 93)
+        self.assertEqual(len(m_pack['checks']), 19)
+
+        # Verify all 29 independent identities and 19 pack checks hold on baseline cached values
+        orig_pkg = Package(data)
+        errors, missing = scan_formula_errors_and_missing_caches(orig_pkg)
+        self.assertEqual(errors, [])
+        self.assertEqual(missing, [])
+        p_checks = evaluate_pack_checks(orig_pkg, m_pack)
+        self.assertTrue(all(c['passed'] for c in p_checks), p_checks)
+        identities = run_equity_research_identities(orig_pkg)
+        self.assertEqual(len(identities), 29)
+        self.assertTrue(all(i['passed'] for i in identities), identities)
+
+        # Verify compose strips formula caches so un-recalculated output is not prematurely validated
+        cand_bytes, manifest = compose(data, m_pack, m_inputs)
+        self.assertEqual(manifest['status'], 'needs_recalculation')
+        self.assertFalse(manifest['ready'])
+        cand_pkg = Package(cand_bytes)
+        c_errors, c_missing = scan_formula_errors_and_missing_caches(cand_pkg)
+        self.assertEqual(c_errors, [])
+        self.assertGreater(len(c_missing), 100)
+
+    def test_validate_candidate_recalculation_and_perturbation_gates(self):
+        from validate_workbook import validate_candidate
+        clean_sheet = (
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2"><c r="B2" s="1"><v>0.1</v></c><c r="C2" s="2"><f>B2*100</f><v>10</v></c></row>'
+            f'</sheetData></worksheet>'
+        ).encode()
+        clean_data = fixture(sheet=clean_sheet)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            template = root / 'template.xlsx'
+            cand = root / 'candidate.xlsx'
+            recalc = root / 'recalculated.xlsx'
+            pack_file = root / 'pack.json'
+            inputs_file = root / 'inputs.json'
+
+            template.write_bytes(clean_data)
+            p = pack(clean_data)
+            p['checks'][0]['expected'] = 15
+            pack_file.write_text(json.dumps(p, default=float))
+            inputs_file.write_text(json.dumps(inputs(0.15), default=float))
+
+            cand_bytes, _ = self.build(data=clean_data, pack=p, inputs=inputs(0.15))
+            cand.write_bytes(cand_bytes)
+
+            # Without recalculation, candidate remains needs_recalculation (ready=False)
+            unrecalc_report = validate_candidate(cand, pack_file, recalculate=False)
+            self.assertEqual(unrecalc_report['status'], 'needs_recalculation')
+            self.assertFalse(unrecalc_report['ready'])
+            self.assertGreater(unrecalc_report['uncalculated_formula_count'], 0)
+
+            # With recalculation and perturbation check, candidate transitions to validated (ready=True)
+            valid_report = validate_candidate(
+                cand,
+                pack_file,
+                recalculate=True,
+                recalculated_output=recalc,
+                perturb_check=True,
+                template_path=template,
+                inputs_path=inputs_file,
+                use_python_recalc_fallback=True,
+            )
+            self.assertEqual(valid_report['status'], 'validated')
+            self.assertTrue(valid_report['ready'])
+            self.assertEqual(valid_report['formula_error_count'], 0)
+            self.assertEqual(valid_report['uncalculated_formula_count'], 0)
+            self.assertTrue(valid_report['perturbation_and_restoration']['passed'])
+            self.assertTrue(valid_report['perturbation_and_restoration']['restoration_byte_identical'])
+
 
 if __name__ == '__main__':
     unittest.main()
+

@@ -537,18 +537,45 @@ def main() -> int:
     build = commands.add_parser("build")
     for name in ("template", "pack", "inputs", "output"):
         build.add_argument("--" + name, required=True)
+    validate = commands.add_parser("validate")
+    validate.add_argument("workbook")
+    validate.add_argument("--pack", required=True)
+    validate.add_argument("--recalculate", action="store_true")
+    validate.add_argument("--recalculated-output")
+    validate.add_argument("--perturb-check", action="store_true")
+    validate.add_argument("--template")
+    validate.add_argument("--inputs")
+    validate.add_argument("--report")
     args = parser.parse_args()
     try:
-        data = Path(args.template).read_bytes()
         if args.command == "inspect":
+            data = Path(args.template).read_bytes()
             print(json.dumps(Package(data).summary(), indent=2))
-        else:
+        elif args.command == "build":
+            data = Path(args.template).read_bytes()
             if Path(args.template).resolve() == Path(args.output).resolve():
                 raise ModelError("Output must be different from the original template")
             output, manifest = compose(data, read_json(args.pack), read_json(args.inputs))
             with Path(args.output).open("xb") as destination:
                 destination.write(output)
             print(json.dumps(manifest, indent=2))
+        elif args.command == "validate":
+            from validate_workbook import validate_candidate
+
+            report = validate_candidate(
+                workbook_path=Path(args.workbook),
+                pack_path=Path(args.pack),
+                recalculate=args.recalculate,
+                recalculated_output=Path(args.recalculated_output) if args.recalculated_output else None,
+                perturb_check=args.perturb_check,
+                template_path=Path(args.template) if args.template else None,
+                inputs_path=Path(args.inputs) if args.inputs else None,
+            )
+            text = json.dumps(report, indent=2)
+            print(text)
+            if args.report:
+                Path(args.report).write_text(text + "\n", encoding="utf-8")
+            return 0 if report["ready"] else 1
         return 0
     except (ModelError, OSError, KeyError, TypeError) as exc:
         print(json.dumps({"status": "blocked", "ready": False, "error": str(exc)}))
@@ -557,3 +584,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+  "approval": {
+    "reviewer": "Equity Research Deck Pack Verification",
+    "approved_at": "2026-10-16T00:00:00Z",
+    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba"
+  },
+  "slots": [
+    {
+      "name": "slide1_company_name",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 40,
+      "shape_name": "object 40",
+      "description": "Cover header company name on Slide 1"
+    },
+    {
+      "name": "slide1_ticker",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 41,
+      "shape_name": "object 41",
+      "description": "Exchange ticker banner on Slide 1"
+    },
+    {
+      "name": "slide1_company_intro",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 7,
+      "shape_name": "object 18",
+      "paragraph_index": 1,
+      "description": "Company introduction body paragraph on Slide 1"
+    },
+    {
+      "name": "slide2_company_name",
+      "slide": 2,
+      "target_type": "shape_token",
+      "shape_id": 40,
+      "shape_name": "object 40",
+      "token": "Sun Pharmaceutical Industries Ltd.",
+      "description": "Header company name token on Slide 2"
+    },
+    {
+      "name": "slide2_ticker",
+      "slide": 2,
+      "target_type": "shape_text",
+      "shape_id": 41,
+      "shape_name": "object 41",
+      "description": "Exchange ticker banner on Slide 2"
+    },
+    {
+      "name": "slide2_executive_summary",
+      "slide": 2,
+      "target_type": "shape_text",
+      "shape_id": 7,
+      "shape_name": "object 18",
+      "description": "Executive summary overview paragraph on Slide 2"
+    },
+    {
+      "name": "slide14_company_name",
+      "slide": 14,
+      "target_type": "shape_text",
+      "shape_id": 40,
+      "shape_name": "object 40",
+      "description": "Header company name on Slide 14 (Cash Flow Statement Analysis)"
+    },
+    {
+      "name": "slide14_pbt_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 4,
+      "description": "Profit before tax (INR Cr) col 4 bound to Data Sheet!G28",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "G28",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01
+      }
+    },
+    {
+      "name": "slide14_pbt_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 5,
+      "description": "Profit before tax (INR Cr) col 5 bound to Data Sheet!H28",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "H28",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01
+      }
+    },
+    {
+      "name": "slide14_pbt_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 6,
+      "description": "Profit before tax (INR Cr) col 6 bound to Data Sheet!I28",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "I28",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01
+      }
+    },
+    {
+      "name": "slide14_pbt_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 7,
+      "description": "Profit before tax (INR Cr) col 7 bound to Data Sheet!J28",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "J28",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01
+      }
+    },
+    {
+      "name": "slide14_pbt_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 8,
+      "description": "Profit before tax (INR Cr) col 8 bound to Data Sheet!K28",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "K28",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01
+      }
+    },
+    {
+      "name": "slide14_cfo_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 8,
+      "description": "Cash From Operating Activities (INR Cr) col 8 bound to Data Sheet!K82",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "K82",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 8,
+      "description": "Net Cash Flow (INR Cr) col 8 bound to Data Sheet!K85",
+      "workbook_binding": {
+        "sheet": "Data Sheet",
+        "cell": "K85",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01
+      }
+    },
+    {
+      "name": "slide16_table_header",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 0,
+      "col": 0,
+      "description": "Ratio Analysis table title cell on Slide 16"
+    },
+    {
+      "name": "slide16_debt_to_equity_latest",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 8,
+      "description": "Target Debt-to-Equity ratio bound to WACC-DCF!E34",
+      "workbook_binding": {
+        "sheet": "WACC-DCF",
+        "cell": "E34",
+        "scale": 1.0,
+        "decimals": 2,
+        "abs_tolerance": 0.01
+      }
+    },
+    {
+      "name": "slide23_company_name",
+      "slide": 23,
+      "target_type": "shape_token",
+      "shape_id": 22,
+      "shape_name": "object 40",
+      "token": "Sun Pharmaceutical Industries Ltd.",
+      "description": "Header company name on Slide 23 (DCF Valuation - WACC)"
+    },
+    {
+      "name": "slide23_ticker",
+      "slide": 23,
+      "target_type": "shape_text",
+      "shape_id": 23,
+      "shape_name": "object 41",
+      "description": "Exchange ticker banner on Slide 23"
+    }
+  ]
+}

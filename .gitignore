@@ -11,6 +11,8 @@ __pycache__/
 *.mp4
 artifacts/
 scratch/
+candidates/
 *.manifest.json
 
 # Binary source/output assets belong in versioned cloud object storage.
+
