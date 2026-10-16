@@ -1,5 +1,11 @@
 # Excel Model Maker
 
+## User template workflow
+
+Financial models should follow the uploaded workbook; presentations should use the uploaded decks as their design sources. Read [Template-first delivery](docs/TEMPLATE_FIRST.md) before choosing a generator. The standalone report builder below is a separate tool, not the default financial-model route. [User-supplied modelling course](docs/COURSE_REFERENCE.md) records the YouTube playlist and the evidence needed to turn lessons into reviewed model rules.
+
+`python template_plan.py --request template-workflow/excel-request.example.json` produces a preflight content map, not a workbook. A matching PPT example is provided. Both are fictional examples; planning never certifies an output. Universal Excel derivatives and cross-deck assembly remain future adapters.
+
 Build financial models inside approved Excel templates, with traceable inputs and explicit validation evidence. Designed for a shared cloud workspace usable by OpenAI, Gemini, DeepSeek, Claude, and other clients that support HTTP tools or MCP.
 
 It also ships a standalone styled report builder: turn a JSON spec into a professional Excel report with `python cli.py --input data.json --output report.xlsx`.

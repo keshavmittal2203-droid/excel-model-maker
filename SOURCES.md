@@ -1,5 +1,9 @@
 # User supplied templates and references
 
+## Financial modelling course supplied 2026-10-16
+
+[Learn Financial Modelling - Step by Step](https://www.youtube.com/playlist?list=PL3uUjzLk6PulhRop_ffNeHyK0kprzO4cT). The user identifies this as the detailed method behind the uploaded workbook. Playlist title/link checked; lessons and transcripts have not been reviewed. See [course onboarding and citation rules](docs/COURSE_REFERENCE.md). This is a linked reference, not a new binary asset or a verified training corpus.
+
 Received 2026-10-16: one Excel workbook and five PowerPoint decks (six files total).
 
 - `originals/Marksans Keshav.xlsx`: exact workbook template and completed model reference; 17 sheets. Not yet approved as financially correct.

@@ -1,0 +1,16 @@
+{
+  "kind": "ppt",
+  "mode": "exact_template",
+  "template": "originals/ERR-4.pptx",
+  "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+  "items": [
+    {
+      "id": "fictional_company_name",
+      "value": "Example Pharma Ltd.",
+      "source": "FICTIONAL planning example only; no real company claim",
+      "units": "text",
+      "period": "not applicable to fictional cover title",
+      "destination": {"slide": 1, "shape_id": 40, "max_characters": 45}
+    }
+  ]
+}

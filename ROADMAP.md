@@ -1,5 +1,13 @@
 # Delivery roadmap
 
+## User priority: template fidelity and reusable methodology
+
+1. Exact uploaded Excel template and uploaded PPT layouts are the default. Use docs/TEMPLATE_FIRST.md and template_plan.py to propose destinations before engine composition.
+2. Safely support company/date text labels, complete stale-company-content review, hash-bound workbook-to-deck values, and rendered overflow checks.
+3. Implement lineage-preserving reuse/reordering of uploaded slides; no external deck designs.
+4. Review and cite actual lessons from the user's [modelling course](docs/COURSE_REFERENCE.md); derive schedule rules and independent worked acceptance examples.
+5. Onboard explicitly versioned universal Excel model families derived from those references; keep unsupported business types blocked. A universal template is not implemented yet.
+
 ## Current slice
 
 - Development core: inspect templates, validate reviewed input maps, fill mapped existing numeric cells, preserve package parts, remove stale caches, request recalculation, emit provenance manifest.
