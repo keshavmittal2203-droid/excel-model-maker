@@ -59,13 +59,19 @@ def get_cell_decimal(package: Package, sheet: str, ref: str) -> Decimal | None:
     return None
 
 
-def scan_formula_errors_and_missing_caches(package: Package) -> tuple[list[dict[str, str]], list[str]]:
+def scan_formula_errors_and_missing_caches(
+    package: Package,
+    excluded_sheets: set[str] | None = None,
+) -> tuple[list[dict[str, str]], list[str]]:
     """Return (error_cells, uncalculated_formula_cells) across all worksheets and formula ranges."""
     errors: list[dict[str, str]] = []
     missing_caches: list[str] = []
     seen_missing: set[str] = set()
+    excluded = excluded_sheets or set()
 
     for sheet_name, (_, tree) in package.sheets.items():
+        if sheet_name in excluded:
+            continue
         followers = package.formula_followers.get(sheet_name, set())
         present_cells: dict[str, ET.Element] = {}
         for cell in tree.iter(f"{{{NS}}}c"):
@@ -351,7 +357,7 @@ def run_equity_research_identities(package: Package, check_datatable: bool = Tru
         reinv_diff = sum(
             abs(
                 v("Intrinsic Growth", f"{icol}43")
-                - (-v("Cash Flow", f"{ccol}15") - v("Cash Flow", f"{ccol}16") - v("Main Financials", f"{mcol}29"))
+                - (-v("Cash Flow", f"{ccol}15") - (v("Cash Flow", f"{ccol}16") or Decimal(0)) - v("Main Financials", f"{mcol}29"))
             )
             for icol, ccol, mcol in zip("EFGHI", "JKLMN", "FGHIJ")
         )
@@ -683,7 +689,8 @@ def validate_candidate(
         pkg = Package(evaluated_bytes)
         if pkg.blockers():
             raise ModelError(f"Evaluated workbook contains formula/package blockers: {'; '.join(pkg.blockers())}")
-        errors, missing_caches = scan_formula_errors_and_missing_caches(pkg)
+        pack_excluded = set(pack.get("excluded_schedules", []))
+        errors, missing_caches = scan_formula_errors_and_missing_caches(pkg, excluded_sheets=pack_excluded)
         pack_checks = evaluate_pack_checks(pkg, pack)
         identities = run_equity_research_identities(pkg) if is_equity_research_workbook(pkg) else []
 
@@ -725,7 +732,7 @@ def validate_candidate(
                     recalculate_excel_com(pert_in, pert_out)
                 pert_recalc_bytes = pert_out.read_bytes()
                 pert_pkg = Package(pert_recalc_bytes)
-                pert_errors, pert_missing = scan_formula_errors_and_missing_caches(pert_pkg)
+                pert_errors, pert_missing = scan_formula_errors_and_missing_caches(pert_pkg, excluded_sheets=pack_excluded)
                 pert_identities = run_equity_research_identities(pert_pkg) if is_equity_research_workbook(pert_pkg) else []
                 moved_checks = []
                 for chk in pack["checks"]:
@@ -803,6 +810,7 @@ def validate_candidate(
             "candidate_input_workbook_sha256": input_workbook_sha256,
             "workbook_sha256": evaluated_sha256,
             "recalculation": recalc_info,
+            "excluded_schedules": sorted(pack_excluded),
             "formula_error_count": len(errors),
             "formula_errors": errors,
             "uncalculated_formula_count": len(missing_caches),

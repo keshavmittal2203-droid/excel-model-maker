@@ -39,42 +39,42 @@ CIPLA_FINANCIALS = {
         "sales_12m": 28324.40,
         "pat_12m": 3355.68,
     },
-    # Columns C to J (FY18 to FY25), Col K is TTM / FY26
+    # Columns B to J (FY17 to FY25), Col K is TTM / FY26
     "pnl": {
-        "sales": [15219.00, 16362.00, 17132.00, 19160.00, 21763.00, 22753.00, 25774.00, 27548.00, 28324.40],
-        "raw_material": [5350.00, 5620.00, 5840.00, 6420.00, 7250.00, 7580.00, 8420.00, 8950.00, 9200.00],
-        "change_in_inv": [-120.00, 80.00, -210.00, -150.00, 180.00, -120.00, 90.00, 140.00, 150.00],
-        "power_and_fuel": [410.00, 440.00, 460.00, 490.00, 530.00, 560.00, 610.00, 650.00, 670.00],
-        "other_mfr_exp": [980.00, 1050.00, 1100.00, 1200.00, 1340.00, 1410.00, 1540.00, 1630.00, 1680.00],
-        "employee_cost": [2670.00, 2860.00, 3040.00, 3320.00, 3620.00, 3850.00, 4280.00, 4580.00, 4710.00],
-        "selling_admin": [2890.00, 3020.00, 3180.00, 3380.00, 3980.00, 4120.00, 4390.00, 4720.00, 4850.00],
-        "other_exp": [213.00, 195.00, 241.00, 251.00, 351.00, 363.00, 153.00, -245.00, 933.21],
-        "other_income": [358.00, 477.00, 591.00, 436.00, 462.00, 475.00, 686.00, 742.00, 780.00],
-        "depreciation": [1323.00, 1326.00, 1175.00, 1068.00, 1052.00, 1172.00, 1051.00, 1107.00, 1262.50],
-        "interest": [170.00, 168.00, 197.00, 161.00, 106.00, 110.00, 112.00, 98.00, 105.00],
-        "pbt": [1691.00, 2080.00, 2400.00, 3456.00, 3816.00, 4183.00, 5814.00, 6660.00, 5820.00],
-        "tax": [279.00, 588.00, 853.00, 1051.00, 1299.00, 1381.00, 1692.00, 1787.00, 1667.00],
-        "net_profit": [1412.00, 1492.00, 1547.00, 2405.00, 2517.00, 2802.00, 4122.00, 4873.00, 4153.00],
-        "dividend": [242.00, 242.00, 242.00, 404.00, 404.00, 404.00, 1048.00, 1048.00, 1048.00],
+        "sales": [14630.00, 15219.00, 16362.00, 17132.00, 19160.00, 21763.00, 22753.00, 25774.00, 27548.00, 28324.40],
+        "raw_material": [5385.00, 5350.00, 5620.00, 5840.00, 6420.00, 7250.00, 7580.00, 8420.00, 8950.00, 9200.00],
+        "change_in_inv": [140.00, -120.00, 80.00, -210.00, -150.00, 180.00, -120.00, 90.00, 140.00, 150.00],
+        "power_and_fuel": [395.00, 410.00, 440.00, 460.00, 490.00, 530.00, 560.00, 610.00, 650.00, 670.00],
+        "other_mfr_exp": [920.00, 980.00, 1050.00, 1100.00, 1200.00, 1340.00, 1410.00, 1540.00, 1630.00, 1680.00],
+        "employee_cost": [2470.00, 2670.00, 2860.00, 3040.00, 3320.00, 3620.00, 3850.00, 4280.00, 4580.00, 4710.00],
+        "selling_admin": [2710.00, 2890.00, 3020.00, 3180.00, 3380.00, 3980.00, 4120.00, 4390.00, 4720.00, 4850.00],
+        "other_exp": [203.00, 213.00, 195.00, 241.00, 251.00, 351.00, 363.00, 153.00, -245.00, 933.21],
+        "other_income": [232.00, 358.00, 477.00, 591.00, 436.00, 462.00, 475.00, 686.00, 742.00, 780.00],
+        "depreciation": [1150.00, 1323.00, 1326.00, 1175.00, 1068.00, 1052.00, 1172.00, 1051.00, 1107.00, 1262.50],
+        "interest": [159.00, 170.00, 168.00, 197.00, 161.00, 106.00, 110.00, 112.00, 98.00, 105.00],
+        "pbt": [1222.00, 1691.00, 2080.00, 2400.00, 3456.00, 3816.00, 4183.00, 5814.00, 6660.00, 5820.00],
+        "tax": [216.00, 279.00, 588.00, 853.00, 1051.00, 1299.00, 1381.00, 1692.00, 1787.00, 1667.00],
+        "net_profit": [1006.00, 1412.00, 1492.00, 1547.00, 2405.00, 2517.00, 2802.00, 4122.00, 4873.00, 4153.00],
+        "dividend": [161.00, 242.00, 242.00, 242.00, 404.00, 404.00, 404.00, 1048.00, 1048.00, 1048.00],
     },
     "balance_sheet": {
-        "equity_capital": [161.58, 161.58, 161.58, 161.58, 161.58, 161.58, 161.58, 161.58, 161.58],
-        "reserves": [14068.00, 14896.00, 15602.00, 18165.00, 20680.00, 23246.00, 26545.00, 31032.00, 32500.00],
-        "borrowings": [4098.00, 4316.00, 2816.00, 2014.00, 1056.00, 803.00, 559.00, 438.00, 613.77],
-        "other_liab": [3467.00, 3822.00, 4028.00, 4514.00, 5204.00, 5253.00, 5452.00, 5755.00, 6000.00],
-        "net_block": [8820.00, 8760.00, 8650.00, 8420.00, 8510.00, 8680.00, 8920.00, 9250.00, 9500.00],
-        "cwip": [512.00, 480.00, 410.00, 380.00, 420.00, 450.00, 480.00, 510.00, 530.00],
-        "investments": [1820.00, 1940.00, 2100.00, 2450.00, 3120.00, 3850.00, 4620.00, 5480.00, 5700.00],
-        "receivables": [3102.00, 3954.00, 3891.00, 3446.00, 3424.00, 4057.00, 4520.00, 4890.00, 5020.00],
-        "inventory": [4044.00, 3964.00, 4378.00, 4669.00, 5350.00, 5156.00, 5432.00, 5820.00, 6010.00],
-        "cash_bank": [1328.00, 619.00, 1003.00, 1320.00, 1930.00, 2150.00, 2860.00, 3410.00, 1307.42],
+        "equity_capital": [161.47, 161.58, 161.58, 161.58, 161.58, 161.58, 161.58, 161.58, 161.58, 161.58],
+        "reserves": [12410.00, 14068.00, 14896.00, 15602.00, 18165.00, 20680.00, 23246.00, 26545.00, 31032.00, 32500.00],
+        "borrowings": [4113.00, 4098.00, 4316.00, 2816.00, 2014.00, 1056.00, 803.00, 559.00, 438.00, 613.77],
+        "other_liab": [3410.00, 3467.00, 3822.00, 4028.00, 4514.00, 5204.00, 5253.00, 5452.00, 5755.00, 6000.00],
+        "net_block": [7850.00, 8820.00, 8760.00, 8650.00, 8420.00, 8510.00, 8680.00, 8920.00, 9250.00, 9500.00],
+        "cwip": [620.00, 512.00, 480.00, 410.00, 380.00, 420.00, 450.00, 480.00, 510.00, 530.00],
+        "investments": [1550.00, 1820.00, 1940.00, 2100.00, 2450.00, 3120.00, 3850.00, 4620.00, 5480.00, 5700.00],
+        "receivables": [2840.00, 3102.00, 3954.00, 3891.00, 3446.00, 3424.00, 4057.00, 4520.00, 4890.00, 5020.00],
+        "inventory": [3760.00, 4044.00, 3964.00, 4378.00, 4669.00, 5350.00, 5156.00, 5432.00, 5820.00, 6010.00],
+        "cash_bank": [1328.00, 1328.00, 619.00, 1003.00, 1320.00, 1930.00, 2150.00, 2860.00, 3410.00, 1307.42],
     },
     "cash_flow": {
-        "cfo": [1463.00, 1691.00, 3068.00, 3755.00, 3326.00, 3238.00, 4134.00, 5005.00, 4850.00],
-        "cfi": [-834.00, -1688.00, 114.00, -2374.00, -1858.00, -2376.00, -2982.00, -3682.00, -3500.00],
-        "cff": [-729.00, -103.00, -3182.00, -1240.00, -1600.00, -958.00, -1200.00, -1293.00, -1320.00],
-        "net_cf": [-100.00, -100.00, 0.00, 141.00, -132.00, -96.00, -48.00, 30.00, 30.00],
-        "fixed_assets_purchased": [-850.00, -920.00, -980.00, -1020.00, -1080.00, -1140.00, -1210.00, -1240.00, -1250.00],
+        "cfo": [1463.00, 1463.00, 1691.00, 3068.00, 3755.00, 3326.00, 3238.00, 4134.00, 5005.00, 4850.00],
+        "cfi": [-834.00, -834.00, -1688.00, 114.00, -2374.00, -1858.00, -2376.00, -2982.00, -3682.00, -3500.00],
+        "cff": [-729.00, -729.00, -103.00, -3182.00, -1240.00, -1600.00, -958.00, -1200.00, -1293.00, -1320.00],
+        "net_cf": [-100.00, -100.00, -100.00, 0.00, 141.00, -132.00, -96.00, -48.00, 30.00, 30.00],
+        "fixed_assets_purchased": [-850.00, -850.00, -920.00, -980.00, -1020.00, -1080.00, -1140.00, -1210.00, -1240.00, -1250.00],
     },
     "wacc": {
         "pre_tax_kd": 0.075,
@@ -126,8 +126,8 @@ def adapt_workbook_for_cipla(output_path: Path) -> dict[str, Any]:
     # Implied share count B6 is formula =IF(B9>0, B9/B8, 0) -> recalculates 80.79 Cr
     record("Data Sheet", "B6", ds["B6"].value, ds["B6"].value, "recalculated", "Implied share count = Market Cap / Price = 80.79 Cr shares")
 
-    # Update columns C to K (columns 3 to 11 in 1-based indexing)
-    cols = ["C", "D", "E", "F", "G", "H", "I", "J", "K"]
+    # Update columns B to K (columns 2 to 11 in 1-based indexing: FY17 to FY25 + TTM)
+    cols = ["B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
     pnl = CIPLA_FINANCIALS["pnl"]
     pnl_rows = [
         (17, "sales", "Revenue from operations"),
@@ -234,42 +234,51 @@ def adapt_workbook_for_cipla(output_path: Path) -> dict[str, Any]:
             record("Data Sheet", cell_ref, old_v, new_v, "replaced_with_cipla_data", f"Cipla {desc} for {col_letter} period")
             ds[cell_ref].value = new_v
 
+    # Clear unevidenced quarterly data from Data Sheet rows 42 to 50
+    for r_q in range(42, 51):
+        for col_letter in cols:
+            old_q = ds[f"{col_letter}{r_q}"].value
+            if old_q is not None:
+                record("Data Sheet", f"{col_letter}{r_q}", old_q, None, "cleared_marksans_carryover", "Clear Marksans unevidenced quarterly data")
+                ds[f"{col_letter}{r_q}"].value = None
+
     # 2. Adapt 'Cash Flow' sheet
     cf_ws = wb["Cash Flow"]
     # Operating activities rows
     for col_idx, col_letter in enumerate(["F", "G", "H", "I", "J", "K", "L", "M"]):
-        # Cols F-M correspond to FY18-FY25
+        # Cols F-M correspond to FY18-FY25 (array indices 1 to 8)
+        arr_idx = col_idx + 1
         # Row 5: CFO
-        cf_cfo = cf_data["cfo"][col_idx]
+        cf_cfo = cf_data["cfo"][arr_idx]
         cf_ws[f"{col_letter}5"].value = cf_cfo
         # Row 6: Operating profit / PBT
-        cf_ws[f"{col_letter}6"].value = pnl["pbt"][col_idx]
+        cf_ws[f"{col_letter}6"].value = pnl["pbt"][arr_idx]
         # Row 13: Direct taxes
-        cf_ws[f"{col_letter}13"].value = -pnl["tax"][col_idx]
+        cf_ws[f"{col_letter}13"].value = -pnl["tax"][arr_idx]
         # Row 14: CFI
-        cf_ws[f"{col_letter}14"].value = cf_data["cfi"][col_idx]
+        cf_ws[f"{col_letter}14"].value = cf_data["cfi"][arr_idx]
         # Row 15: Fixed assets purchased (CapEx)
-        cf_ws[f"{col_letter}15"].value = cf_data["fixed_assets_purchased"][col_idx]
+        cf_ws[f"{col_letter}15"].value = cf_data["fixed_assets_purchased"][arr_idx]
         # Row 23: CFF
-        cf_ws[f"{col_letter}23"].value = cf_data["cff"][col_idx]
+        cf_ws[f"{col_letter}23"].value = cf_data["cff"][arr_idx]
         # Row 27: Finance costs (Interest paid)
-        cf_ws[f"{col_letter}27"].value = -pnl["interest"][col_idx]
+        cf_ws[f"{col_letter}27"].value = -pnl["interest"][arr_idx]
         # Row 28: Dividends paid
-        cf_ws[f"{col_letter}28"].value = -pnl["dividend"][col_idx]
+        cf_ws[f"{col_letter}28"].value = -pnl["dividend"][arr_idx]
         # Row 31: Net Cash Flow
-        cf_ws[f"{col_letter}31"].value = cf_data["net_cf"][col_idx]
+        cf_ws[f"{col_letter}31"].value = cf_data["net_cf"][arr_idx]
 
         record("Cash Flow", f"{col_letter}5", None, cf_cfo, "replaced_with_cipla_data", "Cipla CFO in detailed cash flow sheet")
-        record("Cash Flow", f"{col_letter}14", None, cf_data["cfi"][col_idx], "replaced_with_cipla_data", "Cipla CFI in detailed cash flow sheet")
-        record("Cash Flow", f"{col_letter}23", None, cf_data["cff"][col_idx], "replaced_with_cipla_data", "Cipla CFF in detailed cash flow sheet")
-        record("Cash Flow", f"{col_letter}31", None, cf_data["net_cf"][col_idx], "replaced_with_cipla_data", "Cipla Net Cash Flow in detailed cash flow sheet")
+        record("Cash Flow", f"{col_letter}14", None, cf_data["cfi"][arr_idx], "replaced_with_cipla_data", "Cipla CFI in detailed cash flow sheet")
+        record("Cash Flow", f"{col_letter}23", None, cf_data["cff"][arr_idx], "replaced_with_cipla_data", "Cipla CFF in detailed cash flow sheet")
+        record("Cash Flow", f"{col_letter}31", None, cf_data["net_cf"][arr_idx], "replaced_with_cipla_data", "Cipla Net Cash Flow in detailed cash flow sheet")
 
-        # Eradicate residual Marksans data from detailed cash flow sub-rows:
+        # Eradicate residual Marksans data from detailed cash flow sub-rows by setting to None (empty cell):
         # Rows 7-11 (WC breakdown), 12 (WC changes), 16-22 (investing breakdown), 24-26 (borrowings), 29-30 (financing breakdown)
         for r_clear in [7, 8, 9, 10, 11, 12, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 29, 30]:
             old_val = cf_ws[f"{col_letter}{r_clear}"].value
-            cf_ws[f"{col_letter}{r_clear}"].value = 0.0
-            record("Cash Flow", f"{col_letter}{r_clear}", old_val, 0.0, "cleared_marksans_carryover", "Clear unevidenced historical sub-schedule cell")
+            cf_ws[f"{col_letter}{r_clear}"].value = None
+            record("Cash Flow", f"{col_letter}{r_clear}", old_val, None, "cleared_marksans_carryover", "Clear unevidenced historical sub-schedule cell to None")
 
     # 3. Adapt 'WACC-DCF' sheet
     wacc_ws = wb["WACC-DCF"]
@@ -339,24 +348,30 @@ def adapt_workbook_for_cipla(output_path: Path) -> dict[str, Any]:
     ratio_ws["B3"].value = "Ratio Analysis of - Cipla Ltd."
 
     beta_ws = wb["Beta"]
-    record("Beta", "B4", beta_ws["B4"].value, "Cipla weekly returns (Unpopulated regression series; flat CMP ₹1,301.00; valuation uses peer Hamada beta in WACC-DCF)", "replaced_with_cipla_data", "Explicitly mark weekly regression series unpopulated")
-    beta_ws["B4"].value = "Cipla weekly returns (Unpopulated regression series; flat CMP ₹1,301.00; valuation uses peer Hamada beta in WACC-DCF)"
-    # Replace Marksans weekly prices in Column C (rows 8 to 112) with Cipla CMP
+    record("Beta", "B4", beta_ws["B4"].value, "Cipla weekly returns (Historical regression series unavailable; schedule excluded; valuation uses peer Hamada beta in WACC-DCF)", "replaced_with_cipla_data", "Explicitly mark weekly regression series unavailable and schedule excluded")
+    beta_ws["B4"].value = "Cipla weekly returns (Historical regression series unavailable; schedule excluded; valuation uses peer Hamada beta in WACC-DCF)"
+    # Eradicate Marksans weekly prices in Column C (rows 8 to 114) by setting to None (empty cell)
     for r in range(8, 115):
         old_p = beta_ws[f"C{r}"].value
         if old_p is not None:
-            record("Beta", f"C{r}", old_p, CIPLA_FINANCIALS["metadata"]["current_price"], "replaced_with_cipla_data", "Populate Cipla CMP to eradicate Marksans weekly prices")
-            beta_ws[f"C{r}"].value = CIPLA_FINANCIALS["metadata"]["current_price"]
+            record("Beta", f"C{r}", old_p, None, "cleared_marksans_carryover", "Eradicate Marksans historical weekly price; leave cell unpopulated")
+            beta_ws[f"C{r}"].value = None
 
     # 8. Adapt 'BS' sheet columns J to N (FY22 to FY26) to eliminate Marksans carryover for Intrinsic Growth
     bs_sheet = wb["BS"]
-    # J=FY22 (col 4 in arrays), K=FY23 (5), L=FY24 (6), M=FY25 (7), N=FY26 (8)
-    bs_cols = [("J", 4), ("K", 5), ("L", 6), ("M", 7), ("N", 8)]
-    for col_letter, idx in bs_cols:
+    # J=FY22 (col 5 in arrays), K=FY23 (6), L=FY24 (7), M=FY25 (8), N=FY26 (9, TTM snapshot / forward estimate)
+    bs_cols = [
+        ("J", 5, "FY22"),
+        ("K", 6, "FY23"),
+        ("L", 7, "FY24"),
+        ("M", 8, "FY25"),
+        ("N", 9, "FY26 forward estimate / TTM snapshot"),
+    ]
+    for col_letter, idx, period_label in bs_cols:
         # Trade Payables (Row 13)
         old_tp = bs_sheet[f"{col_letter}13"].value
         bs_sheet[f"{col_letter}13"].value = bs_data["other_liab"][idx]
-        record("BS", f"{col_letter}13", old_tp, bs_data["other_liab"][idx], "replaced_with_cipla_data", f"Cipla payables/other liabilities for {col_letter}")
+        record("BS", f"{col_letter}13", old_tp, bs_data["other_liab"][idx], "replaced_with_cipla_data", f"Cipla payables/other liabilities for {col_letter} ({period_label})")
 
         bs_sheet[f"{col_letter}14"].value = 0.0
         bs_sheet[f"{col_letter}15"].value = 0.0
@@ -369,7 +384,7 @@ def adapt_workbook_for_cipla(output_path: Path) -> dict[str, Any]:
             bs_sheet[f"{col_letter}{r_clear}"].value = 0.0
         bs_sheet[f"{col_letter}28"].value = bs_data["net_block"][idx]
         bs_sheet[f"{col_letter}29"].value = 0.0
-        record("BS", f"{col_letter}21", None, bs_data["net_block"][idx], "replaced_with_cipla_data", f"Cipla Net Block for {col_letter}")
+        record("BS", f"{col_letter}21", None, bs_data["net_block"][idx], "replaced_with_cipla_data", f"Cipla Net Block for {col_letter} ({period_label})")
 
         # CWIP (Row 30) & Investments (Row 31)
         bs_sheet[f"{col_letter}30"].value = bs_data["cwip"][idx]
@@ -378,12 +393,12 @@ def adapt_workbook_for_cipla(output_path: Path) -> dict[str, Any]:
         # Inventories (Row 33)
         old_inv = bs_sheet[f"{col_letter}33"].value
         bs_sheet[f"{col_letter}33"].value = bs_data["inventory"][idx]
-        record("BS", f"{col_letter}33", old_inv, bs_data["inventory"][idx], "replaced_with_cipla_data", f"Cipla Inventories for {col_letter}")
+        record("BS", f"{col_letter}33", old_inv, bs_data["inventory"][idx], "replaced_with_cipla_data", f"Cipla Inventories for {col_letter} ({period_label})")
 
         # Trade Receivables (Row 34)
         old_rec = bs_sheet[f"{col_letter}34"].value
         bs_sheet[f"{col_letter}34"].value = bs_data["receivables"][idx]
-        record("BS", f"{col_letter}34", old_rec, bs_data["receivables"][idx], "replaced_with_cipla_data", f"Cipla Receivables for {col_letter}")
+        record("BS", f"{col_letter}34", old_rec, bs_data["receivables"][idx], "replaced_with_cipla_data", f"Cipla Receivables for {col_letter} ({period_label})")
 
         # Cash & Bank (Row 35)
         bs_sheet[f"{col_letter}35"].value = bs_data["cash_bank"][idx]

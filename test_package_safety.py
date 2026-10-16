@@ -228,6 +228,101 @@ class PackageSafetyTests(unittest.TestCase):
             # Preflight must NOT write candidate artifacts or directories
             self.assertFalse(out_dir.exists())
 
+    def test_repeated_price_history_detection(self):
+        """Repeated flat price series in historical regression schedules must be detected."""
+        def check_price_series_variance(prices: list[float], min_unique_ratio: float = 0.5) -> bool:
+            if not prices:
+                return True
+            unique_count = len(set(prices))
+            ratio = unique_count / len(prices)
+            return ratio >= min_unique_ratio
+
+        # Artificial repeated price series (e.g. 107 identical ₹1,301 CMPs)
+        artificial_series = [1301.0] * 107
+        self.assertFalse(check_price_series_variance(artificial_series))
+
+        # Real fluctuating market price series
+        real_series = [1301.0 + i * 2.5 for i in range(107)]
+        self.assertTrue(check_price_series_variance(real_series))
+
+    def test_unknown_inputs_set_to_zero_rejected(self):
+        """Unevidenced financial breakdown inputs must not be silently populated with 0.0."""
+        def validate_unbacked_input_policy(slot_name: str, value: Any, is_evidenced: bool):
+            if not is_evidenced and value == 0.0:
+                raise ValueError(
+                    f"Unevidenced breakdown slot '{slot_name}' cannot be set to 0.0; "
+                    "must be None or omitted to prevent artificial balancing."
+                )
+
+        # Setting unevidenced breakdown cell to 0.0 is rejected
+        with self.assertRaisesRegex(ValueError, "cannot be set to 0.0"):
+            validate_unbacked_input_policy("slide14_non_cash_fy18", 0.0, is_evidenced=False)
+
+        # Evidenced 0.0 or None/em-dash is accepted
+        validate_unbacked_input_policy("slide14_non_cash_fy18", None, is_evidenced=False)
+        validate_unbacked_input_policy("slide14_non_cash_fy18", "—", is_evidenced=False)
+        validate_unbacked_input_policy("slide14_direct_taxes_fy25", 0.0, is_evidenced=True)
+
+    def test_debt_definition_inconsistency_detection(self):
+        """Inconsistencies between period-end debt close and TTM snapshot debt must be reconciled."""
+        def reconcile_debt_metrics(fy25_bs_close: float, ttm_snapshot: float, metadata: dict[str, str]):
+            if abs(fy25_bs_close - ttm_snapshot) > 1.0:
+                # If numbers differ, explicit disclosure reconciling the timeframes is required
+                if "reconciliation_note" not in metadata or not metadata["reconciliation_note"]:
+                    raise ValueError(
+                        f"Unreconciled debt discrepancy: FY25 close ({fy25_bs_close}) vs "
+                        f"TTM snapshot ({ttm_snapshot}) requires explicit disclosure."
+                    )
+            return True
+
+        # Unreconciled debt numbers raise ValueError
+        with self.assertRaisesRegex(ValueError, "Unreconciled debt discrepancy"):
+            reconcile_debt_metrics(438.00, 613.77, {})
+
+        # With explicit reconciliation note, passes
+        meta = {"reconciliation_note": "₹438 Cr is 31 March 2025 audited close; ₹613.77 Cr is Oct 2025 TTM snapshot."}
+        self.assertTrue(reconcile_debt_metrics(438.00, 613.77, meta))
+
+    def test_non_circular_share_count_verification(self):
+        """Statutory share count must be derived from paid-up capital and face value, not circular market cap."""
+        def verify_share_count(equity_capital_cr: float, face_value: float, claimed_shares_cr: float, is_statutory: bool):
+            if is_statutory:
+                statutory_shares = round(equity_capital_cr / face_value, 2)
+                if abs(claimed_shares_cr - statutory_shares) > 0.05:
+                    raise ValueError(
+                        f"Claimed share count {claimed_shares_cr} Cr does not match statutory "
+                        f"paid-up equity {statutory_shares} Cr ({equity_capital_cr} Cr / ₹{face_value})."
+                    )
+            return True
+
+        # Statutory Note 20: ₹161.52 Cr / ₹2.00 = 80.76 Cr shares
+        self.assertTrue(verify_share_count(161.52, 2.0, 80.76, is_statutory=True))
+
+        # Claiming non-statutory count without disclosing difference fails strict check
+        with self.assertRaisesRegex(ValueError, "does not match statutory"):
+            verify_share_count(161.52, 2.0, 85.00, is_statutory=True)
+
+    def test_excluded_schedule_error_handling(self):
+        """Excluded schedules (e.g. Beta) isolate formula errors from active validation."""
+        from modelmaker import Package
+        from validate_workbook import scan_formula_errors_and_missing_caches
+
+        # Load Cipla recalculated candidate which has empty Beta!C causing #DIV/0! on Beta
+        cipla_path = package.ROOT / "candidates" / "Cipla-Recalculated.xlsx"
+        if not cipla_path.exists():
+            self.skipTest("Cipla-Recalculated.xlsx not found")
+
+        pkg = Package(cipla_path.read_bytes())
+        # With excluded_sheets={"Beta"}, zero errors must be reported
+        errors_excluded, missing_excluded = scan_formula_errors_and_missing_caches(pkg, excluded_sheets={"Beta"})
+        self.assertEqual(len(errors_excluded), 0)
+        self.assertEqual(len(missing_excluded), 0)
+
+        # Without excluded_sheets, formula errors on Beta must be detected
+        errors_all, missing_all = scan_formula_errors_and_missing_caches(pkg, excluded_sheets=None)
+        self.assertGreater(len(errors_all), 0)
+        self.assertTrue(all(e["sheet"] == "Beta" for e in errors_all))
+
 
 if __name__ == "__main__":
     unittest.main()

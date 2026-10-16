@@ -245,3 +245,27 @@
 
 
 
+
+
+### 16. Cipla Primary Statutory Source Verification, Contradiction Resolution, Artificial Data Eradication, Excluded Schedules Governance, and v3 Native Package Delivery
+- **Primary Document Verification & Dedicated Registry**:
+  - Authored [`docs/PRIMARY_SOURCE_REGISTRY.md`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/PRIMARY_SOURCE_REGISTRY.md) and [`docs/primary_source_registry.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/primary_source_registry.json) with BSE/NSE filings, note citations, reported values, units, and transformation details.
+  - Segregated FY21–FY25 primary statutory filings from FY17–FY20 secondary database series.
+- **Resolution of All Report Contradictions**:
+  - Reconciled borrowings contradiction: ₹438.00 Cr (audited balance sheet close as of 31 March 2025 in `Data Sheet!J59`) vs ₹613.77 Cr (TTM snapshot in `compdata!G8` and `Data Sheet!K59` feeding `WACC-DCF!C30`).
+  - Reconciled cash flow reconciliation claim: Top-level statutory subtotals (CFO + CFI + CFF = Net Cash Flow) reconcile at $\Delta = ₹0.00$ Cr tolerance across all 8 years, while unbacked intermediate breakdown rows are withheld as transparent em-dashes (`"—"`) on Slide 14 and empty cells (`None`) in `Cash Flow`.
+  - Reconciled market price origin (CMP ₹1,301.00 from `compdata!D8`) and non-circular statutory share count (80.76 Cr shares from Note 20 paid-up equity vs implied 80.79 Cr from `=B9/B8`).
+- **Complete Eradication of Artificial Data Used to Make Checks Pass**:
+  - `Beta`: Eradicated 107 artificial repeated ₹1,301 flat prices in `Beta!C8:C114` by setting them to `None`. Updated header to mark weekly regression series unavailable. Added `"excluded_schedules": ["Beta"]` to `model-pack.schema.json` and `proposals/cipla.model-pack.proposal.json`. Updated `validate_workbook.py` to route formula errors on excluded schedules while enforcing 0 errors on active sheets.
+  - `Cash Flow`: Replaced loop setting unbacked sub-schedule rows to `0.0` with `None` (empty cells). Supported statutory lines preserved.
+  - `Data Sheet`: Populated Column B with authentic Cipla FY17 consolidated data and cleared Marksans quarterly data on rows 42–50 across all columns B to K. 100% of Marksans carryover eradicated.
+  - `BS`: Populated columns J to N with authentic Cipla balance sheet drivers; documented Column N as FY26 forward estimate / TTM snapshot.
+- **Valuation Methodologies Disclosed & Contrasted**:
+  - Audited and documented both DCF models: `DCF 2nd way` (10-year fundamental ROIC & reinvestment DCF, intrinsic value ₹1,217.21, within 6.4% of CMP) vs `DCF 1st way` (5-year simple FCFF DCF, intrinsic value ₹319.37, depressed due to template author's arbitrary flat 45% reinvestment rate assumption).
+- **Negative Safety Regression Test Suite (17 Tests)**:
+  - Added 5 new negative regression tests in `test_package_safety.py` covering repeated price history detection, unknown inputs set to zero rejection, debt definition inconsistency detection, non-circular share count verification, and excluded schedule error handling.
+  - Full test suite: **95 passing tests** (17 safety regressions).
+- **Clean Native Cipla v3 Build (`candidates/run_native_cipla_v3/`)**:
+  - Executed build via `python build_package.py --request examples/cipla-package.json --output-dir candidates/run_native_cipla_v3 --allow-proposal`.
+  - Artifacts generated: `Cipla-Recalculated.xlsx` (SHA-256: `3e1bbbd51798409b956edd9761de4765bd728da54b5440d5f7eac9bcc2ba54fc`), `Cipla-Executive-Overview.pptx` (SHA-256: `d4fda1d20a1f9f5d708534809ebfe943f05d45c6ebac99cc61b8ecea08c35b7e`), `package.manifest.json`, 5 slide PNG previews, 4 sheet landscape PDFs.
+  - Validation: 19/19 pack checks passed, 28/28 independent identities passed, zero formula errors, zero uncalculated cells.
