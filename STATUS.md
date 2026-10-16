@@ -2,6 +2,12 @@
 
 Updated: 2026-10-16, Asia/Calcutta.
 
+## Codex parallel template-planning change
+
+Follow-up under issue #5: added template_atlas.py and generated a hash-checked searchable inventory of all 6 originals (17 sheets, 182 slides). Production extraction succeeded; literal valuation search returned 7 destinations. The atlas records existing labels/formulas, slide element IDs, explicit geometry/fonts, tables, chart references, layouts and notes. It is not a rendering or approved input map. See docs/TEMPLATE_ATLAS.md. No test suite, document composition or rendered review run for this contribution.
+
+Branch `agent/codex-template-first`, based on main `eef33cf`; independent of Gemini/Argon PR #3. Added a dependency-free preflight planner for hash-pinned uploaded workbook/deck destinations, fictional request examples, template-first acceptance rules, and the user-supplied YouTube course reference. The planner does not create documents or approve packs. Universal Excel derivatives, slide assembly, course transcript/rule extraction and rendered acceptance remain open. No tests or real builds were run for this change; existing test counts below describe earlier work. No model training, cloud deployment or paid services performed.
+
 ## Implemented
 
 - Dependency-free Python XLSX inspector and conservative existing-numeric-input composer.
