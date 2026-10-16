@@ -12,10 +12,12 @@ PREVIEWS_DIR.mkdir(parents=True, exist_ok=True)
 def export_ppt():
     print(f"Exporting slides from {PPT_PATH}...")
     pythoncom.CoInitialize()
-    ppt_app = win32com.client.Dispatch("PowerPoint.Application")
-    # Open presentation in read-only, without window if possible
-    pres = ppt_app.Presentations.Open(str(PPT_PATH), ReadOnly=True, Untitled=False, WithWindow=False)
+    ppt_app = None
+    pres = None
     try:
+        ppt_app = win32com.client.DispatchEx("PowerPoint.Application")
+        # Open presentation in read-only, without window if possible
+        pres = ppt_app.Presentations.Open(str(PPT_PATH.resolve()), ReadOnly=True, Untitled=False, WithWindow=False)
         slide_count = pres.Slides.Count
         print(f"Total slides in presentation: {slide_count}")
         for i in range(1, slide_count + 1):
@@ -26,18 +28,26 @@ def export_ppt():
             slide.Export(str(out_png), "PNG", 1080, 1440)
             print(f"  Exported slide {i} -> {out_png.name} ({out_png.stat().st_size} bytes)")
     finally:
-        pres.Close()
-        ppt_app.Quit()
-        pythoncom.CoUninitialize()
+        try:
+            if pres is not None:
+                pres.Close()
+        finally:
+            # PowerPoint may share one process even with DispatchEx. Close only
+            # our presentation, never the user's other presentations via Quit.
+            pythoncom.CoUninitialize()
 
 def export_excel():
     print(f"Exporting sheets from {WB_PATH}...")
     pythoncom.CoInitialize()
-    xl_app = win32com.client.Dispatch("Excel.Application")
-    xl_app.Visible = False
-    xl_app.DisplayAlerts = False
-    wb = xl_app.Workbooks.Open(str(WB_PATH), ReadOnly=True)
+    xl_app = None
+    wb = None
     try:
+        xl_app = win32com.client.DispatchEx("Excel.Application")
+        xl_app.Visible = False
+        xl_app.DisplayAlerts = False
+        xl_app.AskToUpdateLinks = False
+        xl_app.AutomationSecurity = 3
+        wb = xl_app.Workbooks.Open(str(WB_PATH.resolve()), ReadOnly=True, UpdateLinks=0)
         sheets_to_export = [
             "Data Sheet",
             "Ratio Analysis",
@@ -57,9 +67,15 @@ def export_excel():
             except Exception as e:
                 print(f"  Failed to export sheet {sname}: {e}")
     finally:
-        wb.Close(SaveChanges=False)
-        xl_app.Quit()
-        pythoncom.CoUninitialize()
+        try:
+            if wb is not None:
+                wb.Close(SaveChanges=False)
+        finally:
+            try:
+                if xl_app is not None:
+                    xl_app.Quit()
+            finally:
+                pythoncom.CoUninitialize()
 
 if __name__ == "__main__":
     export_ppt()

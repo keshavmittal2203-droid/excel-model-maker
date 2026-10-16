@@ -53,13 +53,13 @@ ledger = {
         "historical_financials_cutoff": "2025-03-31",
         "historical_period": "FY18-FY25 (8 Fiscal Years ending 31 March 2025)",
         "market_data_retrieval_snapshot_date": "2025-10-05",
-        "market_data_trading_session_date": "2025-10-03",
-        "market_data_source": "Screener.in / NSE closing snapshot retrieved 2025-10-05 from Friday 2025-10-03 trading session (Price Rs 309.10, Market Cap Rs 14,002.74 Cr)",
+        "market_data_trading_session_date": "Unverified (Friday 2025-10-03 inferred; exchange trade confirmation logs not in originals/)",
+        "market_data_source": "Screener.in metadata in template records retrieval date 2025-10-05 (Sunday); preceding market session was Friday 2025-10-03. Primary trade confirmation logs are absent from originals/.",
         "forecast_horizon_start": "FY2026E (Period ending 2026-03-31)",
-        "valuation_anchor_summary": "Historical financial statement analysis uses audited FY25 annual actuals (ended 31 March 2025). Capitalization, CMP, and peer comparisons reflect the October 2025 market pricing snapshot concurrently captured in originals/Marksans Keshav.xlsx (retrieved 2025-10-05 based on the Friday 2025-10-03 NSE trading session close).",
+        "valuation_anchor_summary": "Historical financial statement analysis uses audited FY25 annual actuals (ended 31 March 2025). Capitalization, CMP, and peer comparisons reflect the October 2025 market pricing snapshot captured in originals/Marksans Keshav.xlsx (retrieval date recorded as 2025-10-05; trade observation date inferred without primary exchange confirmation).",
         "methodology_notes": {
-            "nifty_50_market_return": "Sheet RM!F10 (15.15%) is the 26-year (2000-2025) arithmetic average of annual percentage returns of the Nifty 50 Price Return (PR) index. Because the PR index excludes dividends, adding the 1.22% dividend yield assumption (RM!F11) to arrive at Rm = 16.37% (arithmetic average) accurately reflects total equity return without double-counting dividend distributions.",
-            "peer_median_capital_structure": "Target debt weight (2.24%) and equity weight (97.76%) are derived from the median capital structure of five listed peers (Sun Pharma, Divi's, Torrent, Zydus, Laurus). This represents a deliberate institutional modeling choice following Damodaran pure-play valuation guidelines rather than an error or arbitrary substitution."
+            "nifty_50_market_return": "Sheet RM!F10 (15.15%) is the 26-year (2000-2025) arithmetic average of annual percentage returns of the Nifty 50 Price Return (PR) index present in the template. Because the PR index excludes dividends, adding the 1.22% dividend yield assumption (RM!F11) yields Rm = 16.37% (arithmetic average). Primary NSE historical index time-series logs are not separately uploaded in originals/.",
+            "peer_median_capital_structure": "Target debt weight (2.24%) and equity weight (97.76%) are derived from the median capital structure of five listed peers (Sun Pharma, Divi's, Torrent, Zydus, Laurus) in WACC-DCF!H18. This represents an institutional modeling choice following Damodaran pure-play valuation guidelines rather than an absolute empirical fact."
         },
         "deliberate_exceptions": [
             {
@@ -80,7 +80,7 @@ ledger = {
             "label": "Risk-Free Rate (Rf)",
             "category": "market_benchmark",
             "valuation_date_role": "market_pricing_snapshot",
-            "provenance_status": "externally_verified_fact",
+            "provenance_status": "inherited_template_value",
             "source_file": "originals/Marksans Keshav.xlsx",
             "source_sheet": "WACC-DCF",
             "source_cell": "J22",
@@ -88,7 +88,7 @@ ledger = {
             "exact_value": rf,
             "displayed_value": f"{rf*100:.2f}%",
             "derivation_details": "Benchmark 10-Year Indian Government Bond (G-Sec) yield as of valuation snapshot date.",
-            "verification_notes": "Sourced market input. Tagged '(Latest)' in cell K22."
+            "verification_notes": "Sourced market input present in template WACC-DCF!J22 tagged '(Latest)'; primary RBI/CCIL trade log not uploaded."
         },
         {
             "id": "market_return",
@@ -230,22 +230,22 @@ ledger = {
             "label": "Total Debt / Borrowings (Current)",
             "category": "historical_fact",
             "valuation_date_role": "historical_cutoff_FY25",
-            "provenance_status": "externally_verified_fact",
+            "provenance_status": "inherited_template_value",
             "source_file": "originals/Marksans Keshav.xlsx",
             "source_sheet": "Data Sheet / WACC-DCF",
             "source_cell": "Data Sheet!K59 / WACC-DCF!C30",
             "exact_formula_or_input": "343.38",
             "exact_value": curr_debt,
             "displayed_value": f"₹{curr_debt:,.0f} Cr",
-            "derivation_details": "Short-term plus long-term borrowings from Screener.in balance sheet data as of FY25.",
-            "verification_notes": "Unified debt definition to 'Total Debt / Borrowings'. Retires legacy Sun Pharma 'Long term Debt' label."
+            "derivation_details": "Short-term plus long-term borrowings from Screener.in balance sheet data as of FY25 present in template.",
+            "verification_notes": "Total debt from template Data Sheet!K59 / BS!H20; primary statutory annual report filing not separately uploaded."
         },
         {
             "id": "current_market_capitalization",
             "label": "Market Capitalisation (Current)",
-            "category": "historical_fact",
+            "category": "market_benchmark",
             "valuation_date_role": "market_pricing_snapshot",
-            "provenance_status": "externally_verified_fact",
+            "provenance_status": "calculated_estimate",
             "source_file": "originals/Marksans Keshav.xlsx",
             "source_sheet": "WACC-DCF",
             "source_cell": "C31",
@@ -253,7 +253,7 @@ ledger = {
             "exact_value": curr_mcap,
             "displayed_value": f"₹{curr_mcap:,.0f} Cr",
             "derivation_details": "Total shares (453,163,746) * CMP (Rs 309.10) = Rs 14,002.74 Cr as of market snapshot date.",
-            "verification_notes": "Matches Data Sheet!C9 and Beta!B112/C112 market pricing date."
+            "verification_notes": "Calculated as CMP (Rs 309.10) * 453.16M shares. CMP is an inherited template snapshot value from Sunday 2025-10-05 Screener capture."
         },
         {
             "id": "target_debt_weight",
@@ -268,7 +268,7 @@ ledger = {
             "exact_value": target_wd,
             "displayed_value": f"{target_wd*100:.2f}%",
             "derivation_details": "Peer median of Debt / (Debt + Equity) across Sun Pharma (1.08%), Divi's (0.00%), Torrent (7.91%), Zydus (10.11%), and Laurus (2.24%). Median is 2.2398% (Laurus Labs).",
-            "verification_notes": "Used directly in DCF WACC weighting. Distinct from current book debt weight (2.39%)."
+            "verification_notes": "Used directly in DCF WACC weighting. Represents an institutional modeling choice following Damodaran pure-play methodology, distinct from current book debt weight (2.39%)."
         },
         {
             "id": "target_equity_weight",
@@ -283,7 +283,7 @@ ledger = {
             "exact_value": target_we,
             "displayed_value": f"{target_we*100:.2f}%",
             "derivation_details": f"1.0 - Target Debt Weight = 1.0 - {target_wd:.6f} = {target_we:.6f} (97.76%).",
-            "verification_notes": "Used directly in DCF WACC weighting. Distinct from current market equity weight (97.61%)."
+            "verification_notes": "Used directly in DCF WACC weighting. Represents an institutional modeling choice following Damodaran pure-play methodology, distinct from current market equity weight (97.61%)."
         },
         {
             "id": "wacc",
@@ -309,33 +309,33 @@ ledger = {
             "source_file": "proposals/err4.deck-pack.proposal.json",
             "source_sheet": "Slide 1 Shape 25 (Chart 0)",
             "source_cell": "N/A",
-            "exact_formula_or_input": "[43.1, 41.7, 9.8, 5.4]",
-            "exact_value": [43.1, 41.7, 9.8, 5.4],
-            "displayed_value": "Unavailable (UK & Europe: 43.1%, US & NA: 41.7%, Aus & NZ: 9.8%, RoW: 5.4% unverified)",
-            "derivation_details": "Previously attributed to 'Marksans Investor Presentation FY25 & Annual Report'. However, no investor presentation PDF or geographic segment table was included in repository originals.",
-            "verification_notes": "UNRESOLVED PROVENANCE: Missing primary document in repository originals. Chart is explicitly retitled to 'Geographic Revenue Mix (Unavailable — Pending Primary Filing)' and marked as unresolved_claim pending uploaded primary investor presentation."
+            "exact_formula_or_input": "None (Suppressed Shape 25)",
+            "exact_value": None,
+            "displayed_value": "Geographic revenue breakdown unavailable — primary filing required",
+            "derivation_details": "Primary geographic segment schedule is absent from repository originals. Chart 0 (Shape 25) is suppressed in candidate deck and replaced with an unavailable message placeholder card.",
+            "verification_notes": "UNRESOLVED PROVENANCE: Missing primary document in repository originals. Chart is suppressed and unevidenced numeric payload removed from candidate deck."
         },
         {
             "id": "slide2_historical_revenue",
             "label": "Historical Revenue (FY21-FY25)",
             "category": "historical_fact",
             "valuation_date_role": "historical_financials_cutoff",
-            "provenance_status": "externally_verified_fact",
+            "provenance_status": "inherited_template_value",
             "source_file": "originals/Marksans Keshav.xlsx",
             "source_sheet": "Data Sheet",
             "source_cell": "F17:J17 / F28:J28",
             "exact_formula_or_input": "Data Sheet annual revenue row",
             "exact_value": [1376.18, 1490.84, 1852.14, 2177.41, 2622.85],
             "displayed_value": "FY21: ₹1,376 Cr, FY22: ₹1,491 Cr, FY23: ₹1,852 Cr, FY24: ₹2,177 Cr, FY25: ₹2,623 Cr",
-            "derivation_details": "Consolidated annual turnover from Screener.in profit & loss schedule.",
-            "verification_notes": "Verified in repository. Chart retitled to 'Historical Revenue (₹ Crore)' from misleading 'Revenue by Segment'."
+            "derivation_details": "Consolidated annual turnover from Screener.in profit & loss schedule present in template.",
+            "verification_notes": "Template historical series. Chart retitled to 'Historical Revenue (₹ Crore)' from misleading 'Revenue by Segment'."
         },
         {
             "id": "slide16_historical_ratios",
             "label": "Historical Balance Sheet Ratios (FY18-FY25)",
             "category": "historical_fact",
             "valuation_date_role": "historical_financials_cutoff",
-            "provenance_status": "externally_verified_fact",
+            "provenance_status": "inherited_template_value",
             "source_file": "originals/Marksans Keshav.xlsx",
             "source_sheet": "Data Sheet & BS",
             "source_cell": "Data Sheet rows 59, 60, 65, 68 and BS trade payables",

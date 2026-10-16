@@ -80,7 +80,25 @@
   - Re-evaluated DCF model under stressed parameters ($R_f=8.00\%$, pre-tax $K_d=9.00\%$, growth=$12.00\% \to \text{WACC}=12.43\%$, implied value ₹70.01/share).
   - Composed presentation, exported slide PNGs and sheet PDFs, generated manifest with 13 artifacts, `ready: false`.
 
-### 7. Verification & Clean-Checkout Reproducibility
+### 7. Unevidenced Geographic Numbers Eradication
+- Suppressed Slide 1 Shape 25 (Chart 0) and replaced its frame with a template-styled missing data card: `"Geographic revenue breakdown unavailable — primary filing required"`.
+- Cleanly pruned chart relationship from `ppt/slides/_rels/slide1.xml.rels`, deleted `ppt/charts/chart1.xml` and `ppt/embeddings/Microsoft_Excel_Worksheet.xlsx`, and stripped overrides from `[Content_Types].xml`.
+- Added focused regression test `test_unverified_geographic_numbers_completely_eradicated`: verified zero occurrences of `43.1` or `41.7` anywhere in the candidate presentation archive.
+
+### 8. Rigorous Visual Review & Collision Resolution
+- Performed visual inspection of all 5 slides (`slide_1.png` to `slide_5.png`) and 6 schedule PDFs (`Data_Sheet.pdf`, `Ratio_Analysis.pdf`, `Intrinsic_Growth.pdf`, `WACC-DCF.pdf`, `DCF_1st_way.pdf`, `DCF_2nd_way.pdf`).
+- Caught and resolved horizontal collision between Shape 20's "Strategic Approach" text box and the missing-data card by adjusting card bounds (`replacement_x="3850000"`, `replacement_cx="2850000"`) and formatting bullets into two concise points.
+- Generated composite 2x3 slide contact sheets (`slide_contact_sheet.png`) for both Baseline and Scenario B.
+- Completed comprehensive review record and 17-sheet Excel inventory in `docs/VISUAL_REVIEW.md`.
+
+### 9. Canonical Clean-Checkout Guide & Course Reference
+- Authored `docs/AI_CLEAN_CHECKOUT_GUIDE.md` covering all 10 workflow steps from clean clone to candidate review, distinguishing Marksans re-estimation vs new company adaptation vs new sector adaptation.
+- Mapped YouTube financial modelling course playlist (`https://www.youtube.com/playlist?list=PL3uUjzLk6PulhRop_ffNeHyK0kprzO4cT`) across workbook sheets with transparent evidence tiers.
+
+### 10. Verification & Fresh Native Builds (v4)
 - `python verify_sources.py`: All 6 original template hashes verified byte-for-byte.
-- `python -m unittest discover -v`: 69/69 tests passing cleanly.
-- Verified that builds into fresh output directories require only committed files and standard software dependencies (Python 3.11+, Microsoft Office on Windows).
+- `python -m unittest discover -v`: **70/70 tests passing** cleanly in 18s.
+- Built fresh Baseline package into `candidates/run_native_baseline_v4/` (13 reviewable artifacts, WACC 12.11%).
+- Built fresh Scenario B package into `candidates/run_native_scenario_b_v4/` (13 reviewable artifacts, WACC 12.43%, Intrinsic Value ₹70.01/share).
+- Maintained `ready: false` with pending gate `["human_pack_approval"]`. (Agent visual review marked completed).
+

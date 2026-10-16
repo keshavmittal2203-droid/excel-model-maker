@@ -751,7 +751,60 @@ class PptMakerTests(unittest.TestCase):
         self.assertEqual(f"{current_debt_weight * 100:.2f}%", "2.39%")
         self.assertEqual(f"{current_equity_weight * 100:.2f}%", "97.61%")
 
+    def test_unverified_geographic_numbers_completely_eradicated(self):
+        """Regression test: verify unevidenced geographic values [43.1, 41.7, 9.8, 5.4]
+
+        are completely removed from the candidate deck, its chart caches, and its embedded workbooks.
+        Also verify that Shape 25 is replaced with the clearly styled unavailable message card.
+        """
+        root = Path(__file__).resolve().parent
+        orig_pptx = root / "originals" / "ERR-4.pptx"
+        recalc_path = root / "candidates" / "Marksans-Recalculated.xlsx"
+        orig_wb = root / "originals" / "Marksans Keshav.xlsx"
+        wb_data = recalc_path.read_bytes() if recalc_path.exists() else orig_wb.read_bytes()
+        deck_pack = json.loads((root / "proposals" / "err4.deck-pack.proposal.json").read_text(encoding="utf-8"))
+        inputs = json.loads((root / "proposals" / "err4.inputs.proposal.json").read_text(encoding="utf-8"))
+        if not recalc_path.exists():
+            wb_digest = sha(wb_data)
+            for s in deck_pack.get("slots", []):
+                if s.get("workbook_binding"):
+                    s["workbook_binding"]["workbook_sha256"] = wb_digest
+
+        out_bytes, manifest = compose_deck(
+            orig_pptx.read_bytes(),
+            deck_pack,
+            inputs,
+            workbook_bytes=wb_data,
+            allow_proposal=True,
+        )
+        self.assertIsNotNone(out_bytes)
+
+        # Inspect candidate pptx archive
+        with zipfile.ZipFile(io.BytesIO(out_bytes)) as z:
+            names = z.namelist()
+            # 1. chart1.xml and its embedded spreadsheet must not be present
+            self.assertNotIn("ppt/charts/chart1.xml", names)
+            self.assertNotIn("ppt/embeddings/Microsoft_Excel_Worksheet.xlsx", names)
+
+            # 2. Check every file in the package for unevidenced geographic values 43.1 or 41.7
+            import re
+            for name in names:
+                content = z.read(name)
+                self.assertIsNone(re.search(rb"(?<![0-9.])43\.1(?![0-9])", content), f"Unevidenced value 43.1 found in candidate part: {name}")
+                self.assertIsNone(re.search(rb"(?<![0-9.])41\.7(?![0-9])", content), f"Unevidenced value 41.7 found in candidate part: {name}")
+
+            # 3. Verify Slide 1 contains the replacement message and correct card structure
+            slide1_xml = z.read("ppt/slides/slide1.xml").decode("utf-8")
+            self.assertIn("Geographic revenue breakdown unavailable — primary filing required", slide1_xml)
+            self.assertIn("GEOGRAPHIC REVENUE MIX", slide1_xml)
+            self.assertIn('id="25"', slide1_xml)
+
+            # 4. Content_Types.xml should not contain chart1.xml
+            ct_xml = z.read("[Content_Types].xml").decode("utf-8")
+            self.assertNotIn("chart1.xml", ct_xml)
+
 
 if __name__ == "__main__":
     unittest.main()
+
 

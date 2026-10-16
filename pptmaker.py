@@ -711,10 +711,121 @@ def compose_deck(
         if target_type == "suppress_shape":
             removed = False
             for sp_tree in slide_tree.findall(f".//{{{P_NS}}}spTree"):
-                for child in list(sp_tree):
+                children = list(sp_tree)
+                for child_idx, child in enumerate(children):
                     cnv = child.find(f".//{{{P_NS}}}cNvPr")
                     if cnv is not None and int(cnv.get("id", "-1")) == shape_id:
-                        sp_tree.remove(child)
+                        # If child contains an embedded chart, unlink relationship and remove chart part & embedded workbook
+                        chart_elem = child.find(f".//{{{C_NS}}}chart")
+                        if chart_elem is not None:
+                            chart_rid = chart_elem.get(f"{{{R_NS}}}id")
+                            if chart_rid:
+                                s_rels_part = posixpath.join(posixpath.dirname(s_part), "_rels", posixpath.basename(s_part) + ".rels")
+                                if s_rels_part in changed:
+                                    s_rels_tree = parse_xml(changed[s_rels_part])
+                                    rel = next((r for r in s_rels_tree if r.get("Id") == chart_rid), None)
+                                    if rel is not None:
+                                        chart_target = rel.get("Target")
+                                        chart_part = resolve_rel_target(s_part, chart_target)
+                                        s_rels_tree.remove(rel)
+                                        changed[s_rels_part] = serialize_rels(s_rels_tree)
+
+                                        # Clean up chart part and embedded workbook if not shared
+                                        chart_part_base = posixpath.basename(chart_part)
+                                        is_chart_shared = any(
+                                            chart_part_base.encode() in r_bytes
+                                            for r_name, r_bytes in changed.items()
+                                            if r_name.endswith(".rels") and r_name != s_rels_part
+                                        )
+                                        if not is_chart_shared:
+                                            changed.pop(chart_part, None)
+                                            c_rels_part = posixpath.join(posixpath.dirname(chart_part), "_rels", posixpath.basename(chart_part) + ".rels")
+                                            if c_rels_part in changed:
+                                                c_rels_tree = parse_xml(changed[c_rels_part])
+                                                for c_rel in c_rels_tree:
+                                                    sub_target = resolve_rel_target(chart_part, c_rel.get("Target"))
+                                                    sub_base = posixpath.basename(sub_target)
+                                                    is_sub_shared = any(
+                                                        sub_base.encode() in r_bytes
+                                                        for r_name, r_bytes in changed.items()
+                                                        if r_name.endswith(".rels") and r_name != c_rels_part
+                                                    )
+                                                    if not is_sub_shared:
+                                                        changed.pop(sub_target, None)
+                                                changed.pop(c_rels_part, None)
+
+                        repl_msg = slot.get("replacement_message")
+                        if repl_msg:
+                            # Extract bounds from original shape
+                            xfrm = child.find(f"{{{P_NS}}}xfrm")
+                            if xfrm is None:
+                                xfrm = child.find(f".//{{{A_NS}}}xfrm")
+                            x_val, y_val, cx_val, cy_val = "0", "0", "3000000", "1500000"
+                            if xfrm is not None:
+                                off = xfrm.find(f"{{{A_NS}}}off")
+                                ext = xfrm.find(f"{{{A_NS}}}ext")
+                                if off is not None:
+                                    x_val = off.get("x", x_val)
+                                    y_val = off.get("y", y_val)
+                                if ext is not None:
+                                    cx_val = ext.get("cx", cx_val)
+                                    cy_val = ext.get("cy", cy_val)
+                            x_val = str(slot.get("replacement_x", x_val))
+                            y_val = str(slot.get("replacement_y", y_val))
+                            cx_val = str(slot.get("replacement_cx", cx_val))
+                            cy_val = str(slot.get("replacement_cy", cy_val))
+
+                            header_text = slot.get("replacement_header", "GEOGRAPHIC REVENUE MIX")
+                            new_sp = ET.Element(f"{{{P_NS}}}sp")
+                            nvSpPr = ET.SubElement(new_sp, f"{{{P_NS}}}nvSpPr")
+                            ET.SubElement(nvSpPr, f"{{{P_NS}}}cNvPr", id=str(shape_id), name=str(slot.get("shape_name", f"Shape {shape_id}")))
+                            ET.SubElement(nvSpPr, f"{{{P_NS}}}cNvSpPr", txBox="1")
+                            ET.SubElement(nvSpPr, f"{{{P_NS}}}nvPr")
+
+                            spPr = ET.SubElement(new_sp, f"{{{P_NS}}}spPr")
+                            xfrm_node = ET.SubElement(spPr, f"{{{A_NS}}}xfrm")
+                            ET.SubElement(xfrm_node, f"{{{A_NS}}}off", x=str(x_val), y=str(y_val))
+                            ET.SubElement(xfrm_node, f"{{{A_NS}}}ext", cx=str(cx_val), cy=str(cy_val))
+                            prstGeom = ET.SubElement(spPr, f"{{{A_NS}}}prstGeom", prst="roundRect")
+                            ET.SubElement(prstGeom, f"{{{A_NS}}}avLst")
+                            solidFill = ET.SubElement(spPr, f"{{{A_NS}}}solidFill")
+                            ET.SubElement(solidFill, f"{{{A_NS}}}srgbClr", val="183454")
+                            ln_node = ET.SubElement(spPr, f"{{{A_NS}}}ln", w="12700")
+                            ln_fill = ET.SubElement(ln_node, f"{{{A_NS}}}solidFill")
+                            ET.SubElement(ln_fill, f"{{{A_NS}}}srgbClr", val="234B75")
+
+                            txBody = ET.SubElement(new_sp, f"{{{P_NS}}}txBody")
+                            bodyPr = ET.SubElement(txBody, f"{{{A_NS}}}bodyPr", vert="horz", wrap="square", lIns="91440", tIns="91440", rIns="91440", bIns="91440", anchor="ctr", anchorCtr="1")
+                            ET.SubElement(bodyPr, f"{{{A_NS}}}spAutoFit")
+                            ET.SubElement(txBody, f"{{{A_NS}}}lstStyle")
+
+                            p_hdr = ET.SubElement(txBody, f"{{{A_NS}}}p")
+                            ET.SubElement(p_hdr, f"{{{A_NS}}}pPr", algn="ctr")
+                            r_hdr = ET.SubElement(p_hdr, f"{{{A_NS}}}r")
+                            rPr_hdr = ET.SubElement(r_hdr, f"{{{A_NS}}}rPr", lang="en-US", sz="1100", b="1", spc="-10")
+                            rPr_hdr_fill = ET.SubElement(rPr_hdr, f"{{{A_NS}}}solidFill")
+                            ET.SubElement(rPr_hdr_fill, f"{{{A_NS}}}srgbClr", val="E36B0C")
+                            ET.SubElement(rPr_hdr, f"{{{A_NS}}}latin", typeface="+mn-lt")
+                            t_hdr = ET.SubElement(r_hdr, f"{{{A_NS}}}t")
+                            t_hdr.text = header_text
+
+                            p_msg = ET.SubElement(txBody, f"{{{A_NS}}}p")
+                            pPr_msg = ET.SubElement(p_msg, f"{{{A_NS}}}pPr", algn="ctr")
+                            spcBef = ET.SubElement(pPr_msg, f"{{{A_NS}}}spcBef")
+                            ET.SubElement(spcBef, f"{{{A_NS}}}spcPts", val="500")
+                            r_msg = ET.SubElement(p_msg, f"{{{A_NS}}}r")
+                            rPr_msg = ET.SubElement(r_msg, f"{{{A_NS}}}rPr", lang="en-US", sz="1000", i="1")
+                            rPr_msg_fill = ET.SubElement(rPr_msg, f"{{{A_NS}}}solidFill")
+                            ET.SubElement(rPr_msg_fill, f"{{{A_NS}}}srgbClr", val="D0D9E5")
+                            ET.SubElement(rPr_msg, f"{{{A_NS}}}latin", typeface="+mn-lt")
+                            t_msg = ET.SubElement(r_msg, f"{{{A_NS}}}t")
+                            t_msg.text = repl_msg
+
+                            sp_tree.remove(child)
+                            sp_tree.insert(child_idx, new_sp)
+                        else:
+                            sp_tree.remove(child)
+
                         removed = True
                         break
                 if removed:
@@ -727,7 +838,7 @@ def compose_deck(
                 "slide": slide_num,
                 "target_type": "suppress_shape",
                 "shape_id": shape_id,
-                "action": "suppressed",
+                "action": "suppressed_with_message" if slot.get("replacement_message") else "suppressed",
                 "source": item["source"],
             })
             continue
@@ -1028,11 +1139,15 @@ def compose_deck(
                 if s_rels in changed:
                     del changed[s_rels]
 
-        ct_tree = parse_xml(changed["[Content_Types].xml"])
-        for override in list(ct_tree.findall("{http://schemas.openxmlformats.org/package/2006/content-types}Override")):
-            part_name = override.get("PartName", "").lstrip("/")
-            if part_name in pruned_slide_parts:
-                ct_tree.remove(override)
+    # Clean up [Content_Types].xml if any part was deleted
+    ct_tree = parse_xml(changed["[Content_Types].xml"])
+    ct_modified = False
+    for override in list(ct_tree.findall("{http://schemas.openxmlformats.org/package/2006/content-types}Override")):
+        part_name = override.get("PartName", "").lstrip("/")
+        if part_name not in changed:
+            ct_tree.remove(override)
+            ct_modified = True
+    if ct_modified:
         changed["[Content_Types].xml"] = serialize_content_types(ct_tree)
 
     stream = io.BytesIO()

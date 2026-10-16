@@ -1003,18 +1003,17 @@
     {
       "name": "slide1_chart_revenue_mix",
       "slide": 1,
-      "target_type": "chart_data",
+      "target_type": "suppress_shape",
       "shape_id": 25,
       "shape_name": "Chart 0",
-      "categories": [
-        "UK & Europe",
-        "US & North America",
-        "Australia & NZ",
-        "Rest of World"
-      ],
-      "series_name": "Unverified (Primary Filing Not Uploaded)",
-      "chart_title": "Geographic Revenue Mix (Unavailable — Pending Primary Filing)",
-      "description": "Geographical Revenue Mix (Unavailable — Pending Primary Filing; no investor presentation or annual report segment schedule in originals/)"
+      "replacement_header": "GEOGRAPHIC REVENUE MIX",
+      "replacement_message": "Geographic revenue breakdown unavailable — primary filing required",
+      "replacement_x": "3850000",
+      "replacement_y": "7131217",
+      "replacement_cx": "2850000",
+      "replacement_cy": "1626800",
+      "reason": "Omit unverified geographic breakdown pending uploaded primary investor presentation",
+      "description": "Geographical Revenue Mix (Unavailable — Pending Primary Filing; suppressed Shape 25)"
     },
     {
       "name": "slide1_logo_suppress",

@@ -325,25 +325,12 @@
       "source": "Marksans Annual Report FY25 & Regulatory Disclosures"
     },
     "slide1_strategic_approach": {
-      "value": "\u2022 Capacity Expansion & Forward Integration: Expanding capacity at the Teva Goa site, increasing backward API integration, and scaling direct-to-pharmacy distribution across regulated Western markets.",
+      "value": "• Capacity Expansion: Expanding capacity at the Teva Goa site to accelerate oral solid dosage supply.\n• Backward Integration: Increasing backward API integration and scaling direct pharmacy distribution.",
       "source": "Marksans Investor Presentation FY25 & Management Commentary"
     },
     "slide1_chart_revenue_mix": {
-      "value": [
-        43.1,
-        41.7,
-        9.8,
-        5.4
-      ],
-      "categories": [
-        "UK & Europe",
-        "US & North America",
-        "Australia & NZ",
-        "Rest of World"
-      ],
-      "series_name": "Unverified (Primary Filing Not Uploaded)",
-      "chart_title": "Geographic Revenue Mix (Unavailable — Pending Primary Filing)",
-      "source": "UNVERIFIED_EXTERNAL_CLAIM: No primary investor presentation or statutory annual report in repository originals"
+      "value": "suppress",
+      "source": "UNVERIFIED_EXTERNAL_CLAIM: No primary investor presentation or statutory annual report in repository originals; suppressed pending primary filing"
     },
     "slide1_logo_suppress": {
       "value": "suppress",
