@@ -22,7 +22,7 @@ COMPANIES = {
         "ar_url": "https://www.mahindra.com/resources/investor-reports",
         "bse_url": "https://www.bseindia.com/stock-share-price/mahindra--mahindra-ltd/m&m/500520/",
         "valuation_method": "Sum-of-the-Parts (SOTP) Valuation",
-        "implied_value": 2966.18,
+        "implied_value": 2929.98,
         "valuation_status": "supported",
         "segments": {
             "Automotive": {"fy24": 76156, "fy25": 90825, "growth": 0.193},
@@ -34,7 +34,6 @@ COMPANIES = {
             {"component": "Farm Equipment Core", "metric": "FY25 EBITDA ₹6,400 Cr", "multiple": "14.0x EV/EBITDA", "discount": "0.0%", "value_cr": 89600.0},
             {"component": "MMFS (Mahindra Finance)", "metric": "Market Cap ₹35,000 Cr * 52.2%", "multiple": "Market Value", "discount": "20.0%", "value_cr": 14616.0},
             {"component": "Tech Mahindra Limited", "metric": "Market Cap ₹1,45,000 Cr * 25.5%", "multiple": "Market Value", "discount": "20.0%", "value_cr": 29580.0},
-            {"component": "Other Listed Subsidiaries", "metric": "Lifespaces & Logistics Stakes", "multiple": "Market Value", "discount": "25.0%", "value_cr": 4500.0},
             {"component": "Core Net Debt", "metric": "Audited Standalone Close", "multiple": "Deduction", "discount": "N/A", "value_cr": -12000.0},
         ],
     },

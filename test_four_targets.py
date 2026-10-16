@@ -96,20 +96,43 @@ class FourTargetsTests(unittest.TestCase):
         import openpyxl
         wb = openpyxl.load_workbook(ROOT / "candidates" / "run_native_mm" / "MM-Recalculated.xlsx", data_only=True)
         ws = wb["SOTP Valuation"]
-        # E4: Auto, E5: Farm, E6: MMFS (with 20% discount), E7: TechM (with 20% discount), E10: Net Debt deduction
+        # E4: Auto, E5: Farm, E6: MMFS (with 20% discount), E7: TechM (with 20% discount), E8: Gross, E9: Net Debt, E10: Equity, E11: Shares, E12: Per Share
         auto_val = float(ws["E4"].value)
         farm_val = float(ws["E5"].value)
         mmfs_val = float(ws["E6"].value)
         techm_val = float(ws["E7"].value)
-        net_debt = float(ws["E10"].value)
-        eq_val = float(ws["E11"].value)
+        gross_val = float(ws["E8"].value)
+        net_debt = float(ws["E9"].value)
+        eq_val = float(ws["E10"].value)
+        shares = float(ws["E11"].value)
+        per_share = float(ws["E12"].value)
 
         self.assertEqual(auto_val, 242400.0)
         self.assertEqual(farm_val, 89600.0)
         self.assertAlmostEqual(mmfs_val, 14616.0, places=1)
         self.assertAlmostEqual(techm_val, 29580.0, places=1)
+        self.assertEqual(gross_val, 376196.0)
         self.assertEqual(net_debt, -12000.0)
-        self.assertAlmostEqual(eq_val, 368696.0, places=1)
+        self.assertAlmostEqual(eq_val, 364196.0, places=1)
+        self.assertEqual(shares, 124.30)
+        self.assertAlmostEqual(per_share, 2929.98, places=2)
+
+    def test_mm_sotp_exact_arithmetic_reconciled_with_no_plug_difference(self):
+        """Regression test: M&M SOTP must sum exactly to 364,196 Cr with zero plug difference and evaluate to ₹2,929.98."""
+        import openpyxl
+        wb = openpyxl.load_workbook(ROOT / "candidates" / "run_native_mm" / "MM-Recalculated.xlsx", data_only=True)
+        ws = wb["SOTP Valuation"]
+        
+        # Verify component sum exactly equals Equity Value
+        comp_sum = float(ws["E4"].value) + float(ws["E5"].value) + float(ws["E6"].value) + float(ws["E7"].value) + float(ws["E9"].value)
+        self.assertEqual(comp_sum, 364196.0, f"Component sum mismatch: {comp_sum}")
+        self.assertEqual(float(ws["E10"].value), 364196.0)
+        self.assertAlmostEqual(364196.0 / 124.30, float(ws["E12"].value), places=2)
+        
+        # Verify sensitivity matrix is populated
+        self.assertAlmostEqual(float(ws.cell(20, 3).value), 2929.98, places=2)  # Base case in matrix
+        self.assertGreater(float(ws.cell(21, 4).value), 3300.0)  # Bull case in matrix
+
 
     def test_clean_science_capacity_and_utilization_progression(self):
         """Clean Science model must distinguish installed HALS capacity from commercial utilization."""

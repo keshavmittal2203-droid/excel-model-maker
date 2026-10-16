@@ -464,7 +464,7 @@ def build_mm_workbook(dest_path: Path):
     # SOTP Rows
     ws_sotp.cell(4, 1, "Automotive Core Business").font = FONT_BOLD
     ws_sotp.cell(4, 2, "FY25 EBITDA: ₹20,200 Cr").font = FONT_REGULAR
-    ws_sotp.cell(4, 3, "12.0x EV/EBITDA").font = FONT_REGULAR
+    ws_sotp.cell(4, 3, "12.0x EV/EBITDA (Analyst Assumption)").font = FONT_REGULAR
     ws_sotp.cell(4, 4, "0.0%").font = FONT_REGULAR
     c = ws_sotp.cell(4, 5, "=20200*12.0")
     c.font = FONT_BOLD
@@ -472,7 +472,7 @@ def build_mm_workbook(dest_path: Path):
 
     ws_sotp.cell(5, 1, "Farm Equipment Core Business").font = FONT_BOLD
     ws_sotp.cell(5, 2, "FY25 EBITDA: ₹6,400 Cr").font = FONT_REGULAR
-    ws_sotp.cell(5, 3, "14.0x EV/EBITDA").font = FONT_REGULAR
+    ws_sotp.cell(5, 3, "14.0x EV/EBITDA (Analyst Assumption)").font = FONT_REGULAR
     ws_sotp.cell(5, 4, "0.0%").font = FONT_REGULAR
     c = ws_sotp.cell(5, 5, "=6400*14.0")
     c.font = FONT_BOLD
@@ -481,7 +481,7 @@ def build_mm_workbook(dest_path: Path):
     ws_sotp.cell(6, 1, "Mahindra & Mahindra Financial Services (MMFS)").font = FONT_BOLD
     ws_sotp.cell(6, 2, "Market Cap: ₹35,000 Cr").font = FONT_REGULAR
     ws_sotp.cell(6, 3, "52.2% Effective Stake").font = FONT_REGULAR
-    ws_sotp.cell(6, 4, "20.0%").font = FONT_REGULAR
+    ws_sotp.cell(6, 4, "20.0% HoldCo Disc").font = FONT_REGULAR
     c = ws_sotp.cell(6, 5, "=(35000*0.522)*(1-0.20)")
     c.font = FONT_BOLD
     c.number_format = FMT_INTEGER
@@ -489,60 +489,99 @@ def build_mm_workbook(dest_path: Path):
     ws_sotp.cell(7, 1, "Tech Mahindra Limited").font = FONT_BOLD
     ws_sotp.cell(7, 2, "Market Cap: ₹1,45,000 Cr").font = FONT_REGULAR
     ws_sotp.cell(7, 3, "25.5% Associate Stake").font = FONT_REGULAR
-    ws_sotp.cell(7, 4, "20.0%").font = FONT_REGULAR
+    ws_sotp.cell(7, 4, "20.0% HoldCo Disc").font = FONT_REGULAR
     c = ws_sotp.cell(7, 5, "=(145000*0.255)*(1-0.20)")
     c.font = FONT_BOLD
     c.number_format = FMT_INTEGER
 
-    ws_sotp.cell(8, 1, "Other Listed Subsidiaries (Lifespaces, Logistics)").font = FONT_BOLD
-    ws_sotp.cell(8, 2, "Combined Market Stake").font = FONT_REGULAR
-    ws_sotp.cell(8, 3, "Effective Stakes").font = FONT_REGULAR
-    ws_sotp.cell(8, 4, "25.0%").font = FONT_REGULAR
-    c = ws_sotp.cell(8, 5, "=6000*(1-0.25)")
-    c.font = FONT_BOLD
-    c.number_format = FMT_INTEGER
-
-    ws_sotp.cell(9, 1, "Total Gross Business Value (Enterprise Value)").font = FONT_BOLD
-    ws_sotp.cell(9, 1).fill = FILL_ACCENT
-    c = ws_sotp.cell(9, 5, "=SUM(E4:E8)")
+    ws_sotp.cell(8, 1, "Total Gross Business Value (Enterprise Value)").font = FONT_BOLD
+    ws_sotp.cell(8, 1).fill = FILL_ACCENT
+    c = ws_sotp.cell(8, 5, "=SUM(E4:E7)")
     c.font = FONT_BOLD
     c.fill = FILL_ACCENT
     c.border = BORDER_DATA
     c.number_format = FMT_INTEGER
 
-    ws_sotp.cell(10, 1, "Less: Core Standalone Net Debt").font = FONT_BOLD
-    ws_sotp.cell(10, 2, "Audited Standalone Net Debt Close").font = FONT_REGULAR
-    ws_sotp.cell(10, 5, -12000).font = FONT_BOLD
-    ws_sotp.cell(10, 5).number_format = FMT_INTEGER
+    ws_sotp.cell(9, 1, "Less: Core Standalone Net Debt").font = FONT_BOLD
+    ws_sotp.cell(9, 2, "Audited Standalone Net Debt Close").font = FONT_REGULAR
+    ws_sotp.cell(9, 5, -12000).font = FONT_BOLD
+    ws_sotp.cell(9, 5).number_format = FMT_INTEGER
 
-    ws_sotp.cell(11, 1, "Consolidated Equity Value").font = FONT_BOLD
-    ws_sotp.cell(11, 1).fill = FILL_ACCENT
-    c = ws_sotp.cell(11, 5, "=E9+E10")
+    ws_sotp.cell(10, 1, "Consolidated SOTP Equity Value").font = FONT_BOLD
+    ws_sotp.cell(10, 1).fill = FILL_ACCENT
+    c = ws_sotp.cell(10, 5, "=E8+E9")
     c.font = FONT_BOLD
     c.fill = FILL_ACCENT
     c.border = BORDER_TOTAL
     c.number_format = FMT_INTEGER
 
-    ws_sotp.cell(12, 1, "Diluted Shares Outstanding (Cr)").font = FONT_REGULAR
-    ws_sotp.cell(12, 5, 124.30).font = FONT_REGULAR
-    ws_sotp.cell(12, 5).number_format = FMT_DECIMAL
+    ws_sotp.cell(11, 1, "Diluted Shares Outstanding (Cr)").font = FONT_REGULAR
+    ws_sotp.cell(11, 5, 124.30).font = FONT_REGULAR
+    ws_sotp.cell(11, 5).number_format = FMT_DECIMAL
 
-    ws_sotp.cell(13, 1, "SOTP Implied Fair Value Per Share (₹)").font = FONT_TITLE
-    ws_sotp.cell(13, 1).fill = FILL_ACCENT
-    c = ws_sotp.cell(13, 5, "=E11/E12")
+    ws_sotp.cell(12, 1, "SOTP Implied Fair Value Per Share (₹)").font = FONT_TITLE
+    ws_sotp.cell(12, 1).fill = FILL_ACCENT
+    c = ws_sotp.cell(12, 5, "=E10/E11")
     c.font = FONT_TITLE
     c.fill = FILL_ACCENT
     c.border = BORDER_TOTAL
     c.number_format = FMT_DECIMAL
 
-    ws_sotp.cell(14, 1, "Current Market Price (CMP)").font = FONT_BOLD
-    ws_sotp.cell(14, 5, 2921.00).font = FONT_BOLD
-    ws_sotp.cell(14, 5).number_format = FMT_DECIMAL
+    ws_sotp.cell(13, 1, "Current Market Price (CMP: 15-Oct-2025 NSE)").font = FONT_BOLD
+    ws_sotp.cell(13, 5, 2921.00).font = FONT_BOLD
+    ws_sotp.cell(13, 5).number_format = FMT_DECIMAL
 
-    ws_sotp.cell(15, 1, "Implied Premium / (Discount) vs. CMP").font = FONT_BOLD
-    c = ws_sotp.cell(15, 5, "=(E13/E14)-1")
+    ws_sotp.cell(14, 1, "Implied Premium / (Discount) vs. CMP").font = FONT_BOLD
+    c = ws_sotp.cell(14, 5, "=(E12/E13)-1")
     c.font = FONT_BOLD
     c.number_format = FMT_PERCENT
+
+    ws_sotp.cell(15, 1, "Note on Minor Holdings: Listed stakes in Mahindra Lifespaces (51.2%) and Mahindra Logistics (58.1%) are conservatively excluded from the core valuation to eliminate speculative stub plugs; their omission provides an additional margin of safety.").font = Font(name="Calibri", size=9, italic=True)
+    ws_sotp.merge_cells("A15:E15")
+
+    # SOTP Sensitivity Matrix
+    style_section_row(ws_sotp, 17, "SOTP Valuation Sensitivity: Auto Multiple vs. Farm Multiple (₹/Share)", 5)
+    headers_sens = ["Auto EV/EBITDA \\ Farm EV/EBITDA", "12.0x Farm", "14.0x Farm (Base)", "16.0x Farm", "Notes"]
+    style_header_row(ws_sotp, 18, headers_sens)
+
+    sens_auto = [
+        ("10.0x Auto EV/EBITDA", 10.0),
+        ("12.0x Auto (Base Case)", 12.0),
+        ("14.0x Auto EV/EBITDA", 14.0),
+    ]
+    for r_idx, (lbl, auto_m) in enumerate(sens_auto, start=19):
+        ws_sotp.cell(r_idx, 1, lbl).font = FONT_BOLD if auto_m == 12.0 else FONT_REGULAR
+        for c_idx, farm_m in enumerate([12.0, 14.0, 16.0], start=2):
+            col_cell = ws_sotp.cell(r_idx, c_idx, f"=((20200*{auto_m})+(6400*{farm_m})+14616+29580-12000)/124.30")
+            col_cell.font = FONT_BOLD if (auto_m == 12.0 and farm_m == 14.0) else FONT_REGULAR
+            col_cell.number_format = FMT_DECIMAL
+            col_cell.alignment = ALIGN_RIGHT
+            if auto_m == 12.0 and farm_m == 14.0:
+                col_cell.fill = FILL_ACCENT
+        ws_sotp.cell(r_idx, 5, "Base Case" if auto_m == 12.0 else "Scenario").font = FONT_REGULAR
+
+    style_section_row(ws_sotp, 23, "Holding Company Discount Sensitivity (Base Multiples: 12x Auto / 14x Farm)", 5)
+    headers_hd = ["Holding Co. Discount", "15% HoldCo Discount", "20% HoldCo Discount (Base)", "25% HoldCo Discount", "Notes"]
+    style_header_row(ws_sotp, 24, headers_hd)
+
+    ws_sotp.cell(25, 1, "Implied Value Per Share (₹)").font = FONT_BOLD
+    c15 = ws_sotp.cell(25, 2, "=((20200*12.0)+(6400*14.0)+((35000*0.522)+(145000*0.255))*(1-0.15)-12000)/124.30")
+    c15.font = FONT_REGULAR
+    c15.number_format = FMT_DECIMAL
+    c15.alignment = ALIGN_RIGHT
+
+    c20 = ws_sotp.cell(25, 3, "=E12")
+    c20.font = FONT_BOLD
+    c20.fill = FILL_ACCENT
+    c20.number_format = FMT_DECIMAL
+    c20.alignment = ALIGN_RIGHT
+
+    c25 = ws_sotp.cell(25, 4, "=((20200*12.0)+(6400*14.0)+((35000*0.522)+(145000*0.255))*(1-0.25)-12000)/124.30")
+    c25.font = FONT_REGULAR
+    c25.number_format = FMT_DECIMAL
+    c25.alignment = ALIGN_RIGHT
+
+    ws_sotp.cell(25, 5, "Base: 20% discount").font = FONT_REGULAR
 
     tune_column_widths(ws_sotp)
 

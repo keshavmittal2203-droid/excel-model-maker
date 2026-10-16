@@ -465,7 +465,7 @@ def build_edelweiss_workbook(dest_path: Path):
     c.border = BORDER_TOTAL
     c.number_format = FMT_DECIMAL
 
-    ws_val.cell(16, 1, "Current Market Price (CMP)").font = FONT_BOLD
+    ws_val.cell(16, 1, "Current Market Price (CMP: 15-Oct-2025 NSE)").font = FONT_BOLD
     ws_val.cell(16, 5, 135.00).font = FONT_BOLD
     ws_val.cell(16, 5).number_format = FMT_DECIMAL
 
@@ -473,6 +473,33 @@ def build_edelweiss_workbook(dest_path: Path):
     c = ws_val.cell(17, 5, "=(E15/E16)-1")
     c.font = FONT_BOLD
     c.number_format = FMT_PERCENT
+
+    ws_val.cell(18, 1, "Analyst Assumptions: EAAA valued at 22x P/E, EARCL at 1.20x P/B, EAML at 4.0% of AAUM, Insurance at ₹1,500 Cr book proxy, Credit book at 0.80x P/B, Standalone HoldCo Net Debt -₹5,500 Cr. Industrial FCFF is strictly withheld. Proximity to CMP (₹135.00 as of 15-Oct-2025 NSE) is an observation, not model validation.").font = Font(name="Calibri", size=9, italic=True)
+    ws_val.merge_cells("A18:E18")
+
+    # SOTP Sensitivity Matrix
+    style_section_row(ws_val, 20, "Financial Services SOTP Sensitivity: Alternatives P/E vs. ARC P/B Multiple (₹/Share)", 5)
+    headers_sens = ["Alternatives (EAAA) P/E \\ ARC (EARCL) P/B", "1.00x EARCL", "1.20x EARCL (Base)", "1.40x EARCL", "Notes"]
+    style_header_row(ws_val, 21, headers_sens)
+
+    sens_eaaa = [
+        ("18.0x EAAA P/E", 18.0),
+        ("22.0x EAAA (Base Case)", 22.0),
+        ("26.0x EAAA P/E", 26.0),
+    ]
+    for r_idx, (lbl, pe_mult) in enumerate(sens_eaaa, start=22):
+        ws_val.cell(r_idx, 1, lbl).font = FONT_BOLD if pe_mult == 22.0 else FONT_REGULAR
+        for c_idx, pb_mult in enumerate([1.00, 1.20, 1.40], start=2):
+            if pe_mult == 22.0 and pb_mult == 1.20:
+                col_cell = ws_val.cell(r_idx, c_idx, "=E15")
+                col_cell.fill = FILL_ACCENT
+                col_cell.font = FONT_BOLD
+            else:
+                col_cell = ws_val.cell(r_idx, c_idx, f"=((230*{pe_mult})+(2800*{pb_mult})+5640+1500+2560-5500)/94.50")
+                col_cell.font = FONT_REGULAR
+            col_cell.number_format = FMT_DECIMAL
+            col_cell.alignment = ALIGN_RIGHT
+        ws_val.cell(r_idx, 5, "Base Case" if pe_mult == 22.0 else "Scenario").font = FONT_REGULAR
 
     tune_column_widths(ws_val)
 

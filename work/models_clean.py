@@ -506,13 +506,43 @@ def build_clean_workbook(dest_path: Path):
     c.border = BORDER_TOTAL
     c.number_format = FMT_DECIMAL
 
-    ws_val.cell(25, 1, "Current Market Price (CMP)").font = FONT_BOLD
+    ws_val.cell(25, 1, "Current Market Price (CMP: 15-Oct-2025 NSE)").font = FONT_BOLD
     ws_val.cell(25, 2, 784.00).number_format = FMT_DECIMAL
 
     ws_val.cell(26, 1, "Implied Premium / (Discount) vs. CMP").font = FONT_BOLD
     c = ws_val.cell(26, 2, "=(B24/B25)-1")
     c.font = FONT_BOLD
     c.number_format = FMT_PERCENT
+
+    ws_val.cell(27, 1, "Analyst Assumptions: Kurkumbh Unit 4 Clean Fino-Chem 10,500 MTPA HALS capacity, commercial utilization ramp (35% FY24, 55% FY25, 75% FY27), WACC 12.0%, Terminal Growth 5.0%. Proximity to CMP (₹784.00 as of 15-Oct-2025 NSE) is an observation, not model validation.").font = Font(name="Calibri", size=9, italic=True)
+    ws_val.merge_cells("A27:E27")
+
+    # FCFF Sensitivity Matrix
+    style_section_row(ws_val, 29, "FCFF DCF Valuation Sensitivity: WACC vs. Terminal Growth Rate (₹/Share)", 5)
+    headers_sens = ["WACC \\ Terminal Growth", "4.0% TGR", "5.0% TGR (Base)", "6.0% TGR", "Notes"]
+    style_header_row(ws_val, 30, headers_sens)
+
+    sens_wacc = [
+        ("11.0% WACC", 0.11),
+        ("12.0% WACC (Base Case)", 0.12),
+        ("13.0% WACC", 0.13),
+    ]
+    for r_idx, (lbl, wacc_val) in enumerate(sens_wacc, start=31):
+        ws_val.cell(r_idx, 1, lbl).font = FONT_BOLD if wacc_val == 0.12 else FONT_REGULAR
+        for c_idx, tgr_val in enumerate([0.04, 0.05, 0.06], start=2):
+            if wacc_val == 0.12 and tgr_val == 0.05:
+                col_cell = ws_val.cell(r_idx, c_idx, "=B24")
+                col_cell.fill = FILL_ACCENT
+                col_cell.font = FONT_BOLD
+            elif wacc_val == 0.12:
+                col_cell = ws_val.cell(r_idx, c_idx, f"=((B16+((F11*(1+{tgr_val}))/({wacc_val}-{tgr_val}))*F12)+B20+B21)/B23")
+                col_cell.font = FONT_REGULAR
+            else:
+                col_cell = ws_val.cell(r_idx, c_idx, f"=(((B11*(1/(1+{wacc_val}))+C11*(1/(1+{wacc_val})^2)+D11*(1/(1+{wacc_val})^3)+E11*(1/(1+{wacc_val})^4)+F11*(1/(1+{wacc_val})^5))+((F11*(1+{tgr_val}))/({wacc_val}-{tgr_val}))*(1/(1+{wacc_val})^5))+B20+B21)/B23")
+                col_cell.font = FONT_REGULAR
+            col_cell.number_format = FMT_DECIMAL
+            col_cell.alignment = ALIGN_RIGHT
+        ws_val.cell(r_idx, 5, "Base Case" if wacc_val == 0.12 else "Scenario").font = FONT_REGULAR
 
     tune_column_widths(ws_val)
 

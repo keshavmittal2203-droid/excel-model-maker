@@ -25,7 +25,7 @@ TARGETS = {
         "comp_dir": ROOT / "companies" / "MM",
         "sheets": ["Cover & Notes", "Income Statement", "Balance Sheet", "Cash Flow", "Segment Operations", "SOTP Valuation"],
         "valuation_type": "Sum-of-the-Parts (SOTP) Valuation",
-        "implied_value": 2966.18,
+        "implied_value": 2929.98,
         "cmp": 2921.00,
         "valuation_status": "supported",
     },

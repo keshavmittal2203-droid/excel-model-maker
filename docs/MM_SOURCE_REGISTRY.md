@@ -21,4 +21,4 @@
 ## 2. Valuation Methodology & Governance Notes
 - **Valuation Approach**: `Sum-of-the-Parts (SOTP) Valuation`
 - **Valuation Status**: `supported`
-- **Implied Value Per Share**: ₹2966.18 (vs. CMP ₹2921.00)
+- **Implied Value Per Share**: ₹2929.98 (vs. CMP ₹2921.00)
