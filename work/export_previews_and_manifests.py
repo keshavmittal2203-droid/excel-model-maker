@@ -25,8 +25,8 @@ TARGETS = {
         "comp_dir": ROOT / "companies" / "MM",
         "sheets": ["Cover & Notes", "Income Statement", "Balance Sheet", "Cash Flow", "Segment Operations", "SOTP Valuation"],
         "valuation_type": "Sum-of-the-Parts (SOTP) Valuation",
-        "implied_value": 2929.98,
-        "cmp": 2921.00,
+        "implied_value": 2742.97,
+        "cmp": 3497.20,
         "valuation_status": "supported",
     },
     "LTM": {
@@ -40,8 +40,8 @@ TARGETS = {
         "comp_dir": ROOT / "companies" / "LTM",
         "sheets": ["Cover & Notes", "Income Statement", "Balance Sheet", "Cash Flow", "IT Services Operations", "FCFF Valuation"],
         "valuation_type": "Unlevered Free Cash Flow (FCFF) DCF",
-        "implied_value": 2813.51,
-        "cmp": 5568.00,
+        "implied_value": 2811.09,
+        "cmp": 5609.50,
         "valuation_status": "supported",
     },
     "CLEAN": {
@@ -55,8 +55,8 @@ TARGETS = {
         "comp_dir": ROOT / "companies" / "CLEAN",
         "sheets": ["Cover & Notes", "Income Statement", "Balance Sheet", "Cash Flow", "Manufacturing & Capacity", "Manufacturing DCF Valuation"],
         "valuation_type": "Manufacturing FCFF DCF Valuation",
-        "implied_value": 415.69,
-        "cmp": 1039.00,
+        "implied_value": 480.89,
+        "cmp": 1041.40,
         "valuation_status": "supported",
     },
     "EDELWEISS": {
@@ -70,8 +70,8 @@ TARGETS = {
         "comp_dir": ROOT / "companies" / "EDELWEISS",
         "sheets": ["Cover & Notes", "Income Statement", "Balance Sheet", "Cash Flow", "Segment Operations", "SOTP Valuation"],
         "valuation_type": "Financial Services Sum-of-the-Parts (SOTP) Valuation",
-        "implied_value": 133.54,
-        "cmp": 108.00,
+        "implied_value": 130.53,
+        "cmp": 108.85,
         "valuation_status": "supported_sotp_fcff_withheld",
     },
 }

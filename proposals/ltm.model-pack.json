@@ -34,7 +34,7 @@
       "name": "implied_fair_value_per_share",
       "sheet": "Cover & Notes",
       "cell": "E8",
-      "expected": 2813.51,
+      "expected": 2811.09,
       "abs_tolerance": 0.05,
       "description": "Primary Implied Fair Value per Share."
     }

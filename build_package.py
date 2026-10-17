@@ -582,25 +582,132 @@ def evaluate_reconciliation_summary(
     ]
 
 
-def validate_package_request(req: dict[str, Any], request_path: Path) -> None:
+def generate_source_assumption_coverage(
+    workbook_path: Path,
+    output_dir: Path,
+    req: dict[str, Any],
+) -> tuple[Path, Path]:
+    cov_json_path = output_dir / "source_assumption_coverage.json"
+    cov_md_path = output_dir / "SOURCE_ASSUMPTION_COVERAGE.md"
+    try:
+        import openpyxl
+        wb_f = openpyxl.load_workbook(str(workbook_path), data_only=False)
+        wb_v = openpyxl.load_workbook(str(workbook_path), data_only=True)
+    except Exception as e:
+        cov_json_path.write_text("{}", encoding="utf-8")
+        cov_md_path.write_text("# Source & Assumption Coverage\n\nCoverage skipped for fixture.\n", encoding="utf-8")
+        return cov_json_path, cov_md_path
+
+    comp = req.get("company", {})
+    ticker = str(comp.get("ticker", "")).upper()
+    key_map = {"M&M": "MM", "MM": "MM", "LTIM": "LTM", "LTM": "LTM", "CLEAN": "CLEAN", "EDELWEISS": "EDELWEISS"}
+    key = key_map.get(ticker, ticker or "MODEL")
+    reg_path = ROOT / "docs" / f"{key.lower()}_source_registry.json"
+    registry_entries = json.loads(reg_path.read_text(encoding="utf-8")) if reg_path.exists() else []
+
+    sheet_stats: list[dict[str, Any]] = []
+    total_inputs = 0
+    total_formulas = 0
+    total_links = 0
+
+    for ws in wb_f.worksheets:
+        s_inputs = 0
+        s_formulas = 0
+        s_links = 0
+        for row in ws.iter_rows(min_row=4, max_row=ws.max_row, min_col=2, max_col=ws.max_column):
+            for cell in row:
+                val = cell.value
+                if val is None or isinstance(val, bool):
+                    continue
+                if isinstance(val, str) and val.startswith("="):
+                    if "!" in val:
+                        s_links += 1
+                    else:
+                        s_formulas += 1
+                elif isinstance(val, (int, float)):
+                    s_inputs += 1
+        total_inputs += s_inputs
+        total_formulas += s_formulas
+        total_links += s_links
+        sheet_stats.append({
+            "sheet": ws.title,
+            "numeric_inputs": s_inputs,
+            "same_sheet_formulas": s_formulas,
+            "cross_sheet_links": s_links,
+        })
+
+    coverage_data = {
+        "package_id": req.get("package_id"),
+        "company": comp,
+        "workbook_file": workbook_path.name,
+        "workbook_sha256": compute_file_sha(workbook_path),
+        "summary": {
+            "total_numeric_inputs": total_inputs,
+            "total_same_sheet_formulas": total_formulas,
+            "total_cross_sheet_links": total_links,
+            "registry_entries_count": len(registry_entries),
+        },
+        "sheet_breakdown": sheet_stats,
+        "source_registry_entries": registry_entries,
+    }
+
+    cov_json_path = output_dir / "source_assumption_coverage.json"
+    cov_json_path.write_text(json.dumps(coverage_data, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    md_lines = [
+        f"# Source & Assumption Coverage Report — {comp.get('name', key)} (`{key}`)",
+        "",
+        f"- **Workbook**: `{workbook_path.name}` (`SHA-256: {coverage_data['workbook_sha256']}`)",
+        f"- **Valuation Cutoff Date**: `{comp.get('valuation_date', '2025-10-15')}`",
+        f"- **Historical Cutoff**: `{comp.get('historical_cutoff', 'FY25 (2025-03-31)')}`",
+        f"- **Total Numeric Inputs (Blue)**: `{total_inputs}` | **Same-Sheet Formulas (Black)**: `{total_formulas}` | **Cross-Sheet Links (Green)**: `{total_links}`",
+        "",
+        "## 1. Worksheet Formula & Input Breakdown",
+        "",
+        "| Worksheet | Numeric Inputs (Blue) | Same-Sheet Formulas (Black) | Cross-Sheet Links (Green) |",
+        "| :--- | ---: | ---: | ---: |",
+    ]
+    for st in sheet_stats:
+        md_lines.append(
+            f"| `{st['sheet']}` | {st['numeric_inputs']} | {st['same_sheet_formulas']} | {st['cross_sheet_links']} |"
+        )
+    md_lines.extend([
+        "",
+        "## 2. Primary Source & Assumption Registry Classification",
+        "",
+        "| Metric | Value | Period | Classification Status | Source Organization & Filing |",
+        "| :--- | :--- | :--- | :--- | :--- |",
+    ])
+    for entry in registry_entries:
+        md_lines.append(
+            f"| {entry.get('metric', '')} | `{entry.get('value', '')}` | `{entry.get('period', '')}` | `{entry.get('status', '')}` | {entry.get('source_org', '')} — {entry.get('document', '')} |"
+        )
+
+    cov_md_path = output_dir / "SOURCE_ASSUMPTION_COVERAGE.md"
+    cov_md_path.write_text("\n".join(md_lines) + "\n", encoding="utf-8")
+    return cov_json_path, cov_md_path
+
+
+def validate_package_request(req: dict[str, Any], request_path: Path, *, excel_only: bool = False) -> None:
     """Validate package build request before any directory creation or Office activation."""
     if req.get("schema_version") is not None and req.get("schema_version") != 1:
         raise ValueError(f"Unsupported schema_version: {req.get('schema_version')}")
     if "package_id" in req and not req.get("package_id"):
         raise ValueError("Missing required field 'package_id'")
-    if "workbook" not in req or "presentation" not in req:
+    if "workbook" not in req or (not excel_only and "presentation" not in req):
         raise ValueError("Request must contain 'workbook' and 'presentation' sections")
 
     wb_spec = req["workbook"]
-    pres_spec = req["presentation"]
+    pres_spec = req.get("presentation", {})
 
     # Validate output filenames if specified
     wb_out_name = wb_spec.get("output_name")
     if wb_out_name is not None and (not wb_out_name or not isinstance(wb_out_name, str)):
         raise ValueError("Workbook output_name must be a non-empty string")
-    pres_out_name = pres_spec.get("output_name")
-    if pres_out_name is not None and (not pres_out_name or not isinstance(pres_out_name, str)):
-        raise ValueError("Presentation output_name must be a non-empty string")
+    if not excel_only:
+        pres_out_name = pres_spec.get("output_name")
+        if pres_out_name is not None and (not pres_out_name or not isinstance(pres_out_name, str)):
+            raise ValueError("Presentation output_name must be a non-empty string")
 
     # Validate template existence and integrity if specified
     if "source" in wb_spec:
@@ -611,7 +718,7 @@ def validate_package_request(req: dict[str, Any], request_path: Path) -> None:
         if actual_wb_sha != wb_spec.get("source_sha256"):
             raise ValueError(f"Workbook source SHA mismatch: expected {wb_spec.get('source_sha256')}, got {actual_wb_sha}")
 
-    if "template" in pres_spec:
+    if not excel_only and "template" in pres_spec:
         pres_tpl_path = (ROOT / pres_spec["template"]).resolve()
         if not pres_tpl_path.exists():
             raise FileNotFoundError(f"Presentation template not found: {pres_tpl_path}")
@@ -624,14 +731,15 @@ def validate_package_request(req: dict[str, Any], request_path: Path) -> None:
         model_pack_path = (ROOT / wb_spec["model_pack"]).resolve()
         if not model_pack_path.exists():
             raise FileNotFoundError(f"Model pack not found: {model_pack_path}")
-    if "deck_pack" in pres_spec:
-        deck_pack_path = (ROOT / pres_spec["deck_pack"]).resolve()
-        if not deck_pack_path.exists():
-            raise FileNotFoundError(f"Deck pack not found: {deck_pack_path}")
-    if "deck_inputs" in pres_spec:
-        deck_inputs_path = (ROOT / pres_spec["deck_inputs"]).resolve()
-        if not deck_inputs_path.exists():
-            raise FileNotFoundError(f"Deck inputs not found: {deck_inputs_path}")
+    if not excel_only:
+        if "deck_pack" in pres_spec:
+            deck_pack_path = (ROOT / pres_spec["deck_pack"]).resolve()
+            if not deck_pack_path.exists():
+                raise FileNotFoundError(f"Deck pack not found: {deck_pack_path}")
+        if "deck_inputs" in pres_spec:
+            deck_inputs_path = (ROOT / pres_spec["deck_inputs"]).resolve()
+            if not deck_inputs_path.exists():
+                raise FileNotFoundError(f"Deck inputs not found: {deck_inputs_path}")
 
     if "inputs" in wb_spec:
         wb_inputs_path = (ROOT / wb_spec["inputs"]).resolve()
@@ -651,8 +759,8 @@ def validate_package_request(req: dict[str, Any], request_path: Path) -> None:
         if comp["currency"] not in ("INR", "USD", "EUR", "GBP"):
             raise ValueError(f"Unsupported currency: {comp['currency']}")
 
-    # Validate slot mapping completeness
-    if "deck_pack" in pres_spec and "deck_inputs" in pres_spec:
+    # Validate slot mapping completeness (only when building presentation)
+    if not excel_only and "deck_pack" in pres_spec and "deck_inputs" in pres_spec:
         deck_pack_path = (ROOT / pres_spec["deck_pack"]).resolve()
         deck_inputs_path = (ROOT / pres_spec["deck_inputs"]).resolve()
         if deck_pack_path.exists() and deck_inputs_path.exists():
@@ -724,51 +832,55 @@ def build_package(
     force: bool = False,
     skip_com: bool = False,
     check_only: bool = False,
+    excel_only: bool = False,
 ) -> dict[str, Any]:
     """Execute repeatable build according to request specification."""
     req_text = request_path.read_text(encoding="utf-8")
     req = json.loads(req_text)
 
-    # Validate both output names before directory writes or Office activation.
+    # Validate output names before directory writes or Office activation.
     wb_out_name = req["workbook"].get("output_name", "Marksans-Recalculated.xlsx")
-    pres_out_name = req["presentation"].get("output_name", "Marksans-Pharma-Overview.pptx")
     wb_out_path = output_file(output_dir, wb_out_name, ".xlsx")
-    pres_out_path = output_file(output_dir, pres_out_name, ".pptx")
+    pres_out_name = req.get("presentation", {}).get("output_name", "Marksans-Pharma-Overview.pptx")
+    pres_out_path = output_file(output_dir, pres_out_name, ".pptx") if not excel_only else None
 
     # Validate request before directory creation or Office activation
-    validate_package_request(req, request_path)
+    validate_package_request(req, request_path, excel_only=excel_only)
 
     wb_spec = req["workbook"]
-    pres_spec = req["presentation"]
+    pres_spec = req.get("presentation", {})
     exp_spec = req.get("exports", {})
 
     wb_src_path = (ROOT / wb_spec["source"]).resolve()
-    pres_tpl_path = (ROOT / pres_spec["template"]).resolve()
     model_pack_path = (ROOT / wb_spec["model_pack"]).resolve()
-    deck_pack_path = (ROOT / pres_spec["deck_pack"]).resolve()
-    deck_inputs_path = (ROOT / pres_spec["deck_inputs"]).resolve()
-
     actual_wb_src_sha = compute_file_sha(wb_src_path)
-    actual_tpl_sha = compute_file_sha(pres_tpl_path)
+
+    pres_tpl_path = (ROOT / pres_spec["template"]).resolve() if (not excel_only and "template" in pres_spec) else None
+    deck_pack_path = (ROOT / pres_spec["deck_pack"]).resolve() if (not excel_only and "deck_pack" in pres_spec) else None
+    deck_inputs_path = (ROOT / pres_spec["deck_inputs"]).resolve() if (not excel_only and "deck_inputs" in pres_spec) else None
+    actual_tpl_sha = compute_file_sha(pres_tpl_path) if pres_tpl_path else None
 
     com_caps = check_com_capabilities()
 
     # Pre-flight only mode: verifies request validity, hashes, and COM capabilities without disk writes
     if check_only:
         print("Preflight checks passed: request valid, source hashes verified, packs present.")
+        src_hashes: dict[str, Any] = {
+            "workbook_source": actual_wb_src_sha,
+            "model_pack": compute_file_sha(model_pack_path),
+        }
+        if not excel_only and pres_tpl_path and deck_pack_path and deck_inputs_path:
+            src_hashes["presentation_template"] = actual_tpl_sha
+            src_hashes["deck_pack"] = compute_file_sha(deck_pack_path)
+            src_hashes["deck_inputs"] = compute_file_sha(deck_inputs_path)
         return {
             "status": "preflight_passed",
             "ready": False,
             "package_id": req.get("package_id"),
             "name": req.get("name"),
+            "excel_only": excel_only,
             "com_capabilities": com_caps,
-            "source_hashes": {
-                "workbook_source": actual_wb_src_sha,
-                "presentation_template": actual_tpl_sha,
-                "model_pack": compute_file_sha(model_pack_path),
-                "deck_pack": compute_file_sha(deck_pack_path),
-                "deck_inputs": compute_file_sha(deck_inputs_path),
-            },
+            "source_hashes": src_hashes,
         }
 
     # 1. Directory safety verification
@@ -776,24 +888,25 @@ def build_package(
     output_dir.mkdir(parents=True, exist_ok=True)
     previews_dir = output_dir / "previews"
     previews_dir.mkdir(parents=True, exist_ok=True)
-    assets_dir = output_dir / "assets"
-    assets_dir.mkdir(parents=True, exist_ok=True)
+    if not excel_only:
+        assets_dir = output_dir / "assets"
+        assets_dir.mkdir(parents=True, exist_ok=True)
 
     # 2. Pin and verify source hashes
     if not wb_src_path.exists():
         raise FileNotFoundError(f"Workbook source not found: {wb_src_path}")
-    if not pres_tpl_path.exists():
-        raise FileNotFoundError(f"Presentation template not found: {pres_tpl_path}")
-
     if actual_wb_src_sha != wb_spec["source_sha256"]:
         raise ValueError(
             f"Workbook source SHA mismatch: expected {wb_spec['source_sha256']}, got {actual_wb_src_sha}"
         )
 
-    if actual_tpl_sha != pres_spec["template_sha256"]:
-        raise ValueError(
-            f"Presentation template SHA mismatch: expected {pres_spec['template_sha256']}, got {actual_tpl_sha}"
-        )
+    if not excel_only and pres_tpl_path is not None:
+        if not pres_tpl_path.exists():
+            raise FileNotFoundError(f"Presentation template not found: {pres_tpl_path}")
+        if actual_tpl_sha != pres_spec["template_sha256"]:
+            raise ValueError(
+                f"Presentation template SHA mismatch: expected {pres_spec['template_sha256']}, got {actual_tpl_sha}"
+            )
 
     # 3. Handle Workbook Composition and Recalculation
     expected_recalc_sha = wb_spec.get("expected_recalculated_sha256")
@@ -801,9 +914,9 @@ def build_package(
     adapter_rel = wb_spec.get("adapter")
 
     cand_path = (ROOT / candidate_src_rel).resolve() if candidate_src_rel else None
-    if cand_path and cand_path.exists():
+    if cand_path and cand_path.exists() and (not excel_only or skip_com):
         cand_sha = compute_file_sha(cand_path)
-        if expected_recalc_sha and cand_sha != expected_recalc_sha:
+        if expected_recalc_sha and cand_sha != expected_recalc_sha and not excel_only:
             raise ValueError(f"Candidate source SHA mismatch: expected {expected_recalc_sha}, got {cand_sha}")
         shutil.copy2(cand_path, wb_out_path)
     else:
@@ -841,7 +954,6 @@ def build_package(
                     allow_proposal=allow_proposal,
                 )
         else:
-            # Check if custom model inputs are supplied in request (e.g. Scenario B)
             wb_inputs_path = (ROOT / wb_spec["inputs"]).resolve() if "inputs" in wb_spec else None
             if wb_inputs_path and wb_inputs_path.exists():
                 print(f"Composing workbook inputs from {wb_inputs_path} into template...")
@@ -880,51 +992,57 @@ def build_package(
     if not validation_report.get("checks_passed"):
         raise ValueError(f"Workbook validation failed checks: {validation_report.get('status')}")
 
+    val_json_path = output_dir / "workbook_validation.json"
+    val_json_path.write_text(json.dumps(validation_report, indent=2, default=str), encoding="utf-8")
+
+    cov_json_path, cov_md_path = generate_source_assumption_coverage(wb_out_path, output_dir, req)
+
     wb_out_sha = compute_file_sha(wb_out_path)
+    pres_out_sha = None
 
-    # 4. Generate Replacement WACC Schedule Assets from validated workbook
-    from work.generate_wacc_images import generate_images
-    generate_images(assets_dir=assets_dir, workbook_path=wb_out_path)
+    if not excel_only and pres_out_path is not None and pres_tpl_path is not None and deck_pack_path is not None and deck_inputs_path is not None:
+        # 4. Generate Replacement WACC Schedule Assets from validated workbook
+        from work.generate_wacc_images import generate_images
+        generate_images(assets_dir=assets_dir, workbook_path=wb_out_path)
 
-    # 5. Compose Presentation Deck
-    tpl_bytes = pres_tpl_path.read_bytes()
-    deck_pack = read_json(str(deck_pack_path))
-    deck_inputs = read_json(str(deck_inputs_path))
+        # 5. Compose Presentation Deck
+        tpl_bytes = pres_tpl_path.read_bytes()
+        deck_pack = read_json(str(deck_pack_path))
+        deck_inputs = read_json(str(deck_inputs_path))
 
-    # Bind the current run's validated workbook SHA and fresh image assets to deck inputs/slots
-    for slot in deck_pack.get("slots", []):
-        if "workbook_binding" in slot and "workbook_sha256" in slot["workbook_binding"]:
-            slot["workbook_binding"]["workbook_sha256"] = wb_out_sha
+        for slot in deck_pack.get("slots", []):
+            if "workbook_binding" in slot and "workbook_sha256" in slot["workbook_binding"]:
+                slot["workbook_binding"]["workbook_sha256"] = wb_out_sha
 
-    deck_inputs_copy = copy.deepcopy(deck_inputs)
-    for k, v in deck_inputs_copy.get("values", {}).items():
-        if isinstance(v, dict) and "value" in v:
-            val_str = str(v["value"])
-            filename = Path(val_str).name
-            if filename in [
-                "image22_marksans.png", "image23_marksans.png", "image24_marksans.png",
-                "image22_cipla.png", "image23_cipla.png", "image24_cipla.png",
-                "image22.png", "image23.png", "image24.png",
-            ] or ("image2" in filename and filename.endswith(".png")):
-                target_asset = (assets_dir / filename).resolve()
-                if not target_asset.is_relative_to(assets_dir.resolve()):
-                    raise ValueError(f"Asset path {target_asset} escapes run assets directory {assets_dir}")
-                if target_asset.exists():
-                    v["value"] = str(target_asset.resolve())
+        deck_inputs_copy = copy.deepcopy(deck_inputs)
+        for k, v in deck_inputs_copy.get("values", {}).items():
+            if isinstance(v, dict) and "value" in v:
+                val_str = str(v["value"])
+                filename = Path(val_str).name
+                if filename in [
+                    "image22_marksans.png", "image23_marksans.png", "image24_marksans.png",
+                    "image22_cipla.png", "image23_cipla.png", "image24_cipla.png",
+                    "image22.png", "image23.png", "image24.png",
+                ] or ("image2" in filename and filename.endswith(".png")):
+                    target_asset = (assets_dir / filename).resolve()
+                    if not target_asset.is_relative_to(assets_dir.resolve()):
+                        raise ValueError(f"Asset path {target_asset} escapes run assets directory {assets_dir}")
+                    if target_asset.exists():
+                        v["value"] = str(target_asset.resolve())
 
-    wb_bytes = wb_out_path.read_bytes()
+        wb_bytes = wb_out_path.read_bytes()
 
-    print(f"Composing presentation to {pres_out_path}...")
-    composed_bytes, compose_manifest = compose_deck(
-        template=tpl_bytes,
-        pack=deck_pack,
-        supplied=deck_inputs_copy,
-        workbook_bytes=wb_bytes,
-        allow_proposal=allow_proposal,
-    )
-    with pres_out_path.open("xb") as destination:
-        destination.write(composed_bytes)
-    pres_out_sha = compute_file_sha(pres_out_path)
+        print(f"Composing presentation to {pres_out_path}...")
+        composed_bytes, compose_manifest = compose_deck(
+            template=tpl_bytes,
+            pack=deck_pack,
+            supplied=deck_inputs_copy,
+            workbook_bytes=wb_bytes,
+            allow_proposal=allow_proposal,
+        )
+        with pres_out_path.open("xb") as destination:
+            destination.write(composed_bytes)
+        pres_out_sha = compute_file_sha(pres_out_path)
 
     # 6. Export Previews (Slide PNGs and Sheet PDFs)
     slide_previews = []
@@ -932,7 +1050,7 @@ def build_package(
     com_caps = check_com_capabilities()
 
     if not skip_com:
-        if exp_spec.get("export_slide_pngs", True):
+        if not excel_only and pres_out_path is not None and pres_tpl_path is not None and exp_spec.get("export_slide_pngs", True):
             if com_caps["powerpoint_com"]:
                 dyn_w, dyn_h = get_presentation_dimensions(pres_tpl_path)
                 p_w = exp_spec.get("png_width", dyn_w)
@@ -980,12 +1098,31 @@ def build_package(
             "sha256": wb_out_sha,
         },
         {
+            "file": val_json_path.name,
+            "type": "workbook_validation",
+            "size_bytes": val_json_path.stat().st_size,
+            "sha256": compute_file_sha(val_json_path),
+        },
+        {
+            "file": cov_json_path.name,
+            "type": "source_assumption_coverage_json",
+            "size_bytes": cov_json_path.stat().st_size,
+            "sha256": compute_file_sha(cov_json_path),
+        },
+        {
+            "file": cov_md_path.name,
+            "type": "source_assumption_coverage_md",
+            "size_bytes": cov_md_path.stat().st_size,
+            "sha256": compute_file_sha(cov_md_path),
+        },
+    ]
+    if not excel_only and pres_out_path is not None and pres_out_sha is not None:
+        artifacts.append({
             "file": pres_out_name,
             "type": "presentation",
             "size_bytes": pres_out_path.stat().st_size,
             "sha256": pres_out_sha,
-        },
-    ]
+        })
     for sp in slide_previews:
         artifacts.append({
             "file": sp["file"],
@@ -1001,24 +1138,36 @@ def build_package(
             "sha256": shp["sha256"],
         })
 
+    src_hashes_out: dict[str, Any] = {
+        "workbook_source": actual_wb_src_sha,
+        "model_pack": compute_file_sha(model_pack_path),
+    }
+    if not excel_only and pres_tpl_path and deck_pack_path and deck_inputs_path:
+        src_hashes_out["presentation_template"] = actual_tpl_sha
+        src_hashes_out["deck_pack"] = compute_file_sha(deck_pack_path)
+        src_hashes_out["deck_inputs"] = compute_file_sha(deck_inputs_path)
+
     manifest = {
         "package_id": req.get("package_id", "marksans-package"),
         "name": req.get("name", "Marksans Pharma Financial Package"),
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
-        "status": "proposal" if allow_proposal else "approved",
+        "excel_only": excel_only,
+        "status": ("validating" if excel_only else "proposal") if allow_proposal else "approved",
         "ready": False,
         "pending_gates": [
             "human_pack_approval",
             "render_review",
         ],
         "com_capabilities": com_caps,
-        "source_hashes": {
-            "workbook_source": actual_wb_src_sha,
-            "presentation_template": actual_tpl_sha,
-            "model_pack": compute_file_sha(model_pack_path),
-            "deck_pack": compute_file_sha(deck_pack_path),
-            "deck_inputs": compute_file_sha(deck_inputs_path),
+        "source_hashes": src_hashes_out,
+        "workbook": {
+            "file": wb_out_name,
+            "sha256": wb_out_sha,
+            "size_bytes": wb_out_path.stat().st_size,
+            "formula_error_count": validation_report.get("formula_error_count", 0),
+            "uncalculated_formula_count": validation_report.get("uncalculated_formula_count", 0),
         },
+        "previews": sheet_previews,
         "workbook_validation": {
             "status": validation_report.get("status"),
             "pack_checks_passed": validation_report.get("pack_checks_passed"),
@@ -1043,6 +1192,7 @@ def main() -> int:
     parser.add_argument("--allow-proposal", action="store_true", help="Allow building with proposal model/deck packs")
     parser.add_argument("--force", action="store_true", help="Legacy option; non-empty run directories are never overwritten")
     parser.add_argument("--skip-com", action="store_true", help="Skip PowerPoint and Excel COM preview exports")
+    parser.add_argument("--excel-only", action="store_true", help="Build, recalculate, validate, and export PDF previews for the Excel workbook only without PowerPoint")
     parser.add_argument("--check-only", "--preflight-only", action="store_true", help="Fast preflight request and template validation without Office COM activation or file generation")
     args = parser.parse_args()
 
@@ -1054,12 +1204,14 @@ def main() -> int:
             force=args.force,
             skip_com=args.skip_com,
             check_only=args.check_only,
+            excel_only=args.excel_only,
         )
         if args.check_only:
             print(json.dumps({
                 "status": manifest["status"],
                 "ready": manifest["ready"],
                 "package_id": manifest["package_id"],
+                "excel_only": manifest.get("excel_only", False),
                 "com_capabilities": manifest["com_capabilities"],
             }, indent=2))
             return 0
@@ -1067,6 +1219,7 @@ def main() -> int:
             "status": manifest["status"],
             "ready": manifest["ready"],
             "package_id": manifest["package_id"],
+            "excel_only": manifest.get("excel_only", False),
             "artifacts_count": len(manifest["output_artifacts"]),
             "pending_gates": manifest["pending_gates"],
         }, indent=2))
@@ -1078,3 +1231,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

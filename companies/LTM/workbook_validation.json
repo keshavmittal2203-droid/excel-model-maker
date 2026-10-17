@@ -1,0 +1,155 @@
+{
+  "run_id": "a8699512409646cda2996ff4c0c12d7f",
+  "timestamp_utc": "2026-10-17T07:13:43.947874+00:00",
+  "status": "recalculated_checks_passed",
+  "ready": false,
+  "checks_passed": true,
+  "pack_status": "proposal",
+  "calculation_engine": "none (cached values inspected)",
+  "calculation_engine_version": null,
+  "template_sha256": null,
+  "pack_sha256": "cb9011a478af720fb26ebeb7d1e495bc2216696aad958b7696801d8a73fa5953",
+  "inputs_sha256": null,
+  "candidate_input_workbook_sha256": "3e5808a62661841714f5e49eebda1da756bdda15adf1da22fbec88bc42191206",
+  "workbook_sha256": "3e5808a62661841714f5e49eebda1da756bdda15adf1da22fbec88bc42191206",
+  "recalculation": null,
+  "excluded_schedules": [],
+  "formula_error_count": 0,
+  "formula_errors": [],
+  "uncalculated_formula_count": 0,
+  "uncalculated_formula_sample": [],
+  "pack_checks_passed": 4,
+  "pack_checks_total": 4,
+  "pack_checks": [
+    {
+      "name": "balance_sheet_identity_fy25",
+      "passed": true,
+      "computed": "0",
+      "expected": "0.0",
+      "abs_diff": "0.0",
+      "abs_tolerance": "0.01",
+      "sheet": "Balance Sheet",
+      "cell": "H17"
+    },
+    {
+      "name": "consolidated_revenue_fy25",
+      "passed": true,
+      "computed": "38008",
+      "expected": "38008.0",
+      "abs_diff": "0.0",
+      "abs_tolerance": "1.0",
+      "sheet": "Income Statement",
+      "cell": "H5"
+    },
+    {
+      "name": "consolidated_pat_fy25",
+      "passed": true,
+      "computed": "4602",
+      "expected": "4602.0",
+      "abs_diff": "0.0",
+      "abs_tolerance": "1.0",
+      "sheet": "Income Statement",
+      "cell": "H14"
+    },
+    {
+      "name": "implied_fair_value_per_share",
+      "passed": true,
+      "computed": "2811.0858758574791",
+      "expected": "2811.09",
+      "abs_diff": "0.0041241425209",
+      "abs_tolerance": "0.05",
+      "sheet": "Cover & Notes",
+      "cell": "E8"
+    }
+  ],
+  "independent_identities_passed": 10,
+  "independent_identities_total": 10,
+  "independent_identities": [
+    {
+      "name": "bs_total_assets_eq_liabilities_all_12_periods",
+      "passed": true,
+      "computed": "0",
+      "expected": "0",
+      "abs_diff": "0",
+      "abs_tolerance": "0.05"
+    },
+    {
+      "name": "bs_forecast_double_entry_cash_closure",
+      "passed": true,
+      "computed": "0",
+      "expected": "0",
+      "abs_diff": "0",
+      "abs_tolerance": "0.05"
+    },
+    {
+      "name": "cover_market_cap_identity",
+      "passed": true,
+      "computed": "166153.39000000001",
+      "expected": "166153.390",
+      "abs_diff": "1E-11",
+      "abs_tolerance": "1.0"
+    },
+    {
+      "name": "dcf_wacc_linked_to_schedule",
+      "passed": true,
+      "computed": "0.1187",
+      "expected": "0.1187",
+      "abs_diff": "0.0000",
+      "abs_tolerance": "0.000001"
+    },
+    {
+      "name": "dcf_capm_cost_of_equity",
+      "passed": true,
+      "computed": "0.11952750000000001",
+      "expected": "0.119527499999999999",
+      "abs_diff": "1.1E-17",
+      "abs_tolerance": "0.00001"
+    },
+    {
+      "name": "dcf_enterprise_value_sum",
+      "passed": true,
+      "computed": "72018.363642898534",
+      "expected": "72018.363642898527",
+      "abs_diff": "7E-12",
+      "abs_tolerance": "0.5"
+    },
+    {
+      "name": "dcf_cash_bridge_matches_balance_sheet_exact",
+      "passed": true,
+      "computed": "13433",
+      "expected": "13433",
+      "abs_diff": "0",
+      "abs_tolerance": "0.5"
+    },
+    {
+      "name": "dcf_equity_value_bridge",
+      "passed": true,
+      "computed": "83264.363642898534",
+      "expected": "83264.363642898534",
+      "abs_diff": "0E-12",
+      "abs_tolerance": "0.5"
+    },
+    {
+      "name": "dcf_per_share_value",
+      "passed": true,
+      "computed": "2811.0858758574791",
+      "expected": "2811.085875857479203241053342",
+      "abs_diff": "1.03241053342E-13",
+      "abs_tolerance": "0.05"
+    },
+    {
+      "name": "dcf_sensitivity_base_case_reconciliation",
+      "passed": true,
+      "computed": "0",
+      "expected": "0",
+      "abs_diff": "0",
+      "abs_tolerance": "0.05"
+    }
+  ],
+  "perturbation_and_restoration": null,
+  "pending_gates": [
+    "human_pack_approval",
+    "input_perturbation_and_restoration",
+    "render_review"
+  ]
+}

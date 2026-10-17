@@ -352,5 +352,20 @@
   - Added 4 new tests in `test_four_targets.py` (`test_connected_five_year_forecasts_and_zero_historical_bs_plugs`, `test_all_four_presentations_and_20_slide_pngs_exist_and_zero_stale_carryover`, `test_all_four_package_requests_pass_preflight_and_single_command_build`, `test_controlled_perturbation_and_restoration_on_four_models`).
   - All **110 tests passing cleanly**.
 
-
-
+### 20. Excel-Only Milestone: Resolution of Specific Contradictions (1A, 1B, 1C), Statutory Sub-Schedules, Double-Entry Forecast Cash Closure, and `--excel-only` Workflow
+- **Statutory Sub-Schedule & Market/Beta Evidence Caches (`work/sources/`)**:
+  - Cached complete `Mar 2019`–`Mar 2025` Consolidated and Standalone statutory sub-schedules (`Inventories`, `Trade Receivables`, `Cash & Equivalents`, `Loans & Advances`, `Trade Payables`, `Non-Controlling Interest`, `Fixed Assets Purchased / CapEx`) in `work/sources/MM_schedules.json`, `work/sources/LTM_schedules.json`, `work/sources/CLEAN_schedules.json`, and `work/sources/EDELWEISS_schedules.json`.
+  - Cached verified **Official NSE Unadjusted Closing Quotations on Wednesday, October 15, 2025 (`2025-10-15`)** and **2-Year Weekly OLS Regression Betas vs Nifty 50 (`^NSEI`, `2023-10-15` to `2025-10-12`, $n=104$ weeks)** in `work/sources/market_and_beta_2025_10_15.json`.
+- **Resolution of Specific Contradictions (`docs/DISCREPANCY_LEDGER.md`)**:
+  - **1A (`MM` Auto Valuation & Standalone Net Debt)**: Replaced the backwards-solved `15,150 × 16x = 242,400` and unsourced `-12,000 Cr` debt plug with reconciled FY25 Standalone Core EBITDA (`₹18,416 Cr` = Auto `₹11,700 Cr` + Farm `₹6,716 Cr`), connected `FY26E` Auto Core EBITDA (`₹13,667 Cr` @ `14.0x = ₹1,91,338 Cr`) and Farm Core EBITDA (`₹7,403 Cr` @ `13.0x = ₹96,239 Cr`), 15-Oct-2025 `MMFS` (`₹15,149.35 Cr`) and `TechM` (`₹29,115.69 Cr`) stakes at a `20%` HoldCo discount, and the Audited FY25 M&M Standalone Balance Sheet Bridge (`Standalone Borrowings ₹1,682 Cr - Standalone Cash ₹10,791 Cr = -₹9,109 Cr Net Debt / +₹9,109 Cr Net Cash`) $\rightarrow$ **`₹3,40,951.04 Cr` Equity Value (`₹2,742.97 / share`)**.
+  - **1B (Verified 15-Oct-2025 Official NSE Unadjusted Closes)**: Standardized all 4 workbooks, registries, package requests, and manifests on verified 15-Oct-2025 NSE Official Closes: `MM = ₹3,497.20`, `LTM = ₹5,609.50`, `CLEAN = ₹1,041.40`, `EDELWEISS = ₹108.85`.
+  - **1C (`LTM` & `CLEAN` Empirical Betas, WACC & Exact Cash Bridges)**: Replaced reverse-solved betas and round WACCs with 5-peer Tier-1 IT Hamada Relevered Beta `0.9405` (`WACC = 11.87%`) in `LTM` and Direct 2Y Weekly OLS Beta `0.9006` (`WACC = 11.73%`) in `CLEAN`; removed the `+₹2,500 Cr` (`LTM`) and `+₹45 Cr` (`CLEAN`) cash bridge offsets so `B21 = 'Balance Sheet'!H12+'Balance Sheet'!H14` (`₹13,433 Cr` in `LTM`, `₹401 Cr` in `CLEAN`), yielding **`₹2,811.09 / share`** for `LTM` and **`₹480.89 / share`** for `CLEAN`.
+  - **1D (`EDELWEISS` Vertical Drivers, `IEV` Definition, Stakes & Audited HoldCo Debt Bridge)**: Built vertical-specific financial services drivers, defined `IEV = Actuarial Indian Embedded Value (NOT Enterprise Value)`, disclosed EFSL attributable stakes with a `15%` Conglomerate Discount (`₹15,402 Cr`), and deducted Audited FY25 EFSL Standalone HoldCo Net Debt (`-₹3,067 Cr` = `₹3,072 Cr` Borrowings less `₹5 Cr` Cash) $\rightarrow$ **`₹12,335.00 Cr` Equity Value (`₹130.53 / share`)**.
+- **Zero Forecast Balance Sheet Plugs & `--excel-only` Pipeline**:
+  - All 4 Balance Sheets close `FY26E–FY30E` via double-entry `Cash_t = Cash_{t-1} + Net_Cash_Flow_t` on `Row 14` with zero residual asset plugs.
+  - Upgraded `validate_workbook.py` (`run_six_sheet_research_identities`: 36/36 identities passing) and `build_package.py` (`--excel-only` flag + `generate_source_assumption_coverage()`).
+- **Final Recalculated SHA-256 Hashes (`candidates/run_excel_<key>/` & `candidates/run_native_<key>/`)**:
+  - `MM-Recalculated.xlsx`: `93fa8074264e0e4d91989eecc6e33d125494a56a5a1fe92773732586381b9a4b`
+  - `LTM-Recalculated.xlsx`: `3e5808a62661841714f5e49eebda1da756bdda15adf1da22fbec88bc42191206`
+  - `CLEAN-Recalculated.xlsx`: `50daf190a74047538910784fe3d601ceb28c980233356ebc21c1683a2e5a678b`
+  - `EDELWEISS-Recalculated.xlsx`: `46a01ce62e77c7bfa8b52840ac7bb71e81bcd4dcd37d4f7a5f152837a7036844`

@@ -1,21 +1,20 @@
-# Edelweiss Financial Services Limited (EDELWEISS) — Financial Valuation & Presentation Package
+# Edelweiss Financial Services Limited (EDELWEISS) — Financial Valuation & Research Model Package
 
 - **Target Entity**: Edelweiss Financial Services Limited
 - **BSE Code**: `532922` | **NSE Ticker**: `EDELWEISS` | **ISIN**: `INE532F01054`
 - **Industry Vertical**: Diversified Financial Services
-- **Reporting Basis**: Ind AS Consolidated (FY19–FY25 Audited, March 31 fiscal close; Industrial FCFF is strictly prohibited because ₹18,004 Cr of FY25 borrowings fund NBFC/HFC/ARC assets).
+- **Reporting Basis**: Ind AS Consolidated (FY19–FY25 Audited, March 31 fiscal close; Industrial FCFF is strictly prohibited because ₹18,004 Cr of FY25 consolidated borrowings include ₹14,932 Cr of ring-fenced NBFC/HFC/ARC operating subsidiary debt; SOTP deducts Audited FY25 EFSL Standalone HoldCo Net Debt of ₹3,067 Cr).
 - **Candidate Recalculated Workbook**: [`EDELWEISS-Recalculated.xlsx`](EDELWEISS-Recalculated.xlsx)
-- **Executive Presentation**: [`../../candidates/run_native_edelweiss/EDELWEISS-Executive-Overview.pptx`](../../candidates/run_native_edelweiss/EDELWEISS-Executive-Overview.pptx)
 - **Package Manifest**: [`package.manifest.json`](package.manifest.json)
 - **Source Registry**: [`SOURCE_REGISTRY.md`](SOURCE_REGISTRY.md) & [`source_registry.json`](source_registry.json)
 
-## 1. Valuation & Financial Summary (15-Oct-2025 Snapshot Cutoff)
+## 1. Valuation & Financial Summary (15-Oct-2025 Official NSE Snapshot Cutoff)
 
 - **Methodology**: `Financial Services Sum-of-the-Parts (SOTP) Valuation` (`supported_sotp_fcff_withheld`)
-- **Implied Fair Value Per Share**: **₹133.54** (vs. 15-Oct-2025 NSE Snapshot **₹108.00**, Implied `+23.6%`)
-- **Prior vs. Current Reconciliation**: Edelweiss SOTP is anchored on audited FY25 vertical metrics on 'Segment Operations'!H6:H12 (EAAA PAT ₹230 Cr @ 22.0x = ₹5,060 Cr; EARCL Net Worth ₹2,800 Cr @ 1.20x = ₹3,360 Cr; Mutual Fund AAUM ₹1,41,000 Cr @ 4.0% = ₹5,640 Cr; Insurance EV/Book Proxy ₹1,500 Cr @ 1.00x = ₹1,500 Cr; Credit Allocated Book ₹3,200 Cr @ 0.80x = ₹2,560 Cr; less Corporate HoldCo Net Debt -₹5,500 Cr = ₹12,620 Cr / 94.50 Cr shares = ₹133.54/share). Replacing Mar 2026 look-ahead figures in FY26E with connected vertical revenue formulas updated FY26E revenue to ₹10,167 Cr while preserving the FY25-anchored SOTP at ₹133.54/share.
+- **Implied Fair Value Per Share**: **₹130.53** (vs. 15-Oct-2025 NSE Official Close **₹108.85**, Implied `+19.92%`)
+- **Prior vs. Current Reconciliation**: Built explicit vertical-specific financial services drivers on 'Segment Operations' (EAAA Earning AUM × Fee & Carry Yield; EARCL Recoveries × Fee Rate; Mutual Fund Equity+Alt AUM × Fee Rate; Life & General Insurance GWP & Actuarial Indian Embedded Value [IEV]; Credit Book × Net Interest & Fee Yield), disclosed EFSL attributable ownership stakes (EAAA 100%, EARCL 79.8% net of CDPQ 20.2% NCI, EAML 85% post-WestBridge 15%, Life 75% [Tokio Marine 25%] + General 100%, Credit 100%) with a 15% Conglomerate Discount (Gross Vertical Sum ₹15,402 Cr), and replaced the unsourced -₹5,500 Cr HoldCo debt assumption with the Audited FY25 EFSL Standalone Balance Sheet Bridge (Standalone Borrowings ₹3,072 Cr less Standalone Cash ₹5 Cr = -₹3,067 Cr Net Debt), yielding ₹12,335 Cr Equity Value (₹130.53/share) vs verified 15-Oct-2025 NSE Official Close ₹108.85.
 
-## 2. Reproducible Single-Command Build
+## 2. Reproducible Single-Command Build (`--excel-only` & Full Package)
 ```powershell
-python build_package.py --request examples/edelweiss-package.json --output-dir candidates/run_native_edelweiss --allow-proposal
+python build_package.py --request examples/edelweiss-package.json --output-dir candidates/run_excel_edelweiss --allow-proposal --excel-only
 ```

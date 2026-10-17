@@ -32,9 +32,9 @@
     ],
     "source_data": {
       "user_supplied_facts": {
-        "current_market_price": 2921.0,
+        "current_market_price": 3497.2,
         "shares_outstanding_cr": 124.3,
-        "market_capitalization_cr": 363080.3
+        "market_capitalization_cr": 434701.96
       },
       "source_extracted_facts": {
         "revenue_operations_fy25_cr": 159211.0,
@@ -44,7 +44,7 @@
         "cash_from_operations_fy25_cr": 3176.0
       },
       "calculated_outputs": {
-        "implied_fair_value_per_share_inr": 2929.98
+        "implied_fair_value_per_share_inr": 2742.97
       }
     }
   },
@@ -52,7 +52,7 @@
     "source": "originals/Marksans Keshav.xlsx",
     "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
     "candidate_source": "candidates/run_native_mm/MM-Recalculated.xlsx",
-    "expected_recalculated_sha256": "658daa734d6d532f318be1066f5e44f6da09b19276285ce02574c892fee0fcf8",
+    "expected_recalculated_sha256": "93fa8074264e0e4d91989eecc6e33d125494a56a5a1fe92773732586381b9a4b",
     "adapter": "work/models_mm.py",
     "model_pack": "proposals/mm.model-pack.json",
     "output_name": "MM-Recalculated.xlsx"

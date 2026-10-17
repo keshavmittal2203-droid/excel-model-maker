@@ -184,6 +184,178 @@ def is_equity_research_workbook(package: Package) -> bool:
     return required.issubset(set(package.sheets))
 
 
+def is_six_sheet_research_workbook(package: Package) -> bool:
+    required = {"Cover & Notes", "Income Statement", "Balance Sheet", "Cash Flow"}
+    return required.issubset(set(package.sheets)) and not is_equity_research_workbook(package)
+
+
+def run_six_sheet_research_identities(package: Package) -> list[dict[str, Any]]:
+    """Evaluate independent accounting, double-entry cash closure, and valuation identities on 6-sheet models."""
+    results: list[dict[str, Any]] = []
+    v = lambda s, r: get_cell_decimal(package, s, r)  # noqa: E731
+
+    try:
+        # 1. Balance Sheet tie-out across all 12 periods (Cols B..M, Row 17)
+        bs_diff = sum(abs(v("Balance Sheet", f"{col}17") or Decimal(0)) for col in "BCDEFGHIJKLM")
+        results.append(_compare_metric(
+            "bs_total_assets_eq_liabilities_all_12_periods",
+            bs_diff,
+            Decimal(0),
+            Decimal("0.05"),
+        ))
+
+        # 2. Forecast Double-Entry Cash Closure (Cols I..M, Row 14 = prev_14 + Cash Flow!Row 7)
+        cols_all = list("BCDEFGHIJKLM")
+        cash_closure_diff = Decimal(0)
+        for idx in range(7, 12):  # H->I, I->J, J->K, K->L, L->M
+            prev_c = cols_all[idx - 1]
+            curr_c = cols_all[idx]
+            c_prev = v("Balance Sheet", f"{prev_c}14")
+            c_curr = v("Balance Sheet", f"{curr_c}14")
+            ncf = v("Cash Flow", f"{curr_c}7")
+            if c_prev is not None and c_curr is not None and ncf is not None:
+                cash_closure_diff += abs(c_curr - (c_prev + ncf))
+        results.append(_compare_metric(
+            "bs_forecast_double_entry_cash_closure",
+            cash_closure_diff,
+            Decimal(0),
+            Decimal("0.05"),
+        ))
+
+        # 3. Market Capitalization identity on Cover & Notes (B11 = B10 * B12)
+        results.append(_compare_metric(
+            "cover_market_cap_identity",
+            v("Cover & Notes", "B11"),
+            v("Cover & Notes", "B10") * v("Cover & Notes", "B12"),
+            Decimal("1.0"),
+        ))
+
+        # 4. Valuation Sheet specific identities
+        if "FCFF Valuation" in package.sheets or "Manufacturing DCF Valuation" in package.sheets:
+            val_sheet = "FCFF Valuation" if "FCFF Valuation" in package.sheets else "Manufacturing DCF Valuation"
+            results.append(_compare_metric(
+                "dcf_wacc_linked_to_schedule",
+                v(val_sheet, "I7"),
+                v(val_sheet, "I21"),
+                Decimal("1e-6"),
+            ))
+            results.append(_compare_metric(
+                "dcf_capm_cost_of_equity",
+                v(val_sheet, "I15"),
+                v(val_sheet, "I12") + v(val_sheet, "I14") * v(val_sheet, "I13"),
+                Decimal("1e-5"),
+            ))
+            results.append(_compare_metric(
+                "dcf_enterprise_value_sum",
+                v(val_sheet, "B20"),
+                v(val_sheet, "B16") + v(val_sheet, "B19"),
+                Decimal("0.5"),
+            ))
+            results.append(_compare_metric(
+                "dcf_cash_bridge_matches_balance_sheet_exact",
+                v(val_sheet, "B21"),
+                v("Balance Sheet", "H12") + v("Balance Sheet", "H14"),
+                Decimal("0.5"),
+            ))
+            results.append(_compare_metric(
+                "dcf_equity_value_bridge",
+                v(val_sheet, "B23"),
+                v(val_sheet, "B20") + v(val_sheet, "B21") - v(val_sheet, "B22"),
+                Decimal("0.5"),
+            ))
+            results.append(_compare_metric(
+                "dcf_per_share_value",
+                v(val_sheet, "B24"),
+                v(val_sheet, "B23") / v(val_sheet, "I9"),
+                Decimal("0.05"),
+            ))
+            results.append(_compare_metric(
+                "dcf_sensitivity_base_case_reconciliation",
+                v(val_sheet, "B35"),
+                Decimal(0),
+                Decimal("0.05"),
+            ))
+        elif "SOTP Valuation" in package.sheets:
+            val_sheet = "SOTP Valuation"
+            if v(val_sheet, "E12") is not None and v(val_sheet, "E15") is None:
+                # M&M SOTP Layout (Rows 4-12)
+                gross_sum = sum(v(val_sheet, f"E{r}") for r in (4, 5, 6, 7))
+                results.append(_compare_metric(
+                    "sotp_mm_gross_sum",
+                    v(val_sheet, "E8"),
+                    gross_sum,
+                    Decimal("0.5"),
+                ))
+                results.append(_compare_metric(
+                    "sotp_mm_standalone_net_debt_bridge_tie",
+                    v(val_sheet, "E9"),
+                    -v(val_sheet, "B45"),
+                    Decimal("0.5"),
+                ))
+                results.append(_compare_metric(
+                    "sotp_mm_equity_value",
+                    v(val_sheet, "E10"),
+                    v(val_sheet, "E8") + v(val_sheet, "E9"),
+                    Decimal("0.5"),
+                ))
+                results.append(_compare_metric(
+                    "sotp_mm_per_share",
+                    v(val_sheet, "E12"),
+                    v(val_sheet, "E10") / v(val_sheet, "E11"),
+                    Decimal("0.05"),
+                ))
+                results.append(_compare_metric(
+                    "sotp_mm_sensitivity_base_case_reconciliation",
+                    v(val_sheet, "B23"),
+                    Decimal(0),
+                    Decimal("0.05"),
+                ))
+            else:
+                # EDELWEISS SOTP Layout (Rows 6-15)
+                gross_sum = sum(v(val_sheet, f"E{r}") for r in (6, 7, 8, 9, 10))
+                results.append(_compare_metric(
+                    "sotp_edelweiss_vertical_sum",
+                    v(val_sheet, "E11"),
+                    gross_sum,
+                    Decimal("0.5"),
+                ))
+                results.append(_compare_metric(
+                    "sotp_edelweiss_standalone_holdco_debt_bridge_tie",
+                    v(val_sheet, "E12"),
+                    -v(val_sheet, "B39"),
+                    Decimal("0.5"),
+                ))
+                results.append(_compare_metric(
+                    "sotp_edelweiss_equity_value",
+                    v(val_sheet, "E13"),
+                    v(val_sheet, "E11") + v(val_sheet, "E12"),
+                    Decimal("0.5"),
+                ))
+                results.append(_compare_metric(
+                    "sotp_edelweiss_per_share",
+                    v(val_sheet, "E15"),
+                    v(val_sheet, "E13") / v(val_sheet, "E14"),
+                    Decimal("0.05"),
+                ))
+                results.append(_compare_metric(
+                    "sotp_edelweiss_sensitivity_base_case_reconciliation",
+                    v(val_sheet, "B26"),
+                    Decimal(0),
+                    Decimal("0.05"),
+                ))
+    except (ModelError, TypeError, ZeroDivisionError) as exc:
+        results.append({
+            "name": "six_sheet_research_identities_execution",
+            "passed": False,
+            "computed": None,
+            "expected": "all identities evaluable",
+            "abs_diff": None,
+            "abs_tolerance": str(DEFAULT_TOL),
+            "detail": str(exc),
+        })
+    return results
+
+
 def run_equity_research_identities(package: Package, check_datatable: bool = True) -> list[dict[str, Any]]:
     """Evaluate 29 independent Python-recomputed accounting and valuation identities."""
     results: list[dict[str, Any]] = []
@@ -692,7 +864,12 @@ def validate_candidate(
         pack_excluded = set(pack.get("excluded_schedules", []))
         errors, missing_caches = scan_formula_errors_and_missing_caches(pkg, excluded_sheets=pack_excluded)
         pack_checks = evaluate_pack_checks(pkg, pack)
-        identities = run_equity_research_identities(pkg) if is_equity_research_workbook(pkg) else []
+        if is_equity_research_workbook(pkg):
+            identities = run_equity_research_identities(pkg)
+        elif is_six_sheet_research_workbook(pkg):
+            identities = run_six_sheet_research_identities(pkg)
+        else:
+            identities = []
 
         perturbation_report: dict[str, Any] | None = None
         if perturb_check:

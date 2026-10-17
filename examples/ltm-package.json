@@ -32,9 +32,9 @@
     ],
     "source_data": {
       "user_supplied_facts": {
-        "current_market_price": 5568.0,
+        "current_market_price": 5609.5,
         "shares_outstanding_cr": 29.62,
-        "market_capitalization_cr": 164924.16
+        "market_capitalization_cr": 166153.39
       },
       "source_extracted_facts": {
         "revenue_operations_fy25_cr": 38008.0,
@@ -44,7 +44,7 @@
         "cash_from_operations_fy25_cr": 4546.0
       },
       "calculated_outputs": {
-        "implied_fair_value_per_share_inr": 2813.51
+        "implied_fair_value_per_share_inr": 2811.09
       }
     }
   },
@@ -52,7 +52,7 @@
     "source": "originals/Marksans Keshav.xlsx",
     "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
     "candidate_source": "candidates/run_native_ltm/LTM-Recalculated.xlsx",
-    "expected_recalculated_sha256": "f29a83ba378792041a7aab09700e279f3ba4f58aa3f8c179b5e3d8cce47e5542",
+    "expected_recalculated_sha256": "3e5808a62661841714f5e49eebda1da756bdda15adf1da22fbec88bc42191206",
     "adapter": "work/models_ltm.py",
     "model_pack": "proposals/ltm.model-pack.json",
     "output_name": "LTM-Recalculated.xlsx"
