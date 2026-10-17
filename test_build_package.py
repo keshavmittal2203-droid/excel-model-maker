@@ -215,7 +215,7 @@ class BuildPackageTests(unittest.TestCase):
         self.assertEqual(reconciled_metrics["FY25 Quick Ratio"]["displayed"], "3.07")
 
     def test_workbook_inventory_matches_actual_sheets(self):
-        """Regression test: verify candidate workbook has exactly 17 sheets and no hallucinated names."""
+        """Regression test: verify active master template has 16 sheets (sectordata removed) and archived template has 17 sheets."""
         import openpyxl
         wb_path = ROOT / "originals" / "Marksans Keshav.xlsx"
         wb = openpyxl.load_workbook(str(wb_path), read_only=True)
@@ -237,9 +237,11 @@ class BuildPackageTests(unittest.TestCase):
             "RM",
             "peerdata",
             "Cash Flow",
-            "sectordata",
         ]
         self.assertEqual(actual_sheets, expected_sheets)
+        # Verify archived master retains original 17 sheets
+        wb_arch = openpyxl.load_workbook(str(ROOT / "originals" / "archive" / "Marksans Keshav.xlsx"), read_only=True)
+        self.assertEqual(wb_arch.sheetnames, expected_sheets + ["sectordata"])
         # Ensure none of the 7 hallucinated sheet names exist
         forbidden_hallucinated = [
             "PL",

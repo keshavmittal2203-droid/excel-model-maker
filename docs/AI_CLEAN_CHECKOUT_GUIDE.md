@@ -52,12 +52,13 @@ Execute source verification before touching any model or presentation:
 python verify_sources.py
 ```
 This script checks and reconstructs all six templates, verifying their SHA-256 hashes byte-for-byte against `source-catalog.json`:
-1. `originals/Marksans Keshav.xlsx` (`5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`)
-2. `originals/ERR-4.pptx` (`9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba`)
-3. `originals/GMCC 2023 (Bharat, Kanishk).pptx` (`bd6f3920bf32986f6930de011065ebba2c9dd45aba3c8416b6803d9a415f854f`)
-4. `originals/GMCC 2023 (Bhavika, Falak).pptx` (`f19c7335e6514ef60a8109d2bf0021ba46f1752ae9be0ad3ad94ab5cd48ae331`)
-5. `originals/GMCC 2023 (Pratiksha, Prakhar).pptx` (`c3b8e389ae2b3cfec1731a795efe70df310b962e45487243af2a1499c8537592`)
-6. `originals/Healthcare and Pharma Industry Primer Final.pptx` (`0c2c84cea14ef51af7ad15a32dfc8c10b8e0f6acca68ff0ef50bfa6faa343f32`)
+1. `originals/Marksans Keshav.xlsx` (`4dc79842855e5d1e689a2f5ca1de22c34be72fb09c0c0f9dd3a95818e10737d0`)
+2. `originals/archive/Marksans Keshav.xlsx` (`5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`)
+3. `originals/ERR-4.pptx` (`9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba`)
+4. `originals/GMCC 2023 (Bharat, Kanishk).pptx` (`bd6f3920bf32986f6930de011065ebba2c9dd45aba3c8416b6803d9a415f854f`)
+5. `originals/GMCC 2023 (Bhavika, Falak).pptx` (`f19c7335e6514ef60a8109d2bf0021ba46f1752ae9be0ad3ad94ab5cd48ae331`)
+6. `originals/GMCC 2023 (Pratiksha, Prakhar).pptx` (`c3b8e389ae2b3cfec1731a795efe70df310b962e45487243af2a1499c8537592`)
+7. `originals/Healthcare and Pharma Industry Primer Final.pptx` (`0c2c84cea14ef51af7ad15a32dfc8c10b8e0f6acca68ff0ef50bfa6faa343f32`)
 
 ---
 

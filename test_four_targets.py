@@ -526,7 +526,7 @@ class FourTargetsTests(unittest.TestCase):
     def test_seventeen_sheet_template_models_exist_and_preserve_all_sheets(self):
         """All four template-adapted workbooks must exist, preserve all 17 sheets, and match original sheet order."""
         import openpyxl
-        orig_wb = openpyxl.load_workbook(ROOT / "originals" / "Marksans Keshav.xlsx", read_only=True)
+        orig_wb = openpyxl.load_workbook(ROOT / "originals" / "archive" / "Marksans Keshav.xlsx", read_only=True)
         expected_sheets = orig_wb.sheetnames
         self.assertEqual(len(expected_sheets), 17)
 

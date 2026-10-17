@@ -716,7 +716,11 @@ def validate_package_request(req: dict[str, Any], request_path: Path, *, excel_o
             raise FileNotFoundError(f"Workbook source not found: {wb_src_path}")
         actual_wb_sha = compute_file_sha(wb_src_path)
         if actual_wb_sha != wb_spec.get("source_sha256"):
-            raise ValueError(f"Workbook source SHA mismatch: expected {wb_spec.get('source_sha256')}, got {actual_wb_sha}")
+            archive_path = (ROOT / "originals" / "archive" / Path(wb_spec["source"]).name).resolve()
+            if archive_path.exists() and compute_file_sha(archive_path) == wb_spec.get("source_sha256"):
+                pass
+            else:
+                raise ValueError(f"Workbook source SHA mismatch: expected {wb_spec.get('source_sha256')}, got {actual_wb_sha}")
 
     if not excel_only and "template" in pres_spec:
         pres_tpl_path = (ROOT / pres_spec["template"]).resolve()
@@ -884,6 +888,11 @@ def build_package(
     wb_src_path = (ROOT / wb_spec["source"]).resolve()
     model_pack_path = (ROOT / wb_spec["model_pack"]).resolve()
     actual_wb_src_sha = compute_file_sha(wb_src_path)
+    if actual_wb_src_sha != wb_spec.get("source_sha256"):
+        archive_path = (ROOT / "originals" / "archive" / Path(wb_spec["source"]).name).resolve()
+        if archive_path.exists() and compute_file_sha(archive_path) == wb_spec.get("source_sha256"):
+            wb_src_path = archive_path
+            actual_wb_src_sha = compute_file_sha(wb_src_path)
 
     pres_tpl_path = (ROOT / pres_spec["template"]).resolve() if (not excel_only and "template" in pres_spec) else None
     deck_pack_path = (ROOT / pres_spec["deck_pack"]).resolve() if (not excel_only and "deck_pack" in pres_spec) else None
