@@ -429,3 +429,34 @@
   - Full pytest suite: **116 passed, 4 warnings, 49 subtests passed** in 45.33s.
   - `human_pack_approval` gate remains pending for user review.
 
+### 23. Final Excel Release Check & Acceptance Sign-Off Pass
+- **Visual Layout Inspection & Page Split Remediation**:
+  - Identified layout defect where Valuation sheets for `LTM`, `CLEAN`, and `EDELWEISS` were splitting onto an unnecessary second page with orphaned rows due to `FitToPagesTall = False` in COM export and `fitToHeight = 0` in openpyxl.
+  - Enforced `FitToPagesTall = 1` in `build_package.py` and `ws.page_setup.fitToHeight = 1` in `work/openpyxl_styles.py`.
+  - Re-exported all 24 sheet PDF previews across all four priority targets: verified every sheet now exports to **exactly 1 landscape page each** (24 single-page PDFs).
+  - Rasterized all 24 PDF preview sheets to high-resolution PNGs and performed visual inspection via `view_file`: verified zero text clipping, zero `#####`, zero orphaned rows or split pages, complete legibility of units, dates, historical periods (FY19–FY25), 5-year forecast horizons (FY26E–FY30E), sources, assumptions, and key valuation outputs. Market prices confirmed explicitly labeled as 15-Oct-2025 observations.
+- **Reconciliation of Delivered vs Stub Valuations**:
+  - Confirmed delivered primary valuations:
+    - **MM**: Sum-of-the-Parts (Cell `E12`: **`₹2,742.97 / share`**, vs 15-Oct-2025 NSE Close ₹3,497.20).
+    - **LTM**: Full-Year Annual FCFF DCF Baseline (Cell `B24`: **`₹2,811.09 / share`**, vs 15-Oct-2025 NSE Close ₹5,609.50; Point-in-Time Actual/365 Stub Sensitivity in Cell `J66`: ₹2,921.84 / share).
+    - **CLEAN**: Full-Year Manufacturing FCFF DCF Baseline (Cell `B24`: **`₹480.89 / share`**, vs 15-Oct-2025 NSE Close ₹1,041.40; Point-in-Time Actual/365 Stub Sensitivity in Cell `J66`: ₹505.64 / share).
+    - **EDELWEISS**: Financial Services SOTP (Cell `E15`: **`₹130.53 / share`**, vs 15-Oct-2025 NSE Close ₹108.85; Industrial FCFF strictly blocked & withheld).
+  - Distinctions between primary delivered annual DCF baseline and secondary Actual/365 linear stub timing sensitivity are clearly documented on Cover & Notes, Valuation Row 66, and package manifests.
+- **Candidate Set Rebuild & Deliverable Synchronization**:
+  - Rebuilt all four packages via `build_package.py --batch --requests examples/mm-package.json examples/ltm-package.json examples/clean-package.json examples/edelweiss-package.json --output-base candidates/closeout_run --allow-proposal --excel-only --clean`.
+  - Native Excel COM recalculation: 0 formula errors, 0 missing caches, 36/36 independent research identities passed, $\Delta = 0.00$ Balance Sheet tie across all 12 periods.
+  - Recomputed workbook SHA-256 hashes:
+    - `MM-Recalculated.xlsx`: `a2ce7a603bce1989959a1c1f8dc8a8b08dc1333c63a0e1c489f5a0503df81e3f` (38,986 bytes)
+    - `LTM-Recalculated.xlsx`: `7cc9d2bd1f8b195fa10570f9813eb3b5fca64236cc25d39537b4e02e94ead9ce` (38,623 bytes)
+    - `CLEAN-Recalculated.xlsx`: `3b783bee179114fcd5abe25a0d5d3c3d9ed401d4e7ce24eb66bcf7f6807689ed` (39,178 bytes)
+    - `EDELWEISS-Recalculated.xlsx`: `62fb554c61624d837345a125fe75ee6e2a3f5b076f1f8a4380f50504041a62db` (40,891 bytes)
+  - Synchronized workbooks, manifests, coverage reports, and 24 single-page PDF previews across `candidates/run_native_<key>/`, `candidates/run_excel_<key>/`, and `companies/<KEY>/`.
+  - Updated `expected_recalculated_sha256` in `examples/*-package.json` and `companies/<KEY>/*-package.json`.
+- **Final Release Gate Decisions**:
+  - `source_audit`: **APPROVED** (Primary statutory filings verified, 104-week market price dataset verified, 6/6 templates byte-identical).
+  - `financial_model_integrity`: **APPROVED** (36/36 identities passed, 0 formula errors, 0 plugs, double-entry cash closure, 116 tests passing).
+  - `native_recalculation`: **APPROVED** (Excel COM 16.0 CalculateFullRebuild executed cleanly in batch mode).
+  - `render_review`: **APPROVED** (All 24 single-page sheet PDFs visually inspected; zero clipping or formatting defects).
+  - `human_pack_approval`: **PENDING** (Maintained as `ready: false` with pending human review gate).
+
+

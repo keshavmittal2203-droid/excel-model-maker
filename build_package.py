@@ -264,7 +264,7 @@ def export_sheet_previews_com(
                 ws.PageSetup.Orientation = 2 if orientation == "landscape" else 1
                 ws.PageSetup.Zoom = False
                 ws.PageSetup.FitToPagesWide = fit_to_page_wide
-                ws.PageSetup.FitToPagesTall = False
+                ws.PageSetup.FitToPagesTall = 1
                 clean_name = sname.replace(" ", "_")
                 out_pdf = (previews_dir / f"{clean_name}.pdf").resolve()
                 ws.ExportAsFixedFormat(0, str(out_pdf))

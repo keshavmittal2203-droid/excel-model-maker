@@ -1,9 +1,9 @@
 # Source & Assumption Coverage Report — Edelweiss Financial Services Limited (`EDELWEISS`)
 
-- **Workbook**: `EDELWEISS-Recalculated.xlsx` (`SHA-256: 46a01ce62e77c7bfa8b52840ac7bb71e81bcd4dcd37d4f7a5f152837a7036844`)
+- **Workbook**: `EDELWEISS-Recalculated.xlsx` (`SHA-256: 62fb554c61624d837345a125fe75ee6e2a3f5b076f1f8a4380f50504041a62db`)
 - **Valuation Cutoff Date**: `2025-10-15`
 - **Historical Cutoff**: `FY25`
-- **Total Numeric Inputs (Blue)**: `325` | **Same-Sheet Formulas (Black)**: `376` | **Cross-Sheet Links (Green)**: `181`
+- **Total Numeric Inputs (Blue)**: `335` | **Same-Sheet Formulas (Black)**: `376` | **Cross-Sheet Links (Green)**: `181`
 
 ## 1. Worksheet Formula & Input Breakdown
 
@@ -14,7 +14,7 @@
 | `Balance Sheet` | 98 | 158 | 20 |
 | `Cash Flow` | 21 | 12 | 15 |
 | `Segment Operations` | 124 | 68 | 36 |
-| `SOTP Valuation` | 36 | 60 | 10 |
+| `SOTP Valuation` | 46 | 60 | 10 |
 
 ## 2. Primary Source & Assumption Registry Classification
 
@@ -53,4 +53,5 @@
 | Diluted Equity Share Count (FY25 Close) | `` | `` | `primary_sourced_statutory` | Edelweiss Financial Services Limited —  |
 | Historical Market Snapshot Price (15-Oct-2025 NSE Official Unadjusted Close) | `` | `` | `historical_market_snapshot` | National Stock Exchange of India (NSE) —  |
 | 2-Year Weekly OLS Regression Beta vs Nifty 50 (^NSEI) | `` | `` | `empirical_regression_derived` | NSE Historical Index & Stock Time Series —  |
+| 104-Week Empirical Weekly Market Returns & OLS Regression Dataset | `` | `` | `empirical_market_dataset` | NSE Historical Weekly Security & Index Returns Archive —  |
 | Primary Valuation Output (Financial Services Sum-of-the-Parts (SOTP) Valuation) | `` | `` | `analyst_assumption_and_formula_output` | Model Valuation Engine —  |

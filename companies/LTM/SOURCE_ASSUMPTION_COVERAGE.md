@@ -1,9 +1,9 @@
 # Source & Assumption Coverage Report — LTIMindtree Limited (`LTM`)
 
-- **Workbook**: `LTM-Recalculated.xlsx` (`SHA-256: 3e5808a62661841714f5e49eebda1da756bdda15adf1da22fbec88bc42191206`)
+- **Workbook**: `LTM-Recalculated.xlsx` (`SHA-256: 7cc9d2bd1f8b195fa10570f9813eb3b5fca64236cc25d39537b4e02e94ead9ce`)
 - **Valuation Cutoff Date**: `2025-10-15`
 - **Historical Cutoff**: `FY25`
-- **Total Numeric Inputs (Blue)**: `323` | **Same-Sheet Formulas (Black)**: `415` | **Cross-Sheet Links (Green)**: `240`
+- **Total Numeric Inputs (Blue)**: `332` | **Same-Sheet Formulas (Black)**: `437` | **Cross-Sheet Links (Green)**: `245`
 
 ## 1. Worksheet Formula & Input Breakdown
 
@@ -14,7 +14,7 @@
 | `Balance Sheet` | 98 | 138 | 40 |
 | `Cash Flow` | 28 | 24 | 20 |
 | `IT Services Operations` | 110 | 39 | 43 |
-| `FCFF Valuation` | 41 | 122 | 37 |
+| `FCFF Valuation` | 50 | 144 | 42 |
 
 ## 2. Primary Source & Assumption Registry Classification
 
@@ -51,4 +51,5 @@
 | Diluted Equity Share Count (FY25 Close) | `` | `` | `primary_sourced_statutory` | LTIMindtree Limited —  |
 | Historical Market Snapshot Price (15-Oct-2025 NSE Official Unadjusted Close) | `` | `` | `historical_market_snapshot` | National Stock Exchange of India (NSE) —  |
 | 2-Year Weekly OLS Regression Beta vs Nifty 50 (^NSEI) | `` | `` | `empirical_regression_derived` | NSE Historical Index & Stock Time Series —  |
+| 104-Week Empirical Weekly Market Returns & OLS Regression Dataset | `` | `` | `empirical_market_dataset` | NSE Historical Weekly Security & Index Returns Archive —  |
 | Primary Valuation Output (Unlevered Free Cash Flow (FCFF) DCF & CAPM WACC) | `` | `` | `analyst_assumption_and_formula_output` | Model Valuation Engine —  |

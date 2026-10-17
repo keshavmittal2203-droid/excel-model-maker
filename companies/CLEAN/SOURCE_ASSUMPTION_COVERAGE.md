@@ -1,9 +1,9 @@
 # Source & Assumption Coverage Report — Clean Science and Technology Limited (`CLEAN`)
 
-- **Workbook**: `CLEAN-Recalculated.xlsx` (`SHA-256: 50daf190a74047538910784fe3d601ceb28c980233356ebc21c1683a2e5a678b`)
+- **Workbook**: `CLEAN-Recalculated.xlsx` (`SHA-256: 3b783bee179114fcd5abe25a0d5d3c3d9ed401d4e7ce24eb66bcf7f6807689ed`)
 - **Valuation Cutoff Date**: `2025-10-15`
 - **Historical Cutoff**: `FY25`
-- **Total Numeric Inputs (Blue)**: `382` | **Same-Sheet Formulas (Black)**: `424` | **Cross-Sheet Links (Green)**: `230`
+- **Total Numeric Inputs (Blue)**: `391` | **Same-Sheet Formulas (Black)**: `446` | **Cross-Sheet Links (Green)**: `235`
 
 ## 1. Worksheet Formula & Input Breakdown
 
@@ -14,7 +14,7 @@
 | `Balance Sheet` | 98 | 138 | 40 |
 | `Cash Flow` | 28 | 24 | 20 |
 | `Manufacturing & Capacity` | 164 | 62 | 38 |
-| `Manufacturing DCF Valuation` | 41 | 122 | 37 |
+| `Manufacturing DCF Valuation` | 50 | 144 | 42 |
 
 ## 2. Primary Source & Assumption Registry Classification
 
@@ -52,4 +52,5 @@
 | Diluted Equity Share Count (FY25 Close) | `` | `` | `primary_sourced_statutory` | Clean Science and Technology Limited —  |
 | Historical Market Snapshot Price (15-Oct-2025 NSE Official Unadjusted Close) | `` | `` | `historical_market_snapshot` | National Stock Exchange of India (NSE) —  |
 | 2-Year Weekly OLS Regression Beta vs Nifty 50 (^NSEI) | `` | `` | `empirical_regression_derived` | NSE Historical Index & Stock Time Series —  |
+| 104-Week Empirical Weekly Market Returns & OLS Regression Dataset | `` | `` | `empirical_market_dataset` | NSE Historical Weekly Security & Index Returns Archive —  |
 | Primary Valuation Output (Manufacturing FCFF DCF & CAPM WACC) | `` | `` | `analyst_assumption_and_formula_output` | Model Valuation Engine —  |

@@ -1,9 +1,9 @@
 # Source & Assumption Coverage Report — Mahindra & Mahindra Limited (`MM`)
 
-- **Workbook**: `MM-Recalculated.xlsx` (`SHA-256: 93fa8074264e0e4d91989eecc6e33d125494a56a5a1fe92773732586381b9a4b`)
+- **Workbook**: `MM-Recalculated.xlsx` (`SHA-256: a2ce7a603bce1989959a1c1f8dc8a8b08dc1333c63a0e1c489f5a0503df81e3f`)
 - **Valuation Cutoff Date**: `2025-10-15`
 - **Historical Cutoff**: `FY25`
-- **Total Numeric Inputs (Blue)**: `365` | **Same-Sheet Formulas (Black)**: `420` | **Cross-Sheet Links (Green)**: `208`
+- **Total Numeric Inputs (Blue)**: `377` | **Same-Sheet Formulas (Black)**: `478` | **Cross-Sheet Links (Green)**: `208`
 
 ## 1. Worksheet Formula & Input Breakdown
 
@@ -13,8 +13,8 @@
 | `Income Statement` | 43 | 88 | 37 |
 | `Balance Sheet` | 92 | 154 | 30 |
 | `Cash Flow` | 35 | 12 | 37 |
-| `Segment Operations` | 154 | 103 | 31 |
-| `SOTP Valuation` | 38 | 61 | 10 |
+| `Segment Operations` | 156 | 161 | 31 |
+| `SOTP Valuation` | 48 | 61 | 10 |
 
 ## 2. Primary Source & Assumption Registry Classification
 
@@ -54,4 +54,5 @@
 | Diluted Equity Share Count (FY25 Close) | `` | `` | `primary_sourced_statutory` | Mahindra & Mahindra Limited —  |
 | Historical Market Snapshot Price (15-Oct-2025 NSE Official Unadjusted Close) | `` | `` | `historical_market_snapshot` | National Stock Exchange of India (NSE) —  |
 | 2-Year Weekly OLS Regression Beta vs Nifty 50 (^NSEI) | `` | `` | `empirical_regression_derived` | NSE Historical Index & Stock Time Series —  |
+| 104-Week Empirical Weekly Market Returns & OLS Regression Dataset | `` | `` | `empirical_market_dataset` | NSE Historical Weekly Security & Index Returns Archive —  |
 | Primary Valuation Output (Sum-of-the-Parts (SOTP) Valuation) | `` | `` | `analyst_assumption_and_formula_output` | Model Valuation Engine —  |

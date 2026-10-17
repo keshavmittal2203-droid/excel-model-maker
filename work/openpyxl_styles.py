@@ -82,7 +82,7 @@ def setup_page(ws, header_title: str = "", freeze_cell: str | None = "B4", zoom:
     ws.page_setup.paperSize = ws.PAPERSIZE_A4
     ws.sheet_properties.pageSetUpPr.fitToPage = True
     ws.page_setup.fitToWidth = 1
-    ws.page_setup.fitToHeight = 0
+    ws.page_setup.fitToHeight = 1
     if header_title:
         ws.oddHeader.center.text = header_title
 

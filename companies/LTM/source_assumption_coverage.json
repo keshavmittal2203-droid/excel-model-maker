@@ -45,12 +45,12 @@
     }
   },
   "workbook_file": "LTM-Recalculated.xlsx",
-  "workbook_sha256": "3e5808a62661841714f5e49eebda1da756bdda15adf1da22fbec88bc42191206",
+  "workbook_sha256": "7cc9d2bd1f8b195fa10570f9813eb3b5fca64236cc25d39537b4e02e94ead9ce",
   "summary": {
-    "total_numeric_inputs": 323,
-    "total_same_sheet_formulas": 415,
-    "total_cross_sheet_links": 240,
-    "registry_entries_count": 32
+    "total_numeric_inputs": 332,
+    "total_same_sheet_formulas": 437,
+    "total_cross_sheet_links": 245,
+    "registry_entries_count": 33
   },
   "sheet_breakdown": [
     {
@@ -85,9 +85,9 @@
     },
     {
       "sheet": "FCFF Valuation",
-      "numeric_inputs": 41,
-      "same_sheet_formulas": 122,
-      "cross_sheet_links": 37
+      "numeric_inputs": 50,
+      "same_sheet_formulas": 144,
+      "cross_sheet_links": 42
     }
   ],
   "source_registry_entries": [
@@ -894,6 +894,22 @@
       "reported_value": 1.2569,
       "workbook_cell": "'FCFF Valuation'!C60",
       "status": "empirical_regression_derived"
+    },
+    {
+      "metric": "104-Week Empirical Weekly Market Returns & OLS Regression Dataset",
+      "legal_entity": "LTIMindtree Limited",
+      "consolidation_basis": "Empirical Market Time Series (105 weekly price bars, 104 paired returns vs Nifty 50, Cutoff: 15-Oct-2025)",
+      "reporting_period": "2023-10-15 to 2025-10-12 (Strict zero look-ahead post 15-Oct-2025)",
+      "source_org": "NSE Historical Weekly Security & Index Returns Archive",
+      "document_title": "104-Week Institutional Weekly Returns Dataset & Regression Diagnostics",
+      "local_source_file": "work/sources/weekly_market_returns_104w.json",
+      "local_source_sha256": "109e1f9726130ffc6fc9121e941b6bedb66a90b3a8d249d8beca40bc0bd50eef",
+      "official_url": "https://www.nseindia.com",
+      "statement_location": "Valuation Sheet 104-Week Regression Diagnostics Table",
+      "reported_unit": "Paired Weekly Log/Percent Returns (N=104)",
+      "reported_value": 104,
+      "workbook_cell": "'FCFF Valuation'!B83",
+      "status": "empirical_market_dataset"
     },
     {
       "metric": "Primary Valuation Output (Unlevered Free Cash Flow (FCFF) DCF & CAPM WACC)",

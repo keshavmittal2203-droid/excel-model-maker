@@ -45,12 +45,12 @@
     }
   },
   "workbook_file": "EDELWEISS-Recalculated.xlsx",
-  "workbook_sha256": "46a01ce62e77c7bfa8b52840ac7bb71e81bcd4dcd37d4f7a5f152837a7036844",
+  "workbook_sha256": "62fb554c61624d837345a125fe75ee6e2a3f5b076f1f8a4380f50504041a62db",
   "summary": {
-    "total_numeric_inputs": 325,
+    "total_numeric_inputs": 335,
     "total_same_sheet_formulas": 376,
     "total_cross_sheet_links": 181,
-    "registry_entries_count": 34
+    "registry_entries_count": 35
   },
   "sheet_breakdown": [
     {
@@ -85,7 +85,7 @@
     },
     {
       "sheet": "SOTP Valuation",
-      "numeric_inputs": 36,
+      "numeric_inputs": 46,
       "same_sheet_formulas": 60,
       "cross_sheet_links": 10
     }
@@ -948,6 +948,22 @@
       "reported_value": 1.483,
       "workbook_cell": "'Cover & Notes'!E12",
       "status": "empirical_regression_derived"
+    },
+    {
+      "metric": "104-Week Empirical Weekly Market Returns & OLS Regression Dataset",
+      "legal_entity": "Edelweiss Financial Services Limited",
+      "consolidation_basis": "Empirical Market Time Series (105 weekly price bars, 104 paired returns vs Nifty 50, Cutoff: 15-Oct-2025)",
+      "reporting_period": "2023-10-15 to 2025-10-12 (Strict zero look-ahead post 15-Oct-2025)",
+      "source_org": "NSE Historical Weekly Security & Index Returns Archive",
+      "document_title": "104-Week Institutional Weekly Returns Dataset & Regression Diagnostics",
+      "local_source_file": "work/sources/weekly_market_returns_104w.json",
+      "local_source_sha256": "109e1f9726130ffc6fc9121e941b6bedb66a90b3a8d249d8beca40bc0bd50eef",
+      "official_url": "https://www.nseindia.com",
+      "statement_location": "Valuation Sheet 104-Week Regression Diagnostics Table",
+      "reported_unit": "Paired Weekly Log/Percent Returns (N=104)",
+      "reported_value": 104,
+      "workbook_cell": "'SOTP Valuation'!B52",
+      "status": "empirical_market_dataset"
     },
     {
       "metric": "Primary Valuation Output (Financial Services Sum-of-the-Parts (SOTP) Valuation)",
