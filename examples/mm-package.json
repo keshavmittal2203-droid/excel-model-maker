@@ -3,7 +3,7 @@
   "schema_version": 1,
   "package_id": "mm-overview-fy25",
   "name": "Mahindra & Mahindra Limited Financial Model & Executive Overview",
-  "description": "Reproducible template-driven package for Mahindra & Mahindra Limited (MM) with connected 5-year forecasts, FY19–FY25 statutory historicals, and workbook-linked 5-slide ERR-4 presentation.",
+  "description": "Reproducible template-driven package for Mahindra & Mahindra Limited (MM) with connected 5-year forecasts, FY19\u2013FY25 statutory historicals, and workbook-linked 5-slide ERR-4 presentation.",
   "company": {
     "name": "Mahindra & Mahindra Limited",
     "ticker": "M&M",
@@ -52,7 +52,7 @@
     "source": "originals/Marksans Keshav.xlsx",
     "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
     "candidate_source": "candidates/run_native_mm/MM-Recalculated.xlsx",
-    "expected_recalculated_sha256": "1a7e25a12975fbe1377f51bfcb8e56762d53eea335c5311058af26193b55f42c",
+    "expected_recalculated_sha256": "0fa748b3fbfdf7cffef80b619eb8ea77b9b302a2bb9bca37e1d7d652dfd7f589",
     "adapter": "work/models_mm.py",
     "model_pack": "proposals/mm.model-pack.json",
     "output_name": "MM-Recalculated.xlsx"

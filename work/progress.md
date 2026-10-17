@@ -381,18 +381,18 @@
     - `EDELWEISS.NS`: Raw Beta = `1.4830`, Blume = `1.3220`, $R^2 = 0.1302$, $t = 3.91$
 - **Model Enhancements & Embedded Regression Schedules**:
   - `MM` (`work/models_mm.py`): Realization (ASP ₹ Lakh/unit) in Rows 30–35 on `Segment Operations`; 104-Week Regression Diagnostics in Rows 49–62 on `SOTP Valuation`. Implied SOTP: **`₹2,742.97/share`**.
-  - `LTM` (`work/models_ltm.py`): Stub DCF Timing Reconciliation (Rows 63–69), Cash Bridge Audit (Rows 70–78), 104-Week Regression Diagnostics (Rows 80–92). Implied FCFF DCF: **`₹2,811.09/share`**.
-  - `CLEAN` (`work/models_clean.py`): Stub DCF Timing Reconciliation (Rows 63–69), Cash Bridge Audit (Rows 70–78), 104-Week Regression Diagnostics (Rows 80–92). Implied Manufacturing DCF: **`₹480.89/share`**.
+  - `LTM` (`work/models_ltm.py`): Stub DCF Timing Reconciliation (Rows 63–69; 167 calendar days, $t_1 = 0.2288$, TV exponent 4.4575; Implied Stub Value **`₹2,921.84/share`** vs Baseline **`₹2,811.09/share`**), Cash Bridge Audit (Rows 70–78; statutory 2% buffer ₹760 Cr leaving +₹10,486 Cr cushion, conservative ₹1,500 Cr benchmark leaving +₹9,746 Cr cushion), 104-Week Regression Diagnostics (Rows 80–92).
+  - `CLEAN` (`work/models_clean.py`): Stub DCF Timing Reconciliation (Rows 63–69; 167 calendar days, $t_1 = 0.2288$, TV exponent 4.4575; Implied Stub Value **`₹505.64/share`** vs Baseline **`₹480.89/share`**), Cash Bridge Audit (Rows 70–78; statutory 2% buffer ₹19 Cr leaving +₹380 Cr cushion, conservative ₹50 Cr benchmark leaving +₹349 Cr cushion), 104-Week Regression Diagnostics (Rows 80–92).
   - `EDELWEISS` (`work/models_edelweiss.py`): 104-Week Regression Diagnostics (Rows 49–62), Minority Interest & Operating Debt Ring-Fencing Governance Schedule (Rows 64–70). Implied Financial SOTP: **`₹130.53/share`** (Industrial FCFF strictly withheld).
 - **Multi-Request & Batch Generation Engine (`build_package.py`)**:
   - Added `--batch`, `--requests`, `--output-base`, and `--clean` CLI arguments.
-  - Implemented `build_package_batch` orchestrator.
-  - Updated `output_file` to support `check_exists=not check_only`, enabling fast preflight validation without directory collisions.
+  - Implemented `build_package_batch` orchestrator with `attempted_output_dir` failure reporting and strict ownership guards on `--clean` (refuses to clean directories without verified `package.manifest.json` or outside `candidates/`/`temp`).
+  - Clarified CLI modes: preflight (`--check-only`), fast non-COM build (`--skip-com`), and full native Microsoft Excel COM recalculation (`--excel-only` without `--skip-com`).
 - **Recalculated Excel COM Workbooks (0 formula errors, 0 missing caches, 36/36 identities)**:
-  - `MM-Recalculated.xlsx`: `1a7e25a12975fbe1377f51bfcb8e56762d53eea335c5311058af26193b55f42c`
-  - `LTM-Recalculated.xlsx`: `1c58ec476249910c01b770e041ca5dc84a3a22261b49a77e34954ec0cb08c2ae`
-  - `CLEAN-Recalculated.xlsx`: `4c04650809141b96210eada56acd6df8ab90c466ef4b467483d79c8ffd2891a4`
-  - `EDELWEISS-Recalculated.xlsx`: `b3a2542e544a00a6310e14f3592898e3890b5f959034a7fd954ffded60d03853`
+  - `MM-Recalculated.xlsx`: `0fa748b3fbfdf7cffef80b619eb8ea77b9b302a2bb9bca37e1d7d652dfd7f589`
+  - `LTM-Recalculated.xlsx`: `00c55536a294ccb2857edd92235a16f2fc18c50eb2a57be94bf5d38d48251da8`
+  - `CLEAN-Recalculated.xlsx`: `d7dc3a94bf8c9a365cb0d1ac628362c61217bb68df4bd51c0b5472f14e1ab7bb`
+  - `EDELWEISS-Recalculated.xlsx`: `c35dfa2945d0640c020c28bcd8e38392d94e5b05a377dbab41a02fd9aaaccfbf`
   - Synchronized across `candidates/run_native_<key>/`, `candidates/run_excel_<key>/`, and `companies/<KEY>/`.
   - Re-exported all 24 sheet PDF previews across `candidates/run_excel_<key>/previews/`, `candidates/run_native_<key>/previews/`, and `companies/<KEY>/previews/`.
 - **Test Suite Expanded (`test_four_targets.py`)**:

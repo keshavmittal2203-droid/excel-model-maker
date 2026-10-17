@@ -3,7 +3,7 @@
   "schema_version": 1,
   "package_id": "ltm-overview-fy25",
   "name": "LTIMindtree Limited Financial Model & Executive Overview",
-  "description": "Reproducible template-driven package for LTIMindtree Limited (LTM) with connected 5-year forecasts, FY19–FY25 statutory historicals, and workbook-linked 5-slide ERR-4 presentation.",
+  "description": "Reproducible template-driven package for LTIMindtree Limited (LTM) with connected 5-year forecasts, FY19\u2013FY25 statutory historicals, and workbook-linked 5-slide ERR-4 presentation.",
   "company": {
     "name": "LTIMindtree Limited",
     "ticker": "LTIM",
@@ -52,7 +52,7 @@
     "source": "originals/Marksans Keshav.xlsx",
     "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
     "candidate_source": "candidates/run_native_ltm/LTM-Recalculated.xlsx",
-    "expected_recalculated_sha256": "1c58ec476249910c01b770e041ca5dc84a3a22261b49a77e34954ec0cb08c2ae",
+    "expected_recalculated_sha256": "00c55536a294ccb2857edd92235a16f2fc18c50eb2a57be94bf5d38d48251da8",
     "adapter": "work/models_ltm.py",
     "model_pack": "proposals/ltm.model-pack.json",
     "output_name": "LTM-Recalculated.xlsx"

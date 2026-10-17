@@ -851,7 +851,7 @@ def build_clean_model(out_path: Path) -> Path:
         if 3 <= c_i <= 9:
             cell.alignment = ALIGN_RIGHT
     # Stub-Period DCF Discounting vs Full-Year Annual DCF Comparison (Rows 63-69)
-    ws_val["A63"] = "STUB-PERIOD DCF TIMING RECONCILIATION (VALUATION DATE: 15-OCT-2025, 167 DAYS REMAINING IN FY26E)"
+    ws_val["A63"] = "STUB-PERIOD DCF TIMING RECONCILIATION (VALUATION DATE: 15-OCT-2025, 167 CALENDAR DAYS REMAINING IN FY26E, ACTUAL/365)"
     ws_val["A63"].font = FONT_SEC_HDR
     ws_val["A63"].fill = FILL_SEC_HDR
     stub_hdrs = ["Valuation Timing Convention", "FY26E Stub", "FY27E", "FY28E", "FY29E", "FY30E", "Terminal Value (₹ Cr)", "PV of TV (₹ Cr)", "Enterprise Value (₹ Cr)", "Implied Value / Share (₹)"]
@@ -876,7 +876,7 @@ def build_clean_model(out_path: Path) -> Path:
     ws_val.cell(65, 10).fill = FILL_ACCENT
 
     # Row 66: Stub-Period Discounting (H2 FY26E = 167/365 = 45.75% stub, mid-point t1 = 0.2288)
-    ws_val.cell(66, 1, "Stub-Period DCF Discounting (H2 FY26E Remaining 167 Days = 45.75% Stub)").font = FONT_BOLD
+    ws_val.cell(66, 1, "Stub-Period DCF Discounting (167/365 = 45.75% Cal Year; Midpoint t1 = 0.2288)").font = FONT_BOLD
     ws_val.cell(66, 2, "=ROUND(B12*0.4575/(1+$I$7)^0.2288,0)").number_format = FMT_INR_CR
     ws_val.cell(66, 3, "=ROUND(C12/(1+$I$7)^0.9575,0)").number_format = FMT_INR_CR
     ws_val.cell(66, 4, "=ROUND(D12/(1+$I$7)^1.9575,0)").number_format = FMT_INR_CR
@@ -888,13 +888,14 @@ def build_clean_model(out_path: Path) -> Path:
     ws_val.cell(66, 10, "=ROUND((I66+$B$21-$B$22)/$I$9,2)").number_format = FMT_DEC2
     ws_val.cell(66, 10).font = FONT_BOLD
 
-    # Row 67 & 68: Memos
+    # Row 67, 68, 69: Memos
     ws_val.cell(67, 1, "Memo: Terminal Value Concentration (% of Implied Enterprise Value)").font = FONT_SMALL_ITALIC
     ws_val.cell(67, 2, "=B19/B20").number_format = FMT_PCT
     ws_val.cell(68, 1, "Memo: Implied Terminal EV / FY30E EBITDA Multiple (x)").font = FONT_SMALL_ITALIC
     ws_val.cell(68, 2, "=B18/'Income Statement'!M7").number_format = FMT_MULT
+    ws_val.cell(69, 1, "Valuation Timing Basis: Actual/365 day-count convention (167 calendar days; ~115 trading days; TV exponent 4.4575 ties to FY30E end)").font = FONT_SMALL_ITALIC
 
-    for r in range(65, 69):
+    for r in range(65, 70):
         for c_i in range(1, 11):
             cell = ws_val.cell(r, c_i)
             cell.border = BORDER_DATA
@@ -925,6 +926,8 @@ def build_clean_model(out_path: Path) -> Path:
         ws_val.cell(r, 3, note).font = FONT_SMALL_ITALIC
         for c_i in range(1, 4):
             ws_val.cell(r, c_i).border = BORDER_TOTAL if is_tot else BORDER_DATA
+
+    ws_val.cell(78, 1, "Memo: Conservative 1-Month Operating Buffer Benchmark (₹50 Cr leaves ₹349 Cr Net Cushion vs ₹382 Cr @ 2%)").font = FONT_SMALL_ITALIC
 
     # Empirical 104-Week Regression Diagnostics (Rows 80-92)
     ws_val["A80"] = "EMPIRICAL 104-WEEK OLS REGRESSION DIAGNOSTICS (VS NIFTY 50, N=104 WEEKS)"

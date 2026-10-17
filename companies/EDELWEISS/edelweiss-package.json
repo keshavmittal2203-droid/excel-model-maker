@@ -3,7 +3,7 @@
   "schema_version": 1,
   "package_id": "edelweiss-overview-fy25",
   "name": "Edelweiss Financial Services Limited Financial Model & Executive Overview",
-  "description": "Reproducible template-driven package for Edelweiss Financial Services Limited (EDELWEISS) with connected 5-year forecasts, FY19–FY25 statutory historicals, and workbook-linked 5-slide ERR-4 presentation.",
+  "description": "Reproducible template-driven package for Edelweiss Financial Services Limited (EDELWEISS) with connected 5-year forecasts, FY19\u2013FY25 statutory historicals, and workbook-linked 5-slide ERR-4 presentation.",
   "company": {
     "name": "Edelweiss Financial Services Limited",
     "ticker": "EDELWEISS",
@@ -52,7 +52,7 @@
     "source": "originals/Marksans Keshav.xlsx",
     "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
     "candidate_source": "candidates/run_native_edelweiss/EDELWEISS-Recalculated.xlsx",
-    "expected_recalculated_sha256": "b3a2542e544a00a6310e14f3592898e3890b5f959034a7fd954ffded60d03853",
+    "expected_recalculated_sha256": "c35dfa2945d0640c020c28bcd8e38392d94e5b05a377dbab41a02fd9aaaccfbf",
     "adapter": "work/models_edelweiss.py",
     "model_pack": "proposals/edelweiss.model-pack.json",
     "output_name": "EDELWEISS-Recalculated.xlsx"

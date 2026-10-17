@@ -862,6 +862,11 @@ def build_package(
             pass
         if is_cand_sub or is_temp or (res / "package.manifest.json").exists():
             shutil.rmtree(res)
+        else:
+            raise RuntimeError(
+                f"Target output directory {res} is not inside candidates/ or temp, "
+                f"and does not contain an existing package.manifest.json. Refusing to clean unverified directory."
+            )
 
     # Validate output names before directory writes or Office activation.
     wb_out_name = req["workbook"].get("output_name", "Marksans-Recalculated.xlsx")
@@ -1273,6 +1278,7 @@ def build_package_batch(
             failures.append({
                 "request": str(req_p),
                 "error": str(e),
+                "attempted_output_dir": str(out_subdir),
             })
 
     batch_summary = {
@@ -1294,10 +1300,10 @@ def main() -> int:
     parser.add_argument("--batch", action="store_true", help="Batch build mode across multiple requests")
     parser.add_argument("--output-dir", help="Target output directory for single package build")
     parser.add_argument("--output-base", help="Base output directory for batch package builds (defaults to candidates/)")
-    parser.add_argument("--clean", action="store_true", help="Clean candidate run output directory before building if it already exists")
+    parser.add_argument("--clean", action="store_true", help="Safely clean candidate run output directory before building (only allowed for verified directories inside candidates/ or temp, or with existing package.manifest.json)")
     parser.add_argument("--allow-proposal", action="store_true", help="Allow building with proposal model/deck packs")
     parser.add_argument("--force", action="store_true", help="Legacy option; non-empty run directories are never overwritten")
-    parser.add_argument("--skip-com", action="store_true", help="Skip PowerPoint and Excel COM preview exports")
+    parser.add_argument("--skip-com", action="store_true", help="Skip Microsoft Office COM activation entirely (builds packages without Excel COM recalculation or PowerPoint COM slide rendering)")
     parser.add_argument("--excel-only", action="store_true", help="Build, recalculate, validate, and export PDF previews for the Excel workbook only without PowerPoint")
     parser.add_argument("--check-only", "--preflight-only", action="store_true", help="Fast preflight request and template validation without Office COM activation or file generation")
     args = parser.parse_args()

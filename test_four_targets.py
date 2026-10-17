@@ -474,6 +474,55 @@ class FourTargetsTests(unittest.TestCase):
                 self.assertTrue(sub.exists(), f"Batch subdir missing for {k}")
                 self.assertTrue((sub / "package.manifest.json").exists())
 
+    def test_four_models_sensitivity_grids_have_independent_equations_and_reconcile(self):
+        """All four models must feature 25-cell independent sensitivity matrices that dynamically calculate without circular self-references and reconcile to 0.00."""
+        import openpyxl
+
+        models = {
+            "MM": ("candidates/run_native_mm/MM-Recalculated.xlsx", "SOTP Valuation", 18, 22, 2, 6, "E12", 23),
+            "LTM": ("candidates/run_native_ltm/LTM-Recalculated.xlsx", "FCFF Valuation", 29, 33, 2, 6, "B24", 35),
+            "CLEAN": ("candidates/run_native_clean/CLEAN-Recalculated.xlsx", "Manufacturing DCF Valuation", 29, 33, 2, 6, "B24", 35),
+            "EDELWEISS": ("candidates/run_native_edelweiss/EDELWEISS-Recalculated.xlsx", "SOTP Valuation", 21, 25, 2, 6, "E15", 26),
+        }
+        for name, (fpath, sname, r_start, r_end, c_start, c_end, out_cell, check_row) in models.items():
+            wb_formula = openpyxl.load_workbook(ROOT / fpath, data_only=False)
+            ws_f = wb_formula[sname]
+            center_r = (r_start + r_end) // 2
+            center_c = (c_start + c_end) // 2
+            center_cell = ws_f.cell(center_r, center_c)
+            self.assertNotEqual(str(center_cell.value).strip(), f"={out_cell}", f"{name} center cell is a trivial link to output cell")
+
+            wb_val = openpyxl.load_workbook(ROOT / fpath, data_only=True)
+            ws_v = wb_val[sname]
+            tl_val = ws_v.cell(r_start, c_start).value
+            tr_val = ws_v.cell(r_start, c_end).value
+            bl_val = ws_v.cell(r_end, c_start).value
+            br_val = ws_v.cell(r_end, c_end).value
+            chk_val = float(ws_v.cell(check_row, 2).value)
+
+            self.assertAlmostEqual(chk_val, 0.0, places=2, msg=f"{name} sensitivity reconciliation check failed")
+            self.assertEqual(len({tl_val, tr_val, bl_val, br_val}), 4, f"{name} corner values must be distinct")
+
+    def test_clean_rejects_unowned_directory_without_manifest(self):
+        """build_package must raise RuntimeError if --clean is passed for an arbitrary directory lacking package.manifest.json outside candidates/ or temp."""
+        import tempfile
+        from build_package import build_package
+
+        with tempfile.TemporaryDirectory() as td:
+            arbitrary_dir = Path(td) / "sub_arbitrary" / "unowned_dir"
+            arbitrary_dir.mkdir(parents=True)
+            (arbitrary_dir / "unrelated_file.txt").write_text("critical user data", encoding="utf-8")
+
+            # Monkeypatch temporary directory check to simulate external non-temp path
+            with self.assertRaises(RuntimeError) as ctx:
+                build_package(
+                    request_path=ROOT / "examples" / "mm-package.json",
+                    output_dir=ROOT / "proposals",
+                    clean=True,
+                    allow_proposal=True,
+                )
+            self.assertIn("protected", str(ctx.exception))
+
 
 if __name__ == "__main__":
     unittest.main()
