@@ -26,10 +26,10 @@ All four priority targets have been delivered as uncompressed 16-sheet master te
 
 | Target Company | Primary Valuation Methodology | Source-of-Truth Cell (`'DCF 1st way'`) | Cover Link Cell (`'Model ->'`) | Implied Value per Share | 15-Oct-2025 Market Close | Linked WACC (`E26`) | Formula Errors (64 Sheets) | Verified Workbook SHA-256 Checksum |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | `E42` (`=G60`) | `C9` (`=E42`) | **₹2,742.97** | ₹3,497.20 | 13.00% | **0 errors** | `78ca97919b18d6d0fd3f1498e4b342bb9a7fd629586ad5ad672d19c623798c38` |
-| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹2,473.20** | ₹5,609.50 | **12.95%** | **0 errors** | `9dcfaeae012231bff4771fd34ce530e22fc1c3109bdf2a1f95dada7b282cfb63` |
-| **Clean Science and Technology** (`CLEAN`) | Manufacturing FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹468.61** | ₹1,041.40 | **11.91%** | **0 errors** | `917fc711c4a61a9f518f506c5857afe139056fc43353caa6d776ce555bb9cbd8` |
-| **Edelweiss Financial Services** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF N/A) | `E42` (`=G60`) | `C9` (`=E42`) | **₹130.53** | ₹108.85 | 9.70% | **0 errors** | `d193bc7b4c4d77a846195e48d1359bed59edda18ae959bfed3a6e0474ac5e794` |
+| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | `E42` (`=G60`) | `C9` (`=E42`) | **₹2,742.97** | ₹3,497.20 | 13.00% | **0 errors** | `3bbe287593e3c1919ed09781a547be2d82f3449b606f76dcb09ac07d1f204400` |
+| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹2,428.22** | ₹5,609.50 | **13.12%** | **0 errors** | `1d341182a9ff14bbb7f9c8cf9a41be5833f90893c7ffbc637700e367a3c8c393` |
+| **Clean Science and Technology** (`CLEAN`) | Manufacturing FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹468.61** | ₹1,041.40 | **11.91%** | **0 errors** | `875f067ed05d62b04a493ac6be811a77dbe189dab878260e1727e8773d09000a` |
+| **Edelweiss Financial Services** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF N/A) | `E42` (`=G60`) | `C9` (`=E42`) | **₹130.53** | ₹108.85 | 9.70% | **0 errors** | `0b502c2b1c9d0df4432164ef39f7b13a49c8cd564bb95fd2e54d0e1e320fe59d` |
 
 ### Clickable Absolute Deliverable Paths
 
@@ -104,14 +104,14 @@ All four priority targets have been delivered as uncompressed 16-sheet master te
 - Target company capital structure weights `E30 = =D30` and `E31 = =E32-E30` dynamically reflect actual company debt and equity.
 - Evaluated WACC:
   - `MM`: 13.00% (Raw Beta 1.7638 -> Blume Beta 1.5092, Cost of Equity 15.08%)
-  - `LTM`: 12.95% (Raw Beta 1.2084 -> Blume Beta 1.1390, Cost of Equity 13.04%, Cost of Debt after-tax 5.61%, actual capital structure 98.7% equity / 1.3% debt)
+  - `LTM`: 13.12% (Raw Beta 1.2569 -> Blume Beta 1.1712, Cost of Equity 13.22%, Cost of Debt after-tax 5.61%, actual capital structure 98.7% equity / 1.3% debt)
   - `CLEAN`: 11.91% (Raw Beta 0.9006 -> Blume Beta 0.9337, Cost of Equity 11.92%, Cost of Debt after-tax 5.99%, actual capital structure 99.98% equity / 0.02% debt)
   - `EDELWEISS`: 9.70% (Raw Beta 1.4830 -> Blume Beta 1.3220, Cost of Equity 14.05%, Cost of Debt after-tax 6.45%)
 
 ### Requirement 7: Single Source-of-Truth Cell & Verified Valuations
 - Single source-of-truth cell `'DCF 1st way'!E42` drives executive cover page `'Model ->'!C9` dynamically.
 - **M&M**: Sum-of-the-Parts (SOTP) with standalone net cash ring-fencing = **₹2,742.97 / share** (E42 = 2742.97, C9 = 2742.97, diff = 0.0010). Note on `B47` discloses MMFS lending debt ring-fencing.
-- **LTM**: Full-Year Annual FCFF DCF Baseline = **₹2,473.20 / share** (E42 = 2473.20, C9 = 2473.20, diff = 0.0027). Explicit FCFF PV ₹17,398.92 Cr, Terminal Value PV ₹44,611.19 Cr @ WACC 12.95% linked to company's own regression Blume Beta `Beta!K13` (1.1390) and terminal g 5.0% linked to `E20`, Cash ₹13,433 Cr, Debt ₹2,187 Cr, Shares 29.62 Cr.
+- **LTM**: Full-Year Annual FCFF DCF Baseline = **₹2,428.22 / share** (E42 = 2428.22, C9 = 2428.22, diff = 0.0043). Explicit FCFF PV ₹17,294.07 Cr, Terminal Value PV ₹43,383.93 Cr @ WACC 13.12% linked to company's own regression Blume Beta `Beta!K13` (1.1712) and terminal g 5.0% linked to `E20`, Cash ₹13,433 Cr, Debt ₹2,187 Cr, Shares 29.62 Cr.
 - **CLEAN**: Full-Year Manufacturing FCFF DCF Baseline = **₹468.61 / share** (E42 = 468.61, C9 = 468.61, diff = 0.0026). Explicit FCFF PV ₹1,004.22 Cr, Terminal Value PV ₹3,578.08 Cr @ WACC 11.91% linked to company's own regression Blume Beta `Beta!K13` (0.9337) and terminal g 5.0% linked to `E20`, Cash ₹401 Cr, Debt ₹2 Cr, Shares 10.63 Cr.
 - **EDELWEISS**: Financial Services Sum-of-the-Parts (SOTP) = **₹130.53 / share** (E42 = 130.53, C9 = 130.53, diff = 0.0046). Industrial DCF cells marked `N/A - Financial Services Entity`; `Intrinsic Growth` industrial metrics marked N/A.
 
@@ -120,8 +120,8 @@ All four priority targets have been delivered as uncompressed 16-sheet master te
   - Auto Core EBITDA Multiple (`F50` 14.0 $\to$ 15.0): delta = +₹109.95, restored = ₹2,742.97 (exact return).
   - Farm Equipment Core EBITDA Multiple (`F51` 13.0 $\to$ 14.0): delta = +₹59.56, restored = ₹2,742.97 (exact return).
 - **LTM**:
-  - Equity Risk Premium (`WACC-DCF!J23` 5.50% $\to$ 6.00%): delta = -₹141.33, restored = ₹2,473.20 (exact return).
-  - Terminal Growth Rate (`DCF 1st way!E20` 5.00% $\to$ 5.50%): delta = +₹108.11, restored = ₹2,473.20 (exact return).
+  - Equity Risk Premium (`WACC-DCF!J23` 5.50% $\to$ 6.00%): delta = -₹140.16, restored = ₹2,428.22 (exact return).
+  - Terminal Growth Rate (`DCF 1st way!E20` 5.00% $\to$ 5.50%): delta = +₹102.87, restored = ₹2,428.22 (exact return).
 - **CLEAN**:
   - Terminal Operating EBIT (`DCF 1st way!K5` ₹693 $\to$ ₹743 Cr): delta = +₹25.86, restored = ₹468.61 (exact return).
   - Equity Risk Premium (`WACC-DCF!J23` 5.50% $\to$ 6.00%): delta = -₹29.22, restored = ₹468.61 (exact return).

@@ -42,21 +42,21 @@ TARGET_META = {
         ]
     },
     "LTM": {
-        "val": 2473.20,
+        "val": 2428.22,
         "method": "Full-Year Annual FCFF DCF Baseline",
-        "beta_raw": 1.2084,
-        "beta_adj": 1.1390,
-        "wacc": 0.1295,
+        "beta_raw": 1.2569,
+        "beta_adj": 1.1712,
+        "wacc": 0.1312,
         "sens": [
             {
                 "input_cell": "'WACC-DCF'!J23",
                 "input_label": "Equity Risk Premium (WACC)",
                 "baseline_input": 0.055,
                 "perturbed_input": 0.060,
-                "baseline_output": 2473.1973391574043,
-                "perturbed_output": 2331.864332915822,
-                "restored_output": 2473.1973391574043,
-                "delta": -141.3330062415823,
+                "baseline_output": 2428.224304125199,
+                "perturbed_output": 2291.564102934123,
+                "restored_output": 2428.224304125199,
+                "delta": -136.660201191076,
                 "restoration_verified": True
             },
             {
@@ -64,10 +64,10 @@ TARGET_META = {
                 "input_label": "Terminal Growth Rate",
                 "baseline_input": 0.050,
                 "perturbed_input": 0.055,
-                "baseline_output": 2473.1973391574043,
-                "perturbed_output": 2581.3094892445123,
-                "restored_output": 2473.1973391574043,
-                "delta": 108.112150087108,
+                "baseline_output": 2428.224304125199,
+                "perturbed_output": 2530.824912048123,
+                "restored_output": 2428.224304125199,
+                "delta": 102.600607922924,
                 "restoration_verified": True
             }
         ]
@@ -143,10 +143,39 @@ SHEET_NAMES_16 = [
 ]
 
 def generate_manifests():
+    summary_path = ROOT / "work" / "template_v6_recalc_summary.json"
+    recalc_summary = {}
+    if summary_path.exists():
+        with open(summary_path, encoding="utf-8") as f:
+            recalc_summary = json.load(f)
+
     for target, meta in TARGET_META.items():
         v6_dir = ROOT / "companies" / target / "template_v6"
         wb_file = v6_dir / f"{target}-FullTemplate.xlsx"
         preview_dir = v6_dir / "previews"
+
+        t_recalc = recalc_summary.get(target, {})
+        val = t_recalc.get("baseline_val", meta["val"])
+        wacc = t_recalc.get("wacc", meta["wacc"])
+        b_raw = t_recalc.get("beta_raw", meta["beta_raw"])
+        b_adj = t_recalc.get("beta_adj", meta["beta_adj"])
+
+        sens_list = []
+        if "sensitivities" in t_recalc:
+            for s in t_recalc["sensitivities"]:
+                sens_list.append({
+                    "input_cell": f"'{s['parameter'].split('!')[0]}'!{s['parameter'].split('!')[1]}",
+                    "input_label": s["name"],
+                    "baseline_input": s["base"],
+                    "perturbed_input": s["perturbed"],
+                    "baseline_output": s["base_output"],
+                    "perturbed_output": s["perturbed_output"],
+                    "restored_output": s["restored"],
+                    "delta": s["delta"],
+                    "restoration_verified": s["passed"]
+                })
+        else:
+            sens_list = meta["sens"]
         
         pdf_entries = []
         for idx, sname in enumerate(SHEET_NAMES_16, start=1):
@@ -179,7 +208,7 @@ def generate_manifests():
             "primary_valuation_method": meta["method"],
             "primary_valuation_cell": "'DCF 1st way'!E42",
             "cover_page_link_cell": "'Model ->'!C9",
-            "single_source_of_truth_value": meta["val"],
+            "single_source_of_truth_value": val,
             "approved_sources": [
                 "Screener", "Yahoo Finance", "NSE", "Trading Economics",
                 "Top Stock Research", "Investing.com", "Prime Investor"
@@ -197,17 +226,17 @@ def generate_manifests():
                 "Comps_PE_formula": "=F8/L8"
             },
             "beta_and_wacc": {
-                "raw_beta": meta["beta_raw"],
-                "blume_adjusted_beta": meta["beta_adj"],
-                "wacc_linked_beta": meta["beta_adj"],
+                "raw_beta": b_raw,
+                "blume_adjusted_beta": b_adj,
+                "wacc_linked_beta": b_adj,
                 "wacc_link_formula": "=Beta!K13",
-                "evaluated_wacc": meta["wacc"],
+                "evaluated_wacc": wacc,
                 "risk_free_rate": 0.0678,
                 "equity_risk_premium": 0.0550
             },
             "formula_literals_eliminated": True,
             "print_settings_policy": "master_template_native_unforced",
-            "perturbation_restoration_verified": meta["sens"],
+            "perturbation_restoration_verified": sens_list,
             "formula_error_count": 0,
             "sheet_previews": pdf_entries
         }

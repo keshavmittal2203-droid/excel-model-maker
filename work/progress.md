@@ -607,3 +607,44 @@
   - `CLEAN-FullTemplate.xlsx` (SHA-256: `917fc711c4a61a9f518f506c5857afe139056fc43353caa6d776ce555bb9cbd8`, 106,850 bytes, 16 PDFs, manifest)
   - `EDELWEISS-FullTemplate.xlsx` (SHA-256: `d193bc7b4c4d77a846195e48d1359bed59edda18ae959bfed3a6e0474ac5e794`, 109,006 bytes, 16 PDFs, manifest)
 - **Governance**: Prior versioned deliverables preserved intact; `ready: false`, `human_pack_approval: pending`. PR #3 open and unmerged.
+
+## Comprehensive Triple-Check Defect Remediation & Final Recalculation (2026-10-18 Asia/Kolkata)
+- **User Request**: *"recheck everything thrice, i can still see errors"*.
+- **Root Cause & Comprehensive Audit Tool**:
+  - Developed and executed `work/comprehensive_audit.py`, conducting two-phase static OpenPyXL and live Excel COM 16.0 inspection across all 64 worksheets.
+  - Discovered that Excel COM returns cell errors as negative integer CVErr codes (e.g. `-2146826281` for `#DIV/0!`, `-2146826273` for `#VALUE!`) rather than string representations, which previously bypassed basic string matching.
+  - Hardened error scanning in `recalculate_template_v6_models.py` to inspect both `COM_ERRORS` integer codes and string tokens.
+- **Defects Remediated**:
+  1. **CLEAN**:
+     - `Main Financials` Row 141 (Common-Size BS Total Assets) was inherited as `='Data Sheet'!B75/'Data Sheet'!B$75` (where B75 was 0). Realigned columns D..J to `Data Sheet` E75..K75 and guarded with `=IFERROR('Data Sheet'!{c}75/'Data Sheet'!{c}$75, 1.0)`.
+     - `Ratio Analysis` Row 34 (`CFO/Total Debt`) generated `#DIV/0!` due to Clean Science having zero debt in FY21–FY22. Wrapped all division rows (7, 8, 9, 13, 21, 23, 26, 27, 28, 30, 32, 33, 34) across columns C..H with `=IFERROR(<formula>, "N/A")` and columns J..K with `=IFERROR(AVERAGE(C:H), "N/A")` / `=IFERROR(MEDIAN(C:H), "N/A")`. Excel naturally skips `"N/A"` text and averages valid numeric years cleanly.
+  2. **EDELWEISS**:
+     - `Ratio Analysis` Row 9 (`Dividend Growth`) generated `#DIV/0!` due to zero prior dividend. Wrapped with `IFERROR(..., "N/A")`.
+     - `Comps` Column O (`EV/EBITDA`): Row 26 had `=O20*K8`. When O20 is `"N/A"`, multiplying text by number caused `#VALUE!` cascading to O28, O31, O34. Preserved Net Debt in `O27 = =$G$8` so `P27 = =O27` succeeds, and set `O26`, `O28`, `O31`, `O34` explicitly to `"N/A"`.
+     - `DCF 2nd way`: Rows 58, 61, 63 explicitly marked `"N/A - Financial Services Entity"` and `"N/A - See SOTP (INR 130.53/sh)"`.
+  3. **LTM**:
+     - Fixed ticker key in `TARGET_CONFIGS["LTM"]` from `"LTIM.NS"` to `"LTM.NS"` to match `weekly_market_returns_104w.json`. Populated 104 weekly market prices in `Beta!C8:C112`, replacing stale Marksans pharma prices (₹289–342) with authentic LTM prices (₹5,416–5,622).
+     - Resulting metrics: raw regression beta = **1.2569**, Blume beta = **1.1712**, WACC = **13.12%**, and DCF fair value per share = **₹2,428.22 / share**.
+  4. **Stale Pharma Carryover Eradication**:
+     - `compdata`: Cleared obsolete rows 23 and 24 (old Cipla and Dr Reddy's); populated row 25 with target company metrics (`B25 = 6`, `C25 = ='Data Sheet'!B1`, `D25 = =D10`, `E25 = ='Main Financials'!I24`, `F25 = =J10/K10`, `G25 = ='Main Financials'!I25`).
+     - `WACC-DCF`: Dynamically linked peer comps table rows 11 to 15 to sector peers (`B11:B15 = =peerdata!C5:C9`) and populated `I11:I15` with each sector peer's actual levered beta.
+     - `Cash Flow`: Cleared accidental date carryover on Row 2; dates belong strictly on Row 4.
+     - Unicode cleanup: Replaced non-ASCII em-dashes `\u2014` with standard ASCII ` - ` in titles.
+- **Verification Results (Triple-Checked)**:
+  - Excel COM 16.0 Full Rebuild: **0 formula errors** across all 64 sheets.
+  - Stale term scanner: **0 hits** across all 64 sheets.
+  - Literal 'None' scanner: **0 hits** across all 64 sheets.
+  - `#REF!` scanner: **0 hits** across all 64 sheets.
+  - Balance Sheet (BS) reconciliation: **100% Reconciled** across all 12 columns for all 4 targets.
+  - Single source-of-truth cell `'DCF 1st way'!E42` ties cover `'Model ->'!C9` with 0.000000 difference across all 4 targets.
+  - Sensitivity base cells tie primary DCF outputs with 100% exact precision.
+  - Dynamic sensitivity perturbation and restoration: 8/8 tests pass with exact return.
+  - Native sheet previews: 64/64 PDFs exported cleanly.
+  - `verify_sources.py`: Verified both active and archived masters.
+  - `pytest -q`: **119 passed cleanly**.
+- **Final Deliverables (`template_v6`)**:
+  - `MM-FullTemplate.xlsx` (SHA-256: `3bbe287593e3c1919ed09781a547be2d82f3449b606f76dcb09ac07d1f204400`)
+  - `LTM-FullTemplate.xlsx` (SHA-256: `1d341182a9ff14bbb7f9c8cf9a41be5833f90893c7ffbc637700e367a3c8c393`)
+  - `CLEAN-FullTemplate.xlsx` (SHA-256: `875f067ed05d62b04a493ac6be811a77dbe189dab878260e1727e8773d09000a`)
+  - `EDELWEISS-FullTemplate.xlsx` (SHA-256: `0b502c2b1c9d0df4432164ef39f7b13a49c8cd564bb95fd2e54d0e1e320fe59d`)
+- **Governance**: Prior versioned deliverables preserved intact; `ready: false`, `human_pack_approval: pending`. PR #3 open and unmerged.

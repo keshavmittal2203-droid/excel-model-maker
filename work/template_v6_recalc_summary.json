@@ -1,0 +1,150 @@
+{
+  "MM": {
+    "sha256": "3bbe287593e3c1919ed09781a547be2d82f3449b606f76dcb09ac07d1f204400",
+    "baseline_val": 2742.968951246983,
+    "cover_val": 2742.968951246983,
+    "formula_errors": 0,
+    "bs_reconciled": true,
+    "wacc": 0.13,
+    "beta_raw": 1.7638072632866026,
+    "beta_adj": 1.5092048421910682,
+    "sensitivities": [
+      {
+        "name": "Automotive Core Multiple",
+        "parameter": "DCF 1st way!F50",
+        "base": 14.0,
+        "perturbed": 15.0,
+        "base_output": 2742.968951246983,
+        "perturbed_output": 2852.9206809332263,
+        "delta": 109.9517296862432,
+        "direction": "up",
+        "restored": 2742.968951246983,
+        "passed": true
+      },
+      {
+        "name": "Farm Equipment Core Multiple",
+        "parameter": "DCF 1st way!F51",
+        "base": 13.0,
+        "perturbed": 14.0,
+        "base_output": 2742.968951246983,
+        "perturbed_output": 2802.5264733708773,
+        "delta": 59.55752212389416,
+        "direction": "up",
+        "restored": 2742.968951246983,
+        "passed": true
+      }
+    ],
+    "preview_count": 16
+  },
+  "LTM": {
+    "sha256": "1d341182a9ff14bbb7f9c8cf9a41be5833f90893c7ffbc637700e367a3c8c393",
+    "baseline_val": 2428.224304125199,
+    "cover_val": 2428.224304125199,
+    "formula_errors": 0,
+    "bs_reconciled": true,
+    "wacc": 0.1312,
+    "beta_raw": 1.2568600127213612,
+    "beta_adj": 1.1712400084809074,
+    "sensitivities": [
+      {
+        "name": "Equity Risk Premium (WACC)",
+        "parameter": "WACC-DCF!J23",
+        "base": 0.055,
+        "perturbed": 0.06,
+        "base_output": 2428.224304125199,
+        "perturbed_output": 2288.061936375806,
+        "delta": -140.16236774939307,
+        "direction": "down",
+        "restored": 2428.224304125199,
+        "passed": true
+      },
+      {
+        "name": "Terminal Growth Rate",
+        "parameter": "DCF 1st way!E20",
+        "base": 0.05,
+        "perturbed": 0.055,
+        "base_output": 2428.224304125199,
+        "perturbed_output": 2531.092969781821,
+        "delta": 102.86866565662194,
+        "direction": "up",
+        "restored": 2428.224304125199,
+        "passed": true
+      }
+    ],
+    "preview_count": 16
+  },
+  "CLEAN": {
+    "sha256": "875f067ed05d62b04a493ac6be811a77dbe189dab878260e1727e8773d09000a",
+    "baseline_val": 468.60735565379747,
+    "cover_val": 468.60735565379747,
+    "formula_errors": 0,
+    "bs_reconciled": true,
+    "wacc": 0.1191,
+    "beta_raw": 0.9005851112403767,
+    "beta_adj": 0.9337234074935843,
+    "sensitivities": [
+      {
+        "name": "Terminal Operating EBIT",
+        "parameter": "DCF 1st way!K5",
+        "base": 693.0,
+        "perturbed": 743.0,
+        "base_output": 468.60735565379747,
+        "perturbed_output": 494.4716154149426,
+        "delta": 25.86425976114515,
+        "direction": "up",
+        "restored": 468.60735565379747,
+        "passed": true
+      },
+      {
+        "name": "Equity Risk Premium (WACC)",
+        "parameter": "WACC-DCF!J23",
+        "base": 0.055,
+        "perturbed": 0.06,
+        "base_output": 468.60735565379747,
+        "perturbed_output": 439.3850887422414,
+        "delta": -29.222266911556062,
+        "direction": "down",
+        "restored": 468.60735565379747,
+        "passed": true
+      }
+    ],
+    "preview_count": 16
+  },
+  "EDELWEISS": {
+    "sha256": "0b502c2b1c9d0df4432164ef39f7b13a49c8cd564bb95fd2e54d0e1e320fe59d",
+    "baseline_val": 130.5345587488575,
+    "cover_val": 130.5345587488575,
+    "formula_errors": 0,
+    "bs_reconciled": true,
+    "wacc": 0.097,
+    "beta_raw": 1.4830407886535124,
+    "beta_adj": 1.3220271924356748,
+    "sensitivities": [
+      {
+        "name": "Alternatives Target Multiple",
+        "parameter": "DCF 1st way!F50",
+        "base": 18.7,
+        "perturbed": 20.0,
+        "base_output": 130.5345587488575,
+        "perturbed_output": 136.10579872042246,
+        "delta": 5.57123997156495,
+        "direction": "up",
+        "restored": 130.5345587488575,
+        "passed": true
+      },
+      {
+        "name": "Asset Reconstruction Target Multiple",
+        "parameter": "DCF 1st way!F51",
+        "base": 1.02,
+        "perturbed": 1.15,
+        "base_output": 130.5345587488575,
+        "perturbed_output": 133.48441149588706,
+        "delta": 2.949852747029553,
+        "direction": "up",
+        "restored": 130.5345587488575,
+        "passed": true
+      }
+    ],
+    "preview_count": 16
+  }
+}

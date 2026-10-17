@@ -16,11 +16,20 @@ def compute_sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 TARGETS = ["MM", "LTM", "CLEAN", "EDELWEISS"]
+COM_ERRORS = {
+    -2146826281: "#DIV/0!",
+    -2146826273: "#VALUE!",
+    -2146826265: "#REF!",
+    -2146826259: "#NAME?",
+    -2146826252: "#NUM!",
+    -2146826246: "#N/A",
+    -2146826288: "#NULL!"
+}
 ERR_TOKENS = ["#REF!", "#VALUE!", "#DIV/0!", "#NAME?", "#NUM!", "#N/A", "#NULL!"]
 
 EXPECTED_BASELINES = {
     "MM": 2742.97,
-    "LTM": 2473.20,
+    "LTM": 2428.22,
     "CLEAN": 468.61,
     "EDELWEISS": 130.53,
 }
@@ -145,8 +154,16 @@ def run_recalculation_and_verification():
                             row = (row,)
                         for c_idx, cell_v in enumerate(row):
                             s_v = str(cell_v) if cell_v is not None else ""
-                            if any(err in s_v for err in ["#REF!", "#VALUE!", "#DIV/0!", "#NAME?", "#NUM!"]):
-                                print(f"  ERROR: {sname} cell ({r_idx+1},{c_idx+1}) = {s_v}")
+                            is_err = False
+                            err_name = ""
+                            if isinstance(cell_v, int) and cell_v in COM_ERRORS:
+                                is_err = True
+                                err_name = COM_ERRORS[cell_v]
+                            elif any(err in s_v for err in ["#REF!", "#VALUE!", "#DIV/0!", "#NAME?", "#NUM!", "#NULL!"]):
+                                is_err = True
+                                err_name = s_v
+                            if is_err:
+                                print(f"  ERROR: {sname} cell ({r_idx+1},{c_idx+1}) = {err_name} ({cell_v})")
                                 error_count += 1
 
             print(f"Total formula errors across 16 sheets: {error_count}")
@@ -285,6 +302,10 @@ def run_recalculation_and_verification():
     finally:
         excel.Quit()
 
+    summary_path = ROOT / "work" / "template_v6_recalc_summary.json"
+    with open(summary_path, "w", encoding="utf-8") as f:
+        json.dump(results, f, indent=2)
+    print(f"\nRecalculation summary saved to {summary_path}")
     return results
 
 

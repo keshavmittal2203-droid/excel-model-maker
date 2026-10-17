@@ -112,7 +112,7 @@ TARGET_CONFIGS = {
     },
     "LTM": {
         "company_name": "LTIMINDTREE LIMITED",
-        "ticker": "LTIM.NS",
+        "ticker": "LTM.NS",
         "screener_key": "LTM",
         "screener_url": "https://www.screener.in/company/LTM/consolidated/",
         "face_value": 1.0,
@@ -130,7 +130,7 @@ TARGET_CONFIGS = {
         "reinvestment_rate": 0.15,
         "sector_name": "Information Technology Services",
         "primary_method_name": "Full-Year Annual FCFF DCF Baseline",
-        "primary_val_per_share": 2811.09,
+        "primary_val_per_share": 2428.22,
         "peers": [
             {"name": "Tata Consultancy Services", "ticker": "TCS.NS", "cmp": 3520.0, "mcap": 1273400.0, "debt": 8500.0, "cash": 48000.0, "sales": 240893.0, "ebit": 59000.0, "dep": 5100.0, "pat": 46500.0, "beta": 0.8200},
             {"name": "Infosys Limited", "ticker": "INFY.NS", "cmp": 1480.0, "mcap": 614500.0, "debt": 8200.0, "cash": 22000.0, "sales": 153670.0, "ebit": 32500.0, "dep": 4400.0, "pat": 26200.0, "beta": 0.8900},
@@ -241,6 +241,12 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
 
     # Update Income statement title
     mf_ws["B10"].value = '="Income Statement - " & \'Data Sheet\'!B1'
+
+    # Ensure Row 141 in Main Financials (Common-Size BS Total Assets) is properly aligned and guarded
+    ds_cols_141 = ['E', 'F', 'G', 'H', 'I', 'J', 'K']
+    mf_cols_141 = ['D', 'E', 'F', 'G', 'H', 'I', 'J']
+    for oc, dc in zip(mf_cols_141, ds_cols_141):
+        mf_ws[f"{oc}141"].value = f"=IFERROR('Data Sheet'!{dc}75/'Data Sheet'!{dc}$75, 1.0)"
 
     # Load company datasets from approved sources
     screener_file = ROOT / "work" / "sources" / f"{cfg['screener_key']}_consolidated.json"
@@ -604,13 +610,13 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
         cff_tot = get_row_series(cf_rows, cf_hdrs, "Cash from Financing Activity", bs_periods)[idx] if p_str in cf_hdrs else -300.0
 
         if is_fy26:
-            cf_ws[f"{c_let}2"].value = "2026-03-01 (FY26E)"
+            cf_ws[f"{c_let}2"].value = None
             cf_ws[f"{c_let}4"].value = "2026-03-01 (FY26E)"
             cf_ws[f"{c_let}5"].value = f"={bs_cols[idx-1]}5*1.08"
             cf_ws[f"{c_let}14"].value = f"=-{bs_cols[idx-1]}5*0.40"
             cf_ws[f"{c_let}23"].value = f"=-{bs_cols[idx-1]}5*0.30"
         else:
-            cf_ws[f"{c_let}2"].value = f"{bs_date_strs[idx]} 00:00:00"
+            cf_ws[f"{c_let}2"].value = None
             cf_ws[f"{c_let}4"].value = f"{bs_date_strs[idx]} 00:00:00"
 
             # CFO sub-lines
@@ -649,10 +655,14 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
     comps_ws = wb["Comps"]
     peers = cfg["peers"]
 
-    # Clear stale peer rows in peerdata and compdata (rows 8-9)
+    # Clear stale peer rows in peerdata and compdata (rows 8-9 and rows 23-24)
     for stale_r in range(8, 10):
         for col_l in ["B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"]:
             peer_ws[f"{col_l}{stale_r}"].value = None
+            comp_ws[f"{col_l}{stale_r}"].value = None
+
+    for stale_r in [23, 24]:
+        for col_l in ["B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"]:
             comp_ws[f"{col_l}{stale_r}"].value = None
 
     for p_idx, p in enumerate(peers):
@@ -704,8 +714,15 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
     comp_ws["L10"].value = "='Main Financials'!I11"
     comp_ws["M10"].value = "='Main Financials'!I38"
 
-    # Eliminate Marksans Pharma in compdata row 25
+    # Target company row in compdata second table (Row 25)
+    comp_ws["B25"].value = 6
     comp_ws["C25"].value = "='Data Sheet'!B1"
+    comp_ws["D25"].value = "=D10"
+    comp_ws["E25"].value = "='Main Financials'!I24" # EBIT
+    comp_ws["F25"].value = "=J10/K10" if target_key != "EDELWEISS" else "N/A" # EV/EBITDA
+    comp_ws["G25"].value = "='Main Financials'!I25" # Depreciation
+    for col_l in ["H", "I", "J", "K", "L", "M"]:
+        comp_ws[f"{col_l}25"].value = None
 
     # =========================================================================
     # E. COMPS SHEET (Clean 5 Peers, Verified Denominators, Remove Stale Pharma)
@@ -774,16 +791,45 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
     # Elimination of Marksans in Comps B24
     comps_ws["B24"].value = '=\'Data Sheet\'!B1 & " Comparable Valuation"'
 
+    # Comps valuation rows 26 to 34
+    if target_key == "EDELWEISS":
+        comps_ws["O26"].value = "N/A"
+        comps_ws["O27"].value = "=$G$8" # Preserves Net Debt link so P27 = =O27 succeeds
+        comps_ws["O28"].value = "N/A"
+        comps_ws["O29"].value = "=$E$8"
+        comps_ws["O31"].value = "N/A"
+        comps_ws["O34"].value = "N/A"
+    else:
+        comps_ws["O26"].value = "=IFERROR(O20*K8, \"N/A\")"
+        comps_ws["O27"].value = "=$G$8"
+        comps_ws["O28"].value = "=IFERROR(O26-O27, \"N/A\")"
+        comps_ws["O29"].value = "=$E$8"
+        comps_ws["O31"].value = "=IFERROR(O28/O29, \"N/A\")"
+        comps_ws["O34"].value = "=IFERROR(IFS(O$31>$D$8,\"undervalued\",O$31<$D$8,\"overvalued\",O$31=O$31,\"Fair Value\"), \"N/A\")"
+
+    comps_ws["N26"].value = "=IFERROR(N20*J8, \"N/A\")"
+    comps_ws["N27"].value = "=$G$8"
+    comps_ws["N28"].value = "=IFERROR(N26-N27, \"N/A\")"
+    comps_ws["N29"].value = "=$E$8"
+    comps_ws["N31"].value = "=IFERROR(N28/N29, \"N/A\")"
+    comps_ws["P26"].value = "=IFERROR(P27+P28, \"N/A\")"
+    comps_ws["P27"].value = "=O27"
+    comps_ws["P28"].value = "=IFERROR(P20*L8, \"N/A\")"
+    comps_ws["P29"].value = "=$E$8"
+    comps_ws["P31"].value = "=IFERROR(P28/P29, \"N/A\")"
+
     # =========================================================================
     # F. BETA & WACC SHEETS (Company Own Beta, Blume Formula, Transparent Linkage)
     # =========================================================================
     beta_ws = wb["Beta"]
-    beta_ws["B2"].value = f"{cfg['company_name']} — Weekly Regression Beta (2 Years to 15-Oct-2025)"
+    beta_ws["B2"].value = f"{cfg['company_name']} - Weekly Regression Beta (2 Years to 15-Oct-2025)"
     beta_ws["B4"].value = f"Past 2 year weekly returns - {cfg['company_name']}"
     beta_ws["F4"].value = "NIFTY 50 Weekly Returns (Yahoo Finance / NSE)"
 
     sec_key = cfg["ticker"]
     sec_records = WEEKLY_DATA_104W.get("securities", {}).get(sec_key, {}).get("records", [])
+    if not sec_records and ("LTM" in sec_key or "LTI" in sec_key):
+        sec_records = WEEKLY_DATA_104W.get("securities", {}).get("LTM.NS", {}).get("records", [])
     bm_records = WEEKLY_DATA_104W.get("benchmark", {}).get("records", [])
 
     for i in range(min(len(sec_records), len(bm_records))):
@@ -816,7 +862,15 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
 
     # WACC-DCF sheet
     wacc_ws = wb["WACC-DCF"]
-    wacc_ws["B4"].value = f"Capital Structure & Cost of Capital — {cfg['company_name']}"
+    wacc_ws["B4"].value = f"Capital Structure & Cost of Capital - {cfg['company_name']}"
+
+    # Update Peer Comps Table in WACC-DCF (Rows 11 to 15) to eliminate stale pharma peers
+    for p_idx, p in enumerate(peers):
+        r_wacc = 11 + p_idx
+        wacc_ws[f"B{r_wacc}"].value = f"=peerdata!C{5+p_idx}"
+        wacc_ws[f"I{r_wacc}"].value = p["beta"]
+        add_comment(wacc_ws[f"B{r_wacc}"], f"Peer: {p['name']}\nLevered Beta: {p['beta']:.4f}\nSource: Screener / Yahoo Finance / NSE")
+
     wacc_ws["C30"].value = cfg["total_borrowings_fy25"]
     wacc_ws["C31"].value = "=compdata!F10"
     wacc_ws["E22"].value = cfg["pre_tax_kd"]
@@ -838,9 +892,22 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
     wacc_ws["J25"].value = "=J22+J24*J23"
 
     # =========================================================================
-    # G. OTHER SHEETS (Eliminating Marksans)
+    # G. OTHER SHEETS (Eliminating Marksans & Guarding Division)
     # =========================================================================
-    wb["Ratio Analysis"]["B3"].value = '="Ratio Analysis of - " & \'Data Sheet\'!B1'
+    ra_ws = wb["Ratio Analysis"]
+    ra_ws["B3"].value = '="Ratio Analysis of - " & \'Data Sheet\'!B1'
+    div_rows_ra = [7, 8, 9, 13, 21, 23, 26, 27, 28, 30, 32, 33, 34]
+    for r in div_rows_ra:
+        for c in range(3, 9): # Columns C to H
+            cell = ra_ws.cell(r, c)
+            if isinstance(cell.value, str) and cell.value.startswith("=") and not cell.value.startswith("=IFERROR"):
+                cell.value = f'=IFERROR({cell.value[1:]}, "N/A")'
+        ra_ws.cell(r, 10).value = f'=IFERROR(AVERAGE(C{r}:H{r}), "N/A")'
+        ra_ws.cell(r, 11).value = f'=IFERROR(MEDIAN(C{r}:H{r}), "N/A")'
+    for r in [6, 11, 12, 14, 15, 17, 18, 19, 22, 24]:
+        ra_ws.cell(r, 10).value = f'=IFERROR(AVERAGE(C{r}:H{r}), "N/A")'
+        ra_ws.cell(r, 11).value = f'=IFERROR(MEDIAN(C{r}:H{r}), "N/A")'
+
     wb["DCF 2nd way"]["C4"].value = "='Data Sheet'!B1"
 
     # =========================================================================
@@ -1063,11 +1130,18 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
         dcf1["E42"].value = "=G60"
 
         # Mark Intrinsic Growth industrial metrics as N/A
-        ig_ws["B2"].value = f"{cfg['company_name']} — N/A (Financial Services Entity)"
+        ig_ws["B2"].value = f"{cfg['company_name']} - N/A (Financial Services Entity)"
         add_comment(ig_ws["B2"], "Financial Services Entity: Industrial ROIC and reinvestment mechanics are methodologically prohibited; see SOTP on DCF 1st way.")
         for r_ig in range(50, 66):
             for c_ig in ["E", "F", "G", "H", "I"]:
                 ig_ws[f"{c_ig}{r_ig}"].value = "N/A - Financial Services"
+
+        # DCF 2nd way for Edelweiss (Financial Services Entity)
+        dcf2_ws = wb["DCF 2nd way"]
+        dcf2_ws["N58"].value = "N/A - Financial Services Entity"
+        add_comment(dcf2_ws["N58"], "Financial Services Entity: Industrial Enterprise Value calculation is methodologically prohibited; see SOTP on DCF 1st way.")
+        dcf2_ws["N61"].value = "N/A - Financial Services Entity"
+        dcf2_ws["N63"].value = "N/A - See SOTP (INR 130.53/sh)"
 
     # Executive cover sheet link (dynamic)
     cov = wb["Model ->"]
