@@ -516,5 +516,35 @@
   - Prior 6-sheet workbooks and `template_v2` workbooks preserved intact in `companies/<TARGET>/`.
   - Gate status: `ready: false`, `human_pack_approval: pending`.
 
+### 26. Template V4 Milestone: Reconciled Institutional Valuations Embedded into Master 17-Sheet Template with Single Source-of-Truth Cell ('DCF 1st way'!E42), Live Driver Linkage, Dynamic Perturbation/Restoration Verification, Zero Formula Errors, and Native Print Settings
+- **Master Template**: Created directly from binary copies of `originals/Marksans Keshav.xlsx` (SHA-256: `5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`). Verified unchanged before and after execution.
+- **100% Structural Fidelity**: All 17 sheets preserved in exact order, names, dimensions, cell locations, formulas, formatting, merged cells, and navigation:
+  `Model ->`, `Main Financials`, `Ratio Analysis`, `Intrinsic Growth`, `Comps`, `WACC-DCF`, `DCF 1st way`, `DCF 2nd way`, `Data ->`, `compdata`, `Data Sheet`, `BS`, `Beta`, `RM`, `peerdata`, `Cash Flow`, `sectordata`.
+- **Single Source-of-Truth Cell**: Exactly **ONE primary per-share valuation** per company, linked to single source-of-truth cell `'DCF 1st way'!E42` across all four target workbooks. The cover page `'Model ->'!C9` links dynamically via formula `='DCF 1st way'!E42`.
+- **Embedded Valuation & SOTP Schedules**:
+  - Embedded directly on `'DCF 1st way'` Rows 48 to 68 without adding new sheets, renaming sheets, or substituting a condensed workbook.
+  - **M&M**: Sum-of-the-Parts (SOTP) Valuation = **₹2,742.97 / share** (Auto EBITDA ₹13,667 Cr @ 14.0x = ₹191,338 Cr; Farm EBITDA ₹7,403 Cr @ 13.0x = ₹96,239 Cr; MMFS listed stake ₹15,149.35 Cr; TechM listed stake ₹29,115.69 Cr; Audited standalone net cash +₹9,109 Cr; Equity Value ₹340,951.04 Cr / 124.30 Cr shares = ₹2,742.97/share).
+    - *Reconciliation explanation*: Consolidated borrowings of ₹129,025 Cr (₹136,936 Cr with leases) include ₹105,158 Cr of lending debt inside MMFS (NBFC). The naive template formula (`Equity = EV + Cash - Debt`) subtracts this ₹105,158 Cr financing debt without crediting MMFS's financing assets (₹132,387 Cr loan book) or equity value, wiping out parent equity to ₹2,326 Cr (₹18.71/sh). This unadjusted consolidated DCF is methodologically invalid.
+  - **LTM**: Full-Year Annual FCFF DCF Baseline = **₹2,811.09 / share** (Explicit FCFF PV ₹18,162.75 Cr; Terminal Value PV ₹53,855.62 Cr @ WACC 11.87% and terminal growth 5.0% dynamically linked to `E20`; EV ₹72,018.36 Cr; Audited Total Cash & Liquid Treasury ₹13,433.00 Cr; Borrowings & Leases ₹2,187.00 Cr; Equity ₹83,264.36 Cr / 29.62 Cr shares = ₹2,811.09/share). Point-in-time Actual/365 stub timing sensitivity evaluates to ₹2,921.84/share (+3.94%).
+  - **CLEAN**: Full-Year Manufacturing FCFF DCF Baseline = **₹480.89 / share** (Explicit FCFF PV ₹1,012.21 Cr reflecting CFCL Unit 4 10,500 MTPA commercial ramp; Terminal Value PV ₹3,700.63 Cr @ empirical WACC 11.73% and terminal growth 5.0% dynamically linked to `E20`; EV ₹4,712.83 Cr; Total Cash & Liquid Treasury ₹401.00 Cr; Total Borrowings ₹2.00 Cr; Equity ₹5,111.83 Cr / 10.63 Cr shares = ₹480.89/share). Point-in-time Actual/365 stub timing sensitivity evaluates to ₹505.64/share (+5.15%).
+  - **EDELWEISS**: Financial Services Sum-of-the-Parts (SOTP) Valuation = **₹130.53 / share** (Alternatives ₹4,301 Cr @ 18.7x; ARC ₹2,856 Cr @ 1.02x P/B; Mutual Fund ₹4,794 Cr @ 3.4% AUM; Insurance ₹1,275 Cr @ 0.85x IEV; Credit & Housing ₹2,176 Cr @ 0.68x P/B; Gross vertical sum ₹15,402 Cr less Audited Standalone Corporate HoldCo Net Debt -₹3,067 Cr = ₹12,335 Cr Equity / 94.50 Cr shares = ₹130.53/share). Preserved manufacturing DCF cells on `DCF 1st way` (`E36`, `E40`, `E45`) and `DCF 2nd way` (`E58`, `E61`, `E63`) marked `N/A - Financial Services Entity` / `N/A - See SOTP (₹130.53/sh)`.
+- **Dynamic Perturbation & Exact Restoration Verified**:
+  - **M&M**: Perturbing Auto Core EBITDA Multiple `F50` from 14.0x to 15.0x dynamically updates implied per-share value `E42` and cover `Model ->'!C9` from ₹2,742.97 to **₹2,852.92**; restoring `F50` to 14.0x returns both outputs to **₹2,742.97** (100% exact match).
+  - **LTM**: Perturbing Terminal Growth Rate `E20` from 5.00% to 5.50% dynamically updates `G51`, EV, and per-share value `E42` and cover `Model ->'!C9` from ₹2,811.09 to **₹2,963.14**; restoring `E20` to 5.00% returns both outputs to **₹2,811.09** (100% exact match).
+  - **CLEAN**: Perturbing Terminal Growth Rate `E20` from 5.00% to 5.50% dynamically updates `G51`, EV, and per-share value `E42` and cover `Model ->'!C9` from ₹480.89 to **₹510.62**; restoring `E20` to 5.00% returns both outputs to **₹480.89** (100% exact match).
+  - **EDELWEISS**: Perturbing Alternatives Target Multiple `F50` from 18.70x to 20.00x dynamically updates `G50`, gross vertical EV, implied equity, per-share value `E42`, and cover `Model ->'!C9` from ₹130.53 to **₹133.69**; restoring `F50` to 18.70x returns both outputs to **₹130.53** (100% exact match).
+- **Strict Native Print Settings (No Forced Rescaling)**: Preserved the master template's exact print setups, page orientations, scaling factors, and paper sizes without alteration. Sheets are NOT forced onto 1 page and scaling is not changed for cleaner previews. Previews are exported using each sheet's native setup.
+- **Strict Website-Only Source Allowlist**: Sourced strictly from the 8 allowlisted websites in `originals/Marksans Keshav.xlsx` (documented in `docs/LOCKED_SOURCE_ALLOWLIST.md`). YouTube modeling playlist recognized strictly as analytical methodology reference, not a data source.
+- **In-Workbook Cell Comments & Input Audit**: Cell comments attached for all sourced inputs with URL, retrieval date, period, units, and accounting basis. All 124 material inputs classified in `docs/TEMPLATE_V4_INPUT_AUDIT.md`. All line modifications documented in `docs/TEMPLATE_V4_ADAPTATION_LOG.md`.
+- **Zero Formula Errors**: Recalculated cleanly via Microsoft Excel COM 16.0 (`CalculateFullRebuild`). Exactly **0 formula errors** across all 68 sheets (53,680 cells inspected).
+- **Deliverables in `companies/<TARGET>/template_v4/`**:
+  - `MM-FullTemplate.xlsx` (SHA-256: `d8d87ad92dc86619ca54191bcd74a20cf8474e563f66ec08b5a359f8ab29c073`, 128,493 bytes; 17 native preview PDFs)
+  - `LTM-FullTemplate.xlsx` (SHA-256: `10cf65cfb61ef842a899239d4c35619c312e53a96eaa40ac830c015e674a3d77`, 128,934 bytes; 17 native preview PDFs)
+  - `CLEAN-FullTemplate.xlsx` (SHA-256: `cbf0c42b4e6b0e25046c19e3d5863389b7005e57f6fa11291fda50215b5f03b6`, 127,241 bytes; 17 native preview PDFs)
+  - `EDELWEISS-FullTemplate.xlsx` (SHA-256: `3590984c2d34ae34e12f9d43fa8c0eb725d5c61c0edc5ac96deebb332e5c475a`, 129,110 bytes; 17 native preview PDFs)
+- **Active Sheet**: All 4 workbooks have active sheet set to `'DCF 1st way'` and were opened visibly in Microsoft Excel for user inspection.
+- **Status**: Prior 6-sheet workbooks, `template_v2`, and `template_v3` preserved intact in `companies/<TARGET>/`; `ready: false`, `human_pack_approval: pending`. PR #3 remains open and unmerged.
+
+
 
 
