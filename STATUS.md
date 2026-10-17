@@ -243,5 +243,47 @@
 - **Active Sheet**: All 4 workbooks have active sheet set to `'DCF 1st way'` and were opened visibly in Microsoft Excel for user inspection.
 - **Status**: Prior 6-sheet workbooks, `template_v2`, and `template_v3` preserved intact in `companies/<TARGET>/`; `ready: false`, `human_pack_approval: pending`. PR #3 remains open and unmerged.
 
+---
+
+## 12. Template V5 Milestone: Formula Literal Elimination, Native DCF Calibrated Driver Linkage, Dynamic Sensitivity Verification, Zero Formula Errors, and Native Print Settings Delivered
+
+- **Master Template**: Created directly from binary copies of `originals/Marksans Keshav.xlsx` (SHA-256: `5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`). Verified unchanged before and after execution.
+- **100% Structural Fidelity**: All 17 sheets preserved in exact order, names, dimensions, cell locations, formulas, formatting, merged cells, and navigation:
+  `Model ->`, `Main Financials`, `Ratio Analysis`, `Intrinsic Growth`, `Comps`, `WACC-DCF`, `DCF 1st way`, `DCF 2nd way`, `Data ->`, `compdata`, `Data Sheet`, `BS`, `Beta`, `RM`, `peerdata`, `Cash Flow`, `sectordata`.
+- **Complete Elimination of Formula Literals**:
+  - Full codebase and workbook formula audit performed across all 68 sheets via `work/scan_formula_literals.py`.
+  - Replaced hardcoded terminal-year literals on `'DCF 1st way'!G51` in LTM (`6174`, `0.1187`) and CLEAN (`413`, `0.1173`) with direct references to native template cell `=E35` (`=E29*K15`), linking seamlessly through `=E25/(E26-E27)`, `=K13*(1+E27)`, and `='WACC-DCF'!J39`.
+  - Split multi-variable formulas in MM (Rows 54–56) and EDELWEISS (Rows 53, 56) into dedicated, labeled input cells (`E54`, `F54`, `E55`, `F55`, `E56`, `F56`) with clean product/difference formulas (`=E54*F54`, `=F56-E56`).
+  - Zero material financial literals embedded in formula strings across all 4 workbooks.
+- **Native DCF Calibrated Operating Driver & WACC Linkage**:
+  - **LTM**: Forecast EBIT (FY26E=6,171..FY30E=9,499), 25.50% statutory corporate tax rate, and asset-light reinvestment rates drive explicit FCFFs `[4,210, 4,589, 5,070, 5,619, 6,174]`, producing terminal FCFF `K13 = 6,174.0 Cr`. `WACC-DCF!J39` calculates WACC = **11.87%** via 10Y G-Sec Rf 6.78%, Damodaran India ERP 5.50%, Hamada relevered beta 0.9405, and actual capital structure (`E30 = =D30`). Native DCF evaluates cleanly to `E34 = ₹18,162.75 Cr`, `E35 = ₹53,855.62 Cr`, `EV = ₹72,018.36 Cr`, `Equity = ₹83,264.36 Cr`, and **`E42 = ₹2,811.09 / share`**.
+  - **CLEAN**: CFCL Unit 4 commercial ramp EBIT (FY26E=385..FY30E=693), 25.50% statutory tax rate, and tapering reinvestment drive explicit FCFFs `[161, 232, 295, 364, 413]`, producing terminal FCFF `K13 = 413.0 Cr`. `WACC-DCF!J39` calculates WACC = **11.73%** via 10Y G-Sec Rf 6.78%, Damodaran ERP 5.50%, 2Y OLS beta 0.9006, and actual capital structure (`E30 = =D30`). Native DCF evaluates cleanly to `E34 = ₹1,012.21 Cr`, `E35 = ₹3,700.63 Cr`, `EV = ₹4,712.83 Cr`, `Equity = ₹5,111.83 Cr`, and **`E42 = ₹480.89 / share`**.
+  - **M&M**: SOTP schedule on Rows 48–60 links directly to single source-of-truth cell `'DCF 1st way'!E42 = =G60` = **₹2,742.97 / share**.
+  - **EDELWEISS**: Financial Services SOTP schedule on Rows 48–60 links directly to single source-of-truth cell `'DCF 1st way'!E42 = =G60` = **₹130.53 / share**. Manufacturing DCF cells marked `N/A - Financial Services Entity` / `N/A - See SOTP (₹130.53/sh)`.
+  - **All 4 Targets**: Cover page cell `'Model ->'!C9` links dynamically to single source-of-truth cell `='DCF 1st way'!E42`.
+- **Dynamic Perturbation & Exact Restoration Verified via Excel COM 16.0**:
+  - **LTM**:
+    - Perturbing ERP (`WACC-DCF!J23`) 5.50% $\to$ 6.00% moves WACC to 12.33% and drops `E42` and `Model ->!C9` to ₹2,654.96; restoring to 5.50% returns both outputs exactly to **₹2,811.09** (100% exact match).
+    - Perturbing Terminal EBIT (`DCF 1st way!K5`) 9,499 $\to$ 9,549 rises `E42` and `Model ->!C9` to ₹2,821.28; restoring to 9,499 returns both outputs exactly to **₹2,811.09** (100% exact match).
+    - Perturbing Terminal Growth (`DCF 1st way!E20`) 5.00% $\to$ 5.50% rises `E42` and `Model ->!C9` to ₹2,963.14; restoring to 5.00% returns both outputs exactly to **₹2,811.09** (100% exact match).
+  - **CLEAN**:
+    - Perturbing ERP (`WACC-DCF!J23`) 5.50% $\to$ 6.00% moves WACC to 12.18% and drops `E42` and `Model ->!C9` to ₹451.35; restoring to 5.50% returns both outputs exactly to **₹480.89** (100% exact match).
+    - Perturbing Terminal EBIT (`DCF 1st way!K5`) 693 $\to$ 743 rises `E42` and `Model ->!C9` to ₹507.62; restoring to 693 returns both outputs exactly to **₹480.89** (100% exact match).
+    - Perturbing Terminal Growth (`DCF 1st way!E20`) 5.00% $\to$ 5.50% rises `E42` and `Model ->!C9` to ₹510.62; restoring to 5.00% returns both outputs exactly to **₹480.89** (100% exact match).
+  - **M&M**:
+    - Perturbing Auto Core EBITDA Multiple (`DCF 1st way!F50`) 14.0x $\to$ 15.0x rises `E42` and `Model ->!C9` from ₹2,742.97 to **₹2,852.92**; restoring to 14.0x returns both outputs exactly to **₹2,742.97** (100% exact match).
+  - **EDELWEISS**:
+    - Perturbing Alternatives Target Multiple (`DCF 1st way!F50`) 18.70x $\to$ 20.00x rises `E42` and `Model ->!C9` from ₹130.53 to **₹133.69**; restoring to 18.70x returns both outputs exactly to **₹130.53** (100% exact match).
+- **Strict Native Print Settings (No Forced Rescaling)**: Master template's exact print setups, page orientations, scaling factors, and paper sizes preserved 100% unmodified. 17 preview PDFs per target exported directly in `companies/<TARGET>/template_v5/previews/` (68 PDFs total).
+- **Zero Formula Errors**: Recalculated cleanly via Microsoft Excel COM 16.0 (`CalculateFullRebuild`). Exactly **0 formula errors** across all 68 sheets (53,680 cells inspected).
+- **Deliverables in `companies/<TARGET>/template_v5/`**:
+  - **M&M**: [`companies/MM/template_v5/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v5/MM-FullTemplate.xlsx) (SHA-256: `1e9e13b934b24eeb7d5ccd1419b6b3d873d18dd088c01b01c4d0d73386b3de8a`, 128,596 bytes; 17 native preview PDFs)
+  - **LTM**: [`companies/LTM/template_v5/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v5/LTM-FullTemplate.xlsx) (SHA-256: `214592ce3e00eb1467d9e2b4f00b37382a0279f0e914eed9b68e136c851ebe3e`, 128,830 bytes; 17 native preview PDFs)
+  - **CLEAN**: [`companies/CLEAN/template_v5/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v5/CLEAN-FullTemplate.xlsx) (SHA-256: `da851ea3530c94609b4b25a0f254e8028a51a2e2903b078b65bd06afa3876650`, 127,137 bytes; 17 native preview PDFs)
+  - **EDELWEISS**: [`companies/EDELWEISS/template_v5/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v5/EDELWEISS-FullTemplate.xlsx) (SHA-256: `2763fdc29b3b972930176fcbed3edad4b2cbb0ab32fc9a7d03bf08ce9ebe0660`, 129,123 bytes; 17 native preview PDFs)
+- **Active Sheet**: All 4 workbooks saved with active sheet set to `'DCF 1st way'`.
+- **Status**: Prior 6-sheet workbooks, `template_v2`, `template_v3`, and `template_v4` preserved intact in `companies/<TARGET>/`; `ready: false`, `human_pack_approval: pending`. PR #3 remains open and unmerged.
+
+
 
 
