@@ -34,7 +34,9 @@ for tgt in targets:
             elif sname == 'DCF 1st way':
                 info[sname]['val_per_share'] = ws.Range("E42").Text
                 info[sname]['cmp'] = ws.Range("E44").Text
-                print(f'    Value per share (E42): {ws.Range("E42").Text}, Mkt Price (E44): {ws.Range("E44").Text}')
+                txt_e42 = str(ws.Range("E42").Text).encode("ascii", "replace").decode("ascii")
+                txt_e44 = str(ws.Range("E44").Text).encode("ascii", "replace").decode("ascii")
+                print(f'    Value per share (E42): {txt_e42}, Mkt Price (E44): {txt_e44}')
         
         wb.Save()
         wb.Close(SaveChanges=True)

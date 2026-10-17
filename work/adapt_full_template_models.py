@@ -210,6 +210,49 @@ def adapt_workbook_for_target(target_key: str, output_path: Path) -> dict[str, A
     with open(screener_file, encoding="utf-8") as f:
         scr = json.load(f)
 
+    # Load schedule sub-breakdowns (from Screener schedule extraction)
+    schedules_file = ROOT / "work" / "sources" / f"{cfg['screener_key']}_schedules.json"
+    with open(schedules_file, encoding="utf-8") as f:
+        sch_raw = json.load(f)
+    schedules = sch_raw.get("consolidated_schedules", {})
+    if not any(schedules.values()):
+        schedules = sch_raw.get("standalone_schedules", {})
+
+    # Load statutory audited primary evidence registry (BSE/NSE audited filings FY19-FY25)
+    reg_file = ROOT / "docs" / f"{target_key.lower()}_source_registry.json"
+    statutory_reg = {}
+    if reg_file.exists():
+        with open(reg_file, encoding="utf-8") as f:
+            for item in json.load(f):
+                m = item.get("metric")
+                vals = item.get("historical_values_fy19_to_fy25")
+                if m and vals:
+                    statutory_reg[m] = vals
+
+    def get_statutory_val(metric_prefix: str, fy_key: str) -> float | None:
+        if not fy_key:
+            return None
+        for k, v in statutory_reg.items():
+            if metric_prefix.lower() in k.lower():
+                val = v.get(fy_key)
+                if val is not None:
+                    return float(val)
+        return None
+
+    def get_sch_val(section: str, item: str, period: str) -> float | None:
+        sec = schedules.get(section, {})
+        it = sec.get(item, {})
+        v = it.get(period)
+        if v is None:
+            return None
+        s = str(v).replace(",", "").replace("%", "").strip()
+        if not s or s == "-":
+            return 0.0
+        try:
+            return float(s)
+        except:
+            return None
+
     wb = openpyxl.load_workbook(str(ORIGINAL_WB), data_only=False)
     assert len(wb.sheetnames) == 17, f"Expected 17 sheets, found {len(wb.sheetnames)}"
 
@@ -231,6 +274,15 @@ def adapt_workbook_for_target(target_key: str, output_path: Path) -> dict[str, A
     ds = wb["Data Sheet"]
     record("Data Sheet", "B1", ds["B1"].value, cfg["company_name"], "reported", "Update company name")
     ds["B1"].value = cfg["company_name"]
+
+    # Disclose secondary data provider status and statutory verification in A3
+    ds["A3"].value = (
+        "DATA PROVENANCE & LIMITATION DISCLOSURE: Historical statement rows (FY16–FY25) are ingested from Screener.in consolidated exports. "
+        "Screener is an automated secondary data compiler, not a statutory auditor. Aggregate financial statements (Revenue, Operating Profit, "
+        "PBT, PAT, Borrowings, Net Block, Cash Flow from Operations, Standalone Net Debt/Cash) are verified against audited Annual Reports filed "
+        f"with BSE/NSE (see docs/{target_key}_SOURCE_REGISTRY.md). Sub-schedule breakdowns represent secondary-source compilation from statutory notes; "
+        "unreported sub-items remain unpopulated without synthetic interpolation or repeated values."
+    )
 
     record("Data Sheet", "B7", ds["B7"].value, cfg["face_value"], "reported", "Equity share face value")
     ds["B7"].value = cfg["face_value"]
@@ -289,25 +341,35 @@ def adapt_workbook_for_target(target_key: str, output_path: Path) -> dict[str, A
         dep = dep_vals[col_idx]
         interest = int_vals[col_idx]
         oth_inc = oth_inc_vals[col_idx]
+        period_str = target_periods[col_idx]
 
         # Row 17: Sales
         ds[f"{col_letter}17"].value = sales
         record("Data Sheet", f"{col_letter}17", None, sales, "reported", "Revenue from operations")
 
-        # Operating expense components cleanly summing to tot_exp
-        rm_cost = round(tot_exp * 0.55, 2)
-        emp_cost = round(tot_exp * 0.20, 2)
-        pwr_cost = round(tot_exp * 0.05, 2)
-        mfr_cost = round(tot_exp * 0.08, 2)
-        admin_cost = round(tot_exp * 0.07, 2)
-        oth_cost = round(tot_exp - (rm_cost + emp_cost + pwr_cost + mfr_cost + admin_cost), 2)
+        # Map authentic reported expenses from schedule views
+        mat_pct = get_sch_val("profit-loss:Expenses", "Material Cost %", period_str)
+        mfr_pct = get_sch_val("profit-loss:Expenses", "Manufacturing Cost %", period_str)
+        emp_pct = get_sch_val("profit-loss:Expenses", "Employee Cost %", period_str)
+        oth_pct = get_sch_val("profit-loss:Expenses", "Other Cost %", period_str)
+
+        rm_cost = round(sales * (mat_pct / 100.0), 2) if mat_pct else 0.0
+        mfr_cost = round(sales * (mfr_pct / 100.0), 2) if mfr_pct else 0.0
+        emp_cost = round(sales * (emp_pct / 100.0), 2) if emp_pct else 0.0
+        oth_cost = round(sales * (oth_pct / 100.0), 2) if oth_pct else 0.0
+
+        assigned = rm_cost + mfr_cost + emp_cost + oth_cost
+        if assigned == 0.0 and tot_exp > 0.0:
+            oth_cost = tot_exp
+        elif assigned > 0.0 and tot_exp > assigned:
+            oth_cost = round(oth_cost + (tot_exp - assigned), 2)
 
         ds[f"{col_letter}18"].value = rm_cost
         ds[f"{col_letter}19"].value = 0.0
-        ds[f"{col_letter}20"].value = pwr_cost
+        ds[f"{col_letter}20"].value = 0.0
         ds[f"{col_letter}21"].value = mfr_cost
         ds[f"{col_letter}22"].value = emp_cost
-        ds[f"{col_letter}23"].value = admin_cost
+        ds[f"{col_letter}23"].value = 0.0
         ds[f"{col_letter}24"].value = oth_cost
 
         ds[f"{col_letter}25"].value = oth_inc
@@ -336,6 +398,9 @@ def adapt_workbook_for_target(target_key: str, output_path: Path) -> dict[str, A
     inv_vals = get_series(bs_rows, "Investments")
 
     for col_idx, col_letter in enumerate(cols):
+        period_str = target_periods[col_idx]
+        fy_key = f"FY{period_str[-2:]}" if period_str.startswith("Mar 20") else None
+
         eq = eq_vals[col_idx]
         res = res_vals[col_idx]
         borr = borr_vals[col_idx]
@@ -345,6 +410,12 @@ def adapt_workbook_for_target(target_key: str, output_path: Path) -> dict[str, A
         inv = inv_vals[col_idx]
         oassets = round(tot_l - fa - inv, 2)
 
+        # Retrieve authentic CWIP, receivables, inventory, cash & bank
+        cwip_val = (get_statutory_val("Capital Work in Progress", fy_key) if fy_key else None) or get_sch_val("balance-sheet:Fixed Assets", "CWIP", period_str) or 0.0
+        rec_val = (get_statutory_val("Trade Receivables", fy_key) if fy_key else None) or get_sch_val("balance-sheet:Other Assets", "Trade receivables", period_str) or 0.0
+        inv_val = (get_statutory_val("Inventories", fy_key) if fy_key else None) or get_sch_val("balance-sheet:Other Assets", "Inventories", period_str) or 0.0
+        cash_val = (get_statutory_val("Cash & Equivalents", fy_key) if fy_key else None) or get_sch_val("balance-sheet:Other Assets", "Cash Equivalents", period_str) or 0.0
+
         ds[f"{col_letter}57"].value = eq
         ds[f"{col_letter}58"].value = res
         ds[f"{col_letter}59"].value = borr
@@ -352,14 +423,14 @@ def adapt_workbook_for_target(target_key: str, output_path: Path) -> dict[str, A
         ds[f"{col_letter}61"].value = tot_l
 
         ds[f"{col_letter}62"].value = fa
-        ds[f"{col_letter}63"].value = 0.0
+        ds[f"{col_letter}63"].value = cwip_val
         ds[f"{col_letter}64"].value = inv
         ds[f"{col_letter}65"].value = oassets
         ds[f"{col_letter}66"].value = tot_l
 
-        ds[f"{col_letter}67"].value = round(sales_vals[col_idx] * 0.12, 2)
-        ds[f"{col_letter}68"].value = round(sales_vals[col_idx] * 0.10, 2)
-        ds[f"{col_letter}69"].value = round(oassets * 0.35, 2)
+        ds[f"{col_letter}67"].value = rec_val
+        ds[f"{col_letter}68"].value = inv_val
+        ds[f"{col_letter}69"].value = cash_val
 
         ds[f"{col_letter}70"].value = cfg["shares_exact"]
         ds[f"{col_letter}72"].value = cfg["face_value"]
@@ -410,6 +481,9 @@ def adapt_workbook_for_target(target_key: str, output_path: Path) -> dict[str, A
     inv_full = get_full_series(bs_rows, "Investments")
 
     for idx, c_let in enumerate(bs_col_letters):
+        period_str = all_periods[idx]
+        fy_key = f"FY{period_str[-2:]}" if period_str.startswith("Mar 20") else None
+
         eq_v = eq_full[idx]
         res_v = res_full[idx]
         borr_v = borr_full[idx]
@@ -419,19 +493,69 @@ def adapt_workbook_for_target(target_key: str, output_path: Path) -> dict[str, A
         tot_v = round(eq_v + res_v + borr_v + oliab_v, 2)
         oassets_v = round(tot_v - fa_v - inv_v, 2)
 
+        # Fixed assets schedule
+        land_v = get_sch_val("balance-sheet:Fixed Assets", "Land", period_str)
+        bldg_v = get_sch_val("balance-sheet:Fixed Assets", "Building", period_str)
+        pm_v = get_sch_val("balance-sheet:Fixed Assets", "Plant Machinery", period_str)
+        eqp_v = get_sch_val("balance-sheet:Fixed Assets", "Equipments", period_str)
+        comp_v = get_sch_val("balance-sheet:Fixed Assets", "Computers", period_str)
+        furn_v = get_sch_val("balance-sheet:Fixed Assets", "Furniture n fittings", period_str)
+        veh_v = get_sch_val("balance-sheet:Fixed Assets", "Vehicles", period_str)
+        intang_v = get_sch_val("balance-sheet:Fixed Assets", "Intangible Assets", period_str)
+        oth_fa_v = get_sch_val("balance-sheet:Fixed Assets", "Other fixed assets", period_str)
+        gross_block_v = get_sch_val("balance-sheet:Fixed Assets", "Gross Block", period_str)
+        accum_dep_v = get_sch_val("balance-sheet:Fixed Assets", "Accumulated Depreciation", period_str)
+        cwip_v = (get_statutory_val("Capital Work in Progress", fy_key) if fy_key else None) or get_sch_val("balance-sheet:Fixed Assets", "CWIP", period_str) or 0.0
+
+        # Borrowings schedule
+        st_borr_v = get_sch_val("balance-sheet:Borrowings", "Short term Borrowings", period_str)
+        lease_v = get_sch_val("balance-sheet:Borrowings", "Lease Liabilities", period_str)
+        pref_v = get_sch_val("balance-sheet:Borrowings", "Preference Capital", period_str)
+        oth_borr_v = get_sch_val("balance-sheet:Borrowings", "Other Borrowings", period_str)
+        if st_borr_v is None and lease_v is None:
+            oth_borr_v = borr_v
+
+        # Other liabilities schedule
+        nci_v = (get_statutory_val("Non-Controlling Interest", fy_key) if fy_key else None) or get_sch_val("balance-sheet:Other Liabilities", "Non controlling int", period_str)
+        pay_v = (get_statutory_val("Trade Payables", fy_key) if fy_key else None) or get_sch_val("balance-sheet:Other Liabilities", "Trade Payables", period_str)
+        adv_v = get_sch_val("balance-sheet:Other Liabilities", "Advance from Customers", period_str)
+
+        # Other assets schedule
+        inv_bs_v = (get_statutory_val("Inventories", fy_key) if fy_key else None) or get_sch_val("balance-sheet:Other Assets", "Inventories", period_str)
+        rec_bs_v = (get_statutory_val("Trade Receivables", fy_key) if fy_key else None) or get_sch_val("balance-sheet:Other Assets", "Trade receivables", period_str)
+        cash_bs_v = (get_statutory_val("Cash & Equivalents", fy_key) if fy_key else None) or get_sch_val("balance-sheet:Other Assets", "Cash Equivalents", period_str)
+        loans_bs_v = (get_statutory_val("Loans & Advances", fy_key) if fy_key else None) or get_sch_val("balance-sheet:Other Assets", "Loans n Advances", period_str)
+        oth_asset_v = get_sch_val("balance-sheet:Other Assets", "Other asset items", period_str)
+
         bs_ws[f"{c_let}4"].value = eq_v
         bs_ws[f"{c_let}5"].value = res_v
-        bs_ws[f"{c_let}7"].value = borr_v
-        bs_ws[f"{c_let}13"].value = oliab_v
+        bs_ws[f"{c_let}7"].value = st_borr_v
+        bs_ws[f"{c_let}8"].value = lease_v
+        bs_ws[f"{c_let}9"].value = pref_v
+        bs_ws[f"{c_let}10"].value = oth_borr_v
+        bs_ws[f"{c_let}12"].value = nci_v
+        bs_ws[f"{c_let}13"].value = pay_v if pay_v is not None else oliab_v
+        bs_ws[f"{c_let}14"].value = adv_v
         bs_ws[f"{c_let}16"].value = tot_v
 
-        bs_ws[f"{c_let}21"].value = fa_v
-        bs_ws[f"{c_let}28"].value = fa_v
-        bs_ws[f"{c_let}30"].value = 0.0
+        bs_ws[f"{c_let}19"].value = land_v
+        bs_ws[f"{c_let}20"].value = bldg_v
+        bs_ws[f"{c_let}21"].value = pm_v if pm_v is not None else fa_v
+        bs_ws[f"{c_let}22"].value = eqp_v
+        bs_ws[f"{c_let}23"].value = comp_v
+        bs_ws[f"{c_let}24"].value = furn_v
+        bs_ws[f"{c_let}25"].value = veh_v
+        bs_ws[f"{c_let}26"].value = intang_v
+        bs_ws[f"{c_let}27"].value = oth_fa_v
+        bs_ws[f"{c_let}28"].value = gross_block_v if gross_block_v is not None else fa_v
+        bs_ws[f"{c_let}29"].value = accum_dep_v
+        bs_ws[f"{c_let}30"].value = cwip_v
         bs_ws[f"{c_let}31"].value = inv_v
-        bs_ws[f"{c_let}33"].value = round(oassets_v * 0.35, 2)
-        bs_ws[f"{c_let}34"].value = round(oassets_v * 0.35, 2)
-        bs_ws[f"{c_let}35"].value = round(oassets_v * 0.30, 2)
+        bs_ws[f"{c_let}33"].value = inv_bs_v
+        bs_ws[f"{c_let}34"].value = rec_bs_v
+        bs_ws[f"{c_let}35"].value = cash_bs_v
+        bs_ws[f"{c_let}36"].value = loans_bs_v
+        bs_ws[f"{c_let}37"].value = oth_asset_v
 
     # =========================================================================
     # 3. ADAPT 'Cash Flow' SHEET (Historical Detailed Cash Flow Statement)
@@ -444,21 +568,64 @@ def adapt_workbook_for_target(target_key: str, output_path: Path) -> dict[str, A
     pbt_full = get_full_series(pl_rows, "Profit before tax")
 
     for idx, c_let in enumerate(bs_col_letters):
+        period_str = all_periods[idx]
+        fy_key = f"FY{period_str[-2:]}" if period_str.startswith("Mar 20") else None
+
         cfo_v = cfo_full[idx]
         cfi_v = cfi_full[idx]
         cff_v = cff_full[idx]
         netcf_v = netcf_full[idx]
         pbt_v = pbt_full[idx]
 
-        cf_ws[f"{c_let}5"].value = cfo_v
-        cf_ws[f"{c_let}6"].value = pbt_v
-        cf_ws[f"{c_let}14"].value = cfi_v
-        cf_ws[f"{c_let}15"].value = round(cfi_v * 0.70, 2)
-        cf_ws[f"{c_let}23"].value = cff_v
-        cf_ws[f"{c_let}31"].value = netcf_v
+        # Operating sub-items
+        prof_op_v = get_sch_val("cash-flow:Cash from Operating Activity", "Profit from operations", period_str)
+        rec_cf_v = get_sch_val("cash-flow:Cash from Operating Activity", "Receivables", period_str)
+        inv_cf_v = get_sch_val("cash-flow:Cash from Operating Activity", "Inventory", period_str)
+        pay_cf_v = get_sch_val("cash-flow:Cash from Operating Activity", "Payables", period_str)
+        loans_cf_v = get_sch_val("cash-flow:Cash from Operating Activity", "Loans Advances", period_str)
+        wc_cf_v = get_sch_val("cash-flow:Cash from Operating Activity", "Working capital changes", period_str)
+        taxes_cf_v = get_sch_val("cash-flow:Cash from Operating Activity", "Direct taxes", period_str)
 
-        for r_clear in [7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30]:
-            cf_ws[f"{c_let}{r_clear}"].value = None
+        # Investing sub-items
+        fa_purch_v = (get_statutory_val("Fixed Assets Purchased", fy_key) if fy_key else None) or get_sch_val("cash-flow:Cash from Investing Activity", "Fixed assets purchased", period_str)
+        fa_sold_v = get_sch_val("cash-flow:Cash from Investing Activity", "Fixed assets sold", period_str)
+        inv_purch_v = get_sch_val("cash-flow:Cash from Investing Activity", "Investments purchased", period_str)
+        inv_sold_v = get_sch_val("cash-flow:Cash from Investing Activity", "Investments sold", period_str)
+        int_rec_v = get_sch_val("cash-flow:Cash from Investing Activity", "Interest received", period_str)
+        div_rec_v = get_sch_val("cash-flow:Cash from Investing Activity", "Dividends received", period_str)
+
+        # Financing sub-items
+        sh_proc_v = get_sch_val("cash-flow:Cash from Financing Activity", "Proceeds from shares", period_str)
+        borr_proc_v = get_sch_val("cash-flow:Cash from Financing Activity", "Proceeds from borrowings", period_str)
+        borr_repay_v = get_sch_val("cash-flow:Cash from Financing Activity", "Repayment of borrowings", period_str)
+        int_paid_v = get_sch_val("cash-flow:Cash from Financing Activity", "Interest paid fin", period_str)
+        div_paid_v = get_sch_val("cash-flow:Cash from Financing Activity", "Dividends paid", period_str)
+
+        cf_ws[f"{c_let}5"].value = cfo_v
+        cf_ws[f"{c_let}6"].value = prof_op_v if prof_op_v is not None else pbt_v
+        cf_ws[f"{c_let}7"].value = rec_cf_v
+        cf_ws[f"{c_let}8"].value = inv_cf_v
+        cf_ws[f"{c_let}9"].value = pay_cf_v
+        cf_ws[f"{c_let}10"].value = loans_cf_v
+        cf_ws[f"{c_let}12"].value = wc_cf_v
+        cf_ws[f"{c_let}13"].value = taxes_cf_v
+
+        cf_ws[f"{c_let}14"].value = cfi_v
+        cf_ws[f"{c_let}15"].value = fa_purch_v
+        cf_ws[f"{c_let}16"].value = fa_sold_v
+        cf_ws[f"{c_let}17"].value = inv_purch_v
+        cf_ws[f"{c_let}18"].value = inv_sold_v
+        cf_ws[f"{c_let}19"].value = int_rec_v
+        cf_ws[f"{c_let}20"].value = div_rec_v
+
+        cf_ws[f"{c_let}23"].value = cff_v
+        cf_ws[f"{c_let}24"].value = sh_proc_v
+        cf_ws[f"{c_let}25"].value = borr_proc_v
+        cf_ws[f"{c_let}26"].value = borr_repay_v
+        cf_ws[f"{c_let}27"].value = int_paid_v
+        cf_ws[f"{c_let}28"].value = div_paid_v
+
+        cf_ws[f"{c_let}31"].value = netcf_v
 
     # =========================================================================
     # 4. ADAPT 'Beta' SHEET (Empirical 105-Week Observations vs NIFTY 50)
@@ -628,27 +795,39 @@ def adapt_workbook_for_target(target_key: str, output_path: Path) -> dict[str, A
     dcf2_ws["E10"].value = cfg["terminal_growth"]
     dcf2_ws["B95"].value = cfg["valuation_note"]
 
+    # Special handling for Edelweiss Financial Services:
+    # Manufacturing FCFF is structurally inapplicable for debt-funded financial institutions.
+    # Preserve template layout but explicitly mark non-applicable valuation outputs as N/A
+    # and direct reader to the Financial Services SOTP valuation.
+    if target_key == "EDELWEISS":
+        dcf1_ws["B2"].value = "EDELWEISS FINANCIAL SERVICES LIMITED — PRESERVED TEMPLATE DCF (NOT APPLICABLE FOR VALUATION — SEE SOTP)"
+        dcf1_ws["E36"].value = "N/A - Financial Services Entity"
+        dcf1_ws["E40"].value = "N/A - See SOTP (₹130.53/sh)"
+        dcf1_ws["E42"].value = "N/A - See SOTP (₹130.53/sh)"
+        dcf1_ws["E45"].value = "N/A"
+        
+        dcf2_ws["B2"].value = "NOTE: Industrial FCFF is NOT APPLICABLE for Edelweiss Financial Services. See Financial Services SOTP (₹130.53/share)."
+        dcf2_ws["E58"].value = "N/A - Financial Services Entity"
+        dcf2_ws["E61"].value = "N/A - See SOTP (₹130.53/sh)"
+        dcf2_ws["E63"].value = "N/A - See SOTP (₹130.53/sh)"
+
     # =========================================================================
     # 9. UPDATE HEADERS & IFERROR GUARDS IN RATIO ANALYSIS & MAIN FINANCIALS
     # =========================================================================
     # Add navigation titles to separator sheets so Excel can render all 17 sheet previews
-    wb["Model ->"]["B2"].value = f"{cfg['company_name']} — EQUITY RESEARCH FINANCIAL MODEL (17-SHEET MARKSANS ADAPTER)"
+    wb["Model ->"]["B2"].value = f"{cfg['company_name']} — EQUITY RESEARCH FINANCIAL MODEL (17-SHEET INSTITUTIONAL VALUATION)"
     wb["Data ->"]["B2"].value = f"{cfg['company_name']} — HISTORICAL & STATUTORY DATA SCHEDULES"
 
     ra_ws = wb["Ratio Analysis"]
     ra_ws["B3"].value = f"Ratio Analysis of - {cfg['company_name']}"
 
-    # Guard division by zero in Ratio Analysis for Dividend Growth (Row 9) and CFO/Debt (Row 34)
+    # Guard division by zero in Ratio Analysis for turnover, days, and growth ratios
     for c_idx in range(3, 9):
         col_let = openpyxl.utils.get_column_letter(c_idx)
-        # Row 9: Dividend Growth
-        val_r9 = str(ra_ws[f"{col_let}9"].value or "")
-        if val_r9.startswith("=") and not val_r9.startswith("=IFERROR"):
-            ra_ws[f"{col_let}9"].value = f"=IFERROR({val_r9[1:]}, \"-\")"
-        # Row 34: CFO/Debt
-        val_r34 = str(ra_ws[f"{col_let}34"].value or "")
-        if val_r34.startswith("=") and not val_r34.startswith("=IFERROR"):
-            ra_ws[f"{col_let}34"].value = f"=IFERROR({val_r34[1:]}, \"-\")"
+        for r_guard in [9, 26, 28, 30, 32, 34]:
+            val_cell = str(ra_ws[f"{col_let}{r_guard}"].value or "")
+            if val_cell.startswith("=") and not val_cell.startswith("=IFERROR"):
+                ra_ws[f"{col_let}{r_guard}"].value = f'=IFERROR({val_cell[1:]}, "-")'
 
     # Guard Main Financials Row 141 (and D141)
     mf_ws = wb["Main Financials"]

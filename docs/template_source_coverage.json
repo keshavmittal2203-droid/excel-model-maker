@@ -6,7 +6,8 @@
   },
   "source_websites": [
     {
-      "provider_name": "Screener.in (Mittal Analytics)",
+      "provider_name": "Screener.in (Mittal Analytics Private Limited)",
+      "provider_type": "Automated Web Data Aggregator & Secondary Compilation Platform (Not a Statutory Auditor)",
       "primary_url": "https://www.screener.in/excel/",
       "company_url_pattern": "https://www.screener.in/company/{TICKER}/consolidated/",
       "template_locations": [
@@ -18,17 +19,18 @@
         "'Cash Flow'!Cols C-N (Historical Cash Flow)",
         "'compdata'!Cols B-R (Peer Database)"
       ],
-      "data_supported": "10-year audited annual financial statements (P&L, Balance Sheet, Cash Flow), share counts, face value, capitalization ratios, peer database.",
+      "data_supported": "Multi-year compiled financial statements (P&L, Balance Sheet, Cash Flow), capitalization ratios, and peer database compiled from public company releases.",
       "coverage": {
-        "MM": "Full coverage (Mar 2015 to Mar 2025 audited + TTM)",
-        "LTM": "Full coverage (Mar 2015 to Mar 2025 audited + TTM)",
-        "CLEAN": "Coverage from Mar 2018 to Mar 2025 + TTM (incorporation / listing timeline)",
-        "EDELWEISS": "Full coverage (Mar 2015 to Mar 2025 audited + TTM)"
+        "MM": "Ingested from Mar 2015 to Mar 2025 + TTM (FY19-FY25 aggregates verified against BSE statutory filings)",
+        "LTM": "Ingested from Mar 2015 to Mar 2025 + TTM (FY19-FY25 aggregates verified against BSE statutory filings)",
+        "CLEAN": "Ingested from Mar 2018 to Mar 2025 + TTM (FY19-FY25 aggregates verified against BSE statutory filings)",
+        "EDELWEISS": "Ingested from Mar 2015 to Mar 2025 + TTM (FY19-FY25 aggregates verified against BSE statutory filings)"
       },
       "status": "fully_sourced"
     },
     {
       "provider_name": "National Stock Exchange of India (NSE)",
+      "provider_type": "Recognized National Stock Exchange & Primary Market Data Authority",
       "primary_url": "https://www.nseindia.com/",
       "template_locations": [
         "'WACC-DCF'!P10 (Citation text)",
@@ -48,6 +50,7 @@
     },
     {
       "provider_name": "Yahoo Finance (via API)",
+      "provider_type": "Market Data Aggregator",
       "primary_url": "https://finance.yahoo.com/",
       "template_locations": [
         "'WACC-DCF'!P10 (Citation text)",
@@ -64,6 +67,7 @@
     },
     {
       "provider_name": "Investing.com & PrimeInvestor.in / Reserve Bank of India (RBI)",
+      "provider_type": "Central Bank & Financial Data Providers",
       "primary_url": "https://in.investing.com/ & https://primeinvestor.in/",
       "template_locations": [
         "'WACC-DCF'!P12 ('(investing.com)')",
@@ -81,6 +85,7 @@
     },
     {
       "provider_name": "Damodaran Online (Aswath Damodaran, NYU Stern)",
+      "provider_type": "Academic Valuation & Corporate Finance Database",
       "primary_url": "https://pages.stern.nyu.edu/~adamodar/",
       "template_locations": [
         "'sectordata'!Rows 2-100 (Emerging Markets / India Sector Benchmark Dataset)"
@@ -96,13 +101,14 @@
     },
     {
       "provider_name": "BSE India & Statutory Audited Annual Reports",
+      "provider_type": "Statutory Stock Exchange & Regulatory Filing Repository",
       "primary_url": "https://www.bseindia.com/",
       "template_locations": [
         "Reconciliation Notes on 'DCF 1st way'!B47 and 'DCF 2nd way'!B95",
         "'Data Sheet'!B7 (Face Value), B70 (Exact Shares)",
         "Audited Standalone Net Cash / HoldCo Debt Bridges"
       ],
-      "data_supported": "Statutory segment profitability, standalone vs consolidated debt schedules, attributable minority stakes.",
+      "data_supported": "Statutory audited financial statements, segment reporting, standalone debt schedules, share capital notes.",
       "coverage": {
         "MM": "M&M 79th Annual Report Note 28 & Standalone Balance Sheet (Borrowings \u20b91,682 Cr, Cash \u20b910,791 Cr -> +\u20b99,109 Cr Net Cash)",
         "LTM": "LTIMindtree 28th Annual Report Note 18 (Cash & Investments \u20b913,433 Cr, Borrowings/Leases \u20b92,187 Cr)",

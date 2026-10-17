@@ -54,7 +54,7 @@ TARGETS = {
         "market_cap_cr": 10286.33,
         "wacc": 0.1403,
         "beta": 1.22,
-        "dcf_per_share": 71.91,
+        "dcf_per_share": "N/A - Financial Services Entity (See SOTP)",
         "sotp_per_share": 130.53,
         "primary_method": "Financial Services Vertical SOTP (Industrial FCFF Prohibited)",
     },

@@ -153,30 +153,32 @@
 
 - **Provenance**: Created directly from binary copies of `originals/Marksans Keshav.xlsx` (SHA-256: `5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`).
 - **Sheet Preservation**: Preserved 100% of worksheet count (17 sheets), names, order, dimensions, layout, formulas, and navigation conventions without omission or combination:
-  1. `Model ->` (Navigation title in B2)
+  1. `Model ->` (Navigation title in B2: `{COMPANY} — EQUITY RESEARCH FINANCIAL MODEL (17-SHEET INSTITUTIONAL VALUATION)`)
   2. `Main Financials` (P&L, BS, CF summaries linking to `Data Sheet`)
   3. `Ratio Analysis` (Financial & operational ratios with IFERROR guards)
   4. `Intrinsic Growth` (ROIC & reinvestment mechanics linking to `BS` & `Data Sheet`)
   5. `Comps` (Peer trading multiples linking to `compdata`)
   6. `WACC-DCF` (Cost of debt, empirical OLS peer betas, CAPM Ke, WACC)
-  7. `DCF 1st way` (5-year FCFF projection linking to `Intrinsic Growth` & `WACC-DCF` with sector reconciliation notes)
-  8. `DCF 2nd way` (Revenue & margin trend DCF linking to `Main Financials` & `WACC-DCF`)
-  9. `Data ->` (Navigation title in B2)
+  7. `DCF 1st way` (5-year FCFF projection linking to `Intrinsic Growth` & `WACC-DCF` with sector reconciliation notes; Edelweiss marked N/A directing to SOTP)
+  8. `DCF 2nd way` (Revenue & margin trend DCF linking to `Main Financials` & `WACC-DCF`; Edelweiss marked N/A directing to SOTP)
+  9. `Data ->` (Navigation title in B2: `{COMPANY} — HISTORICAL & STATUTORY DATA SCHEDULES`)
   10. `compdata` (Peer multi-year database with 15-Oct-2025 market snapshots)
-  11. `Data Sheet` (Screener.in standard financial statement export template)
-  12. `BS` (Historical detailed Balance Sheet breakdown)
+  11. `Data Sheet` (Screener.in standard financial statement export format with authentic schedules and statutory disclosure in A3)
+  12. `BS` (Historical detailed Balance Sheet breakdown from authentic schedule views)
   13. `Beta` (105 weekly dates & closing prices vs NIFTY 50 from 15-Oct-2023 to 12-Oct-2025)
   14. `RM` (Historical annual market returns & dividend yield)
   15. `peerdata` (Peer comps data table with 15-Oct-2025 market data)
-  16. `Cash Flow` (Historical detailed Cash Flow statement)
+  16. `Cash Flow` (Historical detailed Cash Flow statement from authentic schedule views)
   17. `sectordata` (Damodaran Emerging Markets / India sector benchmark database)
 - **Delivered Deliverables & Recalculated Hashes (Microsoft Excel COM 16.0 CalculateFullRebuild)**:
-  - **M&M**: [`companies/MM/template_v2/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v2/MM-FullTemplate.xlsx) — SHA-256: `09f00be36663824392debc1c909e7b6429a0cdfebd2d1a418077f5c048061ebb` (118,964 bytes, 17 preview PDFs)
-  - **LTM**: [`companies/LTM/template_v2/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v2/LTM-FullTemplate.xlsx) — SHA-256: `38786ddb0e9004cc14a8da2abbd5e7bfde1fc4d0fc5e42cdc4f31164c79cb6b3` (118,373 bytes, 17 preview PDFs)
-  - **CLEAN**: [`companies/CLEAN/template_v2/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v2/CLEAN-FullTemplate.xlsx) — SHA-256: `861f19c1859aca2b88812be75cf6d78e269c9ce73ea58723c5d159785358e6d7` (116,243 bytes, 17 preview PDFs)
-  - **EDELWEISS**: [`companies/EDELWEISS/template_v2/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v2/EDELWEISS-FullTemplate.xlsx) — SHA-256: `2c37b925f417054700fca23b7dfa962867222cb57f9582ddd1d1cc4302dec3ba` (118,423 bytes, 17 preview PDFs)
+  - **M&M**: [`companies/MM/template_v2/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status\outputs\excel-model-maker\companies\MM\template_v2\MM-FullTemplate.xlsx) — SHA-256: `6d23e6879d1aac80e8b8a2724b4eb5cd60d4d3c07d34abff689ec5a7e2ac3a9e` (118,242 bytes, 17 preview PDFs)
+  - **LTM**: [`companies/LTM/template_v2/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status\outputs\excel-model-maker\companies\LTM\template_v2\LTM-FullTemplate.xlsx) — SHA-256: `77cb9e82f146e92696a85ac028a38e53d40c71679b18f1753a9e64dc37eba25e` (118,714 bytes, 17 preview PDFs)
+  - **CLEAN**: [`companies/CLEAN/template_v2/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status\outputs\excel-model-maker\companies\CLEAN\template_v2\CLEAN-FullTemplate.xlsx) — SHA-256: `7ea1a65dca3704a011c5d7186b46e63578f91d703ed74ffdb9b42d5724364dfe` (117,053 bytes, 17 preview PDFs)
+  - **EDELWEISS**: [`companies/EDELWEISS/template_v2/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status\outputs\excel-model-maker\companies\EDELWEISS\template_v2\EDELWEISS-FullTemplate.xlsx) — SHA-256: `364c198c9836b2e7c4435535fe3ea699f27bfb7da29534e1904d5a930737eb88` (118,863 bytes, 17 preview PDFs)
 - **Formula Error Audit**: Exactly **0 formula errors** (`#REF!`, `#VALUE!`, `#DIV/0!`, `#NAME?`, `#NUM!`) across all 68 sheets.
-- **Previews**: All 68 single-page landscape sheet PDFs generated in `companies/<TARGET>/template_v2/previews/`.
-- **Source Coverage Document**: Sourced from template citations (Screener.in, NSE, Yahoo Finance, Investing.com, Damodaran Online, BSE); documented in [`docs/TEMPLATE_SOURCE_COVERAGE.md`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/TEMPLATE_SOURCE_COVERAGE.md) and [`docs/template_source_coverage.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/template_source_coverage.json).
+- **Previews**: All 68 single-page landscape sheet PDFs re-exported and verified in `companies/<TARGET>/template_v2/previews/`.
+- **Source Coverage & Audit Traceability**: Sourced from template citations (Screener.in, NSE, Yahoo Finance, Investing.com, Damodaran Online, BSE); documented in [`docs/TEMPLATE_SOURCE_COVERAGE.md`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status\outputs\excel-model-maker\docs\TEMPLATE_SOURCE_COVERAGE.md) and [`docs/template_source_coverage.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status\outputs\excel-model-maker\docs\template_source_coverage.json).
+- **Statutory Traceability vs Secondary Sourcing**: FY19–FY25 headline aggregates verified against audited Annual Reports filed with BSE/NSE; sub-schedules labeled as secondary-source compiled data from Screener; zero synthetic multipliers or arbitrary splits used.
+- **Edelweiss Preserved DCF Review**: Inapplicable manufacturing DCF valuation cells on `DCF 1st way` (`E36`, `E40`, `E42`, `E45`) and `DCF 2nd way` (`E58`, `E61`, `E63`) marked `N/A - Financial Services Entity` and `N/A - See SOTP (₹130.53/sh)`, directing reader to SOTP.
 - **Status**: Prior 6-sheet workbooks preserved intact; `ready: false`, `human_pack_approval: pending`.
 
