@@ -158,6 +158,66 @@ class FourTargetsTests(unittest.TestCase):
         self.assertAlmostEqual(float(ws.cell(6, 8).value), 0.050, places=3)
         self.assertEqual(ws.cell(9, 8).value, 84307)
 
+    def test_valuation_formulas_are_dynamic_and_linked_without_hardcoded_math(self):
+        """Regression test: All 4 valuation sheets must use dynamic formulas linking to parameter cells without hardcoded math."""
+        import openpyxl
+
+        # 1. MM SOTP Valuation
+        wb_mm = openpyxl.load_workbook(ROOT / "candidates" / "run_native_mm" / "MM-Recalculated.xlsx", data_only=False)
+        ws_mm = wb_mm["SOTP Valuation"]
+        self.assertEqual(str(ws_mm["E4"].value).upper(), "=B4*C4*(1-D4)")
+        self.assertEqual(str(ws_mm["E5"].value).upper(), "=B5*C5*(1-D5)")
+        self.assertEqual(str(ws_mm["E6"].value).upper(), "=(B6*C6)*(1-D6)")
+        self.assertEqual(str(ws_mm["E7"].value).upper(), "=(B7*C7)*(1-D7)")
+        self.assertEqual(str(ws_mm.cell(20, 3).value).upper(), "=E12")
+
+        # 2. LTM FCFF Valuation
+        wb_ltm = openpyxl.load_workbook(ROOT / "candidates" / "run_native_ltm" / "LTM-Recalculated.xlsx", data_only=False)
+        ws_ltm = wb_ltm["FCFF Valuation"]
+        self.assertIn("$I$4", str(ws_ltm["B6"].value))
+        self.assertIn("$I$5", str(ws_ltm["B9"].value))
+        self.assertIn("$I$6", str(ws_ltm["B10"].value))
+        self.assertIn("$I$7", str(ws_ltm["B12"].value))
+        self.assertEqual(str(ws_ltm.cell(32, 3).value).upper(), "=B24")
+
+        # 3. CLEAN Manufacturing DCF Valuation
+        wb_clean = openpyxl.load_workbook(ROOT / "candidates" / "run_native_clean" / "CLEAN-Recalculated.xlsx", data_only=False)
+        ws_clean = wb_clean["Manufacturing DCF Valuation"]
+        self.assertIn("$I$4", str(ws_clean["B6"].value))
+        self.assertIn("$I$5", str(ws_clean["B9"].value))
+        self.assertIn("$I$6", str(ws_clean["B10"].value))
+        self.assertIn("$I$7", str(ws_clean["B12"].value))
+        self.assertEqual(str(ws_clean.cell(32, 3).value).upper(), "=B24")
+
+        # 4. EDELWEISS SOTP Valuation
+        wb_ed = openpyxl.load_workbook(ROOT / "candidates" / "run_native_edelweiss" / "EDELWEISS-Recalculated.xlsx", data_only=False)
+        ws_ed = wb_ed["SOTP Valuation"]
+        self.assertEqual(str(ws_ed["E6"].value).upper(), "=B6*C6*(1-D6)")
+        self.assertEqual(str(ws_ed["E7"].value).upper(), "=B7*C7*(1-D7)")
+        self.assertEqual(str(ws_ed["E8"].value).upper(), "=B8*C8*(1-D8)")
+        self.assertEqual(str(ws_ed["E9"].value).upper(), "=B9*C9*(1-D9)")
+        self.assertEqual(str(ws_ed["E10"].value).upper(), "=B10*C10*(1-D10)")
+        self.assertEqual(str(ws_ed.cell(23, 3).value).upper(), "=E15")
+
+    def test_all_four_models_have_harmonized_forecast_periods(self):
+        """Regression test: All 4 models must expose 7 historical years (FY19-FY25) and 5 forecast years (FY26E-FY30E)."""
+        import openpyxl
+        expected_periods = ["FY19", "FY20", "FY21", "FY22", "FY23", "FY24", "FY25", "FY26E", "FY27E", "FY28E", "FY29E", "FY30E"]
+
+        for key in TARGET_KEYS:
+            wb_path = ROOT / "candidates" / f"run_native_{key.lower()}" / f"{key}-Recalculated.xlsx"
+            wb = openpyxl.load_workbook(wb_path, data_only=True)
+            ws_is = wb["Income Statement"]
+            actual_periods = [ws_is.cell(3, c).value for c in range(2, 14)]
+            self.assertEqual(actual_periods, expected_periods, f"Period mismatch in {key} Income Statement")
+
+            # Check that stale 2966.18 does not exist in README
+            readme_path = ROOT / "companies" / key / "README.md"
+            if readme_path.exists():
+                text = readme_path.read_text(encoding="utf-8")
+                self.assertNotIn("2,966.18", text, f"Stale 2,966.18 found in {key} README")
+                self.assertNotIn("2966.18", text, f"Stale 2966.18 found in {key} README")
+
 
 if __name__ == "__main__":
     unittest.main()

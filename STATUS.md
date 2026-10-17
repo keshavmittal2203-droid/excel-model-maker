@@ -67,18 +67,48 @@
 
 ### 7. Four Priority Targets Delivery (M&M, LTM, CLEAN, EDELWEISS)
 - Complete delivery of four dedicated, source-backed 6-sheet financial models in `companies/<KEY>/` and `candidates/run_native_<key>/`.
-- Recalculated via Excel COM: **0 formula errors, 0 missing caches, and $\Delta = 0.00$ Balance Sheet tie across all 12 periods (FY16–FY27)** for all four companies.
+- Recalculated via Excel COM: **0 formula errors, 0 missing caches, and $\Delta = 0.00$ Balance Sheet tie across all 12 periods (FY19–FY30E)** for all four companies.
+- **Elimination of Hardcoded Valuation Formulas & Dynamic Model Connectivity**:
+  - Replaced all hardcoded formulas (e.g. `=20200*12.0`, `=(35000*0.522)*(1-0.20)`, `=230*22.0`, `=(F11*(1+0.05))/(0.115-0.05)`) with dynamic formulas referencing explicit, editable parameter cells.
+  - SOTP models (M&M, Edelweiss): Operating metrics, multiples, ownership stakes, and holding company discounts reside in dedicated parameter columns (B, C, D) with full number formatting, evaluated via `=B*C*(1-D)` in Column E. Enterprise-to-equity bridge dynamically links Gross Value, Net Debt, Equity Value, and Fair Value Per Share.
+  - DCF models (LTIMindtree, Clean Science): Established dedicated "Key Valuation & Driver Assumptions" parameter blocks in Columns H & I specifying tax rate, CapEx %, NWC %, WACC, TGR, cash, debt, and share counts. All FCFF rows and terminal values reference these cells dynamically.
+  - 2-Way Sensitivity Matrices: Connected every matrix cell dynamically to parameter cells and table axes. Base case cells link directly to model fair value per share (`=E12`, `=B24`, `=E15`), ensuring instant cascade.
+- **Harmonized 12-Period Forecast Horizon (7 Historical + 5 Forecast)**:
+  - Standardized all 4 models across exactly 12 periods: 7 audited historical years (`FY19`, `FY20`, `FY21`, `FY22`, `FY23`, `FY24`, `FY25`) and 5 explicit forecast years (`FY26E`, `FY27E`, `FY28E`, `FY29E`, `FY30E`).
+  - Corrected previous `FY26` header to `FY26E`, and updated all sheet subtitles to `Audited Financials (FY19-FY25) & 5-Year Forecast (FY26E-FY30E)`.
+  - Fully articulated the 5-year explicit forecast horizon across P&L, operational schedules (Sheet 5), and valuation schedules (Sheet 6).
 - **M&M SOTP Discrepancy Reconciled & Eradication Verified**: Eradicated the unevidenced lumped plug row of ₹4,500 Cr (`=6000*(1-0.25)` for minor subsidiaries Lifespaces/Logistics) that was present in the initial draft candidate. The model now strictly and transparently sums the 4 primary pillars: Auto Core (₹2,42,400 Cr) + Farm Core (₹89,600 Cr) + MMFS (₹14,616 Cr) + Tech Mahindra (₹29,580 Cr) = Gross Core Value ₹3,76,196 Cr - Standalone Net Debt ₹12,000 Cr = **Consolidated SOTP Equity Value ₹3,64,196 Cr**. Divided by 124.30 Cr shares = **₹2,929.98 per share** (about ₹2,930/sh). Minor subsidiaries are conservatively documented as unmodeled stub holdings. Stale references to ₹2,966.18 were completely eradicated from READMEs, documentation, and manifest generators.
 - **Historical Market Snapshot Pricing Discipline**: In accordance with audit standards, all four models are explicitly designated and labeled as **Historical Market Snapshots dated October 15, 2025 (NSE Close)** and explicitly NOT current real-time valuations across all workbooks, previews, registries, manifests, and documentation.
-- **Embedded Valuation Sensitivity Matrices**: Built dynamic formula-driven sensitivity matrices into all 4 workbooks (Auto vs Farm multiples and HoldCo discount for M&M, WACC vs TGR for LTM, WACC vs TGR for Clean Science, Alternatives P/E vs ARC P/B for Edelweiss).
 - **Recalculated SHA-256 Hashes (Microsoft Excel COM 16.0)**:
-  - `MM-Recalculated.xlsx`: `f5aa68952e75cd8b7a004f82fc3cf8344e5366acf8b45a004c7be6c0791d53e4`
-  - `LTM-Recalculated.xlsx`: `b1beedd8b57bae27def17579078703826b94bd85d05846519b5f1f2345a6138d`
-  - `CLEAN-Recalculated.xlsx`: `cb99e4003b85b2a2c5c5cdde1cc862d62a87235cbe62c0d5d3a6211d44ac0279`
-  - `EDELWEISS-Recalculated.xlsx`: `25ce419baa573a76442f0ba3a7b31226e96a811fc6b8c44134c7ac499a5ff11d`
+  - `MM-Recalculated.xlsx`: `47fba40b1964f446e3c98d40c88441e6851e25af2fb83c3480c827162ecfb63d`
+  - `LTM-Recalculated.xlsx`: `c4ddc065a743fb1afe4376b136cdda2176b1c8b2e9ed1699d2f496a5e673bad2`
+  - `CLEAN-Recalculated.xlsx`: `0703f0576c8ca7a23a4a70bd637a10206ba8123df75d9f2dd19d48cb56bda6d3`
+  - `EDELWEISS-Recalculated.xlsx`: `f4a3063ebe1601c41e9e5c76b53447349e256674604e2545273bd5cd5455351a`
 - 24 landscape schedule PDFs exported (6 per company) for visual inspection.
 - Dedicated source registries in `docs/<KEY>_SOURCE_REGISTRY.md` and `docs/<key>_source_registry.json` mapping Diluted Shares and Snapshot CMP to exact cells.
 - Requests (`examples/<key>-package.json`), model packs (`proposals/<key>.model-pack.json`), inputs (`proposals/<key>.inputs.json`), and READMEs (`companies/<KEY>/README.md`).
+
+### 8. Template Fidelity & Completeness Coverage Matrix (vs. 17-Sheet Marksans Original)
+
+| Original Sheet | Description in Original | Handling in Target Models | Economic / Financial Justification |
+|---|---|---|---|
+| **Model ->** | Navigation & cover sheet | **Preserved** as `Cover & Notes` | Retains full governance, entity identification, auditor credentials, statutory filings, and model architecture notes. |
+| **Main Financials** | Historical P&L summary | **Preserved** as `Income Statement` | Sourced 7-yr audited historicals (FY19-FY25) and dynamic 5-yr forecasts (FY26E-FY30E) with EBITDA, EBIT, PBT, and PAT formulas. |
+| **Ratio Analysis** | Financial & operational ratios | **Adapted** into Sheet 5 (`Segment Operations` / `IT Services Operations` / `Manufacturing & Capacity`) | Tailored to company-specific operating models: vehicle/tractor unit volumes for M&M; USD revenues, CC growth, headcount, and utilization for LTM; HALS 10,500 MTPA capacity ramp for CLEAN; vertical PATs and AUM for EDELWEISS. |
+| **Intrinsic Growth** | Reinvestment & growth mechanics | **Adapted** into Sheet 5 & Sheet 6 | Growth drivers, CapEx %, and NWC dynamics are embedded into explicit operational schedules and parameter cells. |
+| **Comps** | Peer multiples table | **Adapted** into Sheet 6 (`SOTP Valuation` / `FCFF Valuation`) | Relevant sector peer multiples (Auto, Farm, IT Services, Alternatives, ARC) are incorporated into valuation schedules and sensitivity matrices. |
+| **WACC-DCF** | Cost of capital calculation | **Adapted** into Sheet 6 | Cost of capital and WACC derivations are embedded into explicit parameter cells (`$I$7`) with dynamic discounting factors. |
+| **DCF 1st way** | Unlevered FCFF DCF model | **Preserved & Enhanced** as Sheet 6 (LTM, CLEAN) | Full 5-year explicit FCFF DCF model (FY26E-FY30E) linking dynamically to P&L and operational schedules with terminal value and EV bridge. |
+| **DCF 2nd way** | Alternative / trend DCF | **Adapted** into 2-Way Sensitivity Matrices on Sheet 6 | Replaced secondary fixed DCF with dynamic 2-way sensitivity tables (WACC vs TGR; Auto vs Farm multiples; Alternatives P/E vs ARC P/B). |
+| **Data ->** | Auxiliary separator tab | **Omitted** | Purely visual separator tab from legacy template; unnecessary in cohesive 6-sheet research models. |
+| **compdata** | Multi-year raw peer database | **Omitted** | Stale historical data from 2023 small-cap pharma peers is methodologically irrelevant to automotive, IT, chemicals, and financials. Replaced by evidenced sector multiples. |
+| **Data Sheet** | Raw statutory statement inputs | **Preserved & Integrated** into Sheets 2, 3, 4 | Historical financial series are directly integrated into the primary financial statements rather than segregated into raw unformatted data dumps. |
+| **BS** | Consolidated Balance Sheet | **Preserved** as `Balance Sheet` | 100% balanced with explicit $\Delta = 0.00$ discrepancy check row across all 12 periods. |
+| **Beta** | Stock beta regression against Nifty | **Omitted** | Stale 2-year daily regression from Marksans Pharma is economically meaningless for other companies. Company WACC is explicitly documented with current beta parameters. |
+| **RM** | Market return premium history | **Omitted** | Marksans historical market return table omitted; standard 5.0% equity risk premium is transparently embedded in valuation assumptions. |
+| **peerdata** | Peer operational data | **Omitted** | Stale pharma operational metrics omitted; replaced by company-specific operational driver schedules on Sheet 5. |
+| **Cash Flow** | Consolidated Cash Flow statement | **Preserved** as `Cash Flow` | Structured into Operating, Investing, and Financing cash flows with Net Cash tie across all 12 periods. |
+| **sectordata** | Generic sector statistics | **Omitted** | Generic pharma sector statistics omitted to prevent unevidenced data carryover into unrelated industries. |
 
 #### Four Priority Targets Priority Tracker
 

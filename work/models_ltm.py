@@ -73,8 +73,8 @@ def build_ltm_workbook(dest_path: Path):
 
     tune_column_widths(ws_cover)
 
-    # Common period headers
-    periods = ["FY19", "FY20", "FY21", "FY22", "FY23", "FY24", "FY25", "FY26", "FY27E", "FY28E", "FY29E", "FY30E"]
+    # Common period headers: 7 historical + 5 forecast
+    periods = ["FY19", "FY20", "FY21", "FY22", "FY23", "FY24", "FY25", "FY26E", "FY27E", "FY28E", "FY29E", "FY30E"]
     cols_header = ["Financial Metric (₹ Cr)"] + periods
     max_c = len(cols_header)
 
@@ -82,7 +82,7 @@ def build_ltm_workbook(dest_path: Path):
     # Sheet 2: Income Statement
     # -------------------------------------------------------------
     ws_is = wb.create_sheet(title="Income Statement")
-    apply_title_block(ws_is, "LTIMindtree Limited — Consolidated Income Statement", "Audited Financials (FY19-FY26) & Forecast (FY27E-FY30E) | ₹ in Crores", max_c)
+    apply_title_block(ws_is, "LTIMindtree Limited — Consolidated Income Statement", "Audited Financials (FY19-FY25) & 5-Year Forecast (FY26E-FY30E) | ₹ in Crores", max_c)
     style_header_row(ws_is, 3, cols_header)
 
     sales_hist = [9446, 10879, 12370, 26109, 33183, 35517, 38008, 42308]
@@ -188,7 +188,7 @@ def build_ltm_workbook(dest_path: Path):
     # Sheet 3: Balance Sheet
     # -------------------------------------------------------------
     ws_bs = wb.create_sheet(title="Balance Sheet")
-    apply_title_block(ws_bs, "LTIMindtree Limited — Consolidated Balance Sheet", "Audited Financials (FY19-FY26) & Projected (FY27E-FY30E) | Balance Check | ₹ in Crores", max_c)
+    apply_title_block(ws_bs, "LTIMindtree Limited — Consolidated Balance Sheet", "Audited Financials (FY19-FY25) & 5-Year Forecast (FY26E-FY30E) | Balance Check | ₹ in Crores", max_c)
     style_header_row(ws_bs, 3, cols_header)
 
     eq_hist = [17, 18, 30, 30, 30, 30, 30, 30]
@@ -300,7 +300,7 @@ def build_ltm_workbook(dest_path: Path):
     # Sheet 4: Cash Flow
     # -------------------------------------------------------------
     ws_cf = wb.create_sheet(title="Cash Flow")
-    apply_title_block(ws_cf, "LTIMindtree Limited — Consolidated Cash Flow Statement", "Audited Statutory Movements (FY19-FY26) & Forecast (FY27E-FY30E) | ₹ in Crores", max_c)
+    apply_title_block(ws_cf, "LTIMindtree Limited — Consolidated Cash Flow Statement", "Audited Statutory Movements (FY19-FY25) & 5-Year Forecast (FY26E-FY30E) | ₹ in Crores", max_c)
     style_header_row(ws_cf, 3, cols_header)
 
     cfo_hist = [1395, 1644, 2400, 3251, 3095, 5670, 4546, 4799]
@@ -386,11 +386,38 @@ def build_ltm_workbook(dest_path: Path):
     # Sheet 6: FCFF Valuation
     # -------------------------------------------------------------
     ws_val = wb.create_sheet(title="FCFF Valuation")
-    apply_title_block(ws_val, "LTIMindtree Limited — Unlevered Free Cash Flow (FCFF) DCF Valuation", "Historical Market Snapshot (15-Oct-2025 Close) | FCFF DCF (WACC: 11.5%, TGR: 5.0%) | Peer Trading Multiples", 6)
+    apply_title_block(ws_val, "LTIMindtree Limited — Unlevered Free Cash Flow (FCFF) DCF Valuation", "Historical Market Snapshot (15-Oct-2025 Close) | 5-Year Explicit FCFF DCF (FY26E-FY30E) | Peer Trading Multiples", 9)
 
-    # 5 Forecast Years: FY26, FY27, FY28, FY29, FY30
+    # 5 Forecast Years: FY26E to FY30E
     fc_cols = ["Valuation Metric (₹ Cr)", "FY26E", "FY27E", "FY28E", "FY29E", "FY30E"]
     style_header_row(ws_val, 3, fc_cols)
+
+    # Key Valuation Assumptions & Parameters block in Columns H & I
+    ws_val.cell(3, 8, "Valuation Driver / Parameter").font = FONT_BOLD
+    ws_val.cell(3, 8).fill = FILL_ACCENT
+    ws_val.cell(3, 9, "Applied Value").font = FONT_BOLD
+    ws_val.cell(3, 9).fill = FILL_ACCENT
+
+    assumptions_ltm = [
+        ("Effective Tax Rate on EBIT", 0.26, FMT_PERCENT),
+        ("CapEx (% of Revenue)", 0.025, FMT_PERCENT),
+        ("Incremental NWC (% of Rev)", 0.015, FMT_PERCENT),
+        ("Weighted Average Cost of Capital (WACC)", 0.115, FMT_PERCENT),
+        ("Terminal Growth Rate (TGR)", 0.050, FMT_PERCENT),
+        ("Cash & Liquid Investments (₹ Cr)", 11000, FMT_INTEGER),
+        ("Total Borrowings & Lease Liab (₹ Cr)", -2200, FMT_INTEGER),
+        ("Diluted Shares Outstanding (Cr)", 29.60, FMT_DECIMAL),
+        ("Historical Snapshot Price (₹)", 4390.00, FMT_DECIMAL),
+    ]
+    for a_idx, (lbl, val, fmt) in enumerate(assumptions_ltm, start=4):
+        c_lbl = ws_val.cell(a_idx, 8, lbl)
+        c_lbl.font = FONT_REGULAR
+        c_lbl.border = BORDER_DATA
+        c_val = ws_val.cell(a_idx, 9, val)
+        c_val.font = FONT_BOLD
+        c_val.number_format = fmt
+        c_val.border = BORDER_DATA
+        c_val.alignment = ALIGN_RIGHT
 
     ws_val.cell(4, 1, "Revenue from Software Services").font = FONT_BOLD
     for c_idx, is_col in enumerate(["I", "J", "K", "L", "M"], start=2):
@@ -400,10 +427,10 @@ def build_ltm_workbook(dest_path: Path):
     for c_idx, is_col in enumerate(["I", "J", "K", "L", "M"], start=2):
         ws_val.cell(5, c_idx, f"='Income Statement'!{is_col}11").number_format = FMT_INTEGER
 
-    ws_val.cell(6, 1, "Less: Effective Taxes on EBIT (26%)").font = FONT_REGULAR
+    ws_val.cell(6, 1, "Less: Effective Taxes on EBIT").font = FONT_REGULAR
     for c_idx in range(2, 7):
         col_let = get_column_letter(c_idx)
-        ws_val.cell(6, c_idx, f"={col_let}5*0.26").number_format = FMT_INTEGER
+        ws_val.cell(6, c_idx, f"={col_let}5*$I$4").number_format = FMT_INTEGER
 
     ws_val.cell(7, 1, "Net Operating Profit After Tax (NOPAT)").font = FONT_BOLD
     for c_idx in range(2, 7):
@@ -420,12 +447,12 @@ def build_ltm_workbook(dest_path: Path):
     ws_val.cell(9, 1, "Less: Capital Expenditure (CapEx)").font = FONT_REGULAR
     for c_idx in range(2, 7):
         col_let = get_column_letter(c_idx)
-        ws_val.cell(9, c_idx, f"={col_let}4*0.025").number_format = FMT_INTEGER
+        ws_val.cell(9, c_idx, f"={col_let}4*$I$5").number_format = FMT_INTEGER
 
     ws_val.cell(10, 1, "Less: Incremental Working Capital (NWC)").font = FONT_REGULAR
     for c_idx in range(2, 7):
         col_let = get_column_letter(c_idx)
-        ws_val.cell(10, c_idx, f"={col_let}4*0.015").number_format = FMT_INTEGER
+        ws_val.cell(10, c_idx, f"={col_let}4*$I$6").number_format = FMT_INTEGER
 
     ws_val.cell(11, 1, "Unlevered Free Cash Flow (FCFF)").font = FONT_BOLD
     for c_idx in range(2, 7):
@@ -436,10 +463,10 @@ def build_ltm_workbook(dest_path: Path):
         c.border = BORDER_DATA
         c.number_format = FMT_INTEGER
 
-    ws_val.cell(12, 1, "Discounting Factor (WACC = 11.5%)").font = FONT_REGULAR
+    ws_val.cell(12, 1, "Discounting Factor (WACC Discount)").font = FONT_REGULAR
     for idx, c_idx in enumerate(range(2, 7), start=1):
         col_let = get_column_letter(c_idx)
-        c = ws_val.cell(12, c_idx, f"=1/(1+0.115)^{idx}")
+        c = ws_val.cell(12, c_idx, f"=1/(1+$I$7)^{idx}")
         c.font = FONT_REGULAR
         c.number_format = "0.0000"
 
@@ -459,7 +486,7 @@ def build_ltm_workbook(dest_path: Path):
     c.number_format = FMT_INTEGER
 
     ws_val.cell(17, 1, "Terminal Value (TV) at Year 5").font = FONT_REGULAR
-    c = ws_val.cell(17, 2, "=(F11*(1+0.05))/(0.115-0.05)")
+    c = ws_val.cell(17, 2, "=(F11*(1+$I$8))/($I$7-$I$8)")
     c.font = FONT_REGULAR
     c.number_format = FMT_INTEGER
 
@@ -476,10 +503,12 @@ def build_ltm_workbook(dest_path: Path):
     c.number_format = FMT_INTEGER
 
     ws_val.cell(20, 1, "Add: Cash & Liquid Investments").font = FONT_REGULAR
-    ws_val.cell(20, 2, 11000).number_format = FMT_INTEGER
+    c = ws_val.cell(20, 2, "=I9")
+    c.number_format = FMT_INTEGER
 
     ws_val.cell(21, 1, "Less: Total Borrowings & Lease Liabilities").font = FONT_REGULAR
-    ws_val.cell(21, 2, -2200).number_format = FMT_INTEGER
+    c = ws_val.cell(21, 2, "=I10")
+    c.number_format = FMT_INTEGER
 
     ws_val.cell(22, 1, "Implied Equity Value").font = FONT_BOLD
     c = ws_val.cell(22, 2, "=B19+B20+B21")
@@ -489,7 +518,8 @@ def build_ltm_workbook(dest_path: Path):
     c.number_format = FMT_INTEGER
 
     ws_val.cell(23, 1, "Diluted Shares Outstanding (Cr)").font = FONT_REGULAR
-    ws_val.cell(23, 2, 29.60).number_format = FMT_DECIMAL
+    c = ws_val.cell(23, 2, "=I11")
+    c.number_format = FMT_DECIMAL
 
     ws_val.cell(24, 1, "Implied Fair Value Per Share (₹)").font = FONT_TITLE
     c = ws_val.cell(24, 2, "=B22/B23")
@@ -499,7 +529,9 @@ def build_ltm_workbook(dest_path: Path):
     c.number_format = FMT_DECIMAL
 
     ws_val.cell(25, 1, "Historical Snapshot Price (15-Oct-2025 NSE Close)").font = FONT_BOLD
-    ws_val.cell(25, 2, 4390.00).number_format = FMT_DECIMAL
+    c = ws_val.cell(25, 2, "=I12")
+    c.font = FONT_BOLD
+    c.number_format = FMT_DECIMAL
 
     ws_val.cell(26, 1, "Implied Premium / (Discount) vs. 15-Oct-2025 Snapshot").font = FONT_BOLD
     c = ws_val.cell(26, 2, "=(B24/B25)-1")
@@ -527,10 +559,10 @@ def build_ltm_workbook(dest_path: Path):
                 col_cell.fill = FILL_ACCENT
                 col_cell.font = FONT_BOLD
             elif wacc_val == 0.115:
-                col_cell = ws_val.cell(r_idx, c_idx, f"=((B16+((F11*(1+{tgr_val}))/({wacc_val}-{tgr_val}))*F12)+B20+B21)/B23")
+                col_cell = ws_val.cell(r_idx, c_idx, f"=((B16+((F11*(1+{tgr_val}))/($I$7-{tgr_val}))*F12)+$I$9+$I$10)/$I$11")
                 col_cell.font = FONT_REGULAR
             else:
-                col_cell = ws_val.cell(r_idx, c_idx, f"=(((B11*(1/(1+{wacc_val}))+C11*(1/(1+{wacc_val})^2)+D11*(1/(1+{wacc_val})^3)+E11*(1/(1+{wacc_val})^4)+F11*(1/(1+{wacc_val})^5))+((F11*(1+{tgr_val}))/({wacc_val}-{tgr_val}))*(1/(1+{wacc_val})^5))+B20+B21)/B23")
+                col_cell = ws_val.cell(r_idx, c_idx, f"=(((B11*(1/(1+{wacc_val}))+C11*(1/(1+{wacc_val})^2)+D11*(1/(1+{wacc_val})^3)+E11*(1/(1+{wacc_val})^4)+F11*(1/(1+{wacc_val})^5))+((F11*(1+{tgr_val}))/({wacc_val}-{tgr_val}))*(1/(1+{wacc_val})^5))+$I$9+$I$10)/$I$11")
                 col_cell.font = FONT_REGULAR
             col_cell.number_format = FMT_DECIMAL
             col_cell.alignment = ALIGN_RIGHT

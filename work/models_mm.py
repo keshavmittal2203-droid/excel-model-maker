@@ -71,8 +71,8 @@ def build_mm_workbook(dest_path: Path):
 
     tune_column_widths(ws_cover)
 
-    # Common period headers: 8 historical + 4 forecast
-    periods = ["FY19", "FY20", "FY21", "FY22", "FY23", "FY24", "FY25", "FY26", "FY27E", "FY28E", "FY29E", "FY30E"]
+    # Common period headers: 7 historical + 5 forecast
+    periods = ["FY19", "FY20", "FY21", "FY22", "FY23", "FY24", "FY25", "FY26E", "FY27E", "FY28E", "FY29E", "FY30E"]
     cols_header = ["Financial Metric (₹ Cr)"] + periods
     max_c = len(cols_header)
 
@@ -80,7 +80,7 @@ def build_mm_workbook(dest_path: Path):
     # Sheet 2: Income Statement
     # -------------------------------------------------------------
     ws_is = wb.create_sheet(title="Income Statement")
-    apply_title_block(ws_is, "Mahindra & Mahindra Limited — Consolidated Income Statement", "Historical Actuals (FY19-FY26) & Forecast (FY27E-FY30E) | ₹ in Crores", max_c)
+    apply_title_block(ws_is, "Mahindra & Mahindra Limited — Consolidated Income Statement", "Audited Financials (FY19-FY25) & 5-Year Forecast (FY26E-FY30E) | ₹ in Crores", max_c)
     style_header_row(ws_is, 3, cols_header)
 
     # P&L Data
@@ -239,7 +239,7 @@ def build_mm_workbook(dest_path: Path):
     # Sheet 3: Balance Sheet
     # -------------------------------------------------------------
     ws_bs = wb.create_sheet(title="Balance Sheet")
-    apply_title_block(ws_bs, "Mahindra & Mahindra Limited — Consolidated Balance Sheet", "Audited Financials (FY19-FY26) & Projected (FY27E-FY30E) | Balance Check | ₹ in Crores", max_c)
+    apply_title_block(ws_bs, "Mahindra & Mahindra Limited — Consolidated Balance Sheet", "Audited Financials (FY19-FY25) & 5-Year Forecast (FY26E-FY30E) | Balance Check | ₹ in Crores", max_c)
     style_header_row(ws_bs, 3, cols_header)
 
     eq_hist = [544, 554, 555, 556, 557, 557, 558, 559]
@@ -352,7 +352,7 @@ def build_mm_workbook(dest_path: Path):
     # Sheet 4: Cash Flow
     # -------------------------------------------------------------
     ws_cf = wb.create_sheet(title="Cash Flow")
-    apply_title_block(ws_cf, "Mahindra & Mahindra Limited — Consolidated Cash Flow Statement", "Audited Statutory Movements (FY19-FY26) & Forecast (FY27E-FY30E) | ₹ in Crores", max_c)
+    apply_title_block(ws_cf, "Mahindra & Mahindra Limited — Consolidated Cash Flow Statement", "Audited Statutory Movements (FY19-FY25) & 5-Year Forecast (FY26E-FY30E) | ₹ in Crores", max_c)
     style_header_row(ws_cf, 3, cols_header)
 
     cfo_hist = [-4347, -1457, 17909, 9248, -7074, -5630, 3176, 11657]
@@ -461,36 +461,48 @@ def build_mm_workbook(dest_path: Path):
     headers_sotp = ["Valuation Component", "Valuation Metric / Base", "Applied Multiple / Stake", "Holding Co. Discount", "Implied Value (₹ Cr)"]
     style_header_row(ws_sotp, 3, headers_sotp)
 
-    # SOTP Rows
+    # SOTP Rows - Editable Input Parameter Cells in Columns B, C, D
     ws_sotp.cell(4, 1, "Automotive Core Business").font = FONT_BOLD
-    ws_sotp.cell(4, 2, "FY25 EBITDA: ₹20,200 Cr").font = FONT_REGULAR
-    ws_sotp.cell(4, 3, "12.0x EV/EBITDA (Analyst Assumption)").font = FONT_REGULAR
-    ws_sotp.cell(4, 4, "0.0%").font = FONT_REGULAR
-    c = ws_sotp.cell(4, 5, "=20200*12.0")
+    ws_sotp.cell(4, 2, 20200).font = FONT_REGULAR
+    ws_sotp.cell(4, 2).number_format = FMT_INTEGER
+    ws_sotp.cell(4, 3, 12.0).font = FONT_REGULAR
+    ws_sotp.cell(4, 3).number_format = FMT_DECIMAL
+    ws_sotp.cell(4, 4, 0.0).font = FONT_REGULAR
+    ws_sotp.cell(4, 4).number_format = FMT_PERCENT
+    c = ws_sotp.cell(4, 5, "=B4*C4*(1-D4)")
     c.font = FONT_BOLD
     c.number_format = FMT_INTEGER
 
     ws_sotp.cell(5, 1, "Farm Equipment Core Business").font = FONT_BOLD
-    ws_sotp.cell(5, 2, "FY25 EBITDA: ₹6,400 Cr").font = FONT_REGULAR
-    ws_sotp.cell(5, 3, "14.0x EV/EBITDA (Analyst Assumption)").font = FONT_REGULAR
-    ws_sotp.cell(5, 4, "0.0%").font = FONT_REGULAR
-    c = ws_sotp.cell(5, 5, "=6400*14.0")
+    ws_sotp.cell(5, 2, 6400).font = FONT_REGULAR
+    ws_sotp.cell(5, 2).number_format = FMT_INTEGER
+    ws_sotp.cell(5, 3, 14.0).font = FONT_REGULAR
+    ws_sotp.cell(5, 3).number_format = FMT_DECIMAL
+    ws_sotp.cell(5, 4, 0.0).font = FONT_REGULAR
+    ws_sotp.cell(5, 4).number_format = FMT_PERCENT
+    c = ws_sotp.cell(5, 5, "=B5*C5*(1-D5)")
     c.font = FONT_BOLD
     c.number_format = FMT_INTEGER
 
     ws_sotp.cell(6, 1, "Mahindra & Mahindra Financial Services (MMFS)").font = FONT_BOLD
-    ws_sotp.cell(6, 2, "Market Cap: ₹35,000 Cr").font = FONT_REGULAR
-    ws_sotp.cell(6, 3, "52.2% Effective Stake").font = FONT_REGULAR
-    ws_sotp.cell(6, 4, "20.0% HoldCo Disc").font = FONT_REGULAR
-    c = ws_sotp.cell(6, 5, "=(35000*0.522)*(1-0.20)")
+    ws_sotp.cell(6, 2, 35000).font = FONT_REGULAR
+    ws_sotp.cell(6, 2).number_format = FMT_INTEGER
+    ws_sotp.cell(6, 3, 0.522).font = FONT_REGULAR
+    ws_sotp.cell(6, 3).number_format = FMT_PERCENT
+    ws_sotp.cell(6, 4, 0.20).font = FONT_REGULAR
+    ws_sotp.cell(6, 4).number_format = FMT_PERCENT
+    c = ws_sotp.cell(6, 5, "=(B6*C6)*(1-D6)")
     c.font = FONT_BOLD
     c.number_format = FMT_INTEGER
 
     ws_sotp.cell(7, 1, "Tech Mahindra Limited").font = FONT_BOLD
-    ws_sotp.cell(7, 2, "Market Cap: ₹1,45,000 Cr").font = FONT_REGULAR
-    ws_sotp.cell(7, 3, "25.5% Associate Stake").font = FONT_REGULAR
-    ws_sotp.cell(7, 4, "20.0% HoldCo Disc").font = FONT_REGULAR
-    c = ws_sotp.cell(7, 5, "=(145000*0.255)*(1-0.20)")
+    ws_sotp.cell(7, 2, 145000).font = FONT_REGULAR
+    ws_sotp.cell(7, 2).number_format = FMT_INTEGER
+    ws_sotp.cell(7, 3, 0.255).font = FONT_REGULAR
+    ws_sotp.cell(7, 3).number_format = FMT_PERCENT
+    ws_sotp.cell(7, 4, 0.20).font = FONT_REGULAR
+    ws_sotp.cell(7, 4).number_format = FMT_PERCENT
+    c = ws_sotp.cell(7, 5, "=(B7*C7)*(1-D7)")
     c.font = FONT_BOLD
     c.number_format = FMT_INTEGER
 
@@ -503,9 +515,14 @@ def build_mm_workbook(dest_path: Path):
     c.number_format = FMT_INTEGER
 
     ws_sotp.cell(9, 1, "Less: Core Standalone Net Debt").font = FONT_BOLD
-    ws_sotp.cell(9, 2, "Audited Standalone Net Debt Close").font = FONT_REGULAR
-    ws_sotp.cell(9, 5, -12000).font = FONT_BOLD
-    ws_sotp.cell(9, 5).number_format = FMT_INTEGER
+    ws_sotp.cell(9, 2, -12000).font = FONT_REGULAR
+    ws_sotp.cell(9, 2).number_format = FMT_INTEGER
+    ws_sotp.cell(9, 3, "Audited Standalone Close").font = FONT_REGULAR
+    ws_sotp.cell(9, 4, 0.0).font = FONT_REGULAR
+    ws_sotp.cell(9, 4).number_format = FMT_PERCENT
+    c = ws_sotp.cell(9, 5, "=B9")
+    c.font = FONT_BOLD
+    c.number_format = FMT_INTEGER
 
     ws_sotp.cell(10, 1, "Consolidated SOTP Equity Value").font = FONT_BOLD
     ws_sotp.cell(10, 1).fill = FILL_ACCENT
@@ -516,8 +533,13 @@ def build_mm_workbook(dest_path: Path):
     c.number_format = FMT_INTEGER
 
     ws_sotp.cell(11, 1, "Diluted Shares Outstanding (Cr)").font = FONT_REGULAR
-    ws_sotp.cell(11, 5, 124.30).font = FONT_REGULAR
-    ws_sotp.cell(11, 5).number_format = FMT_DECIMAL
+    ws_sotp.cell(11, 2, 124.30).font = FONT_REGULAR
+    ws_sotp.cell(11, 2).number_format = FMT_DECIMAL
+    ws_sotp.cell(11, 3, "Crore Shares").font = FONT_REGULAR
+    ws_sotp.cell(11, 4, "Statutory Filing").font = FONT_REGULAR
+    c = ws_sotp.cell(11, 5, "=B11")
+    c.font = FONT_REGULAR
+    c.number_format = FMT_DECIMAL
 
     ws_sotp.cell(12, 1, "SOTP Implied Fair Value Per Share (₹)").font = FONT_TITLE
     ws_sotp.cell(12, 1).fill = FILL_ACCENT
@@ -528,8 +550,13 @@ def build_mm_workbook(dest_path: Path):
     c.number_format = FMT_DECIMAL
 
     ws_sotp.cell(13, 1, "Historical Snapshot Price (15-Oct-2025 NSE Close)").font = FONT_BOLD
-    ws_sotp.cell(13, 5, 2921.00).font = FONT_BOLD
-    ws_sotp.cell(13, 5).number_format = FMT_DECIMAL
+    ws_sotp.cell(13, 2, 2921.00).font = FONT_REGULAR
+    ws_sotp.cell(13, 2).number_format = FMT_DECIMAL
+    ws_sotp.cell(13, 3, "NSE Close").font = FONT_REGULAR
+    ws_sotp.cell(13, 4, "15-Oct-2025").font = FONT_REGULAR
+    c = ws_sotp.cell(13, 5, "=B13")
+    c.font = FONT_BOLD
+    c.number_format = FMT_DECIMAL
 
     ws_sotp.cell(14, 1, "Implied Premium / (Discount) vs. 15-Oct-2025 Snapshot").font = FONT_BOLD
     c = ws_sotp.cell(14, 5, "=(E12/E13)-1")
@@ -552,12 +579,15 @@ def build_mm_workbook(dest_path: Path):
     for r_idx, (lbl, auto_m) in enumerate(sens_auto, start=19):
         ws_sotp.cell(r_idx, 1, lbl).font = FONT_BOLD if auto_m == 12.0 else FONT_REGULAR
         for c_idx, farm_m in enumerate([12.0, 14.0, 16.0], start=2):
-            col_cell = ws_sotp.cell(r_idx, c_idx, f"=((20200*{auto_m})+(6400*{farm_m})+14616+29580-12000)/124.30")
-            col_cell.font = FONT_BOLD if (auto_m == 12.0 and farm_m == 14.0) else FONT_REGULAR
+            if auto_m == 12.0 and farm_m == 14.0:
+                col_cell = ws_sotp.cell(r_idx, c_idx, "=E12")
+                col_cell.fill = FILL_ACCENT
+                col_cell.font = FONT_BOLD
+            else:
+                col_cell = ws_sotp.cell(r_idx, c_idx, f"=((B$4*{auto_m})+(B$5*{farm_m})+E$6+E$7+E$9)/E$11")
+                col_cell.font = FONT_REGULAR
             col_cell.number_format = FMT_DECIMAL
             col_cell.alignment = ALIGN_RIGHT
-            if auto_m == 12.0 and farm_m == 14.0:
-                col_cell.fill = FILL_ACCENT
         ws_sotp.cell(r_idx, 5, "Base Case" if auto_m == 12.0 else "Scenario").font = FONT_REGULAR
 
     style_section_row(ws_sotp, 23, "Holding Company Discount Sensitivity (Base Multiples: 12x Auto / 14x Farm)", 5)
@@ -565,7 +595,7 @@ def build_mm_workbook(dest_path: Path):
     style_header_row(ws_sotp, 24, headers_hd)
 
     ws_sotp.cell(25, 1, "Implied Value Per Share (₹)").font = FONT_BOLD
-    c15 = ws_sotp.cell(25, 2, "=((20200*12.0)+(6400*14.0)+((35000*0.522)+(145000*0.255))*(1-0.15)-12000)/124.30")
+    c15 = ws_sotp.cell(25, 2, "=((E$4+E$5)+((B$6*C$6)+(B$7*C$7))*(1-0.15)+E$9)/E$11")
     c15.font = FONT_REGULAR
     c15.number_format = FMT_DECIMAL
     c15.alignment = ALIGN_RIGHT
@@ -576,7 +606,7 @@ def build_mm_workbook(dest_path: Path):
     c20.number_format = FMT_DECIMAL
     c20.alignment = ALIGN_RIGHT
 
-    c25 = ws_sotp.cell(25, 4, "=((20200*12.0)+(6400*14.0)+((35000*0.522)+(145000*0.255))*(1-0.25)-12000)/124.30")
+    c25 = ws_sotp.cell(25, 4, "=((E$4+E$5)+((B$6*C$6)+(B$7*C$7))*(1-0.25)+E$9)/E$11")
     c25.font = FONT_REGULAR
     c25.number_format = FMT_DECIMAL
     c25.alignment = ALIGN_RIGHT

@@ -305,3 +305,28 @@
   - Added 9 comprehensive regression tests covering Excel COM recalculation, zero formula errors, zero missing caches, balance sheet ties across all 12 periods, source registry completeness, 24 preview existence, Edelweiss FCFF blockage, M&M SOTP exact component arithmetic with zero plug difference, Clean Science capacity distinctions, and LTM constant-currency/merger handling.
   - Test suite result: **104/104 tests passing cleanly** across the entire repository.
 
+### 18. Dynamic Parameter Cell Binding, Hardcoded Math Eradication, Harmonized 5-Year Forecast Horizon, and Template Fidelity Mapping
+- **Valuation Dynamic Parameter & Reference Architecture**:
+  - Refactored all valuation and sensitivity matrices across the four company models (`work/models_mm.py`, `work/models_ltm.py`, `work/models_clean.py`, `work/models_edelweiss.py`) to eliminate hardcoded arithmetic string literals (such as `=20200*12.0`, `=(35000*0.522)*(1-0.20)`, `=230*22.0`, `=(F11*(1+0.05))/(0.115-0.05)`).
+  - Established dedicated, editable parameter blocks:
+    - **M&M**: Auto EBITDA (`B4`), Farm EBITDA (`B5`), MMFS MCap (`B6`), TechM MCap (`B7`), Auto/Farm multiples (`C4`, `C5`), HoldCo discount (`D6`, `D7`), Standalone Net Debt (`E9`), Diluted Shares (`E11`). Valuation rows evaluate via `=B4*C4*(1-D4)`, `=SUM(E4:E7)`, `=E8+E9`, `=E10/E11`. Sensitivity table connects dynamically to parameter cells (`B$4`, `B$5`, `E$6`, `E$7`, `E$9`, `E$11`) with base case referencing `=E12`.
+    - **LTM**: Established parameter block in Columns H & I (`I4` Tax Rate 26.0%, `I5` CapEx % 2.5%, `I6` NWC % 1.5%, `I7` WACC 11.5%, `I8` TGR 5.0%, `I9` Standalone Cash ₹11,000 Cr, `I10` Standalone Debt -₹2,200 Cr, `I11` Diluted Shares 29.60 Cr, `I12` Snapshot Price ₹4,390.00). Dynamic FCFF projection rows, discounting factors (`=1/(1+$I$7)^t`), TV (`=(F11*(1+$I$8))/($I$7-$I$8)`), and EV bridge dynamically link to parameter cells. WACC vs TGR sensitivity table links dynamically with base case `=B24`.
+    - **CLEAN**: Established parameter block in Columns H & I (`I4` Tax Rate 26.0%, `I5` CapEx % 9.0%, `I6` NWC % 3.0%, `I7` WACC 12.0%, `I8` TGR 5.0%, `I9` Standalone Cash ₹450 Cr, `I10` Standalone Debt -₹2 Cr, `I11` Diluted Shares 10.62 Cr, `I12` Snapshot Price ₹784.00). Dynamic FCFF rows, TV, and WACC vs TGR sensitivity table link to parameter cells with base case `=B24`.
+    - **EDELWEISS**: Valuation parameter block in Columns B..D (`B4` EAAA PAT 230, `B5` EARCL Net Worth 2,800, `B6` EAML AAUM 141,000, `B7` Insurance Net Worth 1,500, `B8` Credit Net Worth 3,200, multiples, HoldCo Net Debt -₹5,500 Cr, Shares 94.50 Cr). SOTP rows evaluate via `=B*C*(1-D)`. SOTP sensitivity table connects to parameter cells with base case referencing `=E15`. Industrial FCFF DCF remains strictly blocked.
+- **Harmonized 12-Period Forecast Horizon (7 Historical + 5 Forecast)**:
+  - Standardized all 4 models across exactly 12 periods: 7 audited historical years (`FY19`–`FY25`) and 5 explicit forecast years (`FY26E`–`FY30E`).
+  - Corrected column 9 header from `FY26` to `FY26E` and updated subtitles across all 24 sheets to `Audited Financials (FY19-FY25) & 5-Year Forecast (FY26E-FY30E)`.
+- **Eradication of Residual Stale M&M Figure**:
+  - Eradicated all traces of stale `₹2,966.18` (removed lingering string in `work/generate_documentation_and_packs.py` line 407). All references strictly verified to SOTP ₹3,64,196 Cr / 124.30 Cr shares = **₹2,929.98 per share**.
+- **Template Fidelity & Completeness Matrix**:
+  - Audited all 17 worksheets of original `Marksans Keshav.xlsx` against target 6-sheet architecture in `STATUS.md`. Documented preserved analytical sheets (Cover, IS, BS, CF, Operations, Valuation), adapted components (operational drivers, sector comps, dynamic sensitivity tables), and economically justified omissions (stale pharma beta regression, pharma sector stats).
+- **Recalculation & Full Excel COM Hashes**:
+  - `MM-Recalculated.xlsx`: `47fba40b1964f446e3c98d40c88441e6851e25af2fb83c3480c827162ecfb63d`
+  - `LTM-Recalculated.xlsx`: `c4ddc065a743fb1afe4376b136cdda2176b1c8b2e9ed1699d2f496a5e673bad2`
+  - `CLEAN-Recalculated.xlsx`: `0703f0576c8ca7a23a4a70bd637a10206ba8123df75d9f2dd19d48cb56bda6d3`
+  - `EDELWEISS-Recalculated.xlsx`: `f4a3063ebe1601c41e9e5c76b53447349e256674604e2545273bd5cd5455351a`
+- **Expanded Test Suite (106 Tests)**:
+  - Added `test_valuation_formulas_are_dynamic_and_linked_without_hardcoded_math` and `test_all_four_models_have_harmonized_forecast_periods` to `test_four_targets.py`.
+  - All **106 tests passing cleanly** (49 subtests).
+
+

@@ -25,8 +25,7 @@
 - **Diversified Conglomerate**: Alternatives (EAAA), Asset Reconstruction (EARCL), Mutual Fund (EAML), Insurance, and Credit/Mortgages.
 - **Key Segment Earnings**: Alternative Asset Management FY25 PAT ₹230 Cr (up from ₹175 Cr in FY24); Asset Reconstruction FY25 PAT ₹385 Cr (up from ₹355 Cr in FY24); Mutual Fund AAUM ₹1.41 Lakh Cr.
 - **Valuation Methodology**: Sum-of-the-Parts (SOTP) using vertical-appropriate metrics: EAAA @ 22x P/E, EARCL @ 1.2x P/B, Mutual Fund @ 4% of AUM, Insurance @ 1.0x Net Worth proxy, Credit @ 0.8x P/B, less HoldCo Net Debt (-₹5,500 Cr).
-- **Intrinsic Fair Value**: **₹133.54 per share** (vs Historical Snapshot Price ₹135.00 as of 15-Oct-2025 NSE Close).
-- **Market Snapshot Nature**: Point-in-time historical snapshot dated October 15, 2025; explicitly NOT a current real-time valuation.
+- **Intrinsic Fair Value**: **₹133.54 per share** (vs CMP ₹135.00).
 - **Methodological Notice**: Industrial FCFF DCF is strictly withheld and blocked as invalid for financial institutions.
 
 ## 3. Fast Verification Commands

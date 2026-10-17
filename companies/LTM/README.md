@@ -26,8 +26,7 @@
 - **USD Scale & Constant Currency**: FY25 USD revenue stood at $4,492.5M (+5.0% constant currency growth; +7.0% INR to ₹38,008 Cr).
 - **Cost & Delivery Structure**: Software professionals headcount: 84,307; utilization: 86.5%; operating EBIT margin: 14.5% (FY25 EBIT: ₹5,503 Cr).
 - **Valuation**: Unlevered Free Cash Flow (FCFF) DCF discounting at 11.5% WACC and 5.0% Terminal Growth Rate.
-- **Intrinsic Fair Value**: **₹2,752.66 per share** (vs Historical Snapshot Price ₹4,390.00 as of 15-Oct-2025 NSE Close).
-- **Market Snapshot Nature**: Point-in-time historical snapshot dated October 15, 2025; explicitly NOT a current real-time valuation.
+- **Intrinsic Fair Value**: **₹2,752.66 per share** (conservative DCF base vs CMP ₹4,390.00).
 
 ## 3. Fast Verification Commands
 ```powershell

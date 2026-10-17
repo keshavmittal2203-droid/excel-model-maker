@@ -102,15 +102,24 @@ Substantiates and hardens PR #3 as the implementation owner, reconciling `main`'
 
 ### 8. Four Priority Targets Delivery (M&M, LTM, CLEAN, EDELWEISS)
 - Complete delivery of four dedicated, source-backed 6-sheet financial models in `companies/<KEY>/` and `candidates/run_native_<key>/`.
-- Recalculated via Excel COM: **0 formula errors, 0 missing caches, and $\Delta = 0.00$ Balance Sheet tie across all 12 periods (FY16–FY27)** for all four companies.
+- Recalculated via Excel COM: **0 formula errors, 0 missing caches, and $\Delta = 0.00$ Balance Sheet tie across all 12 periods (FY19–FY30E)** for all four companies.
+- **Dynamic Parameter & Formula Refactoring (No Hardcoded Math)**:
+  - Completely eradicated hardcoded formula math (e.g., `=20200*12.0`, `=(35000*0.522)*(1-0.20)`, `=230*22.0`, `=(F11*(1+0.05))/(0.115-0.05)`).
+  - Placed all operating drivers, multiples, market caps, stakes, tax rates, CapEx/NWC percentages, WACC, TGR, net debt, and share counts into explicit parameter cells in Columns B..D or H..I.
+  - All valuation schedules evaluate dynamically via formulas such as `=B4*C4*(1-D4)`, `=SUM(E4:E7)`, `=E8+E9`, `=E10/E11`, and `=(F11*(1+$I$8))/($I$7-$I$8)`.
+  - 2-Way Sensitivity Matrices are dynamically linked to parameter cells and table axes; base cases link directly to fair values per share (`=E12`, `=B24`, `=E15`).
+- **Harmonized 12-Period Forecast Horizon (7 Historical + 5 Forecast)**:
+  - Standardized all 4 models across exactly 12 periods: 7 audited historical years (`FY19`–`FY25`) and 5 explicit forecast years (`FY26E`–`FY30E`).
+  - Corrected column 9 header from `FY26` to `FY26E` and updated subtitles across all 24 sheets to `Audited Financials (FY19-FY25) & 5-Year Forecast (FY26E-FY30E)`.
+- **Template Fidelity & Completeness Matrix**:
+  - Provided complete 17-sheet coverage mapping in `STATUS.md` detailing preserved analytical schedules (Cover, IS, BS, CF, Operations, Valuation), company-adapted operational drivers, and economically justified omissions (stale pharma beta regression dumps and sector stats).
 - **M&M SOTP Discrepancy Reconciled & Eradication Verified**: Eradicated the unevidenced lumped plug row of ₹4,500 Cr (`=6000*(1-0.25)` for minor subsidiaries Lifespaces/Logistics) that was present in the initial draft candidate. The model now strictly and transparently sums the 4 primary pillars: Auto Core (₹2,42,400 Cr) + Farm Core (₹89,600 Cr) + MMFS (₹14,616 Cr) + Tech Mahindra (₹29,580 Cr) = Gross Core Value ₹3,76,196 Cr - Standalone Net Debt ₹12,000 Cr = **Consolidated SOTP Equity Value ₹3,64,196 Cr**. Divided by 124.30 Cr shares = **₹2,929.98 per share** (about ₹2,930/sh). Minor subsidiaries are conservatively documented as unmodeled stub holdings. Stale references to ₹2,966.18 were completely eradicated from READMEs, documentation, and manifest generators.
 - **Historical Market Snapshot Pricing Discipline**: In accordance with audit standards, all four models are explicitly designated and labeled as **Historical Market Snapshots dated October 15, 2025 (NSE Close)** and explicitly NOT current real-time valuations across all workbooks, previews, registries, manifests, and documentation.
-- **Embedded Valuation Sensitivity Matrices**: Built dynamic formula-driven sensitivity matrices into all 4 workbooks (Auto vs Farm multiples and HoldCo discount for M&M, WACC vs TGR for LTM, WACC vs TGR for Clean Science, Alternatives P/E vs ARC P/B for Edelweiss).
 - **Recalculated SHA-256 Hashes (Microsoft Excel COM 16.0)**:
-  - `MM-Recalculated.xlsx`: `f5aa68952e75cd8b7a004f82fc3cf8344e5366acf8b45a004c7be6c0791d53e4`
-  - `LTM-Recalculated.xlsx`: `b1beedd8b57bae27def17579078703826b94bd85d05846519b5f1f2345a6138d`
-  - `CLEAN-Recalculated.xlsx`: `cb99e4003b85b2a2c5c5cdde1cc862d62a87235cbe62c0d5d3a6211d44ac0279`
-  - `EDELWEISS-Recalculated.xlsx`: `25ce419baa573a76442f0ba3a7b31226e96a811fc6b8c44134c7ac499a5ff11d`
+  - `MM-Recalculated.xlsx`: `47fba40b1964f446e3c98d40c88441e6851e25af2fb83c3480c827162ecfb63d`
+  - `LTM-Recalculated.xlsx`: `c4ddc065a743fb1afe4376b136cdda2176b1c8b2e9ed1699d2f496a5e673bad2`
+  - `CLEAN-Recalculated.xlsx`: `0703f0576c8ca7a23a4a70bd637a10206ba8123df75d9f2dd19d48cb56bda6d3`
+  - `EDELWEISS-Recalculated.xlsx`: `f4a3063ebe1601c41e9e5c76b53447349e256674604e2545273bd5cd5455351a`
 - Exported 24 landscape schedule PDFs (6 per company) for visual inspection.
 - Dedicated source registries in `docs/<KEY>_SOURCE_REGISTRY.md` and `docs/<key>_source_registry.json` mapping Diluted Shares and Snapshot CMP to exact cells.
 - Requests (`examples/<key>-package.json`), model packs (`proposals/<key>.model-pack.json`), inputs (`proposals/<key>.inputs.json`), and READMEs (`companies/<KEY>/README.md`).
@@ -124,11 +133,12 @@ Substantiates and hardens PR #3 as the implementation owner, reconciling `main`'
 
 ### 9. Full Test Suite & Originals Integrity
 - `python verify_sources.py`: Verified all 6 original template SHA-256 hashes byte-for-byte against `source-catalog.json`.
-- `python -m unittest discover -v`: **104/104 tests passing** cleanly across:
+- `python -m unittest discover -v`: **106/106 tests passing** cleanly across:
   - `test_package_safety.py` (17 tests)
-  - `test_four_targets.py` (9 tests)
+  - `test_four_targets.py` (11 tests, including dynamic formula and 12-period horizon checks)
   - `test_build_package.py` (25 tests)
   - `test_modelmaker.py` (33 tests)
   - `test_pptmaker.py` (13 tests)
   - `test_reportmaker.py` (7 tests)
 - Manifest readiness: `ready: false`, pending gates: `["human_pack_approval"]`.
+

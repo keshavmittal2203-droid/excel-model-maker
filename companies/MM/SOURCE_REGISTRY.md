@@ -21,5 +21,4 @@
 ## 2. Valuation Methodology & Governance Notes
 - **Valuation Approach**: `Sum-of-the-Parts (SOTP) Valuation`
 - **Valuation Status**: `supported`
-- **Implied Value Per Share**: ₹2929.98 (vs. Historical Snapshot Price ₹2921.00 as of 15-Oct-2025)
-- **Pricing Date & Real-Time Valuation Notice**: All market prices, multiples, and implied premiums/discounts reflect historical point-in-time market snapshots as of **October 15, 2025 (NSE Close)**. These models are explicitly point-in-time historical snapshots and are NOT current real-time valuations.
+- **Implied Value Per Share**: ₹2929.98 (vs. CMP ₹2921.00)

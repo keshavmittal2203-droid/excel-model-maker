@@ -72,8 +72,8 @@ def build_edelweiss_workbook(dest_path: Path):
 
     tune_column_widths(ws_cover)
 
-    # Common period headers
-    periods = ["FY19", "FY20", "FY21", "FY22", "FY23", "FY24", "FY25", "FY26", "FY27E", "FY28E", "FY29E", "FY30E"]
+    # Common period headers: 7 historical + 5 forecast
+    periods = ["FY19", "FY20", "FY21", "FY22", "FY23", "FY24", "FY25", "FY26E", "FY27E", "FY28E", "FY29E", "FY30E"]
     cols_header = ["Financial Metric (₹ Cr)"] + periods
     max_c = len(cols_header)
 
@@ -81,7 +81,7 @@ def build_edelweiss_workbook(dest_path: Path):
     # Sheet 2: Income Statement
     # -------------------------------------------------------------
     ws_is = wb.create_sheet(title="Income Statement")
-    apply_title_block(ws_is, "Edelweiss Financial Services Limited — Consolidated Income Statement", "Audited Financials (FY19-FY26) & Forecast (FY27E-FY30E) | Financial Services Ind AS | ₹ in Crores", max_c)
+    apply_title_block(ws_is, "Edelweiss Financial Services Limited — Consolidated Income Statement", "Audited Financials (FY19-FY25) & 5-Year Forecast (FY26E-FY30E) | Financial Services Ind AS | ₹ in Crores", max_c)
     style_header_row(ws_is, 3, cols_header)
 
     tot_rev_hist = [11078, 9513, 10775, 7151, 8500, 9523, 9393, 10802]
@@ -192,7 +192,7 @@ def build_edelweiss_workbook(dest_path: Path):
     # Sheet 3: Balance Sheet
     # -------------------------------------------------------------
     ws_bs = wb.create_sheet(title="Balance Sheet")
-    apply_title_block(ws_bs, "Edelweiss Financial Services Limited — Consolidated Balance Sheet", "Audited Financials (FY19-FY26) & Projected (FY27E-FY30E) | Balance Check | ₹ in Crores", max_c)
+    apply_title_block(ws_bs, "Edelweiss Financial Services Limited — Consolidated Balance Sheet", "Audited Financials (FY19-FY25) & 5-Year Forecast (FY26E-FY30E) | Balance Check | ₹ in Crores", max_c)
     style_header_row(ws_bs, 3, cols_header)
 
     eq_hist = [89, 89, 89, 90, 90, 90, 92, 95]
@@ -303,7 +303,7 @@ def build_edelweiss_workbook(dest_path: Path):
     # Sheet 4: Cash Flow
     # -------------------------------------------------------------
     ws_cf = wb.create_sheet(title="Cash Flow")
-    apply_title_block(ws_cf, "Edelweiss Financial Services Limited — Consolidated Cash Flow Statement", "Audited Statutory Movements (FY19-FY26) & Forecast (FY27E-FY30E) | ₹ in Crores", max_c)
+    apply_title_block(ws_cf, "Edelweiss Financial Services Limited — Consolidated Cash Flow Statement", "Audited Statutory Movements (FY19-FY25) & 5-Year Forecast (FY26E-FY30E) | ₹ in Crores", max_c)
     style_header_row(ws_cf, 3, cols_header)
 
     cfo_hist = [5685, 12098, 3458, 5592, 2891, 2894, 3384, 897]
@@ -392,43 +392,59 @@ def build_edelweiss_workbook(dest_path: Path):
     headers_sotp = ["Business Vertical / Asset", "Valuation Metric / Base", "Applied Multiple / Metric", "Holding Co. Discount", "Implied Value (₹ Cr)"]
     style_header_row(ws_val, 5, headers_sotp)
 
+    # SOTP Rows - Editable Input Parameter Cells in Columns B, C, D
     ws_val.cell(6, 1, "Alternative Asset Management (EAAA)").font = FONT_BOLD
-    ws_val.cell(6, 2, "FY25 PAT: ₹230 Cr").font = FONT_REGULAR
-    ws_val.cell(6, 3, "22.0x P/E Multiple").font = FONT_REGULAR
-    ws_val.cell(6, 4, "0.0%").font = FONT_REGULAR
-    c = ws_val.cell(6, 5, "=230*22.0")
+    ws_val.cell(6, 2, 230).font = FONT_REGULAR
+    ws_val.cell(6, 2).number_format = FMT_INTEGER
+    ws_val.cell(6, 3, 22.0).font = FONT_REGULAR
+    ws_val.cell(6, 3).number_format = FMT_DECIMAL
+    ws_val.cell(6, 4, 0.0).font = FONT_REGULAR
+    ws_val.cell(6, 4).number_format = FMT_PERCENT
+    c = ws_val.cell(6, 5, "=B6*C6*(1-D6)")
     c.font = FONT_BOLD
     c.number_format = FMT_INTEGER
 
     ws_val.cell(7, 1, "Asset Reconstruction (EARCL)").font = FONT_BOLD
-    ws_val.cell(7, 2, "Net Worth: ₹2,800 Cr").font = FONT_REGULAR
-    ws_val.cell(7, 3, "1.20x P/B Multiple").font = FONT_REGULAR
-    ws_val.cell(7, 4, "0.0%").font = FONT_REGULAR
-    c = ws_val.cell(7, 5, "=2800*1.20")
+    ws_val.cell(7, 2, 2800).font = FONT_REGULAR
+    ws_val.cell(7, 2).number_format = FMT_INTEGER
+    ws_val.cell(7, 3, 1.20).font = FONT_REGULAR
+    ws_val.cell(7, 3).number_format = FMT_DECIMAL
+    ws_val.cell(7, 4, 0.0).font = FONT_REGULAR
+    ws_val.cell(7, 4).number_format = FMT_PERCENT
+    c = ws_val.cell(7, 5, "=B7*C7*(1-D7)")
     c.font = FONT_BOLD
     c.number_format = FMT_INTEGER
 
     ws_val.cell(8, 1, "Mutual Fund (Edelweiss Asset Management)").font = FONT_BOLD
-    ws_val.cell(8, 2, "AAUM: ₹1,41,000 Cr").font = FONT_REGULAR
-    ws_val.cell(8, 3, "4.0% of AAUM").font = FONT_REGULAR
-    ws_val.cell(8, 4, "0.0%").font = FONT_REGULAR
-    c = ws_val.cell(8, 5, "=141000*0.04")
+    ws_val.cell(8, 2, 141000).font = FONT_REGULAR
+    ws_val.cell(8, 2).number_format = FMT_INTEGER
+    ws_val.cell(8, 3, 0.04).font = FONT_REGULAR
+    ws_val.cell(8, 3).number_format = FMT_PERCENT
+    ws_val.cell(8, 4, 0.0).font = FONT_REGULAR
+    ws_val.cell(8, 4).number_format = FMT_PERCENT
+    c = ws_val.cell(8, 5, "=B8*C8*(1-D8)")
     c.font = FONT_BOLD
     c.number_format = FMT_INTEGER
 
     ws_val.cell(9, 1, "Insurance (General + Life Insurance)").font = FONT_BOLD
-    ws_val.cell(9, 2, "Net Worth / Embedded Value Proxy").font = FONT_REGULAR
-    ws_val.cell(9, 3, "1.00x Book Proxy").font = FONT_REGULAR
-    ws_val.cell(9, 4, "0.0%").font = FONT_REGULAR
-    c = ws_val.cell(9, 5, 1500)
+    ws_val.cell(9, 2, 1500).font = FONT_REGULAR
+    ws_val.cell(9, 2).number_format = FMT_INTEGER
+    ws_val.cell(9, 3, 1.00).font = FONT_REGULAR
+    ws_val.cell(9, 3).number_format = FMT_DECIMAL
+    ws_val.cell(9, 4, 0.0).font = FONT_REGULAR
+    ws_val.cell(9, 4).number_format = FMT_PERCENT
+    c = ws_val.cell(9, 5, "=B9*C9*(1-D9)")
     c.font = FONT_BOLD
     c.number_format = FMT_INTEGER
 
     ws_val.cell(10, 1, "Credit & Housing Finance Lending Book").font = FONT_BOLD
-    ws_val.cell(10, 2, "Net Worth: ₹3,200 Cr").font = FONT_REGULAR
-    ws_val.cell(10, 3, "0.80x P/B Multiple").font = FONT_REGULAR
-    ws_val.cell(10, 4, "0.0%").font = FONT_REGULAR
-    c = ws_val.cell(10, 5, "=3200*0.80")
+    ws_val.cell(10, 2, 3200).font = FONT_REGULAR
+    ws_val.cell(10, 2).number_format = FMT_INTEGER
+    ws_val.cell(10, 3, 0.80).font = FONT_REGULAR
+    ws_val.cell(10, 3).number_format = FMT_DECIMAL
+    ws_val.cell(10, 4, 0.0).font = FONT_REGULAR
+    ws_val.cell(10, 4).number_format = FMT_PERCENT
+    c = ws_val.cell(10, 5, "=B10*C10*(1-D10)")
     c.font = FONT_BOLD
     c.number_format = FMT_INTEGER
 
@@ -441,9 +457,14 @@ def build_edelweiss_workbook(dest_path: Path):
     c.number_format = FMT_INTEGER
 
     ws_val.cell(12, 1, "Less: Holding Company Net Debt & Intragroup Liabilities").font = FONT_BOLD
-    ws_val.cell(12, 2, "Audited Standalone Close").font = FONT_REGULAR
-    ws_val.cell(12, 5, -5500).font = FONT_BOLD
-    ws_val.cell(12, 5).number_format = FMT_INTEGER
+    ws_val.cell(12, 2, -5500).font = FONT_REGULAR
+    ws_val.cell(12, 2).number_format = FMT_INTEGER
+    ws_val.cell(12, 3, "Audited Standalone Close").font = FONT_REGULAR
+    ws_val.cell(12, 4, 0.0).font = FONT_REGULAR
+    ws_val.cell(12, 4).number_format = FMT_PERCENT
+    c = ws_val.cell(12, 5, "=B12")
+    c.font = FONT_BOLD
+    c.number_format = FMT_INTEGER
 
     ws_val.cell(13, 1, "Implied Consolidated Equity Value").font = FONT_BOLD
     ws_val.cell(13, 1).fill = FILL_ACCENT
@@ -454,8 +475,13 @@ def build_edelweiss_workbook(dest_path: Path):
     c.number_format = FMT_INTEGER
 
     ws_val.cell(14, 1, "Diluted Shares Outstanding (Cr)").font = FONT_REGULAR
-    ws_val.cell(14, 5, 94.50).font = FONT_REGULAR
-    ws_val.cell(14, 5).number_format = FMT_DECIMAL
+    ws_val.cell(14, 2, 94.50).font = FONT_REGULAR
+    ws_val.cell(14, 2).number_format = FMT_DECIMAL
+    ws_val.cell(14, 3, "Crore Shares").font = FONT_REGULAR
+    ws_val.cell(14, 4, "Statutory Filing").font = FONT_REGULAR
+    c = ws_val.cell(14, 5, "=B14")
+    c.font = FONT_REGULAR
+    c.number_format = FMT_DECIMAL
 
     ws_val.cell(15, 1, "SOTP Implied Fair Value Per Share (₹)").font = FONT_TITLE
     ws_val.cell(15, 1).fill = FILL_ACCENT
@@ -466,8 +492,13 @@ def build_edelweiss_workbook(dest_path: Path):
     c.number_format = FMT_DECIMAL
 
     ws_val.cell(16, 1, "Historical Snapshot Price (15-Oct-2025 NSE Close)").font = FONT_BOLD
-    ws_val.cell(16, 5, 135.00).font = FONT_BOLD
-    ws_val.cell(16, 5).number_format = FMT_DECIMAL
+    ws_val.cell(16, 2, 135.00).font = FONT_REGULAR
+    ws_val.cell(16, 2).number_format = FMT_DECIMAL
+    ws_val.cell(16, 3, "NSE Close").font = FONT_REGULAR
+    ws_val.cell(16, 4, "15-Oct-2025").font = FONT_REGULAR
+    c = ws_val.cell(16, 5, "=B16")
+    c.font = FONT_BOLD
+    c.number_format = FMT_DECIMAL
 
     ws_val.cell(17, 1, "Implied Premium / (Discount) vs. 15-Oct-2025 Snapshot").font = FONT_BOLD
     c = ws_val.cell(17, 5, "=(E15/E16)-1")
@@ -495,7 +526,7 @@ def build_edelweiss_workbook(dest_path: Path):
                 col_cell.fill = FILL_ACCENT
                 col_cell.font = FONT_BOLD
             else:
-                col_cell = ws_val.cell(r_idx, c_idx, f"=((230*{pe_mult})+(2800*{pb_mult})+5640+1500+2560-5500)/94.50")
+                col_cell = ws_val.cell(r_idx, c_idx, f"=((B$6*{pe_mult})+(B$7*{pb_mult})+E$8+E$9+E$10+E$12)/E$14")
                 col_cell.font = FONT_REGULAR
             col_cell.number_format = FMT_DECIMAL
             col_cell.alignment = ALIGN_RIGHT

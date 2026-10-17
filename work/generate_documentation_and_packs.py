@@ -200,20 +200,32 @@ def generate_all():
                 "statement_location": "Notes to Consolidated Financial Statements: Share Capital",
                 "reported_unit": "Crore Shares",
                 "reported_value": info["shares_cr"],
+                "workbook_cell": (
+                    "'SOTP Valuation'!E11" if k_upper == "MM"
+                    else "'FCFF Valuation'!B23" if k_upper == "LTM"
+                    else "'Manufacturing DCF Valuation'!B23" if k_upper == "CLEAN"
+                    else "'SOTP Valuation'!E14"
+                ),
                 "status": "primary_sourced_statutory",
             },
             {
-                "metric": "Current Market Price (CMP)",
+                "metric": "Historical Market Snapshot Price (15-Oct-2025 NSE Close)",
                 "legal_entity": info["name"],
                 "consolidation_basis": "Trading Session Snapshot",
-                "reporting_period": "October 2026 Snapshot",
+                "reporting_period": "October 15, 2025 Historical Snapshot",
                 "source_org": "BSE / NSE India",
-                "document_title": "BSE Stock Price Quotation",
-                "statement_location": "BSE / NSE Trading Session Quotation",
+                "document_title": "BSE / NSE Stock Price Quotation",
+                "statement_location": "BSE / NSE Trading Session Quotation (15-Oct-2025 Close)",
                 "official_url": info["bse_url"],
                 "reported_unit": "INR (₹) per share",
                 "reported_value": info["cmp"],
-                "status": "market_snapshot",
+                "workbook_cell": (
+                    "'SOTP Valuation'!E13" if k_upper == "MM"
+                    else "'FCFF Valuation'!B25" if k_upper == "LTM"
+                    else "'Manufacturing DCF Valuation'!B25" if k_upper == "CLEAN"
+                    else "'SOTP Valuation'!E16"
+                ),
+                "status": "historical_market_snapshot",
             },
         ]
 
@@ -404,7 +416,7 @@ def generate_all():
                 "- **Farm Equipment Sector**: Global market leader in tractors. FY25 revenue: ₹35,375 Cr (+6% YoY); volumes: 424,641 units.",
                 "- **Financial Services**: 52.2% stake in Mahindra & Mahindra Financial Services Limited (MMFS).",
                 "- **Valuation**: Sum-of-the-Parts (SOTP) approach valuing Automotive Core (12x EV/EBITDA), Farm Equipment Core (14x EV/EBITDA), MMFS stake (20% HoldCo discount), and Tech Mahindra (25.5% stake, 20% discount).",
-                "- **Intrinsic Fair Value**: **₹2,966.18 per share** (vs CMP ₹2,921.00).",
+                "- **Intrinsic Fair Value**: **₹2,929.98 per share** (vs CMP ₹2,921.00).",
             ])
         elif k_upper == "LTM":
             readme_lines.extend([

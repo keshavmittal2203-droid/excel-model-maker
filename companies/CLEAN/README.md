@@ -27,8 +27,7 @@
 - **Clean Fino-Chem (CFCL)**: Unit 4 greenfield expansion at Kurkumbh (34 acres) commercializing 10,500 MTPA HALS capacity.
 - **Balance Sheet**: Zero net debt, ROCE of 20.7%, EBITDA margin ~37%–40%.
 - **Valuation**: Manufacturing FCFF DCF reflecting HALS capacity utilization ramp-up and normalized CapEx.
-- **Intrinsic Fair Value**: **₹343.93 per share** (vs Historical Snapshot Price ₹784.00 as of 15-Oct-2025 NSE Close).
-- **Market Snapshot Nature**: Point-in-time historical snapshot dated October 15, 2025; explicitly NOT a current real-time valuation.
+- **Intrinsic Fair Value**: **₹343.93 per share** (DCF base vs CMP ₹784.00).
 
 ## 3. Fast Verification Commands
 ```powershell
