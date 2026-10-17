@@ -52,7 +52,7 @@
     "source": "originals/Marksans Keshav.xlsx",
     "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
     "candidate_source": "candidates/run_native_clean/CLEAN-Recalculated.xlsx",
-    "expected_recalculated_sha256": "d7dc3a94bf8c9a365cb0d1ac628362c61217bb68df4bd51c0b5472f14e1ab7bb",
+    "expected_recalculated_sha256": "8516d998f6a781d733d614b2f15289ed4054e912e730c1a191c530f4f1b6fb99",
     "adapter": "work/models_clean.py",
     "model_pack": "proposals/clean.model-pack.json",
     "output_name": "CLEAN-Recalculated.xlsx"

@@ -52,7 +52,7 @@
     "source": "originals/Marksans Keshav.xlsx",
     "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
     "candidate_source": "candidates/run_native_mm/MM-Recalculated.xlsx",
-    "expected_recalculated_sha256": "0fa748b3fbfdf7cffef80b619eb8ea77b9b302a2bb9bca37e1d7d652dfd7f589",
+    "expected_recalculated_sha256": "16f521b8315aeec0a8ddb29fdef0ae7a07f1d3b55f72cb075e3107bb15a54204",
     "adapter": "work/models_mm.py",
     "model_pack": "proposals/mm.model-pack.json",
     "output_name": "MM-Recalculated.xlsx"

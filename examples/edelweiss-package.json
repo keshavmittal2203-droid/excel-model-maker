@@ -52,7 +52,7 @@
     "source": "originals/Marksans Keshav.xlsx",
     "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
     "candidate_source": "candidates/run_native_edelweiss/EDELWEISS-Recalculated.xlsx",
-    "expected_recalculated_sha256": "c35dfa2945d0640c020c28bcd8e38392d94e5b05a377dbab41a02fd9aaaccfbf",
+    "expected_recalculated_sha256": "590473498e8bb2cd4e1d414a9132d404c9473f6043d91c4b30a0905683d9c54c",
     "adapter": "work/models_edelweiss.py",
     "model_pack": "proposals/edelweiss.model-pack.json",
     "output_name": "EDELWEISS-Recalculated.xlsx"

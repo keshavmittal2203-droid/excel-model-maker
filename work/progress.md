@@ -397,5 +397,35 @@
   - Re-exported all 24 sheet PDF previews across `candidates/run_excel_<key>/previews/`, `candidates/run_native_<key>/previews/`, and `companies/<KEY>/previews/`.
 - **Test Suite Expanded (`test_four_targets.py`)**:
   - Added 5 new regression tests: `test_regression_diagnostics_embedded_in_all_four_models`, `test_stub_period_dcf_timing_reconciliation_and_tv_concentration`, `test_audited_cash_and_liquid_treasury_surplus_bridge`, `test_mm_volume_realization_progression`, `test_batch_build_preflight_and_execution`.
-  - Test suite status: 19/19 tests in `test_four_targets.py`; **114 passing tests, 49 subtests passed** cleanly across repository.
+  - Test suite status: 21/21 tests in `test_four_targets.py`; **116 passing tests, 49 subtests passed** cleanly across repository.
+
+### 22. Final Excel-Only Closeout: Valuation Reconciliation, Stub Timing Audit, Batch COM Rebuild, and Acceptance Verification
+- **Valuation Methodology & Delivered Values Reconciled**:
+  - **`LTM`**: Delivered Primary Valuation is **Full-Year Annual FCFF DCF Baseline (Cell `B24`: ₹2,811.09 / share)**. Row 66 is explicitly designated and labeled as **Point-in-Time Stub Sensitivity (Cell `J66`: ₹2,921.84 / share, +3.94%)** under linear Actual/365 calendar proration.
+  - **`CLEAN`**: Delivered Primary Valuation is **Full-Year Manufacturing FCFF DCF Baseline (Cell `B24`: ₹480.89 / share)**. Row 66 is explicitly designated and labeled as **Point-in-Time Stub Sensitivity (Cell `J66`: ₹505.64 / share, +5.15%)** under linear Actual/365 calendar proration.
+  - **`MM`**: Delivered Valuation is **Sum-of-the-Parts (Cell `E12`: ₹2,742.97 / share)**.
+  - **`EDELWEISS`**: Delivered Valuation is **Financial Services SOTP (Cell `E15`: ₹130.53 / share)** with industrial FCFF formally blocked.
+  - Updated Cover & Notes meta rows, Valuation schedule labels (Rows 65, 66, 69), package requests, manifests, and documentation to eliminate any label ambiguities.
+- **Stub Cash Flow & Discount Timing Audited**:
+  - Verified 167 calendar days from 15-Oct-2025 to 31-Mar-2026 under Actual/365 day-count convention ($167/365 = 0.457534$, midpoint $t_1 = 0.2288$, TV exponent $4.4575$).
+  - Clarified that Row 66 linearly prorates full-year FCFF by 167/365 as an institutional timing sensitivity benchmark; the delivered primary valuation maintains statutory annual periodicity matching financial statements and the 25-cell sensitivity matrix.
+- **Empirical Market Data & Beta Consumption Re-Verified**:
+  - All 19 securities in `work/sources/weekly_market_returns_104w.json` verified against raw returns: 104 paired returns, zero post-cutoff data, Blume adjustments, and regression diagnostics recomputed and verified to 4 decimal places.
+  - Beta consumption documented: MM and EDELWEISS SOTP valuations do NOT consume beta; LTM consumes 5-peer Hamada relevered beta 0.9405; CLEAN consumes direct 2Y weekly OLS beta 0.9006.
+- **Fresh Native COM Rebuild in `candidates/closeout_run/`**:
+  - Rebuilt all four packages via `build_package.py --batch --requests examples/mm-package.json examples/ltm-package.json examples/clean-package.json examples/edelweiss-package.json --output-base candidates/closeout_run --allow-proposal --excel-only --clean`.
+  - Recalculated with isolated Excel COM: 0 formula errors, 0 missing caches, 36/36 independent research identities passed.
+  - Performed dynamic perturbation test via Excel COM: terminal growth rate perturbation propagated to valuation and restored cleanly.
+  - Inspected all 24 sheet PDF previews: zero `#####` text clipping, proper landscape layout.
+  - Synchronized deliverables and manifests across `candidates/run_native_<key>/`, `candidates/run_excel_<key>/`, and `companies/<KEY>/`.
+- **Final Recalculated SHA-256 Hashes**:
+  - `MM-Recalculated.xlsx`: `16f521b8315aeec0a8ddb29fdef0ae7a07f1d3b55f72cb075e3107bb15a54204`
+  - `LTM-Recalculated.xlsx`: `8592d6469d4f315f697a3b6ceb8bf9d177a4834f00851ecd6dcc59f008d1c2da`
+  - `CLEAN-Recalculated.xlsx`: `8516d998f6a781d733d614b2f15289ed4054e912e730c1a191c530f4f1b6fb99`
+  - `EDELWEISS-Recalculated.xlsx`: `590473498e8bb2cd4e1d414a9132d404c9473f6043d91c4b30a0905683d9c54c`
+- **Regression Suite & Acceptance State**:
+  - `verify_sources.py`: 6/6 original templates verified byte-for-byte.
+  - `test_four_targets.py`: 21/21 passed in 2.53s.
+  - Full pytest suite: **116 passed, 4 warnings, 49 subtests passed** in 45.33s.
+  - `human_pack_approval` gate remains pending for user review.
 

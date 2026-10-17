@@ -861,8 +861,8 @@ def build_clean_model(out_path: Path) -> Path:
         c.fill = FILL_NAVY
         c.alignment = ALIGN_RIGHT if idx > 1 else ALIGN_LEFT
 
-    # Row 65: Full-Year Annual Baseline
-    ws_val.cell(65, 1, "Full-Year Annual DCF Baseline (FY26E–FY30E Annual @ 11.73% WACC)").font = FONT_BOLD
+    # Row 65: Full-Year Annual Baseline (Delivered Primary Valuation)
+    ws_val.cell(65, 1, "Delivered Primary Valuation: Full-Year Annual DCF Baseline (Cell B24 @ 11.73% WACC)").font = FONT_BOLD
     ws_val.cell(65, 2, "=B14").number_format = FMT_INR_CR
     ws_val.cell(65, 3, "=C14").number_format = FMT_INR_CR
     ws_val.cell(65, 4, "=D14").number_format = FMT_INR_CR
@@ -876,7 +876,7 @@ def build_clean_model(out_path: Path) -> Path:
     ws_val.cell(65, 10).fill = FILL_ACCENT
 
     # Row 66: Stub-Period Discounting (H2 FY26E = 167/365 = 45.75% stub, mid-point t1 = 0.2288)
-    ws_val.cell(66, 1, "Stub-Period DCF Discounting (167/365 = 45.75% Cal Year; Midpoint t1 = 0.2288)").font = FONT_BOLD
+    ws_val.cell(66, 1, "Point-in-Time Stub Sensitivity: Actual/365 Prorated (167/365 = 45.75% Cal Year; Midpoint t1 = 0.2288)").font = FONT_BOLD
     ws_val.cell(66, 2, "=ROUND(B12*0.4575/(1+$I$7)^0.2288,0)").number_format = FMT_INR_CR
     ws_val.cell(66, 3, "=ROUND(C12/(1+$I$7)^0.9575,0)").number_format = FMT_INR_CR
     ws_val.cell(66, 4, "=ROUND(D12/(1+$I$7)^1.9575,0)").number_format = FMT_INR_CR
@@ -893,7 +893,7 @@ def build_clean_model(out_path: Path) -> Path:
     ws_val.cell(67, 2, "=B19/B20").number_format = FMT_PCT
     ws_val.cell(68, 1, "Memo: Implied Terminal EV / FY30E EBITDA Multiple (x)").font = FONT_SMALL_ITALIC
     ws_val.cell(68, 2, "=B18/'Income Statement'!M7").number_format = FMT_MULT
-    ws_val.cell(69, 1, "Valuation Timing Basis: Actual/365 day-count convention (167 calendar days; ~115 trading days; TV exponent 4.4575 ties to FY30E end)").font = FONT_SMALL_ITALIC
+    ws_val.cell(69, 1, "Valuation Timing Basis: Delivered valuation uses Full-Year Annual DCF (FY26E–FY30E Baseline) to preserve statutory statement periodicity and dynamic sensitivity matrix integrity. Row 66 provides a Point-in-Time Stub-Period Sensitivity using Actual/365 linear calendar proration (167 calendar days; ~115 trading days; TV exponent 4.4575 ties to FY30E end; stub value ₹505.64 vs ₹480.89 baseline).").font = FONT_SMALL_ITALIC
 
     for r in range(65, 70):
         for c_i in range(1, 11):
@@ -986,10 +986,10 @@ def build_clean_model(out_path: Path) -> Path:
     style_range(ws_exec, 4, 1, 4, 6, font=FONT_SEC_HDR, fill=FILL_SEC_HDR)
 
     meta_rows = [
-        ("Legal Entity Name", "Clean Science and Technology Limited", "Primary Valuation Methodology", "Manufacturing FCFF DCF"),
+        ("Legal Entity Name", "Clean Science and Technology Limited", "Primary Valuation Methodology", "Full-Year Manufacturing FCFF DCF (Baseline Annual, Cell B24)"),
         ("Ticker / Scrip Code", "NSE: CLEAN | BSE: 543318", "Latest Audited Period", "FY25 (Year Ended March 31, 2025)"),
         ("Sector / Industry", "Specialty Chemicals (Performance, Pharma, FMCG, HALS)", "Key Wholly-Owned Subsidiary", "Clean Fino-Chem Limited (CFCL - HALS)"),
-        ("Face Value per Share (₹)", 1.00, "Implied DCF Value / Share (₹)", "='Manufacturing DCF Valuation'!B24"),
+        ("Face Value per Share (₹)", 1.00, "Implied DCF Fair Value / Share (₹)", "='Manufacturing DCF Valuation'!B24"),
         ("Current Market Price (₹) [15-Oct-2025 Official NSE Close]", 1041.40, "Implied Upside / (Downside) (%)", "=(E8-B10)/B10"),
         ("Market Capitalization (₹ Cr)", "=B10*B12", "Consolidated FY25 Revenue (₹ Cr)", "='Income Statement'!H5"),
         ("Diluted Shares Outstanding (Cr)", 10.63, "Consolidated FY25 PAT (₹ Cr)", "='Income Statement'!H14"),
