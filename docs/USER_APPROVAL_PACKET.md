@@ -1,9 +1,9 @@
-# Human Review & Approval Packet: Four Priority Target Excel Models
+# Human Review & Approval Packet: 17-Sheet Master Template Excel Models (Template V5)
 
 > [!IMPORTANT]
-> **HISTORICAL VALUATION SNAPSHOT NOTICE**: All financial models, closing stock prices, market capitalizations, Treasury yields, and empirical regression datasets in this delivery reflect historical market observations as of **Wednesday, October 15, 2025 (`2025-10-15`)**. They are **NOT** current live market valuations and do not incorporate subsequent market movements.
+> **HISTORICAL VALUATION SNAPSHOT NOTICE**: All financial models, closing stock prices, market capitalizations, Treasury yields, peer trading multiples, and empirical regression datasets in this release reflect historical market observations as of **Wednesday, October 15, 2025 (`2025-10-15`)**. They are **NOT** current or live market valuations and do not incorporate subsequent market events.
 >
-> **APPROVAL GATE STATUS**: In strict adherence to repository safety invariants (`DISALLOWED_REVIEWER_TOKENS` prohibiting agent self-promotion), the **`human_pack_approval` gate remains PENDING**. The models are delivered in proposal/validation state pending explicit sign-off by the human reviewer.
+> **APPROVAL GATE STATUS**: In strict adherence to repository safety invariants (`DISALLOWED_REVIEWER_TOKENS` prohibiting agent self-promotion), the **`human_pack_approval` gate remains PENDING (`ready: false`)**. These models are delivered in proposal/validation state pending explicit sign-off by the human reviewer. PR #3 remains open and unmerged.
 
 ---
 
@@ -12,116 +12,190 @@
 - **Branch**: `agent/argon-continue`
 - **Pull Request**: [Pull Request #3: Complete Four Priority Targets Excel Release](https://github.com/keshavmittal2203-droid/excel-model-maker/pull/3)
 - **Repository Root**: `C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker`
-- **Verification Commit**: `7cf1972de30289cbea3c1d3ed45812f6b62b87b8`
-- **Scope**: Strictly Excel financial research workbooks, single-page landscape schedule previews, and statutory source evidence. Zero PowerPoint decks or presentation assets modified in this release check.
+- **Latest Commit**: `57ba82a`
+- **Scope**: Strictly Excel financial research workbooks (`template_v5`), native sheet previews, and formula-linkage validation. Zero PowerPoint decks or presentation assets modified in this branch.
+- **Master Template**: Byte-for-byte cloned from immutable master `originals/Marksans Keshav.xlsx` (SHA-256: `5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`). Verified unchanged before and after build.
 
 ---
 
-## 2. Deliverable Verification Matrix
+## 2. Deliverable Verification Matrix (Template V5)
 
-Every deliverable workbook, package manifest, and sheet preview has been verified on disk. All recalculated SHA-256 hashes match across `companies/<KEY>/`, `candidates/run_native_<key>/`, and `candidates/run_excel_<key>/`.
+All four priority targets have been delivered as uncompressed 17-sheet master template workbooks under `companies/<TARGET>/template_v5/`. Prior versions (`template_v4`, `template_v3`, `template_v2`, and 6-sheet workbooks) are preserved intact in their respective directories.
 
-| Target Company | Primary Valuation Method | Primary Output Cell & Implied Value | 15-Oct-2025 Official NSE Close | Balance Sheet Discrepancy ($\Delta$) | 6-Sheet Research Identities | Recalculated Workbook SHA-256 (COM 16.0) |
-|---|---|---|---|---|---|---|
-| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | Cell `E12`: **₹2,742.97 / share** | ₹3,497.20 | **0.00** (all 12 periods) | **8 / 8 Passed** | `a2ce7a603bce1989959a1c1f8dc8a8b08dc1333c63a0e1c489f5a0503df81e3f` |
-| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | Cell `B24`: **₹2,811.09 / share** | ₹5,609.50 | **0.00** (all 12 periods) | **10 / 10 Passed** | `7cc9d2bd1f8b195fa10570f9813eb3b5fca64236cc25d39537b4e02e94ead9ce` |
-| **Clean Science and Technology Limited** (`CLEAN`) | Full-Year Manufacturing FCFF DCF Baseline | Cell `B24`: **₹480.89 / share** | ₹1,041.40 | **0.00** (all 12 periods) | **10 / 10 Passed** | `3b783bee179114fcd5abe25a0d5d3c3d9ed401d4e7ce24eb66bcf7f6807689ed` |
-| **Edelweiss Financial Services Limited** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF strictly blocked) | Cell `E15`: **₹130.53 / share** | ₹108.85 | **0.00** (all 12 periods) | **8 / 8 Passed** | `62fb554c61624d837345a125fe75ee6e2a3f5b076f1f8a4380f50504041a62db` |
+| Target Company | Primary Valuation Methodology | Source-of-Truth Cell (`'DCF 1st way'`) | Cover Link Cell (`'Model ->'`) | Implied Value per Share | 15-Oct-2025 Market Close | Linked WACC (`E26`) | Formula Errors (68 Sheets) | Verified Workbook SHA-256 Checksum |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | `E42` (`=G60`) | `C9` (`=E42`) | **₹2,742.97** | ₹3,497.20 | N/A (SOTP) | **0 errors** | `1e9e13b934b24eeb7d5ccd1419b6b3d873d18dd088c01b01c4d0d73386b3de8a` |
+| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹2,811.09** | ₹5,609.50 | **11.87%** | **0 errors** | `214592ce3e00eb1467d9e2b4f00b37382a0279f0e914eed9b68e136c851ebe3e` |
+| **Clean Science and Technology** (`CLEAN`) | Manufacturing FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹480.89** | ₹1,041.40 | **11.73%** | **0 errors** | `da851ea3530c94609b4b25a0f254e8028a51a2e2903b078b65bd06afa3876650` |
+| **Edelweiss Financial Services** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF N/A) | `E42` (`=G60`) | `C9` (`=E42`) | **₹130.53** | ₹108.85 | N/A (SOTP) | **0 errors** | `2763fdc29b3b972930176fcbed3edad4b2cbb0ab32fc9a7d03bf08ce9ebe0660` |
 
-### Clickable Deliverable Paths
+### Clickable Absolute Deliverable Paths
 
 1. **Mahindra & Mahindra Limited (`MM`)**:
-   - Recalculated Model: [`companies/MM/MM-Recalculated.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/MM-Recalculated.xlsx) (38,986 bytes)
-   - Package Manifest: [`companies/MM/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/package.manifest.json)
-   - Source Evidence Registry: [`docs/MM_SOURCE_REGISTRY.md`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/MM_SOURCE_REGISTRY.md)
-   - Sheet Previews (6 single-page landscape PDFs): [`companies/MM/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/previews/)
-     - [Cover & Notes](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/previews/Cover_&_Notes.pdf) | [Income Statement](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/previews/Income_Statement.pdf) | [Balance Sheet](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/previews/Balance_Sheet.pdf) | [Cash Flow](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/previews/Cash_Flow.pdf) | [Segment Operations](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/previews/Segment_Operations.pdf) | [SOTP Valuation](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/previews/SOTP_Valuation.pdf)
+   - 17-Sheet Workbook: [`companies/MM/template_v5/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v5/MM-FullTemplate.xlsx) (128,596 bytes)
+   - Package Manifest: [`companies/MM/template_v5/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v5/package.manifest.json)
+   - Sheet Previews (17 PDFs): [`companies/MM/template_v5/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v5/previews/)
 
 2. **LTIMindtree Limited (`LTM`)**:
-   - Recalculated Model: [`companies/LTM/LTM-Recalculated.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/LTM-Recalculated.xlsx) (38,623 bytes)
-   - Package Manifest: [`companies/LTM/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/package.manifest.json)
-   - Source Evidence Registry: [`docs/LTM_SOURCE_REGISTRY.md`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/LTM_SOURCE_REGISTRY.md)
-   - Sheet Previews (6 single-page landscape PDFs): [`companies/LTM/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/previews/)
-     - [Cover & Notes](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/previews/Cover_&_Notes.pdf) | [Income Statement](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/previews/Income_Statement.pdf) | [Balance Sheet](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/previews/Balance_Sheet.pdf) | [Cash Flow](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/previews/Cash_Flow.pdf) | [IT Services Operations](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/previews/IT_Services_Operations.pdf) | [FCFF Valuation](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/previews/FCFF_Valuation.pdf)
+   - 17-Sheet Workbook: [`companies/LTM/template_v5/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v5/LTM-FullTemplate.xlsx) (128,830 bytes)
+   - Package Manifest: [`companies/LTM/template_v5/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v5/package.manifest.json)
+   - Sheet Previews (17 PDFs): [`companies/LTM/template_v5/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v5/previews/)
 
 3. **Clean Science and Technology Limited (`CLEAN`)**:
-   - Recalculated Model: [`companies/CLEAN/CLEAN-Recalculated.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/CLEAN-Recalculated.xlsx) (39,178 bytes)
-   - Package Manifest: [`companies/CLEAN/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/package.manifest.json)
-   - Source Evidence Registry: [`docs/CLEAN_SOURCE_REGISTRY.md`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/CLEAN_SOURCE_REGISTRY.md)
-   - Sheet Previews (6 single-page landscape PDFs): [`companies/CLEAN/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/previews/)
-     - [Cover & Notes](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/previews/Cover_&_Notes.pdf) | [Income Statement](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/previews/Income_Statement.pdf) | [Balance Sheet](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/previews/Balance_Sheet.pdf) | [Cash Flow](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/previews/Cash_Flow.pdf) | [Manufacturing & Capacity](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/previews/Manufacturing_&_Capacity.pdf) | [Manufacturing DCF Valuation](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/previews/Manufacturing_DCF_Valuation.pdf)
+   - 17-Sheet Workbook: [`companies/CLEAN/template_v5/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v5/CLEAN-FullTemplate.xlsx) (127,137 bytes)
+   - Package Manifest: [`companies/CLEAN/template_v5/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v5/package.manifest.json)
+   - Sheet Previews (17 PDFs): [`companies/CLEAN/template_v5/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v5/previews/)
 
 4. **Edelweiss Financial Services Limited (`EDELWEISS`)**:
-   - Recalculated Model: [`companies/EDELWEISS/EDELWEISS-Recalculated.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/EDELWEISS-Recalculated.xlsx) (40,891 bytes)
-   - Package Manifest: [`companies/EDELWEISS/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/package.manifest.json)
-   - Source Evidence Registry: [`docs/EDELWEISS_SOURCE_REGISTRY.md`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/EDELWEISS_SOURCE_REGISTRY.md)
-   - Sheet Previews (6 single-page landscape PDFs): [`companies/EDELWEISS/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/previews/)
-     - [Cover & Notes](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/previews/Cover_&_Notes.pdf) | [Income Statement](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/previews/Income_Statement.pdf) | [Balance Sheet](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/previews/Balance_Sheet.pdf) | [Cash Flow](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/previews/Cash_Flow.pdf) | [Segment Operations](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/previews/Segment_Operations.pdf) | [SOTP Valuation](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/previews/SOTP_Valuation.pdf)
+   - 17-Sheet Workbook: [`companies/EDELWEISS/template_v5/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v5/EDELWEISS-FullTemplate.xlsx) (129,123 bytes)
+   - Package Manifest: [`companies/EDELWEISS/template_v5/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v5/package.manifest.json)
+   - Sheet Previews (17 PDFs): [`companies/EDELWEISS/template_v5/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v5/previews/)
 
 ---
 
-## 3. Methodological Assumptions & Valuation Specifics
+## 3. Gordon Growth & Terminal Value Formula-Chain Proof
 
-### A. LTM & CLEAN: Baseline Annual DCF vs. Point-in-Time Stub Sensitivity
-Both LTM and CLEAN provide two transparent valuation perspectives on Sheet 6:
-1. **Primary Delivered Valuation: Full-Year Annual DCF Baseline (Cell `B24`)**:
-   - **LTM**: **₹2,811.09 / share**
-   - **CLEAN**: **₹480.89 / share**
-   - **Rationale**: Preserves audited statutory statement periodicity (April–March fiscal year) and drives the dynamic 25-cell sensitivity matrix (`Rows 28–35`), where WACC and Terminal Growth Rate vary around base parameters with exact `0.00` check rows.
-2. **Secondary Point-in-Time Stub Sensitivity: Actual/365 Proration (Cell `J66`)**:
-   - **LTM**: **₹2,921.84 / share** (+3.94% vs Baseline)
-   - **CLEAN**: **₹505.64 / share** (+5.15% vs Baseline)
-   - **Rationale**: Evaluates timing impact from October 15, 2025 to March 31, 2026 (exactly 167 calendar days; $167/365 = 0.457534$, midpoint discounting factor $t_1 = 0.2288$, terminal value exponent $4.4575$). Linear proration of FY26E cash flow increases present value slightly by shortening the discount period for cash generated after October 15.
-   - **Integration**: Explicitly labeled on Sheet 6 `Rows 63–69`, `Cover & Notes!E8`, and in package manifests.
+All formula literals in the terminal value calculations on `'DCF 1st way'` have been completely replaced with pure native cell references:
 
-### B. Mahindra & Mahindra (`MM`): Standalone SOTP & Net Cash Bridge
-- **Core Operations**: Auto Core EBITDA (₹13,667 Cr @ 14.0x = ₹1,91,338 Cr) + Farm Core EBITDA (₹7,403 Cr @ 13.0x = ₹96,239 Cr). Sourced from FY25 Standalone Operating Profit (₹18,416 Cr = Auto ₹11,700 Cr + Farm ₹6,716 Cr) projected via volume $\times$ realization drivers.
-- **Listed Associates**: MMFS (52.16% stake in ₹36,305 Cr MCap @ ₹293.85 close $\times$ 80% = ₹15,149.35 Cr) + TechM (25.48% stake in ₹1,42,836 Cr MCap @ ₹1,459.00 close $\times$ 80% = ₹29,115.69 Cr).
-- **Audited Standalone Net Cash Bridge**: Standalone Borrowings (₹1,682 Cr) less Standalone Cash & Treasury (₹10,791 Cr) = **+₹9,109.00 Cr Net Cash** (`SOTP Valuation!Row 45`), replacing the unevidenced -₹12,000 Cr corporate debt plug.
-- **Implied SOTP Fair Value**: ₹3,40,951.04 Cr / 124.30 Cr shares = **₹2,742.97 / share** (vs 15-Oct-2025 NSE Close ₹3,497.20).
+```mermaid
+flowchart TD
+    subgraph Drivers["Operating Forecast & Inputs"]
+        EBIT["Terminal EBIT (K5)"] --> NOPAT["NOPAT = K5*(1-K7) (K9)"]
+        Tax["Statutory Tax Rate (K7)"] --> NOPAT
+        NOPAT --> FCFF5["Terminal FCFF = K9*(1-K11) (K13)"]
+        Reinv["Reinvestment Rate (K11)"] --> FCFF5
+        TermG["Terminal Growth Rate g (E20)"] --> TermGRef["Terminal g (E27 = =E20)"]
+        WACCSheet["WACC-DCF!J39"] --> WACCCell["WACC (E26 = ='WACC-DCF'!J39)"]
+    end
 
-### C. Edelweiss Financial Services (`EDELWEISS`): Group SOTP & HoldCo Debt Bridge
-- **Vertical Breakdown (15% Conglomerate Discount)**:
-  - Alternatives (EAAA 100%): ₹230 Cr PAT @ 22.0x P/E $\times$ 85% = ₹4,301.00 Cr
-  - Asset Reconstruction (EARCL 79.8% net of CDPQ 20.2%): ₹2,800 Cr Net Worth @ 1.2x P/B $\times$ 85% = ₹2,856.00 Cr
-  - Mutual Fund (EAML 85% post-WestBridge): ₹1,41,000 Cr AAUM @ 4.0% $\times$ 85% = ₹4,794.00 Cr
-  - Insurance: 100% General + 75% Life (Tokio Marine 25% NCI excluded) @ 1.0x Actuarial Indian Embedded Value (**IEV**, NOT Enterprise Value) $\times$ 85% = ₹1,275.00 Cr
-  - Credit & Housing (Wholesale rundown + Retail MSME): ₹3,200 Cr Allocated Net Worth @ 0.8x P/B $\times$ 85% = ₹2,176.00 Cr
-  - **Gross Vertical Sum**: ₹15,402.00 Cr
-- **Audited EFSL Standalone HoldCo Net Debt Bridge**: Standalone Gross Borrowings (₹3,072 Cr) less Standalone Cash (₹5 Cr) = **-₹3,067.00 Cr Standalone HoldCo Net Debt** (`SOTP Valuation!Row 39`).
-- **Strict Prohibition of Industrial FCFF**: Operating borrowings (₹18,004 Cr in FY25) fund loans and treasury assets; operating cash flow is distorted by customer loan movements. Industrial FCFF is formally blocked.
-- **Implied SOTP Fair Value**: ₹12,335.00 Cr / 94.50 Cr shares = **₹130.53 / share** (vs 15-Oct-2025 NSE Close ₹108.85).
+    subgraph TVChain["Native Gordon Growth Engine"]
+        FCFF5 --> FCFFNext["FCFF(n+1) = K13*(1+E27) (E25)"]
+        TermGRef --> FCFFNext
+        FCFFNext --> TV["Terminal Value = E25/(E26-E27) (E29)"]
+        WACCCell --> TV
+        TermGRef --> TV
+        WACCCell --> DF["Discount Factor = 1/(1+E26)^K2 (K15)"]
+        Period["Period n=5 (K2)"] --> DF
+        TV --> PVTV["PV of TV = E29*K15 (E35)"]
+        DF --> PVTV
+    end
+
+    subgraph Valuation["Bridge to Implied Share Value"]
+        PVTV --> SummaryPVTV["Summary PV TV = E35 (G51)"]
+        PVTV --> EV["Enterprise Value = SUM(E34:E35) (E36)"]
+        PVFCFF["PV of Explicit FCFF (E34)"] --> EV
+        EV --> EqVal["Equity Value = E36+E38-E39 (E40)"]
+        Cash["Audited Cash & Treasury (E38)"] --> EqVal
+        Debt["Audited Borrowings (E39)"] --> EqVal
+        EqVal --> SOTU["Single Source of Truth = E40/E41 (E42)"]
+        Shares["Diluted Shares = 'Data Sheet'!B6 (E41)"] --> SOTU
+        SOTU --> Cover["Executive Cover Link = 'DCF 1st way'!E42 ('Model ->'!C9)"]
+    end
+```
+
+### Full Calculation Chain Trace
+
+| Step | Parameter / Formula | LTIMindtree (`LTM`) | Clean Science (`CLEAN`) | Verification Status |
+|---|---|---|---|:---:|
+| 1 | Terminal Year Operating EBIT (`K5`) | `9,499.00` Cr | `693.00` Cr | Sourced from Operating Forecast |
+| 2 | Statutory Marginal Tax Rate (`K7`) | `25.50%` | `25.50%` | Section 115BAA Indian Corporate Tax |
+| 3 | Operating NOPAT (`K9 = =K5*(1-K7)`) | `7,076.755` Cr | `516.285` Cr | Exact Formula Match |
+| 4 | Terminal Reinvestment Rate (`K11`) | `12.7566%` | `20.0054%` | Asset-light IT / Mature Chemical CapEx |
+| 5 | Terminal Year FY30E FCFF (`K13 = =K9*(1-K11)`) | `6,174.00` Cr | `413.00` Cr | Exact Formula Match |
+| 6 | Terminal Growth Rate (`E20`, assumption) | `5.00%` (`0.050`) | `5.00%` (`0.050`) | Editable Macroeconomic Constraint |
+| 7 | Next Year Forecast FCFF (`E25 = =K13*(1+E27)`) | `6,482.70` Cr | `433.65` Cr | Exact Formula Match (`6174*1.05` / `413*1.05`) |
+| 8 | Empirical WACC (`E26 = ='WACC-DCF'!J39`) | **`11.87%`** (`0.1187`) | **`11.73%`** (`0.1173`) | Derived from 10Y G-Sec 6.78% + Damodaran ERP 5.50% |
+| 9 | Gordon Growth Denominator (`E26 - E27`) | `0.1187 - 0.050 = 0.0687` | `0.1173 - 0.050 = 0.0673` | Exact Mathematical Denominator |
+| 10 | Undiscounted Terminal Value (`E29 = =E25/(E26-E27)`) | `₹94,362.47 Cr` | `₹6,443.54 Cr` | Exact Formula Match (`6482.70/0.0687` / `433.65/0.0673`) |
+| 11 | Year 5 Discount Factor (`K15 = =1/(1+$E$26)^K2`, `K2=5`) | `0.57073146` (`1/1.1187^5`) | `0.57431612` (`1/1.1173^5`) | Exact 5-Year Full Annual Exponent |
+| 12 | Present Value of Terminal Value (`E35 = =E29*K15`) | **`₹53,855.63 Cr`** | **`₹3,700.63 Cr`** | **Reproduces Reported PV of TV Exactly** |
+| 13 | Auxiliary Summary Schedule Reference (`G51 = =E35`) | **`₹53,855.63 Cr`** | **`₹3,700.63 Cr`** | Direct Cell Link (0 literals) |
+| 14 | Cumulative PV of Explicit FCFF (`E34 = =SUM(G17:K17)`) | `₹18,162.75 Cr` | `₹1,012.21 Cr` | Exact Sum of Explicit FY26E–FY30E PV |
+| 15 | Implied Enterprise Value (`E36 = =SUM(E34:E35)`) | `₹72,018.38 Cr` | `₹4,712.84 Cr` | Exact Sum (`18162.75 + 53855.63`) |
+| 16 | Audited Cash & Liquid Treasury Added (`E38`) | `+₹13,433.00 Cr` | `+₹401.00 Cr` | Cash + Liquid Current Investments |
+| 17 | Audited Total Borrowings Deducted (`E39`) | `-₹2,187.00 Cr` | `-₹2.00 Cr` | Audited Balance Sheet Total Debt |
+| 18 | Implied Equity Value (`E40 = =E36+E38-E39`) | `₹83,264.38 Cr` | `₹5,111.84 Cr` | Exact Formula Match |
+| 19 | Diluted Share Count (`E41 = ='Data Sheet'!B6`) | `29.62 Cr shares` | `10.63 Cr shares` | Sourced from BSE Statutory Notes |
+| 20 | Single Source-of-Truth Cell (`E42 = =E40/E41`) | **`₹2,811.09 / share`** | **`₹480.89 / share`** | **Exact Baseline Reproduction** |
+| 21 | Executive Cover Sheet Link (`'Model ->'!C9 = ='DCF 1st way'!E42`) | **`₹2,811.09 / share`** | **`₹480.89 / share`** | **Dynamic Live Reference** |
 
 ---
 
-## 4. Verification Status & Integrity Evidence
+## 4. Key Consequential Assumptions & Sensitivity Locations
 
-1. **Original Templates Preservation**: All 6 original files verified byte-for-byte against `source-catalog.json` via [`verify_sources.py`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/verify_sources.py).
-2. **Formula Errors & Uncalculated Cells**: **0 errors**, **0 missing caches** across all 24 sheets in all 4 workbooks.
-3. **Double-Entry Balance Sheet Ties**: All 4 models balance with **$\Delta = 0.00$** across all 12 periods (`FY19–FY30E`). Historicals (`FY19–FY25`) contain zero balancing plugs; forecasts (`FY26E–FY30E`) close dynamically via double-entry `Cash_t = Cash_{t-1} + Net_Cash_Flow_t` on `Row 14`.
-4. **Independent Research Identities**: **36 / 36 passed** (`run_six_sheet_research_identities`: 8 MM, 10 LTM, 10 CLEAN, 8 EDELWEISS).
-5. **Full Repository Regression Suite**: **116 passed, 4 warnings, 49 subtests passed** in 44.69s.
-6. **Visual Inspection**: All 24 sheet PDF previews rasterized and visually confirmed to fit on **exactly 1 landscape page each** with zero clipping or text collisions.
+Every consequential assumption is housed in an explicitly labeled cell. Overwriting formula cells is **NOT** required.
+
+### 1. Mahindra & Mahindra Limited (`MM`)
+- **Automotive Core EV/EBITDA Multiple**: Cell `'DCF 1st way'!F50` (Baseline: `14.0x`).
+  - *Perturbation Effect*: Changing to `15.0x` increases equity value by ₹13,667 Cr and updates `'DCF 1st way'!E42` and `'Model ->'!C9` from ₹2,742.97 to **₹2,852.92 / share** (+₹109.95/sh).
+- **Farm Equipment Core EV/EBITDA Multiple**: Cell `'DCF 1st way'!F51` (Baseline: `13.0x`).
+- **HoldCo Discount on Listed Stakes (MMFS & TechM)**: Cells `'DCF 1st way'!F54` (`41.728%`) and `'DCF 1st way'!F55` (`20.384%`). Incorporates statutory ownership stakes (MMFS 52.16%, TechM 25.48%) subject to a standard 20% HoldCo discount.
+- **Standalone Net Cash Bridge**: Cell `'DCF 1st way'!G56` (`=E56-F56`). Replaces unevidenced corporate debt with audited standalone net cash (+₹9,109 Cr = Cash ₹10,791 Cr less Standalone Debt ₹1,682 Cr).
+
+### 2. LTIMindtree Limited (`LTM`)
+- **Cost of Capital (WACC)**: Cell `'WACC-DCF'!J39` (Baseline: `11.87%`).
+  - Driven by Equity Risk Premium in `'WACC-DCF'!J23` (Baseline: `5.50%`) and Hamada Relevered Beta in `'WACC-DCF'!J24` (Baseline: `0.9405`).
+  - *Perturbation Effect*: Increasing ERP to `6.00%` moves WACC to `12.33%`, dropping `'DCF 1st way'!E42` and `'Model ->'!C9` from ₹2,811.09 to **₹2,654.96 / share** (-₹156.13/sh).
+- **Terminal Growth Rate**: Cell `'DCF 1st way'!E20` (Baseline: `5.00%`).
+  - *Perturbation Effect*: Changing to `5.50%` updates `'DCF 1st way'!E42` and `'Model ->'!C9` from ₹2,811.09 to **₹2,963.14 / share** (+₹152.05/sh).
+- **Terminal Year FY30E Operating EBIT**: Cell `'DCF 1st way'!K5` (Baseline: `₹9,499.00 Cr`).
+  - *Perturbation Effect*: Increasing by ₹50 Cr to `₹9,549.00 Cr` updates `'DCF 1st way'!E42` and `'Model ->'!C9` from ₹2,811.09 to **₹2,821.28 / share** (+₹10.19/sh).
+
+### 3. Clean Science and Technology Limited (`CLEAN`)
+- **CFCL Unit 4 Commercial Ramp EBIT**: Cell `'DCF 1st way'!K5` (Baseline: `₹693.00 Cr`).
+  - Driven by 10,500 MTPA HALS capacity ramping revenue to ₹1,885 Cr by FY30E.
+  - *Perturbation Effect*: Increasing to `₹743.00 Cr` updates `'DCF 1st way'!E42` and `'Model ->'!C9` from ₹480.89 to **₹507.62 / share** (+₹26.73/sh).
+- **Cost of Capital (WACC)**: Cell `'WACC-DCF'!J39` (Baseline: `11.73%`).
+  - Driven by ERP in `'WACC-DCF'!J23` (`5.50%`) and 2Y Weekly OLS Beta in `'WACC-DCF'!J24` (`0.9006`).
+  - *Perturbation Effect*: Increasing ERP to `6.00%` moves WACC to `12.18%`, dropping `'DCF 1st way'!E42` and `'Model ->'!C9` from ₹480.89 to **₹451.35 / share** (-₹29.54/sh).
+- **Terminal Growth Rate**: Cell `'DCF 1st way'!E20` (Baseline: `5.00%`).
+  - *Perturbation Effect*: Changing to `5.50%` updates `'DCF 1st way'!E42` and `'Model ->'!C9` from ₹480.89 to **₹510.62 / share** (+₹29.73/sh).
+
+### 4. Edelweiss Financial Services Limited (`EDELWEISS`)
+- **Alternatives Asset Management Target Multiple**: Cell `'DCF 1st way'!F50` (Baseline: `18.70x P/E`).
+  - *Perturbation Effect*: Increasing to `20.00x` updates `'DCF 1st way'!E42` and `'Model ->'!C9` from ₹130.53 to **₹133.69 / share** (+₹3.16/sh).
+- **Asset Reconstruction (EARCL) Target Multiple**: Cell `'DCF 1st way'!F51` (Baseline: `1.02x P/B` on ₹2,800 Cr Net Worth, net of CDPQ 20.2% stake).
+- **Mutual Fund (EAML) AUM Multiple**: Cell `'DCF 1st way'!F52` (Baseline: `3.40%` on ₹1,41,000 Cr AAUM).
+- **Life & General Insurance Multiple**: Cell `'DCF 1st way'!F53` (Baseline: `0.85x` Actuarial Indian Embedded Value [**IEV** = ₹1,500 Cr], net of Tokio Marine 25% NCI).
+- **Audited Standalone Corporate Net Debt Bridge**: Cell `'DCF 1st way'!G56` (`=F56-E56`). Reflects standalone parent borrowings of ₹3,072 Cr less standalone cash of ₹5 Cr = **-₹3,067 Cr net debt**, eliminating arbitrary conglomerate debt plugs.
 
 ---
 
-## 5. Human Reviewer Approval Checklist
+## 5. Material Limitations & Source Boundaries
 
-You are being asked to review and approve the following concrete deliverables and stated assumptions:
-
-- [ ] **M&M Package**: SOTP valuation at **₹2,742.97 / share**, driven by FY26E Core Auto/Farm EBITDA multiples (14x / 13x), 15-Oct-2025 MMFS/TechM market caps with 20% HoldCo discount, and Audited Standalone Net Cash (+₹9,109 Cr).
-- [ ] **LTM Package**: Full-Year Annual FCFF DCF baseline at **₹2,811.09 / share** (WACC 11.87%, TGR 5.00%, Cash+Investments ₹13,433 Cr), with point-in-time stub sensitivity documented at ₹2,921.84 / share.
-- [ ] **CLEAN Package**: Full-Year Manufacturing FCFF DCF baseline at **₹480.89 / share** (WACC 11.73%, TGR 5.00%, 10,500 MTPA HALS capacity held constant in Base Case), with point-in-time stub sensitivity documented at ₹505.64 / share.
-- [ ] **EDELWEISS Package**: Financial Services SOTP valuation at **₹130.53 / share**, driven by vertical drivers with 15% Conglomerate Discount, Audited Standalone HoldCo Net Debt (-₹3,067 Cr), and formal exclusion of industrial FCFF.
-- [ ] **Point-in-Time Valuation Horizon**: Acknowledgment that all models reflect historical market observations as of **October 15, 2025**.
+1. **Historical 15-Oct-2025 Market Observation**: All models reflect trailing historical market prices, shares outstanding, and macroeconomic yields as of October 15, 2025. They are not real-time valuation updates.
+2. **Annual DCF Baseline vs. Actual/365 Stub Sensitivity**:
+   - The primary delivered model uses the annual DCF baseline (April–March full-year discount periods $t = 1, 2, 3, 4, 5$), maintaining statement periodicity and driving the sensitivity matrix.
+   - Point-in-time Actual/365 linear proration from October 15, 2025 (167 days remaining in FY26) shortens the first-period discounting horizon ($t_1 = 0.2288$, terminal exponent $4.4575$), creating a small timing uplift (+3.94% for LTM $\to$ ₹2,921.84; +5.15% for CLEAN $\to$ ₹505.64). This is documented as an analytical timing sensitivity, not an accounting error.
+3. **Strict 8-Website Source Allowlist**: All sourced financial data originates strictly from the 8 websites referenced in the original Marksans template (`screener.in`, `finance.yahoo.com`, `nseindia.com`, `investing.com`, `tradingeconomics.com`, `topstockresearch.com`, `primeinvestor.in`, `bseindia.com`). Secondary aggregations are cross-verified with statutory BSE/NSE filings.
+4. **Preserved Master Template Print Setup**: Native print setups, orientations, paper sizes, and scaling factors have been preserved 100% unmodified from `originals/Marksans Keshav.xlsx`. Previews reflect the native unforced page breaks and margins of the master template.
 
 ---
 
-## 6. Single Next Decision
+## 6. Short Checklist for Human Sign-Off
 
-The deliverables and verification checks are complete and consistent. **No further code changes or open-ended audit cycles are required.**
+- [ ] **Verify Master Template Hash**: Confirm `originals/Marksans Keshav.xlsx` matches SHA-256 `5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`.
+- [ ] **Verify 17-Sheet Count & Order**: Confirm all 17 worksheets are present in identical order across all 4 workbooks.
+- [ ] **Open Workbooks in Excel**: Confirm each file opens without repair warnings or broken external links.
+- [ ] **Inspect Single Source-of-Truth**: Confirm cell `'DCF 1st way'!E42` and cover cell `'Model ->'!C9` match the reported primary fair values.
+- [ ] **Test Dynamic Sensitivity**: Change an editable assumption (e.g., `'WACC-DCF'!J23` or `'DCF 1st way'!F50`), verify live update in `E42` and `C9`, then restore and verify exact return to baseline.
+- [ ] **Confirm Zero Formula Errors**: Verify 0 `#REF!`, `#VALUE!`, `#DIV/0!`, `#NAME?`, `#NUM!` errors across all sheets.
+- [ ] **Sign-Off Decision**: To approve, close `human_pack_approval` gate and merge PR #3.
 
-The single decision required from you is:
-> **Do you approve these four Excel financial model packages and their documented assumptions?**
+---
 
-Upon your approval, the `human_pack_approval` gate will be recorded as closed, completing the milestone.
+## 7. PowerShell Commands to Open Workbooks Locally
+
+```powershell
+# Mahindra & Mahindra Limited (Template V5)
+Start-Process excel.exe "C:\Users\kesha\Documents\Codex\2026-10-16\https-x-com-painn-x-status\outputs\excel-model-maker\companies\MM\template_v5\MM-FullTemplate.xlsx"
+
+# LTIMindtree Limited (Template V5)
+Start-Process excel.exe "C:\Users\kesha\Documents\Codex\2026-10-16\https-x-com-painn-x-status\outputs\excel-model-maker\companies\LTM\template_v5\LTM-FullTemplate.xlsx"
+
+# Clean Science and Technology Limited (Template V5)
+Start-Process excel.exe "C:\Users\kesha\Documents\Codex\2026-10-16\https-x-com-painn-x-status\outputs\excel-model-maker\companies\CLEAN\template_v5\CLEAN-FullTemplate.xlsx"
+
+# Edelweiss Financial Services Limited (Template V5)
+Start-Process excel.exe "C:\Users\kesha\Documents\Codex\2026-10-16\https-x-com-painn-x-status\outputs\excel-model-maker\companies\EDELWEISS\template_v5\EDELWEISS-FullTemplate.xlsx"
+```
