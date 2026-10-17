@@ -523,6 +523,44 @@ class FourTargetsTests(unittest.TestCase):
                 )
             self.assertIn("protected", str(ctx.exception))
 
+    def test_seventeen_sheet_template_models_exist_and_preserve_all_sheets(self):
+        """All four template-adapted workbooks must exist, preserve all 17 sheets, and match original sheet order."""
+        import openpyxl
+        orig_wb = openpyxl.load_workbook(ROOT / "originals" / "Marksans Keshav.xlsx", read_only=True)
+        expected_sheets = orig_wb.sheetnames
+        self.assertEqual(len(expected_sheets), 17)
+
+        for key in TARGET_KEYS:
+            wb_path = ROOT / "companies" / key / "template_v2" / f"{key}-FullTemplate.xlsx"
+            self.assertTrue(wb_path.exists(), f"17-sheet full template workbook missing for {key}")
+            wb = openpyxl.load_workbook(wb_path, read_only=True)
+            self.assertEqual(len(wb.sheetnames), 17, f"{key} sheet count mismatch")
+            self.assertEqual(wb.sheetnames, expected_sheets, f"{key} sheet names/order mismatch")
+
+    def test_seventeen_sheet_template_models_have_zero_formula_errors(self):
+        """All four 17-sheet full template workbooks must have zero formula errors across all sheets."""
+        import openpyxl
+        err_tokens = ['#REF!', '#VALUE!', '#DIV/0!', '#NAME?', '#NUM!']
+        for key in TARGET_KEYS:
+            wb_path = ROOT / "companies" / key / "template_v2" / f"{key}-FullTemplate.xlsx"
+            wb = openpyxl.load_workbook(wb_path, data_only=True)
+            for sname in wb.sheetnames:
+                ws = wb[sname]
+                for r in range(1, ws.max_row + 1):
+                    for c in range(1, ws.max_column + 1):
+                        v = str(ws.cell(r, c).value or "")
+                        for err in err_tokens:
+                            self.assertNotIn(err, v, f"{key} [{sname}!{openpyxl.utils.get_column_letter(c)}{r}] has formula error: {v}")
+
+    def test_seventeen_sheet_previews_exist_for_all_four_targets(self):
+        """Each target in template_v2 must have all 17 sheet PDF previews."""
+        for key in TARGET_KEYS:
+            preview_dir = ROOT / "companies" / key / "template_v2" / "previews"
+            self.assertTrue(preview_dir.exists(), f"Preview directory missing for {key}")
+            pdfs = list(preview_dir.glob("*.pdf"))
+            self.assertEqual(len(pdfs), 17, f"{key} must have exactly 17 preview PDFs, found {len(pdfs)}")
+
 
 if __name__ == "__main__":
     unittest.main()
+

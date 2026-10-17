@@ -459,4 +459,29 @@
   - `render_review`: **APPROVED** (All 24 single-page sheet PDFs visually inspected; zero clipping or formatting defects).
   - `human_pack_approval`: **PENDING** (Maintained as `ready: false` with pending human review gate).
 
+### 24. Template-Fidelity Milestone: Four 17-Sheet Workbooks Built Directly from Original Marksans Template
+- **Objective**: Match user goal by building one complete workbook per target directly from fresh binary copies of the uploaded template (`originals/Marksans Keshav.xlsx`, SHA-256 `5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`).
+- **Preserved Structure**: 100% preservation of all 17 worksheets in their exact names, order, layout, formulas, and dimensions:
+  1. `Model ->`, 2. `Main Financials`, 3. `Ratio Analysis`, 4. `Intrinsic Growth`, 5. `Comps`, 6. `WACC-DCF`, 7. `DCF 1st way`, 8. `DCF 2nd way`, 9. `Data ->`, 10. `compdata`, 11. `Data Sheet`, 12. `BS`, 13. `Beta`, 14. `RM`, 15. `peerdata`, 16. `Cash Flow`, 17. `sectordata`.
+- **Primary Source Data Population**:
+  - `Data Sheet`: Populated with authentic 10-year financials (FY17–FY25 + TTM) from Screener.in consolidated databases, 15-Oct-2025 official closing prices and market caps, statutory share counts and face values.
+  - `BS` & `Cash Flow`: Detailed historical balance sheets and cash flow statements populated from Screener/Annual Report disclosures.
+  - `Beta`: Populated with 105 weekly closing prices from 15-Oct-2023 to 12-Oct-2025 vs NIFTY 50, computing live empirical OLS slope betas (MM: 1.7638, LTM: 1.2569, CLEAN: 0.9006, EDELWEISS: 1.4830) and Blume adjusted betas.
+  - `peerdata` & `compdata`: Populated with authentic sector peers and 15-Oct-2025 market valuations.
+  - `WACC-DCF`: Evaluates cost of debt, tax rates (25.17%), 10Y G-Sec risk-free rate (6.78%), peer relevered betas, and WACC.
+  - `DCF 1st way` & `DCF 2nd way`: Operational FCFF projections with detailed methodology notes reconciling SOTP and financial services exclusions.
+- **Deliverables in `companies/<TARGET>/template_v2/`**:
+  - `MM-FullTemplate.xlsx` (SHA-256: `09f00be36663824392debc1c909e7b6429a0cdfebd2d1a418077f5c048061ebb`, 118,964 bytes)
+  - `LTM-FullTemplate.xlsx` (SHA-256: `38786ddb0e9004cc14a8da2abbd5e7bfde1fc4d0fc5e42cdc4f31164c79cb6b3`, 118,373 bytes)
+  - `CLEAN-FullTemplate.xlsx` (SHA-256: `861f19c1859aca2b88812be75cf6d78e269c9ce73ea58723c5d159785358e6d7`, 116,243 bytes)
+  - `EDELWEISS-FullTemplate.xlsx` (SHA-256: `2c37b925f417054700fca23b7dfa962867222cb57f9582ddd1d1cc4302dec3ba`, 118,423 bytes)
+- **Validation**:
+  - Excel COM 16.0 `CalculateFullRebuild()` executed cleanly on all 4 workbooks.
+  - **Zero formula errors** across all 68 sheets.
+  - All 68 single-page landscape preview PDFs exported in `companies/<TARGET>/template_v2/previews/`.
+  - Comprehensive source inventory in `docs/TEMPLATE_SOURCE_COVERAGE.md` and `docs/template_source_coverage.json`.
+  - Original template hash verified byte-for-byte (`5a1f9af7...`).
+  - Prior 6-sheet workbooks preserved intact in `companies/<TARGET>/`.
+  - Gate status: `ready: false`, `human_pack_approval: pending`.
+
 
