@@ -329,4 +329,28 @@
   - Added `test_valuation_formulas_are_dynamic_and_linked_without_hardcoded_math` and `test_all_four_models_have_harmonized_forecast_periods` to `test_four_targets.py`.
   - All **106 tests passing cleanly** (49 subtests).
 
+### 19. Look-Ahead Removal, Connected 5-Year Forecasts, CAPM WACC & Comps Schedules, Independent 25-Cell Sensitivity Matrices, 4 Workbook-Linked Presentations & Unified Single-Command Workflow
+- **Elimination of Post-Cutoff `Mar 2026` Look-Ahead Data & Historical BS Plugs**:
+  - Audited `work/sources/<KEY>_consolidated.json` and confirmed that historical columns (`B`–`H`, `FY19`–`FY25`) strictly contain `Mar 2019`–`Mar 2025` audited figures predating the **15-Oct-2025** snapshot cutoff.
+  - Replaced `Mar 2026` look-ahead actuals previously placed in `FY26E` (Col `I`) with connected forecast formulas driven by Sheet 5 operating schedules (`Segment Operations` / `IT Services Operations` / `Manufacturing & Capacity`).
+  - Replaced historical `Balance Sheet` Row 13 (`Other Assets`) residual plugs (`=B8-B10-B11-B12`) across `FY19`–`FY25` (Cols `B`–`H`) with static reported values from `work/sources/<KEY>_consolidated.json`; all 12 periods tie to $\Delta = 0.00$.
+- **Connected Valuation Schedules, CAPM WACC Build-Up, Peer Comps & Independent 25-Cell Sensitivity Matrices**:
+  - **M&M (`MM`)**: Connected Auto & Farm segment volume * realization on `Segment Operations` to `Income Statement`; added listed peer EV/EBITDA table (`MARUTI`, `BAJAJ-AUTO`, `TATAMOTORS`, `ESCORTS`) and Bear/Base/Bull scenarios on `SOTP Valuation`. SOTP Fair Value = **₹2,929.98/sh** ($\Delta = ₹0.00$).
+  - **LTIMindtree (`LTM`)**: Explicitly labeled `FY19`–`FY21` as Pre-Merger LTI, `FY22` as Restated Combined Amalgamation, and `FY23`–`FY25` as Merged LTIMindtree; connected 5-year USD Constant-Currency growth * USD/INR FX to INR revenue; added CAPM WACC schedule (`11.50%` in `H11:J21` feeding `$I$7`) and Tier-1 IT peer table (`TCS`, `INFY`, `HCLTECH`, `TECHM`). Connected FCFF DCF Fair Value = **₹2,813.51/sh** (prior `₹2,752.66`, $\Delta = +₹60.85 / +2.21\%$).
+  - **Clean Science (`CLEAN`)**: Separated Parent Kurkumbh Units 1–3 (`29,900 MTPA`) from Subsidiary Clean Fino-Chem Unit 4 HALS (`10,500 MTPA` expanding to `15,000 MTPA`, utilization ramping `35%` $\to$ `55%` $\to$ `90%`); added CAPM WACC schedule (`12.00%` in `H11:J21` feeding `$I$7`) and specialty chemical peer table (`VINATIORGA`, `FINEORG`, `NAVINFLUOR`, `PIIND`). Connected Manufacturing DCF Fair Value = **₹415.69/sh** (prior `₹343.93`, $\Delta = +₹71.76 / +20.86\%$).
+  - **Edelweiss (`EDELWEISS`)**: Connected 5 financial vertical revenues to `Income Statement`; added Consolidated Borrowings (`₹18,004 Cr`) vs Corporate HoldCo Net Debt (`-₹5,500 Cr`) reconciliation table and financial peer multiples (`360ONE`, `HDFCAMC`, `UTIAMC`, `PNBHOUSING`). SOTP Fair Value = **₹133.54/sh** ($\Delta = ₹0.00$; industrial FCFF strictly withheld).
+  - Replaced center-cell self-references (`=E12`, `=B24`, `=E15`) in all four 2-way sensitivity matrices with the full independent DCF/SOTP equation across all 25 cells, verified by a dedicated `0.00` reconciliation check row (`B23` in MM, `B35` in LTM/CLEAN, `B26` in EDELWEISS).
+- **Workbook-Linked 5-Slide Executive Presentations (`<KEY>-Executive-Overview.pptx`) & 20 Slide PNG Previews**:
+  - Extended `work/generate_wacc_images.py` and `build_package.py` to support 6-sheet DCF and SOTP models alongside 17-sheet WACC-DCF models.
+  - Built `MM-Executive-Overview.pptx`, `LTM-Executive-Overview.pptx`, `CLEAN-Executive-Overview.pptx`, and `EDELWEISS-Executive-Overview.pptx` from `originals/ERR-4.pptx` (Slides 1, 2, 14, 16, 23), exported 20 slide PNG previews (`slide_1.png`–`slide_5.png` per company) via PowerPoint COM, and visually verified zero text overlaps and zero `#####` truncation across all 24 sheet PDFs and 20 slide PNGs.
+- **Final Recalculated Workbook & Presentation SHA-256 Hashes**:
+  - `MM-Recalculated.xlsx`: `658daa734d6d532f318be1066f5e44f6da09b19276285ce02574c892fee0fcf8` | `MM-Executive-Overview.pptx`: `a125f17c74b9c210...`
+  - `LTM-Recalculated.xlsx`: `f29a83ba378792041a7aab09700e279f3ba4f58aa3f8c179b5e3d8cce47e5542` | `LTM-Executive-Overview.pptx`: `acedf3a24572cbc7...`
+  - `CLEAN-Recalculated.xlsx`: `7086ec11234d8d7ad9b779fb480bf83e44e4866e8e85c665ef65469ac94a43ae` | `CLEAN-Executive-Overview.pptx`: `0da08c7168d7c815...`
+  - `EDELWEISS-Recalculated.xlsx`: `fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c` | `EDELWEISS-Executive-Overview.pptx`: `0fafe0e3ab46791b...`
+- **Expanded Test Suite (110 Tests)**:
+  - Added 4 new tests in `test_four_targets.py` (`test_connected_five_year_forecasts_and_zero_historical_bs_plugs`, `test_all_four_presentations_and_20_slide_pngs_exist_and_zero_stale_carryover`, `test_all_four_package_requests_pass_preflight_and_single_command_build`, `test_controlled_perturbation_and_restoration_on_four_models`).
+  - All **110 tests passing cleanly**.
+
+
 

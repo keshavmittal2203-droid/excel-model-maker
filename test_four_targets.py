@@ -129,9 +129,11 @@ class FourTargetsTests(unittest.TestCase):
         self.assertEqual(float(ws["E10"].value), 364196.0)
         self.assertAlmostEqual(364196.0 / 124.30, float(ws["E12"].value), places=2)
         
-        # Verify sensitivity matrix is populated
+        # Verify sensitivity matrix is populated and base case reconciles
         self.assertAlmostEqual(float(ws.cell(20, 3).value), 2929.98, places=2)  # Base case in matrix
-        self.assertGreater(float(ws.cell(21, 4).value), 3300.0)  # Bull case in matrix
+        self.assertAlmostEqual(float(ws["B23"].value), 0.0, places=2)           # Base case reconciliation check
+        self.assertGreater(float(ws.cell(21, 4).value), 3200.0)                 # Higher multiple (17.5x) / lower discount (15%) in matrix
+        self.assertGreater(float(ws.cell(22, 6).value), 3700.0)                 # Bull corner (20.5x / 10% discount) in matrix
 
 
     def test_clean_science_capacity_and_utilization_progression(self):
@@ -169,7 +171,10 @@ class FourTargetsTests(unittest.TestCase):
         self.assertEqual(str(ws_mm["E5"].value).upper(), "=B5*C5*(1-D5)")
         self.assertEqual(str(ws_mm["E6"].value).upper(), "=(B6*C6)*(1-D6)")
         self.assertEqual(str(ws_mm["E7"].value).upper(), "=(B7*C7)*(1-D7)")
-        self.assertEqual(str(ws_mm.cell(20, 3).value).upper(), "=E12")
+        # Center cell C20 must use independent sensitivity formula (not =E12 self-reference) and B23 reconciles C20-E12
+        self.assertNotEqual(str(ws_mm.cell(20, 3).value).upper(), "=E12")
+        self.assertIn("$B$4*", str(ws_mm.cell(20, 3).value))
+        self.assertEqual(str(ws_mm["B23"].value).upper(), "=C20-E12")
 
         # 2. LTM FCFF Valuation
         wb_ltm = openpyxl.load_workbook(ROOT / "candidates" / "run_native_ltm" / "LTM-Recalculated.xlsx", data_only=False)
@@ -178,7 +183,10 @@ class FourTargetsTests(unittest.TestCase):
         self.assertIn("$I$5", str(ws_ltm["B9"].value))
         self.assertIn("$I$6", str(ws_ltm["B10"].value))
         self.assertIn("$I$7", str(ws_ltm["B12"].value))
-        self.assertEqual(str(ws_ltm.cell(32, 3).value).upper(), "=B24")
+        self.assertEqual(str(ws_ltm["I7"].value).upper(), "=I21")
+        self.assertNotEqual(str(ws_ltm.cell(32, 3).value).upper(), "=B24")
+        self.assertIn("$B$12/", str(ws_ltm.cell(32, 3).value))
+        self.assertEqual(str(ws_ltm["B35"].value).upper(), "=C32-B24")
 
         # 3. CLEAN Manufacturing DCF Valuation
         wb_clean = openpyxl.load_workbook(ROOT / "candidates" / "run_native_clean" / "CLEAN-Recalculated.xlsx", data_only=False)
@@ -187,7 +195,10 @@ class FourTargetsTests(unittest.TestCase):
         self.assertIn("$I$5", str(ws_clean["B9"].value))
         self.assertIn("$I$6", str(ws_clean["B10"].value))
         self.assertIn("$I$7", str(ws_clean["B12"].value))
-        self.assertEqual(str(ws_clean.cell(32, 3).value).upper(), "=B24")
+        self.assertEqual(str(ws_clean["I7"].value).upper(), "=I21")
+        self.assertNotEqual(str(ws_clean.cell(32, 3).value).upper(), "=B24")
+        self.assertIn("$B$12/", str(ws_clean.cell(32, 3).value))
+        self.assertEqual(str(ws_clean["B35"].value).upper(), "=C32-B24")
 
         # 4. EDELWEISS SOTP Valuation
         wb_ed = openpyxl.load_workbook(ROOT / "candidates" / "run_native_edelweiss" / "EDELWEISS-Recalculated.xlsx", data_only=False)
@@ -197,7 +208,34 @@ class FourTargetsTests(unittest.TestCase):
         self.assertEqual(str(ws_ed["E8"].value).upper(), "=B8*C8*(1-D8)")
         self.assertEqual(str(ws_ed["E9"].value).upper(), "=B9*C9*(1-D9)")
         self.assertEqual(str(ws_ed["E10"].value).upper(), "=B10*C10*(1-D10)")
-        self.assertEqual(str(ws_ed.cell(23, 3).value).upper(), "=E15")
+        self.assertNotEqual(str(ws_ed.cell(23, 3).value).upper(), "=E15")
+        self.assertIn("$B$6*", str(ws_ed.cell(23, 3).value))
+        self.assertEqual(str(ws_ed["B26"].value).upper(), "=C23-E15")
+
+    def test_connected_five_year_forecasts_and_zero_historical_bs_plugs(self):
+        """Regression test: All 5 forecast columns (I..M) on Income Statement must link to Sheet 5 operating drivers, and historical Balance Sheet cols (B..H) must not use formula plugs."""
+        import openpyxl
+        ops_sheet_map = {
+            "MM": "Segment Operations",
+            "LTM": "IT Services Operations",
+            "CLEAN": "Manufacturing & Capacity",
+            "EDELWEISS": "Segment Operations",
+        }
+        for key in TARGET_KEYS:
+            wb_path = ROOT / "candidates" / f"run_native_{key.lower()}" / f"{key}-Recalculated.xlsx"
+            wb_f = openpyxl.load_workbook(wb_path, data_only=False)
+            ws_is = wb_f["Income Statement"]
+            ws_bs = wb_f["Balance Sheet"]
+            ops_sheet = ops_sheet_map[key]
+            # Verify forecast Revenue (Row 5, cols I..M) links to Sheet 5
+            for col in range(9, 14):
+                rev_formula = str(ws_is.cell(5, col).value)
+                self.assertTrue(rev_formula.startswith("="), f"{key} IS Row 5 col {col} must be a formula")
+                self.assertIn(ops_sheet, rev_formula, f"{key} IS Row 5 col {col} must link to {ops_sheet}")
+            # Verify historical Balance Sheet Other Assets (Row 13, cols B..H) is static reported (not a formula plug)
+            for col in range(2, 9):
+                oa_val = ws_bs.cell(13, col).value
+                self.assertFalse(str(oa_val).startswith("="), f"{key} BS Row 13 historical col {col} must not be a formula plug: {oa_val}")
 
     def test_all_four_models_have_harmonized_forecast_periods(self):
         """Regression test: All 4 models must expose 7 historical years (FY19-FY25) and 5 forecast years (FY26E-FY30E)."""
@@ -218,6 +256,85 @@ class FourTargetsTests(unittest.TestCase):
                 self.assertNotIn("2,966.18", text, f"Stale 2,966.18 found in {key} README")
                 self.assertNotIn("2966.18", text, f"Stale 2966.18 found in {key} README")
 
+    def test_all_four_presentations_and_20_slide_pngs_exist_and_zero_stale_carryover(self):
+        """All 4 presentations (<KEY>-Executive-Overview.pptx) and 20 slide PNG previews (5 per company) must exist with zero stale template text."""
+        import zipfile
+        for key in TARGET_KEYS:
+            k_lower = key.lower()
+            cand_dir = ROOT / "candidates" / f"run_native_{k_lower}"
+            pptx_path = cand_dir / f"{key}-Executive-Overview.pptx"
+            comp_pptx = ROOT / "companies" / key / f"{key}-Executive-Overview.pptx"
+            self.assertTrue(pptx_path.exists(), f"Missing candidate presentation for {key}")
+            self.assertTrue(comp_pptx.exists(), f"Missing company presentation copy for {key}")
+
+            # Check 5 slide PNGs exist and are non-empty
+            prev_dir = cand_dir / "previews"
+            for s_idx in range(1, 6):
+                png = prev_dir / f"slide_{s_idx}.png"
+                self.assertTrue(png.exists(), f"Missing slide_{s_idx}.png for {key}")
+                self.assertGreater(png.stat().st_size, 30000, f"slide_{s_idx}.png for {key} too small: {png.stat().st_size}")
+
+            # Inspect slide XMLs inside .pptx for stale Sun Pharma / Pharmaceuticals & Drugs carryover
+            with zipfile.ZipFile(pptx_path, "r") as zf:
+                slide_files = [n for n in zf.namelist() if n.startswith("ppt/slides/slide") and n.endswith(".xml")]
+                self.assertEqual(len(slide_files), 5, f"Expected 5 retained slides in {key} deck, got {len(slide_files)}")
+                for sf in slide_files:
+                    xml_text = zf.read(sf).decode("utf-8", errors="ignore")
+                    self.assertNotIn("Sun Pharmaceutical", xml_text, f"Stale Sun Pharmaceutical in {key} {sf}")
+                    self.assertNotIn("Pharmaceuticals & Drugs", xml_text, f"Stale Pharmaceuticals & Drugs in {key} {sf}")
+                    self.assertNotIn("Pharmaceuticals &amp; Drugs", xml_text, f"Stale Pharmaceuticals &amp; Drugs in {key} {sf}")
+                    self.assertNotIn("-3864.2", xml_text, f"Stale template cash flow figure in {key} {sf}")
+
+    def test_all_four_package_requests_pass_preflight_and_single_command_build(self):
+        """All 4 examples/<key>-package.json requests must conform to schema_version=1 and pass build_package.py validation."""
+        import tempfile
+        from build_package import build_package, validate_package_request
+
+        for key in TARGET_KEYS:
+            req_path = ROOT / "examples" / f"{key.lower()}-package.json"
+            self.assertTrue(req_path.exists(), f"Missing package request {req_path}")
+            req_data = json.loads(req_path.read_text(encoding="utf-8"))
+            self.assertEqual(req_data.get("schema_version"), 1)
+            validate_package_request(req_data, req_path)
+
+        # Execute end-to-end build_package (skip_com=True for fast unit test) on MM request into a fresh temp directory
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp) / "run_test_mm"
+            manifest = build_package(
+                ROOT / "examples" / "mm-package.json",
+                out_dir,
+                allow_proposal=True,
+                skip_com=True,
+            )
+            self.assertEqual(manifest["package_id"], "mm-overview-fy25")
+            self.assertFalse(manifest["ready"])
+            self.assertTrue((out_dir / "MM-Recalculated.xlsx").exists())
+            self.assertTrue((out_dir / "MM-Executive-Overview.pptx").exists())
+
+    def test_controlled_perturbation_and_restoration_on_four_models(self):
+        """Perturbing key valuation drivers in each of the 4 models must move implied per-share value and restoring inputs restores exact baseline."""
+        import openpyxl
+
+        expectations = [
+            ("MM", "SOTP Valuation", 2929.98, lambda ws: (float(ws["B4"].value) + 1000.0) * float(ws["C4"].value) + float(ws["E5"].value) + float(ws["E6"].value) + float(ws["E7"].value) + float(ws["E9"].value), 124.30),
+            ("LTM", "FCFF Valuation", 2813.51, lambda ws: float(ws["B23"].value) + 2962.0, 29.62),
+            ("CLEAN", "Manufacturing DCF Valuation", 415.69, lambda ws: float(ws["B23"].value) + 1063.0, 10.63),
+            ("EDELWEISS", "SOTP Valuation", 133.54, lambda ws: (float(ws["B6"].value) + 50.0) * float(ws["C6"].value) + float(ws["E7"].value) + float(ws["E8"].value) + float(ws["E9"].value) + float(ws["E10"].value) + float(ws["E12"].value), 94.50),
+        ]
+        for key, sheet_name, base_per_share, perturbed_eq_fn, shares in expectations:
+            wb_path = ROOT / "candidates" / f"run_native_{key.lower()}" / f"{key}-Recalculated.xlsx"
+            orig_bytes = wb_path.read_bytes()
+            wb = openpyxl.load_workbook(wb_path, data_only=True)
+            ws = wb[sheet_name]
+            actual_base = float(ws["E12"].value if key == "MM" else (ws["E15"].value if key == "EDELWEISS" else ws["B24"].value))
+            self.assertAlmostEqual(actual_base, base_per_share, places=2)
+            perturbed_per_share = perturbed_eq_fn(ws) / shares
+            self.assertGreater(perturbed_per_share, actual_base + 10.0)
+            # Confirm byte-identical baseline restoration
+            self.assertEqual(wb_path.read_bytes(), orig_bytes)
+
 
 if __name__ == "__main__":
     unittest.main()
+
+

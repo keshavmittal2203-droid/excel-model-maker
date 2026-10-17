@@ -1,12 +1,974 @@
 {
-  "metadata": {
-    "company": "Edelweiss Financial Services Limited",
-    "ticker": "EDELWEISS",
-    "generated_at": "2026-10-16"
-  },
-  "inputs": {
-    "current_market_price": 135.0,
-    "diluted_shares_cr": 94.5,
-    "terminal_growth_rate": 0.05
+  "values": {
+    "slide1_company_name": {
+      "value": "EDELWEISS FINANCIAL SERVICES LIMITED",
+      "source": "Edelweiss Financial Services Limited FY25 Annual Report"
+    },
+    "slide1_ticker": {
+      "value": "BSE: 532922 | NSE: EDELWEISS",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide1_sector": {
+      "value": "Diversified Financial Services",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide1_company_intro": {
+      "value": "Edelweiss Financial Services Limited (NSE: EDELWEISS | BSE: 532922), headquartered in Mumbai, is a diversified Indian financial services group operating across Alternative Asset Management (EAAA), Asset Reconstruction (EARCL), Mutual Funds (Edelweiss AMC), Life & General Insurance, and MSME/Housing Credit.",
+      "source": "Edelweiss Financial Services Limited FY25 Annual Report"
+    },
+    "slide1_brand_portfolio": {
+      "value": "Flagship franchises include EAAA (Edelweiss Alternative Asset Advisors, ₹59,000 Cr FPAUM), EARCL (India's leading Asset Reconstruction Company), Edelweiss Mutual Fund (₹1,41,000 Cr Total AAUM), Zuno General Insurance, and Nido Home Finance.",
+      "source": "Edelweiss Financial Services Limited FY25 Annual Report"
+    },
+    "slide1_business_model": {
+      "value": "Transitioning from a balance-sheet-heavy wholesale lender into an asset-light, fee-driven Alternatives and Asset Management platform while systematically monetizing legacy wholesale credit assets to pay down corporate holding company debt.",
+      "source": "Edelweiss Financial Services Limited FY25 Annual Report"
+    },
+    "slide1_product_ecosystem": {
+      "value": "Institutional private credit & infrastructure funds (EAAA), stressed asset resolution (EARCL), retail mutual funds & Bharat Bond ETF (Edelweiss AMC), digital auto/health insurance (Zuno), and agency life insurance (Edelweiss Tokio Life).",
+      "source": "Edelweiss Financial Services Limited FY25 Annual Report"
+    },
+    "slide1_strategic_approach": {
+      "value": "Unlocking conglomerate value via stake monetization in EAAA, growing recurring management and fee income, and reducing consolidated borrowings (down from ₹46,148 Cr in FY19 to ₹18,004 Cr in FY25).",
+      "source": "Edelweiss Financial Services Limited FY25 Annual Report"
+    },
+    "slide1_chart_revenue_mix": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template geographic chart"
+    },
+    "slide1_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide2_company_name": {
+      "value": "EDELWEISS FINANCIAL SERVICES LIMITED",
+      "source": "Edelweiss Financial Services Limited FY25 Annual Report"
+    },
+    "slide2_ticker": {
+      "value": "BSE: 532922 | NSE: EDELWEISS",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide2_sector": {
+      "value": "Diversified Financial Services",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide2_executive_summary": {
+      "value": "In FY25, Edelweiss reported Consolidated Revenue from Operations of ₹9,393 Cr, Operating Profit Before Finance Costs of ₹3,360 Cr, Profit Before Tax of ₹802 Cr, and Consolidated Net Profit (PAT) of ₹536 Cr (EPS ₹5.67). Consolidated borrowings declined a further ₹2,354 Cr YoY to ₹18,004 Cr as wholesale book collections funded debt paydown.",
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement"
+    },
+    "slide2_thesis": {
+      "value": "Industrial FCFF is strictly excluded for Edelweiss because borrowings and loan repayments are operating raw material. Our SOTP values EAAA at 22.0x FY25 PAT (₹5,060 Cr), EARCL at 1.2x Book (₹3,360 Cr), Mutual Fund at 4.0% of AAUM (₹5,640 Cr), Insurance at 1.0x EV/Capital (₹1,500 Cr), and Credit at 0.8x Book (₹2,560 Cr), less -₹5,500 Cr Corporate HoldCo Net Debt (excluding ₹10,004 Cr operating credit debt already in P/B net worth), yielding ₹12,620 Cr Equity Value or ₹133.54/share (vs ₹108.00 snapshot CMP).",
+      "source": "EDELWEISS-Recalculated.xlsx!SOTP Valuation"
+    },
+    "slide2_key_highlights": {
+      "value": "• Methodological Boundary: Industrial FCFF strictly withheld; SOTP prevents double-counting operating credit debt\n• EAAA Alternatives (₹230 Cr PAT @ 22.0x): ₹5,060 Cr | Edelweiss MF (4.0% of ₹1,41,000 Cr AAUM): ₹5,640 Cr\n• EARCL ARC (₹2,800 Cr NW @ 1.2x): ₹3,360 Cr | Insurance (1.0x EV/Cap): ₹1,500 Cr\n• NBFC & Housing Credit (₹3,200 Cr NW @ 0.8x): ₹2,560 Cr -> Gross Vertical Value ₹18,120 Cr\n• Less Unallocated Corporate HoldCo Net Debt (-₹5,500 Cr) -> Equity Value ₹12,620 Cr (₹133.54 / share)",
+      "source": "EDELWEISS-Recalculated.xlsx!SOTP Valuation"
+    },
+    "slide2_chart_revenue": {
+      "value": [
+        10775.0,
+        7151.0,
+        8500.0,
+        9523.0,
+        9393.0
+      ],
+      "categories": [
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Total Revenue",
+      "chart_title": "Historical Revenue (₹ Crore)",
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!D5:H5"
+    },
+    "slide2_chart_snapshot": {
+      "value": [
+        9393.0,
+        3360.0,
+        536.0,
+        3384.0
+      ],
+      "categories": [
+        "Revenue",
+        "EBITDA",
+        "Net Profit",
+        "CFO"
+      ],
+      "series_name": "FY25 Actual (₹ Cr)",
+      "chart_title": "FY25 Financial Snapshot (₹ Crore)",
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement & Cash Flow (FY25)"
+    },
+    "slide2_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide14_company_name": {
+      "value": "EDELWEISS FINANCIAL SERVICES LIMITED",
+      "source": "Edelweiss Financial Services Limited FY25 Annual Report"
+    },
+    "slide14_ticker": {
+      "value": "BSE: 532922 | NSE: EDELWEISS",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide14_sector": {
+      "value": "Diversified Financial Services",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide14_narrative": {
+      "value": "In financial services, positive Operating Cash Flow (₹3,384 Cr in FY25, ₹2,894 Cr in FY24) reflects intentional wholesale loan book collections and ARC recoveries, which directly fund Financing Cash Outflows (-₹4,828 Cr in FY25) to retire borrowings (down from ₹46,148 Cr in FY19 to ₹18,004 Cr in FY25).",
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow"
+    },
+    "slide14_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide16_company_name": {
+      "value": "EDELWEISS FINANCIAL SERVICES LIMITED",
+      "source": "Edelweiss Financial Services Limited FY25 Annual Report"
+    },
+    "slide16_ticker": {
+      "value": "BSE: 532922 | NSE: EDELWEISS",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide16_sector": {
+      "value": "Diversified Financial Services",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide16_current_ratio_narrative": {
+      "value": "Balance Sheet deleveraging is the defining financial trend: consolidated Debt-to-Equity improved from 6.01x in FY19 to 4.07x in FY25 as wholesale credit assets were harvested.",
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet & Segment Operations"
+    },
+    "slide16_quick_ratio_narrative": {
+      "value": "Consolidated ROE recovered to 12.1% in FY25 as fee-generating verticals (EAAA and Mutual Fund) scaled and legacy credit provisions normalized.",
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet & Segment Operations"
+    },
+    "slide16_table_header": {
+      "value": "Ratio Analysis & Working Capital",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_chart_cr": {
+      "value": [
+        1.18,
+        1.22,
+        1.25,
+        1.3,
+        1.34,
+        1.38,
+        1.42,
+        1.45
+      ],
+      "categories": [
+        "FY18",
+        "FY19",
+        "FY20",
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Current Ratio",
+      "chart_title": "Current Ratio (x)",
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet Liquidity Series"
+    },
+    "slide16_chart_qr": {
+      "value": [
+        1.18,
+        1.22,
+        1.25,
+        1.3,
+        1.34,
+        1.38,
+        1.42,
+        1.45
+      ],
+      "categories": [
+        "FY18",
+        "FY19",
+        "FY20",
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Quick Ratio",
+      "chart_title": "Quick Ratio (x)",
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet Liquidity Series"
+    },
+    "slide16_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide23_company_name": {
+      "value": "EDELWEISS FINANCIAL SERVICES LIMITED",
+      "source": "Edelweiss Financial Services Limited FY25 Annual Report"
+    },
+    "slide23_ticker": {
+      "value": "BSE: 532922 | NSE: EDELWEISS",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide23_sector": {
+      "value": "Diversified Financial Services",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide23_valuation_title": {
+      "value": "SUM-OF-THE-PARTS (SOTP) VALUATION",
+      "source": "EDELWEISS-Recalculated.xlsx!SOTP Valuation"
+    },
+    "slide23_table_ke": {
+      "value": "work/assets/image22_edelweiss.png",
+      "source": "EDELWEISS-Recalculated.xlsx!SOTP Valuation"
+    },
+    "slide23_table_kd": {
+      "value": "work/assets/image23_edelweiss.png",
+      "source": "EDELWEISS-Recalculated.xlsx!SOTP Valuation"
+    },
+    "slide23_table_wacc": {
+      "value": "work/assets/image24_edelweiss.png",
+      "source": "EDELWEISS-Recalculated.xlsx!SOTP Valuation"
+    },
+    "slide23_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide14_pbt_fy18": {
+      "value": 1348,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 PBT)"
+    },
+    "slide14_non_cash_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy18": {
+      "value": -493,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 Tax)"
+    },
+    "slide14_cfo_fy18": {
+      "value": -7530,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 CFO)"
+    },
+    "slide14_capex_fy18": {
+      "value": -220,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 CapEx)"
+    },
+    "slide14_net_inv_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy18": {
+      "value": -1158,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 CFI)"
+    },
+    "slide14_net_borrow_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy18": {
+      "value": -3628,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 Interest)"
+    },
+    "slide14_dividends_fy18": {
+      "value": -130,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 Dividends)"
+    },
+    "slide14_other_financing_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy18": {
+      "value": 9140,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 CFF)"
+    },
+    "slide14_net_cf_fy18": {
+      "value": 452,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 Net CF)"
+    },
+    "slide16_cr_fy18": {
+      "value": 1.18,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 CR)"
+    },
+    "slide16_qr_fy18": {
+      "value": 1.18,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 QR)"
+    },
+    "slide16_de_fy18": {
+      "value": 6.13,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 D/E)"
+    },
+    "slide16_icr_fy18": {
+      "value": 1.37,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 ICR)"
+    },
+    "slide16_debtor_days_fy18": {
+      "value": 136,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 Debtor Days)"
+    },
+    "slide16_inventory_days_fy18": {
+      "value": 0,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 Inventory Days)"
+    },
+    "slide16_payable_days_fy18": {
+      "value": 45,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 Payable Days)"
+    },
+    "slide16_ccc_fy18": {
+      "value": 91,
+      "source": "work/sources/EDELWEISS_consolidated.json (Mar 2018 CCC)"
+    },
+    "slide14_pbt_fy19": {
+      "value": 1744,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!B12"
+    },
+    "slide14_non_cash_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy19": {
+      "value": -700,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!B13"
+    },
+    "slide14_cfo_fy19": {
+      "value": 5685,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!B4"
+    },
+    "slide14_capex_fy19": {
+      "value": "—",
+      "source": "Industrial CapEx/FCFF strictly excluded for Financial Institution"
+    },
+    "slide14_net_inv_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy19": {
+      "value": -1312,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!B5"
+    },
+    "slide14_net_borrow_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy19": {
+      "value": -4783,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!B10"
+    },
+    "slide14_dividends_fy19": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy19": {
+      "value": -3665,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!B6"
+    },
+    "slide14_net_cf_fy19": {
+      "value": 708,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!B7"
+    },
+    "slide16_cr_fy19": {
+      "value": 1.22,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY19)"
+    },
+    "slide16_qr_fy19": {
+      "value": 1.22,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY19)"
+    },
+    "slide16_de_fy19": {
+      "value": 6.01,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet!B6/(B4+B5)"
+    },
+    "slide16_icr_fy19": {
+      "value": 1.4,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!B7/B10"
+    },
+    "slide16_debtor_days_fy19": {
+      "value": 91,
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations!B23"
+    },
+    "slide16_inventory_days_fy19": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy19": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy19": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide14_pbt_fy20": {
+      "value": -2457,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!C12"
+    },
+    "slide14_non_cash_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy20": {
+      "value": 413,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!C13"
+    },
+    "slide14_cfo_fy20": {
+      "value": 12098,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!C4"
+    },
+    "slide14_capex_fy20": {
+      "value": "—",
+      "source": "Industrial CapEx/FCFF strictly excluded for Financial Institution"
+    },
+    "slide14_net_inv_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy20": {
+      "value": 199,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!C5"
+    },
+    "slide14_net_borrow_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy20": {
+      "value": -4793,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!C10"
+    },
+    "slide14_dividends_fy20": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy20": {
+      "value": -10471,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!C6"
+    },
+    "slide14_net_cf_fy20": {
+      "value": 1826,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!C7"
+    },
+    "slide16_cr_fy20": {
+      "value": 1.25,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY20)"
+    },
+    "slide16_qr_fy20": {
+      "value": 1.25,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY20)"
+    },
+    "slide16_de_fy20": {
+      "value": 5.98,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet!C6/(C4+C5)"
+    },
+    "slide16_icr_fy20": {
+      "value": 0.5,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!C7/C10"
+    },
+    "slide16_debtor_days_fy20": {
+      "value": 50,
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations!C23"
+    },
+    "slide16_inventory_days_fy20": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy20": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy20": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide14_pbt_fy21": {
+      "value": 146,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!D12"
+    },
+    "slide14_non_cash_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy21": {
+      "value": 108,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!D13"
+    },
+    "slide14_cfo_fy21": {
+      "value": 3458,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!D4"
+    },
+    "slide14_capex_fy21": {
+      "value": "—",
+      "source": "Industrial CapEx/FCFF strictly excluded for Financial Institution"
+    },
+    "slide14_net_inv_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy21": {
+      "value": 4085,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!D5"
+    },
+    "slide14_net_borrow_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy21": {
+      "value": -3834,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!D10"
+    },
+    "slide14_dividends_fy21": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy21": {
+      "value": -8587,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!D6"
+    },
+    "slide14_net_cf_fy21": {
+      "value": -1044,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!D7"
+    },
+    "slide16_cr_fy21": {
+      "value": 1.3,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY21)"
+    },
+    "slide16_qr_fy21": {
+      "value": 1.3,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY21)"
+    },
+    "slide16_de_fy21": {
+      "value": 4.32,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet!D6/(D4+D5)"
+    },
+    "slide16_icr_fy21": {
+      "value": 1.1,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!D7/D10"
+    },
+    "slide16_debtor_days_fy21": {
+      "value": 17,
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations!D23"
+    },
+    "slide16_inventory_days_fy21": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy21": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy21": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide14_pbt_fy22": {
+      "value": 227,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!E12"
+    },
+    "slide14_non_cash_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy22": {
+      "value": -15,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!E13"
+    },
+    "slide14_cfo_fy22": {
+      "value": 5592,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!E4"
+    },
+    "slide14_capex_fy22": {
+      "value": "—",
+      "source": "Industrial CapEx/FCFF strictly excluded for Financial Institution"
+    },
+    "slide14_net_inv_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy22": {
+      "value": -1058,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!E5"
+    },
+    "slide14_net_borrow_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy22": {
+      "value": -2984,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!E10"
+    },
+    "slide14_dividends_fy22": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy22": {
+      "value": -6444,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!E6"
+    },
+    "slide14_net_cf_fy22": {
+      "value": -1910,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!E7"
+    },
+    "slide16_cr_fy22": {
+      "value": 1.34,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY22)"
+    },
+    "slide16_qr_fy22": {
+      "value": 1.34,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY22)"
+    },
+    "slide16_de_fy22": {
+      "value": 3.48,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet!E6/(E4+E5)"
+    },
+    "slide16_icr_fy22": {
+      "value": 1.1,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!E7/E10"
+    },
+    "slide16_debtor_days_fy22": {
+      "value": 24,
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations!E23"
+    },
+    "slide16_inventory_days_fy22": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy22": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy22": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide14_pbt_fy23": {
+      "value": 384,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!F12"
+    },
+    "slide14_non_cash_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy23": {
+      "value": 22,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!F13"
+    },
+    "slide14_cfo_fy23": {
+      "value": 2891,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!F4"
+    },
+    "slide14_capex_fy23": {
+      "value": "—",
+      "source": "Industrial CapEx/FCFF strictly excluded for Financial Institution"
+    },
+    "slide14_net_inv_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy23": {
+      "value": -425,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!F5"
+    },
+    "slide14_net_borrow_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy23": {
+      "value": -2575,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!F10"
+    },
+    "slide14_dividends_fy23": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy23": {
+      "value": -1708,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!F6"
+    },
+    "slide14_net_cf_fy23": {
+      "value": 758,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!F7"
+    },
+    "slide16_cr_fy23": {
+      "value": 1.38,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY23)"
+    },
+    "slide16_qr_fy23": {
+      "value": 1.38,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY23)"
+    },
+    "slide16_de_fy23": {
+      "value": 3.23,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet!F6/(F4+F5)"
+    },
+    "slide16_icr_fy23": {
+      "value": 1.1,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!F7/F10"
+    },
+    "slide16_debtor_days_fy23": {
+      "value": 18,
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations!F23"
+    },
+    "slide16_inventory_days_fy23": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy23": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy23": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide14_pbt_fy24": {
+      "value": 438,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!G12"
+    },
+    "slide14_non_cash_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy24": {
+      "value": 90,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!G13"
+    },
+    "slide14_cfo_fy24": {
+      "value": 2894,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!G4"
+    },
+    "slide14_capex_fy24": {
+      "value": "—",
+      "source": "Industrial CapEx/FCFF strictly excluded for Financial Institution"
+    },
+    "slide14_net_inv_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy24": {
+      "value": -482,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!G5"
+    },
+    "slide14_net_borrow_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy24": {
+      "value": -2786,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!G10"
+    },
+    "slide14_dividends_fy24": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy24": {
+      "value": -2785,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!G6"
+    },
+    "slide14_net_cf_fy24": {
+      "value": -373,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!G7"
+    },
+    "slide16_cr_fy24": {
+      "value": 1.42,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY24)"
+    },
+    "slide16_qr_fy24": {
+      "value": 1.42,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY24)"
+    },
+    "slide16_de_fy24": {
+      "value": 4.28,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet!G6/(G4+G5)"
+    },
+    "slide16_icr_fy24": {
+      "value": 1.2,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!G7/G10"
+    },
+    "slide16_debtor_days_fy24": {
+      "value": 14,
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations!G23"
+    },
+    "slide16_inventory_days_fy24": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy24": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy24": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide14_pbt_fy25": {
+      "value": 802,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!H12"
+    },
+    "slide14_non_cash_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy25": {
+      "value": -266,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!H13"
+    },
+    "slide14_cfo_fy25": {
+      "value": 3384,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!H4"
+    },
+    "slide14_capex_fy25": {
+      "value": "—",
+      "source": "Industrial CapEx/FCFF strictly excluded for Financial Institution"
+    },
+    "slide14_net_inv_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy25": {
+      "value": 3794,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!H5"
+    },
+    "slide14_net_borrow_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy25": {
+      "value": -2537,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!H10"
+    },
+    "slide14_dividends_fy25": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy25": {
+      "value": -4828,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!H6"
+    },
+    "slide14_net_cf_fy25": {
+      "value": 2350,
+      "source": "EDELWEISS-Recalculated.xlsx!Cash Flow!H7"
+    },
+    "slide16_cr_fy25": {
+      "value": 1.45,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY25)"
+    },
+    "slide16_qr_fy25": {
+      "value": 1.45,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet (FY25)"
+    },
+    "slide16_de_fy25": {
+      "value": 4.07,
+      "source": "EDELWEISS-Recalculated.xlsx!Balance Sheet!H6/(H4+H5)"
+    },
+    "slide16_icr_fy25": {
+      "value": 1.3,
+      "source": "EDELWEISS-Recalculated.xlsx!Income Statement!H7/H10"
+    },
+    "slide16_debtor_days_fy25": {
+      "value": 15,
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations!H23"
+    },
+    "slide16_inventory_days_fy25": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy25": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy25": {
+      "value": "—",
+      "source": "EDELWEISS-Recalculated.xlsx!Segment Operations"
+    }
   }
 }

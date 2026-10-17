@@ -1,43 +1,88 @@
 {
+  "$schema": "../package-request.schema.json",
+  "schema_version": 1,
   "package_id": "clean-overview-fy25",
-  "name": "Clean Science and Technology Limited Financial Model Package",
+  "name": "Clean Science and Technology Limited Financial Model & Executive Overview",
+  "description": "Reproducible template-driven package for Clean Science and Technology Limited (CLEAN) with connected 5-year forecasts, FY19–FY25 statutory historicals, and workbook-linked 5-slide ERR-4 presentation.",
   "company": {
     "name": "Clean Science and Technology Limited",
     "ticker": "CLEAN",
+    "exchange": "NSE / BSE",
     "bse_code": "543318",
-    "nse_code": "CLEAN",
-    "isin": "INE227W01023",
-    "reporting_unit": "INR_CRORES",
-    "shares_outstanding_cr": 10.62,
-    "market_price": 784.0,
+    "valuation_date": "2025-10-15",
+    "historical_cutoff": "FY25",
+    "currency": "INR",
+    "reporting_unit": "INR_Cr",
+    "fiscal_year_convention": "April-March",
+    "source_documents": [
+      {
+        "title": "Clean Science and Technology Limited Integrated Annual Report FY 2024-25",
+        "type": "Annual Report",
+        "period": "FY25 (ended 2025-03-31)",
+        "basis": "consolidated",
+        "url_or_path": "work/sources/CLEAN_consolidated.json"
+      },
+      {
+        "title": "Clean Science and Technology Limited Primary Source Registry (FY19-FY25)",
+        "type": "Source Evidence Registry",
+        "period": "FY19-FY25",
+        "basis": "consolidated",
+        "url_or_path": "docs/CLEAN_SOURCE_REGISTRY.md"
+      }
+    ],
     "source_data": {
       "user_supplied_facts": {
-        "company_name": "Clean Science and Technology Limited",
-        "industry": "Specialty Chemicals",
-        "currency": "INR"
+        "current_market_price": 1039.0,
+        "shares_outstanding_cr": 10.63,
+        "market_capitalization_cr": 11044.570000000002
       },
       "source_extracted_facts": {
-        "primary_registry": "docs/CLEAN_SOURCE_REGISTRY.md",
-        "bse_filings": "https://www.bseindia.com/stock-share-price/clean-science-and-technology-ltd/clean/543318/"
+        "revenue_operations_fy25_cr": 967.0,
+        "operating_ebitda_fy25_cr": 388.0,
+        "pbt_fy25_cr": 357.0,
+        "pat_net_profit_fy25_cr": 264.0,
+        "cash_from_operations_fy25_cr": 214.0
       },
-      "analyst_assumptions": {
-        "valuation_methodology": "Manufacturing FCFF DCF Valuation",
-        "terminal_growth_rate": 0.05
+      "calculated_outputs": {
+        "implied_fair_value_per_share_inr": 415.69
       }
     }
   },
   "workbook": {
-    "source": "companies/CLEAN/CLEAN-Financial-Model.xlsx",
+    "source": "originals/Marksans Keshav.xlsx",
+    "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
     "candidate_source": "candidates/run_native_clean/CLEAN-Recalculated.xlsx",
-    "output_name": "CLEAN-Financial-Model.xlsx",
-    "model_pack": "proposals/clean.model-pack.json"
+    "expected_recalculated_sha256": "7086ec11234d8d7ad9b779fb480bf83e44e4866e8e85c665ef65469ac94a43ae",
+    "adapter": "work/models_clean.py",
+    "model_pack": "proposals/clean.model-pack.json",
+    "output_name": "CLEAN-Recalculated.xlsx"
+  },
+  "presentation": {
+    "template": "originals/ERR-4.pptx",
+    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+    "deck_pack": "proposals/clean.deck-pack.proposal.json",
+    "deck_inputs": "proposals/clean.inputs.proposal.json",
+    "output_name": "CLEAN-Executive-Overview.pptx",
+    "selected_slides": [
+      1,
+      2,
+      14,
+      16,
+      23
+    ]
   },
   "exports": {
-    "sheet_previews": [
+    "export_slide_pngs": true,
+    "export_sheet_pdfs": true,
+    "pdf_orientation": "landscape",
+    "pdf_fit_to_page_wide": 1,
+    "pdf_sheets": [
       "Cover & Notes",
       "Income Statement",
       "Balance Sheet",
-      "Cash Flow"
+      "Cash Flow",
+      "Manufacturing & Capacity",
+      "Manufacturing DCF Valuation"
     ]
   }
 }

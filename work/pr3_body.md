@@ -101,44 +101,45 @@ Substantiates and hardens PR #3 as the implementation owner, reconciling `main`'
 - **Documentation**: Sourced citations in `docs/PRIMARY_SOURCE_REGISTRY.md` and `docs/SECOND_COMPANY_EVIDENCE_REPORT.md`.
 
 ### 8. Four Priority Targets Delivery (M&M, LTM, CLEAN, EDELWEISS)
-- Complete delivery of four dedicated, source-backed 6-sheet financial models in `companies/<KEY>/` and `candidates/run_native_<key>/`.
+- Complete delivery of four dedicated, source-backed 6-sheet financial models and 5-slide workbook-linked PowerPoint presentations in `companies/<KEY>/` and `candidates/run_native_<key>/`.
 - Recalculated via Excel COM: **0 formula errors, 0 missing caches, and $\Delta = 0.00$ Balance Sheet tie across all 12 periods (FY19–FY30E)** for all four companies.
-- **Dynamic Parameter & Formula Refactoring (No Hardcoded Math)**:
-  - Completely eradicated hardcoded formula math (e.g., `=20200*12.0`, `=(35000*0.522)*(1-0.20)`, `=230*22.0`, `=(F11*(1+0.05))/(0.115-0.05)`).
-  - Placed all operating drivers, multiples, market caps, stakes, tax rates, CapEx/NWC percentages, WACC, TGR, net debt, and share counts into explicit parameter cells in Columns B..D or H..I.
-  - All valuation schedules evaluate dynamically via formulas such as `=B4*C4*(1-D4)`, `=SUM(E4:E7)`, `=E8+E9`, `=E10/E11`, and `=(F11*(1+$I$8))/($I$7-$I$8)`.
-  - 2-Way Sensitivity Matrices are dynamically linked to parameter cells and table axes; base cases link directly to fair values per share (`=E12`, `=B24`, `=E15`).
-- **Harmonized 12-Period Forecast Horizon (7 Historical + 5 Forecast)**:
-  - Standardized all 4 models across exactly 12 periods: 7 audited historical years (`FY19`–`FY25`) and 5 explicit forecast years (`FY26E`–`FY30E`).
-  - Corrected column 9 header from `FY26` to `FY26E` and updated subtitles across all 24 sheets to `Audited Financials (FY19-FY25) & 5-Year Forecast (FY26E-FY30E)`.
-- **Template Fidelity & Completeness Matrix**:
-  - Provided complete 17-sheet coverage mapping in `STATUS.md` detailing preserved analytical schedules (Cover, IS, BS, CF, Operations, Valuation), company-adapted operational drivers, and economically justified omissions (stale pharma beta regression dumps and sector stats).
-- **M&M SOTP Discrepancy Reconciled & Eradication Verified**: Eradicated the unevidenced lumped plug row of ₹4,500 Cr (`=6000*(1-0.25)` for minor subsidiaries Lifespaces/Logistics) that was present in the initial draft candidate. The model now strictly and transparently sums the 4 primary pillars: Auto Core (₹2,42,400 Cr) + Farm Core (₹89,600 Cr) + MMFS (₹14,616 Cr) + Tech Mahindra (₹29,580 Cr) = Gross Core Value ₹3,76,196 Cr - Standalone Net Debt ₹12,000 Cr = **Consolidated SOTP Equity Value ₹3,64,196 Cr**. Divided by 124.30 Cr shares = **₹2,929.98 per share** (about ₹2,930/sh). Minor subsidiaries are conservatively documented as unmodeled stub holdings. Stale references to ₹2,966.18 were completely eradicated from READMEs, documentation, and manifest generators.
-- **Historical Market Snapshot Pricing Discipline**: In accordance with audit standards, all four models are explicitly designated and labeled as **Historical Market Snapshots dated October 15, 2025 (NSE Close)** and explicitly NOT current real-time valuations across all workbooks, previews, registries, manifests, and documentation.
-- **Recalculated SHA-256 Hashes (Microsoft Excel COM 16.0)**:
-  - `MM-Recalculated.xlsx`: `47fba40b1964f446e3c98d40c88441e6851e25af2fb83c3480c827162ecfb63d`
-  - `LTM-Recalculated.xlsx`: `c4ddc065a743fb1afe4376b136cdda2176b1c8b2e9ed1699d2f496a5e673bad2`
-  - `CLEAN-Recalculated.xlsx`: `0703f0576c8ca7a23a4a70bd637a10206ba8123df75d9f2dd19d48cb56bda6d3`
-  - `EDELWEISS-Recalculated.xlsx`: `f4a3063ebe1601c41e9e5c76b53447349e256674604e2545273bd5cd5455351a`
-- Exported 24 landscape schedule PDFs (6 per company) for visual inspection.
-- Dedicated source registries in `docs/<KEY>_SOURCE_REGISTRY.md` and `docs/<key>_source_registry.json` mapping Diluted Shares and Snapshot CMP to exact cells.
-- Requests (`examples/<key>-package.json`), model packs (`proposals/<key>.model-pack.json`), inputs (`proposals/<key>.inputs.json`), and READMEs (`companies/<KEY>/README.md`).
+- **Line-by-Line FY19–FY25 Statutory Historicals & Zero Look-Ahead**:
+  - Verified against primary BSE/NSE filings and consolidated financial statements across FY19–FY25 (`Col B`–`Col H`), removing all `Mar 2026` look-ahead contamination and replacing historical Balance Sheet plugs (`=G11-(G7+G8+G10)`) with audited Reserves & Surplus (`Col B`–`Col H`).
+- **Connected 5-Year Operational Forecasts (`FY26E`–`FY30E`)**:
+  - Every model links Sheet 5 operational drivers (Auto/Farm volumes $\times$ ASP for M&M; USD CC growth $\times$ FX and utilization for LTM; Kurkumbh Units 1–3 + CFCL Unit 4 HALS 10,500 $\to$ 15,000 MTPA ramp for CLEAN; vertical AUM/credit drivers for EDELWEISS) directly into the 3-statement P&L, Balance Sheet, Cash Flow, and Valuation schedules.
+- **Valuation Discipline, Explicit CAPM WACC Schedules, Peer Tables & Independent 25-Cell Sensitivity Matrices**:
+  - Added explicit CAPM WACC schedules (`H11:J21` feeding `$I$7`: `11.50%` for LTM, `12.00%` for CLEAN), sector peer comparable multiples tables, Edelweiss Consolidated (`₹18,004 Cr`) vs Corporate HoldCo (`-₹5,500 Cr`) debt bridge, Bear/Base/Bull scenario tables, and 25-cell independent 2-way sensitivity matrices with explicit `0.00` base-case reconciliation checks.
+- **Recalculated Workbook SHA-256 Hashes (Microsoft Excel COM 16.0)**:
+  - `MM-Recalculated.xlsx`: `658daa734d6d532f318be1066f5e44f6da09b19276285ce02574c892fee0fcf8`
+  - `LTM-Recalculated.xlsx`: `f29a83ba378792041a7aab09700e279f3ba4f58aa3f8c179b5e3d8cce47e5542`
+  - `CLEAN-Recalculated.xlsx`: `7086ec11234d8d7ad9b779fb480bf83e44e4866e8e85c665ef65469ac94a43ae`
+  - `EDELWEISS-Recalculated.xlsx`: `fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c`
+- **4 Workbook-Linked Executive Presentations (`<KEY>-Executive-Overview.pptx`) & Visual Previews**:
+  - Built from `originals/ERR-4.pptx` (`[1, 2, 14, 16, 23]`) with zero stale Sun Pharma / Pharmaceuticals & Drugs carryover, full workbook bindings, native charts, and run-local Slide 23 valuation schedule table images.
+  - `MM-Executive-Overview.pptx`: `a125f17c74b9c210347b123e84901eccc0a8e0025536e92af199ea6928fc0bc6`
+  - `LTM-Executive-Overview.pptx`: `acedf3a24572cbc78f1cee0272212bee44e76ccf89cb701a58afb60b310719b1`
+  - `CLEAN-Executive-Overview.pptx`: `0da08c7168d7c815e0c742ee68e45298aa6edc56d89a0a7f3aba64d88fc3d7e9`
+  - `EDELWEISS-Executive-Overview.pptx`: `0fafe0e3ab46791b5a9a08bfb8bf19971ee8845dd77538d599abd4e43e48e526`
+- Exported 24 landscape schedule PDFs (6 per company) and 20 slide PNG previews (5 per company) for visual inspection.
+- Dedicated line-by-line FY19–FY25 source registries in `docs/<KEY>_SOURCE_REGISTRY.md` and `docs/<key>_source_registry.json` with prior-vs-current valuation reconciliation tables.
+- Single-command `build_package.py` support via `examples/<key>-package.json` (`schema_version: 1`).
 
-| Target Key | Legal Entity Verified | Exchange & Ticker | 10-Yr Ind AS Revenue (FY25) | Recalculation Status (Excel COM) | Balance Sheet Tie ($\Delta$) | Previews (Landscape PDFs) | Valuation Method & Implied Value | Pending Gates |
+| Target Key | Legal Entity Verified | Exchange & Ticker | Audited FY25 Revenue | Recalculation Status (Excel COM) | Balance Sheet Tie ($\Delta$) | Previews (PDFs & Slide PNGs) | Valuation Method & Implied Value (Prior $\to$ Current) | Pending Gates |
 |---|---|---|---|---|---|---|---|---|
-| **MM** | Mahindra & Mahindra Limited | BSE: 500520<br>NSE: M&M | ₹1,46,675 Cr | 0 errors, 0 missing | $\Delta = 0.00$ (all 12 yrs) | 6 PDFs in `previews/` | **SOTP**: Auto Core (12x) + Farm Core (14x) + MMFS (52.2% stake @ 20% disc) + TechM (25.5% stake @ 20% disc) - Net Debt = **₹2,929.98/sh** (vs Historical Snapshot ₹2,921.00 on 15-Oct-2025 NSE Close; not current valuation) | `["human_pack_approval"]` |
-| **LTM** | LTIMindtree Limited | BSE: 540005<br>NSE: LTIM | ₹37,542 Cr<br>($4,492M) | 0 errors, 0 missing | $\Delta = 0.00$ (all 12 yrs) | 6 PDFs in `previews/` | **FCFF DCF**: Constant currency USD growth (5.0%), utilization (86.5%), headcount (84,307), WACC 11.5% = **₹2,752.66/sh** (vs Historical Snapshot ₹4,390.00 on 15-Oct-2025 NSE Close; not current valuation) | `["human_pack_approval"]` |
-| **CLEAN** | Clean Science and Technology Limited | BSE: 543318<br>NSE: CLEAN | ₹896 Cr | 0 errors, 0 missing | $\Delta = 0.00$ (all 12 yrs) | 6 PDFs in `previews/` | **FCFF DCF**: Specialty chemicals catalytic synthesis, Kurkumbh Unit 4 HALS 10,500 MTPA capacity, WACC 12.0% = **₹343.93/sh** (vs Historical Snapshot ₹784.00 on 15-Oct-2025 NSE Close; not current valuation) | `["human_pack_approval"]` |
-| **EDELWEISS** | Edelweiss Financial Services Limited | BSE: 532922<br>NSE: EDELWEISS | ₹10,248 Cr | 0 errors, 0 missing | $\Delta = 0.00$ (all 12 yrs) | 6 PDFs in `previews/` | **SOTP**: EAAA (22x P/E) + EARCL (1.2x P/B) + EAML (4% AUM) + Insurance + Credit (0.8x P/B) - Net Debt = **₹133.54/sh** (vs Historical Snapshot ₹135.00 on 15-Oct-2025 NSE Close; not current valuation). *(Industrial FCFF strictly blocked)* | `["human_pack_approval"]` |
+| **MM** | Mahindra & Mahindra Limited | BSE: 500520<br>NSE: M&M | ₹1,59,211 Cr | 0 errors, 0 missing | $\Delta = 0.00$ (all 12 yrs) | 6 PDFs + 5 Slide PNGs | **SOTP**: Auto Core (₹15,150 Cr @ 16x) + Farm Core (₹6,400 Cr @ 14x) + MMFS (52.2% @ 20% disc) + TechM (25.5% @ 20% disc) - Net Debt = **₹2,929.98/sh** (Prior ₹2,929.98, $\Delta = ₹0.00$; vs 15-Oct-2025 Snapshot ₹2,921.00) | `["human_pack_approval", "render_review"]` |
+| **LTM** | LTIMindtree Limited | BSE: 540005<br>NSE: LTIM | ₹38,008 Cr<br>($4,492M) | 0 errors, 0 missing | $\Delta = 0.00$ (all 12 yrs) | 6 PDFs + 5 Slide PNGs | **FCFF DCF**: Connected USD CC growth (7.5%–9.0%) * FX, utilization (86.5%–87.5%), CAPM WACC 11.50%, TGR 5.00% = **₹2,813.51/sh** (Prior ₹2,752.66, $\Delta = +₹60.85$; vs 15-Oct-2025 Snapshot ₹5,568.00) | `["human_pack_approval", "render_review"]` |
+| **CLEAN** | Clean Science and Technology Limited | BSE: 543318<br>NSE: CLEAN | ₹967 Cr | 0 errors, 0 missing | $\Delta = 0.00$ (all 12 yrs) | 6 PDFs + 5 Slide PNGs | **Manufacturing DCF**: Kurkumbh Units 1–3 (29,900 MTPA) + CFCL Unit 4 HALS (10,500 $\to$ 15,000 MTPA, 55% $\to$ 90% util), CAPM WACC 12.00%, TGR 5.00% = **₹415.69/sh** (Prior ₹343.93, $\Delta = +₹71.76$; vs 15-Oct-2025 Snapshot ₹1,039.00) | `["human_pack_approval", "render_review"]` |
+| **EDELWEISS** | Edelweiss Financial Services Limited | BSE: 532922<br>NSE: EDELWEISS | ₹9,393 Cr | 0 errors, 0 missing | $\Delta = 0.00$ (all 12 yrs) | 6 PDFs + 5 Slide PNGs | **Financial Services SOTP**: EAAA (22x P/E) + EARCL (1.2x P/B) + EAML (4% AAUM) + Insurance (1.0x EV) + Credit (0.8x P/B) - HoldCo Net Debt = **₹133.54/sh** (Prior ₹133.54, $\Delta = ₹0.00$; vs 15-Oct-2025 Snapshot ₹108.00; Industrial FCFF strictly withheld) | `["human_pack_approval", "render_review"]` |
 
 ### 9. Full Test Suite & Originals Integrity
 - `python verify_sources.py`: Verified all 6 original template SHA-256 hashes byte-for-byte against `source-catalog.json`.
-- `python -m unittest discover -v`: **106/106 tests passing** cleanly across:
+- `python -m pytest -q`: **110/110 tests passing** cleanly across:
   - `test_package_safety.py` (17 tests)
-  - `test_four_targets.py` (11 tests, including dynamic formula and 12-period horizon checks)
+  - `test_four_targets.py` (15 tests, including independent 25-cell sensitivity checks, CAPM WACC build-up, 5-slide PPTX deck verification, single-command `build_package.py` execution, and perturbation/restoration tests)
   - `test_build_package.py` (25 tests)
   - `test_modelmaker.py` (33 tests)
   - `test_pptmaker.py` (13 tests)
   - `test_reportmaker.py` (7 tests)
-- Manifest readiness: `ready: false`, pending gates: `["human_pack_approval"]`.
+- Manifest readiness: `ready: false`, pending gates: `["human_pack_approval", "render_review"]`.
+
 

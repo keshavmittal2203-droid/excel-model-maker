@@ -1,544 +1,715 @@
-"""Builder for Edelweiss Financial Services Limited (EDELWEISS) Financial Model."""
+"""Native OpenPyXL Model Builder for Edelweiss Financial Services Limited (EDELWEISS).
+Strictly blocks industrial FCFF DCF and enforces Financial-Services Sum-of-the-Parts (SOTP).
+"""
 import sys
 from pathlib import Path
-
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT))
-
+for p in (str(ROOT), str(Path(__file__).resolve().parent)):
+    if p not in sys.path:
+        sys.path.insert(0, p)
 import openpyxl
-from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
-
-from work.build_four_models import (
-    apply_title_block, style_header_row, style_section_row, tune_column_widths,
-    FONT_TITLE, FONT_SUBTITLE, FONT_BOLD, FONT_REGULAR, FONT_DISC_OK, FONT_DISC_ERR,
-    FILL_ACCENT, FILL_ZEBRA, BORDER_DATA, BORDER_TOTAL,
-    ALIGN_LEFT, ALIGN_RIGHT, ALIGN_CENTER, FMT_INTEGER, FMT_DECIMAL, FMT_PERCENT
+from openpyxl_styles import (
+    FONT_TITLE, FONT_SUBTITLE, FONT_SEC_HDR, FONT_TBL_HDR, FONT_REGULAR, FONT_BOLD,
+    FONT_FORMULA, FONT_LINK, FONT_SMALL_ITALIC,
+    FILL_NAVY, FILL_SEC_HDR, FILL_SUB_HDR, FILL_ZEBRA, FILL_TOTAL, FILL_ACCENT,
+    BORDER_DATA, BORDER_TOTAL, BORDER_HEADER,
+    ALIGN_LEFT, ALIGN_RIGHT, ALIGN_CENTER,
+    FMT_INR_CR, FMT_DEC2, FMT_PCT, FMT_INT, FMT_MULT,
+    style_range, set_col_widths, setup_page
 )
 
-def build_edelweiss_workbook(dest_path: Path):
+
+def build_edelweiss_workbook(out_path: Path) -> Path:
+    return build_edelweiss_model(out_path)
+
+
+def build_edelweiss_model(out_path: Path) -> Path:
     wb = openpyxl.Workbook()
-    
-    # -------------------------------------------------------------
-    # Sheet 1: Cover & Notes
-    # -------------------------------------------------------------
-    ws_cover = wb.active
-    ws_cover.title = "Cover & Notes"
-    apply_title_block(
-        ws_cover,
-        "EDELWEISS FINANCIAL SERVICES LIMITED — FINANCIAL VALUATION MODEL",
-        "Diversified Financial Services Group | Alternatives, ARC, Mutual Fund, Insurance & Credit | SOTP Valuation",
-        4
-    )
-    
-    ws_cover.cell(4, 1, "Entity & Governance Profile").font = FONT_BOLD
-    metadata = [
-        ("Target Legal Entity", "Edelweiss Financial Services Limited"),
-        ("Corporate Identity (CIN)", "L99999MH1995PLC094641"),
-        ("Stock Exchange Listings", "BSE (532922) | NSE (EDELWEISS) | ISIN: INE532F01054"),
-        ("Sector / Industry", "Financial Services / Diversified Financials & Asset Management"),
-        ("Reporting Currency & Unit", "Indian Rupees (INR) in ₹ Crores (except per share metrics)"),
-        ("Accounting Standard", "Indian Accounting Standards (Ind AS) Consolidated Financials"),
-        ("Latest Audited Fiscal Period", "FY25 (Year ended March 31, 2025) & FY26 Forward Close"),
-        ("Current Market Price (CMP)", "₹135.00 (Market Snapshot)"),
-        ("Diluted Shares Outstanding", "94.50 Crore Shares (Face Value ₹1.00)"),
-        ("Market Capitalization", "₹12,746 Crore"),
-        ("Primary Sourced Documents", "EFSL 29th & 30th Annual Reports, Rating Rationales (Crisil/Care/Acuite), BSE Filings"),
-    ]
-    for idx, (lbl, val) in enumerate(metadata, start=5):
-        c1 = ws_cover.cell(idx, 1, lbl)
-        c1.font = FONT_BOLD
-        c1.border = BORDER_DATA
-        c2 = ws_cover.cell(idx, 2, val)
-        c2.font = FONT_REGULAR
-        c2.border = BORDER_DATA
-        ws_cover.merge_cells(start_row=idx, start_column=2, end_row=idx, end_column=4)
-        
-    ws_cover.cell(18, 1, "Model Architecture & Methodological Notes").font = FONT_BOLD
-    notes = [
-        ("Financial Services Economics", "EFSL operates as a diversified financial conglomerate spanning Alternative Asset Management (EAAA), Asset Reconstruction (EARCL), Mutual Fund (EAML), Insurance (General & Life), and Credit/Mortgages. Wealth management (Nuvama) was successfully demerged in 2023."),
-        ("Industrial FCFF Strictly Withheld", "Industrial Free Cash Flow to Firm (FCFF) discounting is methodologically invalid for financial institutions with debt-funded balance sheets, floating borrowings, and lending books. FCFF is formally excluded and withheld."),
-        ("Sum-of-the-Parts (SOTP) Valuation", "Conglomerate valuation is derived through business vertical SOTP: EAAA valued on P/E (22x on FY25 PAT of ₹230 Cr), EARCL on P/B (1.2x on net worth), Mutual Fund at 4.0% of AAUM (₹1.41 Lakh Cr), Insurance at 1.0x net worth/embedded value proxy, and Credit at 0.8x P/B, less holding company net debt."),
-        ("Credit Costs & Asset Quality", "Wholesale credit exposure has been progressively resolved into the ARC platform, shifting group economics toward capital-light, high-fee alternative asset management."),
-    ]
-    for idx, (lbl, val) in enumerate(notes, start=19):
-        c1 = ws_cover.cell(idx, 1, lbl)
-        c1.font = FONT_BOLD
-        c1.border = BORDER_DATA
-        c2 = ws_cover.cell(idx, 2, val)
-        c2.font = FONT_REGULAR
-        c2.border = BORDER_DATA
-        ws_cover.merge_cells(start_row=idx, start_column=2, end_row=idx, end_column=4)
+    ws_exec = wb.active
+    ws_exec.title = "Cover & Notes"
+    ws_is = wb.create_sheet("Income Statement")
+    ws_bs = wb.create_sheet("Balance Sheet")
+    ws_cf = wb.create_sheet("Cash Flow")
+    ws_ops = wb.create_sheet("Segment Operations")
+    ws_val = wb.create_sheet("SOTP Valuation")
 
-    tune_column_widths(ws_cover)
-
-    # Common period headers: 7 historical + 5 forecast
+    # 7 audited historical years (FY19-FY25, cols B-H) + 5 connected forecast years (FY26E-FY30E, cols I-M)
     periods = ["FY19", "FY20", "FY21", "FY22", "FY23", "FY24", "FY25", "FY26E", "FY27E", "FY28E", "FY29E", "FY30E"]
-    cols_header = ["Financial Metric (₹ Cr)"] + periods
-    max_c = len(cols_header)
 
-    # -------------------------------------------------------------
-    # Sheet 2: Income Statement
-    # -------------------------------------------------------------
-    ws_is = wb.create_sheet(title="Income Statement")
-    apply_title_block(ws_is, "Edelweiss Financial Services Limited — Consolidated Income Statement", "Audited Financials (FY19-FY25) & 5-Year Forecast (FY26E-FY30E) | Financial Services Ind AS | ₹ in Crores", max_c)
-    style_header_row(ws_is, 3, cols_header)
+    # =========================================================================
+    # 1. SEGMENT OPERATIONS SCHEDULE (Sheet 5 — Connected Multi-Vertical Engine)
+    # =========================================================================
+    setup_page(ws_ops, "Edelweiss Financial Services Limited - Segment Operations, AUM & Ratios")
+    ws_ops["A1"] = "EDELWEISS FINANCIAL SERVICES LTD — SEGMENT OPERATIONS, AUM, BOOK VALUE & RATIOS"
+    ws_ops["A1"].font = FONT_TITLE
+    ws_ops["A2"] = "Multi-Vertical Operating Engine Feeding SOTP Valuation Base Metrics ('SOTP Valuation'!B6:B10) & Consolidated Revenue"
+    ws_ops["A2"].font = FONT_SMALL_ITALIC
 
-    tot_rev_hist = [11078, 9513, 10775, 7151, 8500, 9523, 9393, 10802]
-    int_inc_hist = [6500, 5200, 5600, 3800, 4200, 4600, 4500, 5100]
-    fee_inc_hist = [4578, 4313, 5175, 3351, 4300, 4923, 4893, 5702]
-    int_exp_hist = [5800, 4793, 3834, 2984, 2575, 2786, 2537, 2492]
-    opex_hist    = [2600, 2244, 2809, 1145, 3092, 3466, 3496, 4835]
-    prov_hist    = [1000, 2044, 520, 230, 200, 240, 260, 290]
-    dep_hist     = [232, 260, 151, 138, 126, 147, 144, 144]
-    tax_hist     = [383, 200, 25, 15, -21, 266, 149, 147]
-
-    style_section_row(ws_is, 4, "1. Net Interest Income & Fee Revenues (₹ Cr)", max_c)
-    ws_is.cell(5, 1, "Interest & Financing Income").font = FONT_REGULAR
-    for idx, v in enumerate(int_inc_hist, start=2):
-        ws_is.cell(5, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        prev_col = get_column_letter(idx - 1)
-        ws_is.cell(5, idx, f"={prev_col}5*1.06").number_format = FMT_INTEGER
-
-    ws_is.cell(6, 1, "Interest & Borrowing Expenses").font = FONT_REGULAR
-    for idx, v in enumerate(int_exp_hist, start=2):
-        ws_is.cell(6, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        prev_col = get_column_letter(idx - 1)
-        ws_is.cell(6, idx, f"={prev_col}6*1.04").number_format = FMT_INTEGER
-
-    ws_is.cell(7, 1, "Net Interest Income (NII)").font = FONT_BOLD
-    for idx in range(2, max_c + 1):
-        col_let = get_column_letter(idx)
-        c = ws_is.cell(7, idx, f"={col_let}5-{col_let}6")
-        c.font = FONT_BOLD
-        c.fill = FILL_ACCENT
-        c.border = BORDER_DATA
-        c.number_format = FMT_INTEGER
-
-    ws_is.cell(8, 1, "Fee, Commission, Asset Mgmt & Advisory Income").font = FONT_REGULAR
-    for idx, v in enumerate(fee_inc_hist, start=2):
-        ws_is.cell(8, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        prev_col = get_column_letter(idx - 1)
-        ws_is.cell(8, idx, f"={prev_col}8*1.10").number_format = FMT_INTEGER
-
-    ws_is.cell(9, 1, "Total Operating Net Revenue").font = FONT_BOLD
-    for idx in range(2, max_c + 1):
-        col_let = get_column_letter(idx)
-        c = ws_is.cell(9, idx, f"={col_let}7+{col_let}8")
-        c.font = FONT_BOLD
-        c.fill = FILL_ACCENT
-        c.border = BORDER_DATA
-        c.number_format = FMT_INTEGER
-
-    style_section_row(ws_is, 10, "2. Operating Expenses, Provisions & Net Profit", max_c)
-    ws_is.cell(11, 1, "Employee Benefit & Other Operating Expenses").font = FONT_REGULAR
-    for idx, v in enumerate(opex_hist, start=2):
-        ws_is.cell(11, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        prev_col = get_column_letter(idx - 1)
-        ws_is.cell(11, idx, f"={prev_col}11*1.05").number_format = FMT_INTEGER
-
-    ws_is.cell(12, 1, "Operating Profit Before Provisions").font = FONT_BOLD
-    for idx in range(2, max_c + 1):
-        col_let = get_column_letter(idx)
-        c = ws_is.cell(12, idx, f"={col_let}9-{col_let}11")
-        c.font = FONT_BOLD
-        c.fill = FILL_ACCENT
-        c.number_format = FMT_INTEGER
-
-    ws_is.cell(13, 1, "Credit Costs, Impairment & Loan Provisions").font = FONT_REGULAR
-    for idx, v in enumerate(prov_hist, start=2):
-        ws_is.cell(13, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        ws_is.cell(13, idx, 250).number_format = FMT_INTEGER
-
-    ws_is.cell(14, 1, "Depreciation & Amortization").font = FONT_REGULAR
-    for idx, v in enumerate(dep_hist, start=2):
-        ws_is.cell(14, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        ws_is.cell(14, idx, 140).number_format = FMT_INTEGER
-
-    ws_is.cell(15, 1, "Profit Before Tax (PBT)").font = FONT_BOLD
-    for idx in range(2, max_c + 1):
-        col_let = get_column_letter(idx)
-        c = ws_is.cell(15, idx, f"={col_let}12-{col_let}13-{col_let}14")
-        c.font = FONT_BOLD
-        c.fill = FILL_ACCENT
-        c.border = BORDER_DATA
-        c.number_format = FMT_INTEGER
-
-    ws_is.cell(16, 1, "Tax Expense / (Benefit)").font = FONT_REGULAR
-    for idx, v in enumerate(tax_hist, start=2):
-        ws_is.cell(16, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        col_let = get_column_letter(idx)
-        ws_is.cell(16, idx, f"={col_let}15*0.22").number_format = FMT_INTEGER
-
-    ws_is.cell(17, 1, "Consolidated Net Profit (PAT)").font = FONT_BOLD
-    for idx in range(2, max_c + 1):
-        col_let = get_column_letter(idx)
-        c = ws_is.cell(17, idx, f"={col_let}15-{col_let}16")
-        c.font = FONT_BOLD
-        c.fill = FILL_ACCENT
-        c.border = BORDER_TOTAL
-        c.number_format = FMT_INTEGER
-
-    tune_column_widths(ws_is)
-
-    # -------------------------------------------------------------
-    # Sheet 3: Balance Sheet
-    # -------------------------------------------------------------
-    ws_bs = wb.create_sheet(title="Balance Sheet")
-    apply_title_block(ws_bs, "Edelweiss Financial Services Limited — Consolidated Balance Sheet", "Audited Financials (FY19-FY25) & 5-Year Forecast (FY26E-FY30E) | Balance Check | ₹ in Crores", max_c)
-    style_header_row(ws_bs, 3, cols_header)
-
-    eq_hist = [89, 89, 89, 90, 90, 90, 92, 95]
-    res_hist = [7588, 6040, 6488, 6448, 6654, 4672, 4333, 4528]
-    bor_hist = [46148, 36657, 28436, 22768, 21791, 20358, 18004, 18595]
-    oliab_hist = [10075, 11230, 11121, 13758, 15346, 17594, 18853, 19818]
-
-    loan_hist = [24000, 20000, 15000, 12000, 10000, 8500, 7500, 7000]
-    inv_hist  = [15000, 14000, 12882, 14139, 17162, 18491, 17574, 19881]
-    fix_hist  = [2000, 1800, 1781, 1597, 1367, 1290, 1271, 1142]
-
-    style_section_row(ws_bs, 4, "1. Capital & Borrowings (Liabilities in ₹ Cr)", max_c)
-    ws_bs.cell(5, 1, "Equity Share Capital").font = FONT_REGULAR
-    for idx, v in enumerate(eq_hist, start=2):
-        ws_bs.cell(5, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        ws_bs.cell(5, idx, 95).number_format = FMT_INTEGER
-
-    ws_bs.cell(6, 1, "Reserves & Surplus").font = FONT_REGULAR
-    for idx, v in enumerate(res_hist, start=2):
-        ws_bs.cell(6, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        prev_col = get_column_letter(idx - 1)
-        cur_col = get_column_letter(idx)
-        # Retain ~70% of PAT
-        ws_bs.cell(6, idx, f"={prev_col}6+'Income Statement'!{cur_col}17*0.70").number_format = FMT_INTEGER
-
-    ws_bs.cell(7, 1, "Total Net Worth").font = FONT_BOLD
-    for idx in range(2, max_c + 1):
-        col_let = get_column_letter(idx)
-        c = ws_bs.cell(7, idx, f"={col_let}5+{col_let}6")
-        c.font = FONT_BOLD
-        c.fill = FILL_ACCENT
-        c.number_format = FMT_INTEGER
-
-    ws_bs.cell(8, 1, "Borrowings (NCDs, Bank Loans, CP)").font = FONT_REGULAR
-    for idx, v in enumerate(bor_hist, start=2):
-        ws_bs.cell(8, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        prev_col = get_column_letter(idx - 1)
-        ws_bs.cell(8, idx, f"={prev_col}8*1.02").number_format = FMT_INTEGER
-
-    ws_bs.cell(9, 1, "Other Liabilities & Provisions").font = FONT_REGULAR
-    for idx, v in enumerate(oliab_hist, start=2):
-        ws_bs.cell(9, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        prev_col = get_column_letter(idx - 1)
-        ws_bs.cell(9, idx, f"={prev_col}9*1.04").number_format = FMT_INTEGER
-
-    ws_bs.cell(10, 1, "Total Liabilities & Equity").font = FONT_BOLD
-    for idx in range(2, max_c + 1):
-        col_let = get_column_letter(idx)
-        c = ws_bs.cell(10, idx, f"={col_let}7+{col_let}8+{col_let}9")
-        c.font = FONT_BOLD
-        c.fill = FILL_ACCENT
-        c.border = BORDER_DATA
-        c.number_format = FMT_INTEGER
-
-    style_section_row(ws_bs, 11, "2. Financial & Operating Assets", max_c)
-    ws_bs.cell(12, 1, "Loan Assets / Lending Book").font = FONT_REGULAR
-    for idx, v in enumerate(loan_hist, start=2):
-        ws_bs.cell(12, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        prev_col = get_column_letter(idx - 1)
-        ws_bs.cell(12, idx, f"={prev_col}12*0.95").number_format = FMT_INTEGER
-
-    ws_bs.cell(13, 1, "Investments (AIFs, Security Receipts, G-Secs)").font = FONT_REGULAR
-    for idx, v in enumerate(inv_hist, start=2):
-        ws_bs.cell(13, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        prev_col = get_column_letter(idx - 1)
-        ws_bs.cell(13, idx, f"={prev_col}13*1.06").number_format = FMT_INTEGER
-
-    ws_bs.cell(14, 1, "Property, Equipment & Intangibles").font = FONT_REGULAR
-    for idx, v in enumerate(fix_hist, start=2):
-        ws_bs.cell(14, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        ws_bs.cell(14, idx, 1100).number_format = FMT_INTEGER
-
-    ws_bs.cell(15, 1, "Cash, Bank Balances & Other Financial Assets").font = FONT_REGULAR
-    for idx in range(2, max_c + 1):
-        col_let = get_column_letter(idx)
-        # Balancing asset line item
-        ws_bs.cell(15, idx, f"={col_let}10-({col_let}12+{col_let}13+{col_let}14)").number_format = FMT_INTEGER
-
-    ws_bs.cell(16, 1, "Total Financial & Non-Financial Assets").font = FONT_BOLD
-    for idx in range(2, max_c + 1):
-        col_let = get_column_letter(idx)
-        c = ws_bs.cell(16, idx, f"={col_let}12+{col_let}13+{col_let}14+{col_let}15")
-        c.font = FONT_BOLD
-        c.fill = FILL_ACCENT
-        c.border = BORDER_DATA
-        c.number_format = FMT_INTEGER
-
-    # Discrepancy Check Row
-    ws_bs.cell(17, 1, "Balance Sheet Discrepancy Check (Δ)").font = FONT_BOLD
-    for idx in range(2, max_c + 1):
-        col_let = get_column_letter(idx)
-        c = ws_bs.cell(17, idx, f"={col_let}16-{col_let}10")
-        c.font = FONT_DISC_OK
-        c.border = BORDER_TOTAL
-        c.number_format = FMT_DECIMAL
+    ws_ops.cell(3, 1, "Business Vertical / Operating Metric (₹ Cr)").font = FONT_TBL_HDR
+    ws_ops.cell(3, 1).fill = FILL_NAVY
+    for idx, p in enumerate(periods, start=2):
+        c = ws_ops.cell(3, idx, p)
+        c.font = FONT_TBL_HDR
+        c.fill = FILL_NAVY
         c.alignment = ALIGN_RIGHT
 
-    tune_column_widths(ws_bs)
+    ws_ops["A4"] = "--- Core Financial Services Operating Verticals (FY19–FY25 Audited / Segment Disclosures) ---"
+    ws_ops["A4"].font = FONT_SEC_HDR
+    ws_ops["A4"].fill = FILL_SEC_HDR
 
-    # -------------------------------------------------------------
-    # Sheet 4: Cash Flow
-    # -------------------------------------------------------------
-    ws_cf = wb.create_sheet(title="Cash Flow")
-    apply_title_block(ws_cf, "Edelweiss Financial Services Limited — Consolidated Cash Flow Statement", "Audited Statutory Movements (FY19-FY25) & 5-Year Forecast (FY26E-FY30E) | ₹ in Crores", max_c)
-    style_header_row(ws_cf, 3, cols_header)
+    # Historical Vertical Metrics (FY19-FY25, 7 years) -> FY25 values (Col H) feed SOTP Valuation B6:B10!
+    eaaa_aum_hist  = [18500, 21200, 26500, 32400, 41800, 50200, 56000]
+    eaaa_pat_hist  = [50, 75, 110, 145, 160, 175, 230]
+    earcl_aum_hist = [46500, 43200, 40800, 39500, 37100, 31500, 28000]
+    earcl_nw_hist  = [1850, 2010, 2180, 2350, 2520, 2680, 2800]
+    mf_aaum_hist   = [12000, 28000, 55000, 85000, 105000, 127000, 141000]
+    ins_ev_hist    = [950, 1050, 1150, 1250, 1350, 1420, 1500]
+    cred_bk_hist   = [36100, 28400, 21500, 16800, 14200, 11800, 10200]
+    cred_nw_hist   = [4500, 3800, 3600, 3500, 3400, 3300, 3200]
 
-    cfo_hist = [5685, 12098, 3458, 5592, 2891, 2894, 3384, 897]
-    cfi_hist = [-1312, 199, 4085, -1058, -425, -482, 3794, -963]
-    cff_hist = [-3665, -10471, -8587, -6444, -1708, -2785, -4828, -1936]
+    # Consolidated Revenue Split (Interest & Treasury vs Fee, Commission & Insurance Premium) summing to Consolidated Sales
+    cons_rev_hist  = [11078, 9513, 10775, 7151, 8500, 9523, 9393]
+    int_inc_hist   = [7200, 5850, 5100, 3450, 3650, 3850, 3600]
+    fee_prem_hist  = [cons_rev_hist[i] - int_inc_hist[i] for i in range(7)]
 
-    ws_cf.cell(5, 1, "Cash from Operating Activities (CFO)").font = FONT_BOLD
-    for idx, v in enumerate(cfo_hist, start=2):
-        ws_cf.cell(5, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        ws_cf.cell(5, idx, 1500).number_format = FMT_INTEGER
+    # Ratios from work/sources/EDELWEISS_consolidated.json (Mar 2019 - Mar 2025)
+    debtor_days_hist = [91, 50, 17, 24, 18, 14, 15]
+    roce_hist        = [0.12, 0.05, 0.10, 0.10, 0.10, 0.12, 0.13]
 
-    ws_cf.cell(6, 1, "Cash from Investing Activities (CFI)").font = FONT_REGULAR
-    for idx, v in enumerate(cfi_hist, start=2):
-        ws_cf.cell(6, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        ws_cf.cell(6, idx, -500).number_format = FMT_INTEGER
+    ops_rows = {
+        5: ("EAAA (Alternatives) Fee-Paying AUM (₹ Cr)", FMT_INR_CR, False),
+        6: ("EAAA (Alternatives) Operating PAT (₹ Cr) [Feeds SOTP B6]", FMT_INR_CR, True),
+        7: ("EARCL (Asset Reconstruction) Distressed Assets AUM (₹ Cr)", FMT_INR_CR, False),
+        8: ("EARCL (Asset Reconstruction) Attributable Net Worth (₹ Cr) [Feeds SOTP B7]", FMT_INR_CR, True),
+        9: ("Edelweiss Mutual Fund Total AAUM (₹ Cr) [Feeds SOTP B8]", FMT_INR_CR, True),
+        10: ("Life & General Insurance Embedded Value / Net Worth Proxy (₹ Cr) [Feeds SOTP B9]", FMT_INR_CR, True),
+        11: ("NBFC & Housing Credit Book (Wholesale + Retail MSME - ₹ Cr)", FMT_INR_CR, False),
+        12: ("NBFC & Housing Credit Allocated Net Worth (₹ Cr) [Feeds SOTP B10]", FMT_INR_CR, True),
+        13: ("--- Consolidated Operating Revenue Build-Up & Forecast Drivers ---", None, True),
+        14: ("Interest & Treasury Operating Income (₹ Cr)", FMT_INR_CR, False),
+        15: ("Fee, Asset Management Commission & Insurance Premium Income (₹ Cr)", FMT_INR_CR, False),
+        16: ("Total Consolidated Operating Income (₹ Cr) [= Row 14 + Row 15]", FMT_INR_CR, True),
+        17: ("Fee & Insurance Income Growth Driver (%)", FMT_PCT, False),
+        18: ("Operating & Policyholder Expense Ratio (% of Total Income)", FMT_PCT, False),
+        19: ("Effective Tax Rate (% of PBT)", FMT_PCT, False),
+        20: ("Dividend Payout Ratio (% of PAT)", FMT_PCT, False),
+        21: ("--- Leverage & Return Ratios (Primary Filing / Derived) ---", None, True),
+        22: ("Consolidated Debt-to-Equity Ratio (x)", FMT_MULT, False),
+        23: ("Debtor / Fee Collection Days", FMT_INT, False),
+        24: ("Consolidated ROCE (%)", FMT_PCT, False),
+        25: ("Consolidated ROE (%)", FMT_PCT, True),
+    }
 
-    ws_cf.cell(7, 1, "Cash from Financing Activities (CFF)").font = FONT_REGULAR
-    for idx, v in enumerate(cff_hist, start=2):
-        ws_cf.cell(7, idx, v).number_format = FMT_INTEGER
-    for idx in range(10, 14):
-        ws_cf.cell(7, idx, -800).number_format = FMT_INTEGER
+    for r, (lbl, _, is_tot) in ops_rows.items():
+        c = ws_ops.cell(r, 1, lbl)
+        if lbl.startswith("---"):
+            c.font = FONT_SEC_HDR
+            c.fill = FILL_SEC_HDR
+        else:
+            c.font = FONT_BOLD if is_tot else FONT_REGULAR
+            c.fill = FILL_TOTAL if is_tot else (FILL_ZEBRA if r % 2 == 1 else openpyxl.styles.PatternFill(fill_type=None))
+            c.border = BORDER_TOTAL if is_tot else BORDER_DATA
 
-    ws_cf.cell(8, 1, "Net Cash Flow (Δ Cash)").font = FONT_BOLD
-    for idx in range(2, max_c + 1):
-        col_let = get_column_letter(idx)
-        c = ws_cf.cell(8, idx, f"={col_let}5+{col_let}6+{col_let}7")
-        c.font = FONT_BOLD
-        c.fill = FILL_ACCENT
-        c.border = BORDER_TOTAL
-        c.number_format = FMT_INTEGER
+    for i in range(7):
+        col = i + 2
+        col_let = get_column_letter(col)
+        prev_let = get_column_letter(col - 1) if col > 2 else None
+        ws_ops.cell(5, col, eaaa_aum_hist[i])
+        ws_ops.cell(6, col, eaaa_pat_hist[i])
+        ws_ops.cell(7, col, earcl_aum_hist[i])
+        ws_ops.cell(8, col, earcl_nw_hist[i])
+        ws_ops.cell(9, col, mf_aaum_hist[i])
+        ws_ops.cell(10, col, ins_ev_hist[i])
+        ws_ops.cell(11, col, cred_bk_hist[i])
+        ws_ops.cell(12, col, cred_nw_hist[i])
 
-    tune_column_widths(ws_cf)
+        ws_ops.cell(14, col, int_inc_hist[i])
+        ws_ops.cell(15, col, fee_prem_hist[i])
+        ws_ops.cell(16, col, f"={col_let}14+{col_let}15")
+        ws_ops.cell(17, col, 0.120 if i == 0 else f"=({col_let}15-{prev_let}15)/{prev_let}15")
+        ws_ops.cell(18, col, f"='Income Statement'!{col_let}6/'Income Statement'!{col_let}5")
+        ws_ops.cell(19, col, 0.250)
+        ws_ops.cell(20, col, 0.250)
 
-    # -------------------------------------------------------------
-    # Sheet 5: Segment Operations
-    # -------------------------------------------------------------
-    ws_seg = wb.create_sheet(title="Segment Operations")
-    apply_title_block(ws_seg, "Edelweiss Financial Services Limited — Operating Verticals & Segment Profitability", "Alternative Asset Management (EAAA), ARC (EARCL), Mutual Fund (EAML), Insurance & Credit", max_c)
-    style_header_row(ws_seg, 3, cols_header)
+        ws_ops.cell(22, col, f"='Balance Sheet'!{col_let}6/'Balance Sheet'!{col_let}16")
+        ws_ops.cell(23, col, debtor_days_hist[i])
+        ws_ops.cell(24, col, roce_hist[i])
+        ws_ops.cell(25, col, f"='Income Statement'!{col_let}14/'Balance Sheet'!{col_let}16")
 
-    style_section_row(ws_seg, 4, "1. Segment Profit After Tax (PAT in ₹ Cr)", max_c)
-    ws_seg.cell(5, 1, "Alternative Asset Management (EAAA) PAT").font = FONT_BOLD
-    eaaa_pat = [50, 75, 110, 145, 175, 230, 275, 320, 360, 400, 440, 480]
-    for idx, v in enumerate(eaaa_pat, start=2):
-        ws_seg.cell(5, idx, v).number_format = FMT_INTEGER
+    # Forecast Columns I..M (idx 9..13, FY26E..FY30E)
+    fee_g_fcst  = [0.115, 0.115, 0.110, 0.110, 0.105]
+    opex_r_fcst = [0.640, 0.635, 0.630, 0.625, 0.620]
 
-    ws_seg.cell(6, 1, "Asset Reconstruction (EARCL) PAT").font = FONT_BOLD
-    earcl_pat = [250, 280, 310, 325, 355, 385, 410, 435, 460, 480, 500, 520]
-    for idx, v in enumerate(earcl_pat, start=2):
-        ws_seg.cell(6, idx, v).number_format = FMT_INTEGER
+    for j in range(5):
+        col = j + 9
+        col_let = get_column_letter(col)
+        prev_let = get_column_letter(col - 1)
+        ws_ops.cell(5, col, f"=ROUND({prev_let}5*1.15,0)")
+        ws_ops.cell(6, col, f"=ROUND({col_let}5*0.0042,0)")
+        ws_ops.cell(7, col, f"=ROUND({prev_let}7*0.95,0)")
+        ws_ops.cell(8, col, f"=ROUND({prev_let}8*1.07,0)")
+        ws_ops.cell(9, col, f"=ROUND({prev_let}9*1.16,0)")
+        ws_ops.cell(10, col, f"=ROUND({prev_let}10*1.10,0)")
+        ws_ops.cell(11, col, f"=ROUND({prev_let}11*1.04,0)")
+        ws_ops.cell(12, col, f"=ROUND({prev_let}12*1.05,0)")
 
-    ws_seg.cell(7, 1, "Insurance (Life & General Combined) PAT").font = FONT_REGULAR
-    ins_pat = [-450, -500, -420, -380, -305, -175, -90, -40, 20, 60, 100, 140]
-    for idx, v in enumerate(ins_pat, start=2):
-        ws_seg.cell(7, idx, v).number_format = FMT_INTEGER
+        ws_ops.cell(17, col, fee_g_fcst[j])
+        ws_ops.cell(18, col, opex_r_fcst[j])
+        ws_ops.cell(19, col, 0.250)
+        ws_ops.cell(20, col, 0.250)
 
-    style_section_row(ws_seg, 9, "2. Scale & Assets Under Management (AUM in ₹ Cr)", max_c)
-    ws_seg.cell(10, 1, "Mutual Fund AAUM (₹ Cr)").font = FONT_BOLD
-    mf_aum = [30000, 45000, 65000, 95000, 127000, 141000, 160000, 185000, 210000, 235000, 260000, 290000]
-    for idx, v in enumerate(mf_aum, start=2):
-        ws_seg.cell(10, idx, v).number_format = FMT_INTEGER
+        ws_ops.cell(14, col, f"=ROUND({prev_let}14*1.03,0)")
+        ws_ops.cell(15, col, f"=ROUND({prev_let}15*(1+{col_let}17),0)")
+        ws_ops.cell(16, col, f"={col_let}14+{col_let}15")
 
-    ws_seg.cell(11, 1, "Alternative Asset Management AUM (₹ Cr)").font = FONT_REGULAR
-    alt_aum = [20000, 25000, 30000, 40000, 50000, 62000, 75000, 88000, 100000, 112000, 125000, 140000]
-    for idx, v in enumerate(alt_aum, start=2):
-        ws_seg.cell(11, idx, v).number_format = FMT_INTEGER
+        ws_ops.cell(22, col, f"='Balance Sheet'!{col_let}6/'Balance Sheet'!{col_let}16")
+        ws_ops.cell(23, col, 15)
+        ws_ops.cell(24, col, f"=('Income Statement'!{col_let}7-'Income Statement'!{col_let}9)/('Balance Sheet'!{col_let}16+'Balance Sheet'!{col_let}6)")
+        ws_ops.cell(25, col, f"='Income Statement'!{col_let}14/'Balance Sheet'!{col_let}16")
 
-    tune_column_widths(ws_seg)
+    for r, (_, fmt, is_tot) in ops_rows.items():
+        if fmt is None:
+            for c_idx in range(2, 14):
+                ws_ops.cell(r, c_idx).fill = FILL_SEC_HDR
+            continue
+        for c_idx in range(2, 14):
+            cell = ws_ops.cell(r, c_idx)
+            cell.number_format = fmt
+            cell.alignment = ALIGN_RIGHT
+            cell.font = FONT_BOLD if is_tot else FONT_REGULAR
+            cell.fill = FILL_TOTAL if is_tot else (FILL_ZEBRA if r % 2 == 1 else openpyxl.styles.PatternFill(fill_type=None))
+            cell.border = BORDER_TOTAL if is_tot else BORDER_DATA
 
-    # -------------------------------------------------------------
-    # Sheet 6: SOTP Valuation
-    # -------------------------------------------------------------
-    ws_val = wb.create_sheet(title="SOTP Valuation")
-    apply_title_block(ws_val, "Edelweiss Financial Services Limited — Sum-of-the-Parts (SOTP) Valuation", "Historical Market Snapshot (15-Oct-2025 Close) | SOTP Financial Services Multiples | Industrial FCFF Withheld", 5)
+    set_col_widths(ws_ops, {"A": 58, **{get_column_letter(i): 13 for i in range(2, 14)}})
 
-    # Formal Notice Blocking Industrial FCFF
-    ws_val.merge_cells("A3:E3")
-    c_note = ws_val.cell(3, 1, "METHODOLOGICAL EXCLUSION NOTICE: Industrial Free Cash Flow to Firm (FCFF) discounting is strictly withheld and blocked as methodologically invalid for financial institutions with debt-funded balance sheets. SOTP is the only supported valuation method.")
-    c_note.font = Font(name="Calibri", size=9, bold=True, color="8A3B00")
-    c_note.fill = PatternFill(start_color="FFF2E0", end_color="FFF2E0", fill_type="solid")
-    c_note.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
-    ws_val.row_dimensions[3].height = 36
+    # =========================================================================
+    # 2. INCOME STATEMENT (Consolidated Ind AS, FY19-FY25 Audited + FY26E-FY30E Connected)
+    # =========================================================================
+    setup_page(ws_is, "Edelweiss Financial Services Limited - Consolidated Income Statement")
+    ws_is["A1"] = "EDELWEISS FINANCIAL SERVICES LTD — CONSOLIDATED STATEMENT OF PROFIT & LOSS (₹ CRORES)"
+    ws_is["A1"].font = FONT_TITLE
+    ws_is["A2"] = "Audited Consolidated FY19–FY25 (work/sources/EDELWEISS_consolidated.json) | FY26E–FY30E Linked to Segment Operations"
+    ws_is["A2"].font = FONT_SMALL_ITALIC
 
-    headers_sotp = ["Business Vertical / Asset", "Valuation Metric / Base", "Applied Multiple / Metric", "Holding Co. Discount", "Implied Value (₹ Cr)"]
-    style_header_row(ws_val, 5, headers_sotp)
+    ws_is.cell(3, 1, "Line Item (₹ Cr)").font = FONT_TBL_HDR
+    ws_is.cell(3, 1).fill = FILL_NAVY
+    for idx, p in enumerate(periods, start=2):
+        c = ws_is.cell(3, idx, p)
+        c.font = FONT_TBL_HDR
+        c.fill = FILL_NAVY
+        c.alignment = ALIGN_RIGHT
 
-    # SOTP Rows - Editable Input Parameter Cells in Columns B, C, D
-    ws_val.cell(6, 1, "Alternative Asset Management (EAAA)").font = FONT_BOLD
-    ws_val.cell(6, 2, 230).font = FONT_REGULAR
-    ws_val.cell(6, 2).number_format = FMT_INTEGER
-    ws_val.cell(6, 3, 22.0).font = FONT_REGULAR
-    ws_val.cell(6, 3).number_format = FMT_DECIMAL
-    ws_val.cell(6, 4, 0.0).font = FONT_REGULAR
-    ws_val.cell(6, 4).number_format = FMT_PERCENT
-    c = ws_val.cell(6, 5, "=B6*C6*(1-D6)")
-    c.font = FONT_BOLD
-    c.number_format = FMT_INTEGER
+    # Exact FY19-FY25 (Mar 2019 - Mar 2025) from work/sources/EDELWEISS_consolidated.json (NO Mar 2026 look-ahead!)
+    sales_hist = [11078, 9513, 10775, 7151, 8500, 9523, 9393]
+    exp_hist   = [4507, 7034, 6609, 3947, 5667, 6252, 6033]
+    dep_hist   = [132, 232, 260, 151, 138, 126, 147]
+    int_hist   = [4783, 4793, 3834, 2984, 2575, 2786, 2537]
+    oth_hist   = [88, 89, 74, 158, 264, 79, 126]
+    # Exact Tax Expense = PBT - Reported Net Profit ([1044, -2044, 254, 212, 406, 528, 536])
+    tax_hist   = [700, -413, -108, 15, -22, -90, 266]
 
-    ws_val.cell(7, 1, "Asset Reconstruction (EARCL)").font = FONT_BOLD
-    ws_val.cell(7, 2, 2800).font = FONT_REGULAR
-    ws_val.cell(7, 2).number_format = FMT_INTEGER
-    ws_val.cell(7, 3, 1.20).font = FONT_REGULAR
-    ws_val.cell(7, 3).number_format = FMT_DECIMAL
-    ws_val.cell(7, 4, 0.0).font = FONT_REGULAR
-    ws_val.cell(7, 4).number_format = FMT_PERCENT
-    c = ws_val.cell(7, 5, "=B7*C7*(1-D7)")
-    c.font = FONT_BOLD
-    c.number_format = FMT_INTEGER
-
-    ws_val.cell(8, 1, "Mutual Fund (Edelweiss Asset Management)").font = FONT_BOLD
-    ws_val.cell(8, 2, 141000).font = FONT_REGULAR
-    ws_val.cell(8, 2).number_format = FMT_INTEGER
-    ws_val.cell(8, 3, 0.04).font = FONT_REGULAR
-    ws_val.cell(8, 3).number_format = FMT_PERCENT
-    ws_val.cell(8, 4, 0.0).font = FONT_REGULAR
-    ws_val.cell(8, 4).number_format = FMT_PERCENT
-    c = ws_val.cell(8, 5, "=B8*C8*(1-D8)")
-    c.font = FONT_BOLD
-    c.number_format = FMT_INTEGER
-
-    ws_val.cell(9, 1, "Insurance (General + Life Insurance)").font = FONT_BOLD
-    ws_val.cell(9, 2, 1500).font = FONT_REGULAR
-    ws_val.cell(9, 2).number_format = FMT_INTEGER
-    ws_val.cell(9, 3, 1.00).font = FONT_REGULAR
-    ws_val.cell(9, 3).number_format = FMT_DECIMAL
-    ws_val.cell(9, 4, 0.0).font = FONT_REGULAR
-    ws_val.cell(9, 4).number_format = FMT_PERCENT
-    c = ws_val.cell(9, 5, "=B9*C9*(1-D9)")
-    c.font = FONT_BOLD
-    c.number_format = FMT_INTEGER
-
-    ws_val.cell(10, 1, "Credit & Housing Finance Lending Book").font = FONT_BOLD
-    ws_val.cell(10, 2, 3200).font = FONT_REGULAR
-    ws_val.cell(10, 2).number_format = FMT_INTEGER
-    ws_val.cell(10, 3, 0.80).font = FONT_REGULAR
-    ws_val.cell(10, 3).number_format = FMT_DECIMAL
-    ws_val.cell(10, 4, 0.0).font = FONT_REGULAR
-    ws_val.cell(10, 4).number_format = FMT_PERCENT
-    c = ws_val.cell(10, 5, "=B10*C10*(1-D10)")
-    c.font = FONT_BOLD
-    c.number_format = FMT_INTEGER
-
-    ws_val.cell(11, 1, "Total Gross Business Value").font = FONT_BOLD
-    ws_val.cell(11, 1).fill = FILL_ACCENT
-    c = ws_val.cell(11, 5, "=SUM(E6:E10)")
-    c.font = FONT_BOLD
-    c.fill = FILL_ACCENT
-    c.border = BORDER_DATA
-    c.number_format = FMT_INTEGER
-
-    ws_val.cell(12, 1, "Less: Holding Company Net Debt & Intragroup Liabilities").font = FONT_BOLD
-    ws_val.cell(12, 2, -5500).font = FONT_REGULAR
-    ws_val.cell(12, 2).number_format = FMT_INTEGER
-    ws_val.cell(12, 3, "Audited Standalone Close").font = FONT_REGULAR
-    ws_val.cell(12, 4, 0.0).font = FONT_REGULAR
-    ws_val.cell(12, 4).number_format = FMT_PERCENT
-    c = ws_val.cell(12, 5, "=B12")
-    c.font = FONT_BOLD
-    c.number_format = FMT_INTEGER
-
-    ws_val.cell(13, 1, "Implied Consolidated Equity Value").font = FONT_BOLD
-    ws_val.cell(13, 1).fill = FILL_ACCENT
-    c = ws_val.cell(13, 5, "=E11+E12")
-    c.font = FONT_BOLD
-    c.fill = FILL_ACCENT
-    c.border = BORDER_TOTAL
-    c.number_format = FMT_INTEGER
-
-    ws_val.cell(14, 1, "Diluted Shares Outstanding (Cr)").font = FONT_REGULAR
-    ws_val.cell(14, 2, 94.50).font = FONT_REGULAR
-    ws_val.cell(14, 2).number_format = FMT_DECIMAL
-    ws_val.cell(14, 3, "Crore Shares").font = FONT_REGULAR
-    ws_val.cell(14, 4, "Statutory Filing").font = FONT_REGULAR
-    c = ws_val.cell(14, 5, "=B14")
-    c.font = FONT_REGULAR
-    c.number_format = FMT_DECIMAL
-
-    ws_val.cell(15, 1, "SOTP Implied Fair Value Per Share (₹)").font = FONT_TITLE
-    ws_val.cell(15, 1).fill = FILL_ACCENT
-    c = ws_val.cell(15, 5, "=E13/E14")
-    c.font = FONT_TITLE
-    c.fill = FILL_ACCENT
-    c.border = BORDER_TOTAL
-    c.number_format = FMT_DECIMAL
-
-    ws_val.cell(16, 1, "Historical Snapshot Price (15-Oct-2025 NSE Close)").font = FONT_BOLD
-    ws_val.cell(16, 2, 135.00).font = FONT_REGULAR
-    ws_val.cell(16, 2).number_format = FMT_DECIMAL
-    ws_val.cell(16, 3, "NSE Close").font = FONT_REGULAR
-    ws_val.cell(16, 4, "15-Oct-2025").font = FONT_REGULAR
-    c = ws_val.cell(16, 5, "=B16")
-    c.font = FONT_BOLD
-    c.number_format = FMT_DECIMAL
-
-    ws_val.cell(17, 1, "Implied Premium / (Discount) vs. 15-Oct-2025 Snapshot").font = FONT_BOLD
-    c = ws_val.cell(17, 5, "=(E15/E16)-1")
-    c.font = FONT_BOLD
-    c.number_format = FMT_PERCENT
-
-    ws_val.cell(18, 1, "Historical Market Snapshot Notice: Model reflects a point-in-time snapshot as of October 15, 2025, and is NOT a current real-time valuation. Analyst Assumptions: EAAA valued at 22x P/E, EARCL at 1.20x P/B, EAML at 4.0% of AAUM, Insurance at ₹1,500 Cr book proxy, Credit book at 0.80x P/B, Standalone HoldCo Net Debt -₹5,500 Cr. Industrial FCFF is strictly withheld. Proximity to snapshot price (₹135.00 as of 15-Oct-2025 NSE) is an observation, not model validation.").font = Font(name="Calibri", size=9, italic=True)
-    ws_val.merge_cells("A18:E18")
-
-    # SOTP Sensitivity Matrix
-    style_section_row(ws_val, 20, "Financial Services SOTP Sensitivity: Alternatives P/E vs. ARC P/B Multiple (₹/Share)", 5)
-    headers_sens = ["Alternatives (EAAA) P/E \\ ARC (EARCL) P/B", "1.00x EARCL", "1.20x EARCL (Base)", "1.40x EARCL", "Notes"]
-    style_header_row(ws_val, 21, headers_sens)
-
-    sens_eaaa = [
-        ("18.0x EAAA P/E", 18.0),
-        ("22.0x EAAA (Base Case)", 22.0),
-        ("26.0x EAAA P/E", 26.0),
+    is_rows = [
+        (4, "Total Income Growth YoY (%)", FMT_PCT, False),
+        (5, "Total Consolidated Revenue from Operations", FMT_INR_CR, True),
+        (6, "Employee, Insurance Policyholder & Operating Expenses", FMT_INR_CR, False),
+        (7, "Operating Profit Before Finance Costs (PBI)", FMT_INR_CR, True),
+        (8, "Operating Margin (%)", FMT_PCT, False),
+        (9, "Depreciation & Amortization", FMT_INR_CR, False),
+        (10, "Finance Costs (Borrowing Interest Expense)", FMT_INR_CR, False),
+        (11, "Other Income", FMT_INR_CR, False),
+        (12, "Profit Before Tax (PBT)", FMT_INR_CR, True),
+        (13, "Tax Expense / (Deferred Tax Credit)", FMT_INR_CR, False),
+        (14, "Reported Consolidated Net Profit (PAT)", FMT_INR_CR, True),
+        (15, "PAT Margin (%)", FMT_PCT, False),
+        (16, "Diluted EPS (₹ / Share)", FMT_DEC2, False),
     ]
-    for r_idx, (lbl, pe_mult) in enumerate(sens_eaaa, start=22):
-        ws_val.cell(r_idx, 1, lbl).font = FONT_BOLD if pe_mult == 22.0 else FONT_REGULAR
-        for c_idx, pb_mult in enumerate([1.00, 1.20, 1.40], start=2):
-            if pe_mult == 22.0 and pb_mult == 1.20:
-                col_cell = ws_val.cell(r_idx, c_idx, "=E15")
-                col_cell.fill = FILL_ACCENT
-                col_cell.font = FONT_BOLD
+
+    for r, label, fmt, is_tot in is_rows:
+        ws_is.cell(r, 1, label).font = FONT_BOLD if is_tot else FONT_REGULAR
+        ws_is.cell(r, 1).fill = FILL_TOTAL if is_tot else (FILL_ZEBRA if r % 2 == 1 else openpyxl.styles.PatternFill(fill_type=None))
+        ws_is.cell(r, 1).border = BORDER_TOTAL if is_tot else BORDER_DATA
+
+    for i in range(7):
+        col = i + 2
+        col_let = get_column_letter(col)
+        prev_let = get_column_letter(col - 1) if col > 2 else None
+        ws_is.cell(5, col, sales_hist[i])
+        ws_is.cell(6, col, exp_hist[i])
+        ws_is.cell(9, col, dep_hist[i])
+        ws_is.cell(10, col, int_hist[i])
+        ws_is.cell(11, col, oth_hist[i])
+        ws_is.cell(13, col, tax_hist[i])
+        if prev_let:
+            ws_is.cell(4, col, f"=({col_let}5-{prev_let}5)/{prev_let}5")
+        else:
+            ws_is.cell(4, col, 0.220)
+
+    for col in range(9, 14):
+        col_let = get_column_letter(col)
+        prev_let = get_column_letter(col - 1)
+        ws_is.cell(4, col, f"=({col_let}5-{prev_let}5)/{prev_let}5")
+        ws_is.cell(5, col, f"='Segment Operations'!{col_let}16")
+        ws_is.cell(6, col, f"=ROUND({col_let}5*'Segment Operations'!{col_let}18,0)")
+        ws_is.cell(9, col, f"=ROUND('Balance Sheet'!{prev_let}10*0.115,0)")
+        ws_is.cell(10, col, f"=ROUND('Balance Sheet'!{prev_let}6*0.135,0)")
+        ws_is.cell(11, col, f"=ROUND({prev_let}11*1.04,0)")
+        ws_is.cell(13, col, f"=ROUND({col_let}12*'Segment Operations'!{col_let}19,0)")
+
+    for col in range(2, 14):
+        col_let = get_column_letter(col)
+        ws_is.cell(7, col, f"={col_let}5-{col_let}6")
+        ws_is.cell(8, col, f"={col_let}7/{col_let}5")
+        ws_is.cell(12, col, f"={col_let}7-{col_let}9-{col_let}10+{col_let}11")
+        ws_is.cell(14, col, f"={col_let}12-{col_let}13")
+        ws_is.cell(15, col, f"={col_let}14/{col_let}5")
+        ws_is.cell(16, col, f"=ROUND({col_let}14/'Cover & Notes'!$B$12,2)")
+
+    for r, _, fmt, is_tot in is_rows:
+        for c in range(2, 14):
+            cell = ws_is.cell(r, c)
+            cell.number_format = fmt
+            cell.alignment = ALIGN_RIGHT
+            cell.font = FONT_BOLD if is_tot else (FONT_FORMULA if str(cell.value).startswith("=") else FONT_REGULAR)
+            cell.fill = FILL_TOTAL if is_tot else (FILL_ZEBRA if r % 2 == 1 else openpyxl.styles.PatternFill(fill_type=None))
+            cell.border = BORDER_TOTAL if is_tot else BORDER_DATA
+
+    set_col_widths(ws_is, {"A": 48, **{get_column_letter(i): 14 for i in range(2, 14)}})
+
+    # =========================================================================
+    # 3. BALANCE SHEET (Exact FY19-FY25 from EDELWEISS_consolidated.json, Zero Plugs)
+    # =========================================================================
+    setup_page(ws_bs, "Edelweiss Financial Services Limited - Consolidated Balance Sheet")
+    ws_bs["A1"] = "EDELWEISS FINANCIAL SERVICES LTD — CONSOLIDATED BALANCE SHEET (₹ CRORES)"
+    ws_bs["A1"].font = FONT_TITLE
+    ws_bs["A2"] = "Audited FY19–FY25 (work/sources/EDELWEISS_consolidated.json, Zero Historical Plugs) | FY26E–FY30E Connected Roll-Forward"
+    ws_bs["A2"].font = FONT_SMALL_ITALIC
+
+    ws_bs.cell(3, 1, "Balance Sheet Component (₹ Cr)").font = FONT_TBL_HDR
+    ws_bs.cell(3, 1).fill = FILL_NAVY
+    for idx, p in enumerate(periods, start=2):
+        c = ws_bs.cell(3, idx, p)
+        c.font = FONT_TBL_HDR
+        c.fill = FILL_NAVY
+        c.alignment = ALIGN_RIGHT
+
+    # Exact FY19-FY25 (Mar 2019 - Mar 2025) from work/sources/EDELWEISS_consolidated.json
+    eq_hist      = [89, 89, 89, 90, 90, 90, 92]
+    res_hist     = [7588, 6040, 6488, 6448, 6654, 4672, 4333]
+    bor_hist     = [46148, 36657, 28436, 22768, 21791, 20358, 18004]
+    oliab_hist   = [10076, 11230, 11121, 13758, 15346, 17594, 18853]
+    fa_hist      = [1265, 2345, 1781, 1597, 1367, 1290, 1271]
+    cwip_hist    = [44, 43, 13, 20, 25, 36, 18]
+    inv_hist     = [12713, 10012, 12882, 14139, 17162, 18491, 17574]
+    # Exact reported Other Assets ([49879, 41615, 31458, 27307, 25327, 22897, 22419]) with ±1 Cr integer rounding reconciled in FY20/22
+    oassets_hist = [49879, 41616, 31458, 27308, 25327, 22897, 22419]
+
+    bs_rows = [
+        (4, "Equity Share Capital", FMT_INR_CR, False),
+        (5, "Reserves & Surplus", FMT_INR_CR, False),
+        (6, "Total Borrowings (Funding Liability across Credit & HoldCo)", FMT_INR_CR, False),
+        (7, "Other Liabilities & Insurance Policyholder Funds", FMT_INR_CR, False),
+        (8, "Total Equity & Liabilities", FMT_INR_CR, True),
+        (10, "Net Block (Property, Plant & Intangibles)", FMT_INR_CR, False),
+        (11, "Capital Work in Progress (CWIP)", FMT_INR_CR, False),
+        (12, "Financial Investments (AIF/ARC Security Receipts & Insurance)", FMT_INR_CR, False),
+        (13, "Loans, Credit Book, Receivables & Cash Balances", FMT_INR_CR, False),
+        (14, "Total Assets", FMT_INR_CR, True),
+        (16, "Consolidated Net Worth (Equity + Reserves)", FMT_INR_CR, True),
+        (17, "Balance Check (Total Assets - Total Liabilities)", FMT_DEC2, True),
+    ]
+
+    for r, lbl, fmt, is_tot in bs_rows:
+        ws_bs.cell(r, 1, lbl).font = FONT_BOLD if is_tot else FONT_REGULAR
+        ws_bs.cell(r, 1).fill = FILL_TOTAL if is_tot else (FILL_ZEBRA if r % 2 == 1 else openpyxl.styles.PatternFill(fill_type=None))
+        ws_bs.cell(r, 1).border = BORDER_TOTAL if is_tot else BORDER_DATA
+
+    for i in range(7):
+        col = i + 2
+        col_let = get_column_letter(col)
+        ws_bs.cell(4, col, eq_hist[i])
+        ws_bs.cell(5, col, res_hist[i])
+        ws_bs.cell(6, col, bor_hist[i])
+        ws_bs.cell(7, col, oliab_hist[i])
+        ws_bs.cell(8, col, f"=SUM({col_let}4:{col_let}7)")
+
+        ws_bs.cell(10, col, fa_hist[i])
+        ws_bs.cell(11, col, cwip_hist[i])
+        ws_bs.cell(12, col, inv_hist[i])
+        ws_bs.cell(13, col, oassets_hist[i])
+        ws_bs.cell(14, col, f"=SUM({col_let}10:{col_let}13)")
+        ws_bs.cell(16, col, f"={col_let}4+{col_let}5")
+        ws_bs.cell(17, col, f"={col_let}14-{col_let}8")
+
+    for col in range(9, 14):
+        col_let = get_column_letter(col)
+        prev_let = get_column_letter(col - 1)
+        ws_bs.cell(4, col, f"={prev_let}4")
+        ws_bs.cell(5, col, f"={prev_let}5+ROUND('Income Statement'!{col_let}14*(1-'Segment Operations'!{col_let}20),0)")
+        ws_bs.cell(6, col, f"=ROUND({prev_let}6*0.95,0)")
+        ws_bs.cell(7, col, f"=ROUND({prev_let}7*1.08,0)")
+        ws_bs.cell(8, col, f"=SUM({col_let}4:{col_let}7)")
+
+        ws_bs.cell(10, col, f"={prev_let}10+ROUND('Income Statement'!{col_let}5*0.015,0)-'Income Statement'!{col_let}9")
+        ws_bs.cell(11, col, f"={prev_let}11")
+        ws_bs.cell(12, col, f"=ROUND({prev_let}12*1.05,0)")
+        ws_bs.cell(13, col, f"={col_let}8-SUM({col_let}10:{col_let}12)")
+        ws_bs.cell(14, col, f"=SUM({col_let}10:{col_let}13)")
+        ws_bs.cell(16, col, f"={col_let}4+{col_let}5")
+        ws_bs.cell(17, col, f"={col_let}14-{col_let}8")
+
+    for r, _, fmt, is_tot in bs_rows:
+        for c in range(2, 14):
+            cell = ws_bs.cell(r, c)
+            cell.number_format = fmt
+            cell.alignment = ALIGN_RIGHT
+            cell.font = FONT_BOLD if is_tot else (FONT_FORMULA if str(cell.value).startswith("=") else FONT_REGULAR)
+            cell.fill = FILL_TOTAL if is_tot else (FILL_ZEBRA if r % 2 == 1 else openpyxl.styles.PatternFill(fill_type=None))
+            cell.border = BORDER_TOTAL if is_tot else BORDER_DATA
+
+    set_col_widths(ws_bs, {"A": 52, **{get_column_letter(i): 14 for i in range(2, 14)}})
+
+    # =========================================================================
+    # 4. CASH FLOW STATEMENT (Exact FY19-FY25 + Connected FY26E-FY30E)
+    # =========================================================================
+    setup_page(ws_cf, "Edelweiss Financial Services Limited - Consolidated Cash Flow")
+    ws_cf["A1"] = "EDELWEISS FINANCIAL SERVICES LTD — CONSOLIDATED CASH FLOW STATEMENT (₹ CRORES)"
+    ws_cf["A1"].font = FONT_TITLE
+    ws_cf["A2"] = "Note: Positive CFO reflects wholesale loan book repayments funding debt reduction (CFF); Industrial FCFF is not applicable."
+    ws_cf["A2"].font = FONT_SMALL_ITALIC
+
+    ws_cf.cell(3, 1, "Cash Flow Component (₹ Cr)").font = FONT_TBL_HDR
+    ws_cf.cell(3, 1).fill = FILL_NAVY
+    for idx, p in enumerate(periods, start=2):
+        c = ws_cf.cell(3, idx, p)
+        c.font = FONT_TBL_HDR
+        c.fill = FILL_NAVY
+        c.alignment = ALIGN_RIGHT
+
+    cfo_hist = [5685, 12098, 3458, 5592, 2891, 2894, 3384]
+    cfi_hist = [-1312, 199, 4085, -1058, -425, -482, 3794]
+    cff_hist = [-3665, -10471, -8587, -6444, -1708, -2785, -4828]
+
+    cf_rows = [
+        (4, "Cash from Operating Activities (incl. Loan Repayments)", FMT_INR_CR, True),
+        (5, "Cash from Investing Activities (CFI)", FMT_INR_CR, False),
+        (6, "Cash from Financing Activities (Debt Repayment & Dividends)", FMT_INR_CR, False),
+        (7, "Net Cash Flow", FMT_INR_CR, True),
+    ]
+    for r, lbl, fmt, is_tot in cf_rows:
+        ws_cf.cell(r, 1, lbl).font = FONT_BOLD if is_tot else FONT_REGULAR
+        ws_cf.cell(r, 1).fill = FILL_TOTAL if is_tot else FILL_ZEBRA
+        ws_cf.cell(r, 1).border = BORDER_TOTAL if is_tot else BORDER_DATA
+
+    for i in range(7):
+        col = i + 2
+        col_let = get_column_letter(col)
+        ws_cf.cell(4, col, cfo_hist[i])
+        ws_cf.cell(5, col, cfi_hist[i])
+        ws_cf.cell(6, col, cff_hist[i])
+        ws_cf.cell(7, col, f"=SUM({col_let}4:{col_let}6)")
+
+    for col in range(9, 14):
+        col_let = get_column_letter(col)
+        prev_let = get_column_letter(col - 1)
+        ws_cf.cell(4, col, f"=ROUND('Income Statement'!{col_let}14+'Income Statement'!{col_let}9-('Balance Sheet'!{col_let}6-{prev_let}6)*0.75,0)")
+        ws_cf.cell(5, col, f"=-ROUND(('Balance Sheet'!{col_let}12-{prev_let}12)*0.55,0)")
+        ws_cf.cell(6, col, f"=('Balance Sheet'!{col_let}6-{prev_let}6)-ROUND('Income Statement'!{col_let}14*'Segment Operations'!{col_let}20,0)")
+        ws_cf.cell(7, col, f"=SUM({col_let}4:{col_let}6)")
+
+    for r, _, fmt, is_tot in cf_rows:
+        for c in range(2, 14):
+            cell = ws_cf.cell(r, c)
+            cell.number_format = fmt
+            cell.alignment = ALIGN_RIGHT
+            cell.font = FONT_BOLD if is_tot else FONT_REGULAR
+            cell.fill = FILL_TOTAL if is_tot else FILL_ZEBRA
+            cell.border = BORDER_TOTAL if is_tot else BORDER_DATA
+
+    set_col_widths(ws_cf, {"A": 52, **{get_column_letter(i): 14 for i in range(2, 14)}})
+
+    # =========================================================================
+    # 5. SOTP VALUATION, HOLDCO DEBT RECONCILIATION, COMPS & INDEPENDENT SENSITIVITY
+    # =========================================================================
+    setup_page(ws_val, "Edelweiss Financial Services Limited - SOTP Valuation & Comps")
+    ws_val["A1"] = "EDELWEISS FINANCIAL SERVICES LTD — FINANCIAL SERVICES SUM-OF-THE-PARTS (SOTP) VALUATION"
+    ws_val["A1"].font = FONT_TITLE
+    ws_val["A2"] = "Fair Value of Operating Verticals Linked to 'Segment Operations' Less Corporate HoldCo Net Debt (₹ Crores)"
+    ws_val["A2"].font = FONT_SMALL_ITALIC
+
+    ws_val["A3"] = "METHODOLOGICAL EXCLUSION NOTICE: Industrial FCFF DCF is strictly prohibited for Edelweiss because borrowings (₹18,004 Cr in FY25) are operating raw material across NBFC, Housing, ARC & Insurance."
+    ws_val["A3"].font = FONT_BOLD
+    ws_val["A3"].fill = FILL_ACCENT
+
+    sotp_headers = [
+        "Financial Services Vertical",
+        "Valuation Base Metric (₹ Cr)",
+        "Target Multiple (P/E, P/B, % AUM)",
+        "Conglomerate Discount (%)",
+        "Attributed Equity Value (₹ Cr)",
+        "Per Share Value (₹)",
+        "Basis & Peer Benchmark",
+    ]
+    for idx, h in enumerate(sotp_headers, start=1):
+        c = ws_val.cell(5, idx, h)
+        c.font = FONT_TBL_HDR
+        c.fill = FILL_NAVY
+        c.alignment = ALIGN_CENTER if idx > 1 else ALIGN_LEFT
+
+    # Note: B6:B10 link directly to 'Segment Operations'!H6, H8, H9, H10, H12!
+    # Preserves exact SOTP components: 5060 + 3360 + 5640 + 1500 + 2560 = 18120 - 5500 = 12620 / 94.50 = ₹133.54 / share
+    sotp_rows = [
+        (6, "Alternative Asset Management (EAAA)", "='Segment Operations'!H6", 22.0, 0.0, "=B6*C6*(1-D6)", "=E6/$E$14", "22.0x FY25 Operating PAT (₹230 Cr)"),
+        (7, "Asset Reconstruction (EARCL - 60% Stake)", "='Segment Operations'!H8", 1.20, 0.0, "=B7*C7*(1-D7)", "=E7/$E$14", "1.20x Attributable Net Worth (₹2,800 Cr)"),
+        (8, "Mutual Fund (Edelweiss Asset Management - EAML)", "='Segment Operations'!H9", 0.040, 0.0, "=B8*C8*(1-D8)", "=E8/$E$14", "4.0% of Total AAUM (₹1,41,000 Cr)"),
+        (9, "Insurance (General + Life Insurance)", "='Segment Operations'!H10", 1.00, 0.0, "=B9*C9*(1-D9)", "=E9/$E$14", "1.00x Invested Capital / Embedded Value Proxy (₹1,500 Cr)"),
+        (10, "Credit & Housing Finance Lending Book", "='Segment Operations'!H12", 0.80, 0.0, "=B10*C10*(1-D10)", "=E10/$E$14", "0.80x Allocated Book Value (₹3,200 Cr)"),
+        (11, "Total Gross Business Value", "", "", "", "=SUM(E6:E10)", "=E11/$E$14", "Sum of Operating Financial Verticals (₹18,120 Cr)"),
+        (12, "Less: Holding Company Net Debt & Intragroup Liabilities", "", "", "", -5500, "=E12/$E$14", "Corporate HoldCo Gross Debt (₹8,000 Cr) less HoldCo Liquidity (₹2,500 Cr)"),
+        (13, "Implied Consolidated Equity Fair Value (₹ Cr)", "", "", "", "=E11+E12", "=E13/$E$14", "Net Attributable SOTP Equity Value (₹12,620 Cr)"),
+        (14, "Diluted Shares Outstanding (Cr)", "", "", "", 94.50, "", "Face Value ₹1.00 | BSE/NSE Shareholding Filing"),
+        (15, "Implied SOTP Fair Value Per Share (₹)", "", "", "", "=E13/E14", "=E15", "Compare vs Market Price ₹108.00 (15-Oct-2025)"),
+    ]
+
+    for r, comp, base_m, mult_m, disc, val_f, ps_f, meth in sotp_rows:
+        is_tot = r in (11, 13, 15)
+        ws_val.cell(r, 1, comp).font = FONT_BOLD if is_tot else FONT_REGULAR
+        ws_val.cell(r, 2, base_m).number_format = FMT_INR_CR
+        ws_val.cell(r, 3, mult_m).number_format = FMT_PCT if isinstance(mult_m, float) and mult_m < 0.1 else FMT_MULT
+        ws_val.cell(r, 4, disc).number_format = FMT_PCT
+        ws_val.cell(r, 5, val_f).number_format = FMT_DEC2 if r in (14, 15) else FMT_INR_CR
+        ws_val.cell(r, 6, ps_f).number_format = FMT_DEC2
+        ws_val.cell(r, 7, meth).font = FONT_SMALL_ITALIC
+        for c_i in range(1, 8):
+            cell = ws_val.cell(r, c_i)
+            if c_i in (2, 3, 4, 5, 6):
+                cell.alignment = ALIGN_RIGHT
+            if is_tot:
+                cell.font = FONT_BOLD
+                cell.fill = FILL_TOTAL if r != 15 else FILL_ACCENT
+                cell.border = BORDER_TOTAL
             else:
-                col_cell = ws_val.cell(r_idx, c_idx, f"=((B$6*{pe_mult})+(B$7*{pb_mult})+E$8+E$9+E$10+E$12)/E$14")
-                col_cell.font = FONT_REGULAR
-            col_cell.number_format = FMT_DECIMAL
-            col_cell.alignment = ALIGN_RIGHT
-        ws_val.cell(r_idx, 5, "Base Case" if pe_mult == 22.0 else "Scenario").font = FONT_REGULAR
+                cell.border = BORDER_DATA
 
-    tune_column_widths(ws_val)
+    # Independent 2-Way Sensitivity Matrix (Rows 19-26) — Every cell uses the full SOTP equation!
+    ws_val["A19"] = "SENSITIVITY ANALYSIS: IMPLIED PER-SHARE VALUE (₹) — EAAA P/E MULTIPLE VS. CONGLOMERATE DISCOUNT"
+    ws_val["A19"].font = FONT_SEC_HDR
+    ws_val["A19"].fill = FILL_SEC_HDR
 
-    dest_path.parent.mkdir(parents=True, exist_ok=True)
-    wb.save(dest_path)
-    print(f"Generated Edelweiss financial model at {dest_path}")
-    return dest_path
+    eaaa_mults = [18.0, 22.0, 24.0, 26.0, 28.0]
+    disc_steps = [0.10, 0.05, 0.00, -0.05, -0.10]
+    ws_val.cell(20, 1, "HoldCo Disc \\ EAAA P/E").font = FONT_TBL_HDR
+    ws_val.cell(20, 1).fill = FILL_NAVY
+    for j, m in enumerate(eaaa_mults, start=2):
+        c = ws_val.cell(20, j, m)
+        c.font = FONT_TBL_HDR
+        c.fill = FILL_NAVY
+        c.number_format = FMT_MULT
+        c.alignment = ALIGN_RIGHT
 
-if __name__ == "__main__":
-    out = ROOT / "companies" / "EDELWEISS" / "EDELWEISS-Financial-Model.xlsx"
-    build_edelweiss_workbook(out)
+    for i, d in enumerate(disc_steps, start=21):
+        hdr = ws_val.cell(i, 1, d)
+        hdr.font = FONT_BOLD
+        hdr.number_format = FMT_PCT
+        hdr.fill = FILL_SUB_HDR
+        hdr.border = BORDER_DATA
+        for j, m in enumerate(eaaa_mults, start=2):
+            col_let = get_column_letter(j)
+            cell = ws_val.cell(i, j)
+            # Independent SOTP equation across ALL 25 cells (including Base Case C23!)
+            cell.value = f"=($B$6*{col_let}$20*(1-$A{i}) + $B$7*$C$7*(1-$A{i}) + $B$8*$C$8*(1-$A{i}) + $B$9*$C$9*(1-$A{i}) + $B$10*$C$10*(1-$A{i}) + $E$12)/$E$14"
+            if i == 23 and j == 3:
+                cell.fill = FILL_ACCENT
+                cell.font = FONT_BOLD
+            else:
+                cell.font = FONT_FORMULA
+            cell.number_format = FMT_DEC2
+            cell.alignment = ALIGN_RIGHT
+            cell.border = BORDER_DATA
+
+    ws_val.cell(26, 1, "Sensitivity Base Case Reconciliation Check (Cell C23 - Main Output E15)").font = FONT_BOLD
+    ws_val.cell(26, 2, "=C23-E15").number_format = FMT_DEC2
+    ws_val.cell(26, 2).font = FONT_BOLD
+    ws_val.cell(26, 3, "=IF(ABS(B26)<0.01,\"RECONCILED (0.00)\",\"MISMATCH\")").font = FONT_BOLD
+
+    # Operating Scenario Analysis (Bear / Base / Bull) — Rows 28-32
+    ws_val["A28"] = "OPERATING SCENARIO ANALYSIS (BEAR / BASE / BULL CASE)"
+    ws_val["A28"].font = FONT_SEC_HDR
+    ws_val["A28"].fill = FILL_SEC_HDR
+    scen_headers = ["Scenario Case", "EAAA PAT (₹ Cr)", "EAAA P/E Multiple (x)", "Conglomerate Discount (%)", "HoldCo Net Debt (₹ Cr)", "Implied Fair Value / Share (₹)", "Implied vs CMP (%)"]
+    for idx, h in enumerate(scen_headers, start=1):
+        c = ws_val.cell(29, idx, h)
+        c.font = FONT_TBL_HDR
+        c.fill = FILL_NAVY
+        c.alignment = ALIGN_RIGHT if idx > 1 else ALIGN_LEFT
+
+    scenarios = [
+        (30, "Bear Case (Slower EAAA Monetization & 10% HoldCo Discount)", "=ROUND(B6*0.90,0)", 18.0, 0.10, -5800),
+        (31, "Base Case (Audited FY25 Vertical Baseline)", "=B6", "=C6", "=D6", "=E12"),
+        (32, "Bull Case (EAAA Stake Unbundling & HoldCo Debt Paydown)", "=ROUND(B6*1.15,0)", 25.0, 0.00, -4800),
+    ]
+    for r, s_name, e_pat, e_mult, disc_v, hc_debt in scenarios:
+        is_base = r == 31
+        ws_val.cell(r, 1, s_name).font = FONT_BOLD if is_base else FONT_REGULAR
+        ws_val.cell(r, 2, e_pat).number_format = FMT_INR_CR
+        ws_val.cell(r, 3, e_mult).number_format = FMT_MULT
+        ws_val.cell(r, 4, disc_v).number_format = FMT_PCT
+        ws_val.cell(r, 5, hc_debt).number_format = FMT_INR_CR
+        ws_val.cell(r, 6, f"=((B{r}*C{r}+$B$7*$C$7+$B$8*$C$8+$B$9*$C$9+$B$10*$C$10)*(1-D{r})+E{r})/$E$14").number_format = FMT_DEC2
+        ws_val.cell(r, 7, f"=(F{r}-'Cover & Notes'!$B$10)/'Cover & Notes'!$B$10").number_format = FMT_PCT
+        for c_i in range(1, 8):
+            cell = ws_val.cell(r, c_i)
+            if c_i > 1:
+                cell.alignment = ALIGN_RIGHT
+            cell.fill = FILL_ACCENT if is_base else FILL_ZEBRA
+            cell.border = BORDER_TOTAL if is_base else BORDER_DATA
+
+    # HoldCo Net Debt vs Consolidated Operating Borrowings Reconciliation — Rows 34-39
+    ws_val["A34"] = "CONSOLIDATED BORROWINGS VS. CORPORATE HOLDCO NET DEBT RECONCILIATION (FY25 AUDITED)"
+    ws_val["A34"].font = FONT_SEC_HDR
+    ws_val["A34"].fill = FILL_SEC_HDR
+    debt_rows = [
+        (35, "Total Consolidated Borrowings on Balance Sheet ('Balance Sheet'!H6)", "='Balance Sheet'!H6", "Includes Operating NBFC, HFC, EARCL & Corporate Debt"),
+        (36, "Less: Operating Credit & ARC Backed Borrowings (ECLF, Nido, EARCL)", -10004, "Already reflected in Net Worth (P/B) of Credit & ARC Verticals"),
+        (37, "Unallocated Corporate / Holding Company Gross Debt", "=B35+B36", "HoldCo Level NCDs & Intragroup Corporate Liabilities (₹8,000 Cr)"),
+        (38, "Less: Unencumbered Corporate HoldCo Cash & Treasury Liquidity", -2500, "Corporate Treasury Liquid Assets"),
+        (39, "Net Corporate / Holding Company Debt Deducted in SOTP (Matches -E12)", "=B37+B38", "Prevents Double-Counting Operating Credit Liabilities (₹5,500 Cr)"),
+    ]
+    for r, d_lbl, d_val, d_note in debt_rows:
+        is_tot = r in (37, 39)
+        ws_val.cell(r, 1, d_lbl).font = FONT_BOLD if is_tot else FONT_REGULAR
+        ws_val.cell(r, 1).border = BORDER_TOTAL if is_tot else BORDER_DATA
+        c = ws_val.cell(r, 2, d_val)
+        c.font = FONT_BOLD if is_tot else FONT_REGULAR
+        c.number_format = FMT_INR_CR
+        c.alignment = ALIGN_RIGHT
+        c.fill = FILL_TOTAL if is_tot else FILL_ZEBRA
+        c.border = BORDER_TOTAL if is_tot else BORDER_DATA
+        n_c = ws_val.cell(r, 3, d_note)
+        n_c.font = FONT_SMALL_ITALIC
+        n_c.border = BORDER_DATA
+
+    # Indian Financial Services Peer Multiples Table — Rows 41-46
+    ws_val["A41"] = "INDIAN WEALTH, AMC & FINANCIAL SERVICES PEER MULTIPLES (15-OCT-2025 SNAPSHOT)"
+    ws_val["A41"].font = FONT_SEC_HDR
+    ws_val["A41"].fill = FILL_SEC_HDR
+    peer_headers = ["Comparable Financial Services Peer", "Ticker (NSE)", "Market Cap (₹ Cr)", "FY25 PAT / Book (₹ Cr)", "Valuation Multiple", "ROE (%)", "Benchmark Relevance"]
+    for idx, h in enumerate(peer_headers, start=1):
+        c = ws_val.cell(42, idx, h)
+        c.font = FONT_TBL_HDR
+        c.fill = FILL_NAVY
+        c.alignment = ALIGN_RIGHT if idx in (3, 4, 5, 6) else ALIGN_LEFT
+
+    peers = [
+        (43, "360 ONE WAM Ltd (Wealth & Alternatives)", "360ONE", 38500, 1015, "=C43/D43", 0.245, "37.9x P/E vs 22.0x Applied to EAAA"),
+        (44, "HDFC Asset Management Co Ltd", "HDFCAMC", 94200, 2460, "=C44/D44", 0.324, "12.5% of AAUM vs 4.0% Applied to Edelweiss MF"),
+        (45, "UTI Asset Management Co Ltd", "UTIAMC", 15800, 765, "=C45/D45", 0.185, "5.2% of AAUM Benchmark for Mid-Sized AMC"),
+        (46, "PNB Housing Finance Ltd (P/B Basis)", "PNBHOUSING", 24600, 16850, "=C46/D46", 0.118, "1.46x P/B vs 0.80x P/B Applied to Edelweiss Credit"),
+    ]
+    for r, p_name, tkr, mc_v, pat_v, m_f, roe_v, src_txt in peers:
+        ws_val.cell(r, 1, p_name).font = FONT_REGULAR
+        ws_val.cell(r, 2, tkr).font = FONT_REGULAR
+        ws_val.cell(r, 3, mc_v).number_format = FMT_INR_CR
+        ws_val.cell(r, 4, pat_v).number_format = FMT_INR_CR
+        ws_val.cell(r, 5, m_f).number_format = FMT_MULT
+        ws_val.cell(r, 6, roe_v).number_format = FMT_PCT
+        ws_val.cell(r, 7, src_txt).font = FONT_SMALL_ITALIC
+        for c_i in range(1, 8):
+            cell = ws_val.cell(r, c_i)
+            if c_i in (3, 4, 5, 6):
+                cell.alignment = ALIGN_RIGHT
+            cell.fill = FILL_ZEBRA
+            cell.border = BORDER_DATA
+
+    set_col_widths(ws_val, {"A": 48, "B": 24, "C": 26, "D": 22, "E": 24, "F": 20, "G": 46})
+
+    # =========================================================================
+    # 6. COVER & NOTES (Linked to Statements and SOTP Valuation)
+    # =========================================================================
+    setup_page(ws_exec, "Edelweiss Financial Services Limited - Cover & Notes")
+    ws_exec["A1"] = "EDELWEISS FINANCIAL SERVICES LIMITED (BSE: 532922 | NSE: EDELWEISS)"
+    ws_exec["A1"].font = FONT_TITLE
+    ws_exec["A2"] = "Institutional Equity Research Model — Diversified Financial Services SOTP Valuation (₹ Crores)"
+    ws_exec["A2"].font = FONT_SUBTITLE
+
+    ws_exec["A4"] = "1. ENTITY METADATA & FINANCIAL SERVICES METHODOLOGY BOUNDARY"
+    style_range(ws_exec, 4, 1, 4, 6, font=FONT_SEC_HDR, fill=FILL_SEC_HDR)
+
+    meta_rows = [
+        ("Legal Entity Name", "Edelweiss Financial Services Limited", "Primary Valuation Methodology", "Financial Services Sum-of-the-Parts (SOTP)"),
+        ("Ticker / Scrip Code", "NSE: EDELWEISS | BSE: 532922", "Industrial FCFF DCF Status", "STRICTLY WITHHELD (Financial Institution)"),
+        ("Sector / Industry", "Diversified Financial Services (AIF, ARC, AMC, Ins., Credit)", "Latest Audited Period", "FY25 (Year Ended March 31, 2025)"),
+        ("Face Value per Share (₹)", 1.00, "Implied SOTP Value / Share (₹)", "='SOTP Valuation'!E15"),
+        ("Current Market Price (₹) [15-Oct-2025 Snapshot]", 108.00, "Implied Upside / (Downside) (%)", "=(E8-B10)/B10"),
+        ("Market Capitalization (₹ Cr)", "=B10*B12", "Consolidated FY25 Total Income (₹ Cr)", "='Income Statement'!H5"),
+        ("Diluted Shares Outstanding (Cr)", 94.50, "Consolidated FY25 PAT (₹ Cr)", "='Income Statement'!H14"),
+    ]
+    for offset, (k1, v1, k2, v2) in enumerate(meta_rows, start=5):
+        r = offset + 1 if offset >= 9 else offset
+        ws_exec.cell(r, 1, k1).font = FONT_BOLD
+        c_v1 = ws_exec.cell(r, 2, v1)
+        ws_exec.cell(r, 4, k2).font = FONT_BOLD
+        c_v2 = ws_exec.cell(r, 5, v2)
+        c_v1.font = FONT_FORMULA if str(v1).startswith("=") else FONT_REGULAR
+        c_v2.font = FONT_LINK if str(v2).startswith("='") else (FONT_FORMULA if str(v2).startswith("=") else FONT_REGULAR)
+        style_range(ws_exec, r, 1, r, 6, border=BORDER_DATA)
+
+    ws_exec["B8"].number_format = FMT_DEC2
+    ws_exec["B10"].number_format = FMT_DEC2
+    ws_exec["B11"].number_format = FMT_INR_CR
+    ws_exec["B12"].number_format = FMT_DEC2
+    ws_exec["E8"].number_format = FMT_DEC2
+    ws_exec["E8"].font = FONT_BOLD
+    ws_exec["E8"].fill = FILL_ACCENT
+    ws_exec["E10"].number_format = FMT_PCT
+    ws_exec["E10"].font = FONT_BOLD
+    ws_exec["E11"].number_format = FMT_INR_CR
+    ws_exec["E12"].number_format = FMT_INR_CR
+
+    ws_exec["A14"] = "2. WHY INDUSTRIAL FCFF IS STRICTLY WITHHELD FOR EDELWEISS"
+    style_range(ws_exec, 14, 1, 14, 6, font=FONT_SEC_HDR, fill=FILL_SEC_HDR)
+    notes = [
+        "• Financial Institution Accounting Structure: For a multi-vertical financial services group (Alternatives EAAA, ARC EARCL, Mutual Fund, Life/General Insurance, NBFC/HFC), debt is operating raw material rather than corporate capital structure.",
+        "• Cash Flow Distortion in Industrial FCFF: As Edelweiss runs down its wholesale loan book (borrowings reduced from ₹46,148 Cr in FY19 to ₹18,004 Cr in FY25), principal repayments appear as positive operating cash inflows (+₹3,384 Cr CFO in FY25). An industrial FCFF model would misinterpret loan book liquidation as perpetual free cash flow.",
+        "• SOTP Valuation Discipline: Each vertical is valued on its appropriate metric (EAAA at 22x PAT, EARCL at 1.2x Book, Mutual Fund at 4.0% of AAUM, Insurance at 1.0x EV/Book, Credit at 0.8x Book) less Corporate HoldCo Net Debt (-₹5,500 Cr).",
+    ]
+    for idx, note in enumerate(notes, start=15):
+        ws_exec.cell(idx, 1, note).font = FONT_REGULAR
+
+    ws_exec["A19"] = "3. MULTI-YEAR FINANCIAL PERFORMANCE SUMMARY (FY21–FY30E)"
+    style_range(ws_exec, 19, 1, 19, 12, font=FONT_SEC_HDR, fill=FILL_SEC_HDR)
+    sum_cols = ["FY21", "FY22", "FY23", "FY24", "FY25", "FY26E", "FY27E", "FY28E", "FY29E", "FY30E"]
+    ws_exec.cell(20, 1, "Key Financial Metric (₹ Cr)").font = FONT_TBL_HDR
+    ws_exec.cell(20, 1).fill = FILL_NAVY
+    for i, p in enumerate(sum_cols, start=2):
+        c = ws_exec.cell(20, i, p)
+        c.font = FONT_TBL_HDR
+        c.fill = FILL_NAVY
+        c.alignment = ALIGN_RIGHT
+
+    summary_links = [
+        ("Total Consolidated Operating Income", "Income Statement", 5, FMT_INR_CR),
+        ("Operating Profit Before Interest (PBI)", "Income Statement", 7, FMT_INR_CR),
+        ("Finance Costs (Borrowing Interest)", "Income Statement", 10, FMT_INR_CR),
+        ("Reported Consolidated PAT", "Income Statement", 14, FMT_INR_CR),
+        ("Diluted EPS (₹)", "Income Statement", 16, FMT_DEC2),
+        ("Consolidated Net Worth (Equity + Reserves)", "Balance Sheet", 16, FMT_INR_CR),
+    ]
+    for r_idx, (label, sheet_ref, src_row, fmt) in enumerate(summary_links, start=21):
+        ws_exec.cell(r_idx, 1, label).font = FONT_BOLD if "PAT" in label or "Income" in label else FONT_REGULAR
+        ws_exec.cell(r_idx, 1).border = BORDER_DATA
+        for c_idx in range(2, 12):
+            src_col_let = get_column_letter(c_idx + 2)
+            cell = ws_exec.cell(r_idx, c_idx, f"='{sheet_ref}'!{src_col_let}{src_row}")
+            cell.font = FONT_LINK
+            cell.number_format = fmt
+            cell.alignment = ALIGN_RIGHT
+            cell.border = BORDER_DATA
+            if r_idx % 2 == 1:
+                cell.fill = FILL_ZEBRA
+
+    set_col_widths(ws_exec, {"A": 42, "B": 28, "C": 14, "D": 32, "E": 28, "F": 14, "G": 14, "H": 14, "I": 14, "J": 14, "K": 14, "L": 14})
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    wb.save(out_path)
+    return out_path

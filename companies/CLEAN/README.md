@@ -1,36 +1,21 @@
-# Clean Science and Technology Limited (CLEAN) — Financial Valuation Package
+# Clean Science and Technology Limited (CLEAN) — Financial Valuation & Presentation Package
 
 - **Target Entity**: Clean Science and Technology Limited
 - **BSE Code**: `543318` | **NSE Ticker**: `CLEAN` | **ISIN**: `INE227W01023`
-- **Industry Vertical**: Specialty Chemicals
-- **Reporting Standard**: Indian Accounting Standards (Ind AS) Consolidated
-- **Statutory Auditor**: B S R & Co. LLP
+- **Industry Vertical**: Specialty Chemicals Manufacturing
+- **Reporting Basis**: Ind AS Consolidated (FY19–FY25 Audited, March 31 fiscal close; Equity Share Capital increased from ₹1.06 Cr in FY20 to ₹10.62 Cr in FY21 via pre-IPO bonus issue).
 - **Candidate Recalculated Workbook**: [`CLEAN-Recalculated.xlsx`](CLEAN-Recalculated.xlsx)
+- **Executive Presentation**: [`../../candidates/run_native_clean/CLEAN-Executive-Overview.pptx`](../../candidates/run_native_clean/CLEAN-Executive-Overview.pptx)
 - **Package Manifest**: [`package.manifest.json`](package.manifest.json)
 - **Source Registry**: [`SOURCE_REGISTRY.md`](SOURCE_REGISTRY.md) & [`source_registry.json`](source_registry.json)
 
-## 1. Package Contents & Artifact Structure
+## 1. Valuation & Financial Summary (15-Oct-2025 Snapshot Cutoff)
 
-| Artifact | Path | Purpose & Status |
-|:---|:---|:---|
-| **Recalculated Workbook** | `CLEAN-Recalculated.xlsx` | 100% evaluated via Microsoft Excel COM 16.0; zero formula errors; $\Delta = 0.00$ balance. |
-| **Package Manifest** | `package.manifest.json` | Provenance manifest pinning SHA-256 hashes, COM engine details, and preview records. |
-| **Source Registry** | `SOURCE_REGISTRY.md` | Primary statutory filing citations from audited annual reports and BSE/NSE records. |
-| **Sheet PDF Previews** | `previews/*.pdf` | High-resolution landscape PDF exports of all 6 substantive worksheets. |
-| **Canonical Request** | `clean-package.json` | Standardized request format conforming to build pipeline. |
-| **Model Pack** | `clean.model-pack.json` | Declarative validation checks. Status: `proposal` (pending human approval). |
+- **Methodology**: `Manufacturing FCFF DCF & CAPM WACC` (`supported`)
+- **Implied Fair Value Per Share**: **₹415.69** (vs. 15-Oct-2025 NSE Snapshot **₹1,039.00**, Implied `-60.0%`)
+- **Prior vs. Current Reconciliation**: Removed look-ahead Mar 2026 actuals from FY26E and explicitly connected Parent Kurkumbh Units 1–3 (29,900 MTPA) and Wholly-Owned Subsidiary Clean Fino-Chem Ltd (CFCL Unit 4 HALS capacity expanding from 10,500 MTPA at 55% utilization in FY25 to 15,000 MTPA at 90% utilization by FY30E) to consolidated revenue without double counting. Implied DCF value increased by +₹71.76/share (+20.86%) from ₹343.93 to ₹415.69.
 
-## 2. Financial Economics & Business Architecture
-### Clean Science and Technology Limited
-- **Specialty Chemical Manufacturing**: 100% catalytic, eco-friendly green chemistry manufacturing.
-- **Verticals**: Performance Chemicals (MEHQ, BHA, AP, HALS series) ~70%; Pharma Intermediates (Guaiacol, DCC) ~18%; FMCG Chemicals (4-MAP, Anisole) ~12%.
-- **Clean Fino-Chem (CFCL)**: Unit 4 greenfield expansion at Kurkumbh (34 acres) commercializing 10,500 MTPA HALS capacity.
-- **Balance Sheet**: Zero net debt, ROCE of 20.7%, EBITDA margin ~37%–40%.
-- **Valuation**: Manufacturing FCFF DCF reflecting HALS capacity utilization ramp-up and normalized CapEx.
-- **Intrinsic Fair Value**: **₹343.93 per share** (DCF base vs CMP ₹784.00).
-
-## 3. Fast Verification Commands
+## 2. Reproducible Single-Command Build
 ```powershell
-# Recalculate and verify Clean Science and Technology Limited candidate workbook
-python -c "from validate_workbook import scan_formula_errors_and_missing_caches; from modelmaker import Package; pkg = Package(open('companies/CLEAN/CLEAN-Recalculated.xlsx', 'rb').read()); errs, miss = scan_formula_errors_and_missing_caches(pkg); print('Errors:', len(errs), 'Missing:', len(miss))"
+python build_package.py --request examples/clean-package.json --output-dir candidates/run_native_clean --allow-proposal
 ```

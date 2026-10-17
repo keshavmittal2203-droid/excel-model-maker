@@ -1,43 +1,88 @@
 {
+  "$schema": "../package-request.schema.json",
+  "schema_version": 1,
   "package_id": "mm-overview-fy25",
-  "name": "Mahindra & Mahindra Limited Financial Model Package",
+  "name": "Mahindra & Mahindra Limited Financial Model & Executive Overview",
+  "description": "Reproducible template-driven package for Mahindra & Mahindra Limited (MM) with connected 5-year forecasts, FY19–FY25 statutory historicals, and workbook-linked 5-slide ERR-4 presentation.",
   "company": {
     "name": "Mahindra & Mahindra Limited",
     "ticker": "M&M",
+    "exchange": "NSE / BSE",
     "bse_code": "500520",
-    "nse_code": "M&M",
-    "isin": "INE146A01017",
-    "reporting_unit": "INR_CRORES",
-    "shares_outstanding_cr": 124.3,
-    "market_price": 2921.0,
+    "valuation_date": "2025-10-15",
+    "historical_cutoff": "FY25",
+    "currency": "INR",
+    "reporting_unit": "INR_Cr",
+    "fiscal_year_convention": "April-March",
+    "source_documents": [
+      {
+        "title": "Mahindra & Mahindra Limited Integrated Annual Report FY 2024-25",
+        "type": "Annual Report",
+        "period": "FY25 (ended 2025-03-31)",
+        "basis": "consolidated",
+        "url_or_path": "work/sources/MM_consolidated.json"
+      },
+      {
+        "title": "Mahindra & Mahindra Limited Primary Source Registry (FY19-FY25)",
+        "type": "Source Evidence Registry",
+        "period": "FY19-FY25",
+        "basis": "consolidated",
+        "url_or_path": "docs/MM_SOURCE_REGISTRY.md"
+      }
+    ],
     "source_data": {
       "user_supplied_facts": {
-        "company_name": "Mahindra & Mahindra Limited",
-        "industry": "Automotive & Farm Equipment",
-        "currency": "INR"
+        "current_market_price": 2921.0,
+        "shares_outstanding_cr": 124.3,
+        "market_capitalization_cr": 363080.3
       },
       "source_extracted_facts": {
-        "primary_registry": "docs/MM_SOURCE_REGISTRY.md",
-        "bse_filings": "https://www.bseindia.com/stock-share-price/mahindra--mahindra-ltd/m&m/500520/"
+        "revenue_operations_fy25_cr": 159211.0,
+        "operating_ebitda_fy25_cr": 30518.0,
+        "pbt_fy25_cr": 19079.0,
+        "pat_net_profit_fy25_cr": 14073.0,
+        "cash_from_operations_fy25_cr": 3176.0
       },
-      "analyst_assumptions": {
-        "valuation_methodology": "Sum-of-the-Parts (SOTP) Valuation",
-        "terminal_growth_rate": 0.05
+      "calculated_outputs": {
+        "implied_fair_value_per_share_inr": 2929.98
       }
     }
   },
   "workbook": {
-    "source": "companies/MM/MM-Financial-Model.xlsx",
+    "source": "originals/Marksans Keshav.xlsx",
+    "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
     "candidate_source": "candidates/run_native_mm/MM-Recalculated.xlsx",
-    "output_name": "MM-Financial-Model.xlsx",
-    "model_pack": "proposals/mm.model-pack.json"
+    "expected_recalculated_sha256": "658daa734d6d532f318be1066f5e44f6da09b19276285ce02574c892fee0fcf8",
+    "adapter": "work/models_mm.py",
+    "model_pack": "proposals/mm.model-pack.json",
+    "output_name": "MM-Recalculated.xlsx"
+  },
+  "presentation": {
+    "template": "originals/ERR-4.pptx",
+    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+    "deck_pack": "proposals/mm.deck-pack.proposal.json",
+    "deck_inputs": "proposals/mm.inputs.proposal.json",
+    "output_name": "MM-Executive-Overview.pptx",
+    "selected_slides": [
+      1,
+      2,
+      14,
+      16,
+      23
+    ]
   },
   "exports": {
-    "sheet_previews": [
+    "export_slide_pngs": true,
+    "export_sheet_pdfs": true,
+    "pdf_orientation": "landscape",
+    "pdf_fit_to_page_wide": 1,
+    "pdf_sheets": [
       "Cover & Notes",
       "Income Statement",
       "Balance Sheet",
-      "Cash Flow"
+      "Cash Flow",
+      "Segment Operations",
+      "SOTP Valuation"
     ]
   }
 }

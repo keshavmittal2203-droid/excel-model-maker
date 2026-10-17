@@ -1,35 +1,21 @@
-# LTIMindtree Limited (LTM) — Financial Valuation Package
+# LTIMindtree Limited (LTM) — Financial Valuation & Presentation Package
 
 - **Target Entity**: LTIMindtree Limited
 - **BSE Code**: `540005` | **NSE Ticker**: `LTIM` | **ISIN**: `INE214T01019`
-- **Industry Vertical**: IT Services & Consulting
-- **Reporting Standard**: Indian Accounting Standards (Ind AS) Consolidated
-- **Statutory Auditor**: B S R & Co. LLP
+- **Industry Vertical**: IT Services & Digital Transformation
+- **Reporting Basis**: FY19–FY21 reflect Pre-Merger Standalone/Consolidated LTI (Equity Cap ₹17–18 Cr); FY22 reflects Restated Combined Amalgamation Comparative (Equity Cap ₹30 Cr); FY23–FY25 reflect Audited Merged LTIMindtree (effective Nov 14, 2022).
 - **Candidate Recalculated Workbook**: [`LTM-Recalculated.xlsx`](LTM-Recalculated.xlsx)
+- **Executive Presentation**: [`../../candidates/run_native_ltm/LTM-Executive-Overview.pptx`](../../candidates/run_native_ltm/LTM-Executive-Overview.pptx)
 - **Package Manifest**: [`package.manifest.json`](package.manifest.json)
 - **Source Registry**: [`SOURCE_REGISTRY.md`](SOURCE_REGISTRY.md) & [`source_registry.json`](source_registry.json)
 
-## 1. Package Contents & Artifact Structure
+## 1. Valuation & Financial Summary (15-Oct-2025 Snapshot Cutoff)
 
-| Artifact | Path | Purpose & Status |
-|:---|:---|:---|
-| **Recalculated Workbook** | `LTM-Recalculated.xlsx` | 100% evaluated via Microsoft Excel COM 16.0; zero formula errors; $\Delta = 0.00$ balance. |
-| **Package Manifest** | `package.manifest.json` | Provenance manifest pinning SHA-256 hashes, COM engine details, and preview records. |
-| **Source Registry** | `SOURCE_REGISTRY.md` | Primary statutory filing citations from audited annual reports and BSE/NSE records. |
-| **Sheet PDF Previews** | `previews/*.pdf` | High-resolution landscape PDF exports of all 6 substantive worksheets. |
-| **Canonical Request** | `ltm-package.json` | Standardized request format conforming to build pipeline. |
-| **Model Pack** | `ltm.model-pack.json` | Declarative validation checks. Status: `proposal` (pending human approval). |
+- **Methodology**: `Unlevered Free Cash Flow (FCFF) DCF & CAPM WACC` (`supported`)
+- **Implied Fair Value Per Share**: **₹2,813.51** (vs. 15-Oct-2025 NSE Snapshot **₹5,568.00**, Implied `-49.5%`)
+- **Prior vs. Current Reconciliation**: Removed look-ahead Mar 2026 actuals from FY26E and connected all 5 forecast years (FY26E–FY30E) to the USD Constant-Currency Revenue Growth (7.5%–9.0%) * Realized USD/INR Exchange Rate (₹85.50–₹87.50) and Utilization-linked margin schedule on 'IT Services Operations', plus an explicit CAPM WACC build-up (11.50%). Implied DCF value increased by +₹60.85/share (+2.21%) from ₹2,752.66 to ₹2,813.51.
 
-## 2. Financial Economics & Business Architecture
-### LTIMindtree Limited
-- **Merger Context**: Formed via amalgamation of Larsen & Toubro Infotech (LTI) and Mindtree Limited (effective Nov 14, 2022). Unified reporting commenced in FY23.
-- **USD Scale & Constant Currency**: FY25 USD revenue stood at $4,492.5M (+5.0% constant currency growth; +7.0% INR to ₹38,008 Cr).
-- **Cost & Delivery Structure**: Software professionals headcount: 84,307; utilization: 86.5%; operating EBIT margin: 14.5% (FY25 EBIT: ₹5,503 Cr).
-- **Valuation**: Unlevered Free Cash Flow (FCFF) DCF discounting at 11.5% WACC and 5.0% Terminal Growth Rate.
-- **Intrinsic Fair Value**: **₹2,752.66 per share** (conservative DCF base vs CMP ₹4,390.00).
-
-## 3. Fast Verification Commands
+## 2. Reproducible Single-Command Build
 ```powershell
-# Recalculate and verify LTIMindtree Limited candidate workbook
-python -c "from validate_workbook import scan_formula_errors_and_missing_caches; from modelmaker import Package; pkg = Package(open('companies/LTM/LTM-Recalculated.xlsx', 'rb').read()); errs, miss = scan_formula_errors_and_missing_caches(pkg); print('Errors:', len(errs), 'Missing:', len(miss))"
+python build_package.py --request examples/ltm-package.json --output-dir candidates/run_native_ltm --allow-proposal
 ```

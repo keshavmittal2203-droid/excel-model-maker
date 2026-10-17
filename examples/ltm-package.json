@@ -1,43 +1,88 @@
 {
+  "$schema": "../package-request.schema.json",
+  "schema_version": 1,
   "package_id": "ltm-overview-fy25",
-  "name": "LTIMindtree Limited Financial Model Package",
+  "name": "LTIMindtree Limited Financial Model & Executive Overview",
+  "description": "Reproducible template-driven package for LTIMindtree Limited (LTM) with connected 5-year forecasts, FY19–FY25 statutory historicals, and workbook-linked 5-slide ERR-4 presentation.",
   "company": {
     "name": "LTIMindtree Limited",
     "ticker": "LTIM",
+    "exchange": "NSE / BSE",
     "bse_code": "540005",
-    "nse_code": "LTIM",
-    "isin": "INE214T01019",
-    "reporting_unit": "INR_CRORES",
-    "shares_outstanding_cr": 29.6,
-    "market_price": 4390.0,
+    "valuation_date": "2025-10-15",
+    "historical_cutoff": "FY25",
+    "currency": "INR",
+    "reporting_unit": "INR_Cr",
+    "fiscal_year_convention": "April-March",
+    "source_documents": [
+      {
+        "title": "LTIMindtree Limited Integrated Annual Report FY 2024-25",
+        "type": "Annual Report",
+        "period": "FY25 (ended 2025-03-31)",
+        "basis": "consolidated",
+        "url_or_path": "work/sources/LTM_consolidated.json"
+      },
+      {
+        "title": "LTIMindtree Limited Primary Source Registry (FY19-FY25)",
+        "type": "Source Evidence Registry",
+        "period": "FY19-FY25",
+        "basis": "consolidated",
+        "url_or_path": "docs/LTM_SOURCE_REGISTRY.md"
+      }
+    ],
     "source_data": {
       "user_supplied_facts": {
-        "company_name": "LTIMindtree Limited",
-        "industry": "IT Services & Consulting",
-        "currency": "INR"
+        "current_market_price": 5568.0,
+        "shares_outstanding_cr": 29.62,
+        "market_capitalization_cr": 164924.16
       },
       "source_extracted_facts": {
-        "primary_registry": "docs/LTM_SOURCE_REGISTRY.md",
-        "bse_filings": "https://www.bseindia.com/stock-share-price/ltimindtree-ltd/ltim/540005/"
+        "revenue_operations_fy25_cr": 38008.0,
+        "operating_ebitda_fy25_cr": 6495.0,
+        "pbt_fy25_cr": 6214.0,
+        "pat_net_profit_fy25_cr": 4602.0,
+        "cash_from_operations_fy25_cr": 4546.0
       },
-      "analyst_assumptions": {
-        "valuation_methodology": "Unlevered Free Cash Flow (FCFF) DCF & Multiples",
-        "terminal_growth_rate": 0.05
+      "calculated_outputs": {
+        "implied_fair_value_per_share_inr": 2813.51
       }
     }
   },
   "workbook": {
-    "source": "companies/LTM/LTM-Financial-Model.xlsx",
+    "source": "originals/Marksans Keshav.xlsx",
+    "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
     "candidate_source": "candidates/run_native_ltm/LTM-Recalculated.xlsx",
-    "output_name": "LTM-Financial-Model.xlsx",
-    "model_pack": "proposals/ltm.model-pack.json"
+    "expected_recalculated_sha256": "f29a83ba378792041a7aab09700e279f3ba4f58aa3f8c179b5e3d8cce47e5542",
+    "adapter": "work/models_ltm.py",
+    "model_pack": "proposals/ltm.model-pack.json",
+    "output_name": "LTM-Recalculated.xlsx"
+  },
+  "presentation": {
+    "template": "originals/ERR-4.pptx",
+    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+    "deck_pack": "proposals/ltm.deck-pack.proposal.json",
+    "deck_inputs": "proposals/ltm.inputs.proposal.json",
+    "output_name": "LTM-Executive-Overview.pptx",
+    "selected_slides": [
+      1,
+      2,
+      14,
+      16,
+      23
+    ]
   },
   "exports": {
-    "sheet_previews": [
+    "export_slide_pngs": true,
+    "export_sheet_pdfs": true,
+    "pdf_orientation": "landscape",
+    "pdf_fit_to_page_wide": 1,
+    "pdf_sheets": [
       "Cover & Notes",
       "Income Statement",
       "Balance Sheet",
-      "Cash Flow"
+      "Cash Flow",
+      "IT Services Operations",
+      "FCFF Valuation"
     ]
   }
 }

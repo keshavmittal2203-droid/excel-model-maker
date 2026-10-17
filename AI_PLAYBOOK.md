@@ -124,9 +124,28 @@ python pptmaker.py build \
   --output candidates/ERR-4-Marksans-Candidate.pptx
 ```
 
-### Step 5: Run Full Automated Verification Suite
+### Step 5: Single-Command Multi-Sector Package Orchestration (`build_package.py`)
+In addition to the 17-sheet pharmaceutical template (`originals/Marksans Keshav.xlsx`), the engine supports 6-sheet multi-sector financial models and workbook-linked 5-slide executive decks (`originals/ERR-4.pptx`, retained slides `[1, 2, 14, 16, 23]`) via registered Python workbook adapters (`work/models_<key>.py`) and `package-request.schema.json` (`schema_version: 1`):
+
+```powershell
+# Reproducible single-command builds (requires a fresh/non-existent --output-dir)
+python build_package.py --request examples/mm-package.json --output-dir candidates/run_verify_mm --allow-proposal
+python build_package.py --request examples/ltm-package.json --output-dir candidates/run_verify_ltm --allow-proposal
+python build_package.py --request examples/clean-package.json --output-dir candidates/run_verify_clean --allow-proposal
+python build_package.py --request examples/edelweiss-package.json --output-dir candidates/run_verify_edelweiss --allow-proposal
+```
+
+| Company Key | Request File | Workbook Adapter | Valuation Architecture | Implied Fair Value / Share (vs 15-Oct-2025 Snapshot CMP) |
+| :--- | :--- | :--- | :--- | :--- |
+| **MM** | `examples/mm-package.json` | `work/models_mm.py` | Conglomerate SOTP (Standalone Auto 16.0x + Farm 14.0x + MMFS/TechM @ 20% HoldCo Disc - Standalone Net Debt) | **₹2,929.98 / sh** (vs CMP ₹2,921.00) |
+| **LTM** | `examples/ltm-package.json` | `work/models_ltm.py` | IT Services Connected 5Y FCFF DCF (USD CC Growth * FX, CAPM WACC 11.50%, TGR 5.00%) | **₹2,813.51 / sh** (vs CMP ₹5,568.00) |
+| **CLEAN** | `examples/clean-package.json` | `work/models_clean.py` | Specialty Chemicals Manufacturing 5Y FCFF DCF (Parent Units 1–3 + CFCL Unit 4 HALS Ramp, CAPM WACC 12.00%, TGR 5.00%) | **₹415.69 / sh** (vs CMP ₹1,039.00) |
+| **EDELWEISS** | `examples/edelweiss-package.json` | `work/models_edelweiss.py` | Financial Services SOTP (EAAA 22.0x PAT + EARCL 1.2x NW + MF 4.0% AAUM + Ins. 1.0x EV + Credit 0.8x NW - HoldCo Net Debt; Industrial FCFF strictly withheld) | **₹133.54 / sh** (vs CMP ₹108.00) |
+
+### Step 6: Run Full Automated Verification Suite
 ```bash
 python verify_sources.py
 python -m unittest -v
 ```
 Both commands must exit with status `0`.
+
