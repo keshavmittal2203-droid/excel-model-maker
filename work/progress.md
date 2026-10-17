@@ -594,16 +594,16 @@
 - **Historical Cutoff 15-Oct-2025**: Actuals strictly through FY25. FY26 actuals eliminated; FY26E is formula-projected or marked unavailable.
 - **Financial Statement Mapping**: Reported aggregate expenses mapped accurately without fabricated splits (`Sales - Expenses = Operating Profit` verified). Balance Sheet (BS) completely rebuilt from company data: `Total Assets (Row 38) == Total Liabilities (Row 16)` across all historical and forecast columns with zero plugs and zero stale Marksans values.
 - **Comps & compdata**: Col J = Enterprise Value, Col K = EBITDA, Col L = Revenue (Sales), Col M = Net Profit (PAT). `Comps` EV/Revenue (`=H/J`), EV/EBITDA (`=H/K`), P/E (`=F/L`) denominators link correctly.
-- **Beta and WACC**: 104 weekly observations aligned with NIFTY 50 closing prices. Blume-adjusted transparently as `=(K7*K8)+(K11*K10)` with `K8 = 2/3` and `K11 = 1/3`. WACC beta links directly to Beta sheet (`WACC-DCF!J24 = =J32` where `J32 = =Beta!K13`). Capital structure weights `E30 = =D30` and `E31 = =E32-E30` link to actual company capital structure. Evaluated WACC: MM = 13.00%, LTM = 11.87%, CLEAN = 11.73%, EDELWEISS = 9.70%.
+- **Beta and WACC**: 104 weekly observations aligned with NIFTY 50 closing prices. Blume-adjusted transparently as `=(K7*K8)+(K11*K10)` with `K8 = 2/3` and `K11 = 1/3`. Set `Beta!K7 = =O6` for all companies (using company's own regression beta). WACC beta links directly to Beta sheet (`WACC-DCF!J24 = =J32` where `J32 = =Beta!K13`). Capital structure weights `E30 = =D30` and `E31 = =E32-E30` link to actual company capital structure. Evaluated WACC: MM = 13.00%, LTM = 12.95%, CLEAN = 11.91%, EDELWEISS = 9.70%.
 - **Valuation Outputs & Dynamic Sensitivities**: Single source-of-truth cell `'DCF 1st way'!E42` drives cover `'Model ->'!C9`.
   - `MM`: SOTP = ₹2,742.97 / share (Auto multiple 14->15: +₹109.95; Farm multiple 13->14: +₹59.56; exact restoration).
-  - `LTM`: Annual FCFF DCF = ₹2,811.09 / share (ERP 5.5%->6.0%: -₹156.13; Terminal g 5.0%->5.5%: +₹152.06; exact restoration).
-  - `CLEAN`: Mfg FCFF DCF = ₹480.89 / share (Terminal EBIT ₹693->₹743 Cr: +₹26.73; ERP 5.5%->6.0%: -₹29.54; exact restoration).
+  - `LTM`: Annual FCFF DCF = ₹2,473.20 / share (ERP 5.5%->6.0%: -₹141.33; Terminal g 5.0%->5.5%: +₹108.11; exact restoration).
+  - `CLEAN`: Mfg FCFF DCF = ₹468.61 / share (Terminal EBIT ₹693->₹743 Cr: +₹25.86; ERP 5.5%->6.0%: -₹29.22; exact restoration).
   - `EDELWEISS`: Financial Services SOTP = ₹130.53 / share (Alternatives multiple 18.7->20.0: +₹5.57; ARC multiple 1.02->1.15: +₹2.95; exact restoration; industrial DCF marked N/A).
-- **Clean Presentation & Zero Errors**: Marksans logo removed cleanly from `Main Financials`. Exactly 0 formula errors across all 64 sheets. 16 unforced preview PDFs per target (64 total) exported to `companies/<TARGET>/template_v6/previews/`.
+- **Clean Presentation & Zero Errors**: Marksans logo removed cleanly from `Main Financials`. Wordmark placed at `Main Financials!B3`. Residual Marksans strings eliminated across all sheets. Exactly 0 formula errors across all 64 sheets. 16 unforced preview PDFs per target (64 total) exported to `companies/<TARGET>/template_v6/previews/`.
 - **Deliverables (`template_v6`)**:
-  - `MM-FullTemplate.xlsx` (SHA-256: `0c2e6ff3859c7e58dee8fd62ea4746e7e5e48623a03d40be9de790c5583f9cec`, 16 PDFs, manifest)
-  - `LTM-FullTemplate.xlsx` (SHA-256: `97d8ab867d5fe80de1c659a155d3b562a0fb11f7fbecb63764e62220def425f2`, 16 PDFs, manifest)
-  - `CLEAN-FullTemplate.xlsx` (SHA-256: `e81bac61de00ce61f4fc26b7376014aaa67d51df8e4f4699ebd7a1eeed1fdc3f`, 16 PDFs, manifest)
-  - `EDELWEISS-FullTemplate.xlsx` (SHA-256: `3f63d5079141749c0d10addfe52594e893dffcbf9e2de1099af67c4b5366424d`, 16 PDFs, manifest)
+  - `MM-FullTemplate.xlsx` (SHA-256: `78ca97919b18d6d0fd3f1498e4b342bb9a7fd629586ad5ad672d19c623798c38`, 108,961 bytes, 16 PDFs, manifest)
+  - `LTM-FullTemplate.xlsx` (SHA-256: `9dcfaeae012231bff4771fd34ce530e22fc1c3109bdf2a1f95dada7b282cfb63`, 107,941 bytes, 16 PDFs, manifest)
+  - `CLEAN-FullTemplate.xlsx` (SHA-256: `917fc711c4a61a9f518f506c5857afe139056fc43353caa6d776ce555bb9cbd8`, 106,850 bytes, 16 PDFs, manifest)
+  - `EDELWEISS-FullTemplate.xlsx` (SHA-256: `d193bc7b4c4d77a846195e48d1359bed59edda18ae959bfed3a6e0474ac5e794`, 109,006 bytes, 16 PDFs, manifest)
 - **Governance**: Prior versioned deliverables preserved intact; `ready: false`, `human_pack_approval: pending`. PR #3 open and unmerged.

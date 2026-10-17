@@ -311,38 +311,38 @@
   - Raw beta calculated transparently via `=SLOPE(D9:D112, G9:G112)`.
   - Blume adjustment implemented transparently as `=(K7*K8)+(K11*K10)` with `K8 = 2/3` raw beta weight and `K11 = 1/3` market beta weight (`K10 = 1.0`).
   - WACC beta links directly to Beta sheet via `WACC-DCF!J32 = =Beta!K13` and `WACC-DCF!J24 = =J32`.
-  - Evaluated WACC: MM = 13.00%, LTM = 11.87%, CLEAN = 11.73%, EDELWEISS = 9.70%.
+  - Evaluated WACC: MM = 13.00%, LTM = 12.95%, CLEAN = 11.91%, EDELWEISS = 9.70%.
 - **Single Source-of-Truth Cell & Verified Baselines**:
   - Single source-of-truth cell `'DCF 1st way'!E42` drives executive cover page `'Model ->'!C9` dynamically.
   - **M&M**: Sum-of-the-Parts (SOTP) with standalone net cash ring-fencing = **₹2,742.97 / share** (E42 = 2742.97, C9 = 2742.97, diff = 0.0010). Note on `B47` discloses MMFS lending debt ring-fencing.
-  - **LTM**: Full-Year Annual FCFF DCF Baseline = **₹2,811.09 / share** (E42 = 2811.09, C9 = 2811.09, diff = 0.0036). Explicit FCFF PV ₹18,162.75 Cr, Terminal Value PV ₹53,855.63 Cr @ WACC 11.87% linked to `Beta!K13` (0.9405) and terminal g 5.0% linked to `E20`, Cash ₹13,433 Cr, Debt ₹2,187 Cr, Shares 29.62 Cr.
-  - **CLEAN**: Full-Year Manufacturing FCFF DCF Baseline = **₹480.89 / share** (E42 = 480.89, C9 = 480.89, diff = 0.0023). Explicit FCFF PV ₹1,012.21 Cr, Terminal Value PV ₹3,700.63 Cr @ WACC 11.73% linked to `Beta!K13` (0.9006) and terminal g 5.0% linked to `E20`, Cash ₹401 Cr, Debt ₹2 Cr, Shares 10.63 Cr.
+  - **LTM**: Full-Year Annual FCFF DCF Baseline = **₹2,473.20 / share** (E42 = 2473.20, C9 = 2473.20, diff = 0.0027). Explicit FCFF PV ₹17,398.92 Cr, Terminal Value PV ₹44,611.19 Cr @ WACC 12.95% linked to company's own regression Blume Beta `Beta!K13` (1.1390) and terminal g 5.0% linked to `E20`, Cash ₹13,433 Cr, Debt ₹2,187 Cr, Shares 29.62 Cr.
+  - **CLEAN**: Full-Year Manufacturing FCFF DCF Baseline = **₹468.61 / share** (E42 = 468.61, C9 = 468.61, diff = 0.0026). Explicit FCFF PV ₹1,004.22 Cr, Terminal Value PV ₹3,578.08 Cr @ WACC 11.91% linked to company's own regression Blume Beta `Beta!K13` (0.9337) and terminal g 5.0% linked to `E20`, Cash ₹401 Cr, Debt ₹2 Cr, Shares 10.63 Cr.
   - **EDELWEISS**: Financial Services Sum-of-the-Parts (SOTP) = **₹130.53 / share** (E42 = 130.53, C9 = 130.53, diff = 0.0046). Industrial DCF cells marked `N/A - Financial Services Entity`; `Intrinsic Growth` industrial metrics marked N/A.
 - **Dynamic Sensitivity Testing (2 Inputs per Target, 8 Total)**:
   - **M&M**:
     - Auto Core EBITDA Multiple (`F50` 14.0 $\to$ 15.0): delta = +₹109.95, restored = ₹2,742.97 (exact return).
     - Farm Equipment Core EBITDA Multiple (`F51` 13.0 $\to$ 14.0): delta = +₹59.56, restored = ₹2,742.97 (exact return).
   - **LTM**:
-    - Equity Risk Premium (`WACC-DCF!J23` 5.50% $\to$ 6.00%): delta = -₹156.13, restored = ₹2,811.09 (exact return).
-    - Terminal Growth Rate (`DCF 1st way!E20` 5.00% $\to$ 5.50%): delta = +₹152.06, restored = ₹2,811.09 (exact return).
+    - Equity Risk Premium (`WACC-DCF!J23` 5.50% $\to$ 6.00%): delta = -₹141.33, restored = ₹2,473.20 (exact return).
+    - Terminal Growth Rate (`DCF 1st way!E20` 5.00% $\to$ 5.50%): delta = +₹108.11, restored = ₹2,473.20 (exact return).
   - **CLEAN**:
-    - Terminal Operating EBIT (`DCF 1st way!K5` ₹693 $\to$ ₹743 Cr): delta = +₹26.73, restored = ₹480.89 (exact return).
-    - Equity Risk Premium (`WACC-DCF!J23` 5.50% $\to$ 6.00%): delta = -₹29.54, restored = ₹480.89 (exact return).
+    - Terminal Operating EBIT (`DCF 1st way!K5` ₹693 $\to$ ₹743 Cr): delta = +₹25.86, restored = ₹468.61 (exact return).
+    - Equity Risk Premium (`WACC-DCF!J23` 5.50% $\to$ 6.00%): delta = -₹29.22, restored = ₹468.61 (exact return).
   - **EDELWEISS**:
     - Alternatives Multiple (`DCF 1st way!F50` 18.70x $\to$ 20.00x): delta = +₹5.57, restored = ₹130.53 (exact return).
     - Asset Reconstruction Multiple (`DCF 1st way!F51` 1.02x $\to$ 1.15x): delta = +₹2.95, restored = ₹130.53 (exact return).
 - **Clean Presentation & Zero Formula Errors**:
-  - Stale Marksans logo cleanly removed from `Main Financials` drawing without breaking formatting.
+  - Stale Marksans logo cleanly removed from `Main Financials` drawing without breaking formatting. Wordmark placed cleanly at `Main Financials!B3`. Residual Marksans strings eliminated across all sheets.
   - Verbose visible paragraphs removed; concise provenance preserved in cell comments.
   - Recalculated cleanly via Microsoft Excel COM 16.0 (`CalculateFullRebuild`). Exactly **0 formula errors** across all 64 sheets (16 sheets x 4 targets).
 - **Native Unforced Preview PDFs (64 PDFs Total)**:
   - Preserved native unforced print setups without alteration.
   - Exported exactly 16 preview PDFs per company (64 total) to `companies/<TARGET>/template_v6/previews/`.
 - **Deliverables in `companies/<TARGET>/template_v6/`**:
-  - **M&M**: [`companies/MM/template_v6/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/MM-FullTemplate.xlsx) (SHA-256: `0c2e6ff3859c7e58dee8fd62ea4746e7e5e48623a03d40be9de790c5583f9cec`, 123,687 bytes; 16 native preview PDFs; manifest verified)
-  - **LTM**: [`companies/LTM/template_v6/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/LTM-FullTemplate.xlsx) (SHA-256: `97d8ab867d5fe80de1c659a155d3b562a0fb11f7fbecb63764e62220def425f2`, 122,095 bytes; 16 native preview PDFs; manifest verified)
-  - **CLEAN**: [`companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx) (SHA-256: `e81bac61de00ce61f4fc26b7376014aaa67d51df8e4f4699ebd7a1eeed1fdc3f`, 121,138 bytes; 16 native preview PDFs; manifest verified)
-  - **EDELWEISS**: [`companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx) (SHA-256: `3f63d5079141749c0d10addfe52594e893dffcbf9e2de1099af67c4b5366424d`, 124,018 bytes; 16 native preview PDFs; manifest verified)
+  - **M&M**: [`companies/MM/template_v6/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/MM-FullTemplate.xlsx) (SHA-256: `78ca97919b18d6d0fd3f1498e4b342bb9a7fd629586ad5ad672d19c623798c38`, 108,961 bytes; 16 native preview PDFs; manifest verified)
+  - **LTM**: [`companies/LTM/template_v6/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/LTM-FullTemplate.xlsx) (SHA-256: `9dcfaeae012231bff4771fd34ce530e22fc1c3109bdf2a1f95dada7b282cfb63`, 107,941 bytes; 16 native preview PDFs; manifest verified)
+  - **CLEAN**: [`companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx) (SHA-256: `917fc711c4a61a9f518f506c5857afe139056fc43353caa6d776ce555bb9cbd8`, 106,850 bytes; 16 native preview PDFs; manifest verified)
+  - **EDELWEISS**: [`companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx) (SHA-256: `d193bc7b4c4d77a846195e48d1359bed59edda18ae959bfed3a6e0474ac5e794`, 109,006 bytes; 16 native preview PDFs; manifest verified)
 - **Status**: Prior versioned deliverables (`template_v2`, `template_v3`, `template_v4`, `template_v5`, 6-sheet workbooks) preserved intact in `companies/<TARGET>/`; `ready: false`, `human_pack_approval: pending`. PR #3 remains open and unmerged.
 
 

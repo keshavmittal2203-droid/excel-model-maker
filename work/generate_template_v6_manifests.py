@@ -42,21 +42,21 @@ TARGET_META = {
         ]
     },
     "LTM": {
-        "val": 2811.09,
+        "val": 2473.20,
         "method": "Full-Year Annual FCFF DCF Baseline",
-        "beta_raw": 0.91075,
-        "beta_adj": 0.9405,
-        "wacc": 0.1187,
+        "beta_raw": 1.2084,
+        "beta_adj": 1.1390,
+        "wacc": 0.1295,
         "sens": [
             {
                 "input_cell": "'WACC-DCF'!J23",
                 "input_label": "Equity Risk Premium (WACC)",
                 "baseline_input": 0.055,
                 "perturbed_input": 0.060,
-                "baseline_output": 2811.0864228526407,
-                "perturbed_output": 2654.959112855007,
-                "restored_output": 2811.0864228526407,
-                "delta": -156.1273099976338,
+                "baseline_output": 2473.1973391574043,
+                "perturbed_output": 2331.864332915822,
+                "restored_output": 2473.1973391574043,
+                "delta": -141.3330062415823,
                 "restoration_verified": True
             },
             {
@@ -64,30 +64,30 @@ TARGET_META = {
                 "input_label": "Terminal Growth Rate",
                 "baseline_input": 0.050,
                 "perturbed_input": 0.055,
-                "baseline_output": 2811.0864228526407,
-                "perturbed_output": 2963.14151585048,
-                "restored_output": 2811.0864228526407,
-                "delta": 152.05509299783944,
+                "baseline_output": 2473.1973391574043,
+                "perturbed_output": 2581.3094892445123,
+                "restored_output": 2473.1973391574043,
+                "delta": 108.112150087108,
                 "restoration_verified": True
             }
         ]
     },
     "CLEAN": {
-        "val": 480.89,
+        "val": 468.61,
         "method": "Full-Year Manufacturing FCFF DCF Baseline (CFCL Unit 4 Commercialization)",
-        "beta_raw": 0.8509,
-        "beta_adj": 0.9006,
-        "wacc": 0.1173,
+        "beta_raw": 0.9006,
+        "beta_adj": 0.9337,
+        "wacc": 0.1191,
         "sens": [
             {
                 "input_cell": "'DCF 1st way'!K5",
                 "input_label": "Terminal Operating EBIT",
                 "baseline_input": 693.0,
                 "perturbed_input": 743.0,
-                "baseline_output": 480.8876713999693,
-                "perturbed_output": 507.6152382460808,
-                "restored_output": 480.8876713999693,
-                "delta": 26.727566846111472,
+                "baseline_output": 468.60735565379747,
+                "perturbed_output": 494.4695886981452,
+                "restored_output": 468.60735565379747,
+                "delta": 25.86223304434773,
                 "restoration_verified": True
             },
             {
@@ -95,52 +95,51 @@ TARGET_META = {
                 "input_label": "Equity Risk Premium (WACC)",
                 "baseline_input": 0.055,
                 "perturbed_input": 0.060,
-                "baseline_output": 480.8876713999693,
-                "perturbed_output": 451.3490865797688,
-                "restored_output": 480.8876713999693,
-                "delta": -29.538584820200526,
+                "baseline_output": 468.60735565379747,
+                "perturbed_output": 439.3879201584379,
+                "restored_output": 468.60735565379747,
+                "delta": -29.21943549535957,
                 "restoration_verified": True
             }
         ]
     },
     "EDELWEISS": {
-    "val": 130.53,
-    "method": "Financial Services Sum-of-the-Parts (SOTP) Valuation (Industrial FCFF Prohibited)",
-    "beta_raw": 1.4830,
-    "beta_adj": 1.3220,
-    "wacc": 0.0970,
-    "sens": [
-      {
-        "input_cell": "'DCF 1st way'!F50",
-        "input_label": "Alternatives Target Multiple",
-        "baseline_input": 18.70,
-        "perturbed_input": 20.00,
-        "baseline_output": 130.5345587488575,
-        "perturbed_output": 136.10579872042245,
-        "restored_output": 130.5345587488575,
-        "delta": 5.57123997156495,
-        "restoration_verified": True
-      },
-      {
-        "input_cell": "'DCF 1st way'!F51",
-        "input_label": "Asset Reconstruction Target Multiple",
-        "baseline_input": 1.02,
-        "perturbed_input": 1.15,
-        "baseline_output": 130.5345587488575,
-        "perturbed_output": 133.48441149588705,
-        "restored_output": 130.5345587488575,
-        "delta": 2.949852747029553,
-        "restoration_verified": True
-      }
-    ]
-  }
+        "val": 130.53,
+        "method": "Financial Services Sum-of-the-Parts (SOTP) Valuation (Industrial FCFF Prohibited)",
+        "beta_raw": 1.4830,
+        "beta_adj": 1.3220,
+        "wacc": 0.0970,
+        "sens": [
+            {
+                "input_cell": "'DCF 1st way'!F50",
+                "input_label": "Alternatives Target Multiple",
+                "baseline_input": 18.70,
+                "perturbed_input": 20.00,
+                "baseline_output": 130.5345587488575,
+                "perturbed_output": 136.10579872042245,
+                "restored_output": 130.5345587488575,
+                "delta": 5.57123997156495,
+                "restoration_verified": True
+            },
+            {
+                "input_cell": "'DCF 1st way'!F51",
+                "input_label": "Asset Reconstruction Target Multiple",
+                "baseline_input": 1.02,
+                "perturbed_input": 1.15,
+                "baseline_output": 130.5345587488575,
+                "perturbed_output": 133.48441149588705,
+                "restored_output": 130.5345587488575,
+                "delta": 2.949852747029553,
+                "restoration_verified": True
+            }
+        ]
+    }
 }
 
 SHEET_NAMES_16 = [
     "Model ->", "Main Financials", "Ratio Analysis", "Intrinsic Growth",
     "Comps", "WACC-DCF", "DCF 1st way", "DCF 2nd way",
-    "Data ->", "Data Sheet", "peerdata", "compdata",
-    "Beta", "BS", "Cash Flow", "Sheet1"
+    "Data ->", "compdata", "Data Sheet", "BS", "Beta", "RM", "peerdata", "Cash Flow"
 ]
 
 def generate_manifests():
@@ -194,7 +193,7 @@ def generate_manifests():
                 "Col_L": "Revenue (Sales)",
                 "Col_M": "Net Profit (PAT)",
                 "Comps_EV_Rev_formula": "=H8/J8",
-                "Comps_EV_EBITDA_formula": "=H8/K8",
+                "Comps_EV_EBITDA_formula": "=H8/K8" if target != "EDELWEISS" else "N/A",
                 "Comps_PE_formula": "=F8/L8"
             },
             "beta_and_wacc": {

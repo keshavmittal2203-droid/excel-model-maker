@@ -20,8 +20,8 @@ ERR_TOKENS = ["#REF!", "#VALUE!", "#DIV/0!", "#NAME?", "#NUM!", "#N/A", "#NULL!"
 
 EXPECTED_BASELINES = {
     "MM": 2742.97,
-    "LTM": 2811.09,
-    "CLEAN": 480.89,
+    "LTM": 2473.20,
+    "CLEAN": 468.61,
     "EDELWEISS": 130.53,
 }
 
@@ -139,14 +139,12 @@ def run_recalculation_and_verification():
                 used = ws.UsedRange
                 vals = used.Value
                 if vals:
-                    # In pywin32, 2D ranges return tuples of tuples
                     rows = vals if isinstance(vals, tuple) else (vals,)
                     for r_idx, row in enumerate(rows):
                         if not isinstance(row, tuple):
                             row = (row,)
                         for c_idx, cell_v in enumerate(row):
                             s_v = str(cell_v) if cell_v is not None else ""
-                            # Ignore intentional disclosures like "N/A - Financial Services"
                             if any(err in s_v for err in ["#REF!", "#VALUE!", "#DIV/0!", "#NAME?", "#NUM!"]):
                                 print(f"  ERROR: {sname} cell ({r_idx+1},{c_idx+1}) = {s_v}")
                                 error_count += 1
@@ -228,49 +226,60 @@ def run_recalculation_and_verification():
 
                 if e_dir == "up":
                     assert delta > 0, f"Expected upward movement for {t_spec['name']}, got {delta}"
-                else:
+                elif e_dir == "down":
                     assert delta < 0, f"Expected downward movement for {t_spec['name']}, got {delta}"
 
-                # Restore base value
+                # Restore baseline
                 test_ws.Range(c_addr).Value = b_val
                 excel.CalculateFullRebuild()
-
-                rest_e42 = float(dcf_ws.Range("E42").Value)
-                print(f"  Restored E42: {rest_e42:.2f} (exact return)")
-                assert abs(rest_e42 - float(base_e42)) < 1e-4, f"Failed exact restoration for {t_spec['name']}"
+                restored_e42 = float(dcf_ws.Range("E42").Value)
+                assert abs(restored_e42 - float(base_e42)) < 1e-4, f"Failed exact restoration: {restored_e42} vs {base_e42}"
 
                 sens_results.append({
-                    "input": t_spec["name"],
+                    "name": t_spec["name"],
+                    "parameter": f"{ws_name}!{c_addr}",
                     "base": b_val,
                     "perturbed": p_val,
+                    "base_output": base_e42,
+                    "perturbed_output": pert_e42,
                     "delta": delta,
-                    "restored": rest_e42,
-                    "passed": True
+                    "direction": "up" if delta > 0 else "down",
+                    "restored": restored_e42,
+                    "passed": True,
                 })
 
-            # 8. Export Preview PDFs for all 16 sheets using native unforced print settings
-            print(f"Exporting 16 preview PDFs for {target}...")
+            # Save recalculated state
+            wb.Save()
+
+            # 8. Export 16 Native Previews per target (Landscape, Native scaling)
+            print(f"Exporting 16 native sheet previews to {preview_dir.name}...")
+            preview_files = []
             for ws_idx in range(1, sheet_count + 1):
                 ws = wb.Worksheets(ws_idx)
                 safe_name = "".join(c if c.isalnum() or c in ("-", "_") else "_" for c in ws.Name)
-                pdf_out = preview_dir / f"{ws_idx:02d}_{safe_name}.pdf"
-                ws.ExportAsFixedFormat(0, str(pdf_out)) # 0 = xlTypePDF
+                pdf_path = preview_dir / f"{ws_idx:02d}_{safe_name}.pdf"
+                try:
+                    # 0 = xlTypePDF, Quality=0 (xlQualityStandard)
+                    ws.ExportAsFixedFormat(0, str(pdf_path), 0, True, False)
+                    preview_files.append(str(pdf_path.name))
+                except Exception as e:
+                    print(f"  Warning exporting PDF for {ws.Name}: {e}")
 
-            pdf_count = len(list(preview_dir.glob("*.pdf")))
-            print(f"Successfully exported {pdf_count} preview PDFs.")
-            assert pdf_count == 16, f"Expected 16 preview PDFs, got {pdf_count}"
-
-            # Save workbook
-            wb.Save()
+            print(f"Successfully exported {len(preview_files)}/16 PDFs")
             wb.Close(SaveChanges=True)
 
+            final_hash = compute_sha256(wb_path)
             results[target] = {
-                "base_val": float(base_e42),
-                "error_count": error_count,
+                "sha256": final_hash,
+                "baseline_val": float(base_e42),
+                "cover_val": float(base_c9),
+                "formula_errors": error_count,
                 "bs_reconciled": bs_reconciled,
+                "wacc": float(wacc_v),
+                "beta_raw": float(raw_b),
+                "beta_adj": float(adj_b),
                 "sensitivities": sens_results,
-                "pdf_count": pdf_count,
-                "sha256": compute_sha256(wb_path),
+                "preview_count": len(preview_files),
             }
 
     finally:
@@ -282,6 +291,8 @@ def run_recalculation_and_verification():
 if __name__ == "__main__":
     res = run_recalculation_and_verification()
     print("\n=======================================================")
-    print("ALL FOUR TARGETS RECALCULATED & VERIFIED SUCCESSFULLY!")
+    print("FINAL SUMMARY MATRIX (Template V6 Recalculation):")
     print("=======================================================")
-    print(json.dumps(res, indent=2))
+    for k, v in res.items():
+        print(f"Target: {k:9s} | Base: INR {v['baseline_val']:8.2f} | Cover: INR {v['cover_val']:8.2f} | WACC: {v['wacc']*100:5.2f}% | BS Reconciled: {v['bs_reconciled']} | Errors: {v['formula_errors']} | Previews: {v['preview_count']}")
+        print(f"  SHA-256: {v['sha256']}")

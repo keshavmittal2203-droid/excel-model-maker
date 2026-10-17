@@ -26,30 +26,30 @@ All four priority targets have been delivered as uncompressed 16-sheet master te
 
 | Target Company | Primary Valuation Methodology | Source-of-Truth Cell (`'DCF 1st way'`) | Cover Link Cell (`'Model ->'`) | Implied Value per Share | 15-Oct-2025 Market Close | Linked WACC (`E26`) | Formula Errors (64 Sheets) | Verified Workbook SHA-256 Checksum |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | `E42` (`=G60`) | `C9` (`=E42`) | **₹2,742.97** | ₹3,497.20 | 13.00% | **0 errors** | `0c2e6ff3859c7e58dee8fd62ea4746e7e5e48623a03d40be9de790c5583f9cec` |
-| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹2,811.09** | ₹5,609.50 | **11.87%** | **0 errors** | `97d8ab867d5fe80de1c659a155d3b562a0fb11f7fbecb63764e62220def425f2` |
-| **Clean Science and Technology** (`CLEAN`) | Manufacturing FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹480.89** | ₹1,041.40 | **11.73%** | **0 errors** | `e81bac61de00ce61f4fc26b7376014aaa67d51df8e4f4699ebd7a1eeed1fdc3f` |
-| **Edelweiss Financial Services** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF N/A) | `E42` (`=G60`) | `C9` (`=E42`) | **₹130.53** | ₹108.85 | 9.70% | **0 errors** | `3f63d5079141749c0d10addfe52594e893dffcbf9e2de1099af67c4b5366424d` |
+| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | `E42` (`=G60`) | `C9` (`=E42`) | **₹2,742.97** | ₹3,497.20 | 13.00% | **0 errors** | `78ca97919b18d6d0fd3f1498e4b342bb9a7fd629586ad5ad672d19c623798c38` |
+| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹2,473.20** | ₹5,609.50 | **12.95%** | **0 errors** | `9dcfaeae012231bff4771fd34ce530e22fc1c3109bdf2a1f95dada7b282cfb63` |
+| **Clean Science and Technology** (`CLEAN`) | Manufacturing FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹468.61** | ₹1,041.40 | **11.91%** | **0 errors** | `917fc711c4a61a9f518f506c5857afe139056fc43353caa6d776ce555bb9cbd8` |
+| **Edelweiss Financial Services** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF N/A) | `E42` (`=G60`) | `C9` (`=E42`) | **₹130.53** | ₹108.85 | 9.70% | **0 errors** | `d193bc7b4c4d77a846195e48d1359bed59edda18ae959bfed3a6e0474ac5e794` |
 
 ### Clickable Absolute Deliverable Paths
 
 1. **Mahindra & Mahindra Limited (`MM`)**:
-   - 16-Sheet Workbook: [`companies/MM/template_v6/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/MM-FullTemplate.xlsx) (123,687 bytes)
+   - 16-Sheet Workbook: [`companies/MM/template_v6/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/MM-FullTemplate.xlsx) (108,961 bytes)
    - Package Manifest: [`companies/MM/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/MM/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/previews/)
 
 2. **LTIMindtree Limited (`LTM`)**:
-   - 16-Sheet Workbook: [`companies/LTM/template_v6/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/LTM-FullTemplate.xlsx) (122,095 bytes)
+   - 16-Sheet Workbook: [`companies/LTM/template_v6/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/LTM-FullTemplate.xlsx) (107,941 bytes)
    - Package Manifest: [`companies/LTM/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/LTM/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/previews/)
 
 3. **Clean Science and Technology Limited (`CLEAN`)**:
-   - 16-Sheet Workbook: [`companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx) (121,138 bytes)
+   - 16-Sheet Workbook: [`companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx) (106,850 bytes)
    - Package Manifest: [`companies/CLEAN/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/CLEAN/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/previews/)
 
 4. **Edelweiss Financial Services Limited (`EDELWEISS`)**:
-   - 16-Sheet Workbook: [`companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx) (124,018 bytes)
+   - 16-Sheet Workbook: [`companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx) (109,006 bytes)
    - Package Manifest: [`companies/EDELWEISS/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/EDELWEISS/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/previews/)
 
@@ -103,16 +103,16 @@ All four priority targets have been delivered as uncompressed 16-sheet master te
 - WACC beta links directly to Beta sheet via `WACC-DCF!J32 = =Beta!K13` and `WACC-DCF!J24 = =J32`.
 - Target company capital structure weights `E30 = =D30` and `E31 = =E32-E30` dynamically reflect actual company debt and equity.
 - Evaluated WACC:
-  - `MM`: 13.00%
-  - `LTM`: 11.87% (Cost of Equity 11.95%, Cost of Debt after-tax 5.61%, actual capital structure 98.7% equity / 1.3% debt)
-  - `CLEAN`: 11.73% (Cost of Equity 11.73%, Cost of Debt after-tax 5.99%, actual capital structure 99.98% equity / 0.02% debt)
-  - `EDELWEISS`: 9.70%
+  - `MM`: 13.00% (Raw Beta 1.7638 -> Blume Beta 1.5092, Cost of Equity 15.08%)
+  - `LTM`: 12.95% (Raw Beta 1.2084 -> Blume Beta 1.1390, Cost of Equity 13.04%, Cost of Debt after-tax 5.61%, actual capital structure 98.7% equity / 1.3% debt)
+  - `CLEAN`: 11.91% (Raw Beta 0.9006 -> Blume Beta 0.9337, Cost of Equity 11.92%, Cost of Debt after-tax 5.99%, actual capital structure 99.98% equity / 0.02% debt)
+  - `EDELWEISS`: 9.70% (Raw Beta 1.4830 -> Blume Beta 1.3220, Cost of Equity 14.05%, Cost of Debt after-tax 6.45%)
 
 ### Requirement 7: Single Source-of-Truth Cell & Verified Valuations
 - Single source-of-truth cell `'DCF 1st way'!E42` drives executive cover page `'Model ->'!C9` dynamically.
 - **M&M**: Sum-of-the-Parts (SOTP) with standalone net cash ring-fencing = **₹2,742.97 / share** (E42 = 2742.97, C9 = 2742.97, diff = 0.0010). Note on `B47` discloses MMFS lending debt ring-fencing.
-- **LTM**: Full-Year Annual FCFF DCF Baseline = **₹2,811.09 / share** (E42 = 2811.09, C9 = 2811.09, diff = 0.0036). Explicit FCFF PV ₹18,162.75 Cr, Terminal Value PV ₹53,855.63 Cr @ WACC 11.87% linked to `Beta!K13` (0.9405) and terminal g 5.0% linked to `E20`, Cash ₹13,433 Cr, Debt ₹2,187 Cr, Shares 29.62 Cr.
-- **CLEAN**: Full-Year Manufacturing FCFF DCF Baseline = **₹480.89 / share** (E42 = 480.89, C9 = 480.89, diff = 0.0023). Explicit FCFF PV ₹1,012.21 Cr, Terminal Value PV ₹3,700.63 Cr @ WACC 11.73% linked to `Beta!K13` (0.9006) and terminal g 5.0% linked to `E20`, Cash ₹401 Cr, Debt ₹2 Cr, Shares 10.63 Cr.
+- **LTM**: Full-Year Annual FCFF DCF Baseline = **₹2,473.20 / share** (E42 = 2473.20, C9 = 2473.20, diff = 0.0027). Explicit FCFF PV ₹17,398.92 Cr, Terminal Value PV ₹44,611.19 Cr @ WACC 12.95% linked to company's own regression Blume Beta `Beta!K13` (1.1390) and terminal g 5.0% linked to `E20`, Cash ₹13,433 Cr, Debt ₹2,187 Cr, Shares 29.62 Cr.
+- **CLEAN**: Full-Year Manufacturing FCFF DCF Baseline = **₹468.61 / share** (E42 = 468.61, C9 = 468.61, diff = 0.0026). Explicit FCFF PV ₹1,004.22 Cr, Terminal Value PV ₹3,578.08 Cr @ WACC 11.91% linked to company's own regression Blume Beta `Beta!K13` (0.9337) and terminal g 5.0% linked to `E20`, Cash ₹401 Cr, Debt ₹2 Cr, Shares 10.63 Cr.
 - **EDELWEISS**: Financial Services Sum-of-the-Parts (SOTP) = **₹130.53 / share** (E42 = 130.53, C9 = 130.53, diff = 0.0046). Industrial DCF cells marked `N/A - Financial Services Entity`; `Intrinsic Growth` industrial metrics marked N/A.
 
 ### Dynamic Sensitivity Testing (8 Tests, 100% Passed with Exact Return)
@@ -120,11 +120,11 @@ All four priority targets have been delivered as uncompressed 16-sheet master te
   - Auto Core EBITDA Multiple (`F50` 14.0 $\to$ 15.0): delta = +₹109.95, restored = ₹2,742.97 (exact return).
   - Farm Equipment Core EBITDA Multiple (`F51` 13.0 $\to$ 14.0): delta = +₹59.56, restored = ₹2,742.97 (exact return).
 - **LTM**:
-  - Equity Risk Premium (`WACC-DCF!J23` 5.50% $\to$ 6.00%): delta = -₹156.13, restored = ₹2,811.09 (exact return).
-  - Terminal Growth Rate (`DCF 1st way!E20` 5.00% $\to$ 5.50%): delta = +₹152.06, restored = ₹2,811.09 (exact return).
+  - Equity Risk Premium (`WACC-DCF!J23` 5.50% $\to$ 6.00%): delta = -₹141.33, restored = ₹2,473.20 (exact return).
+  - Terminal Growth Rate (`DCF 1st way!E20` 5.00% $\to$ 5.50%): delta = +₹108.11, restored = ₹2,473.20 (exact return).
 - **CLEAN**:
-  - Terminal Operating EBIT (`DCF 1st way!K5` ₹693 $\to$ ₹743 Cr): delta = +₹26.73, restored = ₹480.89 (exact return).
-  - Equity Risk Premium (`WACC-DCF!J23` 5.50% $\to$ 6.00%): delta = -₹29.54, restored = ₹480.89 (exact return).
+  - Terminal Operating EBIT (`DCF 1st way!K5` ₹693 $\to$ ₹743 Cr): delta = +₹25.86, restored = ₹468.61 (exact return).
+  - Equity Risk Premium (`WACC-DCF!J23` 5.50% $\to$ 6.00%): delta = -₹29.22, restored = ₹468.61 (exact return).
 - **EDELWEISS**:
   - Alternatives Multiple (`DCF 1st way!F50` 18.70x $\to$ 20.00x): delta = +₹5.57, restored = ₹130.53 (exact return).
   - Asset Reconstruction Multiple (`DCF 1st way!F51` 1.02x $\to$ 1.15x): delta = +₹2.95, restored = ₹130.53 (exact return).
