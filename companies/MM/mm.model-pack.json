@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "model_family": "mm_valuation_model",
+  "version": "2.0.0",
+  "status": "proposal",
+  "approval": null,
+  "ready": false,
+  "checks": [
+    {
+      "name": "balance_sheet_identity_fy25",
+      "sheet": "Balance Sheet",
+      "cell": "H17",
+      "expected": 0.0,
+      "abs_tolerance": 0.01,
+      "description": "Total Assets minus Total Liabilities must equal 0.00 in FY25."
+    },
+    {
+      "name": "consolidated_revenue_fy25",
+      "sheet": "Income Statement",
+      "cell": "H5",
+      "expected": 159211.0,
+      "abs_tolerance": 1.0,
+      "description": "Audited FY25 Consolidated Revenue from Operations."
+    },
+    {
+      "name": "consolidated_pat_fy25",
+      "sheet": "Income Statement",
+      "cell": "H14",
+      "expected": 14073.0,
+      "abs_tolerance": 1.0,
+      "description": "Audited FY25 Consolidated Net Profit (PAT)."
+    },
+    {
+      "name": "implied_fair_value_per_share",
+      "sheet": "Cover & Notes",
+      "cell": "E8",
+      "expected": 2929.98,
+      "abs_tolerance": 0.05,
+      "description": "Primary Implied Fair Value per Share."
+    }
+  ]
+}

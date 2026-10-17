@@ -142,11 +142,118 @@ class CoreTests(unittest.TestCase):
             data = fixture(extra={part: b'<test/>'})
             with self.subTest(part=part), self.assertRaises(ModelError): self.build(data=data, pack=pack(data))
 
-    def test_shared_array_data_table_and_broken_formulas_are_blocked(self):
-        for formula in ('<f t="shared" si="0">B2*100</f>', '<f t="array" ref="C2">B2*100</f>', '<f t="dataTable"/>', '<f>#REF!*100</f>'):
+    def test_malformed_and_broken_formulas_are_blocked(self):
+        for formula in ('<f t="shared" si="0">B2*100</f>', '<f t="array">B2*100</f>', '<f t="dataTable"/>', '<f>#REF!*100</f>', '<f t="unsupported">B2*100</f>'):
             sheet = f'<worksheet xmlns="{NS}"><sheetData><row r="2"><c r="B2"><v>1</v></c><c r="C2">{formula}<v>2</v></c></row></sheetData></worksheet>'.encode()
             data = fixture(sheet=sheet)
             with self.subTest(formula=formula), self.assertRaises(ModelError): self.build(data=data, pack=pack(data))
+
+    def test_special_formulas_are_supported_and_preserved(self):
+        sheet = (
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2">'
+            f'<c r="B2"><v>1</v></c>'
+            f'<c r="C2"><f t="shared" ref="C2:C3" si="0">B2*10</f><v>10</v></c>'
+            f'<c r="D2"><f t="array" ref="D2">B2*20</f><v>20</v></c>'
+            f'<c r="E2"><f t="dataTable" ref="E2:F3" dt2D="1" dtr="1" r1="B2" r2="B2" ca="1"/><v>30</v></c>'
+            f'</row>'
+            f'<row r="3">'
+            f'<c r="C3"><f t="shared" si="0"/><v>10</v></c>'
+            f'<c r="E3"><v>40</v></c>'
+            f'</row>'
+            f'</sheetData></worksheet>'
+        ).encode()
+        data = fixture(sheet=sheet)
+        output, report = self.build(data=data, pack=pack(data), inputs=inputs(0.5))
+        self.assertEqual(report['status'], 'needs_recalculation')
+        cand_pkg = Package(output)
+        cand_sheet = cand_pkg.parts['xl/worksheets/sheet1.xml']
+        self.assertIn(b'<f t="shared" ref="C2:C3" si="0">B2*10</f>', cand_sheet)
+        self.assertIn(b'<f t="shared" si="0"/>', cand_sheet)
+        self.assertIn(b'<f t="array" ref="D2">B2*20</f>', cand_sheet)
+        self.assertIn(b'<f t="dataTable" ref="E2:F3" dt2D="1" dtr="1" r1="B2" r2="B2" ca="1"/>', cand_sheet)
+        self.assertNotIn(b'<c r="C2"><f t="shared" ref="C2:C3" si="0">B2*10</f><v>', cand_sheet)
+        self.assertNotIn(b'<c r="C3"><f t="shared" si="0"/><v>', cand_sheet)
+        self.assertNotIn(b'<c r="D2"><f t="array" ref="D2">B2*20</f><v>', cand_sheet)
+        self.assertIn(b'<c r="B2"><v>0.5</v></c>', cand_sheet)
+
+    def test_mapped_inputs_colliding_with_formula_ranges_are_rejected(self):
+        sheet = (
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2">'
+            f'<c r="B2"><v>1</v></c>'
+            f'<c r="C2"><f t="shared" ref="C2:C3" si="0">B2*10</f><v>10</v></c>'
+            f'<c r="D2"><f t="array" ref="D2:D3">B2*20</f><v>20</v></c>'
+            f'<c r="E2"><f t="dataTable" ref="E2:E3" dt2D="1" dtr="1" r1="B2" r2="B2" ca="1"/><v>30</v></c>'
+            f'</row>'
+            f'<row r="3">'
+            f'<c r="C3"><f t="shared" si="0"/><v>10</v></c>'
+            f'<c r="D3"><v>20</v></c>'
+            f'<c r="E3"><v>30</v></c>'
+            f'</row>'
+            f'</sheetData></worksheet>'
+        ).encode()
+        data = fixture(sheet=sheet)
+        for target in ('C2', 'C3', 'D2', 'D3', 'E2', 'E3'):
+            p = deepcopy(self.pack)
+            p['inputs'][0]['cell'] = target
+            with self.subTest(target=target), self.assertRaises(ModelError):
+                self.build(data=data, pack=p)
+
+    def test_marksans_workbook_compatibility_and_composition(self):
+        marksans_path = Path(__file__).resolve().parent / 'originals' / 'Marksans Keshav.xlsx'
+        if not marksans_path.exists():
+            return
+        data = marksans_path.read_bytes()
+        pkg = Package(data)
+        self.assertEqual(pkg.blockers(), [])
+        summary = pkg.summary()
+        self.assertEqual(len(summary['special_formulas']), 10)
+        self.assertEqual(summary['unsupported_features'], [])
+
+        digest = sha(data)
+        m_pack = {
+            'schema_version': 1,
+            'template_sha256': digest,
+            'approval': {
+                'template_sha256': digest,
+                'reviewer': 'Alice Independent Reviewer',
+                'approved_at': '2026-10-16T01:30:00+05:30'
+            },
+            'inputs': [
+                {
+                    'name': 'tax_rate',
+                    'sheet': 'Intrinsic Growth',
+                    'cell': 'E47',
+                    'kind': 'number',
+                    'unit': 'ratio',
+                    'minimum': 0,
+                    'maximum': 1
+                }
+            ],
+            'checks': [
+                {
+                    'name': 'sales_check',
+                    'sheet': 'Data Sheet',
+                    'cell': 'B8',
+                    'expected': Decimal('325.6'),
+                    'abs_tolerance': Decimal('0.01')
+                }
+            ]
+        }
+        m_inputs = {
+            'values': {
+                'tax_rate': {
+                    'value': Decimal('0.28'),
+                    'source': 'Revised tax assumption'
+                }
+            }
+        }
+        output, manifest = compose(data, m_pack, m_inputs)
+        self.assertEqual(manifest['status'], 'needs_recalculation')
+        self.assertFalse(manifest['ready'])
+        out_pkg = Package(output)
+        self.assertEqual(out_pkg.blockers(), [])
 
     def test_protection_and_iteration_are_blocked(self):
         data = fixture(calc='<calcPr iterate="1"/>')
@@ -227,6 +334,279 @@ class CoreTests(unittest.TestCase):
             self.assertEqual(second.returncode, 2)
             self.assertEqual(output.read_bytes(), before)
 
+    def test_marksans_full_93_input_pack_and_identities(self):
+        root_dir = Path(__file__).resolve().parent
+        marksans_path = root_dir / 'originals' / 'Marksans Keshav.xlsx'
+        pack_path = root_dir / 'marksans.model-pack.json'
+        inputs_path = root_dir / 'marksans.inputs.json'
+        if not marksans_path.exists() or not pack_path.exists():
+            return
+        from validate_workbook import (
+            evaluate_pack_checks,
+            run_equity_research_identities,
+            scan_formula_errors_and_missing_caches,
+        )
+        data = marksans_path.read_bytes()
+        m_pack = read_json(str(pack_path))
+        m_inputs = read_json(str(inputs_path))
+        self.assertEqual(len(m_pack['inputs']), 93)
+        self.assertEqual(len(m_pack['checks']), 19)
+
+        # Verify all 29 independent identities and 19 pack checks hold on baseline cached values
+        orig_pkg = Package(data)
+        errors, missing = scan_formula_errors_and_missing_caches(orig_pkg)
+        self.assertEqual(errors, [])
+        self.assertEqual(missing, [])
+        p_checks = evaluate_pack_checks(orig_pkg, m_pack)
+        self.assertTrue(all(c['passed'] for c in p_checks), p_checks)
+        identities = run_equity_research_identities(orig_pkg)
+        self.assertEqual(len(identities), 29)
+        self.assertTrue(all(i['passed'] for i in identities), identities)
+
+        # Verify compose strips formula caches so un-recalculated output is not prematurely validated
+        cand_bytes, manifest = compose(data, m_pack, m_inputs)
+        self.assertEqual(manifest['status'], 'needs_recalculation')
+        self.assertFalse(manifest['ready'])
+        cand_pkg = Package(cand_bytes)
+        c_errors, c_missing = scan_formula_errors_and_missing_caches(cand_pkg)
+        self.assertEqual(c_errors, [])
+        self.assertGreater(len(c_missing), 100)
+
+    def test_validate_candidate_recalculation_and_perturbation_gates(self):
+        from validate_workbook import validate_candidate
+        clean_sheet = (
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2"><c r="B2" s="1"><v>0.1</v></c><c r="C2" s="2"><f>B2*100</f><v>10</v></c></row>'
+            f'</sheetData></worksheet>'
+        ).encode()
+        clean_data = fixture(sheet=clean_sheet)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            template = root / 'template.xlsx'
+            cand = root / 'candidate.xlsx'
+            recalc = root / 'recalculated.xlsx'
+            pack_file = root / 'pack.json'
+            inputs_file = root / 'inputs.json'
+
+            template.write_bytes(clean_data)
+            p = pack(clean_data)
+            p['checks'][0]['expected'] = 15
+            pack_file.write_text(json.dumps(p, default=float))
+            inputs_file.write_text(json.dumps(inputs(0.15), default=float))
+
+            cand_bytes, _ = self.build(data=clean_data, pack=p, inputs=inputs(0.15))
+            cand.write_bytes(cand_bytes)
+
+            # Without recalculation, candidate remains needs_recalculation (ready=False)
+            unrecalc_report = validate_candidate(cand, pack_file, recalculate=False)
+            self.assertEqual(unrecalc_report['status'], 'needs_recalculation')
+            self.assertFalse(unrecalc_report['ready'])
+            self.assertGreater(unrecalc_report['uncalculated_formula_count'], 0)
+
+            # With recalculation and perturbation check, candidate transitions to validated (ready=True)
+            valid_report = validate_candidate(
+                cand,
+                pack_file,
+                recalculate=True,
+                recalculated_output=recalc,
+                perturb_check=True,
+                template_path=template,
+                inputs_path=inputs_file,
+                use_python_recalc_fallback=True,
+            )
+            self.assertEqual(valid_report['status'], 'recalculated_checks_passed')
+            self.assertFalse(valid_report['ready'])
+            self.assertTrue(valid_report['checks_passed'])
+            self.assertIn('render_review', valid_report['pending_gates'])
+            self.assertEqual(valid_report['formula_error_count'], 0)
+            self.assertEqual(valid_report['uncalculated_formula_count'], 0)
+            self.assertTrue(valid_report['perturbation_and_restoration']['passed'])
+            self.assertTrue(valid_report['perturbation_and_restoration']['restoration_byte_identical'])
+
+    def test_shared_formula_validation_rejects_malformed_structures(self):
+        # 1. Follower referencing non-existent master si
+        bad_follower_si = fixture(sheet=(
+            f'<worksheet xmlns="{NS}"><sheetData><row r="2">'
+            f'<c r="B2"><v>10</v></c><c r="C2"><f t="shared" si="99"/></c>'
+            f'</row></sheetData></worksheet>'.encode()
+        ))
+        with self.assertRaises(ModelError) as cm:
+            self.build(data=bad_follower_si, pack=pack(bad_follower_si))
+        self.assertIn("Shared formula follower references missing group", str(cm.exception))
+
+        # 2. Follower outside master ref range
+        follower_outside_ref = fixture(sheet=(
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2"><c r="C2"><f t="shared" si="0" ref="C2:C3">B2*10</f></c></row>'
+            f'<row r="4"><c r="C4"><f t="shared" si="0"/></c></row>'
+            f'</sheetData></worksheet>'.encode()
+        ))
+        with self.assertRaises(ModelError) as cm:
+            self.build(data=follower_outside_ref, pack=pack(follower_outside_ref))
+        self.assertIn("outside master ref range", str(cm.exception))
+
+        # 3. Follower with non-empty formula text
+        follower_with_text = fixture(sheet=(
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2"><c r="C2"><f t="shared" si="0" ref="C2:C3">B2*10</f></c></row>'
+            f'<row r="3"><c r="C3"><f t="shared" si="0">B3*10</f></c></row>'
+            f'</sheetData></worksheet>'.encode()
+        ))
+        with self.assertRaises(ModelError) as cm:
+            self.build(data=follower_with_text, pack=pack(follower_with_text))
+        self.assertIn("Shared formula follower contains unexpected formula text", str(cm.exception))
+
+        # 4. Master with reversed range
+        reversed_range = fixture(sheet=(
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="3"><c r="C3"><f t="shared" si="0" ref="C3:B2">B3*10</f></c></row>'
+            f'</sheetData></worksheet>'.encode()
+        ))
+        with self.assertRaises(ModelError) as cm:
+            self.build(data=reversed_range, pack=pack(reversed_range))
+        self.assertIn("Invalid shared formula range", str(cm.exception))
+
+        # 5. Master not at top-left
+        master_not_top_left = fixture(sheet=(
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="3"><c r="C3"><f t="shared" si="0" ref="C2:C4">B3*10</f></c></row>'
+            f'</sheetData></worksheet>'.encode()
+        ))
+        with self.assertRaises(ModelError) as cm:
+            self.build(data=master_not_top_left, pack=pack(master_not_top_left))
+        self.assertIn("Shared formula master not at top-left of ref range", str(cm.exception))
+
+        # 6. Duplicate master si
+        dup_master = fixture(sheet=(
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2"><c r="C2"><f t="shared" si="0" ref="C2:C3">B2*10</f></c></row>'
+            f'<row r="5"><c r="C5"><f t="shared" si="0" ref="C5:C6">B5*10</f></c></row>'
+            f'</sheetData></worksheet>'.encode()
+        ))
+        with self.assertRaises(ModelError) as cm:
+            self.build(data=dup_master, pack=pack(dup_master))
+        self.assertIn("Duplicate shared formula group index", str(cm.exception))
+
+        # 7. Shared master with unexpected attributes
+        unexpected_attr = fixture(sheet=(
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2"><c r="C2"><f t="shared" si="0" ref="C2:C3" bogus="1">B2*10</f></c></row>'
+            f'</sheetData></worksheet>'.encode()
+        ))
+        with self.assertRaises(ModelError) as cm:
+            self.build(data=unexpected_attr, pack=pack(unexpected_attr))
+        self.assertIn("Unsupported attributes on shared master", str(cm.exception))
+
+    def test_array_and_data_table_formula_validation_rejects_malformed_structures(self):
+        # 1. Array formula master not at top-left
+        array_not_top_left = fixture(sheet=(
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="3"><c r="C3"><f t="array" ref="C2:C4">B2:B4*2</f></c></row>'
+            f'</sheetData></worksheet>'.encode()
+        ))
+        with self.assertRaises(ModelError) as cm:
+            self.build(data=array_not_top_left, pack=pack(array_not_top_left))
+        self.assertIn("Array formula master not at top-left of ref range", str(cm.exception))
+
+        # 2. Array formula with unexpected attributes
+        array_bad_attr = fixture(sheet=(
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2"><c r="C2"><f t="array" ref="C2:C4" si="0">B2:B4*2</f></c></row>'
+            f'</sheetData></worksheet>'.encode()
+        ))
+        with self.assertRaises(ModelError) as cm:
+            self.build(data=array_bad_attr, pack=pack(array_bad_attr))
+        self.assertIn("Unsupported attributes on array formula", str(cm.exception))
+
+        # 3. Overlapping array formulas
+        overlap_array = fixture(sheet=(
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2"><c r="C2"><f t="array" ref="C2:C4">B2:B4*2</f></c></row>'
+            f'<row r="3"><c r="C3"><f t="array" ref="C3:D5">B3:B5*3</f></c></row>'
+            f'</sheetData></worksheet>'.encode()
+        ))
+        with self.assertRaises(ModelError) as cm:
+            self.build(data=overlap_array, pack=pack(overlap_array))
+        self.assertIn("Overlapping special formula range", str(cm.exception))
+
+        # 4. DataTable formula missing required attributes
+        dt_missing_attrs = fixture(sheet=(
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2"><c r="C2"><f t="dataTable" ref="C2:D4"/></c></row>'
+            f'</sheetData></worksheet>'.encode()
+        ))
+        with self.assertRaises(ModelError) as cm:
+            self.build(data=dt_missing_attrs, pack=pack(dt_missing_attrs))
+        self.assertIn("Malformed dataTable attributes", str(cm.exception))
+
+        # 5. DataTable formula with non-empty formula text
+        dt_non_empty = fixture(sheet=(
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2"><c r="C2"><f t="dataTable" ref="C2:D4" dt2D="1" dtr="1" r1="A1" r2="A2">SUM(A1:A2)</f></c></row>'
+            f'</sheetData></worksheet>'.encode()
+        ))
+        with self.assertRaises(ModelError) as cm:
+            self.build(data=dt_non_empty, pack=pack(dt_non_empty))
+        self.assertIn("dataTable formula must not contain text", str(cm.exception))
+
+    def test_pack_approval_disallowed_reviewers_and_proposals(self):
+        # 1. Disallowed reviewer token: 'antigravity'
+        bad_reviewer_pack = deepcopy(self.pack)
+        bad_reviewer_pack["approval"]["reviewer"] = "Antigravity AI Agent"
+        with self.assertRaises(ModelError) as cm:
+            self.build(pack=bad_reviewer_pack)
+        self.assertIn("Pack approval reviewer cannot be an agent or placeholder", str(cm.exception))
+
+        # 2. Proposal status without allow_proposal flag
+        proposal_pack = deepcopy(self.pack)
+        proposal_pack["status"] = "proposal"
+        proposal_pack["approval"] = None
+        with self.assertRaises(ModelError) as cm:
+            self.build(pack=proposal_pack)
+        self.assertIn("Pack is an unapproved proposal", str(cm.exception))
+
+        # 3. Proposal status with allow_proposal=True
+        out, manifest = compose(self.data, proposal_pack, inputs(), allow_proposal=True)
+        self.assertEqual(manifest["status"], "needs_recalculation")
+        self.assertFalse(manifest["ready"])
+
+    def test_python_evaluator_rejects_unsupported_and_special_formulas(self):
+        from validate_workbook import recalculate_package_python
+        # Unsupported function FORECAST
+        unsupported_fn_sheet = (
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2"><c r="B2"><v>10</v></c><c r="C2"><f>FORECAST(B2, 1, 2)</f></c></row>'
+            f'</sheetData></worksheet>'.encode()
+        )
+        with self.assertRaises(ModelError) as cm:
+            recalculate_package_python(fixture(sheet=unsupported_fn_sheet))
+        self.assertIn("Unsupported function in Python evaluator: FORECAST", str(cm.exception))
+
+        # Special formula (e.g. shared) cannot be evaluated by partial Python evaluator
+        shared_sheet = (
+            f'<worksheet xmlns="{NS}"><sheetData>'
+            f'<row r="2"><c r="B2"><v>10</v></c><c r="C2"><f t="shared" si="0" ref="C2:C3">B2*10</f></c></row>'
+            f'<row r="3"><c r="B3"><v>20</v></c><c r="C3"><f t="shared" si="0"/></c></row>'
+            f'</sheetData></worksheet>'.encode()
+        )
+        with self.assertRaises(ModelError) as cm:
+            recalculate_package_python(fixture(sheet=shared_sheet))
+        self.assertIn("rejects workbooks with shared, array, or dataTable formulas", str(cm.exception))
+
+    def test_tolerance_rejects_hidden_relative_error_fallback(self):
+        from validate_workbook import _compare_metric
+        # Exceeds abs_tolerance (0.5), relative difference is ~1%. Must NOT pass.
+        metric = _compare_metric(
+            name="test_strict_tol",
+            computed=Decimal("100.0"),
+            expected=Decimal("101.0"),
+            abs_tolerance=Decimal("0.5"),
+            rel_tolerance=None,
+        )
+        self.assertFalse(metric["passed"])
+        self.assertEqual(metric["abs_diff"], "1.0")
+
 
 if __name__ == '__main__':
     unittest.main()
+

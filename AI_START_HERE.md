@@ -32,3 +32,7 @@ Use a different client name/suffix in each assistant. Both checks may run at the
 ## After connectivity succeeds
 
 Assign independent issues with different file scopes. An agent adds acceptance tests for its change and submits a PR. The shared product API, object store, job leases, and automatic workbook release service remain planned; they are not yet deployed. See STATUS.md before assigning runtime integration work.
+
+## End-to-End Operation & Clean Checkout Guide
+
+For comprehensive instructions on building packages, preparing canonical requests, selecting template layouts, understanding gate semantics, and running regression checks, see [docs/AI_CLEAN_CHECKOUT_GUIDE.md](docs/AI_CLEAN_CHECKOUT_GUIDE.md).

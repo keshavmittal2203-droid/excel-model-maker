@@ -1,0 +1,88 @@
+{
+  "$schema": "../package-request.schema.json",
+  "schema_version": 1,
+  "package_id": "edelweiss-overview-fy25",
+  "name": "Edelweiss Financial Services Limited Financial Model & Executive Overview",
+  "description": "Reproducible template-driven package for Edelweiss Financial Services Limited (EDELWEISS) with connected 5-year forecasts, FY19\u2013FY25 statutory historicals, and workbook-linked 5-slide ERR-4 presentation.",
+  "company": {
+    "name": "Edelweiss Financial Services Limited",
+    "ticker": "EDELWEISS",
+    "exchange": "NSE / BSE",
+    "bse_code": "532922",
+    "valuation_date": "2025-10-15",
+    "historical_cutoff": "FY25",
+    "currency": "INR",
+    "reporting_unit": "INR_Cr",
+    "fiscal_year_convention": "April-March",
+    "source_documents": [
+      {
+        "title": "Edelweiss Financial Services Limited Integrated Annual Report FY 2024-25",
+        "type": "Annual Report",
+        "period": "FY25 (ended 2025-03-31)",
+        "basis": "consolidated",
+        "url_or_path": "work/sources/EDELWEISS_consolidated.json"
+      },
+      {
+        "title": "Edelweiss Financial Services Limited Primary Source Registry (FY19-FY25)",
+        "type": "Source Evidence Registry",
+        "period": "FY19-FY25",
+        "basis": "consolidated",
+        "url_or_path": "docs/EDELWEISS_SOURCE_REGISTRY.md"
+      }
+    ],
+    "source_data": {
+      "user_supplied_facts": {
+        "current_market_price": 108.85,
+        "shares_outstanding_cr": 94.5,
+        "market_capitalization_cr": 10286.325
+      },
+      "source_extracted_facts": {
+        "revenue_operations_fy25_cr": 9393.0,
+        "operating_ebitda_fy25_cr": 3360.0,
+        "pbt_fy25_cr": 802.0,
+        "pat_net_profit_fy25_cr": 536.0,
+        "cash_from_operations_fy25_cr": 3384.0
+      },
+      "calculated_outputs": {
+        "implied_fair_value_per_share_inr": 130.53
+      }
+    }
+  },
+  "workbook": {
+    "source": "originals/Marksans Keshav.xlsx",
+    "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
+    "candidate_source": "candidates/run_native_edelweiss/EDELWEISS-Recalculated.xlsx",
+    "expected_recalculated_sha256": "62fb554c61624d837345a125fe75ee6e2a3f5b076f1f8a4380f50504041a62db",
+    "adapter": "work/models_edelweiss.py",
+    "model_pack": "proposals/edelweiss.model-pack.json",
+    "output_name": "EDELWEISS-Recalculated.xlsx"
+  },
+  "presentation": {
+    "template": "originals/ERR-4.pptx",
+    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+    "deck_pack": "proposals/edelweiss.deck-pack.proposal.json",
+    "deck_inputs": "proposals/edelweiss.inputs.proposal.json",
+    "output_name": "EDELWEISS-Executive-Overview.pptx",
+    "selected_slides": [
+      1,
+      2,
+      14,
+      16,
+      23
+    ]
+  },
+  "exports": {
+    "export_slide_pngs": true,
+    "export_sheet_pdfs": true,
+    "pdf_orientation": "landscape",
+    "pdf_fit_to_page_wide": 1,
+    "pdf_sheets": [
+      "Cover & Notes",
+      "Income Statement",
+      "Balance Sheet",
+      "Cash Flow",
+      "Segment Operations",
+      "SOTP Valuation"
+    ]
+  }
+}

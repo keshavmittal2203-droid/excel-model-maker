@@ -1,0 +1,16 @@
+{
+  "kind": "excel",
+  "mode": "exact_template",
+  "template": "originals/Marksans Keshav.xlsx",
+  "template_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
+  "items": [
+    {
+      "id": "fictional_terminal_growth",
+      "value": 0.06,
+      "source": "FICTIONAL planning example only; analyst assumption, not company guidance",
+      "units": "fraction per year",
+      "period": "terminal period (fictional example)",
+      "destination": {"sheet": "DCF 2nd way", "cell": "D10"}
+    }
+  ]
+}

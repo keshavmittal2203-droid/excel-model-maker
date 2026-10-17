@@ -1,0 +1,2669 @@
+{
+  "schema_version": 1,
+  "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+  "status": "proposal",
+  "approval": null,
+  "proposal_notes": "5-Slide Edelweiss Financial Services Limited Financial Overview derived from originals/ERR-4.pptx (Slides 1, 2, 14, 16, 23). Bound to EDELWEISS-Recalculated.xlsx (SOTP Valuation) with run-local Slide 23 schedule tables and zero stale template carryover.",
+  "retained_slides": [
+    1,
+    2,
+    14,
+    16,
+    23
+  ],
+  "slots": [
+    {
+      "name": "slide1_company_name",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 40,
+      "shape_name": "object 40",
+      "description": "Cover header company name on Slide 1"
+    },
+    {
+      "name": "slide1_ticker",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 41,
+      "shape_name": "object 41",
+      "description": "Exchange ticker banner on Slide 1"
+    },
+    {
+      "name": "slide1_company_intro",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 7,
+      "shape_name": "object 18",
+      "paragraph_index": 2,
+      "description": "Company introduction body paragraph on Slide 1"
+    },
+    {
+      "name": "slide2_company_name",
+      "slide": 2,
+      "target_type": "shape_token",
+      "shape_id": 40,
+      "shape_name": "object 40",
+      "token": "Sun Pharmaceutical Industries Ltd.",
+      "description": "Header company name token on Slide 2"
+    },
+    {
+      "name": "slide2_ticker",
+      "slide": 2,
+      "target_type": "shape_text",
+      "shape_id": 41,
+      "shape_name": "object 41",
+      "description": "Exchange ticker banner on Slide 2"
+    },
+    {
+      "name": "slide2_executive_summary",
+      "slide": 2,
+      "target_type": "shape_text",
+      "shape_id": 7,
+      "shape_name": "object 18",
+      "paragraph_index": 1,
+      "description": "Executive summary overview paragraph on Slide 2"
+    },
+    {
+      "name": "slide2_thesis",
+      "slide": 2,
+      "target_type": "shape_text",
+      "shape_id": 7,
+      "shape_name": "object 18",
+      "paragraph_index": 2,
+      "description": "Investment thesis paragraph on Slide 2"
+    },
+    {
+      "name": "slide2_key_highlights",
+      "slide": 2,
+      "target_type": "shape_text",
+      "shape_id": 12,
+      "shape_name": "object 18",
+      "description": "Key Highlights bullet points on Slide 2",
+      "paragraph_index": 1
+    },
+    {
+      "name": "slide14_company_name",
+      "slide": 14,
+      "target_type": "shape_text",
+      "shape_id": 40,
+      "shape_name": "object 40",
+      "description": "Header company name on Slide 14"
+    },
+    {
+      "name": "slide14_ticker",
+      "slide": 14,
+      "target_type": "shape_text",
+      "shape_id": 41,
+      "shape_name": "object 41",
+      "description": "Exchange ticker banner on Slide 14"
+    },
+    {
+      "name": "slide14_narrative",
+      "slide": 14,
+      "target_type": "shape_text",
+      "shape_id": 15,
+      "shape_name": "object 18",
+      "description": "Cash flow statement commentary narrative on Slide 14"
+    },
+    {
+      "name": "slide16_company_name",
+      "slide": 16,
+      "target_type": "shape_text",
+      "shape_id": 40,
+      "shape_name": "object 40",
+      "description": "Header company name on Slide 16"
+    },
+    {
+      "name": "slide16_ticker",
+      "slide": 16,
+      "target_type": "shape_text",
+      "shape_id": 41,
+      "shape_name": "object 41",
+      "description": "Exchange ticker banner on Slide 16"
+    },
+    {
+      "name": "slide16_current_ratio_narrative",
+      "slide": 16,
+      "target_type": "shape_text",
+      "shape_id": 11,
+      "shape_name": "object 18",
+      "description": "Current ratio liquidity commentary on Slide 16"
+    },
+    {
+      "name": "slide16_quick_ratio_narrative",
+      "slide": 16,
+      "target_type": "shape_text",
+      "shape_id": 15,
+      "shape_name": "object 10",
+      "description": "Quick ratio commentary on Slide 16"
+    },
+    {
+      "name": "slide16_table_header",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 0,
+      "col": 0,
+      "description": "Ratio Analysis table title cell on Slide 16"
+    },
+    {
+      "name": "slide23_company_name",
+      "slide": 23,
+      "target_type": "shape_token",
+      "shape_id": 22,
+      "shape_name": "object 40",
+      "token": "Sun Pharmaceutical Industries Ltd.",
+      "description": "Header company name on Slide 23 (DCF Valuation - WACC)"
+    },
+    {
+      "name": "slide23_ticker",
+      "slide": 23,
+      "target_type": "shape_text",
+      "shape_id": 23,
+      "shape_name": "object 41",
+      "description": "Exchange ticker banner on Slide 23"
+    },
+    {
+      "name": "slide1_business_model",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 12,
+      "shape_name": "object 18",
+      "paragraph_index": 1,
+      "description": "Business Model regulated markets and formulations mix on Slide 1"
+    },
+    {
+      "name": "slide1_brand_portfolio",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 11,
+      "shape_name": "object 18",
+      "paragraph_index": 1,
+      "description": "Brand Portfolio and therapeutic focus on Slide 1"
+    },
+    {
+      "name": "slide1_product_ecosystem",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 14,
+      "shape_name": "object 18",
+      "paragraph_index": 1,
+      "description": "Product Ecosystem dosage forms and global regulatory compliance on Slide 1"
+    },
+    {
+      "name": "slide1_strategic_approach",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 20,
+      "shape_name": "TextBox 19",
+      "paragraph_index": 0,
+      "description": "Strategic Approach backward integration and Teva Goa site expansion on Slide 1"
+    },
+    {
+      "name": "slide1_chart_revenue_mix",
+      "slide": 1,
+      "target_type": "suppress_shape",
+      "shape_id": 25,
+      "shape_name": "Chart 0",
+      "replacement_header": "GEOGRAPHIC REVENUE MIX",
+      "replacement_message": "Geographic revenue breakdown unavailable \u2014 primary filing required",
+      "replacement_x": "3850000",
+      "replacement_y": "7131217",
+      "replacement_cx": "2850000",
+      "replacement_cy": "1626800",
+      "reason": "Omit unverified geographic breakdown pending uploaded primary investor presentation",
+      "description": "Geographical Revenue Mix (Unavailable \u2014 Pending Primary Filing; suppressed Shape 25)"
+    },
+    {
+      "name": "slide1_logo_suppress",
+      "slide": 1,
+      "target_type": "suppress_shape",
+      "shape_id": 59,
+      "shape_name": "Picture 58",
+      "reason": "Omit unverified Sun Pharma corporate logo pending verified Marksans vector asset",
+      "description": "Suppress unverified corporate logo on Slide 1"
+    },
+    {
+      "name": "slide2_chart_revenue",
+      "slide": 2,
+      "target_type": "chart_data",
+      "shape_id": 13,
+      "shape_name": "Chart 0",
+      "categories": [
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Total Revenue",
+      "chart_title": "Historical Revenue (\u20b9 Crore)",
+      "description": "Historical 5-year Consolidated Revenue from Data Sheet row 17 / row 28"
+    },
+    {
+      "name": "slide2_chart_snapshot",
+      "slide": 2,
+      "target_type": "chart_data",
+      "shape_id": 16,
+      "shape_name": "Chart 1",
+      "categories": [
+        "Revenue",
+        "EBITDA",
+        "Net Profit",
+        "CFO"
+      ],
+      "series_name": "FY25 Actual (\u20b9 Cr)",
+      "chart_title": "FY25 Financial Snapshot (\u20b9 Crore)",
+      "description": "FY25 Key Financial Snapshot metrics from Data Sheet & Cash Flow"
+    },
+    {
+      "name": "slide2_logo_suppress",
+      "slide": 2,
+      "target_type": "suppress_shape",
+      "shape_id": 59,
+      "shape_name": "Picture 58",
+      "reason": "Omit unverified Sun Pharma corporate logo pending verified Marksans vector asset",
+      "description": "Suppress unverified corporate logo on Slide 2"
+    },
+    {
+      "name": "slide14_logo_suppress",
+      "slide": 14,
+      "target_type": "suppress_shape",
+      "shape_id": 59,
+      "shape_name": "Picture 58",
+      "reason": "Omit unverified Sun Pharma corporate logo pending verified Marksans vector asset",
+      "description": "Suppress unverified corporate logo on Slide 14"
+    },
+    {
+      "name": "slide16_chart_cr",
+      "slide": 16,
+      "target_type": "chart_data",
+      "shape_id": 14,
+      "shape_name": "Chart 0",
+      "categories": [
+        "FY18",
+        "FY19",
+        "FY20",
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Current Ratio",
+      "chart_title": "Current Ratio (x)",
+      "description": "Historical Current Ratio FY18-FY25 matching Table 0 Row 1"
+    },
+    {
+      "name": "slide16_chart_qr",
+      "slide": 16,
+      "target_type": "chart_data",
+      "shape_id": 17,
+      "shape_name": "Chart 0",
+      "categories": [
+        "FY18",
+        "FY19",
+        "FY20",
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Quick Ratio",
+      "chart_title": "Quick Ratio (x)",
+      "description": "Historical Quick Ratio FY18-FY25 matching Table 0 Row 2"
+    },
+    {
+      "name": "slide16_logo_suppress",
+      "slide": 16,
+      "target_type": "suppress_shape",
+      "shape_id": 59,
+      "shape_name": "Picture 58",
+      "reason": "Omit unverified Sun Pharma corporate logo pending verified Marksans vector asset",
+      "description": "Suppress unverified corporate logo on Slide 16"
+    },
+    {
+      "name": "slide23_table_ke",
+      "slide": 23,
+      "target_type": "picture_replacement",
+      "shape_id": 7,
+      "shape_name": "Picture 6",
+      "description": "Cost of Equity schedule replacement table image bound to WACC-DCF J22:J25"
+    },
+    {
+      "name": "slide23_table_kd",
+      "slide": 23,
+      "target_type": "picture_replacement",
+      "shape_id": 9,
+      "shape_name": "Picture 8",
+      "description": "Post-tax Cost of Debt schedule replacement table image bound to WACC-DCF E22:E24"
+    },
+    {
+      "name": "slide23_table_wacc",
+      "slide": 23,
+      "target_type": "picture_replacement",
+      "shape_id": 11,
+      "shape_name": "Picture 10",
+      "description": "WACC calculation table replacement image bound to WACC-DCF C30:J39"
+    },
+    {
+      "name": "slide23_logo_suppress",
+      "slide": 23,
+      "target_type": "suppress_shape",
+      "shape_id": 25,
+      "shape_name": "Picture 24",
+      "reason": "Omit unverified Sun Pharma corporate logo pending verified Marksans vector asset",
+      "description": "Suppress unverified corporate logo on Slide 23"
+    },
+    {
+      "name": "slide14_pbt_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 1,
+      "description": "Profit before tax (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_pbt_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 2,
+      "description": "Profit before tax (\u20b9 Cr) FY19 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Income Statement",
+        "cell": "B12",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY19"
+      }
+    },
+    {
+      "name": "slide14_pbt_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 3,
+      "description": "Profit before tax (\u20b9 Cr) FY20 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Income Statement",
+        "cell": "C12",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY20"
+      }
+    },
+    {
+      "name": "slide14_pbt_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 4,
+      "description": "Profit before tax (\u20b9 Cr) FY21 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Income Statement",
+        "cell": "D12",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY21"
+      }
+    },
+    {
+      "name": "slide14_pbt_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 5,
+      "description": "Profit before tax (\u20b9 Cr) FY22 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Income Statement",
+        "cell": "E12",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY22"
+      }
+    },
+    {
+      "name": "slide14_pbt_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 6,
+      "description": "Profit before tax (\u20b9 Cr) FY23 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Income Statement",
+        "cell": "F12",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY23"
+      }
+    },
+    {
+      "name": "slide14_pbt_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 7,
+      "description": "Profit before tax (\u20b9 Cr) FY24 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Income Statement",
+        "cell": "G12",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY24"
+      }
+    },
+    {
+      "name": "slide14_pbt_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 8,
+      "description": "Profit before tax (\u20b9 Cr) FY25 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Income Statement",
+        "cell": "H12",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY25"
+      }
+    },
+    {
+      "name": "slide14_non_cash_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 1,
+      "description": "Non-cash adjustments (net) (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_non_cash_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 2,
+      "description": "Non-cash adjustments (net) (\u20b9 Cr) FY19 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_non_cash_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 3,
+      "description": "Non-cash adjustments (net) (\u20b9 Cr) FY20 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_non_cash_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 4,
+      "description": "Non-cash adjustments (net) (\u20b9 Cr) FY21 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_non_cash_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 5,
+      "description": "Non-cash adjustments (net) (\u20b9 Cr) FY22 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_non_cash_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 6,
+      "description": "Non-cash adjustments (net) (\u20b9 Cr) FY23 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_non_cash_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 7,
+      "description": "Non-cash adjustments (net) (\u20b9 Cr) FY24 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_non_cash_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 8,
+      "description": "Non-cash adjustments (net) (\u20b9 Cr) FY25 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_wc_changes_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 1,
+      "description": "Working capital changes, net (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_wc_changes_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 2,
+      "description": "Working capital changes, net (\u20b9 Cr) FY19 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_wc_changes_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 3,
+      "description": "Working capital changes, net (\u20b9 Cr) FY20 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_wc_changes_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 4,
+      "description": "Working capital changes, net (\u20b9 Cr) FY21 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_wc_changes_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 5,
+      "description": "Working capital changes, net (\u20b9 Cr) FY22 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_wc_changes_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 6,
+      "description": "Working capital changes, net (\u20b9 Cr) FY23 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_wc_changes_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 7,
+      "description": "Working capital changes, net (\u20b9 Cr) FY24 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_wc_changes_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 8,
+      "description": "Working capital changes, net (\u20b9 Cr) FY25 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_direct_taxes_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 1,
+      "description": "Direct taxes paid (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_direct_taxes_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 2,
+      "description": "Direct taxes paid (\u20b9 Cr) FY19 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_direct_taxes_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 3,
+      "description": "Direct taxes paid (\u20b9 Cr) FY20 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_direct_taxes_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 4,
+      "description": "Direct taxes paid (\u20b9 Cr) FY21 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_direct_taxes_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 5,
+      "description": "Direct taxes paid (\u20b9 Cr) FY22 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_direct_taxes_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 6,
+      "description": "Direct taxes paid (\u20b9 Cr) FY23 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_direct_taxes_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 7,
+      "description": "Direct taxes paid (\u20b9 Cr) FY24 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_direct_taxes_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 8,
+      "description": "Direct taxes paid (\u20b9 Cr) FY25 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_cfo_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 1,
+      "description": "Cash From Operating Activities (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_cfo_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 2,
+      "description": "Cash From Operating Activities (\u20b9 Cr) FY19 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "B4",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY19"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 3,
+      "description": "Cash From Operating Activities (\u20b9 Cr) FY20 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "C4",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY20"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 4,
+      "description": "Cash From Operating Activities (\u20b9 Cr) FY21 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "D4",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY21"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 5,
+      "description": "Cash From Operating Activities (\u20b9 Cr) FY22 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "E4",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY22"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 6,
+      "description": "Cash From Operating Activities (\u20b9 Cr) FY23 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "F4",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY23"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 7,
+      "description": "Cash From Operating Activities (\u20b9 Cr) FY24 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "G4",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY24"
+      }
+    },
+    {
+      "name": "slide14_cfo_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 8,
+      "description": "Cash From Operating Activities (\u20b9 Cr) FY25 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "H4",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY25"
+      }
+    },
+    {
+      "name": "slide14_capex_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 10,
+      "col": 1,
+      "description": "Capital expenditure, net (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_capex_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 10,
+      "col": 2,
+      "description": "Capital expenditure, net (\u20b9 Cr) FY19 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_capex_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 10,
+      "col": 3,
+      "description": "Capital expenditure, net (\u20b9 Cr) FY20 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_capex_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 10,
+      "col": 4,
+      "description": "Capital expenditure, net (\u20b9 Cr) FY21 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_capex_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 10,
+      "col": 5,
+      "description": "Capital expenditure, net (\u20b9 Cr) FY22 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_capex_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 10,
+      "col": 6,
+      "description": "Capital expenditure, net (\u20b9 Cr) FY23 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_capex_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 10,
+      "col": 7,
+      "description": "Capital expenditure, net (\u20b9 Cr) FY24 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_capex_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 10,
+      "col": 8,
+      "description": "Capital expenditure, net (\u20b9 Cr) FY25 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_inv_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 11,
+      "col": 1,
+      "description": "Net purchase/(sale) of investments (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_inv_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 11,
+      "col": 2,
+      "description": "Net purchase/(sale) of investments (\u20b9 Cr) FY19 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_inv_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 11,
+      "col": 3,
+      "description": "Net purchase/(sale) of investments (\u20b9 Cr) FY20 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_inv_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 11,
+      "col": 4,
+      "description": "Net purchase/(sale) of investments (\u20b9 Cr) FY21 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_inv_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 11,
+      "col": 5,
+      "description": "Net purchase/(sale) of investments (\u20b9 Cr) FY22 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_inv_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 11,
+      "col": 6,
+      "description": "Net purchase/(sale) of investments (\u20b9 Cr) FY23 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_inv_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 11,
+      "col": 7,
+      "description": "Net purchase/(sale) of investments (\u20b9 Cr) FY24 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_inv_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 11,
+      "col": 8,
+      "description": "Net purchase/(sale) of investments (\u20b9 Cr) FY25 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_investing_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 12,
+      "col": 1,
+      "description": "Other investing items, net (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_investing_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 12,
+      "col": 2,
+      "description": "Other investing items, net (\u20b9 Cr) FY19 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_investing_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 12,
+      "col": 3,
+      "description": "Other investing items, net (\u20b9 Cr) FY20 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_investing_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 12,
+      "col": 4,
+      "description": "Other investing items, net (\u20b9 Cr) FY21 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_investing_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 12,
+      "col": 5,
+      "description": "Other investing items, net (\u20b9 Cr) FY22 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_investing_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 12,
+      "col": 6,
+      "description": "Other investing items, net (\u20b9 Cr) FY23 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_investing_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 12,
+      "col": 7,
+      "description": "Other investing items, net (\u20b9 Cr) FY24 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_investing_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 12,
+      "col": 8,
+      "description": "Other investing items, net (\u20b9 Cr) FY25 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_cfi_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 1,
+      "description": "Cash From Investing Activities (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_cfi_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 2,
+      "description": "Cash From Investing Activities (\u20b9 Cr) FY19 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "B5",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY19"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 3,
+      "description": "Cash From Investing Activities (\u20b9 Cr) FY20 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "C5",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY20"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 4,
+      "description": "Cash From Investing Activities (\u20b9 Cr) FY21 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "D5",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY21"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 5,
+      "description": "Cash From Investing Activities (\u20b9 Cr) FY22 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "E5",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY22"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 6,
+      "description": "Cash From Investing Activities (\u20b9 Cr) FY23 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "F5",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY23"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 7,
+      "description": "Cash From Investing Activities (\u20b9 Cr) FY24 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "G5",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY24"
+      }
+    },
+    {
+      "name": "slide14_cfi_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 13,
+      "col": 8,
+      "description": "Cash From Investing Activities (\u20b9 Cr) FY25 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "H5",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY25"
+      }
+    },
+    {
+      "name": "slide14_net_borrow_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 16,
+      "col": 1,
+      "description": "Net borrowings (proceeds/repay.) (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_borrow_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 16,
+      "col": 2,
+      "description": "Net borrowings (proceeds/repay.) (\u20b9 Cr) FY19 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_borrow_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 16,
+      "col": 3,
+      "description": "Net borrowings (proceeds/repay.) (\u20b9 Cr) FY20 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_borrow_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 16,
+      "col": 4,
+      "description": "Net borrowings (proceeds/repay.) (\u20b9 Cr) FY21 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_borrow_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 16,
+      "col": 5,
+      "description": "Net borrowings (proceeds/repay.) (\u20b9 Cr) FY22 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_borrow_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 16,
+      "col": 6,
+      "description": "Net borrowings (proceeds/repay.) (\u20b9 Cr) FY23 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_borrow_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 16,
+      "col": 7,
+      "description": "Net borrowings (proceeds/repay.) (\u20b9 Cr) FY24 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_borrow_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 16,
+      "col": 8,
+      "description": "Net borrowings (proceeds/repay.) (\u20b9 Cr) FY25 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_finance_costs_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 17,
+      "col": 1,
+      "description": "Finance costs paid (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_finance_costs_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 17,
+      "col": 2,
+      "description": "Finance costs paid (\u20b9 Cr) FY19 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_finance_costs_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 17,
+      "col": 3,
+      "description": "Finance costs paid (\u20b9 Cr) FY20 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_finance_costs_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 17,
+      "col": 4,
+      "description": "Finance costs paid (\u20b9 Cr) FY21 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_finance_costs_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 17,
+      "col": 5,
+      "description": "Finance costs paid (\u20b9 Cr) FY22 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_finance_costs_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 17,
+      "col": 6,
+      "description": "Finance costs paid (\u20b9 Cr) FY23 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_finance_costs_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 17,
+      "col": 7,
+      "description": "Finance costs paid (\u20b9 Cr) FY24 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_finance_costs_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 17,
+      "col": 8,
+      "description": "Finance costs paid (\u20b9 Cr) FY25 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_dividends_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 18,
+      "col": 1,
+      "description": "Dividends paid (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_dividends_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 18,
+      "col": 2,
+      "description": "Dividends paid (\u20b9 Cr) FY19 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_dividends_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 18,
+      "col": 3,
+      "description": "Dividends paid (\u20b9 Cr) FY20 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_dividends_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 18,
+      "col": 4,
+      "description": "Dividends paid (\u20b9 Cr) FY21 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_dividends_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 18,
+      "col": 5,
+      "description": "Dividends paid (\u20b9 Cr) FY22 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_dividends_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 18,
+      "col": 6,
+      "description": "Dividends paid (\u20b9 Cr) FY23 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_dividends_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 18,
+      "col": 7,
+      "description": "Dividends paid (\u20b9 Cr) FY24 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_dividends_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 18,
+      "col": 8,
+      "description": "Dividends paid (\u20b9 Cr) FY25 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_financing_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 19,
+      "col": 1,
+      "description": "Other financing items, net (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_financing_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 19,
+      "col": 2,
+      "description": "Other financing items, net (\u20b9 Cr) FY19 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_financing_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 19,
+      "col": 3,
+      "description": "Other financing items, net (\u20b9 Cr) FY20 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_financing_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 19,
+      "col": 4,
+      "description": "Other financing items, net (\u20b9 Cr) FY21 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_financing_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 19,
+      "col": 5,
+      "description": "Other financing items, net (\u20b9 Cr) FY22 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_financing_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 19,
+      "col": 6,
+      "description": "Other financing items, net (\u20b9 Cr) FY23 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_financing_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 19,
+      "col": 7,
+      "description": "Other financing items, net (\u20b9 Cr) FY24 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_other_financing_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 19,
+      "col": 8,
+      "description": "Other financing items, net (\u20b9 Cr) FY25 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_cff_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 1,
+      "description": "Cash From Financing Activities (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_cff_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 2,
+      "description": "Cash From Financing Activities (\u20b9 Cr) FY19 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "B6",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY19"
+      }
+    },
+    {
+      "name": "slide14_cff_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 3,
+      "description": "Cash From Financing Activities (\u20b9 Cr) FY20 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "C6",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY20"
+      }
+    },
+    {
+      "name": "slide14_cff_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 4,
+      "description": "Cash From Financing Activities (\u20b9 Cr) FY21 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "D6",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY21"
+      }
+    },
+    {
+      "name": "slide14_cff_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 5,
+      "description": "Cash From Financing Activities (\u20b9 Cr) FY22 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "E6",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY22"
+      }
+    },
+    {
+      "name": "slide14_cff_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 6,
+      "description": "Cash From Financing Activities (\u20b9 Cr) FY23 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "F6",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY23"
+      }
+    },
+    {
+      "name": "slide14_cff_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 7,
+      "description": "Cash From Financing Activities (\u20b9 Cr) FY24 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "G6",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY24"
+      }
+    },
+    {
+      "name": "slide14_cff_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 20,
+      "col": 8,
+      "description": "Cash From Financing Activities (\u20b9 Cr) FY25 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "H6",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY25"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy18",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 1,
+      "description": "Net Cash Flow (\u20b9 Cr) FY18 in Slide 14 Table 0"
+    },
+    {
+      "name": "slide14_net_cf_fy19",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 2,
+      "description": "Net Cash Flow (\u20b9 Cr) FY19 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "B7",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY19"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy20",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 3,
+      "description": "Net Cash Flow (\u20b9 Cr) FY20 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "C7",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY20"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy21",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 4,
+      "description": "Net Cash Flow (\u20b9 Cr) FY21 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "D7",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY21"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy22",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 5,
+      "description": "Net Cash Flow (\u20b9 Cr) FY22 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "E7",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY22"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy23",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 6,
+      "description": "Net Cash Flow (\u20b9 Cr) FY23 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "F7",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY23"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy24",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 7,
+      "description": "Net Cash Flow (\u20b9 Cr) FY24 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "G7",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY24"
+      }
+    },
+    {
+      "name": "slide14_net_cf_fy25",
+      "slide": 14,
+      "target_type": "table_cell",
+      "shape_id": 8,
+      "shape_name": "Table 0",
+      "row": 21,
+      "col": 8,
+      "description": "Net Cash Flow (\u20b9 Cr) FY25 in Slide 14 Table 0",
+      "workbook_binding": {
+        "sheet": "Cash Flow",
+        "cell": "H7",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "INR_Cr",
+        "period": "FY25"
+      }
+    },
+    {
+      "name": "slide16_cr_fy18",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 1,
+      "col": 1,
+      "description": "Current Ratio (x) FY18 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_cr_fy19",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 1,
+      "col": 2,
+      "description": "Current Ratio (x) FY19 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_cr_fy20",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 1,
+      "col": 3,
+      "description": "Current Ratio (x) FY20 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_cr_fy21",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 1,
+      "col": 4,
+      "description": "Current Ratio (x) FY21 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_cr_fy22",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 1,
+      "col": 5,
+      "description": "Current Ratio (x) FY22 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_cr_fy23",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 1,
+      "col": 6,
+      "description": "Current Ratio (x) FY23 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_cr_fy24",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 1,
+      "col": 7,
+      "description": "Current Ratio (x) FY24 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_cr_fy25",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 1,
+      "col": 8,
+      "description": "Current Ratio (x) FY25 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_qr_fy18",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 2,
+      "col": 1,
+      "description": "Quick Ratio (x) FY18 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_qr_fy19",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 2,
+      "col": 2,
+      "description": "Quick Ratio (x) FY19 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_qr_fy20",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 2,
+      "col": 3,
+      "description": "Quick Ratio (x) FY20 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_qr_fy21",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 2,
+      "col": 4,
+      "description": "Quick Ratio (x) FY21 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_qr_fy22",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 2,
+      "col": 5,
+      "description": "Quick Ratio (x) FY22 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_qr_fy23",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 2,
+      "col": 6,
+      "description": "Quick Ratio (x) FY23 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_qr_fy24",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 2,
+      "col": 7,
+      "description": "Quick Ratio (x) FY24 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_qr_fy25",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 2,
+      "col": 8,
+      "description": "Quick Ratio (x) FY25 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_de_fy18",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 1,
+      "description": "Debt-to-Equity (x) FY18 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_de_fy19",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 2,
+      "description": "Debt-to-Equity (x) FY19 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_de_fy20",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 3,
+      "description": "Debt-to-Equity (x) FY20 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_de_fy21",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 4,
+      "description": "Debt-to-Equity (x) FY21 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_de_fy22",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 5,
+      "description": "Debt-to-Equity (x) FY22 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_de_fy23",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 6,
+      "description": "Debt-to-Equity (x) FY23 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_de_fy24",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 7,
+      "description": "Debt-to-Equity (x) FY24 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_de_fy25",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 3,
+      "col": 8,
+      "description": "Debt-to-Equity (x) FY25 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_icr_fy18",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 1,
+      "description": "Interest Coverage Ratio (x) FY18 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_icr_fy19",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 2,
+      "description": "Interest Coverage Ratio (x) FY19 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_icr_fy20",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 3,
+      "description": "Interest Coverage Ratio (x) FY20 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_icr_fy21",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 4,
+      "description": "Interest Coverage Ratio (x) FY21 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_icr_fy22",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 5,
+      "description": "Interest Coverage Ratio (x) FY22 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_icr_fy23",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 6,
+      "description": "Interest Coverage Ratio (x) FY23 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_icr_fy24",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 7,
+      "description": "Interest Coverage Ratio (x) FY24 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_icr_fy25",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 4,
+      "col": 8,
+      "description": "Interest Coverage Ratio (x) FY25 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_debtor_days_fy18",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 1,
+      "description": "Debtor Days FY18 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_debtor_days_fy19",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 2,
+      "description": "Debtor Days FY19 in Slide 16 Table 0",
+      "workbook_binding": {
+        "sheet": "Segment Operations",
+        "cell": "B23",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "days",
+        "period": "FY19"
+      }
+    },
+    {
+      "name": "slide16_debtor_days_fy20",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 3,
+      "description": "Debtor Days FY20 in Slide 16 Table 0",
+      "workbook_binding": {
+        "sheet": "Segment Operations",
+        "cell": "C23",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "days",
+        "period": "FY20"
+      }
+    },
+    {
+      "name": "slide16_debtor_days_fy21",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 4,
+      "description": "Debtor Days FY21 in Slide 16 Table 0",
+      "workbook_binding": {
+        "sheet": "Segment Operations",
+        "cell": "D23",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "days",
+        "period": "FY21"
+      }
+    },
+    {
+      "name": "slide16_debtor_days_fy22",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 5,
+      "description": "Debtor Days FY22 in Slide 16 Table 0",
+      "workbook_binding": {
+        "sheet": "Segment Operations",
+        "cell": "E23",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "days",
+        "period": "FY22"
+      }
+    },
+    {
+      "name": "slide16_debtor_days_fy23",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 6,
+      "description": "Debtor Days FY23 in Slide 16 Table 0",
+      "workbook_binding": {
+        "sheet": "Segment Operations",
+        "cell": "F23",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "days",
+        "period": "FY23"
+      }
+    },
+    {
+      "name": "slide16_debtor_days_fy24",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 7,
+      "description": "Debtor Days FY24 in Slide 16 Table 0",
+      "workbook_binding": {
+        "sheet": "Segment Operations",
+        "cell": "G23",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "days",
+        "period": "FY24"
+      }
+    },
+    {
+      "name": "slide16_debtor_days_fy25",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 5,
+      "col": 8,
+      "description": "Debtor Days FY25 in Slide 16 Table 0",
+      "workbook_binding": {
+        "sheet": "Segment Operations",
+        "cell": "H23",
+        "scale": 1,
+        "decimals": 0,
+        "abs_tolerance": 1.0,
+        "workbook_sha256": "fdb2a0fd9a843bc206522565906685225b260a05c90a15afb0cb7bbe1db6b19c",
+        "unit": "days",
+        "period": "FY25"
+      }
+    },
+    {
+      "name": "slide16_payable_days_fy18",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 1,
+      "description": "Payable Days FY18 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_payable_days_fy19",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 2,
+      "description": "Payable Days FY19 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_payable_days_fy20",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 3,
+      "description": "Payable Days FY20 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_payable_days_fy21",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 4,
+      "description": "Payable Days FY21 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_payable_days_fy22",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 5,
+      "description": "Payable Days FY22 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_payable_days_fy23",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 6,
+      "description": "Payable Days FY23 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_payable_days_fy24",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 7,
+      "description": "Payable Days FY24 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_payable_days_fy25",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 6,
+      "col": 8,
+      "description": "Payable Days FY25 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_inventory_days_fy18",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 1,
+      "description": "Inventory Days FY18 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_inventory_days_fy19",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 2,
+      "description": "Inventory Days FY19 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_inventory_days_fy20",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 3,
+      "description": "Inventory Days FY20 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_inventory_days_fy21",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 4,
+      "description": "Inventory Days FY21 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_inventory_days_fy22",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 5,
+      "description": "Inventory Days FY22 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_inventory_days_fy23",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 6,
+      "description": "Inventory Days FY23 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_inventory_days_fy24",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 7,
+      "description": "Inventory Days FY24 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_inventory_days_fy25",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 7,
+      "col": 8,
+      "description": "Inventory Days FY25 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_ccc_fy18",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 8,
+      "col": 1,
+      "description": "Cash Conversion Cycle (Days) FY18 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_ccc_fy19",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 8,
+      "col": 2,
+      "description": "Cash Conversion Cycle (Days) FY19 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_ccc_fy20",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 8,
+      "col": 3,
+      "description": "Cash Conversion Cycle (Days) FY20 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_ccc_fy21",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 8,
+      "col": 4,
+      "description": "Cash Conversion Cycle (Days) FY21 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_ccc_fy22",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 8,
+      "col": 5,
+      "description": "Cash Conversion Cycle (Days) FY22 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_ccc_fy23",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 8,
+      "col": 6,
+      "description": "Cash Conversion Cycle (Days) FY23 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_ccc_fy24",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 8,
+      "col": 7,
+      "description": "Cash Conversion Cycle (Days) FY24 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide16_ccc_fy25",
+      "slide": 16,
+      "target_type": "table_cell",
+      "shape_id": 9,
+      "shape_name": "Table 0",
+      "row": 8,
+      "col": 8,
+      "description": "Cash Conversion Cycle (Days) FY25 in Slide 16 Table 0"
+    },
+    {
+      "name": "slide1_sector",
+      "slide": 1,
+      "target_type": "shape_text",
+      "shape_id": 57,
+      "shape_name": "object 41",
+      "description": "Sector banner on Slide 1"
+    },
+    {
+      "name": "slide2_sector",
+      "slide": 2,
+      "target_type": "shape_text",
+      "shape_id": 57,
+      "shape_name": "object 41",
+      "description": "Sector banner on Slide 2"
+    },
+    {
+      "name": "slide14_sector",
+      "slide": 14,
+      "target_type": "shape_text",
+      "shape_id": 57,
+      "shape_name": "object 41",
+      "description": "Sector banner on Slide 14"
+    },
+    {
+      "name": "slide16_sector",
+      "slide": 16,
+      "target_type": "shape_text",
+      "shape_id": 57,
+      "shape_name": "object 41",
+      "description": "Sector banner on Slide 16"
+    },
+    {
+      "name": "slide23_sector",
+      "slide": 23,
+      "target_type": "shape_text",
+      "shape_id": 24,
+      "shape_name": "object 41",
+      "description": "Sector banner on Slide 23"
+    },
+    {
+      "name": "slide23_valuation_title",
+      "slide": 23,
+      "target_type": "shape_text",
+      "shape_id": 34,
+      "shape_name": "TextBox 33",
+      "description": "Valuation methodology header on Slide 23"
+    }
+  ]
+}
