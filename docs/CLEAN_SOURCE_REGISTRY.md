@@ -6,6 +6,7 @@
 - **Local Primary Data Extract**: [`work/sources/CLEAN_consolidated.json`](../work/sources/CLEAN_consolidated.json) (`SHA-256: 571a25896b1ae7cdb68ab63ab4a524a3e04b517f7f615f363007ebf3d83ed182`)
 - **Local Statutory Sub-Schedules Cache**: [`work/sources/CLEAN_schedules.json`](../work/sources/CLEAN_schedules.json) (`SHA-256: b469d4d19ee41bc2323e70cd2dade60fd309bf9b6201260c4fbda7be5db97ea7`)
 - **Local 15-Oct-2025 Market & Empirical Beta Cache**: [`work/sources/market_and_beta_2025_10_15.json`](../work/sources/market_and_beta_2025_10_15.json) (`SHA-256: de04dac2fc4a73be3d596fe5aec37ff070e4dc0a4d2abe22b11b340206c3f823`)
+- **Local 104-Week Empirical Weekly Market Returns Cache**: [`work/sources/weekly_market_returns_104w.json`](../work/sources/weekly_market_returns_104w.json) (`SHA-256: 109e1f9726130ffc6fc9121e941b6bedb66a90b3a8d249d8beca40bc0bd50eef`)
 - **Official BSE Filing PDF**: [BSE Statutory Filing PDF](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4718abdb-ef9c-4cd4-9cef-9f1c769f96b7.pdf)
 - **Official IR Portal**: [Clean Science and Technology Limited Investor Relations](https://cleanscience.co.in/investor-relations/)
 - **Historical Cutoff & Snapshot Discipline**: Historical columns (`B`–`H`, `FY19`–`FY25`) contain strictly audited `Mar 2019`–`Mar 2025` figures predating the **October 15, 2025** market snapshot (`NSE Official Unadjusted Close: ₹1,041.40`). Post-cutoff `Mar 2026` figures are excluded from historical columns, and all 5 forecast years (`I`–`M`, `FY26E`–`FY30E`) are dynamic formulas with double-entry Balance Sheet cash closure (`Cash_t = Cash_{t-1} + Net_Cash_Flow_t`).
@@ -51,3 +52,17 @@
 | **Implied Fair Value / Share (₹)** | ₹415.69 | **₹480.89** | ₹+65.20 (+15.68%) | Held CFCL Unit 4 HALS installed capacity at verified 10,500 MTPA across FY24–FY30E in Base Case (replacing unsourced 12,000–15,000 MTPA step-ups with commercial utilization ramp from 15% in FY24 and 21% in FY25 to 88% in FY30E), replaced reverse-solved 0.904 beta (12.00% round WACC) with empirical 2-Year Weekly OLS Beta vs Nifty 50 (0.9006 -> Ke = 11.73%, WACC = 11.73%), and removed the +₹45 Cr hardcoded cash bridge offset (Cash & Liquid Investments = ₹20 Cr Cash + ₹381 Cr Investments = ₹401 Cr). Implied DCF value is ₹480.89/share vs verified 15-Oct-2025 NSE Official Close ₹1,041.40. |
 | **Snapshot Market Price (15-Oct-2025 NSE Official Close)** | — | **₹1,041.40** | Verified | Official NSE unadjusted closing quotation dated Wednesday, October 15, 2025 (`2025-10-15`). |
 | **Implied Upside / (Downside) vs. Snapshot** | — | **-53.82%** | Reconciled | Reconciled across Workbook, Registry, Manifest, and Coverage Report. |
+
+## 3. Empirical 104-Week OLS Regression Diagnostics (vs. Nifty 50, N=104 Weeks)
+
+| Statistical Metric / Regression Parameter | Value | Unit / Format | Benchmark / Regression Methodology | Statistical Interpretation |
+|:---|---:|:---:|:---|:---|
+| **Raw OLS Beta Slope** | **0.9006** | Ratio | Covariance(R_i, R_m) / Variance(R_m) | Direct empirical slope over 104 paired weekly returns |
+| **Blume Adjusted Beta** | **0.9337** | Ratio | 2/3 Raw Beta + 1/3 * 1.0000 | Institutional mean-reverting adjusted beta |
+| **Weekly Covariance with Nifty 50** | 0.00040192 | Covariance | Sample covariance over 104 weekly return bars | Measure of systematic co-movement with broad index |
+| **Nifty 50 Weekly Return Variance** | 0.00044626 | Variance | Sample variance of Nifty 50 weekly returns | Annualized benchmark volatility ~15.2% |
+| **Pearson Correlation (R)** | 0.3724 | Correlation | Cov(R_i, R_m) / [Std(R_i) * Std(R_m)] | Systematic directional co-movement |
+| **Coefficient of Determination (R²)** | 0.1387 | R-Squared | Explained return variance / Total variance | Proportion of systematic variance explained |
+| **Standard Error of Regression (SE)** | 0.0298 | Std Error | Residual standard error of regression line | Idiosyncratic return dispersion |
+| **Regression t-Statistic** | 4.05 | t-Stat | Beta / SE_Beta (p < 0.0001) | Statistically significant at >99.9% confidence |
+| **Peer Cohort Reference** | — | Peer Median | Specialty Chemical Peer Hamada Relevered Beta: 0.9469 (Unlevered Median 0.9468) | Contextual industry benchmark |

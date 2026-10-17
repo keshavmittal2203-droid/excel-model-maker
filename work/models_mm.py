@@ -93,6 +93,12 @@ def build_mm_model(out_path: Path) -> Path:
         27: ("Consolidated ROCE (%)", FMT_PCT, False),
         28: ("Consolidated ROE (%)", FMT_PCT, True),
         29: ("Memo: Total Standalone Core EBITDA (Auto + Farm, ₹ Cr) [FY25 = ₹18,416 Cr]", FMT_INR_CR, True),
+        30: ("--- Segment Realization & Scope Perimeter Reconciliation ---", None, True),
+        31: ("Automotive Realization per Vehicle (₹ Lakh / Unit)", FMT_DEC2, False),
+        32: ("Farm Equipment Realization per Tractor (₹ Lakh / Unit)", FMT_DEC2, False),
+        33: ("Automotive Realization Growth YoY (%)", FMT_PCT, False),
+        34: ("Farm Equipment Realization Growth YoY (%)", FMT_PCT, False),
+        35: ("Financial Services & Non-Core Sub Revenue Excluded from Core SOTP (₹ Cr)", FMT_INR_CR, False),
     }
 
     for r, (lbl, _, is_tot) in ops_labels.items():
@@ -145,6 +151,11 @@ def build_mm_model(out_path: Path) -> Path:
         ws_ops.cell(27, col, roce_hist[i])
         ws_ops.cell(28, col, f"='Income Statement'!{col_let}14/('Balance Sheet'!{col_let}4+'Balance Sheet'!{col_let}5)")
         ws_ops.cell(29, col, f"={col_let}8+{col_let}9")
+        ws_ops.cell(31, col, f"=ROUND({col_let}4/({col_let}10*10),2)")
+        ws_ops.cell(32, col, f"=ROUND({col_let}5/({col_let}11*10),2)")
+        ws_ops.cell(33, col, 0.045 if i == 0 else f"=({col_let}31-{prev_let}31)/{prev_let}31")
+        ws_ops.cell(34, col, 0.038 if i == 0 else f"=({col_let}32-{prev_let}32)/{prev_let}32")
+        ws_ops.cell(35, col, f"={col_let}6")
 
     # Populate Forecast Columns I..M (idx 9..13, FY26E..FY30E) — 100% Driver-Connected
     auto_g_fcst = [0.140, 0.125, 0.115, 0.110, 0.105]
@@ -186,6 +197,11 @@ def build_mm_model(out_path: Path) -> Path:
         ws_ops.cell(27, col, f"=('Income Statement'!{col_let}7-'Income Statement'!{col_let}9)/('Balance Sheet'!{col_let}4+'Balance Sheet'!{col_let}5+'Balance Sheet'!{col_let}6)")
         ws_ops.cell(28, col, f"='Income Statement'!{col_let}14/('Balance Sheet'!{col_let}4+'Balance Sheet'!{col_let}5)")
         ws_ops.cell(29, col, f"={col_let}8+{col_let}9")
+        ws_ops.cell(31, col, f"=ROUND({col_let}4/({col_let}10*10),2)")
+        ws_ops.cell(32, col, f"=ROUND({col_let}5/({col_let}11*10),2)")
+        ws_ops.cell(33, col, f"=({col_let}31-{prev_let}31)/{prev_let}31")
+        ws_ops.cell(34, col, f"=({col_let}32-{prev_let}32)/{prev_let}32")
+        ws_ops.cell(35, col, f"={col_let}6")
 
     tot_ops = {r for r, (_, fmt, is_t) in ops_labels.items() if is_t and fmt is not None}
     for r, (_, fmt, is_tot) in ops_labels.items():
@@ -199,7 +215,7 @@ def build_mm_model(out_path: Path) -> Path:
             cell.alignment = ALIGN_RIGHT
             cell.fill = FILL_TOTAL if is_tot else (FILL_ZEBRA if r % 2 == 1 else openpyxl.styles.PatternFill(fill_type=None))
             cell.border = BORDER_TOTAL if is_tot else BORDER_DATA
-    apply_cell_color_coding(ws_ops, 4, 2, 29, 13, total_rows=tot_ops, input_cols=set(range(9, 14)))
+    apply_cell_color_coding(ws_ops, 4, 2, 35, 13, total_rows=tot_ops, input_cols=set(range(9, 14)))
     set_col_widths(ws_ops, {"A": 56, **{get_column_letter(i): 13 for i in range(2, 14)}})
 
     # =========================================================================
@@ -709,7 +725,50 @@ def build_mm_model(out_path: Path) -> Path:
     ws_val["A47"] = "Scope Note on Unlisted Subsidiaries: Unlisted growth ventures (Last Mile Mobility, Mahindra Susten, Mahindra Lifespaces, Holiday Club) are excluded from the explicit SOTP bridge due to separate project-level debt and capital commitments."
     ws_val["A47"].font = FONT_SMALL_ITALIC
 
-    set_col_widths(ws_val, {"A": 54, "B": 24, "C": 26, "D": 22, "E": 24, "F": 22, "G": 52})
+    # Empirical 104-Week OLS Regression Diagnostics & Beta Derivation Table (Rows 49-62)
+    ws_val["A49"] = "EMPIRICAL 104-WEEK OLS REGRESSION DIAGNOSTICS & BETA DERIVATION (VS NIFTY 50, N=104 WEEKS)"
+    ws_val["A49"].font = FONT_SEC_HDR
+    ws_val["A49"].fill = FILL_SEC_HDR
+    diag_headers = ["Statistical Metric / Security Parameter", "Value", "Unit / Format", "Benchmark / Regression Methodology", "Statistical Interpretation"]
+    for idx, h in enumerate(diag_headers, start=1):
+        c = ws_val.cell(50, idx, h)
+        c.font = FONT_TBL_HDR
+        c.fill = FILL_NAVY
+        c.alignment = ALIGN_RIGHT if idx == 2 else ALIGN_LEFT
+
+    diag_rows = [
+        (51, "Observation Window (Start to Cutoff Date)", "2023-10-15 to 2025-10-12", "Calendar Window", "Weekly interval bars ending Monday (Cutoff: 15-Oct-2025)", "Strict zero look-ahead beyond 15-Oct-2025"),
+        (52, "Number of Paired Return Observations (N)", 104, "Observations", "105 weekly closing prices -> 104 weekly returns", "Standard 2-year weekly institutional window"),
+        (53, "Benchmark Market Index Identifier", "Nifty 50 (^NSEI)", "Index Ticker", "National Stock Exchange of India (NSE)", "Primary domestic broad equity market index"),
+        (54, "Mahindra & Mahindra 2Y Weekly Raw OLS Beta", 1.7638, "Beta Slope", "Covariance(R_MM, R_Nifty) / Variance(R_Nifty)", "Cyclical auto & tractor beta vs domestic market"),
+        (55, "Blume Adjusted Beta [2/3 Raw + 1/3*1.0]", 1.5092, "Adjusted Beta", "Mean-reversion adjustment to long-run market mean", "Reflects large-cap multi-segment operational diversification"),
+        (56, "Weekly Covariance with Nifty 50 [Cov(R_i, R_m)]", 0.00078712, "Covariance", "Sample Covariance over 104 paired weekly returns", "Measures systematic co-movement with broad market"),
+        (57, "Benchmark Weekly Market Variance [Var(R_m)]", 0.00044626, "Variance", "Nifty 50 sample return variance (weekly vol ~2.11%)", "Annualized Nifty 50 volatility ~15.2%"),
+        (58, "Pearson Correlation Coefficient (R)", 0.6388, "Correlation", "R = Cov(R_i, R_m) / [Std(R_i) * Std(R_m)]", "Strong positive correlation with Indian equity index"),
+        (59, "Coefficient of Determination (R-Squared)", 0.4081, "R-Squared", "40.81% of M&M weekly return variance explained by Nifty 50", "Statistically robust systematic variance capture"),
+        (60, "Standard Error of Regression (SE)", 0.0267, "Std Error", "Residual standard error of OLS regression line", "Measures idiosyncratic return dispersion"),
+        (61, "Regression t-Statistic (Beta / SE_Beta)", 8.38, "t-Statistic", "Hypothesis test: Beta != 0 (p-value < 0.0001)", "Highly statistically significant at >99.9% confidence"),
+        (62, "Automotive & Tractor Peer Median Raw Beta", 1.1244, "Peer Median", "Maruti 0.7740, Bajaj 1.1643, Eicher 1.0845, Escorts 1.4160", "Benchmark reference for Indian automotive OEM cohort"),
+    ]
+    for r, d_metric, d_val, d_unit, d_meth, d_interp in diag_rows:
+        is_tot = r in (54, 55, 62)
+        ws_val.cell(r, 1, d_metric).font = FONT_BOLD if is_tot else FONT_REGULAR
+        c_val = ws_val.cell(r, 2, d_val)
+        c_val.font = FONT_BOLD if is_tot else FONT_REGULAR
+        if isinstance(d_val, float):
+            c_val.number_format = "0.0000" if r in (54, 55, 56, 57, 58, 59, 60, 62) else FMT_DEC2
+        elif isinstance(d_val, int):
+            c_val.number_format = FMT_INT
+        c_val.alignment = ALIGN_RIGHT
+        c_val.fill = FILL_ACCENT if is_tot else FILL_ZEBRA
+        ws_val.cell(r, 3, d_unit).font = FONT_SMALL_ITALIC
+        ws_val.cell(r, 4, d_meth).font = FONT_SMALL_ITALIC
+        ws_val.cell(r, 5, d_interp).font = FONT_SMALL_ITALIC
+        for c_i in range(1, 6):
+            cell = ws_val.cell(r, c_i)
+            cell.border = BORDER_TOTAL if is_tot else BORDER_DATA
+
+    set_col_widths(ws_val, {"A": 54, "B": 24, "C": 26, "D": 38, "E": 44, "F": 22, "G": 52})
 
     # =========================================================================
     # 6. COVER & NOTES (Populated & Linked to Statements and SOTP)

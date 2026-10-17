@@ -341,6 +341,139 @@ class FourTargetsTests(unittest.TestCase):
             # Confirm byte-identical baseline restoration
             self.assertEqual(wb_path.read_bytes(), orig_bytes)
 
+    def test_empirical_104_week_regression_diagnostics_embedded_in_all_four_models(self):
+        """All 4 models must embed an authentic 104-week OLS regression diagnostics table vs Nifty 50 with N=104 and valid statistics."""
+        import openpyxl
+
+        configs = [
+            ("MM", "SOTP Valuation", 52, 54, 55, 59, 61),
+            ("LTM", "FCFF Valuation", 83, 85, 86, 90, 92),
+            ("CLEAN", "Manufacturing DCF Valuation", 83, 85, 86, 90, 92),
+            ("EDELWEISS", "SOTP Valuation", 52, 54, 55, 59, 61),
+        ]
+        for key, sheet_name, r_n, r_raw, r_blume, r_r2, r_t in configs:
+            wb_path = ROOT / "candidates" / f"run_native_{key.lower()}" / f"{key}-Recalculated.xlsx"
+            wb = openpyxl.load_workbook(wb_path, data_only=True)
+            self.assertIn(sheet_name, wb.sheetnames)
+            ws = wb[sheet_name]
+
+            # N = 104
+            self.assertEqual(int(ws.cell(r_n, 2).value), 104, f"{key} N must equal 104")
+            raw_beta = float(ws.cell(r_raw, 2).value)
+            blume_beta = float(ws.cell(r_blume, 2).value)
+            r2 = float(ws.cell(r_r2, 2).value)
+            t_stat = float(ws.cell(r_t, 2).value)
+
+            self.assertGreater(raw_beta, 0.5, f"{key} raw beta out of expected bounds: {raw_beta}")
+            self.assertLess(raw_beta, 2.5, f"{key} raw beta out of expected bounds: {raw_beta}")
+            self.assertGreater(blume_beta, 0.5, f"{key} Blume beta out of expected bounds: {blume_beta}")
+            self.assertGreater(r2, 0.10, f"{key} R^2 must be > 0.10: {r2}")
+            self.assertGreater(t_stat, 3.5, f"{key} t-statistic must be > 3.5: {t_stat}")
+
+    def test_dcf_stub_period_timing_reconciliation_and_cash_bridge_audit_in_ltm_and_clean(self):
+        """LTM and CLEAN must feature stub-period timing reconciliation and unencumbered liquid treasury cash bridge audit."""
+        import openpyxl
+
+        for key, sheet_name, expected_base, exp_ev in [
+            ("LTM", "FCFF Valuation", 2811.09, 72018.0),
+            ("CLEAN", "Manufacturing DCF Valuation", 480.89, 4713.0),
+        ]:
+            wb_path = ROOT / "candidates" / f"run_native_{key.lower()}" / f"{key}-Recalculated.xlsx"
+            wb = openpyxl.load_workbook(wb_path, data_only=True)
+            ws = wb[sheet_name]
+
+            # Row 65: Annual baseline ties to E8 / B24
+            ann_val = float(ws["J65"].value)
+            self.assertAlmostEqual(ann_val, expected_base, places=2)
+
+            # Row 66: Stub discounting (167 days remaining)
+            stub_val = float(ws["J66"].value)
+            self.assertGreater(stub_val, 0.0)
+
+            # Row 67: Terminal value concentration
+            tv_conc = float(ws["B67"].value)
+            self.assertGreater(tv_conc, 0.50, f"{key} TV concentration should be significant: {tv_conc}")
+            self.assertLess(tv_conc, 0.95, f"{key} TV concentration should be bounded: {tv_conc}")
+
+            # Cash bridge audit (Rows 71-77)
+            cash_eq = float(ws["B71"].value)
+            liq_treas = float(ws["B72"].value)
+            gross_surplus = float(ws["B73"].value)
+            op_buffer = float(ws["B74"].value)
+            net_unenc = float(ws["B75"].value)
+            borrowings = float(ws["B76"].value)
+            net_cushion = float(ws["B77"].value)
+
+            self.assertAlmostEqual(gross_surplus, cash_eq + liq_treas, places=2)
+            self.assertAlmostEqual(net_unenc, gross_surplus - op_buffer, places=2)
+            self.assertAlmostEqual(net_cushion, net_unenc - borrowings, places=2)
+            self.assertGreater(net_cushion, 0.0, f"{key} fortress balance sheet must have positive net cash cushion")
+
+    def test_mm_volume_realization_asp_progression(self):
+        """M&M model must articulate vehicle and tractor realization (₹ Lakh/unit) progression on Segment Operations."""
+        import openpyxl
+
+        wb = openpyxl.load_workbook(ROOT / "candidates" / "run_native_mm" / "MM-Recalculated.xlsx", data_only=True)
+        ws = wb["Segment Operations"]
+
+        # Row 31: Auto Realization per unit (₹ Lakh / Unit)
+        # Row 32: Farm Realization per tractor (₹ Lakh / Unit)
+        # Cols B..H: FY19..FY25 historical; Cols I..M: FY26E..FY30E forecast
+        for col in range(2, 14):
+            auto_asp = float(ws.cell(31, col).value)
+            farm_asp = float(ws.cell(32, col).value)
+            self.assertGreater(auto_asp, 5.0, f"Auto ASP too low in col {col}: {auto_asp}")
+            self.assertLess(auto_asp, 15.0, f"Auto ASP too high in col {col}: {auto_asp}")
+            self.assertGreater(farm_asp, 4.0, f"Farm ASP too low in col {col}: {farm_asp}")
+            self.assertLess(farm_asp, 12.0, f"Farm ASP too high in col {col}: {farm_asp}")
+
+    def test_edelweiss_minority_interest_and_debt_ring_fencing_governance_schedule(self):
+        """EDELWEISS model must articulate minority interest and debt ring-fencing governance schedule."""
+        import openpyxl
+
+        wb = openpyxl.load_workbook(ROOT / "candidates" / "run_native_edelweiss" / "EDELWEISS-Recalculated.xlsx", data_only=True)
+        ws = wb["SOTP Valuation"]
+
+        # Row 64 Header: MINORITY INTEREST & OPERATING DEBT RING-FENCING GOVERNANCE SCHEDULE
+        self.assertIn("GOVERNANCE SCHEDULE", str(ws["A64"].value).upper())
+        self.assertIn("CDPQ", str(ws["A65"].value))
+        self.assertIn("Tokio Marine", str(ws["A66"].value))
+        self.assertIn("14,932", str(ws["A67"].value))
+        self.assertIn("3,067", str(ws["A68"].value))
+
+    def test_batch_build_cli_supports_multiple_requests_and_output_base(self):
+        """build_package_batch must validate all 4 target requests and build verified packages in batch mode."""
+        import tempfile
+        from build_package import build_package_batch
+
+        requests = [
+            ROOT / "examples" / "mm-package.json",
+            ROOT / "examples" / "ltm-package.json",
+            ROOT / "examples" / "clean-package.json",
+            ROOT / "examples" / "edelweiss-package.json",
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            out_base = Path(tmp) / "batch_test"
+            summary = build_package_batch(
+                request_paths=requests,
+                output_base=out_base,
+                allow_proposal=True,
+                skip_com=True,
+                excel_only=True,
+                clean=True,
+            )
+            self.assertTrue(summary["batch_mode"])
+            self.assertEqual(summary["total_requests"], 4)
+            self.assertEqual(summary["succeeded"], 4)
+            self.assertEqual(summary["failed_count"], 0)
+            self.assertEqual(summary["status"], "success")
+
+            # Verify that each subdirectory was created with recalculated workbook and manifest
+            for k in ["mm", "ltm", "clean", "edelweiss"]:
+                sub = out_base / f"run_excel_{k}"
+                self.assertTrue(sub.exists(), f"Batch subdir missing for {k}")
+                self.assertTrue((sub / "package.manifest.json").exists())
+
 
 if __name__ == "__main__":
     unittest.main()

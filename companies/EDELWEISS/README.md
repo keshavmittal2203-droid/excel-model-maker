@@ -14,7 +14,11 @@
 - **Implied Fair Value Per Share**: **₹130.53** (vs. 15-Oct-2025 NSE Official Close **₹108.85**, Implied `+19.92%`)
 - **Prior vs. Current Reconciliation**: Built explicit vertical-specific financial services drivers on 'Segment Operations' (EAAA Earning AUM × Fee & Carry Yield; EARCL Recoveries × Fee Rate; Mutual Fund Equity+Alt AUM × Fee Rate; Life & General Insurance GWP & Actuarial Indian Embedded Value [IEV]; Credit Book × Net Interest & Fee Yield), disclosed EFSL attributable ownership stakes (EAAA 100%, EARCL 79.8% net of CDPQ 20.2% NCI, EAML 85% post-WestBridge 15%, Life 75% [Tokio Marine 25%] + General 100%, Credit 100%) with a 15% Conglomerate Discount (Gross Vertical Sum ₹15,402 Cr), and replaced the unsourced -₹5,500 Cr HoldCo debt assumption with the Audited FY25 EFSL Standalone Balance Sheet Bridge (Standalone Borrowings ₹3,072 Cr less Standalone Cash ₹5 Cr = -₹3,067 Cr Net Debt), yielding ₹12,335 Cr Equity Value (₹130.53/share) vs verified 15-Oct-2025 NSE Official Close ₹108.85.
 
-## 2. Reproducible Single-Command Build (`--excel-only` & Full Package)
+## 2. Reproducible Single-Command & Batch Build (`--excel-only`)
 ```powershell
+# Single-company Excel build & validation:
 python build_package.py --request examples/edelweiss-package.json --output-dir candidates/run_excel_edelweiss --allow-proposal --excel-only
+
+# Batch build across all four priority targets:
+python build_package.py --batch --allow-proposal --excel-only
 ```

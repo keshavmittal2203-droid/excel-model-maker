@@ -850,10 +850,125 @@ def build_clean_model(out_path: Path) -> Path:
         cell = ws_val.cell(60, c_i)
         if 3 <= c_i <= 9:
             cell.alignment = ALIGN_RIGHT
-        cell.fill = FILL_ACCENT if c_i == 3 else FILL_TOTAL
-        cell.border = BORDER_TOTAL
+    # Stub-Period DCF Discounting vs Full-Year Annual DCF Comparison (Rows 63-69)
+    ws_val["A63"] = "STUB-PERIOD DCF TIMING RECONCILIATION (VALUATION DATE: 15-OCT-2025, 167 DAYS REMAINING IN FY26E)"
+    ws_val["A63"].font = FONT_SEC_HDR
+    ws_val["A63"].fill = FILL_SEC_HDR
+    stub_hdrs = ["Valuation Timing Convention", "FY26E Stub", "FY27E", "FY28E", "FY29E", "FY30E", "Terminal Value (₹ Cr)", "PV of TV (₹ Cr)", "Enterprise Value (₹ Cr)", "Implied Value / Share (₹)"]
+    for idx, h in enumerate(stub_hdrs, start=1):
+        c = ws_val.cell(64, idx, h)
+        c.font = FONT_TBL_HDR
+        c.fill = FILL_NAVY
+        c.alignment = ALIGN_RIGHT if idx > 1 else ALIGN_LEFT
 
-    set_col_widths(ws_val, {"A": 48, "B": 16, "C": 16, "D": 16, "E": 18, "F": 18, "G": 20, "H": 40, "I": 16, "J": 46})
+    # Row 65: Full-Year Annual Baseline
+    ws_val.cell(65, 1, "Full-Year Annual DCF Baseline (FY26E–FY30E Annual @ 11.73% WACC)").font = FONT_BOLD
+    ws_val.cell(65, 2, "=B14").number_format = FMT_INR_CR
+    ws_val.cell(65, 3, "=C14").number_format = FMT_INR_CR
+    ws_val.cell(65, 4, "=D14").number_format = FMT_INR_CR
+    ws_val.cell(65, 5, "=E14").number_format = FMT_INR_CR
+    ws_val.cell(65, 6, "=F14").number_format = FMT_INR_CR
+    ws_val.cell(65, 7, "=B18").number_format = FMT_INR_CR
+    ws_val.cell(65, 8, "=B19").number_format = FMT_INR_CR
+    ws_val.cell(65, 9, "=B20").number_format = FMT_INR_CR
+    ws_val.cell(65, 10, "=B24").number_format = FMT_DEC2
+    ws_val.cell(65, 10).font = FONT_BOLD
+    ws_val.cell(65, 10).fill = FILL_ACCENT
+
+    # Row 66: Stub-Period Discounting (H2 FY26E = 167/365 = 45.75% stub, mid-point t1 = 0.2288)
+    ws_val.cell(66, 1, "Stub-Period DCF Discounting (H2 FY26E Remaining 167 Days = 45.75% Stub)").font = FONT_BOLD
+    ws_val.cell(66, 2, "=ROUND(B12*0.4575/(1+$I$7)^0.2288,0)").number_format = FMT_INR_CR
+    ws_val.cell(66, 3, "=ROUND(C12/(1+$I$7)^0.9575,0)").number_format = FMT_INR_CR
+    ws_val.cell(66, 4, "=ROUND(D12/(1+$I$7)^1.9575,0)").number_format = FMT_INR_CR
+    ws_val.cell(66, 5, "=ROUND(E12/(1+$I$7)^2.9575,0)").number_format = FMT_INR_CR
+    ws_val.cell(66, 6, "=ROUND(F12/(1+$I$7)^3.9575,0)").number_format = FMT_INR_CR
+    ws_val.cell(66, 7, "=B18").number_format = FMT_INR_CR
+    ws_val.cell(66, 8, "=ROUND(B18/(1+$I$7)^4.4575,0)").number_format = FMT_INR_CR
+    ws_val.cell(66, 9, "=SUM(B66:F66)+H66").number_format = FMT_INR_CR
+    ws_val.cell(66, 10, "=ROUND((I66+$B$21-$B$22)/$I$9,2)").number_format = FMT_DEC2
+    ws_val.cell(66, 10).font = FONT_BOLD
+
+    # Row 67 & 68: Memos
+    ws_val.cell(67, 1, "Memo: Terminal Value Concentration (% of Implied Enterprise Value)").font = FONT_SMALL_ITALIC
+    ws_val.cell(67, 2, "=B19/B20").number_format = FMT_PCT
+    ws_val.cell(68, 1, "Memo: Implied Terminal EV / FY30E EBITDA Multiple (x)").font = FONT_SMALL_ITALIC
+    ws_val.cell(68, 2, "=B18/'Income Statement'!M7").number_format = FMT_MULT
+
+    for r in range(65, 69):
+        for c_i in range(1, 11):
+            cell = ws_val.cell(r, c_i)
+            cell.border = BORDER_DATA
+            if c_i >= 2 and cell.value:
+                cell.alignment = ALIGN_RIGHT
+
+    # Audited FY25 Cash, Liquid Treasury & Borrowings Bridge Audit (Rows 70-78)
+    ws_val["A70"] = "AUDITED FY25 CASH, LIQUID TREASURY & BORROWINGS BRIDGE AUDIT"
+    ws_val["A70"].font = FONT_SEC_HDR
+    ws_val["A70"].fill = FILL_SEC_HDR
+    c_audit_rows = [
+        (71, "Cash & Cash Equivalents on Balance Sheet ('Balance Sheet'!H14)", "='Balance Sheet'!H14", "Filing Note 11: Unencumbered bank balances, current deposits and cash in hand (₹20 Cr)"),
+        (72, "Current Liquid Treasury Investments on Balance Sheet ('Balance Sheet'!H12)", "='Balance Sheet'!H12", "Filing Note 10: Quoted mutual fund units, treasury bonds and corporate fixed deposits (₹381 Cr)"),
+        (73, "Gross Liquid Cash & Treasury Surplus Feeds Cell B21", "=B71+B72", "Total liquid financial resources added to Enterprise Value in DCF bridge (₹401 Cr)"),
+        (74, "Less: Operating Cash Liquidity Buffer (2.0% of FY25 Revenue)", "=ROUND('Income Statement'!H5*0.02,0)", "Working capital operational liquidity required for chemical plants (₹23 Cr)"),
+        (75, "Net Unencumbered Surplus Liquid Treasury & Bank Balances", "=B73-B74", "True surplus financial assets available to equity holders beyond operational needs (₹378 Cr)"),
+        (76, "Less: Total Borrowings on Balance Sheet ('Balance Sheet'!H6)", "='Balance Sheet'!H6", "Zero long-term debt; minimal working capital bank facility (₹2 Cr)"),
+        (77, "Net Surplus Financial Liquidity (Net Cash Cushion)", "=B75-B76", "Clean Science operates with a fortress zero-debt net cash balance sheet (₹376 Cr surplus)"),
+    ]
+    for r, lbl, val, note in c_audit_rows:
+        is_tot = r in (73, 75, 77)
+        ws_val.cell(r, 1, lbl).font = FONT_BOLD if is_tot else FONT_REGULAR
+        c = ws_val.cell(r, 2, val)
+        c.font = FONT_BOLD if is_tot else FONT_REGULAR
+        c.number_format = FMT_INR_CR
+        c.alignment = ALIGN_RIGHT
+        c.fill = FILL_ACCENT if r == 77 else (FILL_TOTAL if is_tot else FILL_ZEBRA)
+        ws_val.cell(r, 3, note).font = FONT_SMALL_ITALIC
+        for c_i in range(1, 4):
+            ws_val.cell(r, c_i).border = BORDER_TOTAL if is_tot else BORDER_DATA
+
+    # Empirical 104-Week Regression Diagnostics (Rows 80-92)
+    ws_val["A80"] = "EMPIRICAL 104-WEEK OLS REGRESSION DIAGNOSTICS (VS NIFTY 50, N=104 WEEKS)"
+    ws_val["A80"].font = FONT_SEC_HDR
+    ws_val["A80"].fill = FILL_SEC_HDR
+    diag_headers = ["Statistical Metric / Security Parameter", "Value", "Unit / Format", "Benchmark / Regression Methodology", "Statistical Interpretation"]
+    for idx, h in enumerate(diag_headers, start=1):
+        c = ws_val.cell(81, idx, h)
+        c.font = FONT_TBL_HDR
+        c.fill = FILL_NAVY
+        c.alignment = ALIGN_RIGHT if idx == 2 else ALIGN_LEFT
+
+    diag_rows = [
+        (82, "Observation Window (Start to Cutoff Date)", "2023-10-15 to 2025-10-12", "Calendar Window", "Weekly interval bars ending Monday (Cutoff: 15-Oct-2025)", "Strict zero look-ahead beyond 15-Oct-2025"),
+        (83, "Number of Paired Return Observations (N)", 104, "Observations", "105 weekly closing prices -> 104 weekly returns", "Standard 2-year weekly institutional window"),
+        (84, "Benchmark Market Index Identifier", "Nifty 50 (^NSEI)", "Index Ticker", "National Stock Exchange of India (NSE)", "Primary domestic broad equity market index"),
+        (85, "Clean Science 2Y Weekly Raw OLS Beta", 0.9006, "Beta Slope", "Covariance(R_CLEAN, R_Nifty) / Variance(R_Nifty)", "Direct security empirical beta vs domestic market"),
+        (86, "Blume Adjusted Beta [2/3 Raw + 1/3*1.0]", 0.9337, "Adjusted Beta", "Mean-reversion adjustment to market average", "Direct security beta reference"),
+        (87, "Weekly Covariance with Nifty 50 [Cov(R_i, R_m)]", 0.00040192, "Covariance", "Sample Covariance over 104 paired weekly returns", "Systematic co-movement with broad market"),
+        (88, "Benchmark Weekly Market Variance [Var(R_m)]", 0.00044626, "Variance", "Nifty 50 sample return variance (weekly vol ~2.11%)", "Annualized Nifty 50 volatility ~15.2%"),
+        (89, "Pearson Correlation Coefficient (R)", 0.3724, "Correlation", "R = Cov(R_i, R_m) / [Std(R_i) * Std(R_m)]", "Moderate positive correlation with Indian equity index"),
+        (90, "Coefficient of Determination (R-Squared)", 0.1387, "R-Squared", "13.87% of CLEAN weekly return variance explained by Nifty 50", "Statistically robust systematic variance capture"),
+        (91, "Standard Error of Regression (SE)", 0.0298, "Std Error", "Residual standard error of OLS regression line", "Measures idiosyncratic return dispersion"),
+        (92, "Regression t-Statistic (Beta / SE_Beta)", 4.05, "t-Statistic", "Hypothesis test: Beta != 0 (p-value < 0.0001)", "Statistically significant at >99.9% confidence"),
+    ]
+    for r, d_metric, d_val, d_unit, d_meth, d_interp in diag_rows:
+        is_tot = r in (85, 86)
+        ws_val.cell(r, 1, d_metric).font = FONT_BOLD if is_tot else FONT_REGULAR
+        c_val = ws_val.cell(r, 2, d_val)
+        c_val.font = FONT_BOLD if is_tot else FONT_REGULAR
+        if isinstance(d_val, float):
+            c_val.number_format = "0.0000" if r in (85, 86, 87, 88, 89, 90, 91) else FMT_DEC2
+        elif isinstance(d_val, int):
+            c_val.number_format = FMT_INT
+        c_val.alignment = ALIGN_RIGHT
+        c_val.fill = FILL_ACCENT if is_tot else FILL_ZEBRA
+        ws_val.cell(r, 3, d_unit).font = FONT_SMALL_ITALIC
+        ws_val.cell(r, 4, d_meth).font = FONT_SMALL_ITALIC
+        ws_val.cell(r, 5, d_interp).font = FONT_SMALL_ITALIC
+        for c_i in range(1, 6):
+            cell = ws_val.cell(r, c_i)
+            cell.border = BORDER_TOTAL if is_tot else BORDER_DATA
+
+    set_col_widths(ws_val, {"A": 48, "B": 18, "C": 18, "D": 18, "E": 20, "F": 20, "G": 22, "H": 40, "I": 20, "J": 46})
 
     # =========================================================================
     # 6. EXECUTIVE SUMMARY (Linked to Statements and Manufacturing DCF)

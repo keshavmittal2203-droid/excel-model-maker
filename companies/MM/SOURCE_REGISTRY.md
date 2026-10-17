@@ -6,6 +6,7 @@
 - **Local Primary Data Extract**: [`work/sources/MM_consolidated.json`](../work/sources/MM_consolidated.json) (`SHA-256: d4a77cd285356e31bd99ca8530ca43aef943a77da2b86a5330b05d1418956c68`)
 - **Local Statutory Sub-Schedules Cache**: [`work/sources/MM_schedules.json`](../work/sources/MM_schedules.json) (`SHA-256: 844d2059b1477e16cb808cea2dd20bd7dc4b279b94a176d23fa491d7527c263d`)
 - **Local 15-Oct-2025 Market & Empirical Beta Cache**: [`work/sources/market_and_beta_2025_10_15.json`](../work/sources/market_and_beta_2025_10_15.json) (`SHA-256: de04dac2fc4a73be3d596fe5aec37ff070e4dc0a4d2abe22b11b340206c3f823`)
+- **Local 104-Week Empirical Weekly Market Returns Cache**: [`work/sources/weekly_market_returns_104w.json`](../work/sources/weekly_market_returns_104w.json) (`SHA-256: 109e1f9726130ffc6fc9121e941b6bedb66a90b3a8d249d8beca40bc0bd50eef`)
 - **Official BSE Filing PDF**: [BSE Statutory Filing PDF](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6F653FFC_204D_4551_A741_4F4EE3C56EBF_182346.pdf)
 - **Official IR Portal**: [Mahindra & Mahindra Limited Investor Relations](https://www.mahindra.com/resources/investor-reports)
 - **Historical Cutoff & Snapshot Discipline**: Historical columns (`B`–`H`, `FY19`–`FY25`) contain strictly audited `Mar 2019`–`Mar 2025` figures predating the **October 15, 2025** market snapshot (`NSE Official Unadjusted Close: ₹3,497.20`). Post-cutoff `Mar 2026` figures are excluded from historical columns, and all 5 forecast years (`I`–`M`, `FY26E`–`FY30E`) are dynamic formulas with double-entry Balance Sheet cash closure (`Cash_t = Cash_{t-1} + Net_Cash_Flow_t`).
@@ -53,3 +54,17 @@
 | **Implied Fair Value / Share (₹)** | ₹2,929.98 | **₹2,742.97** | ₹-187.01 (-6.38%) | Eliminated the backwards-solved ₹242,400 Cr target preservation (15,150 × 16x vs 20,200 × 12x) and replaced the unsourced -₹12,000 Cr standalone net debt plug with the Audited FY25 M&M Standalone Balance Sheet Bridge (Standalone Borrowings ₹1,682 Cr less Standalone Cash & Treasury ₹10,791 Cr = -₹9,109 Cr Net Debt / +₹9,109 Cr Standalone Net Cash). Connected FY26E Standalone Auto Core EBITDA (₹13,667 Cr @ 14.0x = ₹1,91,338 Cr) and Farm Core EBITDA (₹7,403 Cr @ 13.0x = ₹96,239 Cr) to Volume × ASP drivers, updated MMFS (52.16% of ₹36,305 Cr @ ₹293.85 15-Oct-2025 close × 80% = ₹15,149.35 Cr) and TechM (25.48% of ₹1,42,836 Cr @ ₹1,459.00 15-Oct-2025 close × 80% = ₹29,115.69 Cr), yielding ₹3,40,951.04 Cr Equity Value (₹2,742.97/share). |
 | **Snapshot Market Price (15-Oct-2025 NSE Official Close)** | — | **₹3,497.20** | Verified | Official NSE unadjusted closing quotation dated Wednesday, October 15, 2025 (`2025-10-15`). |
 | **Implied Upside / (Downside) vs. Snapshot** | — | **-21.57%** | Reconciled | Reconciled across Workbook, Registry, Manifest, and Coverage Report. |
+
+## 3. Empirical 104-Week OLS Regression Diagnostics (vs. Nifty 50, N=104 Weeks)
+
+| Statistical Metric / Regression Parameter | Value | Unit / Format | Benchmark / Regression Methodology | Statistical Interpretation |
+|:---|---:|:---:|:---|:---|
+| **Raw OLS Beta Slope** | **1.7638** | Ratio | Covariance(R_i, R_m) / Variance(R_m) | Direct empirical slope over 104 paired weekly returns |
+| **Blume Adjusted Beta** | **1.5092** | Ratio | 2/3 Raw Beta + 1/3 * 1.0000 | Institutional mean-reverting adjusted beta |
+| **Weekly Covariance with Nifty 50** | 0.00078712 | Covariance | Sample covariance over 104 weekly return bars | Measure of systematic co-movement with broad index |
+| **Nifty 50 Weekly Return Variance** | 0.00044626 | Variance | Sample variance of Nifty 50 weekly returns | Annualized benchmark volatility ~15.2% |
+| **Pearson Correlation (R)** | 0.6388 | Correlation | Cov(R_i, R_m) / [Std(R_i) * Std(R_m)] | Systematic directional co-movement |
+| **Coefficient of Determination (R²)** | 0.4081 | R-Squared | Explained return variance / Total variance | Proportion of systematic variance explained |
+| **Standard Error of Regression (SE)** | 0.0267 | Std Error | Residual standard error of regression line | Idiosyncratic return dispersion |
+| **Regression t-Statistic** | 8.38 | t-Stat | Beta / SE_Beta (p < 0.0001) | Statistically significant at >99.9% confidence |
+| **Peer Cohort Reference** | — | Peer Median | Auto & Tractor Peer Median: 1.1244 (Maruti 0.7740, Bajaj 1.1643, Eicher 1.0845, Escorts 1.4160) | Contextual industry benchmark |

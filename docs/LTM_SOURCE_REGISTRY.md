@@ -6,6 +6,7 @@
 - **Local Primary Data Extract**: [`work/sources/LTM_consolidated.json`](../work/sources/LTM_consolidated.json) (`SHA-256: 7710eb4f648d664655b60b377e453983e0e2317aeb1783f72b488f8555cbde26`)
 - **Local Statutory Sub-Schedules Cache**: [`work/sources/LTM_schedules.json`](../work/sources/LTM_schedules.json) (`SHA-256: fd04a7681cfa508f4eddf380a263840477a0d53d5bc2b1c9cd8d4b180ae98b41`)
 - **Local 15-Oct-2025 Market & Empirical Beta Cache**: [`work/sources/market_and_beta_2025_10_15.json`](../work/sources/market_and_beta_2025_10_15.json) (`SHA-256: de04dac2fc4a73be3d596fe5aec37ff070e4dc0a4d2abe22b11b340206c3f823`)
+- **Local 104-Week Empirical Weekly Market Returns Cache**: [`work/sources/weekly_market_returns_104w.json`](../work/sources/weekly_market_returns_104w.json) (`SHA-256: 109e1f9726130ffc6fc9121e941b6bedb66a90b3a8d249d8beca40bc0bd50eef`)
 - **Official BSE Filing PDF**: [BSE Statutory Filing PDF](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=F6781B53_1516_46EF_B458_7E8518B12A74_175251.pdf)
 - **Official IR Portal**: [LTIMindtree Limited Investor Relations](https://www.ltimindtree.com/investors/)
 - **Historical Cutoff & Snapshot Discipline**: Historical columns (`B`–`H`, `FY19`–`FY25`) contain strictly audited `Mar 2019`–`Mar 2025` figures predating the **October 15, 2025** market snapshot (`NSE Official Unadjusted Close: ₹5,609.50`). Post-cutoff `Mar 2026` figures are excluded from historical columns, and all 5 forecast years (`I`–`M`, `FY26E`–`FY30E`) are dynamic formulas with double-entry Balance Sheet cash closure (`Cash_t = Cash_{t-1} + Net_Cash_Flow_t`).
@@ -50,3 +51,17 @@
 | **Implied Fair Value / Share (₹)** | ₹2,813.51 | **₹2,811.09** | ₹-2.42 (-0.09%) | Eliminated double-counted operational growth (where +0*$I$5 ignored headcount/utilization/billing) so USD Revenue ($M) = Headcount * Utilization * Realized Billing per Billed FTE / 1,000,000 and INR Revenue = USD Revenue * FX / 10. Replaced reverse-solved 0.950 beta (11.50% round WACC) with 5-peer Tier-1 IT Hamada Relevered Beta (0.9405 -> Ke = 11.95%, WACC = 11.87%, alongside Direct 2Y Weekly OLS Beta 1.2569) and removed the +₹2,500 Cr hardcoded cash bridge offset (Cash & Treasury = ₹3,588 Cr Cash + ₹9,845 Cr Investments = ₹13,433 Cr). Implied DCF value is ₹2,811.09/share vs verified 15-Oct-2025 NSE Official Close ₹5,609.50. |
 | **Snapshot Market Price (15-Oct-2025 NSE Official Close)** | — | **₹5,609.50** | Verified | Official NSE unadjusted closing quotation dated Wednesday, October 15, 2025 (`2025-10-15`). |
 | **Implied Upside / (Downside) vs. Snapshot** | — | **-49.89%** | Reconciled | Reconciled across Workbook, Registry, Manifest, and Coverage Report. |
+
+## 3. Empirical 104-Week OLS Regression Diagnostics (vs. Nifty 50, N=104 Weeks)
+
+| Statistical Metric / Regression Parameter | Value | Unit / Format | Benchmark / Regression Methodology | Statistical Interpretation |
+|:---|---:|:---:|:---|:---|
+| **Raw OLS Beta Slope** | **1.2568** | Ratio | Covariance(R_i, R_m) / Variance(R_m) | Direct empirical slope over 104 paired weekly returns |
+| **Blume Adjusted Beta** | **1.1712** | Ratio | 2/3 Raw Beta + 1/3 * 1.0000 | Institutional mean-reverting adjusted beta |
+| **Weekly Covariance with Nifty 50** | 0.00056086 | Covariance | Sample covariance over 104 weekly return bars | Measure of systematic co-movement with broad index |
+| **Nifty 50 Weekly Return Variance** | 0.00044626 | Variance | Sample variance of Nifty 50 weekly returns | Annualized benchmark volatility ~15.2% |
+| **Pearson Correlation (R)** | 0.5422 | Correlation | Cov(R_i, R_m) / [Std(R_i) * Std(R_m)] | Systematic directional co-movement |
+| **Coefficient of Determination (R²)** | 0.2940 | R-Squared | Explained return variance / Total variance | Proportion of systematic variance explained |
+| **Standard Error of Regression (SE)** | 0.0245 | Std Error | Residual standard error of regression line | Idiosyncratic return dispersion |
+| **Regression t-Statistic** | 6.51 | t-Stat | Beta / SE_Beta (p < 0.0001) | Statistically significant at >99.9% confidence |
+| **Peer Cohort Reference** | — | Peer Median | 5-Peer Tier-1 IT Hamada Relevered Beta: 0.9405 (Unlevered Median 0.9355) | Contextual industry benchmark |

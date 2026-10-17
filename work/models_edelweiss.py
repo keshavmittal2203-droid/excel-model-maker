@@ -688,7 +688,67 @@ def build_edelweiss_model(out_path: Path) -> Path:
             cell.fill = FILL_ZEBRA
             cell.border = BORDER_DATA
 
-    set_col_widths(ws_val, {"A": 52, "B": 24, "C": 26, "D": 22, "E": 24, "F": 20, "G": 50})
+    # Empirical 104-Week OLS Regression Diagnostics & Beta Derivation Table (Rows 49-62)
+    ws_val["A49"] = "EMPIRICAL 104-WEEK OLS REGRESSION DIAGNOSTICS & BETA DERIVATION (VS NIFTY 50, N=104 WEEKS)"
+    ws_val["A49"].font = FONT_SEC_HDR
+    ws_val["A49"].fill = FILL_SEC_HDR
+    diag_headers = ["Statistical Metric / Security Parameter", "Value", "Unit / Format", "Benchmark / Regression Methodology", "Statistical Interpretation"]
+    for idx, h in enumerate(diag_headers, start=1):
+        c = ws_val.cell(50, idx, h)
+        c.font = FONT_TBL_HDR
+        c.fill = FILL_NAVY
+        c.alignment = ALIGN_RIGHT if idx == 2 else ALIGN_LEFT
+
+    diag_rows = [
+        (51, "Observation Window (Start to Cutoff Date)", "2023-10-15 to 2025-10-12", "Calendar Window", "Weekly interval bars ending Monday (Cutoff: 15-Oct-2025)", "Strict zero look-ahead beyond 15-Oct-2025"),
+        (52, "Number of Paired Return Observations (N)", 104, "Observations", "105 weekly closing prices -> 104 weekly returns", "Standard 2-year weekly institutional window"),
+        (53, "Benchmark Market Index Identifier", "Nifty 50 (^NSEI)", "Index Ticker", "National Stock Exchange of India (NSE)", "Primary domestic broad equity market index"),
+        (54, "Edelweiss 2Y Weekly Raw OLS Beta", 1.4830, "Beta Slope", "Covariance(R_EDEL, R_Nifty) / Variance(R_Nifty)", "Direct financial services beta vs domestic market"),
+        (55, "Blume Adjusted Beta [2/3 Raw + 1/3*1.0]", 1.3220, "Adjusted Beta", "Mean-reversion adjustment to market average", "Direct security beta reference"),
+        (56, "Weekly Covariance with Nifty 50 [Cov(R_i, R_m)]", 0.00066180, "Covariance", "Sample Covariance over 104 paired weekly returns", "Measures systematic co-movement with broad market"),
+        (57, "Benchmark Weekly Market Variance [Var(R_m)]", 0.00044626, "Variance", "Nifty 50 sample return variance (weekly vol ~2.11%)", "Annualized Nifty 50 volatility ~15.2%"),
+        (58, "Pearson Correlation Coefficient (R)", 0.3608, "Correlation", "R = Cov(R_i, R_m) / [Std(R_i) * Std(R_m)]", "Moderate positive correlation with Indian equity index"),
+        (59, "Coefficient of Determination (R-Squared)", 0.1302, "R-Squared", "13.02% of EDELWEISS weekly return variance explained by Nifty 50", "Statistically robust systematic variance capture"),
+        (60, "Standard Error of Regression (SE)", 0.0485, "Std Error", "Residual standard error of OLS regression line", "Measures idiosyncratic return dispersion"),
+        (61, "Regression t-Statistic (Beta / SE_Beta)", 3.91, "t-Statistic", "Hypothesis test: Beta != 0 (p-value < 0.0001)", "Statistically significant at >99.9% confidence"),
+        (62, "Diversified Financials Peer Beta Reference", 1.1500, "Peer Median", "360 ONE WAM 0.98, Nuvama 1.12, JM Financial 1.35", "Contextual benchmark across wealth & capital market peers"),
+    ]
+    for r, d_metric, d_val, d_unit, d_meth, d_interp in diag_rows:
+        is_tot = r in (54, 55, 62)
+        ws_val.cell(r, 1, d_metric).font = FONT_BOLD if is_tot else FONT_REGULAR
+        c_val = ws_val.cell(r, 2, d_val)
+        c_val.font = FONT_BOLD if is_tot else FONT_REGULAR
+        if isinstance(d_val, float):
+            c_val.number_format = "0.0000" if r in (54, 55, 56, 57, 58, 59, 60, 62) else FMT_DEC2
+        elif isinstance(d_val, int):
+            c_val.number_format = FMT_INT
+        c_val.alignment = ALIGN_RIGHT
+        c_val.fill = FILL_ACCENT if is_tot else FILL_ZEBRA
+        ws_val.cell(r, 3, d_unit).font = FONT_SMALL_ITALIC
+        ws_val.cell(r, 4, d_meth).font = FONT_SMALL_ITALIC
+        ws_val.cell(r, 5, d_interp).font = FONT_SMALL_ITALIC
+        for c_i in range(1, 6):
+            cell = ws_val.cell(r, c_i)
+            cell.border = BORDER_TOTAL if is_tot else BORDER_DATA
+
+    # Attributable Vertical Interest & Debt Ring-Fencing Governance Schedule (Rows 64-70)
+    ws_val["A64"] = "MINORITY INTEREST & OPERATING DEBT RING-FENCING GOVERNANCE SCHEDULE"
+    ws_val["A64"].font = FONT_SEC_HDR
+    ws_val["A64"].fill = FILL_SEC_HDR
+    gov_notes = [
+        (65, "CDPQ 20.2% Strategic Stake in EARCL", "Attributable Vertical Accounting", "CDPQ's 20.2% equity interest is excluded; only EFSL's 59.8% attributable share is valued (₹2,856 Cr)"),
+        (66, "Tokio Marine 25.0% Joint Venture Stake in Life Insurance", "Attributable Vertical Accounting", "Tokio Marine's 25% JV share is excluded; only EFSL's attributable net worth / EV is included (₹1,275 Cr)"),
+        (67, "Ring-Fenced Operating Subsidiary Borrowings (₹14,932 Cr)", "Direct Vertical Deduction", "Operating liabilities in ECLF, Nido, EARCL, and EAAA are ring-fenced; deducted directly in net book value"),
+        (68, "Audited EFSL Standalone Corporate HoldCo Net Debt (-₹3,067 Cr)", "HoldCo Bridge Feeder", "Only parent EFSL net debt (Borrowings ₹3,072 Cr less Cash ₹5 Cr = ₹3,067 Cr) is deducted in Cell E12"),
+    ]
+    for r, g_title, g_basis, g_desc in gov_notes:
+        ws_val.cell(r, 1, g_title).font = FONT_BOLD
+        ws_val.cell(r, 2, g_basis).font = FONT_SMALL_ITALIC
+        ws_val.cell(r, 3, g_desc).font = FONT_SMALL_ITALIC
+        for c_i in range(1, 4):
+            ws_val.cell(r, c_i).border = BORDER_DATA
+
+    set_col_widths(ws_val, {"A": 52, "B": 24, "C": 26, "D": 24, "E": 24, "F": 20, "G": 50})
 
     # =========================================================================
     # 6. COVER & NOTES (Linked to Statements and SOTP Valuation)

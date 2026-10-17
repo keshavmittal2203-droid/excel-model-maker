@@ -804,6 +804,22 @@
     "status": "empirical_regression_derived"
   },
   {
+    "metric": "104-Week Empirical Weekly Market Returns & OLS Regression Dataset",
+    "legal_entity": "LTIMindtree Limited",
+    "consolidation_basis": "Empirical Market Time Series (105 weekly price bars, 104 paired returns vs Nifty 50, Cutoff: 15-Oct-2025)",
+    "reporting_period": "2023-10-15 to 2025-10-12 (Strict zero look-ahead post 15-Oct-2025)",
+    "source_org": "NSE Historical Weekly Security & Index Returns Archive",
+    "document_title": "104-Week Institutional Weekly Returns Dataset & Regression Diagnostics",
+    "local_source_file": "work/sources/weekly_market_returns_104w.json",
+    "local_source_sha256": "109e1f9726130ffc6fc9121e941b6bedb66a90b3a8d249d8beca40bc0bd50eef",
+    "official_url": "https://www.nseindia.com",
+    "statement_location": "Valuation Sheet 104-Week Regression Diagnostics Table",
+    "reported_unit": "Paired Weekly Log/Percent Returns (N=104)",
+    "reported_value": 104,
+    "workbook_cell": "'FCFF Valuation'!B83",
+    "status": "empirical_market_dataset"
+  },
+  {
     "metric": "Primary Valuation Output (Unlevered Free Cash Flow (FCFF) DCF & CAPM WACC)",
     "legal_entity": "LTIMindtree Limited",
     "consolidation_basis": "FY19–FY21 reflect Pre-Merger Standalone/Consolidated LTI (Equity Cap ₹17–18 Cr); FY22 reflects Restated Combined Amalgamation Comparative (Equity Cap ₹30 Cr, +111.1% merger step); FY23–FY25 reflect Audited Merged LTIMindtree (effective Nov 14, 2022).",

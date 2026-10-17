@@ -82,6 +82,100 @@ Both models now use **empirical 2-Year Weekly OLS Regression Betas vs. Nifty 50 
 
 ---
 
+### 1E. 104-Week Empirical Weekly Market Returns & OLS Regression Diagnostics
+
+To eliminate subjective beta choices and reverse-solved round WACCs, an independent dataset of **105 weekly price bars ($N = 104$ paired weekly returns)** was archived in `work/sources/weekly_market_returns_104w.json` (`SHA-256: 109e1f97...`) covering the 2-year calendar window **October 15, 2023 to October 12, 2025** (strict zero look-ahead post 15-Oct-2025) across 20 tickers (`^NSEI`, targets, listed stakes, and peer cohorts).
+
+All four models embed this statistical rigor directly below the valuation tables (`Rows 49–62` in MM and EDELWEISS; `Rows 80–92` in LTM and CLEAN):
+
+| Statistical Metric / Parameter | Mahindra & Mahindra (`M&M.NS`) | LTIMindtree (`LTIM.NS`) | Clean Science (`CLEAN.NS`) | Edelweiss (`EDELWEISS.NS`) | Institutional Benchmark / Derivation |
+|:---|---:|---:|---:|---:|:---|
+| **Number of Paired Returns ($N$)** | `104` | `104` | `104` | `104` | 105 weekly closing prices $\to 104$ weekly returns |
+| **Benchmark Index** | `Nifty 50 (^NSEI)` | `Nifty 50 (^NSEI)` | `Nifty 50 (^NSEI)` | `Nifty 50 (^NSEI)` | National Stock Exchange of India (NSE) |
+| **Direct 2Y Raw OLS Beta** | **`1.7638`** | **`1.2568`** | **`0.9006`** | **`1.4830`** | $\text{Cov}(R_i, R_m) / \text{Var}(R_m)$ |
+| **Blume Adjusted Beta** | **`1.5092`** | **`1.1712`** | **`0.9337`** | **`1.3220`** | $\frac{2}{3} \beta_{\text{raw}} + \frac{1}{3} \times 1.0000$ |
+| **Weekly Covariance with Nifty 50** | `0.00078712` | `0.00056086` | `0.00040192` | `0.00066180` | Sample covariance over 104 paired return bars |
+| **Nifty 50 Weekly Return Variance** | `0.00044626` | `0.00044626` | `0.00044626` | `0.00044626` | Annualized benchmark market volatility $\approx 15.2\%$ |
+| **Pearson Correlation ($R$)** | `0.6388` | `0.5422` | `0.3724` | `0.3608` | Directional co-movement with broad market |
+| **Coefficient of Determination ($R^2$)** | **`0.4081`** | **`0.2940`** | **`0.1387`** | **`0.1302`** | Systematic return variance explained by Nifty 50 |
+| **Standard Error of Regression ($SE$)** | `0.0267` | `0.0245` | `0.0298` | `0.0485` | Idiosyncratic return dispersion |
+| **Regression $t$-Statistic** | **`8.38`** ($p < 0.0001$) | **`6.51`** ($p < 0.0001$) | **`4.05`** ($p < 0.0001$) | **`3.91`** ($p < 0.0001$) | Highly statistically significant at $>99.9\%$ confidence |
+| **Peer Cohort Reference** | Auto/Tractor: `1.1244` | Tier-1 IT Hamada: `0.9405` | Spec Chem Hamada: `0.9469` | Diversified Fin: `1.1500` | Sector unlevered/relevered institutional reference |
+
+---
+
+### 1F. Stub-Period DCF Timing Reconciliation & Terminal Value Concentration (`LTM` & `CLEAN`)
+
+On the valuation date of **October 15, 2025**, 198 days of fiscal year 2026 had already elapsed. To resolve concerns about full-year cash flow discounting vs. stub discounting, both models provide side-by-side comparative schedules (`Rows 63–69` on the Valuation sheet):
+
+| DCF Timing Schedule | LTIMindtree (`LTM-Recalculated.xlsx`) | Clean Science (`CLEAN-Recalculated.xlsx`) | Methodological Rationale |
+|:---|:---|:---|:---|
+| **Full-Year Annual DCF Baseline (`Row 65`)** | **`₹2,811.09 / share`** (Enterprise Value `₹72,018 Cr`) | **`₹480.89 / share`** (Enterprise Value `₹4,713 Cr`) | Evaluates full-year FY26E cash flow discounted at $t = 0.50$ (annual midpoint convention); aligns with published research baseline. |
+| **H2 FY26E Stub Discounting (`Row 66`)** | **`₹2,728.53 / share`** (Enterprise Value `₹69,573 Cr`) | **`₹467.12 / share`** (Enterprise Value `₹4,566 Cr`) | Discounts remaining 167 days in FY26E ($45.75\%$ stub fraction, midpoint $t_1 = 0.2288$, subsequent years $t_k = k - 1 + 0.9575$); eliminates elapsed cash flow claims. |
+| **Timing Sensitivity Differential** | `-₹82.56 / share` (`-2.94%`) | `-₹13.77 / share` (`-2.86%`) | Demonstrates tight bounded sensitivity ($<3.0\%$) between annual and stub conventions. |
+| **Terminal Value Concentration (`Row 67`)** | **`74.78%`** of Enterprise Value | **`78.52%`** of Enterprise Value | Fully discloses TV weight in long-duration cash flow streams, meeting institutional equity research transparency standards. |
+| **Implied Terminal Exit Multiple (`Row 68`)** | **`12.0x` FY30E EBITDA** | **`9.3x` FY30E EBITDA** | Reconciles terminal Gordon Growth value ($5.0\%$ TGR) against forward EBITDA multiple; cross-checks terminal sanity. |
+
+---
+
+### 1G. Audited FY25 Cash, Liquid Treasury & Lease Liabilities Bridge Audit (`LTM` & `CLEAN`)
+
+To ensure zero circularity and complete reconciliation between statutory balance sheet lines and the DCF enterprise-to-equity bridge, dedicated audit schedules were embedded (`Rows 70–78` on the Valuation sheet):
+
+1. **LTIMindtree (`LTM`) Fortress Net Cash Cushion**:
+   - Cash & Cash Equivalents (`'Balance Sheet'!H14`): `₹3,588 Cr` (unencumbered current deposits & bank balances).
+   - Current Liquid Treasury Investments (`'Balance Sheet'!H12`): `₹9,845 Cr` (quoted mutual funds, commercial paper, treasury bills).
+   - Gross Liquid Cash & Treasury Surplus (Feeds Cell `B21`): **`₹13,433 Cr`**.
+   - Less: Operational Cash Buffer (`2.0%` of FY25 revenue): `₹760 Cr`.
+   - Net Unencumbered Surplus Liquid Treasury: **`₹12,673 Cr`**.
+   - Less: Total Borrowings & Ind AS 116 Lease Liabilities (`'Balance Sheet'!H6`): `₹2,187 Cr` (includes `₹2,105 Cr` leases + `₹82 Cr` facilities).
+   - **Net Surplus Financial Liquidity (Net Cash Cushion)**: **`+₹10,486 Cr`** (company has zero long-term funded debt).
+
+2. **Clean Science (`CLEAN`) Fortress Zero-Debt Balance Sheet**:
+   - Cash & Cash Equivalents (`'Balance Sheet'!H14`): `₹20 Cr` (unencumbered bank balances).
+   - Current Liquid Treasury Investments (`'Balance Sheet'!H12`): `₹381 Cr` (quoted mutual fund units & bonds).
+   - Gross Liquid Cash & Treasury Surplus (Feeds Cell `B21`): **`₹401 Cr`**.
+   - Less: Operational Cash Buffer (`2.0%` of FY25 revenue): `₹23 Cr`.
+   - Net Unencumbered Surplus Liquid Treasury: **`₹378 Cr`**.
+   - Less: Total Borrowings (`'Balance Sheet'!H6`): `₹2 Cr` (minimal working facility; zero long-term debt).
+   - **Net Surplus Financial Liquidity (Net Cash Cushion)**: **`+₹376 Cr`**.
+
+---
+
+### 1H. Operating Model Enhancements (`MM` & `EDELWEISS`)
+
+1. **Mahindra & Mahindra (`MM`) Volume $\times$ Realization (ASP) Progression**:
+   - Added explicit Realization per vehicle and tractor schedules on `Segment Operations` (`Rows 30–35`):
+     - Automotive Realization per Vehicle (`Row 31`): `₹8.54 Lakh/unit` (FY19) $\to$ `₹9.65 Lakh/unit` (FY25) $\to$ `₹11.13 Lakh/unit` (FY30E).
+     - Farm Equipment Realization per Tractor (`Row 32`): `₹6.67 Lakh/unit` (FY19) $\to$ `₹8.32 Lakh/unit` (FY25) $\to$ `₹9.61 Lakh/unit` (FY30E).
+     - Realization Growth YoY % (`Rows 33–34`): models premium mix shift (XUV700, Scorpio-N, Thar) alongside tractor HP enrichment.
+
+2. **Edelweiss (`EDELWEISS`) Minority Interest & Operating Debt Ring-Fencing Governance Schedule**:
+   - Embedded detailed governance notes on `SOTP Valuation` (`Rows 64–70`):
+     - **CDPQ 20.2% Strategic Stake in EARCL**: CDPQ's 20.2% equity interest is excluded; only EFSL's 59.8% attributable share is valued (`₹2,856 Cr`).
+     - **Tokio Marine 25.0% Joint Venture Stake in Life Insurance**: Tokio Marine's 25% JV share is excluded; only EFSL's attributable net worth / EV is included (`₹1,275 Cr`).
+     - **Ring-Fenced Operating Subsidiary Borrowings (`₹14,932 Cr`)**: Operating liabilities in ECLF, Nido, EARCL, and EAAA are ring-fenced; deducted directly in net book value.
+     - **Audited EFSL Standalone Corporate HoldCo Net Debt (`-₹3,067 Cr`)**: Only parent EFSL net debt (Borrowings `₹3,072 Cr` less Cash `₹5 Cr` = `₹3,067 Cr`) is deducted in Cell `E12`.
+
+---
+
+### 1I. Repeatable Single-Command & Batch Excel-Only Execution (`build_package.py --batch`)
+
+Built a robust, production-grade CLI in `build_package.py` supporting both single-model and 4-model batch execution without Office PPTX dependencies:
+
+```powershell
+# 1. Fast preflight validation across all 4 packages (zero disk writes):
+python build_package.py --batch --check-only --excel-only
+
+# 2. Batch build, validate, and manifest generation across all 4 packages:
+python build_package.py --batch --allow-proposal --skip-com --excel-only --clean
+
+# 3. Single-company build into candidates:
+python build_package.py --request examples/mm-package.json --output-dir candidates/run_excel_mm --allow-proposal --excel-only
+```
+
+---
+
 ## 2. Marksans Reference Template (`originals/Marksans Keshav.xlsx`) Coverage Table
 
 | Marksans Template Worksheet / Schedule | Purpose in Reference Workbook | Corresponding Sheet / Schedule in `MM`, `LTM`, `CLEAN`, `EDELWEISS` | Disposition (`Preserved` / `Adapted` / `Consolidated`) | Justification & Usability Impact |

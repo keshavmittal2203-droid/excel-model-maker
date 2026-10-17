@@ -6,6 +6,7 @@
 - **Local Primary Data Extract**: [`work/sources/EDELWEISS_consolidated.json`](../work/sources/EDELWEISS_consolidated.json) (`SHA-256: c32f54b584298bae6071e6478bdc0d6e352f5d7e58ecdb9030ef069ceaa68d17`)
 - **Local Statutory Sub-Schedules Cache**: [`work/sources/EDELWEISS_schedules.json`](../work/sources/EDELWEISS_schedules.json) (`SHA-256: a7e1f34c2397f80c9b5c04901f399fcba9fea7bb83eb00b87b1118b979d247ae`)
 - **Local 15-Oct-2025 Market & Empirical Beta Cache**: [`work/sources/market_and_beta_2025_10_15.json`](../work/sources/market_and_beta_2025_10_15.json) (`SHA-256: de04dac2fc4a73be3d596fe5aec37ff070e4dc0a4d2abe22b11b340206c3f823`)
+- **Local 104-Week Empirical Weekly Market Returns Cache**: [`work/sources/weekly_market_returns_104w.json`](../work/sources/weekly_market_returns_104w.json) (`SHA-256: 109e1f9726130ffc6fc9121e941b6bedb66a90b3a8d249d8beca40bc0bd50eef`)
 - **Official BSE Filing PDF**: [BSE Statutory Filing PDF](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=E048618A_8BB1_4716_A668_F2893199113D_185128.pdf)
 - **Official IR Portal**: [Edelweiss Financial Services Limited Investor Relations](https://www.edelweissfin.com/investor-relations/)
 - **Historical Cutoff & Snapshot Discipline**: Historical columns (`B`–`H`, `FY19`–`FY25`) contain strictly audited `Mar 2019`–`Mar 2025` figures predating the **October 15, 2025** market snapshot (`NSE Official Unadjusted Close: ₹108.85`). Post-cutoff `Mar 2026` figures are excluded from historical columns, and all 5 forecast years (`I`–`M`, `FY26E`–`FY30E`) are dynamic formulas with double-entry Balance Sheet cash closure (`Cash_t = Cash_{t-1} + Net_Cash_Flow_t`).
@@ -52,6 +53,20 @@
 | **Implied Fair Value / Share (₹)** | ₹133.54 | **₹130.53** | ₹-3.01 (-2.25%) | Built explicit vertical-specific financial services drivers on 'Segment Operations' (EAAA Earning AUM × Fee & Carry Yield; EARCL Recoveries × Fee Rate; Mutual Fund Equity+Alt AUM × Fee Rate; Life & General Insurance GWP & Actuarial Indian Embedded Value [IEV]; Credit Book × Net Interest & Fee Yield), disclosed EFSL attributable ownership stakes (EAAA 100%, EARCL 79.8% net of CDPQ 20.2% NCI, EAML 85% post-WestBridge 15%, Life 75% [Tokio Marine 25%] + General 100%, Credit 100%) with a 15% Conglomerate Discount (Gross Vertical Sum ₹15,402 Cr), and replaced the unsourced -₹5,500 Cr HoldCo debt assumption with the Audited FY25 EFSL Standalone Balance Sheet Bridge (Standalone Borrowings ₹3,072 Cr less Standalone Cash ₹5 Cr = -₹3,067 Cr Net Debt), yielding ₹12,335 Cr Equity Value (₹130.53/share) vs verified 15-Oct-2025 NSE Official Close ₹108.85. |
 | **Snapshot Market Price (15-Oct-2025 NSE Official Close)** | — | **₹108.85** | Verified | Official NSE unadjusted closing quotation dated Wednesday, October 15, 2025 (`2025-10-15`). |
 | **Implied Upside / (Downside) vs. Snapshot** | — | **+19.92%** | Reconciled | Reconciled across Workbook, Registry, Manifest, and Coverage Report. |
+
+## 3. Empirical 104-Week OLS Regression Diagnostics (vs. Nifty 50, N=104 Weeks)
+
+| Statistical Metric / Regression Parameter | Value | Unit / Format | Benchmark / Regression Methodology | Statistical Interpretation |
+|:---|---:|:---:|:---|:---|
+| **Raw OLS Beta Slope** | **1.4830** | Ratio | Covariance(R_i, R_m) / Variance(R_m) | Direct empirical slope over 104 paired weekly returns |
+| **Blume Adjusted Beta** | **1.3220** | Ratio | 2/3 Raw Beta + 1/3 * 1.0000 | Institutional mean-reverting adjusted beta |
+| **Weekly Covariance with Nifty 50** | 0.00066180 | Covariance | Sample covariance over 104 weekly return bars | Measure of systematic co-movement with broad index |
+| **Nifty 50 Weekly Return Variance** | 0.00044626 | Variance | Sample variance of Nifty 50 weekly returns | Annualized benchmark volatility ~15.2% |
+| **Pearson Correlation (R)** | 0.3608 | Correlation | Cov(R_i, R_m) / [Std(R_i) * Std(R_m)] | Systematic directional co-movement |
+| **Coefficient of Determination (R²)** | 0.1302 | R-Squared | Explained return variance / Total variance | Proportion of systematic variance explained |
+| **Standard Error of Regression (SE)** | 0.0485 | Std Error | Residual standard error of regression line | Idiosyncratic return dispersion |
+| **Regression t-Statistic** | 3.91 | t-Stat | Beta / SE_Beta (p < 0.0001) | Statistically significant at >99.9% confidence |
+| **Peer Cohort Reference** | — | Peer Median | Diversified Financials Peer Beta Reference: 1.1500 (360 ONE WAM 0.98, Nuvama 1.12, JM Financial 1.35) | Contextual industry benchmark |
 
 > [!WARNING]
 > **METHODOLOGICAL EXCLUSION OF INDUSTRIAL FCFF**:

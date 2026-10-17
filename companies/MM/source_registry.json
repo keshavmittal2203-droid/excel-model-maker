@@ -885,6 +885,22 @@
     "status": "empirical_regression_derived"
   },
   {
+    "metric": "104-Week Empirical Weekly Market Returns & OLS Regression Dataset",
+    "legal_entity": "Mahindra & Mahindra Limited",
+    "consolidation_basis": "Empirical Market Time Series (105 weekly price bars, 104 paired returns vs Nifty 50, Cutoff: 15-Oct-2025)",
+    "reporting_period": "2023-10-15 to 2025-10-12 (Strict zero look-ahead post 15-Oct-2025)",
+    "source_org": "NSE Historical Weekly Security & Index Returns Archive",
+    "document_title": "104-Week Institutional Weekly Returns Dataset & Regression Diagnostics",
+    "local_source_file": "work/sources/weekly_market_returns_104w.json",
+    "local_source_sha256": "109e1f9726130ffc6fc9121e941b6bedb66a90b3a8d249d8beca40bc0bd50eef",
+    "official_url": "https://www.nseindia.com",
+    "statement_location": "Valuation Sheet 104-Week Regression Diagnostics Table",
+    "reported_unit": "Paired Weekly Log/Percent Returns (N=104)",
+    "reported_value": 104,
+    "workbook_cell": "'SOTP Valuation'!B52",
+    "status": "empirical_market_dataset"
+  },
+  {
     "metric": "Primary Valuation Output (Sum-of-the-Parts (SOTP) Valuation)",
     "legal_entity": "Mahindra & Mahindra Limited",
     "consolidation_basis": "Ind AS Consolidated (FY19–FY25 Audited, March 31 fiscal close; SOTP uses Audited FY25 M&M Standalone Core Operating Profit ₹18,416 Cr [Auto ₹11,700 Cr + Farm ₹6,716 Cr] and Audited FY25 Standalone Net Cash +₹9,109 Cr to prevent MMFS NBFC debt double-counting).",

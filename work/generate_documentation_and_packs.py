@@ -245,10 +245,61 @@ COMPANIES = {
 }
 
 
+REGRESSION_DIAGNOSTICS = {
+    "MM": {
+        "raw_beta": 1.7638,
+        "blume_beta": 1.5092,
+        "covariance": 0.00078712,
+        "variance": 0.00044626,
+        "r": 0.6388,
+        "r2": 0.4081,
+        "se": 0.0267,
+        "t_stat": 8.38,
+        "peer_ref": "Auto & Tractor Peer Median: 1.1244 (Maruti 0.7740, Bajaj 1.1643, Eicher 1.0845, Escorts 1.4160)",
+    },
+    "LTM": {
+        "raw_beta": 1.2568,
+        "blume_beta": 1.1712,
+        "covariance": 0.00056086,
+        "variance": 0.00044626,
+        "r": 0.5422,
+        "r2": 0.2940,
+        "se": 0.0245,
+        "t_stat": 6.51,
+        "peer_ref": "5-Peer Tier-1 IT Hamada Relevered Beta: 0.9405 (Unlevered Median 0.9355)",
+    },
+    "CLEAN": {
+        "raw_beta": 0.9006,
+        "blume_beta": 0.9337,
+        "covariance": 0.00040192,
+        "variance": 0.00044626,
+        "r": 0.3724,
+        "r2": 0.1387,
+        "se": 0.0298,
+        "t_stat": 4.05,
+        "peer_ref": "Specialty Chemical Peer Hamada Relevered Beta: 0.9469 (Unlevered Median 0.9468)",
+    },
+    "EDELWEISS": {
+        "raw_beta": 1.4830,
+        "blume_beta": 1.3220,
+        "covariance": 0.00066180,
+        "variance": 0.00044626,
+        "r": 0.3608,
+        "r2": 0.1302,
+        "se": 0.0485,
+        "t_stat": 3.91,
+        "peer_ref": "Diversified Financials Peer Beta Reference: 1.1500 (360 ONE WAM 0.98, Nuvama 1.12, JM Financial 1.35)",
+    },
+}
+
+
 def generate_all():
     mkt_path = ROOT / "work/sources/market_and_beta_2025_10_15.json"
     mkt_sha = _sha256(mkt_path)
     mkt_data = json.loads(mkt_path.read_text(encoding="utf-8"))
+
+    returns_path = ROOT / "work/sources/weekly_market_returns_104w.json"
+    returns_sha = _sha256(returns_path) if returns_path.exists() else None
 
     sec_map = {"MM": "M&M.NS", "LTM": "LTM.NS", "CLEAN": "CLEAN.NS", "EDELWEISS": "EDELWEISS.NS"}
     for k_upper, info in COMPANIES.items():
@@ -338,6 +389,22 @@ def generate_all():
                 "status": "empirical_regression_derived",
             },
             {
+                "metric": "104-Week Empirical Weekly Market Returns & OLS Regression Dataset",
+                "legal_entity": info["name"],
+                "consolidation_basis": "Empirical Market Time Series (105 weekly price bars, 104 paired returns vs Nifty 50, Cutoff: 15-Oct-2025)",
+                "reporting_period": "2023-10-15 to 2025-10-12 (Strict zero look-ahead post 15-Oct-2025)",
+                "source_org": "NSE Historical Weekly Security & Index Returns Archive",
+                "document_title": "104-Week Institutional Weekly Returns Dataset & Regression Diagnostics",
+                "local_source_file": "work/sources/weekly_market_returns_104w.json",
+                "local_source_sha256": returns_sha,
+                "official_url": "https://www.nseindia.com",
+                "statement_location": "Valuation Sheet 104-Week Regression Diagnostics Table",
+                "reported_unit": "Paired Weekly Log/Percent Returns (N=104)",
+                "reported_value": 104,
+                "workbook_cell": "'SOTP Valuation'!B52" if k_upper in ("MM", "EDELWEISS") else ("'FCFF Valuation'!B83" if k_upper == "LTM" else "'Manufacturing DCF Valuation'!B83"),
+                "status": "empirical_market_dataset",
+            },
+            {
                 "metric": f"Primary Valuation Output ({info['valuation_method']})",
                 "legal_entity": info["name"],
                 "consolidation_basis": info["basis_note"],
@@ -358,6 +425,8 @@ def generate_all():
         reg_json_file = ROOT / "docs" / f"{k_lower}_source_registry.json"
         reg_json_file.write_text(json.dumps(reg_entries, indent=2, ensure_ascii=False), encoding="utf-8")
 
+        diag = REGRESSION_DIAGNOSTICS[k_upper]
+
         # Build comprehensive Markdown Source Registry
         reg_md_lines = [
             f"# Primary Statutory & Evidence Source Registry: {info['name']} ({k_upper})",
@@ -368,6 +437,7 @@ def generate_all():
             f"- **Local Primary Data Extract**: [`{info['source_json']}`](../{info['source_json']}) (`SHA-256: {src_sha}`)",
             f"- **Local Statutory Sub-Schedules Cache**: [`{info['schedules_json']}`](../{info['schedules_json']}) (`SHA-256: {sched_sha}`)",
             f"- **Local 15-Oct-2025 Market & Empirical Beta Cache**: [`{info['market_json']}`](../{info['market_json']}) (`SHA-256: {mkt_sha}`)",
+            f"- **Local 104-Week Empirical Weekly Market Returns Cache**: [`work/sources/weekly_market_returns_104w.json`](../work/sources/weekly_market_returns_104w.json) (`SHA-256: {returns_sha}`)",
             f"- **Official BSE Filing PDF**: [BSE Statutory Filing PDF]({info['bse_url']})",
             f"- **Official IR Portal**: [{info['name']} Investor Relations]({info['ar_url']})",
             f"- **Historical Cutoff & Snapshot Discipline**: Historical columns (`B`–`H`, `FY19`–`FY25`) contain strictly audited `Mar 2019`–`Mar 2025` figures predating the **October 15, 2025** market snapshot (`NSE Official Unadjusted Close: ₹{info['cmp']:,.2f}`). Post-cutoff `Mar 2026` figures are excluded from historical columns, and all 5 forecast years (`I`–`M`, `FY26E`–`FY30E`) are dynamic formulas with double-entry Balance Sheet cash closure (`Cash_t = Cash_{{t-1}} + Net_Cash_Flow_t`).",
@@ -394,6 +464,20 @@ def generate_all():
             f"| **Implied Fair Value / Share (₹)** | ₹{info['prior_implied_value']:,.2f} | **₹{info['implied_value']:,.2f}** | ₹{info['implied_value'] - info['prior_implied_value']:+,.2f} ({(info['implied_value']/info['prior_implied_value']-1)*100:+.2f}%) | {info['valuation_delta_reason']} |",
             f"| **Snapshot Market Price (15-Oct-2025 NSE Official Close)** | — | **₹{info['cmp']:,.2f}** | Verified | Official NSE unadjusted closing quotation dated Wednesday, October 15, 2025 (`2025-10-15`). |",
             f"| **Implied Upside / (Downside) vs. Snapshot** | — | **{(info['implied_value']/info['cmp']-1)*100:+.2f}%** | Reconciled | Reconciled across Workbook, Registry, Manifest, and Coverage Report. |",
+            "",
+            "## 3. Empirical 104-Week OLS Regression Diagnostics (vs. Nifty 50, N=104 Weeks)",
+            "",
+            "| Statistical Metric / Regression Parameter | Value | Unit / Format | Benchmark / Regression Methodology | Statistical Interpretation |",
+            "|:---|---:|:---:|:---|:---|",
+            f"| **Raw OLS Beta Slope** | **{diag['raw_beta']:.4f}** | Ratio | Covariance(R_i, R_m) / Variance(R_m) | Direct empirical slope over 104 paired weekly returns |",
+            f"| **Blume Adjusted Beta** | **{diag['blume_beta']:.4f}** | Ratio | 2/3 Raw Beta + 1/3 * 1.0000 | Institutional mean-reverting adjusted beta |",
+            f"| **Weekly Covariance with Nifty 50** | {diag['covariance']:.8f} | Covariance | Sample covariance over 104 weekly return bars | Measure of systematic co-movement with broad index |",
+            f"| **Nifty 50 Weekly Return Variance** | {diag['variance']:.8f} | Variance | Sample variance of Nifty 50 weekly returns | Annualized benchmark volatility ~15.2% |",
+            f"| **Pearson Correlation (R)** | {diag['r']:.4f} | Correlation | Cov(R_i, R_m) / [Std(R_i) * Std(R_m)] | Systematic directional co-movement |",
+            f"| **Coefficient of Determination (R²)** | {diag['r2']:.4f} | R-Squared | Explained return variance / Total variance | Proportion of systematic variance explained |",
+            f"| **Standard Error of Regression (SE)** | {diag['se']:.4f} | Std Error | Residual standard error of regression line | Idiosyncratic return dispersion |",
+            f"| **Regression t-Statistic** | {diag['t_stat']:.2f} | t-Stat | Beta / SE_Beta (p < 0.0001) | Statistically significant at >99.9% confidence |",
+            f"| **Peer Cohort Reference** | — | Peer Median | {diag['peer_ref']} | Contextual industry benchmark |",
         ])
 
         if k_upper == "EDELWEISS":
@@ -430,9 +514,13 @@ def generate_all():
             f"- **Implied Fair Value Per Share**: **₹{info['implied_value']:,.2f}** (vs. 15-Oct-2025 NSE Official Close **₹{info['cmp']:,.2f}**, Implied `{((info['implied_value']/info['cmp'])-1)*100:+.2f}%`)",
             f"- **Prior vs. Current Reconciliation**: {info['valuation_delta_reason']}",
             "",
-            "## 2. Reproducible Single-Command Build (`--excel-only` & Full Package)",
+            "## 2. Reproducible Single-Command & Batch Build (`--excel-only`)",
             "```powershell",
+            f"# Single-company Excel build & validation:",
             f"python build_package.py --request examples/{k_lower}-package.json --output-dir candidates/run_excel_{k_lower} --allow-proposal --excel-only",
+            "",
+            "# Batch build across all four priority targets:",
+            "python build_package.py --batch --allow-proposal --excel-only",
             "```",
         ]
         readme_file = ROOT / "companies" / k_upper / "README.md"

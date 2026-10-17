@@ -151,12 +151,27 @@ def export_all():
             "previews": exported,
         }
 
-        # Write manifest to candidate dir and company dir
+        # Write manifest to candidate dir, company dir, and run_excel dir
         manifest_cand = info["cand_dir"] / "package.manifest.json"
         manifest_comp = info["comp_dir"] / "package.manifest.json"
+        excel_dir = ROOT / "candidates" / f"run_excel_{key.lower()}"
+        excel_dir.mkdir(parents=True, exist_ok=True)
+        excel_previews = excel_dir / "previews"
+        excel_previews.mkdir(parents=True, exist_ok=True)
+        manifest_excel = excel_dir / "package.manifest.json"
+
         manifest_text = json.dumps(manifest, indent=2)
         manifest_cand.write_text(manifest_text, encoding="utf-8")
         manifest_comp.write_text(manifest_text, encoding="utf-8")
+        manifest_excel.write_text(manifest_text, encoding="utf-8")
+
+        # Copy workbook and previews to run_excel dir
+        shutil.copy2(wb_path, excel_dir / f"{key}-Recalculated.xlsx")
+        for exp in exported:
+            src = ROOT / "candidates" / f"run_native_{key.lower()}" / exp["file"]
+            dst = excel_previews / Path(exp["file"]).name
+            if src.exists():
+                shutil.copy2(src, dst)
 
         summary_results[key] = {
             "name": info["name"],

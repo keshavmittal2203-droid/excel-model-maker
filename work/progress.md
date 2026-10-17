@@ -364,8 +364,38 @@
 - **Zero Forecast Balance Sheet Plugs & `--excel-only` Pipeline**:
   - All 4 Balance Sheets close `FY26E–FY30E` via double-entry `Cash_t = Cash_{t-1} + Net_Cash_Flow_t` on `Row 14` with zero residual asset plugs.
   - Upgraded `validate_workbook.py` (`run_six_sheet_research_identities`: 36/36 identities passing) and `build_package.py` (`--excel-only` flag + `generate_source_assumption_coverage()`).
-- **Final Recalculated SHA-256 Hashes (`candidates/run_excel_<key>/` & `candidates/run_native_<key>/`)**:
+- **Prior Recalculated SHA-256 Hashes (`candidates/run_excel_<key>/` & `candidates/run_native_<key>/`)**:
   - `MM-Recalculated.xlsx`: `93fa8074264e0e4d91989eecc6e33d125494a56a5a1fe92773732586381b9a4b`
   - `LTM-Recalculated.xlsx`: `3e5808a62661841714f5e49eebda1da756bdda15adf1da22fbec88bc42191206`
   - `CLEAN-Recalculated.xlsx`: `50daf190a74047538910784fe3d601ceb28c980233356ebc21c1683a2e5a678b`
   - `EDELWEISS-Recalculated.xlsx`: `46a01ce62e77c7bfa8b52840ac7bb71e81bcd4dcd37d4f7a5f152837a7036844`
+
+### 21. Excel-Only Milestone: 104-Week Regression Dataset, Valuation Sheet Regression Diagnostics, Stub DCF Timing Reconciliation, Liquid Surplus Audits, ASP Progression, and Batch Build Engine
+- **Raw Market Data & Regression Archive (`work/sources/weekly_market_returns_104w.json`)**:
+  - Independent 104-week market price returns dataset ($N=104$ paired returns across 20 tickers, cutoff 15-Oct-2025; SHA-256: `109e1f9726130ffc6fc9121e941b6bedb66a90b3a8d249d8beca40bc0bd50eef`).
+  - 105 weekly price bars, 104 paired returns vs `^NSEI`, zero look-ahead post 15-Oct-2025.
+  - Regression diagnostics ($N=104$):
+    - `M&M.NS`: Raw Beta = `1.7638`, Blume = `1.5092`, $R^2 = 0.4081$, $t = 8.38$
+    - `LTM.NS`: Raw Beta = `1.2568`, Blume = `1.1712`, $R^2 = 0.2940$, $t = 6.51$
+    - `CLEAN.NS`: Raw Beta = `0.9006`, Blume = `0.9337`, $R^2 = 0.1387$, $t = 4.05$
+    - `EDELWEISS.NS`: Raw Beta = `1.4830`, Blume = `1.3220`, $R^2 = 0.1302$, $t = 3.91$
+- **Model Enhancements & Embedded Regression Schedules**:
+  - `MM` (`work/models_mm.py`): Realization (ASP ₹ Lakh/unit) in Rows 30–35 on `Segment Operations`; 104-Week Regression Diagnostics in Rows 49–62 on `SOTP Valuation`. Implied SOTP: **`₹2,742.97/share`**.
+  - `LTM` (`work/models_ltm.py`): Stub DCF Timing Reconciliation (Rows 63–69), Cash Bridge Audit (Rows 70–78), 104-Week Regression Diagnostics (Rows 80–92). Implied FCFF DCF: **`₹2,811.09/share`**.
+  - `CLEAN` (`work/models_clean.py`): Stub DCF Timing Reconciliation (Rows 63–69), Cash Bridge Audit (Rows 70–78), 104-Week Regression Diagnostics (Rows 80–92). Implied Manufacturing DCF: **`₹480.89/share`**.
+  - `EDELWEISS` (`work/models_edelweiss.py`): 104-Week Regression Diagnostics (Rows 49–62), Minority Interest & Operating Debt Ring-Fencing Governance Schedule (Rows 64–70). Implied Financial SOTP: **`₹130.53/share`** (Industrial FCFF strictly withheld).
+- **Multi-Request & Batch Generation Engine (`build_package.py`)**:
+  - Added `--batch`, `--requests`, `--output-base`, and `--clean` CLI arguments.
+  - Implemented `build_package_batch` orchestrator.
+  - Updated `output_file` to support `check_exists=not check_only`, enabling fast preflight validation without directory collisions.
+- **Recalculated Excel COM Workbooks (0 formula errors, 0 missing caches, 36/36 identities)**:
+  - `MM-Recalculated.xlsx`: `1a7e25a12975fbe1377f51bfcb8e56762d53eea335c5311058af26193b55f42c`
+  - `LTM-Recalculated.xlsx`: `1c58ec476249910c01b770e041ca5dc84a3a22261b49a77e34954ec0cb08c2ae`
+  - `CLEAN-Recalculated.xlsx`: `4c04650809141b96210eada56acd6df8ab90c466ef4b467483d79c8ffd2891a4`
+  - `EDELWEISS-Recalculated.xlsx`: `b3a2542e544a00a6310e14f3592898e3890b5f959034a7fd954ffded60d03853`
+  - Synchronized across `candidates/run_native_<key>/`, `candidates/run_excel_<key>/`, and `companies/<KEY>/`.
+  - Re-exported all 24 sheet PDF previews across `candidates/run_excel_<key>/previews/`, `candidates/run_native_<key>/previews/`, and `companies/<KEY>/previews/`.
+- **Test Suite Expanded (`test_four_targets.py`)**:
+  - Added 5 new regression tests: `test_regression_diagnostics_embedded_in_all_four_models`, `test_stub_period_dcf_timing_reconciliation_and_tv_concentration`, `test_audited_cash_and_liquid_treasury_surplus_bridge`, `test_mm_volume_realization_progression`, `test_batch_build_preflight_and_execution`.
+  - Test suite status: 19/19 tests in `test_four_targets.py`; **114 passing tests, 49 subtests passed** cleanly across repository.
+

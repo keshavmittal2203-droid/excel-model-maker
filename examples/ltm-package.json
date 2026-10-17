@@ -52,7 +52,7 @@
     "source": "originals/Marksans Keshav.xlsx",
     "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
     "candidate_source": "candidates/run_native_ltm/LTM-Recalculated.xlsx",
-    "expected_recalculated_sha256": "3e5808a62661841714f5e49eebda1da756bdda15adf1da22fbec88bc42191206",
+    "expected_recalculated_sha256": "1c58ec476249910c01b770e041ca5dc84a3a22261b49a77e34954ec0cb08c2ae",
     "adapter": "work/models_ltm.py",
     "model_pack": "proposals/ltm.model-pack.json",
     "output_name": "LTM-Recalculated.xlsx"

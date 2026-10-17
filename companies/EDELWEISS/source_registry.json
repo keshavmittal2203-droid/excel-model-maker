@@ -858,6 +858,22 @@
     "status": "empirical_regression_derived"
   },
   {
+    "metric": "104-Week Empirical Weekly Market Returns & OLS Regression Dataset",
+    "legal_entity": "Edelweiss Financial Services Limited",
+    "consolidation_basis": "Empirical Market Time Series (105 weekly price bars, 104 paired returns vs Nifty 50, Cutoff: 15-Oct-2025)",
+    "reporting_period": "2023-10-15 to 2025-10-12 (Strict zero look-ahead post 15-Oct-2025)",
+    "source_org": "NSE Historical Weekly Security & Index Returns Archive",
+    "document_title": "104-Week Institutional Weekly Returns Dataset & Regression Diagnostics",
+    "local_source_file": "work/sources/weekly_market_returns_104w.json",
+    "local_source_sha256": "109e1f9726130ffc6fc9121e941b6bedb66a90b3a8d249d8beca40bc0bd50eef",
+    "official_url": "https://www.nseindia.com",
+    "statement_location": "Valuation Sheet 104-Week Regression Diagnostics Table",
+    "reported_unit": "Paired Weekly Log/Percent Returns (N=104)",
+    "reported_value": 104,
+    "workbook_cell": "'SOTP Valuation'!B52",
+    "status": "empirical_market_dataset"
+  },
+  {
     "metric": "Primary Valuation Output (Financial Services Sum-of-the-Parts (SOTP) Valuation)",
     "legal_entity": "Edelweiss Financial Services Limited",
     "consolidation_basis": "Ind AS Consolidated (FY19–FY25 Audited, March 31 fiscal close; Industrial FCFF is strictly prohibited because ₹18,004 Cr of FY25 consolidated borrowings include ₹14,932 Cr of ring-fenced NBFC/HFC/ARC operating subsidiary debt; SOTP deducts Audited FY25 EFSL Standalone HoldCo Net Debt of ₹3,067 Cr).",

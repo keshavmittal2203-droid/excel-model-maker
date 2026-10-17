@@ -14,7 +14,11 @@
 - **Implied Fair Value Per Share**: **₹480.89** (vs. 15-Oct-2025 NSE Official Close **₹1,041.40**, Implied `-53.82%`)
 - **Prior vs. Current Reconciliation**: Held CFCL Unit 4 HALS installed capacity at verified 10,500 MTPA across FY24–FY30E in Base Case (replacing unsourced 12,000–15,000 MTPA step-ups with commercial utilization ramp from 15% in FY24 and 21% in FY25 to 88% in FY30E), replaced reverse-solved 0.904 beta (12.00% round WACC) with empirical 2-Year Weekly OLS Beta vs Nifty 50 (0.9006 -> Ke = 11.73%, WACC = 11.73%), and removed the +₹45 Cr hardcoded cash bridge offset (Cash & Liquid Investments = ₹20 Cr Cash + ₹381 Cr Investments = ₹401 Cr). Implied DCF value is ₹480.89/share vs verified 15-Oct-2025 NSE Official Close ₹1,041.40.
 
-## 2. Reproducible Single-Command Build (`--excel-only` & Full Package)
+## 2. Reproducible Single-Command & Batch Build (`--excel-only`)
 ```powershell
+# Single-company Excel build & validation:
 python build_package.py --request examples/clean-package.json --output-dir candidates/run_excel_clean --allow-proposal --excel-only
+
+# Batch build across all four priority targets:
+python build_package.py --batch --allow-proposal --excel-only
 ```

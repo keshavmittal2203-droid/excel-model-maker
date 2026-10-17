@@ -14,7 +14,11 @@
 - **Implied Fair Value Per Share**: **₹2,811.09** (vs. 15-Oct-2025 NSE Official Close **₹5,609.50**, Implied `-49.89%`)
 - **Prior vs. Current Reconciliation**: Eliminated double-counted operational growth (where +0*$I$5 ignored headcount/utilization/billing) so USD Revenue ($M) = Headcount * Utilization * Realized Billing per Billed FTE / 1,000,000 and INR Revenue = USD Revenue * FX / 10. Replaced reverse-solved 0.950 beta (11.50% round WACC) with 5-peer Tier-1 IT Hamada Relevered Beta (0.9405 -> Ke = 11.95%, WACC = 11.87%, alongside Direct 2Y Weekly OLS Beta 1.2569) and removed the +₹2,500 Cr hardcoded cash bridge offset (Cash & Treasury = ₹3,588 Cr Cash + ₹9,845 Cr Investments = ₹13,433 Cr). Implied DCF value is ₹2,811.09/share vs verified 15-Oct-2025 NSE Official Close ₹5,609.50.
 
-## 2. Reproducible Single-Command Build (`--excel-only` & Full Package)
+## 2. Reproducible Single-Command & Batch Build (`--excel-only`)
 ```powershell
+# Single-company Excel build & validation:
 python build_package.py --request examples/ltm-package.json --output-dir candidates/run_excel_ltm --allow-proposal --excel-only
+
+# Batch build across all four priority targets:
+python build_package.py --batch --allow-proposal --excel-only
 ```

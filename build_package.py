@@ -55,7 +55,7 @@ def compute_file_sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def output_file(output_dir: Path, name: str, suffix: str) -> Path:
+def output_file(output_dir: Path, name: str, suffix: str, check_exists: bool = True) -> Path:
     """Allow only a new leaf filename, never a request-controlled filesystem path."""
     if (not isinstance(name, str) or not name or name != name.strip()
             or name.endswith((".", " ")) or any(c in name for c in '/\\:\x00')
@@ -63,7 +63,7 @@ def output_file(output_dir: Path, name: str, suffix: str) -> Path:
             or re.match(r"^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\.|$)", name, re.I)):
         raise ValueError(f"Invalid output_name: expected a plain {suffix} filename")
     target = output_dir / name
-    if target.is_symlink() or target.exists():
+    if check_exists and (target.is_symlink() or target.exists()):
         raise ValueError(f"Output file already exists and will not be overwritten: {target}")
     if target.resolve().parent != output_dir.resolve():
         raise ValueError("Output filename escapes the package directory")
@@ -830,6 +830,7 @@ def build_package(
     *,
     allow_proposal: bool = False,
     force: bool = False,
+    clean: bool = False,
     skip_com: bool = False,
     check_only: bool = False,
     excel_only: bool = False,
@@ -838,11 +839,35 @@ def build_package(
     req_text = request_path.read_text(encoding="utf-8")
     req = json.loads(req_text)
 
+    # If clean requested, safely purge previous candidate run directory before output validation
+    if clean and output_dir.exists():
+        res = output_dir.resolve()
+        if res in FORBIDDEN_OUTPUT_ROOTS or res == ROOT.resolve().parent or res.parent == res:
+            raise RuntimeError(f"Target output directory {res} is a protected repository root and cannot be cleaned.")
+        for forbidden in FORBIDDEN_PARENT_DIRS:
+            if res == forbidden or forbidden in res.parents:
+                raise RuntimeError(f"Target output directory {res} is inside protected directory {forbidden} and cannot be cleaned.")
+        is_cand_sub = False
+        try:
+            res.relative_to((ROOT / "candidates").resolve())
+            is_cand_sub = True
+        except ValueError:
+            pass
+        temp_dir = Path(tempfile.gettempdir()).resolve()
+        is_temp = False
+        try:
+            res.relative_to(temp_dir)
+            is_temp = True
+        except ValueError:
+            pass
+        if is_cand_sub or is_temp or (res / "package.manifest.json").exists():
+            shutil.rmtree(res)
+
     # Validate output names before directory writes or Office activation.
     wb_out_name = req["workbook"].get("output_name", "Marksans-Recalculated.xlsx")
-    wb_out_path = output_file(output_dir, wb_out_name, ".xlsx")
+    wb_out_path = output_file(output_dir, wb_out_name, ".xlsx", check_exists=not check_only)
     pres_out_name = req.get("presentation", {}).get("output_name", "Marksans-Pharma-Overview.pptx")
-    pres_out_path = output_file(output_dir, pres_out_name, ".pptx") if not excel_only else None
+    pres_out_path = output_file(output_dir, pres_out_name, ".pptx", check_exists=not check_only) if not excel_only else None
 
     # Validate request before directory creation or Office activation
     validate_package_request(req, request_path, excel_only=excel_only)
@@ -1185,10 +1210,91 @@ def build_package(
     return manifest
 
 
+def build_package_batch(
+    request_paths: list[Path],
+    output_base: Path,
+    *,
+    allow_proposal: bool = False,
+    force: bool = False,
+    clean: bool = False,
+    skip_com: bool = False,
+    check_only: bool = False,
+    excel_only: bool = False,
+) -> dict[str, Any]:
+    """Execute batch build across multiple package requests into target subdirectories under output_base."""
+    output_base = output_base.resolve()
+    if output_base in FORBIDDEN_OUTPUT_ROOTS or output_base == ROOT.resolve().parent or output_base.parent == output_base:
+        raise RuntimeError(f"Target output base {output_base} is a protected root and cannot be used as batch output base.")
+    for forbidden in FORBIDDEN_PARENT_DIRS:
+        if output_base == forbidden or forbidden in output_base.parents:
+            raise RuntimeError(f"Target output base {output_base} is inside protected directory {forbidden}.")
+
+    output_base.mkdir(parents=True, exist_ok=True)
+    results = []
+    failures = []
+
+    for req_p in request_paths:
+        req_path = (ROOT / req_p).resolve() if not Path(req_p).is_absolute() else Path(req_p)
+        if not req_path.exists():
+            failures.append({"request": str(req_p), "error": f"Request file not found: {req_path}"})
+            continue
+
+        stem = req_path.stem
+        for sfx in ["-package", ".package"]:
+            if stem.endswith(sfx):
+                stem = stem[:-len(sfx)]
+        stem = stem.lower()
+        subdir_name = f"run_excel_{stem}" if excel_only else f"run_native_{stem}"
+        out_subdir = output_base / subdir_name
+
+        print(f"\n=======================================================")
+        print(f"[BATCH] Building package {req_path.name} -> {out_subdir}...")
+        try:
+            manifest = build_package(
+                request_path=req_path,
+                output_dir=out_subdir,
+                allow_proposal=allow_proposal,
+                force=force,
+                clean=clean,
+                skip_com=skip_com,
+                check_only=check_only,
+                excel_only=excel_only,
+            )
+            results.append({
+                "request": str(req_p),
+                "package_id": manifest.get("package_id"),
+                "status": manifest.get("status"),
+                "output_dir": str(out_subdir),
+                "workbook": manifest.get("workbook", {}).get("file"),
+                "sha256": manifest.get("workbook", {}).get("sha256"),
+            })
+        except Exception as e:
+            print(f"[BATCH] FAILED for {req_path.name}: {e}")
+            failures.append({
+                "request": str(req_p),
+                "error": str(e),
+            })
+
+    batch_summary = {
+        "batch_mode": True,
+        "total_requests": len(request_paths),
+        "succeeded": len(results),
+        "failed_count": len(failures),
+        "status": "success" if not failures else "partial_or_failed",
+        "results": results,
+        "failures": failures,
+    }
+    return batch_summary
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--request", required=True, help="Path to package request JSON")
-    parser.add_argument("--output-dir", required=True, help="Target output directory for the package build")
+    parser.add_argument("--request", help="Path to package request JSON (single build mode)")
+    parser.add_argument("--requests", nargs="+", help="Multiple package request JSON paths for batch build")
+    parser.add_argument("--batch", action="store_true", help="Batch build mode across multiple requests")
+    parser.add_argument("--output-dir", help="Target output directory for single package build")
+    parser.add_argument("--output-base", help="Base output directory for batch package builds (defaults to candidates/)")
+    parser.add_argument("--clean", action="store_true", help="Clean candidate run output directory before building if it already exists")
     parser.add_argument("--allow-proposal", action="store_true", help="Allow building with proposal model/deck packs")
     parser.add_argument("--force", action="store_true", help="Legacy option; non-empty run directories are never overwritten")
     parser.add_argument("--skip-com", action="store_true", help="Skip PowerPoint and Excel COM preview exports")
@@ -1196,12 +1302,45 @@ def main() -> int:
     parser.add_argument("--check-only", "--preflight-only", action="store_true", help="Fast preflight request and template validation without Office COM activation or file generation")
     args = parser.parse_args()
 
+    # Determine execution mode: batch vs single
+    if args.batch or args.requests:
+        default_reqs = [
+            "examples/mm-package.json",
+            "examples/ltm-package.json",
+            "examples/clean-package.json",
+            "examples/edelweiss-package.json",
+        ]
+        raw_reqs = args.requests if args.requests else default_reqs
+        req_paths = [Path(r) for r in raw_reqs]
+        out_base = Path(args.output_base) if args.output_base else (Path(args.output_dir) if args.output_dir else ROOT / "candidates")
+
+        try:
+            summary = build_package_batch(
+                request_paths=req_paths,
+                output_base=out_base,
+                allow_proposal=args.allow_proposal,
+                force=args.force,
+                clean=args.clean,
+                skip_com=args.skip_com,
+                check_only=args.check_only,
+                excel_only=args.excel_only,
+            )
+            print(json.dumps(summary, indent=2))
+            return 0 if summary["failed_count"] == 0 else 1
+        except Exception as e:
+            print(json.dumps({"status": "blocked", "ready": False, "error": str(e)}, indent=2))
+            return 1
+
+    if not args.request or not args.output_dir:
+        parser.error("Either --request and --output-dir (single mode) or --batch / --requests (batch mode) must be specified.")
+
     try:
         manifest = build_package(
             request_path=Path(args.request),
             output_dir=Path(args.output_dir),
             allow_proposal=args.allow_proposal,
             force=args.force,
+            clean=args.clean,
             skip_com=args.skip_com,
             check_only=args.check_only,
             excel_only=args.excel_only,
