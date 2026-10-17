@@ -485,4 +485,36 @@
   - Prior 6-sheet workbooks preserved intact in `companies/<TARGET>/`.
   - Gate status: `ready: false`, `human_pack_approval: pending`.
 
+### 25. Template V3 Release: Uncompressed Master Template Delivery with Strict Website-Only Allowlist & Native Print Settings
+- **Objective**: Match user goal by building one complete workbook per target directly from fresh binary copies of the uploaded template (`originals/Marksans Keshav.xlsx`, SHA-256 `5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`), populated strictly from the 8 websites listed inside that template and preserving unmodified native print settings without forced page scaling.
+- **Master Template Hash**: Verified `5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a` before and after execution.
+- **Preserved Structure**: 100% preservation of all 17 worksheets in their exact names, order, layout, formulas, and dimensions:
+  1. `Model ->`, 2. `Main Financials`, 3. `Ratio Analysis`, 4. `Intrinsic Growth`, 5. `Comps`, 6. `WACC-DCF`, 7. `DCF 1st way`, 8. `DCF 2nd way`, 9. `Data ->`, 10. `compdata`, 11. `Data Sheet`, 12. `BS`, 13. `Beta`, 14. `RM`, 15. `peerdata`, 16. `Cash Flow`, 17. `sectordata`.
+- **Strict Native Print Settings (No Forced Rescaling)**: Preserved the master template's exact print setups, page orientations, scaling factors, and paper sizes without alteration. Sheets are NOT forced onto 1 page and scaling is not changed for cleaner previews. Previews are exported using each sheet's native setup.
+- **Strict Website-Only Source Allowlist**: Every data point is sourced strictly from the 8 allowlisted websites found within `originals/Marksans Keshav.xlsx` (documented in `docs/LOCKED_SOURCE_ALLOWLIST.md` and `docs/locked_source_allowlist.json`):
+  1. Screener.in (`https://www.screener.in/excel/`)
+  2. Yahoo Finance (`https://finance.yahoo.com`)
+  3. National Stock Exchange of India (`https://www.nseindia.com`)
+  4. Investing.com (`https://www.investing.com`)
+  5. Trading Economics (`https://www.tradingeconomics.com`)
+  6. Top Stock Research (`https://www.topstockresearch.com`)
+  7. Prime Investor (`https://primeinvestor.in`)
+  8. Statutory Audited Filings on BSE / NSE (`https://www.bseindia.com`)
+  *(The YouTube modeling playlist is recognized strictly as an analytical methodology reference, not a data source).*
+- **In-Workbook Cell Documentation & Material Input Classification**: Sourced inputs contain cell comments and dedicated disclosure notes documenting URL, retrieval date, period, units, and accounting basis. All material inputs are audited and classified in `docs/TEMPLATE_V3_INPUT_AUDIT.md`.
+- **Accounting Adaptations & Cell Change Log**: Detailed line-by-line mapping and cell modifications documented in `docs/TEMPLATE_V3_ADAPTATION_LOG.md`.
+- **Edelweiss Financial Services DCF Review**: Preserved manufacturing DCF sheets, but explicitly marked valuation outputs (`E36`, `E40`, `E42`, `E45` on `DCF 1st way`; `E58`, `E61`, `E63` on `DCF 2nd way`) as `N/A - Financial Services Entity` / `N/A - See SOTP (₹130.53/sh)`. Prominent top banners and notes direct the reader to the Financial Services SOTP valuation (**₹130.53 / share**).
+- **Deliverables in `companies/<TARGET>/template_v3/`**:
+  - `MM-FullTemplate.xlsx` (SHA-256: `62f88df0f7ef4525c164ddc49fb1da069e9e3723cdb0845ebd3d7969a4c03908`, 127,170 bytes; 17 native preview PDFs)
+  - `LTM-FullTemplate.xlsx` (SHA-256: `c9a416aad3e06e5570ea5f704b26f0478067d32c98a9e6f9cc566e01a43c4677`, 127,610 bytes; 17 native preview PDFs)
+  - `CLEAN-FullTemplate.xlsx` (SHA-256: `175b094cde4b47e18b6b88620dad11583059b9f792690a338cebe5bd7e43e21d`, 125,963 bytes; 17 native preview PDFs)
+  - `EDELWEISS-FullTemplate.xlsx` (SHA-256: `73a1ba6c19ca6f1329e018343dd58d711dd765d6b9c01906cfac7cacd63d26ec`, 127,789 bytes; 17 native preview PDFs)
+- **Validation**:
+  - Excel COM 16.0 `CalculateFullRebuild()` executed cleanly on all 4 workbooks with active sheet `DCF 1st way`.
+  - **Zero formula errors** across all 68 sheets.
+  - All 68 sheet preview PDFs exported using native uncompressed print settings in `companies/<TARGET>/template_v3/previews/`.
+  - Prior 6-sheet workbooks and `template_v2` workbooks preserved intact in `companies/<TARGET>/`.
+  - Gate status: `ready: false`, `human_pack_approval: pending`.
+
+
 

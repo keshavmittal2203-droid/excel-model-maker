@@ -182,3 +182,33 @@
 - **Edelweiss Preserved DCF Review**: Inapplicable manufacturing DCF valuation cells on `DCF 1st way` (`E36`, `E40`, `E42`, `E45`) and `DCF 2nd way` (`E58`, `E61`, `E63`) marked `N/A - Financial Services Entity` and `N/A - See SOTP (₹130.53/sh)`, directing reader to SOTP.
 - **Status**: Prior 6-sheet workbooks preserved intact; `ready: false`, `human_pack_approval: pending`.
 
+---
+
+## 10. Template V3 Release: Uncompressed Master Template Delivery with Strict Website-Only Allowlist & Native Print Settings
+
+- **Master Template**: Created directly from binary copies of `originals/Marksans Keshav.xlsx` (SHA-256: `5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`). Verified unchanged before and after execution.
+- **100% Structural Fidelity**: All 17 sheets preserved in exact order, names, dimensions, cell locations, formulas, formatting, merged cells, and navigation:
+  `Model ->`, `Main Financials`, `Ratio Analysis`, `Intrinsic Growth`, `Comps`, `WACC-DCF`, `DCF 1st way`, `DCF 2nd way`, `Data ->`, `compdata`, `Data Sheet`, `BS`, `Beta`, `RM`, `peerdata`, `Cash Flow`, `sectordata`.
+- **Strict Native Print Settings (No Forced Rescaling)**: Preserved the master template's exact print setups, page orientations, scaling factors, and paper sizes without alteration. Sheets are NOT forced onto 1 page and scaling is not changed for cleaner previews. Previews are exported using each sheet's native setup.
+- **Strict Website-Only Source Allowlist**: Every data point is sourced strictly from the 8 allowlisted websites found within `originals/Marksans Keshav.xlsx` (documented in [`docs/LOCKED_SOURCE_ALLOWLIST.md`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/LOCKED_SOURCE_ALLOWLIST.md) and [`docs/locked_source_allowlist.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/locked_source_allowlist.json)):
+  1. Screener.in (`https://www.screener.in/excel/`)
+  2. Yahoo Finance (`https://finance.yahoo.com`)
+  3. National Stock Exchange of India (`https://www.nseindia.com`)
+  4. Investing.com (`https://www.investing.com`)
+  5. Trading Economics (`https://www.tradingeconomics.com`)
+  6. Top Stock Research (`https://www.topstockresearch.com`)
+  7. Prime Investor (`https://primeinvestor.in`)
+  8. Statutory Audited Filings on BSE / NSE (`https://www.bseindia.com`)
+  *(The YouTube modeling playlist is recognized strictly as an analytical methodology reference, not a data source).*
+- **In-Workbook Cell Documentation & Material Input Classification**: Sourced inputs contain cell comments and dedicated disclosure notes documenting URL, retrieval date, period, units, and accounting basis. All material inputs are audited and classified in [`docs/TEMPLATE_V3_INPUT_AUDIT.md`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/TEMPLATE_V3_INPUT_AUDIT.md).
+- **Accounting Adaptations & Cell Change Log**: Detailed line-by-line mapping and cell modifications documented in [`docs/TEMPLATE_V3_ADAPTATION_LOG.md`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/docs/TEMPLATE_V3_ADAPTATION_LOG.md).
+- **Edelweiss Financial Services DCF Review**: Preserved manufacturing DCF sheets, but explicitly marked valuation outputs (`E36`, `E40`, `E42`, `E45` on `DCF 1st way`; `E58`, `E61`, `E63` on `DCF 2nd way`) as `N/A - Financial Services Entity` / `N/A - See SOTP (₹130.53/sh)`. Prominent top banners and notes direct the reader to the Financial Services SOTP valuation (**₹130.53 / share**).
+- **Deliverables in `companies/<TARGET>/template_v3/`**:
+  - **M&M**: [`companies/MM/template_v3/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v3/MM-FullTemplate.xlsx) (SHA-256: `62f88df0f7ef4525c164ddc49fb1da069e9e3723cdb0845ebd3d7969a4c03908`, 127,170 bytes; 17 native preview PDFs)
+  - **LTM**: [`companies/LTM/template_v3/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v3/LTM-FullTemplate.xlsx) (SHA-256: `c9a416aad3e06e5570ea5f704b26f0478067d32c98a9e6f9cc566e01a43c4677`, 127,610 bytes; 17 native preview PDFs)
+  - **CLEAN**: [`companies/CLEAN/template_v3/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v3/CLEAN-FullTemplate.xlsx) (SHA-256: `175b094cde4b47e18b6b88620dad11583059b9f792690a338cebe5bd7e43e21d`, 125,963 bytes; 17 native preview PDFs)
+  - **EDELWEISS**: [`companies/EDELWEISS/template_v3/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v3/EDELWEISS-FullTemplate.xlsx) (SHA-256: `73a1ba6c19ca6f1329e018343dd58d711dd765d6b9c01906cfac7cacd63d26ec`, 127,789 bytes; 17 native preview PDFs)
+- **Recalculation & Formula Errors**: Recalculated cleanly via Microsoft Excel COM 16.0 (`CalculateFullRebuild`). Exactly **0 formula errors** across all 68 sheets. Active sheet set to `DCF 1st way`.
+- **Status**: Prior 6-sheet workbooks and `template_v2` workbooks preserved intact; `ready: false`, `human_pack_approval: pending`.
+
+
