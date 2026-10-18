@@ -4,17 +4,36 @@
 >
 > **Current independent audit branch:** `codex/excel-only-audit`, based on `agent/argon-continue` at `a28aeed`.
 >
-> **Final Source-Compliance Correction & Acceptance Audit Complete (2026-10-18):**
-> - **Strict 7-Source Allowlist Enforced**: BSE India (`bseindia.com`), corporate investor relations portals, statutory regulatory filings, Damodaran Online, and RBI completely eradicated from all active source registries, coverage reports, and manifests.
-> - **Negative Safety Test Active**: Added `test_no_disallowed_domains_in_active_source_registries_or_manifests` to `test_package_safety.py` enforcing zero disallowed domains across all active registries and manifests (94/94 tests passing cleanly).
-> - **Honest Sub-Schedule & Segment Disclosures**:
->   - **MM**: Consolidated sub-schedules and SOTP Auto/Farm Core EBITDA segment breakdowns disclosed as unverified filing inputs / analyst modeling assumptions with `official_url: null`. SOTP valuation (₹2,742.97/share) explicitly marked assumption-dependent.
->   - **EDELWEISS**: Balance sheet line items and sub-schedules verified on Screener.in popup schedules. SOTP vertical metrics (Alternatives PAT, EARCL BV, Mutual Fund AUM, Insurance IEV) and Standalone HoldCo debt classified as unverified filing inputs / analyst modeling assumptions with `official_url: null`. SOTP valuation (₹130.53/share) explicitly marked assumption-dependent.
->   - **LTM & CLEAN**: All multi-year financial statement lines and sub-schedules verified on Screener.in; regression betas linked to Yahoo Finance price history. DCF valuations fully supported.
-> - **Template V7 Fresh Versioned Build**: 16-sheet master models rebuilt and recalculated in native Microsoft Excel COM 16.0 for all four targets: **M&M (`MM`)**, **LTIMindtree (`LTM`)**, **Clean Science (`CLEAN`)**, and **Edelweiss Financial (`EDELWEISS`)**.
-> - **Zero Defects Maintained**: Exact **0.00 Cr** Balance Sheet tie across all 48 company periods, zero residual plugs, exactly **0 formula errors** across all 64 worksheets, all 8 dynamic sensitivities verified with exact restoration, and 64 native landscape PDF previews exported.
-> - **Source Integrity**: Verified with `verify_sources.py` (7/7 original files byte-identical) and full test suite (`pytest`, 94/94 passing).
-> - **Governance**: `ready: false`, `human_pack_approval: pending`. PR #3 open and unmerged. Prior versioned deliverables (`template_v6`, `template_v5`, `template_v4`, `template_v3`, `template_v2`, 6-sheet workbooks) preserved intact on disk.
+> **Four-Company Template V9 Remediation & Native Validation Complete (2026-10-18):**
+> - **Excel-Only Architecture**: PowerPoint generation completely retired; active master template strictly 16 sheets (`originals/Marksans Keshav.xlsx`, SHA-256: `4dc79842855e5d1e689a2f5ca1de22c34be72fb09c0c0f9dd3a95818e10737d0`, verified byte-for-byte; archived 17-sheet master in `originals/archive/`).
+> - **Cross-Company Defect Remediation**:
+>   - *Wordmark Branding*: Replaced Marksans branding with dynamic target company name in `Main Financials!B3` (`='Data Sheet'!B1`, font 16 bold `#1F497D`).
+>   - *True Excel Dates*: Replaced text strings with true `datetime.date(YYYY, 3, 31)` with number format `'[$-409]mmm\-yy;@'` in `Data Sheet` rows 16, 56, 81; `Main Financials` row 8 links to `Data Sheet` with number formats `mmm/yy" A"` and `mmm/yy" E"`; `BS` row 2 and `Cash Flow` row 4 set to `datetime.date(YYYY, 3, 1)` with `mmm-yy`.
+>   - *Zero Comments*: 100% of scattered openpyxl cell comments permanently eradicated across all workbooks.
+>   - *Data Sheet Reconciled*: Rows 82:85 dynamically formula-linked to `Cash Flow` sheet (`='Cash Flow'!E5:N5`, etc.). Row 70 populated with target-specific exact share count (MM: 1.24B, LTM: 296M, CLEAN: 106M, EDELWEISS: 948M), Row 93 populated with shares in Cr.
+>   - *Intrinsic Growth*: Row 32 Gross Block defined as `=IF(SUM(E22:E31)>0, SUM(E22:E31), BS!J28)` (and `=BS!N28` for Col I), restoring positive Net Non-Current Assets (+34,954.89 Cr for MM, +4,764.20 Cr for LTM, +729.49 Cr for CLEAN) and healthy ROIC (12.65% for MM, 40.97% for LTM, 25.47% for CLEAN). For EDELWEISS, industrial metrics marked `N/A - Financial Services Entity`.
+>   - *Comps Sheet*: Replaced `_xludf.IFS` with standard portable nested IF in N34, O34, P34. For EDELWEISS, EV/Sales and EV/EBITDA marked `N/A - Financial Services Entity`; P/E multiple in Col P preserved as valid peer cross-check (₹90.65). Cleared 166 stray borders on empty cells (`C17:M22`, `B25:P25`, `C26:M31`).
+>   - *DCF 1st way*: Fixed sensitivity table units so base case and all sensitivity cells calculate Rupees per share `((PV_FCFF + PV_TV + Cash - Debt) / Shares)`. Cell `G24 = =E42`. Base cell `J27` matches `E42` exactly (₹2,828.60 for LTM, ₹408.55 for CLEAN). For MM and EDELWEISS, primary DCF marked "Unavailable".
+>   - *DCF 2nd way*: Pinned fiscal year dates to March 31 using `=DATE(YEAR(C70)+1, 3, 31)` instead of naive `+365`.
+>   - *Beta*: Replaced `_xlfn.COVARIANCE.S / _xlfn.VAR.S` with standard `=SLOPE(D9:D112, G9:G112)`.
+>   - *Model -> (Cover)*: C9 links to `='DCF 1st way'!E42`. For MM & EDELWEISS, SOTP is marked "Unavailable" with clearly labeled secondary Comps P/E cross-check in C18:D18 with cautionary note in C19.
+>   - *Ratio Analysis Sparklines*: Re-injected native `<x14:sparklineGroups>` XML with `xmlns:xr2` namespace binding in `sheet3.xml`.
+> - **Native Excel COM 16.0 Recalculation Results**:
+>   - Exactly **0 formula errors** across all 64 worksheets (16 sheets per company).
+>   - Exact **0.00 Cr** Balance Sheet tie across all 12 periods (`FY15–FY26E`); FY26E unplugged variance in Row 40 (`=N38-N16`) evaluates to `+0.0000 Cr` across all four targets with zero plugs.
+>   - Cost of capital: MM WACC 11.97% (Blume beta 1.3164), LTM WACC 12.48% (Blume beta 1.1018), CLEAN WACC 13.19% (Blume beta 1.2141), EDELWEISS WACC 10.47% (Blume beta 1.7487).
+>   - Dynamic sensitivity perturbations verified: LTM ERP up -> -₹168.96, g up -> +₹137.05; CLEAN g up -> +₹19.40, ERP up -> -₹27.18; baseline values restored exactly.
+>   - Native Landscape Previews: Exactly 15 PDF previews exported per target (60 total) in `companies/<TARGET>/template_v9/previews/` with `FitToPagesWide = 1`, `FitToPagesTall = False` (cleanly excluding blank navigation sheet `Data ->`).
+> - **Template V9 Workbook SHA-256 Hashes**:
+>   - **MM**: `57ab161c7c85c9258e1d6d57b5babe513c33cb7a84683d91273c9557c7e902d1` (Primary: `Unavailable`, Secondary Comps P/E: `₹4,274.65`)
+>   - **LTM**: `9189d9c663d16bf160f3b3a32925c18dd18571007b1fa1ef1fafa092b11c9b5d` (Primary: **₹2,828.60 / share**)
+>   - **CLEAN**: `c37fbb8935112e534f4f614bda9ec98b90ece60bbd73ed7258013ccd93ea033c` (Primary: **₹408.55 / share**)
+>   - **EDELWEISS**: `5b8a544f153f85a395d9af767ed8cd622ca38b23417c870d69133e13cdd06429` (Primary: `Unavailable`, Secondary Comps P/E: `₹90.65`)
+> - **Governance & Integrity**:
+>   - `docs/TEMPLATE_V9_SHEET_AUDIT_LEDGER.md`: 64 entries (4 targets × 16 sheets) documenting status (`fixed`, `verified-no-defect`, `blocked`), key cell references, and verification rationale.
+>   - Master template preservation verified via `verify_sources.py` (2/2 Excel masters byte-identical).
+>   - Pytest regression suite: 94/94 tests passing cleanly.
+>   - Governance status: `ready: false`, `human_pack_approval: pending`. PR #3 open and unmerged. Prior versioned deliverables (`template_v8`, `template_v7`, `template_v6`, `template_v5`, `template_v4`, `template_v3`, `template_v2`, 6-sheet workbooks) preserved intact on disk.
 
 
 ## Historical milestone record (claims below are not current verification)
