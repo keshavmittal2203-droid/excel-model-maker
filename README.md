@@ -1,54 +1,38 @@
 # Excel Model Maker
 
-Build financial models inside approved Excel templates, with traceable inputs and explicit validation evidence. Designed for a shared cloud workspace usable by OpenAI, Gemini, DeepSeek, Claude, and other clients that support HTTP tools or MCP.
+Excel-only tools for building professional financial workbooks from the user's supplied Excel template. The four current priority targets are Mahindra & Mahindra (MM), LTIMindtree (LTM), Clean Science (CLEAN), and Edelweiss Financial Services (EDELWEISS).
 
-It also ships a standalone styled report builder: turn a JSON spec into a professional Excel report with `python cli.py --input data.json --output report.xlsx`.
+## Product rules
 
-## Current working slice
+- Start from the active 16-sheet master workbook and preserve its sheets, layout, formulas, styles, widths, merged cells, logos, and other workbook structure. Do not create a replacement layout unless the user explicitly asks for a universal template.
+- Use only the websites named in the master workbook plus Screener. The exact allowlist and evidence rules are in [docs/LOCKED_SOURCE_ALLOWLIST.md](docs/LOCKED_SOURCE_ALLOWLIST.md).
+- Each factual input must be traceable to an allowed source; calculated values must be formulas; forecasts and valuation drivers that are not reported facts must be clearly labeled assumptions.
+- Missing evidence remains blank or N/A. Never use another provider, an unexplained hardcode, or a plug to make a model look complete or balanced.
+- Candidates remain unapproved until a human reviews them. Successful export, automated tests, or an agent's statement does not close the human approval gate.
+- PowerPoint generation is retired. Historical `.pptx` reference files, if present in `originals/`, are inert archives and are not read by the Excel product.
 
-The Python core inspects XLSX files and fills **existing numeric input cells** from an approved template map. It preserves other ZIP package parts, formula expressions, formatting, charts, and workbook layout. It removes stale formula caches and requests full recalculation. Every generated workbook is a **candidate requiring recalculation**. No production release or error-free claim is implemented.
+## Excel workflows
 
-This limited first slice stops when a workbook needs unsupported features. Six user source files are catalogued in [SOURCES.md](SOURCES.md); the workbook needs a special-formula adapter and approved input map before generation. Run `python verify_sources.py` to restore and verify the original files after cloning.
+The repository contains a template-preserving XLSX composer (`modelmaker.py`), a package builder (`build_package.py`), company-specific workbook adapters under `work/`, Excel validation (`validate_workbook.py`), and a JSON-driven styled Excel report builder (`cli.py`).
 
-## Styled report builder
+Typical commands from the repository root:
 
-`cli.py` builds a new, standalone presentation workbook from a JSON spec: colored bold headers, frozen header row, banded rows, number/currency/percent/date formats, estimated column widths, SUM totals as real Excel formulas, conditional formatting, and an embedded chart. It never edits templates and never evaluates formulas; Excel computes the totals when the file is opened.
+```powershell
+python verify_sources.py
+python build_package.py --request examples/mm-package.json --output-dir candidates/mm_run
+python build_package.py --batch
+python -m unittest discover -v
+```
 
-    pip install -r requirements.txt
-    python cli.py --input report.example.json --output report.xlsx
+Use a new output directory for every build. Never edit an original workbook in place. For financial-model adapters, Microsoft Excel COM recalculation and a rendered review are required before an output can be described as verified. See [QUALITY.md](QUALITY.md).
 
-The command refuses to overwrite an existing file unless `--force` is passed. The spec format, rules, and a full example are in [AGENTS.md](AGENTS.md); a working spec ships as [report.example.json](report.example.json).
+## Project files
 
-## Run
+- `originals/Marksans Keshav.xlsx` — active master template; preserve it byte-for-byte.
+- `work/sources/` — versioned source snapshots and extraction evidence; only allowlisted sources may supply values.
+- `companies/` — company-specific candidate workbooks, source registries, and previews.
+- `docs/LOCKED_SOURCE_ALLOWLIST.md` — source and evidence policy.
+- `STATUS.md` — current verified state and remaining blockers.
+- `work/progress.md` — resumable engineering checkpoint.
 
-Python 3.11 or later. The template composer has no third-party runtime dependencies; the styled report builder uses openpyxl (`pip install -r requirements.txt`).
-
-    python modelmaker.py inspect template.xlsx
-    python modelmaker.py build --template template.xlsx --pack pack.json --inputs inputs.json --output candidate.xlsx
-    python -m unittest -v
-
-Build prints a JSON manifest containing template/input/output hashes, changed inputs, source references, and status. Save that manifest beside the workbook in cloud storage. Inspect is read-only. Build refuses to overwrite either the template or an existing output.
-
-## Cloud source of truth
-
-- Code, instructions, contracts, and reviewed model specifications: this GitHub repository.
-- Original Excel files, courses, extracted source references, generated workbooks, and reports: versioned cloud object storage.
-- Agent tasks, model-pack revisions, build runs, leases, and audit events: shared PostgreSQL database.
-- Generation and recalculation: cloud workers operating on immutable snapshots.
-- AI access: the same authenticated HTTPS API, OpenAPI contract, and MCP tools for every provider.
-
-Agents can work simultaneously on separate branches, tasks, and build runs. Publishing a revision uses compare-and-swap checks; writing one workbook uses a lease. A binary XLSX is never merged by concurrent writers.
-
-## Read next
-
-- [Architecture and AI access](ARCHITECTURE.md)
-- [Workbook quality policy](QUALITY.md)
-- [Agent collaboration rules](AGENTS.md)
-- [Roadmap and required inputs](ROADMAP.md)
-- [Model-pack contract](model-pack.schema.json)
-- [Input contract](inputs.example.json)
-- [API contract](openapi.json)
-
-## Deployment status
-
-The core is a development foundation, not a deployed cloud app. Database/storage provisioning, HTTP/MCP implementations, Excel recalculation workers, and model/course onboarding remain open. Runtime cloud ownership requested: keshavmittal2203@gmail.com. Repository owner: keshavmittal2203-droid. No paid resources are required to run the core checks.
+The original workbook's exact structure is authoritative. The course link in the allowlist is a methodology reference only; it is not a data source.

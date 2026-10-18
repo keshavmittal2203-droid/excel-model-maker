@@ -1,0 +1,974 @@
+{
+  "values": {
+    "slide1_company_name": {
+      "value": "MAHINDRA & MAHINDRA LIMITED",
+      "source": "Mahindra & Mahindra Limited FY25 Annual Report"
+    },
+    "slide1_ticker": {
+      "value": "BSE: 500520 | NSE: M&M | Auto & Farm",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide1_sector": {
+      "value": "Automobiles & Farm Equipment",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide1_company_intro": {
+      "value": "Mahindra & Mahindra Limited (M&M), founded in 1945 and headquartered in Mumbai, is the flagship company of the Mahindra Group. It is India's #1 SUV manufacturer by revenue market share and the world's largest tractor manufacturer by volume (>41% domestic share), with major listed subsidiaries in financial services (MMFS) and IT consulting (Tech Mahindra).",
+      "source": "Mahindra & Mahindra Limited FY25 Annual Report"
+    },
+    "slide1_brand_portfolio": {
+      "value": "Flagship SUV brands include Scorpio-N, XUV700, Thar, Thar Roxx, Bolero, and XUV 3XO, alongside newly launched Born-Electric SUVs (BE 6e, XEV 9e). Farm Equipment brands include Mahindra, Swaraj, and Trakstar tractors.",
+      "source": "Mahindra & Mahindra Limited FY25 Annual Report"
+    },
+    "slide1_business_model": {
+      "value": "Core industrial operations span Automotive (SUVs, LCVs, Last-Mile Electric 3Ws) and Farm Equipment (tractors and farm machinery), complemented by strategic listed holdings in Mahindra & Mahindra Financial Services (52.2%) and Tech Mahindra (25.5%).",
+      "source": "Mahindra & Mahindra Limited FY25 Annual Report"
+    },
+    "slide1_product_ecosystem": {
+      "value": "Integrated R&D at Mahindra Research Valley (Chennai), multi-plant manufacturing across Chakan, Nashik, Zaheerabad, Haridwar, and Mohali, and pan-India dealer and rural financing reach across 1,000+ districts.",
+      "source": "Mahindra & Mahindra Limited FY25 Annual Report"
+    },
+    "slide1_strategic_approach": {
+      "value": "Capital allocation discipline focused on high-ROCE core SUV and tractor leadership, scaling Inglo electric SUV architecture, and maintaining strict balance sheet separation between industrial free cash flow and NBFC lending liabilities.",
+      "source": "Mahindra & Mahindra Limited FY25 Annual Report"
+    },
+    "slide1_chart_revenue_mix": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template geographic chart"
+    },
+    "slide1_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide2_company_name": {
+      "value": "MAHINDRA & MAHINDRA LIMITED",
+      "source": "Mahindra & Mahindra Limited FY25 Annual Report"
+    },
+    "slide2_ticker": {
+      "value": "BSE: 500520 | NSE: M&M | Auto & Farm",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide2_sector": {
+      "value": "Automobiles & Farm Equipment",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide2_executive_summary": {
+      "value": "M&M delivered strong consolidated performance in FY25 with Revenue from Operations rising 14.5% YoY to ₹1,59,211 Cr, Operating Profit (EBITDA) reaching ₹30,518 Cr (19.2% margin), and Net Profit (PAT) advancing 14.7% YoY to ₹14,073 Cr. Standalone core operations generated ₹15,150 Cr Auto EBITDA and ₹6,400 Cr Farm EBITDA.",
+      "source": "MM-Recalculated.xlsx!Income Statement"
+    },
+    "slide2_thesis": {
+      "value": "Sum-of-the-Parts (SOTP) is essential for M&M because consolidated borrowings (₹1,29,025 Cr) largely belong to MMFS's retail lending book. Valuing Core Auto at 16.0x FY25 Standalone EBITDA (₹2,42,400 Cr) and Core Farm at 14.0x (₹89,600 Cr), adding MMFS and TechM stakes at a 20% HoldCo discount, and deducting ₹12,000 Cr Standalone Net Debt yields ₹3,64,196 Cr Equity Value or ₹2,929.98/share (vs ₹2,921.00 snapshot CMP).",
+      "source": "MM-Recalculated.xlsx!SOTP Valuation"
+    },
+    "slide2_key_highlights": {
+      "value": "• FY25 Consolidated Revenue: ₹1,59,211 Cr (+14.5% YoY); Consolidated PAT: ₹14,073 Cr (EPS ₹113.22)\n• Core Auto Standalone EBITDA: ₹15,150 Cr valued at 16.0x EV/EBITDA = ₹2,42,400 Cr\n• Core Farm Standalone EBITDA: ₹6,400 Cr valued at 14.0x EV/EBITDA = ₹89,600 Cr\n• Listed Associates (20% HoldCo Disc): MMFS (52.2%) = ₹14,616 Cr; Tech Mahindra (25.5%) = ₹29,580 Cr\n• Less Standalone Net Debt: -₹12,000 Cr -> SOTP Equity Value ₹3,64,196 Cr (₹2,929.98 / share)",
+      "source": "MM-Recalculated.xlsx!SOTP Valuation"
+    },
+    "slide2_chart_revenue": {
+      "value": [
+        74278.0,
+        90171.0,
+        121362.0,
+        139078.0,
+        159211.0
+      ],
+      "categories": [
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Total Revenue",
+      "chart_title": "Historical Revenue (₹ Crore)",
+      "source": "MM-Recalculated.xlsx!Income Statement!D5:H5"
+    },
+    "slide2_chart_snapshot": {
+      "value": [
+        159211.0,
+        30518.0,
+        14073.0,
+        3176.0
+      ],
+      "categories": [
+        "Revenue",
+        "EBITDA",
+        "Net Profit",
+        "CFO"
+      ],
+      "series_name": "FY25 Actual (₹ Cr)",
+      "chart_title": "FY25 Financial Snapshot (₹ Crore)",
+      "source": "MM-Recalculated.xlsx!Income Statement & Cash Flow (FY25)"
+    },
+    "slide2_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide14_company_name": {
+      "value": "MAHINDRA & MAHINDRA LIMITED",
+      "source": "Mahindra & Mahindra Limited FY25 Annual Report"
+    },
+    "slide14_ticker": {
+      "value": "BSE: 500520 | NSE: M&M | Auto & Farm",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide14_sector": {
+      "value": "Automobiles & Farm Equipment",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide14_narrative": {
+      "value": "M&M's consolidated cash flow reflects the combination of industrial free cash flow generation and MMFS's NBFC lending operations. In FY25, consolidated Profit Before Tax reached ₹19,079 Cr with Cash from Operating Activities of ₹3,176 Cr (after NBFC loan book disbursements) and Investing outflows of -₹18,616 Cr. In our 5-year connected forecast (FY26E–FY30E), industrial CapEx is explicitly modeled at 5.2%–5.6% of revenue to fund SUV and EV capacity expansion.",
+      "source": "MM-Recalculated.xlsx!Cash Flow"
+    },
+    "slide14_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide16_company_name": {
+      "value": "MAHINDRA & MAHINDRA LIMITED",
+      "source": "Mahindra & Mahindra Limited FY25 Annual Report"
+    },
+    "slide16_ticker": {
+      "value": "BSE: 500520 | NSE: M&M | Auto & Farm",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide16_sector": {
+      "value": "Automobiles & Farm Equipment",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide16_current_ratio_narrative": {
+      "value": "Consolidated balance sheet ratios reflect combined industrial working capital and MMFS financial assets. Debtor days improved from 30 days in FY19 to 19 days in FY25, while Inventory days stayed tightly managed at 78 days in FY25.",
+      "source": "MM-Recalculated.xlsx!Balance Sheet & Segment Operations"
+    },
+    "slide16_quick_ratio_narrative": {
+      "value": "Cash Conversion Cycle improved to -21 days in FY25 (Debtor Days 19 + Inventory Days 78 - Payable Days 118), demonstrating strong vendor financing and negative working capital in core automotive assembly.",
+      "source": "MM-Recalculated.xlsx!Balance Sheet & Segment Operations"
+    },
+    "slide16_table_header": {
+      "value": "Ratio Analysis & Working Capital",
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_chart_cr": {
+      "value": [
+        1.35,
+        1.38,
+        1.4,
+        1.44,
+        1.48,
+        1.46,
+        1.45,
+        1.47
+      ],
+      "categories": [
+        "FY18",
+        "FY19",
+        "FY20",
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Current Ratio",
+      "chart_title": "Current Ratio (x)",
+      "source": "MM-Recalculated.xlsx!Balance Sheet Liquidity Series"
+    },
+    "slide16_chart_qr": {
+      "value": [
+        1.05,
+        1.06,
+        1.1,
+        1.15,
+        1.18,
+        1.14,
+        1.13,
+        1.15
+      ],
+      "categories": [
+        "FY18",
+        "FY19",
+        "FY20",
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Quick Ratio",
+      "chart_title": "Quick Ratio (x)",
+      "source": "MM-Recalculated.xlsx!Balance Sheet Liquidity Series"
+    },
+    "slide16_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide23_company_name": {
+      "value": "MAHINDRA & MAHINDRA LIMITED",
+      "source": "Mahindra & Mahindra Limited FY25 Annual Report"
+    },
+    "slide23_ticker": {
+      "value": "BSE: 500520 | NSE: M&M | Auto & Farm",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide23_sector": {
+      "value": "Automobiles & Farm Equipment",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide23_valuation_title": {
+      "value": "SUM-OF-THE-PARTS (SOTP) VALUATION",
+      "source": "MM-Recalculated.xlsx!SOTP Valuation"
+    },
+    "slide23_table_ke": {
+      "value": "work/assets/image22_mm.png",
+      "source": "MM-Recalculated.xlsx!SOTP Valuation"
+    },
+    "slide23_table_kd": {
+      "value": "work/assets/image23_mm.png",
+      "source": "MM-Recalculated.xlsx!SOTP Valuation"
+    },
+    "slide23_table_wacc": {
+      "value": "work/assets/image24_mm.png",
+      "source": "MM-Recalculated.xlsx!SOTP Valuation"
+    },
+    "slide23_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide14_pbt_fy18": {
+      "value": 10912,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 PBT)"
+    },
+    "slide14_non_cash_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy18": {
+      "value": -3028,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 Tax)"
+    },
+    "slide14_cfo_fy18": {
+      "value": -704,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 CFO)"
+    },
+    "slide14_capex_fy18": {
+      "value": -5800,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 CapEx)"
+    },
+    "slide14_net_inv_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy18": {
+      "value": -4839,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 CFI)"
+    },
+    "slide14_net_borrow_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy18": {
+      "value": -3987,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 Interest)"
+    },
+    "slide14_dividends_fy18": {
+      "value": -1100,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 Dividends)"
+    },
+    "slide14_other_financing_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy18": {
+      "value": 6670,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 CFF)"
+    },
+    "slide14_net_cf_fy18": {
+      "value": 1126,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 Net CF)"
+    },
+    "slide16_cr_fy18": {
+      "value": 1.35,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 CR)"
+    },
+    "slide16_qr_fy18": {
+      "value": 1.05,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 QR)"
+    },
+    "slide16_de_fy18": {
+      "value": 1.53,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 D/E)"
+    },
+    "slide16_icr_fy18": {
+      "value": 3.7,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 ICR)"
+    },
+    "slide16_debtor_days_fy18": {
+      "value": 55,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 Debtor Days)"
+    },
+    "slide16_inventory_days_fy18": {
+      "value": 69,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 Inventory Days)"
+    },
+    "slide16_payable_days_fy18": {
+      "value": 129,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 Payable Days)"
+    },
+    "slide16_ccc_fy18": {
+      "value": -5,
+      "source": "work/sources/MM_consolidated.json (Mar 2018 CCC)"
+    },
+    "slide14_pbt_fy19": {
+      "value": 8871,
+      "source": "MM-Recalculated.xlsx!Income Statement!B12"
+    },
+    "slide14_non_cash_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy19": {
+      "value": -2854,
+      "source": "MM-Recalculated.xlsx!Income Statement!B13"
+    },
+    "slide14_cfo_fy19": {
+      "value": -4347,
+      "source": "MM-Recalculated.xlsx!Cash Flow!B4"
+    },
+    "slide14_capex_fy19": {
+      "value": -7121,
+      "source": "MM-Recalculated.xlsx!Cash Flow!B9"
+    },
+    "slide14_net_inv_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy19": {
+      "value": -7174,
+      "source": "MM-Recalculated.xlsx!Cash Flow!B5"
+    },
+    "slide14_net_borrow_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy19": {
+      "value": -5021,
+      "source": "MM-Recalculated.xlsx!Income Statement!B10"
+    },
+    "slide14_dividends_fy19": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy19": {
+      "value": 13194,
+      "source": "MM-Recalculated.xlsx!Cash Flow!B6"
+    },
+    "slide14_net_cf_fy19": {
+      "value": 1673,
+      "source": "MM-Recalculated.xlsx!Cash Flow!B7"
+    },
+    "slide16_cr_fy19": {
+      "value": 1.38,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY19)"
+    },
+    "slide16_qr_fy19": {
+      "value": 1.06,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY19)"
+    },
+    "slide16_de_fy19": {
+      "value": 1.77,
+      "source": "MM-Recalculated.xlsx!Balance Sheet!B6/(B4+B5)"
+    },
+    "slide16_icr_fy19": {
+      "value": 3.0,
+      "source": "MM-Recalculated.xlsx!Income Statement!B7/B10"
+    },
+    "slide16_debtor_days_fy19": {
+      "value": 30,
+      "source": "MM-Recalculated.xlsx!Segment Operations!B23"
+    },
+    "slide16_inventory_days_fy19": {
+      "value": 74,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy19": {
+      "value": 127,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy19": {
+      "value": -23,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide14_pbt_fy20": {
+      "value": 1655,
+      "source": "MM-Recalculated.xlsx!Income Statement!C12"
+    },
+    "slide14_non_cash_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy20": {
+      "value": -1976,
+      "source": "MM-Recalculated.xlsx!Income Statement!C13"
+    },
+    "slide14_cfo_fy20": {
+      "value": -1457,
+      "source": "MM-Recalculated.xlsx!Cash Flow!C4"
+    },
+    "slide14_capex_fy20": {
+      "value": -6860,
+      "source": "MM-Recalculated.xlsx!Cash Flow!C9"
+    },
+    "slide14_net_inv_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy20": {
+      "value": -6870,
+      "source": "MM-Recalculated.xlsx!Cash Flow!C5"
+    },
+    "slide14_net_borrow_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy20": {
+      "value": -6021,
+      "source": "MM-Recalculated.xlsx!Income Statement!C10"
+    },
+    "slide14_dividends_fy20": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy20": {
+      "value": 6933,
+      "source": "MM-Recalculated.xlsx!Cash Flow!C6"
+    },
+    "slide14_net_cf_fy20": {
+      "value": -1394,
+      "source": "MM-Recalculated.xlsx!Cash Flow!C7"
+    },
+    "slide16_cr_fy20": {
+      "value": 1.4,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY20)"
+    },
+    "slide16_qr_fy20": {
+      "value": 1.1,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY20)"
+    },
+    "slide16_de_fy20": {
+      "value": 2.05,
+      "source": "MM-Recalculated.xlsx!Balance Sheet!C6/(C4+C5)"
+    },
+    "slide16_icr_fy20": {
+      "value": 1.7,
+      "source": "MM-Recalculated.xlsx!Income Statement!C7/C10"
+    },
+    "slide16_debtor_days_fy20": {
+      "value": 34,
+      "source": "MM-Recalculated.xlsx!Segment Operations!C23"
+    },
+    "slide16_inventory_days_fy20": {
+      "value": 106,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy20": {
+      "value": 142,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy20": {
+      "value": -2,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide14_pbt_fy21": {
+      "value": 3159,
+      "source": "MM-Recalculated.xlsx!Income Statement!D12"
+    },
+    "slide14_non_cash_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy21": {
+      "value": -1647,
+      "source": "MM-Recalculated.xlsx!Income Statement!D13"
+    },
+    "slide14_cfo_fy21": {
+      "value": 17909,
+      "source": "MM-Recalculated.xlsx!Cash Flow!D4"
+    },
+    "slide14_capex_fy21": {
+      "value": -4605,
+      "source": "MM-Recalculated.xlsx!Cash Flow!D9"
+    },
+    "slide14_net_inv_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy21": {
+      "value": -19686,
+      "source": "MM-Recalculated.xlsx!Cash Flow!D5"
+    },
+    "slide14_net_borrow_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy21": {
+      "value": -6102,
+      "source": "MM-Recalculated.xlsx!Income Statement!D10"
+    },
+    "slide14_dividends_fy21": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy21": {
+      "value": 406,
+      "source": "MM-Recalculated.xlsx!Cash Flow!D6"
+    },
+    "slide14_net_cf_fy21": {
+      "value": -1371,
+      "source": "MM-Recalculated.xlsx!Cash Flow!D7"
+    },
+    "slide16_cr_fy21": {
+      "value": 1.44,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY21)"
+    },
+    "slide16_qr_fy21": {
+      "value": 1.15,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY21)"
+    },
+    "slide16_de_fy21": {
+      "value": 1.94,
+      "source": "MM-Recalculated.xlsx!Balance Sheet!D6/(D4+D5)"
+    },
+    "slide16_icr_fy21": {
+      "value": 1.9,
+      "source": "MM-Recalculated.xlsx!Income Statement!D7/D10"
+    },
+    "slide16_debtor_days_fy21": {
+      "value": 30,
+      "source": "MM-Recalculated.xlsx!Segment Operations!D23"
+    },
+    "slide16_inventory_days_fy21": {
+      "value": 91,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy21": {
+      "value": 147,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy21": {
+      "value": -26,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide14_pbt_fy22": {
+      "value": 9361,
+      "source": "MM-Recalculated.xlsx!Income Statement!E12"
+    },
+    "slide14_non_cash_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy22": {
+      "value": -2108,
+      "source": "MM-Recalculated.xlsx!Income Statement!E13"
+    },
+    "slide14_cfo_fy22": {
+      "value": 9248,
+      "source": "MM-Recalculated.xlsx!Cash Flow!E4"
+    },
+    "slide14_capex_fy22": {
+      "value": -5951,
+      "source": "MM-Recalculated.xlsx!Cash Flow!E9"
+    },
+    "slide14_net_inv_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy22": {
+      "value": -3252,
+      "source": "MM-Recalculated.xlsx!Cash Flow!E5"
+    },
+    "slide14_net_borrow_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy22": {
+      "value": -5018,
+      "source": "MM-Recalculated.xlsx!Income Statement!E10"
+    },
+    "slide14_dividends_fy22": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy22": {
+      "value": -5883,
+      "source": "MM-Recalculated.xlsx!Cash Flow!E6"
+    },
+    "slide14_net_cf_fy22": {
+      "value": 113,
+      "source": "MM-Recalculated.xlsx!Cash Flow!E7"
+    },
+    "slide16_cr_fy22": {
+      "value": 1.48,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY22)"
+    },
+    "slide16_qr_fy22": {
+      "value": 1.18,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY22)"
+    },
+    "slide16_de_fy22": {
+      "value": 1.65,
+      "source": "MM-Recalculated.xlsx!Balance Sheet!E6/(E4+E5)"
+    },
+    "slide16_icr_fy22": {
+      "value": 2.9,
+      "source": "MM-Recalculated.xlsx!Income Statement!E7/E10"
+    },
+    "slide16_debtor_days_fy22": {
+      "value": 26,
+      "source": "MM-Recalculated.xlsx!Segment Operations!E23"
+    },
+    "slide16_inventory_days_fy22": {
+      "value": 82,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy22": {
+      "value": 134,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy22": {
+      "value": -26,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide14_pbt_fy23": {
+      "value": 14060,
+      "source": "MM-Recalculated.xlsx!Income Statement!F12"
+    },
+    "slide14_non_cash_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy23": {
+      "value": -2686,
+      "source": "MM-Recalculated.xlsx!Income Statement!F13"
+    },
+    "slide14_cfo_fy23": {
+      "value": -7074,
+      "source": "MM-Recalculated.xlsx!Cash Flow!F4"
+    },
+    "slide14_capex_fy23": {
+      "value": -6189,
+      "source": "MM-Recalculated.xlsx!Cash Flow!F9"
+    },
+    "slide14_net_inv_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy23": {
+      "value": -8866,
+      "source": "MM-Recalculated.xlsx!Cash Flow!F5"
+    },
+    "slide14_net_borrow_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy23": {
+      "value": -5830,
+      "source": "MM-Recalculated.xlsx!Income Statement!F10"
+    },
+    "slide14_dividends_fy23": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy23": {
+      "value": 15946,
+      "source": "MM-Recalculated.xlsx!Cash Flow!F6"
+    },
+    "slide14_net_cf_fy23": {
+      "value": 6,
+      "source": "MM-Recalculated.xlsx!Cash Flow!F7"
+    },
+    "slide16_cr_fy23": {
+      "value": 1.46,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY23)"
+    },
+    "slide16_qr_fy23": {
+      "value": 1.14,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY23)"
+    },
+    "slide16_de_fy23": {
+      "value": 1.64,
+      "source": "MM-Recalculated.xlsx!Balance Sheet!F6/(F4+F5)"
+    },
+    "slide16_icr_fy23": {
+      "value": 3.5,
+      "source": "MM-Recalculated.xlsx!Income Statement!F7/F10"
+    },
+    "slide16_debtor_days_fy23": {
+      "value": 21,
+      "source": "MM-Recalculated.xlsx!Segment Operations!F23"
+    },
+    "slide16_inventory_days_fy23": {
+      "value": 83,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy23": {
+      "value": 118,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy23": {
+      "value": -14,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide14_pbt_fy24": {
+      "value": 15978,
+      "source": "MM-Recalculated.xlsx!Income Statement!G12"
+    },
+    "slide14_non_cash_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy24": {
+      "value": -3708,
+      "source": "MM-Recalculated.xlsx!Income Statement!G13"
+    },
+    "slide14_cfo_fy24": {
+      "value": -5630,
+      "source": "MM-Recalculated.xlsx!Cash Flow!G4"
+    },
+    "slide14_capex_fy24": {
+      "value": -9596,
+      "source": "MM-Recalculated.xlsx!Cash Flow!G9"
+    },
+    "slide14_net_inv_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy24": {
+      "value": -5615,
+      "source": "MM-Recalculated.xlsx!Cash Flow!G5"
+    },
+    "slide14_net_borrow_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy24": {
+      "value": -7488,
+      "source": "MM-Recalculated.xlsx!Income Statement!G10"
+    },
+    "slide14_dividends_fy24": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy24": {
+      "value": 12281,
+      "source": "MM-Recalculated.xlsx!Cash Flow!G6"
+    },
+    "slide14_net_cf_fy24": {
+      "value": 1036,
+      "source": "MM-Recalculated.xlsx!Cash Flow!G7"
+    },
+    "slide16_cr_fy24": {
+      "value": 1.45,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY24)"
+    },
+    "slide16_qr_fy24": {
+      "value": 1.13,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY24)"
+    },
+    "slide16_de_fy24": {
+      "value": 1.64,
+      "source": "MM-Recalculated.xlsx!Balance Sheet!G6/(G4+G5)"
+    },
+    "slide16_icr_fy24": {
+      "value": 3.3,
+      "source": "MM-Recalculated.xlsx!Income Statement!G7/G10"
+    },
+    "slide16_debtor_days_fy24": {
+      "value": 20,
+      "source": "MM-Recalculated.xlsx!Segment Operations!G23"
+    },
+    "slide16_inventory_days_fy24": {
+      "value": 81,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy24": {
+      "value": 112,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy24": {
+      "value": -11,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide14_pbt_fy25": {
+      "value": 19079,
+      "source": "MM-Recalculated.xlsx!Income Statement!H12"
+    },
+    "slide14_non_cash_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy25": {
+      "value": -5006,
+      "source": "MM-Recalculated.xlsx!Income Statement!H13"
+    },
+    "slide14_cfo_fy25": {
+      "value": 3176,
+      "source": "MM-Recalculated.xlsx!Cash Flow!H4"
+    },
+    "slide14_capex_fy25": {
+      "value": -9871,
+      "source": "MM-Recalculated.xlsx!Cash Flow!H9"
+    },
+    "slide14_net_inv_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy25": {
+      "value": -18616,
+      "source": "MM-Recalculated.xlsx!Cash Flow!H5"
+    },
+    "slide14_net_borrow_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy25": {
+      "value": -9083,
+      "source": "MM-Recalculated.xlsx!Income Statement!H10"
+    },
+    "slide14_dividends_fy25": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy25": {
+      "value": 15834,
+      "source": "MM-Recalculated.xlsx!Cash Flow!H6"
+    },
+    "slide14_net_cf_fy25": {
+      "value": 394,
+      "source": "MM-Recalculated.xlsx!Cash Flow!H7"
+    },
+    "slide16_cr_fy25": {
+      "value": 1.47,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY25)"
+    },
+    "slide16_qr_fy25": {
+      "value": 1.15,
+      "source": "MM-Recalculated.xlsx!Balance Sheet (FY25)"
+    },
+    "slide16_de_fy25": {
+      "value": 1.67,
+      "source": "MM-Recalculated.xlsx!Balance Sheet!H6/(H4+H5)"
+    },
+    "slide16_icr_fy25": {
+      "value": 3.4,
+      "source": "MM-Recalculated.xlsx!Income Statement!H7/H10"
+    },
+    "slide16_debtor_days_fy25": {
+      "value": 19,
+      "source": "MM-Recalculated.xlsx!Segment Operations!H23"
+    },
+    "slide16_inventory_days_fy25": {
+      "value": 78,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_payable_days_fy25": {
+      "value": 118,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    },
+    "slide16_ccc_fy25": {
+      "value": -21,
+      "source": "MM-Recalculated.xlsx!Segment Operations"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "../package-request.schema.json",
+  "schema_version": 1,
+  "package_id": "marksans-scenario-b-stress-2025",
+  "name": "Marksans Pharma Scenario B: Fictional Stress Forecast Model & Executive Overview",
+  "description": "Repeatable template-driven package generating reconciled Excel financial model.",
+  "workbook": {
+    "source": "originals/Marksans Keshav.xlsx",
+    "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
+    "model_pack": "proposals/scenario-b.model-pack.proposal.json",
+    "inputs": "proposals/scenario-b.inputs.json",
+    "output_name": "Marksans-Scenario-B-Recalculated.xlsx"
+  },
+  "exports": {
+    "export_sheet_pdfs": true,
+    "pdf_sheets": [
+      "Data Sheet",
+      "Ratio Analysis",
+      "Intrinsic Growth",
+      "WACC-DCF",
+      "DCF 1st way",
+      "DCF 2nd way"
+    ],
+    "pdf_orientation": "landscape",
+    "pdf_fit_to_page_wide": 1
+  }
+}

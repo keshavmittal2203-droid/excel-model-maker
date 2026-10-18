@@ -1,0 +1,196 @@
+<USER_REQUEST>
+You are the implementation agent for the Excel-only financial model maker. Work in the local repository and use its actual files, Git checkout, terminal, and Microsoft Excel if available. This is a repair task, not a request for another report.
+
+## Goal
+
+Repair and validate all four company workbooks—Mahindra & Mahindra (MM), LTIMindtree (LTM), Clean Science (CLEAN), and Edelweiss Financial (EDELWEISS)—while preserving the original 16-sheet Marksans Excel template structure and professional formatting.
+
+The model must use sourced facts only from the websites named in the original workbook, plus Screener.in:
+
+- Screener.in
+- Yahoo Finance
+- NSE India
+- Trading Economics
+- Top Stock Research
+- Investing.com
+- Prime Investor
+
+Do not use company investor-relations pages, BSE, RBI, Damodaran, other websites, search-result snippets, or unverified AI-generated figures. Verify the original workbook’s source list directly before relying on it. For every sourced input, record its exact approved-site URL, retrieval or observation date, reporting period, and units in the existing source area or a sidecar source ledger. Keep assumptions such as terminal growth clearly labeled as analyst assumptions. If a required fact cannot be verified on an approved site, mark it unavailable and prevent it from silently feeding a valuation.
+
+## First: check the real repository state
+
+1. Confirm the repository root, current branch, HEAD, remotes, and `git status`. The audit checkout was last seen on `codex/excel-only-audit` at `2e0b891`, but verify the current state rather than assuming it is unchanged.
+2. Preserve all existing user or agent changes. Do not reset, clean, overwrite, or force-push. In particular, inspect the existing changes to `work/progress.md` and retain them.
+3. Check for another active agent or branch before editing. Avoid overwriting concurrent work.
+4. Keep V8 outputs intact. Produce corrected V9 workbooks in new versioned output folders rather than replacing the existing V8 files.
+5. Keep the original Excel master `originals/Marksans Keshav.xlsx` byte-identical. It has 16 sheets. Do not add or recreate a `sectordata` sheet.
+6. Verify the actual four workbook paths before editing. The last known V8 paths were:
+   - `companies/MM/template_v8/MM-FullTemplate.xlsx`
+   - `companies/LTM/template_v8/LTM-FullTemplate.xlsx`
+   - `companies/CLEAN/template_v8/CLEAN-FullTemplate.xlsx`
+   - `companies/EDELWEISS/template_v8/EDELWEISS-FullTemplate.xlsx`
+
+## Sheet-by-sheet defect map
+
+Review and record a result for **each of the 16 sheets in each of the four companies**. Do not treat one company’s result as evidence that another company’s workbook is correct.
+
+1. **`Model ->`**
+   - Trace the cover’s valuation output to the correct primary valuation cell and verify its units, date, and method.
+   - The MM and EDELWEISS covers say valuation is unavailable even though their `Comps` sheets contain calculated per-share figures. Check whether those figures are valid and supported. Show a supported comparable valuation as a clearly labeled cross-check if appropriate; never silently present it as the primary SOTP or DCF valuation.
+   - Do not claim a fair value where the necessary approved-source inputs are missing.
+
+2. **`Main Financials`**
+   - Fix fiscal-year headers that display `00:00:00`. The last audit found text timestamps in related date headers and formulas returning full timestamps rather than true Excel dates or clean `FYxxA/FYxxE` labels.
+   - The target workbooks have no embedded logo/media, while the original master has a logo in `B1:C6`. Remove any stale Marksans branding. Use the target company name in the existing logo area if an authentic, approved asset is unavailable; do not invent or fetch a logo from an unapproved site.
+   - Remove scattered comments and notes from the visible model.
+   - Verify that financial statements and headline outputs link to the right schedules. Check whether the requested cash-flow trendline exists in the original template; restore it if present. If not, add a compact, correctly sourced trendline only in a suitable existing area.
+
+3. **`Ratio Analysis`**
+   - The original template contains native sparkline trend indicators in `I6:I34`; the V8 outputs appear to have lost them. Restore the original trend functionality and preserve the template’s Excel extensions.
+   - Check all ratio formulas, period labels, and links. Do not show industrial ratios that are inappropriate for a financial-services company without clearly labeling their limitations.
+
+4. **`Intrinsic Growth`**
+   - Correct the timestamp/period header errors and audit each input, sign convention, denominator, and formula link.
+   - MM currently shows zero non-current assets despite a populated aggregate net-block source.
+   - LTM and CLEAN show extreme or negative non-current asset, ROIC, and growth outputs; investigate the underlying accounting links before deciding whether each result is valid.
+   - EDELWEISS shows industrial ROIC outputs even though it is a financial-services company. Do not present industrial ROIC/FCFF as meaningful for it unless the methodology is actually suitable and supported.
+   - Never floor negative values or force growth positive. Fix the underlying logic or explain that the input is unavailable.
+
+5. **`Comps`**
+   - Replace the incompatible `=IFERROR(_xludf.IFS(...),"N/A")` status logic with a formula supported by the Excel version in use. In the audited files, `O34` returned `N/A` for MM, LTM, and CLEAN; EDELWEISS has a hardcoded `N/A`.
+   - Repair the broken/stray borders and long blank ruled regions. Keep tables aligned and readable without changing the template’s intended layout.
+   - Verify peer selection, formula links, units, and implied-value labels. Recalculate all valuation outputs.
+   - Do not use EV/revenue or EBITDA comparables as the valuation method for EDELWEISS.
+
+6. **`WACC-DCF`**
+   - Audit every formula and link for risk-free rate, ERP, beta, debt/equity weights, tax rate, cost of debt, and WACC.
+   - Remove scattered cell comments. Keep source evidence in a compact source register or existing input area, not random pop-ups.
+   - Use only the approved websites for factual market inputs. Separate sourced facts from assumptions.
+   - Treat the cached WACC figures as reference points only; recalculate and explain any change.
+
+7. **`DCF 1st way`**
+   - Repair the valuation output and sensitivity table so the base case and all sensitivity cells calculate the **same clearly labeled metric**.
+   - MM and EDELWEISS currently show unavailable outputs and N/A sensitivities; do not fabricate missing inputs to make them appear complete.
+   - LTM and CLEAN sensitivity grids currently show enterprise value while the primary output is rupees per share. The old base link `G24` points to enterprise value rather than the per-share output. Fix the units, formula bridge, and base-case reconciliation.
+   - Verify FCFF forecasts, terminal value, discounting dates, cash/debt bridge, shares, and source/assumption trace.
+   - If a primary DCF is not valid for a target, label it unavailable and show only supported alternatives as separate cross-checks.
+
+8. **`DCF 2nd way`**
+   - Replace date formulas based on repeatedly adding 365 days, which drift away from fiscal year-end (including March 30/29 dates). Use proper fiscal-year dates.
+   - Audit forecast links, formula matrices, terminal value, and all sensitivity outputs. Check array formulas and compatibility in native Excel.
+   - Ensure editable operating assumptions are sourced or labeled as assumptions.
+
+9. **`Data ->`**
+   - This is an intentionally blank navigation sheet in the original template. Preserve it if needed for navigation, but do not export it as a PDF; it currently produces an invalid/empty preview.
+
+10. **`compdata`**
+    - Trace each company and peer input to an approved source, recording URL, observation date, period, and units.
+    - Recheck market capitalization, shares, revenue, EBITDA, earnings, and debt. Do not leave stale peer values or carry one company’s data into another.
+    - Keep formula-derived outputs linked rather than retyped.
+
+11. **`Data Sheet`**
+    - Convert date-like text headers to actual Excel dates or concise fiscal labels. The audit found timestamp strings in areas including `B16:J16` and `B56:J56`.
+    - Rows `82:85` contain identical cash-flow values across all four companies despite their different reported cash flows. Verify period, unit, and source; replace stale/copy-pasted figures with approved-source values or mark them unavailable.
+    - `K70` is `453,163,746` in all four workbooks, despite different share counts in `K93` (MM 124.3 Cr; LTM 29.62 Cr; CLEAN 10.63 Cr; EDELWEISS 98.47 Cr). Trace the row labels, units, formulas, and use before changing it. It must not silently feed a forecast if it is stale or mismatched.
+    - Remove visible random notes/comments and keep evidence organized without adding clutter.
+
+12. **`BS`**
+    - Make sure each historical and forecast balance sheet ties from the underlying statement rows, with no balancing plugs or residual formulas.
+    - Correct the MM fixed-asset definition/link: `BS!row28` is labeled “Gross Block” but its values match `Data Sheet`’s “Net Block” row 62; the subcategory rows `19:27` are empty and currently cause zero non-current assets in `Intrinsic Growth`.
+    - Reconcile the asset and liability schedules to approved-source data. Do not invent missing asset splits merely to force a tie.
+    - Fix timestamp headers and remove scattered notes.
+
+13. **`Beta`**
+    - Test and, if necessary, replace formulas using `_xlfn.COVARIANCE.S` and `_xlfn.VAR.S`; ensure the workbook recalculates in the installed Excel version.
+    - Verify adjusted closing-price alignment, paired returns, the 104-week window, date cutoff, raw beta, Blume adjustment, and all links into WACC.
+    - Keep the stated retrospective cutoff of 15 October 2025 unless the user explicitly asks for a different valuation date. Do not use post-cutoff data in this edition.
+
+14. **`RM`**
+    - Audit the market-return calculation, source evidence, observation period, and link to ERP in `WACC-DCF`.
+    - Check dividend treatment so returns are not double-counted. Clearly separate sourced market returns from assumptions.
+
+15. **`peerdata`**
+    - Audit every peer beta, tax rate, debt, market value, and related metric against the approved sites.
+    - The sheet contains scattered comments; remove those and put concise evidence in the source register.
+    - Verify that peers are sector-appropriate and that no stale Marksans-specific data remains.
+
+16. **`Cash Flow`**
+    - Reconcile the historical operating, investing, and financing cash flows to the corresponding `Data Sheet` periods and units. The current schedules differ materially and need source-level reconciliation.
+    - For FY25, the audited `Cash Flow` values versus `Data Sheet!J82:J85` were:
+      - MM: `3176, -18616, 15834, 394` versus `206.66, -49.01, -65.15, 92.51`
+      - LTM: `4546, -1729, -2574, 243` versus the same `206.66, -49.01, -65.15, 92.51`
+      - CLEAN: `214, -152, -53, 9` versus the same `206.66, -49.01, -65.15, 92.51`
+      - EDELWEISS: `3384, 3794, -4828, 2350` versus the same `206.66, -49.01, -65.15, 92.51`
+    - First reconcile units and period alignment, then correct the stale or mismatched data. Do not assume the numbers share units without checking.
+    - Many detailed historical rows are sparse. Populate them only where approved-source evidence exists; otherwise label them unavailable. Fix headers, remove random comments, and make the statement readable.
+
+## Company-specific red flags to investigate
+
+Treat these as audit leads, not unquestionable truths. Reopen the workbook, verify the cells, and correct the underlying cause rather than hardcoding a desired result.
+
+### MM
+
+- `Intrinsic Growth!E34:I34` is zero although `Data Sheet` net block row 62 has values including FY17 ₹20,989 Cr, FY20 ₹29,689 Cr, and FY25 ₹34,636 Cr; these reportedly match `BS!row28`. Trace the aggregate asset formula and do not show zero merely because subcategories are blank.
+- FY25 `Cash Flow` totals differ from `Data Sheet` as listed above.
+- The cover’s valuation is unavailable while `Comps` has calculated per-share figures: approximately ₹4,263.89, ₹4,957.01, and ₹4,274.65 in `N31:P31`. Verify their methods and source inputs. Do not present an unsupported number as the primary valuation.
+
+### LTM
+
+- `Intrinsic Growth!I34` reportedly equals **−₹4,825.6 Cr**, `I39` **474% ROIC**, and `I62` **48.83% growth**. Check sign, invested-capital bridge, and formula periods.
+- `DCF 1st way` reports ₹2,828.60/share as its primary output while the sensitivity table shows EV in ₹Cr. Rebuild the sensitivity bridge so its base case reconciles to per-share value.
+- `Comps!N31:P31` reportedly contains ₹4,646.76, ₹3,949.30, and ₹3,813.96. Verify their methods and inputs.
+
+### CLEAN
+
+- `Intrinsic Growth!I34` reportedly equals **−₹319.45 Cr**, `I39` **−790% ROIC**, and `I62` **−85.62% growth**. Investigate the invested-capital and formula links; do not force a positive outcome.
+- `DCF 1st way` sensitivity currently reports EV rather than per-share value.
+- `Comps!N31:P31` reportedly contains ₹676.65, ₹1,183.87, and ₹1,203.80. Verify the peer methods and inputs.
+
+### EDELWEISS
+
+- `Intrinsic Growth!I34` reportedly equals **−₹946.35 Cr** and `I39` **−206.7% ROIC** despite the financial-services business model. Remove misleading industrial ROIC/FCFF metrics unless they are methodologically appropriate.
+- Do not use industrial DCF, EV/revenue, or EBITDA valuation for a financial-services firm. If a valid P/E or P/B cross-check can be built from approved-source data, label it as such. Otherwise mark the valuation unavailable and identify exactly which evidence is missing.
+- `Comps!P31` reportedly calculates ₹90.65 while `N31` calculates ₹512.73 and `O31` is N/A. Audit the methods and explain which, if any, is meaningful. Never treat EV/revenue as a fair-value conclusion.
+
+## Shared workbook defects and appearance
+
+- The original master has native Excel content that was lost in V8 outputs: a logo/media element and Ratio Analysis sparklines. Do not use a workbook library that silently drops these features. Preserve package parts and compare the result against the original template.
+- Date headers currently display timestamps such as `00:00:00`; fix the underlying date values/formulas, not just the display.
+- Remove random comments/notes and unexplained clutter. Keep sources and assumptions traceable in a disciplined source ledger, not scattered around sheets.
+- Current PDF previews visibly spill across many pages: `Main Financials` is 8 pages, `Comps` 3 pages, `WACC-DCF` 3 pages, and `DCF 2nd way` 10 pages; other sheets also spill. Set print areas and scaling so sheets are readable, preferably one page wide. Do not force an unreadable one-page-tall shrink. Exclude the blank `Data ->` sheet.
+- Preserve the original sheet names, order, intended layout, number formats, formulas, sparklines, and target identity. No new `sectordata` sheet.
+
+## Remove PowerPoint from this project
+
+The user has explicitly changed the scope to Excel-only and authorized removal of the PowerPoint product. In the repository only:
+
+- Remove tracked PowerPoint source files and chunks, generated `.pptx` deliverables, PPT generation code, tests, examples, presentation-only reports, dependencies, and active documentation that describes PPT as a supported product.
+- Update source catalogs, source verification, build instructions, and AI playbooks accordingly.
+- Search the repository for remaining active PowerPoint/deck/slide generation paths. Remove obsolete active paths and ensure Excel builds/tests no longer depend on them.
+- Preserve Git history and the original Excel master. Do not delete anything outside this repository.
+
+## Required repair and verification
+
+1. Create a sheet-by-sheet audit ledger with **64 entries** (4 companies × 16 sheets), each marked `fixed`, `verified-no-defect`, or `blocked`, with exact cell references, evidence, and reason. Do not mark a sheet clean based only on a cached formula scan.
+2. Correct the source-to-cell mappings, formulas, date logic, units, valuation links, sensitivity tables, workbook branding, and formatting defects above.
+3. Rebuild each V9 workbook and recalculate it with native Microsoft Excel using a dedicated automation instance. Use safe isolation: disable macros and external-link updates, and do not close or terminate unrelated Office sessions.
+4. Scan every sheet after recalculation for formula errors, uncalculated formula caches, broken links, missing inputs, bad units, and balance-sheet discrepancies.
+5. Validate the model independently:
+   - Balance sheets tie across every modeled period without plugs.
+   - Every displayed valuation links to its labeled primary method.
+   - Every supported sensitivity base case reconciles to the main output and responds to input changes; restore inputs and verify exact baseline restoration.
+   - Verify beta, WACC, cash/debt bridge, share count, and valuation units.
+   - Compare all hardcoded financial facts to the approved-site evidence ledger. Do not call a source audit complete if the URL/date/period/unit evidence is missing.
+6. Render and inspect every nonblank sheet. Fix clipped text, `#####`, wrong page breaks, stale branding, and stray lines. Export previews only after the sheet is corrected.
+7. Run `python verify_sources.py` and the repository’s regression suite, adding focused regression checks for the defects fixed. Record exact commands and results. A cached scan or old test result is not sufficient.
+8. Update `STATUS.md`, `work/progress.md`, manifests, source registries, and PR description to the actual V9 result. Keep `ready: false` and human approval pending; do not self-approve.
+
+## Completion boundary
+
+Make one complete, bounded remediation pass, then stop. Do not respond with only a plan or ask the user to perform the repairs. If an approved source cannot support an input, record the gap and continue with the remaining work. If native Excel or repository access is unavailable, state that exact blocker and do not claim recalculation, source verification, or completion.
+
+Before publishing, recheck Git status and preserve concurrent work. Commit and push the verified work to the existing appropriate feature branch and update its existing PR if present; never merge it, never force-push, and report the exact commit, PR, output paths, source gaps, and verification results.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-18T17:38:03+05:30.
+</ADDITIONAL_METADATA>

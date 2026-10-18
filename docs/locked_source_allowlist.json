@@ -1,0 +1,75 @@
+{
+  "allowlist_version": "1.0-locked",
+  "active_master_template": {
+    "file": "originals/Marksans Keshav.xlsx",
+    "sha256": "4dc79842855e5d1e689a2f5ca1de22c34be72fb09c0c0f9dd3a95818e10737d0",
+    "note": "sectordata sheet removed as authorized"
+  },
+  "archived_original_template": {
+    "file": "originals/archive/Marksans Keshav.xlsx",
+    "sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a"
+  },
+  "methodology_reference_only": {
+    "url": "https://youtube.com/playlist?list=PL3uUjzLk6PulhRop_ffNeHyK0kprzO4cT&si=HtwfdWpNk-a0KSp7",
+    "title": "Financial Modeling Course by Keshav",
+    "status": "Analytical methodology reference only; NOT a data source."
+  },
+  "allowed_sources": [
+    {
+      "id": 1,
+      "provider": "Screener.in (Mittal Analytics Pvt Ltd)",
+      "url": "https://www.screener.in/excel/",
+      "template_location": "'Data Sheet'!E1, 'Data Sheet'!Rows 16-31, 'BS', 'Cash Flow'",
+      "classification": "Secondary Data Compiler / Aggregator",
+      "data_role": "Multi-year historical P&L, balance sheets, cash flows, CMP, market cap, equity face value, peer comp schedules."
+    },
+    {
+      "id": 2,
+      "provider": "Yahoo Finance",
+      "url": "https://finance.yahoo.com",
+      "template_location": "'WACC-DCF'!P10, 'WACC-DCF'!T10",
+      "classification": "Market Pricing & Weekly Returns Provider",
+      "data_role": "105-week historical weekly adjusted closing prices for target equity and NIFTY 50 index for OLS regression beta calculation."
+    },
+    {
+      "id": 3,
+      "provider": "National Stock Exchange of India (NSE)",
+      "url": "https://www.nseindia.com",
+      "template_location": "'WACC-DCF'!P10, 'WACC-DCF'!T10, 'WACC-DCF'!T13",
+      "classification": "Primary Stock Exchange Quotation & Benchmark Provider",
+      "data_role": "Official unadjusted closing price on valuation snapshot date (15-Oct-2025), NIFTY 50 index weekly returns, index dividend yield."
+    },
+    {
+      "id": 4,
+      "provider": "Investing.com",
+      "url": "https://www.investing.com",
+      "template_location": "'WACC-DCF'!P12, 'WACC-DCF'!T12",
+      "classification": "Sovereign Fixed Income Benchmark Provider",
+      "data_role": "India 10-Year Government Bond Yield (Risk-Free Rate Rf: 6.78% as of 15-Oct-2025)."
+    },
+    {
+      "id": 5,
+      "provider": "Trading Economics",
+      "url": "https://www.tradingeconomics.com",
+      "template_location": "'WACC-DCF'!P9",
+      "classification": "Macroeconomic Benchmark Provider",
+      "data_role": "India 10Y Benchmark Sovereign Yield and macroeconomic indicators."
+    },
+    {
+      "id": 6,
+      "provider": "Top Stock Research",
+      "url": "https://www.topstockresearch.com",
+      "template_location": "'WACC-DCF'!P11, 'WACC-DCF'!T11",
+      "classification": "Secondary Equity Analytics Provider",
+      "data_role": "Sector and peer beta reference benchmarks."
+    },
+    {
+      "id": 7,
+      "provider": "Prime Investor",
+      "url": "https://primeinvestor.in",
+      "template_location": "'WACC-DCF'!P13",
+      "classification": "Market Return & Risk Premium Provider",
+      "data_role": "Equity risk premium, NIFTY historical annualized market returns (Rm), dividend yield benchmarks."
+    }
+  ]
+}

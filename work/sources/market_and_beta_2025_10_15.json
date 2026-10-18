@@ -1,0 +1,528 @@
+{
+  "valuation_cutoff_date": "2025-10-15",
+  "exchange": "NSE (National Stock Exchange of India via Yahoo Finance .NS feed)",
+  "price_field": "indicators.quote[0].close (Official NSE Unadjusted Closing Price on 2025-10-15)",
+  "beta_methodology": {
+    "benchmark": "Nifty 50 Index (^NSEI)",
+    "frequency": "Weekly (interval=1wk)",
+    "lookback_period": "2 Years prior to 2025-10-15 (2023-10-15 to 2025-10-12)",
+    "return_observations": 104,
+    "return_basis": "Simple weekly price return R_t = (P_t / P_{t-1}) - 1",
+    "estimator": "Ordinary Least Squares (OLS) Slope = Cov(R_i, R_m) / Var(R_m)"
+  },
+  "securities": {
+    "M&M.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 3459.7,
+          "adjclose": 3423.75
+        },
+        "2025-10-14": {
+          "close": 3459.8,
+          "adjclose": 3423.84
+        },
+        "2025-10-15": {
+          "close": 3497.2,
+          "adjclose": 3460.86
+        },
+        "2025-10-16": {
+          "close": 3560.8,
+          "adjclose": 3523.79
+        }
+      },
+      "close_2025_10_15": 3497.2,
+      "adjclose_2025_10_15": 3460.86,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 1.7638,
+      "blume_adjusted_beta": 1.5117
+    },
+    "LTM.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 5498.0,
+          "adjclose": 5404.04
+        },
+        "2025-10-14": {
+          "close": 5469.0,
+          "adjclose": 5375.54
+        },
+        "2025-10-15": {
+          "close": 5609.5,
+          "adjclose": 5513.64
+        },
+        "2025-10-16": {
+          "close": 5622.5,
+          "adjclose": 5526.42
+        }
+      },
+      "close_2025_10_15": 5609.5,
+      "adjclose_2025_10_15": 5513.64,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 1.2569,
+      "blume_adjusted_beta": 1.1721
+    },
+    "CLEAN.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 1065.4,
+          "adjclose": 1057.78
+        },
+        "2025-10-14": {
+          "close": 1046.4,
+          "adjclose": 1038.92
+        },
+        "2025-10-15": {
+          "close": 1041.4,
+          "adjclose": 1033.96
+        },
+        "2025-10-16": {
+          "close": 1054.2,
+          "adjclose": 1046.66
+        }
+      },
+      "close_2025_10_15": 1041.4,
+      "adjclose_2025_10_15": 1033.96,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 0.9006,
+      "blume_adjusted_beta": 0.9334
+    },
+    "EDELWEISS.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 109.86,
+          "adjclose": 108.65
+        },
+        "2025-10-14": {
+          "close": 107.65,
+          "adjclose": 106.47
+        },
+        "2025-10-15": {
+          "close": 108.85,
+          "adjclose": 107.66
+        },
+        "2025-10-16": {
+          "close": 108.03,
+          "adjclose": 106.84
+        }
+      },
+      "close_2025_10_15": 108.85,
+      "adjclose_2025_10_15": 107.66,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 1.483,
+      "blume_adjusted_beta": 1.3236
+    },
+    "M&MFIN.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 284.3,
+          "adjclose": 278.04
+        },
+        "2025-10-14": {
+          "close": 287.45,
+          "adjclose": 281.12
+        },
+        "2025-10-15": {
+          "close": 293.85,
+          "adjclose": 287.38
+        },
+        "2025-10-16": {
+          "close": 293.3,
+          "adjclose": 286.85
+        }
+      },
+      "close_2025_10_15": 293.85,
+      "adjclose_2025_10_15": 287.38,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 1.5307,
+      "blume_adjusted_beta": 1.3556
+    },
+    "TECHM.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 1450.9,
+          "adjclose": 1399.5
+        },
+        "2025-10-14": {
+          "close": 1468.0,
+          "adjclose": 1415.99
+        },
+        "2025-10-15": {
+          "close": 1459.0,
+          "adjclose": 1407.31
+        },
+        "2025-10-16": {
+          "close": 1463.8,
+          "adjclose": 1411.94
+        }
+      },
+      "close_2025_10_15": 1459.0,
+      "adjclose_2025_10_15": 1407.31,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 1.0058,
+      "blume_adjusted_beta": 1.0039
+    },
+    "TCS.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 3007.2,
+          "adjclose": 2872.07
+        },
+        "2025-10-14": {
+          "close": 2960.3,
+          "adjclose": 2827.28
+        },
+        "2025-10-15": {
+          "close": 2969.8,
+          "adjclose": 2846.93
+        },
+        "2025-10-16": {
+          "close": 2970.7,
+          "adjclose": 2847.79
+        }
+      },
+      "close_2025_10_15": 2969.8,
+      "adjclose_2025_10_15": 2846.93,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 0.9417,
+      "blume_adjusted_beta": 0.9609
+    },
+    "INFY.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 1493.2,
+          "adjclose": 1439.53
+        },
+        "2025-10-14": {
+          "close": 1489.9,
+          "adjclose": 1436.35
+        },
+        "2025-10-15": {
+          "close": 1474.4,
+          "adjclose": 1421.41
+        },
+        "2025-10-16": {
+          "close": 1471.5,
+          "adjclose": 1418.61
+        }
+      },
+      "close_2025_10_15": 1474.4,
+      "adjclose_2025_10_15": 1421.41,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 0.8973,
+      "blume_adjusted_beta": 0.9312
+    },
+    "HCLTECH.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 1494.7,
+          "adjclose": 1417.32
+        },
+        "2025-10-14": {
+          "close": 1495.4,
+          "adjclose": 1417.99
+        },
+        "2025-10-15": {
+          "close": 1495.7,
+          "adjclose": 1418.27
+        },
+        "2025-10-16": {
+          "close": 1515.0,
+          "adjclose": 1436.57
+        }
+      },
+      "close_2025_10_15": 1495.7,
+      "adjclose_2025_10_15": 1418.27,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 0.9414,
+      "blume_adjusted_beta": 0.9607
+    },
+    "WIPRO.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 245.13,
+          "adjclose": 236.26
+        },
+        "2025-10-14": {
+          "close": 248.42,
+          "adjclose": 239.43
+        },
+        "2025-10-15": {
+          "close": 250.21,
+          "adjclose": 241.16
+        },
+        "2025-10-16": {
+          "close": 253.81,
+          "adjclose": 244.63
+        }
+      },
+      "close_2025_10_15": 250.21,
+      "adjclose_2025_10_15": 241.16,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 0.9495,
+      "blume_adjusted_beta": 0.9662
+    },
+    "PIIND.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 3544.7,
+          "adjclose": 3526.23
+        },
+        "2025-10-14": {
+          "close": 3555.0,
+          "adjclose": 3536.47
+        },
+        "2025-10-15": {
+          "close": 3555.3,
+          "adjclose": 3536.77
+        },
+        "2025-10-16": {
+          "close": 3550.3,
+          "adjclose": 3531.8
+        }
+      },
+      "close_2025_10_15": 3555.3,
+      "adjclose_2025_10_15": 3536.77,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 0.8548,
+      "blume_adjusted_beta": 0.9027
+    },
+    "NAVINFLUOR.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 4809.7,
+          "adjclose": 4798.79
+        },
+        "2025-10-14": {
+          "close": 4895.9,
+          "adjclose": 4884.79
+        },
+        "2025-10-15": {
+          "close": 4884.2,
+          "adjclose": 4873.12
+        },
+        "2025-10-16": {
+          "close": 5057.7,
+          "adjclose": 5046.22
+        }
+      },
+      "close_2025_10_15": 4884.2,
+      "adjclose_2025_10_15": 4873.12,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 0.8537,
+      "blume_adjusted_beta": 0.902
+    },
+    "VINATIORGA.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 1695.5,
+          "adjclose": 1684.07
+        },
+        "2025-10-14": {
+          "close": 1678.9,
+          "adjclose": 1667.59
+        },
+        "2025-10-15": {
+          "close": 1692.5,
+          "adjclose": 1681.09
+        },
+        "2025-10-16": {
+          "close": 1704.6,
+          "adjclose": 1693.11
+        }
+      },
+      "close_2025_10_15": 1692.5,
+      "adjclose_2025_10_15": 1681.09,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 0.931,
+      "blume_adjusted_beta": 0.9538
+    },
+    "FINEORG.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 4559.5,
+          "adjclose": 4549.22
+        },
+        "2025-10-14": {
+          "close": 4568.6,
+          "adjclose": 4558.3
+        },
+        "2025-10-15": {
+          "close": 4497.0,
+          "adjclose": 4486.86
+        },
+        "2025-10-16": {
+          "close": 4501.0,
+          "adjclose": 4490.85
+        }
+      },
+      "close_2025_10_15": 4497.0,
+      "adjclose_2025_10_15": 4486.86,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 1.0797,
+      "blume_adjusted_beta": 1.0534
+    },
+    "SRF.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 3047.4,
+          "adjclose": 3036.02
+        },
+        "2025-10-14": {
+          "close": 3044.0,
+          "adjclose": 3032.63
+        },
+        "2025-10-15": {
+          "close": 3088.6,
+          "adjclose": 3077.06
+        },
+        "2025-10-16": {
+          "close": 3190.0,
+          "adjclose": 3178.08
+        }
+      },
+      "close_2025_10_15": 3088.6,
+      "adjclose_2025_10_15": 3077.06,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 0.691,
+      "blume_adjusted_beta": 0.793
+    },
+    "MARUTI.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 16323.0,
+          "adjclose": 16160.7
+        },
+        "2025-10-14": {
+          "close": 16261.0,
+          "adjclose": 16099.31
+        },
+        "2025-10-15": {
+          "close": 16212.0,
+          "adjclose": 16050.8
+        },
+        "2025-10-16": {
+          "close": 16298.0,
+          "adjclose": 16135.95
+        }
+      },
+      "close_2025_10_15": 16212.0,
+      "adjclose_2025_10_15": 16050.8,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 0.774,
+      "blume_adjusted_beta": 0.8486
+    },
+    "BAJAJ-AUTO.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 9066.0,
+          "adjclose": 8940.18
+        },
+        "2025-10-14": {
+          "close": 9102.5,
+          "adjclose": 8976.18
+        },
+        "2025-10-15": {
+          "close": 8998.0,
+          "adjclose": 8873.13
+        },
+        "2025-10-16": {
+          "close": 9151.5,
+          "adjclose": 9024.5
+        }
+      },
+      "close_2025_10_15": 8998.0,
+      "adjclose_2025_10_15": 8873.13,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 1.1643,
+      "blume_adjusted_beta": 1.1101
+    },
+    "EICHERMOT.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 6912.0,
+          "adjclose": 6840.37
+        },
+        "2025-10-14": {
+          "close": 6887.0,
+          "adjclose": 6815.63
+        },
+        "2025-10-15": {
+          "close": 6895.0,
+          "adjclose": 6823.54
+        },
+        "2025-10-16": {
+          "close": 6988.0,
+          "adjclose": 6915.58
+        }
+      },
+      "close_2025_10_15": 6895.0,
+      "adjclose_2025_10_15": 6823.54,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 1.0845,
+      "blume_adjusted_beta": 1.0566
+    },
+    "ESCORTS.NS": {
+      "oct_2025_daily": {
+        "2025-10-13": {
+          "close": 3577.5,
+          "adjclose": 3519.72
+        },
+        "2025-10-14": {
+          "close": 3613.8,
+          "adjclose": 3555.43
+        },
+        "2025-10-15": {
+          "close": 3682.6,
+          "adjclose": 3623.12
+        },
+        "2025-10-16": {
+          "close": 3782.4,
+          "adjclose": 3721.31
+        }
+      },
+      "close_2025_10_15": 3682.6,
+      "adjclose_2025_10_15": 3623.12,
+      "weekly_obs_count": 104,
+      "weekly_start_date": "2023-10-15",
+      "weekly_end_date": "2025-10-12",
+      "ols_raw_beta_2y_weekly": 1.416,
+      "blume_adjusted_beta": 1.2787
+    }
+  }
+}

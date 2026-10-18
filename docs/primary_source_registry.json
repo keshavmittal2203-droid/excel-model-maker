@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "registry_id": "cipla-primary-source-registry",
+  "company": {
+    "name": "Cipla Limited",
+    "ticker": "CIPLA",
+    "bse_code": "500087",
+    "isin": "INE059A01026",
+    "reporting_currency": "INR",
+    "reporting_unit": "INR_Cr",
+    "fiscal_year_end": "March 31"
+  },
+  "primary_documents": {
+    "bse_fy25_audited_results": {
+      "title": "Statement of Audited Consolidated Financial Results for Quarter and Year Ended March 31, 2025",
+      "official_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/918fa2f3-1ee2-4dcf-8bb1-ec2c5f10b7a7.pdf",
+      "local_path": "docs/sources/cipla_fy25_bse_results.pdf",
+      "filing_date": "2025-05-13",
+      "audit_firm": "Walker Chandiok & Co LLP",
+      "opinion": "Unmodified / Clean",
+      "reporting_period": "FY25 (ended 31 March 2025)",
+      "accounting_standard": "Ind AS",
+      "basis": "Consolidated"
+    },
+    "cipla_89th_annual_report_fy25": {
+      "title": "Cipla Limited 89th Integrated Annual Report 2024-25",
+      "official_url": "https://www.cipla.com/investors/annual-reports",
+      "local_path": "docs/sources/cipla_89th_annual_report_fy25.pdf",
+      "reporting_period": "FY25 (with FY24 audited comparatives)",
+      "accounting_standard": "Ind AS",
+      "basis": "Consolidated"
+    },
+    "cipla_88th_annual_report_fy24": {
+      "title": "Cipla Limited 88th Integrated Annual Report 2023-24",
+      "official_url": "https://www.cipla.com/investors/annual-reports",
+      "local_path": "docs/sources/cipla_88th_annual_report_fy24.pdf",
+      "reporting_period": "FY24 (with FY23 audited comparatives)",
+      "accounting_standard": "Ind AS",
+      "basis": "Consolidated"
+    },
+    "cipla_87th_annual_report_fy23": {
+      "title": "Cipla Limited 87th Annual Report 2022-23",
+      "official_url": "https://www.cipla.com/investors/annual-reports",
+      "local_path": "docs/sources/cipla_87th_annual_report_fy23.pdf",
+      "reporting_period": "FY23 (with FY22 and FY21 audited comparatives)",
+      "accounting_standard": "Ind AS",
+      "basis": "Consolidated"
+    },
+    "screener_capitaline_database": {
+      "title": "Screener.in / Capitaline Historical Financial Database for Cipla Limited",
+      "official_url": "https://www.screener.in/company/CIPLA/consolidated/",
+      "reporting_period": "FY17-FY20 Historical Series & TTM Market Snapshot",
+      "accounting_standard": "Ind AS",
+      "basis": "Consolidated Secondary Database"
+    }
+  },
+  "line_item_registry": [
+    {
+      "metric": "Revenue from Operations (FY25)",
+      "destination": "Data Sheet!J17",
+      "document_key": "cipla_89th_annual_report_fy25",
+      "printed_page": 212,
+      "pdf_page_index": 214,
+      "statement": "Consolidated Statement of Profit and Loss",
+      "line_item": "Revenue from operations",
+      "reported_value": "27547.62",
+      "reported_unit": "INR Cr",
+      "workbook_value": "27548.00",
+      "transformation": "Rounded to nearest ₹1 Cr integer per template standard"
+    },
+    {
+      "metric": "Operating Profit Before Exceptional Items (PBT FY25)",
+      "destination": "Data Sheet!J28",
+      "document_key": "cipla_89th_annual_report_fy25",
+      "printed_page": 212,
+      "pdf_page_index": 214,
+      "statement": "Consolidated Statement of Profit and Loss",
+      "line_item": "Profit before tax (after exceptional items ₹160.81 Cr)",
+      "reported_value": "6660.00",
+      "reported_unit": "INR Cr",
+      "workbook_value": "6660.00",
+      "transformation": "Exact reported profit before tax after exceptional items"
+    },
+    {
+      "metric": "Profit for the Year (Net Profit / PAT FY25)",
+      "destination": "Data Sheet!J30",
+      "document_key": "cipla_89th_annual_report_fy25",
+      "printed_page": 212,
+      "pdf_page_index": 214,
+      "statement": "Consolidated Statement of Profit and Loss",
+      "line_item": "Profit for the year attributable to owners",
+      "reported_value": "4873.01",
+      "reported_unit": "INR Cr",
+      "workbook_value": "4873.00",
+      "transformation": "Rounded to nearest ₹1 Cr"
+    },
+    {
+      "metric": "Statutory Paid-up Equity Capital (FY25)",
+      "destination": "Data Sheet!J57",
+      "document_key": "cipla_89th_annual_report_fy25",
+      "printed_page": 211,
+      "pdf_page_index": 213,
+      "statement": "Consolidated Balance Sheet & Note 20 Share Capital",
+      "line_item": "Equity share capital (80,76,00,000 shares of ₹2 each)",
+      "reported_value": "161.52",
+      "reported_unit": "INR Cr",
+      "workbook_value": "161.58",
+      "transformation": "Template uses 161.58 Cr inherited from Screener snapshot; Note 20 statutory paid-up is ₹161.52 Cr representing 80.76 Cr shares"
+    },
+    {
+      "metric": "Total Borrowings (Statutory Balance Sheet Close as of 31 March 2025)",
+      "destination": "Data Sheet!J59",
+      "document_key": "cipla_89th_annual_report_fy25",
+      "printed_page": 211,
+      "pdf_page_index": 213,
+      "statement": "Consolidated Balance Sheet & Note 23 Borrowings",
+      "line_item": "Non-current borrowings (₹11.98 Cr) + Current borrowings (₹185.53 Cr) + Lease liabilities (₹240.49 Cr)",
+      "reported_value": "438.00",
+      "reported_unit": "INR Cr",
+      "workbook_value": "438.00",
+      "transformation": "Exact statutory year-end balance sheet close; reconciles with narrative ₹438 Cr"
+    },
+    {
+      "metric": "Total Borrowings (TTM Snapshot / Cost of Capital Feeding)",
+      "destination": "Data Sheet!K59 / WACC-DCF!C30",
+      "document_key": "screener_capitaline_database",
+      "statement": "Trailing Twelve Months Multiples & Template compdata Schedule",
+      "line_item": "compdata!G8 Cipla Total Debt snapshot",
+      "reported_value": "613.77",
+      "reported_unit": "INR Cr",
+      "workbook_value": "613.77",
+      "transformation": "Trailing 12-month snapshot debt feeding WACC schedule; explicitly reconciled against ₹438 Cr FY25 statutory close"
+    },
+    {
+      "metric": "Cash Flow from Operating Activities (CFO FY25)",
+      "destination": "Data Sheet!J82 / Cash Flow!M5",
+      "document_key": "cipla_89th_annual_report_fy25",
+      "printed_page": 216,
+      "pdf_page_index": 218,
+      "statement": "Consolidated Statement of Cash Flows",
+      "line_item": "Net cash generated from operating activities",
+      "reported_value": "5005.00",
+      "reported_unit": "INR Cr",
+      "workbook_value": "5005.00",
+      "transformation": "Exact reported statutory subtotal"
+    },
+    {
+      "metric": "Net Capital Expenditure (CapEx FY25)",
+      "destination": "Cash Flow!M15",
+      "document_key": "cipla_89th_annual_report_fy25",
+      "printed_page": 216,
+      "pdf_page_index": 218,
+      "statement": "Consolidated Statement of Cash Flows",
+      "line_item": "Purchase of property, plant, equipment & CWIP",
+      "reported_value": "-1240.00",
+      "reported_unit": "INR Cr",
+      "workbook_value": "-1240.00",
+      "transformation": "Cash outflow represented with negative sign"
+    },
+    {
+      "metric": "Cash Flow from Investing Activities (CFI FY25)",
+      "destination": "Data Sheet!J83 / Cash Flow!M14",
+      "document_key": "cipla_89th_annual_report_fy25",
+      "printed_page": 216,
+      "pdf_page_index": 218,
+      "statement": "Consolidated Statement of Cash Flows",
+      "line_item": "Net cash used in investing activities",
+      "reported_value": "-3682.00",
+      "reported_unit": "INR Cr",
+      "workbook_value": "-3682.00",
+      "transformation": "Exact reported statutory subtotal"
+    },
+    {
+      "metric": "Cash Flow from Financing Activities (CFF FY25)",
+      "destination": "Data Sheet!J84 / Cash Flow!M23",
+      "document_key": "cipla_89th_annual_report_fy25",
+      "printed_page": 216,
+      "pdf_page_index": 218,
+      "statement": "Consolidated Statement of Cash Flows",
+      "line_item": "Net cash used in financing activities",
+      "reported_value": "-1293.00",
+      "reported_unit": "INR Cr",
+      "workbook_value": "-1293.00",
+      "transformation": "Exact reported statutory subtotal"
+    },
+    {
+      "metric": "Net Cash Flow (FY25)",
+      "destination": "Data Sheet!J85 / Cash Flow!M31",
+      "document_key": "cipla_89th_annual_report_fy25",
+      "printed_page": 216,
+      "pdf_page_index": 218,
+      "statement": "Consolidated Statement of Cash Flows",
+      "line_item": "Net increase in cash and cash equivalents",
+      "reported_value": "30.00",
+      "reported_unit": "INR Cr",
+      "workbook_value": "30.00",
+      "transformation": "Ties exactly: CFO (+5,005) + CFI (-3,682) + CFF (-1,293) = +30.00 Cr"
+    },
+    {
+      "metric": "Total Assets = Total Liabilities (FY25)",
+      "destination": "Data Sheet!J61 & J66",
+      "document_key": "cipla_89th_annual_report_fy25",
+      "printed_page": 211,
+      "pdf_page_index": 213,
+      "statement": "Consolidated Balance Sheet",
+      "line_item": "Total Assets / Total Equity and Liabilities",
+      "reported_value": "37386.58",
+      "reported_unit": "INR Cr",
+      "workbook_value": "37386.58",
+      "transformation": "Exact sum of balance sheet components: Delta = ₹0.00 Cr"
+    }
+  ]
+}
