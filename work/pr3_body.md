@@ -1088,10 +1088,10 @@ eady: false, human_pack_approval: pending.
   - Recalculated cleanly via Microsoft Excel COM 16.0 (`CalculateFullRebuild`). Exactly **0 formula errors** across all 64 sheets (16 sheets x 4 targets).
   - Preserved native unforced print setups without alteration. Exactly 16 preview PDFs per company (64 total) exported to `companies/<TARGET>/template_v6/previews/`.
 - **Deliverables in `companies/<TARGET>/template_v6/`**:
-  - `MM`: `companies/MM/template_v6/MM-FullTemplate.xlsx` (114,010 bytes, SHA-256: `8b683e414e52a0e98165bbdda9d8435ef6cca0558338d087edc847227696727c`)
-  - `LTM`: `companies/LTM/template_v6/LTM-FullTemplate.xlsx` (114,103 bytes, SHA-256: `c8f8323b77a6610f79b77fa52dd9db612e8cb22f0f575d4ad6e0f79e8f50369a`)
-  - `CLEAN`: `companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx` (112,635 bytes, SHA-256: `24797c0d82c914c5b0774ec100d8b7e623b831dfea5a255811def8e6f8554775`)
-  - `EDELWEISS`: `companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx` (116,118 bytes, SHA-256: `48d0b171bccbf5e41e0a3281b2b59c78acd1b0f6484a4fcedf9cfdfaf41b678b`)
+  - `MM`: `companies/MM/template_v6/MM-FullTemplate.xlsx` (114,551 bytes, SHA-256: `a0763519d1be2094efbfd47111c03ea4e26d2bb3a935d38e02eb37286870cb15`)
+  - `LTM`: `companies/LTM/template_v6/LTM-FullTemplate.xlsx` (114,540 bytes, SHA-256: `28f4dc2fa0b603d777af10cc6ad54960407cd6ee4071f7a04b0ea5894f56a6e7`)
+  - `CLEAN`: `companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx` (112,992 bytes, SHA-256: `6c0dcb8f392e4db4ba179e59e4f11d199668bdcc3960a16ddad4179083840931`)
+  - `EDELWEISS`: `companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx` (116,493 bytes, SHA-256: `744399a6979abcc972c69597370e341b5320f2a8cfbb9dd292f25de2515a0f7c`)
 - **Review Gate & Governance**:
   - Gate status: `ready: false`, pending gate: `["human_pack_approval"]`.
   - PR #3 remains open and unmerged pending human review.
@@ -1117,10 +1117,33 @@ eady: false, human_pack_approval: pending.
   - Closing Balance Checks (`BS!Row 40 = N38 - N16`): MM `+0.00 Cr`, LTM `+1.00 Cr`, CLEAN `-1.13 Cr`, EDELWEISS `+1.00 Cr`.
   - Matches inherited opening FY25 Screener integer rounding discrepancies with zero artificial plugs.
 - **Final Deliverables in `companies/<TARGET>/template_v6/`**:
-  - `MM`: `companies/MM/template_v6/MM-FullTemplate.xlsx` (114,010 bytes, SHA-256: `8b683e414e52a0e98165bbdda9d8435ef6cca0558338d087edc847227696727c`)
-  - `LTM`: `companies/LTM/template_v6/LTM-FullTemplate.xlsx` (114,103 bytes, SHA-256: `c8f8323b77a6610f79b77fa52dd9db612e8cb22f0f575d4ad6e0f79e8f50369a`)
-  - `CLEAN`: `companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx` (112,635 bytes, SHA-256: `24797c0d82c914c5b0774ec100d8b7e623b831dfea5a255811def8e6f8554775`)
-  - `EDELWEISS`: `companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx` (116,118 bytes, SHA-256: `48d0b171bccbf5e41e0a3281b2b59c78acd1b0f6484a4fcedf9cfdfaf41b678b`)
+  - `MM`: `companies/MM/template_v6/MM-FullTemplate.xlsx` (114,551 bytes, SHA-256: `a0763519d1be2094efbfd47111c03ea4e26d2bb3a935d38e02eb37286870cb15`)
+  - `LTM`: `companies/LTM/template_v6/LTM-FullTemplate.xlsx` (114,540 bytes, SHA-256: `28f4dc2fa0b603d777af10cc6ad54960407cd6ee4071f7a04b0ea5894f56a6e7`)
+  - `CLEAN`: `companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx` (112,992 bytes, SHA-256: `6c0dcb8f392e4db4ba179e59e4f11d199668bdcc3960a16ddad4179083840931`)
+  - `EDELWEISS`: `companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx` (116,493 bytes, SHA-256: `744399a6979abcc972c69597370e341b5320f2a8cfbb9dd292f25de2515a0f7c`)
+- **Review Gate & Governance**:
+  - Gate status: `ready: false`, pending gate: `["human_pack_approval"]`.
+  - PR #3 remains open and unmerged pending human review.
+
+### 16. Source Evidence & Valuation Alignment: Evidenced 6.51% Risk-Free Rate Proxy, Assumption Classification & PBT Valuation Trace
+
+- **Risk-Free Rate Evidenced Proxy**:
+  - Cell `'WACC-DCF'!J22`: Updated from unevidenced 6.78% to **6.51%** (0.0651).
+  - Sourced from allowlisted provider **Trading Economics** (`https://tradingeconomics.com/india/government-bond-yield`), supported by its 14-Oct-2025 published reading ("India 10-Year Bond Yield Eases to Near 1-Week Low") reporting the 10-year benchmark yield just below 6.51% (6.51%) as the exact dated prior-session proxy preceding the 15-Oct-2025 cutoff.
+- **Strict Classification of Modeling Assumptions**:
+  - **Equity Risk Premium (ERP, `'WACC-DCF'!J23` = 5.50%)**: Classified as **Analyst Macroeconomic Assumption**; not attributed to Trading Economics.
+  - **Marginal Corporate Tax Rate (`'WACC-DCF'!E23` and `'Data Sheet'!K29` = 25.17%)**: Classified as **Analyst Modeling Assumption** (22% base + 10% surcharge + 4% cess).
+- **PBT-to-Valuation Mathematical Proof**:
+  - **M&M & EDELWEISS**: Valuation is driven by Sum-of-the-Parts (SOTP) of business segments, listed subsidiaries, and standalone net debt/cash; consolidated forward 3-statement PBT does not enter the SOTP schedule by methodological design. MM SOTP = **₹2,742.97 / share**; EDELWEISS SOTP = **₹130.53 / share**.
+  - **LTM & CLEAN**: Valuation is driven by unlevered FCFF DCF starting from Operating EBIT (`Row 5`), not levered PBT (`'Data Sheet'!K28`) or PAT (`'Data Sheet'!K30`). PBT includes interest expense, which must not be subtracted in unlevered FCFF.
+  - Updating $R_f$ to 6.51% reduces WACC:
+    - **LTM**: WACC 13.12% -> **12.86%**, FCFF DCF fair value moves from ₹2,428.22 to **₹2,497.80 / share** (+₹69.57).
+    - **CLEAN**: WACC 11.91% -> **11.65%**, FCFF DCF fair value moves from ₹468.61 to **₹487.28 / share** (+₹18.67).
+- **Final Deliverables in `companies/<TARGET>/template_v6/`**:
+  - `MM`: `companies/MM/template_v6/MM-FullTemplate.xlsx` (114,551 bytes, SHA-256: `a0763519d1be2094efbfd47111c03ea4e26d2bb3a935d38e02eb37286870cb15`)
+  - `LTM`: `companies/LTM/template_v6/LTM-FullTemplate.xlsx` (114,540 bytes, SHA-256: `28f4dc2fa0b603d777af10cc6ad54960407cd6ee4071f7a04b0ea5894f56a6e7`)
+  - `CLEAN`: `companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx` (112,992 bytes, SHA-256: `6c0dcb8f392e4db4ba179e59e4f11d199668bdcc3960a16ddad4179083840931`)
+  - `EDELWEISS`: `companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx` (116,493 bytes, SHA-256: `744399a6979abcc972c69597370e341b5320f2a8cfbb9dd292f25de2515a0f7c`)
 - **Review Gate & Governance**:
   - Gate status: `ready: false`, pending gate: `["human_pack_approval"]`.
   - PR #3 remains open and unmerged pending human review.

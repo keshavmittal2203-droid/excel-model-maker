@@ -26,32 +26,44 @@ All four priority targets have been delivered as uncompressed 16-sheet master te
 
 | Target Company | Primary Valuation Methodology | Source-of-Truth Cell (`'DCF 1st way'`) | Cover Link Cell (`'Model ->'`) | Implied Value per Share | 15-Oct-2025 Market Close | Linked WACC (`E26`) | Formula Errors (64 Sheets) | Verified Workbook SHA-256 Checksum |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | `E42` (`=G60`) | `C9` (`=E42`) | **₹2,742.97** | ₹3,497.20 | 13.00% | **0 errors** | `8b683e414e52a0e98165bbdda9d8435ef6cca0558338d087edc847227696727c` |
-| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹2,428.22** | ₹5,609.50 | **13.12%** | **0 errors** | `c8f8323b77a6610f79b77fa52dd9db612e8cb22f0f575d4ad6e0f79e8f50369a` |
-| **Clean Science and Technology** (`CLEAN`) | Manufacturing FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹468.61** | ₹1,041.40 | **11.91%** | **0 errors** | `24797c0d82c914c5b0774ec100d8b7e623b831dfea5a255811def8e6f8554775` |
-| **Edelweiss Financial Services** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF N/A) | `E42` (`=G60`) | `C9` (`=E42`) | **₹130.53** | ₹108.85 | 9.70% | **0 errors** | `48d0b171bccbf5e41e0a3281b2b59c78acd1b0f6484a4fcedf9cfdfaf41b678b` |
+| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | `E42` (`=G60`) | `C9` (`=E42`) | **₹2,742.97** | ₹3,497.20 | **12.79%** | **0 errors** | `a0763519d1be2094efbfd47111c03ea4e26d2bb3a935d38e02eb37286870cb15` |
+| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹2,497.80** | ₹5,609.50 | **12.86%** | **0 errors** | `28f4dc2fa0b603d777af10cc6ad54960407cd6ee4071f7a04b0ea5894f56a6e7` |
+| **Clean Science and Technology** (`CLEAN`) | Manufacturing FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹487.28** | ₹1,041.40 | **11.65%** | **0 errors** | `6c0dcb8f392e4db4ba179e59e4f11d199668bdcc3960a16ddad4179083840931` |
+| **Edelweiss Financial Services** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF N/A) | `E42` (`=G60`) | `C9` (`=E42`) | **₹130.53** | ₹108.85 | **9.60%** | **0 errors** | `744399a6979abcc972c69597370e341b5320f2a8cfbb9dd292f25de2515a0f7c` |
 
 ### Clickable Absolute Deliverable Paths
 
 1. **Mahindra & Mahindra Limited (`MM`)**:
-   - 16-Sheet Workbook: [`companies/MM/template_v6/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/MM-FullTemplate.xlsx) (114,010 bytes)
+   - 16-Sheet Workbook: [`companies/MM/template_v6/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/MM-FullTemplate.xlsx) (114,551 bytes)
    - Package Manifest: [`companies/MM/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/MM/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/previews/)
 
 2. **LTIMindtree Limited (`LTM`)**:
-   - 16-Sheet Workbook: [`companies/LTM/template_v6/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/LTM-FullTemplate.xlsx) (114,103 bytes)
+   - 16-Sheet Workbook: [`companies/LTM/template_v6/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/LTM-FullTemplate.xlsx) (114,540 bytes)
    - Package Manifest: [`companies/LTM/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/LTM/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/previews/)
 
 3. **Clean Science and Technology Limited (`CLEAN`)**:
-   - 16-Sheet Workbook: [`companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx) (112,635 bytes)
+   - 16-Sheet Workbook: [`companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx) (112,992 bytes)
    - Package Manifest: [`companies/CLEAN/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/CLEAN/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/previews/)
 
 4. **Edelweiss Financial Services Limited (`EDELWEISS`)**:
-   - 16-Sheet Workbook: [`companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx) (116,118 bytes)
+   - 16-Sheet Workbook: [`companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx) (116,493 bytes)
    - Package Manifest: [`companies/EDELWEISS/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/EDELWEISS/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/previews/)
+
+---
+
+
+### Before-and-After Valuation Comparison (Impact of Evidenced 6.51% Risk-Free Rate Proxy)
+
+| Target Company | Valuation Model | Rf (Before -> After) | WACC (Before -> After) | Fair Value / Sh (Before) | Fair Value / Sh (After) | Delta (₹/sh) | Rationale for Value Movement |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **MM** | SOTP | 6.78% -> **6.51%** | 13.00% -> **12.79%** | ₹2,742.97 | **₹2,742.97** | ₹0.00 | SOTP reflects FY25 segment EBITDA & listed stakes; independent of WACC |
+| **LTM** | FCFF DCF | 6.78% -> **6.51%** | 13.12% -> **12.86%** | ₹2,428.22 | **₹2,497.80** | +₹69.57 | Lower discount rate on explicit FY26E–FY30E cash flows & Gordon TV |
+| **CLEAN** | FCFF DCF | 6.78% -> **6.51%** | 11.91% -> **11.65%** | ₹468.61 | **₹487.28** | +₹18.67 | Lower discount rate on explicit FY26E–FY30E cash flows & Gordon TV |
+| **EDELWEISS** | SOTP | 6.78% -> **6.51%** | 9.70% -> **9.60%** | ₹130.53 | **₹130.53** | ₹0.00 | SOTP reflects segment PAT, Book Value, and AUM; independent of WACC |
 
 ---
 
@@ -143,23 +155,29 @@ All four priority targets have been delivered as uncompressed 16-sheet master te
   - P/E (`=F8/L8`)
 - Target company row (Row 10) dynamically references `Main Financials` FY25 audited outputs (`K10 = 'Main Financials'!I23`, `L10 = 'Main Financials'!I11`, `M10 = 'Main Financials'!I38`). Professional borders and alignment preserved.
 
-### Requirement 6: Beta & WACC Blume Adjustment Linkage
+### Requirement 6: Beta, WACC Blume Adjustment Linkage & Evidenced Risk-Free Rate
 - 104 weekly observations aligned with NIFTY 50 closing prices from Yahoo Finance / NSE closing prices embedded in `Beta` sheet (Rows 8 to 112).
 - Raw beta calculated transparently via `=SLOPE(D9:D112, G9:G112)`.
 - Blume adjustment implemented transparently as `=(K7*K8)+(K11*K10)` with `K8 = 2/3` raw beta weight and `K11 = 1/3` market beta weight (`K10 = 1.0`).
 - WACC beta links directly to Beta sheet via `WACC-DCF!J32 = =Beta!K13` and `WACC-DCF!J24 = =J32`.
 - Target company capital structure weights `E30 = =D30` and `E31 = =E32-E30` dynamically reflect actual company debt and equity.
-- Evaluated WACC:
-  - `MM`: 13.00% (Raw Beta 1.7638 -> Blume Beta 1.5092, Cost of Equity 15.08%)
-  - `LTM`: 13.12% (Raw Beta 1.2569 -> Blume Beta 1.1712, Cost of Equity 13.22%, Cost of Debt after-tax 5.61%, actual capital structure 98.7% equity / 1.3% debt)
-  - `CLEAN`: 11.91% (Raw Beta 0.9006 -> Blume Beta 0.9337, Cost of Equity 11.92%, Cost of Debt after-tax 5.99%, actual capital structure 99.98% equity / 0.02% debt)
-  - `EDELWEISS`: 9.70% (Raw Beta 1.4830 -> Blume Beta 1.3220, Cost of Equity 14.05%, Cost of Debt after-tax 6.45%)
+- **Evidenced Risk-Free Rate ($R_f$)**:
+  - Cell `'WACC-DCF'!J22`: Updated to **6.51%** (0.0651), replacing the unevidenced 6.78% figure.
+  - Sourced directly from allowlisted provider **Trading Economics** (`https://tradingeconomics.com/india/government-bond-yield`), supported by its 14-Oct-2025 published reading ("India 10-Year Bond Yield Eases to Near 1-Week Low") reporting the 10-year benchmark yield just below 6.51% (6.51%) as the exact dated prior-session proxy preceding the 15-Oct-2025 cutoff.
+- **Explicit Classification of Assumptions**:
+  - **Equity Risk Premium (ERP, `'WACC-DCF'!J23` = 5.50%)**: Classified strictly as an **Analyst Macroeconomic Assumption**; not attributed to Trading Economics.
+  - **Marginal Corporate Tax Rate (`'WACC-DCF'!E23` and `'Data Sheet'!K29` = 25.17%)**: Classified strictly as an **Analyst Modeling Assumption** (22% base + 10% surcharge + 4% cess); not called a verified statutory filing quote since allowlisted sites do not publish statutory rate tables.
+- **Evaluated WACC (Updated with 6.51% Rf)**:
+  - `MM`: **12.79%** (Raw Beta 1.7638 -> Blume Beta 1.5092, Cost of Equity 14.81%, Cost of Debt after-tax 5.99%)
+  - `LTM`: **12.86%** (Raw Beta 1.2569 -> Blume Beta 1.1712, Cost of Equity 12.95%, Cost of Debt after-tax 5.61%, actual capital structure 98.7% equity / 1.3% debt)
+  - `CLEAN`: **11.65%** (Raw Beta 0.9006 -> Blume Beta 0.9337, Cost of Equity 11.65%, Cost of Debt after-tax 5.99%, actual capital structure 99.98% equity / 0.02% debt)
+  - `EDELWEISS`: **9.60%** (Raw Beta 1.4830 -> Blume Beta 1.3220, Cost of Equity 13.78%, Cost of Debt after-tax 7.11%)
 
 ### Requirement 7: Single Source-of-Truth Cell & Verified Valuations
 - Single source-of-truth cell `'DCF 1st way'!E42` drives executive cover page `'Model ->'!C9` dynamically.
 - **M&M**: Sum-of-the-Parts (SOTP) with standalone net cash ring-fencing = **₹2,742.97 / share** (E42 = 2742.97, C9 = 2742.97, diff = 0.0010). Note on `B47` discloses MMFS lending debt ring-fencing.
-- **LTM**: Full-Year Annual FCFF DCF Baseline = **₹2,428.22 / share** (E42 = 2428.22, C9 = 2428.22, diff = 0.0043). Explicit FCFF PV ₹17,294.07 Cr, Terminal Value PV ₹43,383.93 Cr @ WACC 13.12% linked to company's own regression Blume Beta `Beta!K13` (1.1712) and terminal g 5.0% linked to `E20`, Cash ₹13,433 Cr, Debt ₹2,187 Cr, Shares 29.62 Cr.
-- **CLEAN**: Full-Year Manufacturing FCFF DCF Baseline = **₹468.61 / share** (E42 = 468.61, C9 = 468.61, diff = 0.0026). Explicit FCFF PV ₹1,004.22 Cr, Terminal Value PV ₹3,578.08 Cr @ WACC 11.91% linked to company's own regression Blume Beta `Beta!K13` (0.9337) and terminal g 5.0% linked to `E20`, Cash ₹401 Cr, Debt ₹2 Cr, Shares 10.63 Cr.
+- **LTM**: Full-Year Annual FCFF DCF Baseline = **₹2,497.80 / share** (E42 = 2497.80, C9 = 2497.80, diff = 0.0029). Explicit FCFF PV ₹17,695.13 Cr, Terminal Value PV ₹45,043.62 Cr @ WACC 12.86% linked to company's own regression Blume Beta `Beta!K13` (1.1712) and terminal g 5.0% linked to `E20`, Cash ₹13,433 Cr, Debt ₹2,187 Cr, Shares 29.62 Cr.
+- **CLEAN**: Full-Year Manufacturing FCFF DCF Baseline = **₹487.28 / share** (E42 = 487.28, C9 = 487.28, diff = 0.0008). Explicit FCFF PV ₹1,014.85 Cr, Terminal Value PV ₹3,765.93 Cr @ WACC 11.65% linked to company's own regression Blume Beta `Beta!K13` (0.9337) and terminal g 5.0% linked to `E20`, Cash ₹401 Cr, Debt ₹2 Cr, Shares 10.63 Cr.
 - **EDELWEISS**: Financial Services Sum-of-the-Parts (SOTP) = **₹130.53 / share** (E42 = 130.53, C9 = 130.53, diff = 0.0046). Industrial DCF cells marked `N/A - Financial Services Entity`; `Intrinsic Growth` industrial metrics marked N/A.
 
 ### Dynamic Sensitivity Testing (8 Tests, 100% Passed with Exact Return)
@@ -188,21 +206,29 @@ All four priority targets have been delivered as uncompressed 16-sheet master te
 
 All externally sourced values strictly originate from the 7 allowlisted websites named in the original template (plus Screener.in), observing the 15-Oct-2025 cutoff:
 
-| Target Company | Worksheet | Cell Coordinates | Sourced Financial Item | Value Basis / Observation | Allowed Source Name | Approved Source URL / Provenance | Observation Date / Period |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **MM** | `Main Financials` | `I11`, `I23`, `I38` | Revenue, EBITDA, PAT | ₹159,211 Cr / ₹30,518 Cr / ₹14,074 Cr | Screener.in | `https://www.screener.in/company/M&M/consolidated/` | 31-Mar-2025 (FY25) |
-| **MM** | `Beta` | `C8:C112`, `F8:F112` | 104-Wk Share Closes & NIFTY 50 | ₹3,497.20 (15-Oct close), NIFTY 25,057.35 | NSE / Yahoo Finance | `https://www.nseindia.com/` / `finance.yahoo.com` | 15-Oct-2025 |
-| **MM** | `WACC-DCF` | `D18`, `J22` | Risk-Free Rate, ERP | 6.78% (India 10Y Yield), 5.50% ERP | Trading Economics | `https://tradingeconomics.com/india/government-bond-yield` | 15-Oct-2025 |
-| **MM** | `BS` | `C4:M15`, `C28:M37` | 11-Year Balance Sheet Lines | Components sum to ₹276,014 Cr (FY25) | Screener.in | `https://www.screener.in/company/M&M/consolidated/` | FY15–FY25 Statutory Actuals |
-| **LTM** | `Main Financials` | `I11`, `I23`, `I38` | Revenue, EBITDA, PAT | ₹38,008 Cr / ₹6,495 Cr / ₹4,603 Cr | Screener.in | `https://www.screener.in/company/LTIM/consolidated/` | 31-Mar-2025 (FY25) |
-| **LTM** | `Beta` | `C8:C112`, `F8:F112` | 104-Wk Share Closes & NIFTY 50 | ₹5,609.50 (15-Oct close), NIFTY 25,057.35 | NSE / Yahoo Finance | `https://www.nseindia.com/` / `finance.yahoo.com` | 15-Oct-2025 |
-| **LTM** | `WACC-DCF` | `D18`, `J22` | Risk-Free Rate, ERP | 6.78% (India 10Y Yield), 5.50% ERP | Trading Economics | `https://tradingeconomics.com/india/government-bond-yield` | 15-Oct-2025 |
-| **LTM** | `BS` | `C4:M15`, `C28:M37` | 11-Year Balance Sheet Lines | Components sum to ₹30,599 Cr (FY25) | Screener.in | `https://www.screener.in/company/LTIM/consolidated/` | FY15–FY25 Statutory Actuals |
-| **CLEAN** | `Main Financials` | `I11`, `I23`, `I38` | Revenue, EBITDA, PAT | ₹967 Cr / ₹388 Cr / ₹264 Cr | Screener.in | `https://www.screener.in/company/CLEAN/consolidated/` | 31-Mar-2025 (FY25) |
-| **CLEAN** | `Beta` | `C8:C112`, `F8:F112` | 104-Wk Share Closes & NIFTY 50 | ₹1,041.40 (15-Oct close), NIFTY 25,057.35 | NSE / Yahoo Finance | `https://www.nseindia.com/` / `finance.yahoo.com` | 15-Oct-2025 |
-| **CLEAN** | `WACC-DCF` | `D18`, `J22` | Risk-Free Rate, ERP | 6.78% (India 10Y Yield), 5.50% ERP | Trading Economics | `https://tradingeconomics.com/india/government-bond-yield` | 15-Oct-2025 |
-| **CLEAN** | `BS` | `C4:M15`, `C28:M37` | 11-Year Balance Sheet Lines | Components sum to ₹1,599 Cr (FY25) | Screener.in | `https://www.screener.in/company/CLEAN/consolidated/` | FY15–FY25 Statutory Actuals |
-| **EDELWEISS** | `Main Financials` | `I11`, `I23`, `I38` | Revenue, Operating Profit, PAT | ₹9,393 Cr / ₹3,360 Cr / ₹536 Cr | Screener.in | `https://www.screener.in/company/EDELWEISS/consolidated/` | 31-Mar-2025 (FY25) |
-| **EDELWEISS** | `Beta` | `C8:C112`, `F8:F112` | 104-Wk Share Closes & NIFTY 50 | ₹108.85 (15-Oct close), NIFTY 25,057.35 | NSE / Yahoo Finance | `https://www.nseindia.com/` / `finance.yahoo.com` | 15-Oct-2025 |
-| **EDELWEISS** | `WACC-DCF` | `D18`, `J22` | Risk-Free Rate, ERP | 6.78% (India 10Y Yield), 5.50% ERP | Trading Economics | `https://tradingeconomics.com/india/government-bond-yield` | 15-Oct-2025 |
-| **EDELWEISS** | `BS` | `C4:M15`, `C28:M37` | 11-Year Balance Sheet Lines | Components sum to ₹41,283 Cr (FY25) | Screener.in | `https://www.screener.in/company/EDELWEISS/consolidated/` | FY15–FY25 Statutory Actuals |
+| Target Company | Worksheet | Cell Coordinates | Financial Metric / Input | Value Basis / Observation | Classification | Allowed Source Provider | Approved Source URL / Evidence | Observation Date / Period |
+| :--- | :--- | :--- | :--- | :--- | :---: | :--- | :--- | :--- |
+| **MM** | `Main Financials` | `I11`, `I23`, `I38` | Sales, EBITDA, PAT | ₹159,211 Cr / ₹30,518 Cr / ₹14,074 Cr | Sourced Fact | Screener.in | `https://www.screener.in/company/M&M/consolidated/` | 31-Mar-2025 (FY25) |
+| **MM** | `Beta` | `C8:C112`, `F8:F112` | 104-Wk Prices & NIFTY 50 | ₹3,497.20 (15-Oct close), NIFTY 25,057.35 | Sourced Fact | NSE / Yahoo Finance | `https://www.nseindia.com/` / `https://finance.yahoo.com/` | 15-Oct-2025 |
+| **MM** | `WACC-DCF` | `J22` | Risk-Free Rate ($R_f$) | 6.51% (India 10Y Benchmark G-Sec) | Prior Proxy | Trading Economics | `https://tradingeconomics.com/india/government-bond-yield` | 14-Oct-2025 (Proxy) |
+| **MM** | `WACC-DCF` | `J23` | Equity Risk Premium | 5.50% | Assumption | Analyst Modeling | Modeling Assumption (unsupported on allowlisted sites) | Forward |
+| **MM** | `WACC-DCF` | `E23` | Corporate Tax Rate | 25.17% | Assumption | Analyst Modeling | Base 22% + 10% surcharge + 4% cess assumption | Forward |
+| **MM** | `BS` | `C4:M15`, `C28:M37` | 11-Year Balance Sheet Lines | Components sum to ₹276,014 Cr (FY25) | Sourced Fact | Screener.in | `https://www.screener.in/company/M&M/consolidated/` | FY15–FY25 Statutory Actuals |
+| **LTM** | `Main Financials` | `I11`, `I23`, `I38` | Sales, EBITDA, PAT | ₹38,008 Cr / ₹6,495 Cr / ₹4,603 Cr | Sourced Fact | Screener.in | `https://www.screener.in/company/LTIM/consolidated/` | 31-Mar-2025 (FY25) |
+| **LTM** | `Beta` | `C8:C112`, `F8:F112` | 104-Wk Prices & NIFTY 50 | ₹5,609.50 (15-Oct close), NIFTY 25,057.35 | Sourced Fact | NSE / Yahoo Finance | `https://www.nseindia.com/` / `https://finance.yahoo.com/` | 15-Oct-2025 |
+| **LTM** | `WACC-DCF` | `J22` | Risk-Free Rate ($R_f$) | 6.51% (India 10Y Benchmark G-Sec) | Prior Proxy | Trading Economics | `https://tradingeconomics.com/india/government-bond-yield` | 14-Oct-2025 (Proxy) |
+| **LTM** | `WACC-DCF` | `J23` | Equity Risk Premium | 5.50% | Assumption | Analyst Modeling | Modeling Assumption (unsupported on allowlisted sites) | Forward |
+| **LTM** | `WACC-DCF` | `E23` | Corporate Tax Rate | 25.17% | Assumption | Analyst Modeling | Base 22% + 10% surcharge + 4% cess assumption | Forward |
+| **LTM** | `BS` | `C4:M15`, `C28:M37` | 11-Year Balance Sheet Lines | Components sum to ₹30,599 Cr (FY25) | Sourced Fact | Screener.in | `https://www.screener.in/company/LTIM/consolidated/` | FY15–FY25 Statutory Actuals |
+| **CLEAN** | `Main Financials` | `I11`, `I23`, `I38` | Sales, EBITDA, PAT | ₹967 Cr / ₹388 Cr / ₹264 Cr | Sourced Fact | Screener.in | `https://www.screener.in/company/CLEAN/consolidated/` | 31-Mar-2025 (FY25) |
+| **CLEAN** | `Beta` | `C8:C112`, `F8:F112` | 104-Wk Prices & NIFTY 50 | ₹1,041.40 (15-Oct close), NIFTY 25,057.35 | Sourced Fact | NSE / Yahoo Finance | `https://www.nseindia.com/` / `https://finance.yahoo.com/` | 15-Oct-2025 |
+| **CLEAN** | `WACC-DCF` | `J22` | Risk-Free Rate ($R_f$) | 6.51% (India 10Y Benchmark G-Sec) | Prior Proxy | Trading Economics | `https://tradingeconomics.com/india/government-bond-yield` | 14-Oct-2025 (Proxy) |
+| **CLEAN** | `WACC-DCF` | `J23` | Equity Risk Premium | 5.50% | Assumption | Analyst Modeling | Modeling Assumption (unsupported on allowlisted sites) | Forward |
+| **CLEAN** | `WACC-DCF` | `E23` | Corporate Tax Rate | 25.17% | Assumption | Analyst Modeling | Base 22% + 10% surcharge + 4% cess assumption | Forward |
+| **CLEAN** | `BS` | `C4:M15`, `C28:M37` | 11-Year Balance Sheet Lines | Components sum to ₹1,599 Cr (FY25) | Sourced Fact | Screener.in | `https://www.screener.in/company/CLEAN/consolidated/` | FY15–FY25 Statutory Actuals |
+| **EDELWEISS** | `Main Financials` | `I11`, `I23`, `I38` | Revenue, Op Profit, PAT | ₹9,393 Cr / ₹3,360 Cr / ₹536 Cr | Sourced Fact | Screener.in | `https://www.screener.in/company/EDELWEISS/consolidated/` | 31-Mar-2025 (FY25) |
+| **EDELWEISS** | `Beta` | `C8:C112`, `F8:F112` | 104-Wk Prices & NIFTY 50 | ₹108.85 (15-Oct close), NIFTY 25,057.35 | Sourced Fact | NSE / Yahoo Finance | `https://www.nseindia.com/` / `https://finance.yahoo.com/` | 15-Oct-2025 |
+| **EDELWEISS** | `WACC-DCF` | `J22` | Risk-Free Rate ($R_f$) | 6.51% (India 10Y Benchmark G-Sec) | Prior Proxy | Trading Economics | `https://tradingeconomics.com/india/government-bond-yield` | 14-Oct-2025 (Proxy) |
+| **EDELWEISS** | `WACC-DCF` | `J23` | Equity Risk Premium | 5.50% | Assumption | Analyst Modeling | Modeling Assumption (unsupported on allowlisted sites) | Forward |
+| **EDELWEISS** | `WACC-DCF` | `E23` | Corporate Tax Rate | 25.17% | Assumption | Analyst Modeling | Base 22% + 10% surcharge + 4% cess assumption | Forward |
+| **EDELWEISS** | `BS` | `C4:M15`, `C28:M37` | 11-Year Balance Sheet Lines | Components sum to ₹41,283 Cr (FY25) | Sourced Fact | Screener.in | `https://www.screener.in/company/EDELWEISS/consolidated/` | FY15–FY25 Statutory Actuals |

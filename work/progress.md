@@ -813,3 +813,35 @@
   - **CLEAN**: `24797c0d82c914c5b0774ec100d8b7e623b831dfea5a255811def8e6f8554775` (112,635 bytes)
   - **EDELWEISS**: `48d0b171bccbf5e41e0a3281b2b59c78acd1b0f6484a4fcedf9cfdfaf41b678b` (116,118 bytes)
 - **Governance**: Prior versioned deliverables preserved intact; `ready: false`, `human_pack_approval: pending`. PR #3 open and unmerged.
+
+## 19. Tightly Scoped Source & Valuation Verification: Evidenced 6.51% Risk-Free Rate Proxy, Assumption Classification & PBT Valuation Trace (2026-10-18 Asia/Kolkata)
+- **User Mandate**:
+  1. Verify the risk-free rate: inspect WACC input cell, source URL, date, and evidence for 6.78%. Replace unevidenced 6.78% with allowlisted observation/dated proxy.
+  2. Classify assumptions correctly: 5.50% ERP is an analyst assumption (not Trading Economics); 25.17% tax rate is an analyst modeling assumption (not statutory rate quote).
+  3. Trace PBT correction into valuation: explain precisely why fair values were unchanged despite PBT fix, prove formula chains.
+  4. Recalculate all 4 workbooks in Excel COM, recheck formula errors, balance differences, WACC, valuation outputs, sensitivities, and update provenance ledger.
+- **Root Cause & Technical Implementation**:
+  1. **Risk-Free Rate Evidenced Proxy**:
+     - Cell: `'WACC-DCF'!J22`.
+     - Allowlisted source Trading Economics (`https://tradingeconomics.com/india/government-bond-yield`) reported on 14-Oct-2025 ("India 10-Year Bond Yield Eases to Near 1-Week Low") that India's benchmark 10-year yield eased to just below 6.51% (6.51%).
+     - Updated $R_f$ from unevidenced 6.78% to **6.51%** (0.0651) as a dated prior-session proxy preceding the 15-Oct-2025 cutoff.
+  2. **Assumption Classifications**:
+     - ERP (`'WACC-DCF'!J23` = 5.50%): Explicitly labeled as **Analyst Macroeconomic Assumption** across workbook comments and documentation.
+     - Tax Rate (`'WACC-DCF'!E23` and `'Data Sheet'!K29` = 25.17%): Explicitly labeled as **Analyst Modeling Assumption** (22% base + 10% surcharge + 4% cess).
+  3. **PBT-to-Valuation Mathematical Proof**:
+     - MM & EDELWEISS: Value is driven by SOTP schedules (`'DCF 1st way'!G60`), aggregating FY25 segment EBITDA/PAT and listed stakes. Consolidated forward PBT does not enter SOTP by methodological design.
+     - LTM & CLEAN: Value is driven by unlevered FCFF DCF starting from Operating EBIT (`Row 5`), not levered PBT (`'Data Sheet'!K28`) or PAT (`'Data Sheet'!K30`). Interest is excluded from unlevered FCFF and subtracted at the equity value bridge.
+  4. **Updated Valuations & WACCs with 6.51% Rf**:
+     - **MM**: WACC = **12.79%** (down from 13.00%), SOTP = **₹2,742.97 / share** (unchanged).
+     - **LTM**: WACC = **12.86%** (down from 13.12%), FCFF DCF = **₹2,497.80 / share** (before: ₹2,428.22, delta: +₹69.57).
+     - **CLEAN**: WACC = **11.65%** (down from 11.91%), FCFF DCF = **₹487.28 / share** (before: ₹468.61, delta: +₹18.67).
+     - **EDELWEISS**: WACC = **9.60%** (down from 9.70%), SOTP = **₹130.53 / share** (unchanged).
+- **Verification Results**:
+  - `python work/recalculate_template_v6_models.py`: Rebuilt in Excel COM 16.0; exactly **0 formula errors** across all 64 sheets; 8/8 dynamic sensitivities pass; 64 PDFs re-exported.
+  - Balance Sheet Integrity: Net integration variance $\Delta A - \Delta L \equiv 0.0000$ Cr for all 4 targets; closing balance checks match opening Screener integer rounding carryovers (MM 0.00 Cr, LTM +1.00 Cr, CLEAN -1.13 Cr, EDELWEISS +1.00 Cr).
+- **Fresh Deliverable Checksums (`template_v6`)**:
+  - **MM**: `a0763519d1be2094efbfd47111c03ea4e26d2bb3a935d38e02eb37286870cb15` (114,551 bytes)
+  - **LTM**: `28f4dc2fa0b603d777af10cc6ad54960407cd6ee4071f7a04b0ea5894f56a6e7` (114,540 bytes)
+  - **CLEAN**: `6c0dcb8f392e4db4ba179e59e4f11d199668bdcc3960a16ddad4179083840931` (112,992 bytes)
+  - **EDELWEISS**: `744399a6979abcc972c69597370e341b5320f2a8cfbb9dd292f25de2515a0f7c` (116,493 bytes)
+- **Governance**: `ready: false`, `human_pack_approval: pending`. PR #3 open and unmerged.

@@ -128,7 +128,7 @@ TARGET_CONFIGS = {
         "cash_bank_fy25": 10791.0,
         "pre_tax_kd": 0.080,
         "marginal_tax_rate": 0.2517,
-        "risk_free_rate": 0.0678,
+        "risk_free_rate": 0.0651,
         "terminal_growth": 0.05,
         "expected_growth": 0.12,
         "reinvestment_rate": 0.45,
@@ -157,13 +157,13 @@ TARGET_CONFIGS = {
         "cash_bank_fy25": 13433.0,
         "pre_tax_kd": 0.075,
         "marginal_tax_rate": 0.2517,
-        "risk_free_rate": 0.0678,
+        "risk_free_rate": 0.0651,
         "terminal_growth": 0.05,
         "expected_growth": 0.11,
         "reinvestment_rate": 0.15,
         "sector_name": "Information Technology Services",
         "primary_method_name": "Full-Year Annual FCFF DCF Baseline",
-        "primary_val_per_share": 2428.22,
+        "primary_val_per_share": 2497.80,
         "peers": [
             {"name": "Tata Consultancy Services", "ticker": "TCS.NS", "cmp": 3520.0, "mcap": 1273400.0, "debt": 8500.0, "cash": 48000.0, "sales": 240893.0, "ebit": 59000.0, "dep": 5100.0, "pat": 46500.0, "beta": 0.8200},
             {"name": "Infosys Limited", "ticker": "INFY.NS", "cmp": 1480.0, "mcap": 614500.0, "debt": 8200.0, "cash": 22000.0, "sales": 153670.0, "ebit": 32500.0, "dep": 4400.0, "pat": 26200.0, "beta": 0.8900},
@@ -186,13 +186,13 @@ TARGET_CONFIGS = {
         "cash_bank_fy25": 401.0,
         "pre_tax_kd": 0.080,
         "marginal_tax_rate": 0.2517,
-        "risk_free_rate": 0.0678,
+        "risk_free_rate": 0.0651,
         "terminal_growth": 0.05,
         "expected_growth": 0.14,
         "reinvestment_rate": 0.45,
         "sector_name": "Specialty Chemicals",
         "primary_method_name": "Full-Year Manufacturing FCFF DCF Baseline (CFCL Unit 4 Commercialization)",
-        "primary_val_per_share": 468.61,
+        "primary_val_per_share": 487.28,
         "peers": [
             {"name": "PI Industries Ltd", "ticker": "PIIND.NS", "cmp": 3555.3, "mcap": 53960.0, "debt": 270.0, "cash": 3200.0, "sales": 7600.0, "ebit": 1850.0, "dep": 310.0, "pat": 1500.0, "beta": 0.8548},
             {"name": "Navin Fluorine International", "ticker": "NAVINFLUOR.NS", "cmp": 4884.2, "mcap": 24210.0, "debt": 1180.0, "cash": 450.0, "sales": 2100.0, "ebit": 380.0, "dep": 140.0, "pat": 280.0, "beta": 0.8537},
@@ -216,7 +216,7 @@ TARGET_CONFIGS = {
         "cash_bank_fy25": 2350.0,
         "pre_tax_kd": 0.095,
         "marginal_tax_rate": 0.2517,
-        "risk_free_rate": 0.0678,
+        "risk_free_rate": 0.0651,
         "terminal_growth": 0.05,
         "expected_growth": 0.10,
         "reinvestment_rate": 0.50,
@@ -385,6 +385,7 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
             ds[f"{col_letter}27"].value = f"={ds_cols[col_idx-1]}27"
             ds[f"{col_letter}28"].value = f"={col_letter}17-SUM({col_letter}18:{col_letter}24)+{col_letter}25-{col_letter}26-{col_letter}27"
             ds[f"{col_letter}29"].value = f"=ROUND({col_letter}28*{cfg['marginal_tax_rate']}, 2)"
+            add_comment(ds[f"{col_letter}29"], "Forecast Corporate Tax = PBT * 25.17% (Analyst Modeling Assumption: 22% base + 10% surcharge + 4% cess; not directly published by allowlisted sources).")
             ds[f"{col_letter}30"].value = f"={col_letter}28-{col_letter}29"
             ds[f"{col_letter}31"].value = f"=ROUND({col_letter}30*0.20, 2)"
         else:
@@ -1127,12 +1128,13 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
     wacc_ws["C31"].value = "=compdata!F10"
     wacc_ws["E22"].value = cfg["pre_tax_kd"]
     wacc_ws["E23"].value = cfg["marginal_tax_rate"]
+    add_comment(wacc_ws["E23"], "Marginal Corporate Tax Rate: 25.17% (Analyst Modeling Assumption: 22% base + 10% surcharge + 4% cess; not directly published by allowlisted sources).")
     wacc_ws["E24"].value = "=E22*(1-E23)"
 
     wacc_ws["J22"].value = cfg["risk_free_rate"]
-    add_comment(wacc_ws["J22"], "India 10-Year Government Bond Yield (6.78% as of 15-Oct-2025)\nSource: Trading Economics / Investing.com / NSE")
+    add_comment(wacc_ws["J22"], "India 10-Year Benchmark Sovereign Bond Yield: 6.51% (Trading Economics dated prior-session proxy as of 14-Oct-2025 preceding 15-Oct-2025 valuation cutoff; article: 'India 10-Year Bond Yield Eases to Near 1-Week Low' reporting yield just below 6.51%). Sourced from Trading Economics (https://tradingeconomics.com/india/government-bond-yield).")
     wacc_ws["J23"].value = 0.0550
-    add_comment(wacc_ws["J23"], "Equity Risk Premium: 5.50% (Analyst Macroeconomic Assumption)")
+    add_comment(wacc_ws["J23"], "Equity Risk Premium: 5.50% (Analyst Macroeconomic Modeling Assumption; not directly reported on allowlisted sources).")
 
     # Set actual capital structure weighting and standard 4-decimal WACC formula
     wacc_ws["E30"].value = "=D30"

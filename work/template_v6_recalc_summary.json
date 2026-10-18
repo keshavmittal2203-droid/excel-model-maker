@@ -1,13 +1,13 @@
 {
   "MM": {
-    "sha256": "8b683e414e52a0e98165bbdda9d8435ef6cca0558338d087edc847227696727c",
+    "sha256": "a0763519d1be2094efbfd47111c03ea4e26d2bb3a935d38e02eb37286870cb15",
     "baseline_val": 2742.968951246983,
     "cover_val": 2742.968951246983,
     "formula_errors": 0,
     "historical_bs_reconciled": true,
     "fy26_unplugged_variance_cr": 0.0,
     "n37_driver_formula": "0",
-    "wacc": 0.13,
+    "wacc": 0.1279,
     "beta_raw": 1.7638072632866026,
     "beta_adj": 1.5092048421910682,
     "sensitivities": [
@@ -39,14 +39,14 @@
     "preview_count": 16
   },
   "LTM": {
-    "sha256": "c8f8323b77a6610f79b77fa52dd9db612e8cb22f0f575d4ad6e0f79e8f50369a",
-    "baseline_val": 2428.224304125199,
-    "cover_val": 2428.224304125199,
+    "sha256": "28f4dc2fa0b603d777af10cc6ad54960407cd6ee4071f7a04b0ea5894f56a6e7",
+    "baseline_val": 2497.797052388102,
+    "cover_val": 2497.797052388102,
     "formula_errors": 0,
     "historical_bs_reconciled": true,
     "fy26_unplugged_variance_cr": 1.0,
     "n37_driver_formula": "=ROUND(M37*1.05, 2)",
-    "wacc": 0.1312,
+    "wacc": 0.1286,
     "beta_raw": 1.2568600127213612,
     "beta_adj": 1.1712400084809074,
     "sensitivities": [
@@ -55,11 +55,11 @@
         "parameter": "WACC-DCF!J23",
         "base": 0.055,
         "perturbed": 0.06,
-        "base_output": 2428.224304125199,
-        "perturbed_output": 2288.061936375806,
-        "delta": -140.16236774939307,
+        "base_output": 2497.797052388102,
+        "perturbed_output": 2350.9011434937843,
+        "delta": -146.89590889431793,
         "direction": "down",
-        "restored": 2428.224304125199,
+        "restored": 2497.797052388102,
         "passed": true
       },
       {
@@ -67,25 +67,25 @@
         "parameter": "DCF 1st way!E20",
         "base": 0.05,
         "perturbed": 0.055,
-        "base_output": 2428.224304125199,
-        "perturbed_output": 2531.092969781821,
-        "delta": 102.86866565662194,
+        "base_output": 2497.797052388102,
+        "perturbed_output": 2608.8400427642373,
+        "delta": 111.0429903761351,
         "direction": "up",
-        "restored": 2428.224304125199,
+        "restored": 2497.797052388102,
         "passed": true
       }
     ],
     "preview_count": 16
   },
   "CLEAN": {
-    "sha256": "24797c0d82c914c5b0774ec100d8b7e623b831dfea5a255811def8e6f8554775",
-    "baseline_val": 468.60735565379747,
-    "cover_val": 468.60735565379747,
+    "sha256": "6c0dcb8f392e4db4ba179e59e4f11d199668bdcc3960a16ddad4179083840931",
+    "baseline_val": 487.279186809507,
+    "cover_val": 487.279186809507,
     "formula_errors": 0,
     "historical_bs_reconciled": true,
     "fy26_unplugged_variance_cr": -1.13,
     "n37_driver_formula": "=ROUND(M37*1.05, 2)",
-    "wacc": 0.1191,
+    "wacc": 0.1164,
     "beta_raw": 0.9005851112403767,
     "beta_adj": 0.9337234074935843,
     "sensitivities": [
@@ -94,11 +94,11 @@
         "parameter": "DCF 1st way!K5",
         "base": 693.0,
         "perturbed": 743.0,
-        "base_output": 468.60735565379747,
-        "perturbed_output": 494.4716154149426,
-        "delta": 25.86425976114515,
+        "base_output": 487.279186809507,
+        "perturbed_output": 514.4564858479353,
+        "delta": 27.17729903842826,
         "direction": "up",
-        "restored": 468.60735565379747,
+        "restored": 487.279186809507,
         "passed": true
       },
       {
@@ -106,25 +106,25 @@
         "parameter": "WACC-DCF!J23",
         "base": 0.055,
         "perturbed": 0.06,
-        "base_output": 468.60735565379747,
-        "perturbed_output": 439.3850887422414,
-        "delta": -29.222266911556062,
+        "base_output": 487.279186809507,
+        "perturbed_output": 455.6966983517344,
+        "delta": -31.58248845777257,
         "direction": "down",
-        "restored": 468.60735565379747,
+        "restored": 487.279186809507,
         "passed": true
       }
     ],
     "preview_count": 16
   },
   "EDELWEISS": {
-    "sha256": "48d0b171bccbf5e41e0a3281b2b59c78acd1b0f6484a4fcedf9cfdfaf41b678b",
+    "sha256": "744399a6979abcc972c69597370e341b5320f2a8cfbb9dd292f25de2515a0f7c",
     "baseline_val": 130.5345587488575,
     "cover_val": 130.5345587488575,
     "formula_errors": 0,
     "historical_bs_reconciled": true,
     "fy26_unplugged_variance_cr": 1.0,
     "n37_driver_formula": "=ROUND(M37*1.05, 2)",
-    "wacc": 0.097,
+    "wacc": 0.096,
     "beta_raw": 1.4830407886535124,
     "beta_adj": 1.3220271924356748,
     "sensitivities": [

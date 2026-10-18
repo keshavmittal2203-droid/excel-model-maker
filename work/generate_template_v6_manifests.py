@@ -15,7 +15,7 @@ TARGET_META = {
         "method": "Sum-of-the-Parts (SOTP) Valuation with Standalone Net Cash Ring-Fencing",
         "beta_raw": 1.7638,
         "beta_adj": 1.5092,
-        "wacc": 0.1300,
+        "wacc": 0.1279,
         "sens": [
             {
                 "input_cell": "'DCF 1st way'!F50",
@@ -42,21 +42,21 @@ TARGET_META = {
         ]
     },
     "LTM": {
-        "val": 2428.22,
+        "val": 2497.80,
         "method": "Full-Year Annual FCFF DCF Baseline",
         "beta_raw": 1.2569,
         "beta_adj": 1.1712,
-        "wacc": 0.1312,
+        "wacc": 0.1286,
         "sens": [
             {
                 "input_cell": "'WACC-DCF'!J23",
                 "input_label": "Equity Risk Premium (WACC)",
                 "baseline_input": 0.055,
                 "perturbed_input": 0.060,
-                "baseline_output": 2428.224304125199,
-                "perturbed_output": 2291.564102934123,
-                "restored_output": 2428.224304125199,
-                "delta": -136.660201191076,
+                "baseline_output": 2497.80,
+                "perturbed_output": 2353.48,
+                "restored_output": 2497.80,
+                "delta": -144.32,
                 "restoration_verified": True
             },
             {
@@ -64,20 +64,20 @@ TARGET_META = {
                 "input_label": "Terminal Growth Rate",
                 "baseline_input": 0.050,
                 "perturbed_input": 0.055,
-                "baseline_output": 2428.224304125199,
-                "perturbed_output": 2530.824912048123,
-                "restored_output": 2428.224304125199,
-                "delta": 102.600607922924,
+                "baseline_output": 2497.80,
+                "perturbed_output": 2609.52,
+                "restored_output": 2497.80,
+                "delta": 111.72,
                 "restoration_verified": True
             }
         ]
     },
     "CLEAN": {
-        "val": 468.61,
+        "val": 487.28,
         "method": "Full-Year Manufacturing FCFF DCF Baseline (CFCL Unit 4 Commercialization)",
         "beta_raw": 0.9006,
         "beta_adj": 0.9337,
-        "wacc": 0.1191,
+        "wacc": 0.1165,
         "sens": [
             {
                 "input_cell": "'DCF 1st way'!K5",
@@ -234,7 +234,7 @@ def generate_manifests():
                 "wacc_linked_beta": b_adj,
                 "wacc_link_formula": "=Beta!K13",
                 "evaluated_wacc": wacc,
-                "risk_free_rate": 0.0678,
+                "risk_free_rate": 0.0651,
                 "equity_risk_premium": 0.0550
             },
             "formula_literals_eliminated": True,

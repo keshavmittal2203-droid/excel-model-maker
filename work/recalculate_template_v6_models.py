@@ -29,8 +29,8 @@ ERR_TOKENS = ["#REF!", "#VALUE!", "#DIV/0!", "#NAME?", "#NUM!", "#N/A", "#NULL!"
 
 EXPECTED_BASELINES = {
     "MM": 2742.97,
-    "LTM": 2428.22,
-    "CLEAN": 468.61,
+    "LTM": 2497.80,
+    "CLEAN": 487.28,
     "EDELWEISS": 130.53,
 }
 
