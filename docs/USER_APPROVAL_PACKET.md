@@ -26,30 +26,30 @@ All four priority targets have been delivered as uncompressed 16-sheet master te
 
 | Target Company | Primary Valuation Methodology | Source-of-Truth Cell (`'DCF 1st way'`) | Cover Link Cell (`'Model ->'`) | Implied Value per Share | 15-Oct-2025 Market Close | Linked WACC (`E26`) | Formula Errors (64 Sheets) | Verified Workbook SHA-256 Checksum |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | `E42` (`=G60`) | `C9` (`=E42`) | **₹2,742.97** | ₹3,497.20 | 13.00% | **0 errors** | `3bbe287593e3c1919ed09781a547be2d82f3449b606f76dcb09ac07d1f204400` |
-| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹2,428.22** | ₹5,609.50 | **13.12%** | **0 errors** | `1d341182a9ff14bbb7f9c8cf9a41be5833f90893c7ffbc637700e367a3c8c393` |
-| **Clean Science and Technology** (`CLEAN`) | Manufacturing FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹468.61** | ₹1,041.40 | **11.91%** | **0 errors** | `875f067ed05d62b04a493ac6be811a77dbe189dab878260e1727e8773d09000a` |
-| **Edelweiss Financial Services** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF N/A) | `E42` (`=G60`) | `C9` (`=E42`) | **₹130.53** | ₹108.85 | 9.70% | **0 errors** | `0b502c2b1c9d0df4432164ef39f7b13a49c8cd564bb95fd2e54d0e1e320fe59d` |
+| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | `E42` (`=G60`) | `C9` (`=E42`) | **₹2,742.97** | ₹3,497.20 | 13.00% | **0 errors** | `1e9483824a97ee2b68240371a4159972096b9bd9789b67ae467cafe6338e6bca` |
+| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹2,428.22** | ₹5,609.50 | **13.12%** | **0 errors** | `2ccac2a60aa03f88b5a8a61828a9a9269699789a74463e0ac76448dd97fae5d9` |
+| **Clean Science and Technology** (`CLEAN`) | Manufacturing FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹468.61** | ₹1,041.40 | **11.91%** | **0 errors** | `98a807a55cad83ef71edd29ddcbb7d6f406b2b3b17b71e0ddd3d007df6deb590` |
+| **Edelweiss Financial Services** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF N/A) | `E42` (`=G60`) | `C9` (`=E42`) | **₹130.53** | ₹108.85 | 9.70% | **0 errors** | `461f8e3f737ad775f66dbe4451264f69344b2e40cb054694fb96d565bfac8406` |
 
 ### Clickable Absolute Deliverable Paths
 
 1. **Mahindra & Mahindra Limited (`MM`)**:
-   - 16-Sheet Workbook: [`companies/MM/template_v6/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/MM-FullTemplate.xlsx) (108,961 bytes)
+   - 16-Sheet Workbook: [`companies/MM/template_v6/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/MM-FullTemplate.xlsx) (109,009 bytes)
    - Package Manifest: [`companies/MM/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/MM/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/previews/)
 
 2. **LTIMindtree Limited (`LTM`)**:
-   - 16-Sheet Workbook: [`companies/LTM/template_v6/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/LTM-FullTemplate.xlsx) (107,941 bytes)
+   - 16-Sheet Workbook: [`companies/LTM/template_v6/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/LTM-FullTemplate.xlsx) (108,846 bytes)
    - Package Manifest: [`companies/LTM/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/LTM/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/previews/)
 
 3. **Clean Science and Technology Limited (`CLEAN`)**:
-   - 16-Sheet Workbook: [`companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx) (106,850 bytes)
+   - 16-Sheet Workbook: [`companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx) (109,075 bytes)
    - Package Manifest: [`companies/CLEAN/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/CLEAN/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/previews/)
 
 4. **Edelweiss Financial Services Limited (`EDELWEISS`)**:
-   - 16-Sheet Workbook: [`companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx) (109,006 bytes)
+   - 16-Sheet Workbook: [`companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx) (110,912 bytes)
    - Package Manifest: [`companies/EDELWEISS/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/EDELWEISS/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/previews/)
 

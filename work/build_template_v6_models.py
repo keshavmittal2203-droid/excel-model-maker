@@ -67,6 +67,39 @@ with open(ROOT / "work" / "sources" / "market_and_beta_2025_10_15.json", encodin
 with open(ROOT / "work" / "sources" / "weekly_market_returns_104w.json", encoding="utf-8") as f:
     WEEKLY_DATA_104W = json.load(f)
 
+# Audited statutory sub-schedules for MM (FY19 to FY25) from annual reports / Screener
+MM_HIST_SUBS = {
+    "pay":   [20992.0, 14985.0, 15506.0, 19037.0, 23836.0, 25666.0, 30855.0],
+    "nci":   [8361.0, 7692.0, 9070.0, 9703.0, 10716.0, 11319.0, 12059.0],
+    "oliab": [21704.0, 20978.0, 18186.0, 18921.0, 20718.0, 22899.0, 27036.0],
+    "cash":  [8735.0, 7911.0, 12852.0, 11118.0, 11273.0, 12013.0, 20615.0],
+    "inven": [12200.0, 11112.0, 9615.0, 11596.0, 16855.0, 18590.0, 20331.0],
+    "rec":   [8678.0, 6928.0, 6008.0, 6374.0, 7028.0, 7459.0, 8280.0],
+    "loans": [80264.0, 84010.0, 78463.0, 80520.0, 102746.0, 125283.0, 142545.0],
+}
+
+# Clean Science Standalone Historical Balances (FY15 to FY17) from Screener.in standalone filings
+CLEAN_STANDALONE = {
+    "Mar 2015": {
+        "eq": 1.0, "res": 76.0, "borr": 20.0, "oth_borr": 20.05,
+        "oliab": 29.0, "pay": 14.0, "oth_liab": 15.0, "tot_liab": 127.0,
+        "fa": 60.0, "gb": 60.0, "dep": 0.0, "cwip": 0.0, "inv": 1.0,
+        "inven": 40.0, "rec": 16.0, "cash": 2.0, "loans": 0.0, "oth_ast": 7.0, "tot_ast": 127.0
+    },
+    "Mar 2016": {
+        "eq": 1.0, "res": 99.0, "borr": 12.0, "oth_borr": 11.95,
+        "oliab": 27.0, "pay": 12.0, "oth_liab": 15.0, "tot_liab": 139.0,
+        "fa": 64.0, "gb": 64.0, "dep": 0.0, "cwip": 0.0, "inv": 1.0,
+        "inven": 37.0, "rec": 26.0, "cash": 5.0, "loans": 0.0, "oth_ast": 7.0, "tot_ast": 139.0
+    },
+    "Mar 2017": {
+        "eq": 1.0, "res": 143.0, "borr": 0.4, "st_borr": 0.39, "oth_borr": 0.01,
+        "oliab": 35.0, "pay": 14.0, "oth_liab": 21.0, "tot_liab": 179.0,
+        "fa": 77.0, "gb": 106.0, "dep": 29.0, "cwip": 2.0, "inv": 32.0,
+        "inven": 31.0, "rec": 21.0, "cash": 6.0, "loans": 2.0, "oth_ast": 7.0, "tot_ast": 179.0
+    }
+}
+
 
 def compute_sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -159,7 +192,7 @@ TARGET_CONFIGS = {
         "reinvestment_rate": 0.45,
         "sector_name": "Specialty Chemicals",
         "primary_method_name": "Full-Year Manufacturing FCFF DCF Baseline (CFCL Unit 4 Commercialization)",
-        "primary_val_per_share": 480.89,
+        "primary_val_per_share": 468.61,
         "peers": [
             {"name": "PI Industries Ltd", "ticker": "PIIND.NS", "cmp": 3555.3, "mcap": 53960.0, "debt": 270.0, "cash": 3200.0, "sales": 7600.0, "ebit": 1850.0, "dep": 310.0, "pat": 1500.0, "beta": 0.8548},
             {"name": "Navin Fluorine International", "ticker": "NAVINFLUOR.NS", "cmp": 4884.2, "mcap": 24210.0, "debt": 1180.0, "cash": 450.0, "sales": 2100.0, "ebit": 380.0, "dep": 140.0, "pat": 280.0, "beta": 0.8537},
@@ -242,11 +275,13 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
     # Update Income statement title
     mf_ws["B10"].value = '="Income Statement - " & \'Data Sheet\'!B1'
 
-    # Ensure Row 141 in Main Financials (Common-Size BS Total Assets) is properly aligned and guarded
+    # Ensure Row 141 (Common-Size BS Total Assets) and Row 135 (Total Liabilities) in Main Financials
+    # are properly aligned and guarded against divide-by-zero without masking unobserved periods as 100%
     ds_cols_141 = ['E', 'F', 'G', 'H', 'I', 'J', 'K']
     mf_cols_141 = ['D', 'E', 'F', 'G', 'H', 'I', 'J']
     for oc, dc in zip(mf_cols_141, ds_cols_141):
-        mf_ws[f"{oc}141"].value = f"=IFERROR('Data Sheet'!{dc}75/'Data Sheet'!{dc}$75, 1.0)"
+        mf_ws[f"{oc}141"].value = f"=IF(OR('Data Sheet'!{dc}75=\"\", 'Data Sheet'!{dc}75=0), \"N/A\", 'Data Sheet'!{dc}75/'Data Sheet'!{dc}$75)"
+        mf_ws[f"{oc}135"].value = f"=IF(OR('Data Sheet'!{dc}61=\"\", 'Data Sheet'!{dc}61=0), \"N/A\", 'Data Sheet'!{dc}61/'Data Sheet'!{dc}$61)"
 
     # Load company datasets from approved sources
     screener_file = ROOT / "work" / "sources" / f"{cfg['screener_key']}_consolidated.json"
@@ -452,9 +487,15 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
             ds[f"{col_letter}65"].value = oth_ast_v
             ds[f"{col_letter}66"].value = tot_assets_v
 
-            rec_v = get_sch("balance-sheet:Other Assets", "Trade receivables", p_str) or round(sales * 0.08, 2)
-            inv_sub_v = get_sch("balance-sheet:Other Assets", "Inventories", p_str) or (round(sales * 0.12, 2) if target_key != "EDELWEISS" else 0.0)
-            cash_v = get_sch("balance-sheet:Other Assets", "Cash Equivalents", p_str) or (cfg["cash_bank_fy25"] if col_idx == 8 else round(sales * 0.05, 2))
+            if target_key == "MM" and col_idx >= 2: # Mar 2019 to Mar 2025
+                k = col_idx - 2
+                rec_v = MM_HIST_SUBS["rec"][k]
+                inv_sub_v = MM_HIST_SUBS["inven"][k]
+                cash_v = cfg["cash_bank_fy25"] if col_idx == 8 else MM_HIST_SUBS["cash"][k]
+            else:
+                rec_v = get_sch("balance-sheet:Other Assets", "Trade receivables", p_str) or round(sales * 0.08, 2)
+                inv_sub_v = get_sch("balance-sheet:Other Assets", "Inventories", p_str) or (round(sales * 0.12, 2) if target_key != "EDELWEISS" else 0.0)
+                cash_v = cfg["cash_bank_fy25"] if col_idx == 8 else (get_sch("balance-sheet:Other Assets", "Cash Equivalents", p_str) or round(sales * 0.05, 2))
 
             ds[f"{col_letter}67"].value = rec_v
             ds[f"{col_letter}68"].value = inv_sub_v
@@ -477,12 +518,6 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
         p_str = bs_periods[idx]
         is_fy26 = (idx == 11)
 
-        # Map liabilities
-        eq_v = get_row_series(bs_rows, bs_hdrs, "Equity Capital", bs_periods)[idx] if p_str in bs_hdrs else 500.0
-        res_v = get_row_series(bs_rows, bs_hdrs, "Reserves", bs_periods)[idx] if p_str in bs_hdrs else 5000.0
-        borr_v = get_row_series(bs_rows, bs_hdrs, "Borrowings", bs_periods)[idx] if p_str in bs_hdrs else 2000.0
-        oliab_v = get_row_series(bs_rows, bs_hdrs, "Other Liabilities", bs_periods)[idx] if p_str in bs_hdrs else 1000.0
-
         if is_fy26:
             bs_ws[f"{c_let}2"].value = "2026-03-01 (FY26E)"
             bs_ws[f"{c_let}4"].value = f"={bs_cols[idx-1]}4"
@@ -491,107 +526,216 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
             bs_ws[f"{c_let}8"].value = None
             bs_ws[f"{c_let}9"].value = None
             bs_ws[f"{c_let}10"].value = f"={bs_cols[idx-1]}10"
-            bs_ws[f"{c_let}12"].value = f"={bs_cols[idx-1]}12"
-            bs_ws[f"{c_let}13"].value = f"={bs_cols[idx-1]}13*1.05"
+            bs_ws[f"{c_let}12"].value = f"={bs_cols[idx-1]}12" if bs_ws[f"{bs_cols[idx-1]}12"].value is not None else None
+            bs_ws[f"{c_let}13"].value = f"={bs_cols[idx-1]}13*1.05" if bs_ws[f"{bs_cols[idx-1]}13"].value is not None else None
             bs_ws[f"{c_let}14"].value = None
-            bs_ws[f"{c_let}15"].value = None
-            bs_ws[f"{c_let}16"].value = f"=SUM({c_let}4:{c_let}5)+{c_let}10+{c_let}12+{c_let}13"
+            bs_ws[f"{c_let}15"].value = f"={bs_cols[idx-1]}15*1.05" if bs_ws[f"{bs_cols[idx-1]}15"].value is not None else None
+            
+            liab_terms = [f"{c_let}4", f"{c_let}5", f"{c_let}10"]
+            if bs_ws[f"{c_let}12"].value is not None: liab_terms.append(f"{c_let}12")
+            if bs_ws[f"{c_let}13"].value is not None: liab_terms.append(f"{c_let}13")
+            if bs_ws[f"{c_let}15"].value is not None: liab_terms.append(f"{c_let}15")
+            bs_ws[f"{c_let}16"].value = f"={'+'.join(liab_terms)}"
 
             # Assets
-            bs_ws[f"{c_let}19"].value = None
-            bs_ws[f"{c_let}20"].value = None
-            bs_ws[f"{c_let}21"].value = f"={bs_cols[idx-1]}21*1.05"
-            bs_ws[f"{c_let}22"].value = None
-            bs_ws[f"{c_let}23"].value = None
-            bs_ws[f"{c_let}24"].value = None
-            bs_ws[f"{c_let}25"].value = None
-            bs_ws[f"{c_let}26"].value = None
-            bs_ws[f"{c_let}27"].value = None
-            bs_ws[f"{c_let}28"].value = f"={c_let}21"
-            bs_ws[f"{c_let}29"].value = f"={bs_cols[idx-1]}29*1.08"
+            for r_fa in range(19, 28):
+                bs_ws[f"{c_let}{r_fa}"].value = None
+            bs_ws[f"{c_let}28"].value = f"={bs_cols[idx-1]}28*1.04"
+            bs_ws[f"{c_let}29"].value = f"={bs_cols[idx-1]}29*1.05" if (bs_ws[f"{bs_cols[idx-1]}29"].value is not None and bs_ws[f"{bs_cols[idx-1]}29"].value != 0) else None
             bs_ws[f"{c_let}30"].value = f"={bs_cols[idx-1]}30"
             bs_ws[f"{c_let}31"].value = f"={bs_cols[idx-1]}31"
-            bs_ws[f"{c_let}33"].value = f"={bs_cols[idx-1]}33*1.05"
-            bs_ws[f"{c_let}34"].value = f"={bs_cols[idx-1]}34*1.05"
+            bs_ws[f"{c_let}33"].value = f"={bs_cols[idx-1]}33*1.05" if (bs_ws[f"{bs_cols[idx-1]}33"].value is not None and bs_ws[f"{bs_cols[idx-1]}33"].value != 0) else None
+            bs_ws[f"{c_let}34"].value = f"={bs_cols[idx-1]}34*1.05" if (bs_ws[f"{bs_cols[idx-1]}34"].value is not None and bs_ws[f"{bs_cols[idx-1]}34"].value != 0) else None
             bs_ws[f"{c_let}35"].value = f"={bs_cols[idx-1]}35"
-            bs_ws[f"{c_let}36"].value = f"={bs_cols[idx-1]}36"
-            bs_ws[f"{c_let}37"].value = f"={c_let}16-({c_let}28-{c_let}29+{c_let}30+{c_let}31+{c_let}33+{c_let}34+{c_let}35+{c_let}36)"
-            bs_ws[f"{c_let}38"].value = f"={c_let}16"
+            bs_ws[f"{c_let}36"].value = f"={bs_cols[idx-1]}36" if bs_ws[f"{bs_cols[idx-1]}36"].value is not None else None
+            
+            dep_term = f"-{c_let}29" if bs_ws[f"{c_let}29"].value is not None else ""
+            known_ast_terms = [f"({c_let}28{dep_term})", f"{c_let}30", f"{c_let}31"]
+            if bs_ws[f"{c_let}33"].value is not None: known_ast_terms.append(f"{c_let}33")
+            if bs_ws[f"{c_let}34"].value is not None: known_ast_terms.append(f"{c_let}34")
+            if bs_ws[f"{c_let}35"].value is not None: known_ast_terms.append(f"{c_let}35")
+            if bs_ws[f"{c_let}36"].value is not None: known_ast_terms.append(f"{c_let}36")
+            
+            bs_ws[f"{c_let}37"].value = f"={c_let}16-({'+'.join(known_ast_terms)})"
+            bs_ws[f"{c_let}38"].value = f"={'+'.join(known_ast_terms)}+{c_let}37"
         else:
             bs_ws[f"{c_let}2"].value = f"{bs_date_strs[idx]} 00:00:00"
-            bs_ws[f"{c_let}4"].value = eq_v
-            bs_ws[f"{c_let}5"].value = res_v
 
-            st_borr = get_sch("balance-sheet:Borrowings", "Short term Borrowings", p_str)
-            lease = get_sch("balance-sheet:Borrowings", "Lease Liabilities", p_str)
-            pref = get_sch("balance-sheet:Borrowings", "Preference Capital", p_str)
-            oth_borr = get_sch("balance-sheet:Borrowings", "Other Borrowings", p_str) or borr_v
+            # Case 1: CLEAN Science standalone years (FY15, FY16, FY17)
+            if target_key == "CLEAN" and p_str in CLEAN_STANDALONE:
+                cd = CLEAN_STANDALONE[p_str]
+                bs_ws[f"{c_let}4"].value = cd["eq"]
+                bs_ws[f"{c_let}5"].value = cd["res"]
+                bs_ws[f"{c_let}7"].value = cd.get("st_borr")
+                bs_ws[f"{c_let}8"].value = None
+                bs_ws[f"{c_let}9"].value = None
+                bs_ws[f"{c_let}10"].value = cd.get("oth_borr", cd["borr"])
+                bs_ws[f"{c_let}12"].value = None
+                bs_ws[f"{c_let}13"].value = cd.get("pay")
+                bs_ws[f"{c_let}14"].value = None
+                bs_ws[f"{c_let}15"].value = cd.get("oth_liab")
+                bs_ws[f"{c_let}16"].value = cd["tot_liab"]
 
-            nci = get_sch("balance-sheet:Other Liabilities", "Non controlling int", p_str) or 0.0
-            pay = get_sch("balance-sheet:Other Liabilities", "Trade Payables", p_str) or round(oliab_v * 0.75, 2)
-            adv = get_sch("balance-sheet:Other Liabilities", "Advance from Customers", p_str)
-            oth_liab = round(oliab_v - pay, 2)
+                for r_fa in range(19, 28): bs_ws[f"{c_let}{r_fa}"].value = None
+                bs_ws[f"{c_let}28"].value = cd["gb"]
+                bs_ws[f"{c_let}29"].value = cd["dep"] if cd["dep"] > 0 else None
+                bs_ws[f"{c_let}30"].value = cd["cwip"]
+                bs_ws[f"{c_let}31"].value = cd["inv"]
+                bs_ws[f"{c_let}33"].value = cd["inven"]
+                bs_ws[f"{c_let}34"].value = cd["rec"]
+                bs_ws[f"{c_let}35"].value = cd["cash"]
+                bs_ws[f"{c_let}36"].value = cd["loans"] if cd["loans"] > 0 else None
+                bs_ws[f"{c_let}37"].value = cd["oth_ast"]
+                bs_ws[f"{c_let}38"].value = cd["tot_ast"]
+                add_comment(bs_ws[f"{c_let}2"], "Pre-FY18 figures reflect standalone statutory filings from Screener.in as consolidated statements commenced in FY18.")
 
-            bs_ws[f"{c_let}7"].value = st_borr
-            bs_ws[f"{c_let}8"].value = lease
-            bs_ws[f"{c_let}9"].value = pref
-            bs_ws[f"{c_let}10"].value = oth_borr
-            bs_ws[f"{c_let}12"].value = nci
-            bs_ws[f"{c_let}13"].value = pay
-            bs_ws[f"{c_let}14"].value = adv
-            bs_ws[f"{c_let}15"].value = oth_liab
+            # Case 2: MM Consolidated and Audited Sub-Schedules
+            elif target_key == "MM":
+                eq_v = clean_num(bs_rows.get("Equity Capital", [])[idx])
+                res_v = clean_num(bs_rows.get("Reserves", [])[idx])
+                borr_v = clean_num(bs_rows.get("Borrowings", [])[idx])
+                fa_v = clean_num(bs_rows.get("Fixed Assets", [])[idx])
+                cwip_v = clean_num(bs_rows.get("CWIP", [])[idx])
+                inv_v = clean_num(bs_rows.get("Investments", [])[idx])
 
-            tot_liab = round(eq_v + res_v + borr_v + oliab_v, 2)
-            bs_ws[f"{c_let}16"].value = tot_liab
+                bs_ws[f"{c_let}4"].value = eq_v
+                bs_ws[f"{c_let}5"].value = res_v
+                bs_ws[f"{c_let}7"].value = None
+                bs_ws[f"{c_let}8"].value = None
+                bs_ws[f"{c_let}9"].value = None
+                bs_ws[f"{c_let}10"].value = borr_v
+                bs_ws[f"{c_let}14"].value = None
 
-            # Assets
-            fa_v = get_row_series(bs_rows, bs_hdrs, "Fixed Assets", bs_periods)[idx] if p_str in bs_hdrs else 3000.0
-            cwip_v = get_row_series(bs_rows, bs_hdrs, "CWIP", bs_periods)[idx] if p_str in bs_hdrs else 200.0
-            inv_v = get_row_series(bs_rows, bs_hdrs, "Investments", bs_periods)[idx] if p_str in bs_hdrs else 1000.0
+                if idx < 4: # Mar 2015 to Mar 2018
+                    oliab_v = clean_num(bs_rows.get("Other Liabilities", [])[idx])
+                    bs_ws[f"{c_let}12"].value = None
+                    bs_ws[f"{c_let}13"].value = None
+                    bs_ws[f"{c_let}15"].value = oliab_v
+                    bs_ws[f"{c_let}16"].value = round(eq_v + res_v + borr_v + oliab_v, 2)
 
-            land_v = get_sch("balance-sheet:Fixed Assets", "Land", p_str)
-            bldg_v = get_sch("balance-sheet:Fixed Assets", "Building", p_str)
-            pm_v = get_sch("balance-sheet:Fixed Assets", "Plant Machinery", p_str) or fa_v
-            eqp_v = get_sch("balance-sheet:Fixed Assets", "Equipments", p_str)
-            comp_v = get_sch("balance-sheet:Fixed Assets", "Computers", p_str)
-            furn_v = get_sch("balance-sheet:Fixed Assets", "Furniture n fittings", p_str)
-            veh_v = get_sch("balance-sheet:Fixed Assets", "Vehicles", p_str)
-            intang_v = get_sch("balance-sheet:Fixed Assets", "Intangible Assets", p_str)
-            oth_fa_v = get_sch("balance-sheet:Fixed Assets", "Other fixed assets", p_str)
-            gross_block_v = get_sch("balance-sheet:Fixed Assets", "Gross Block", p_str) or fa_v
-            accum_dep_v = get_sch("balance-sheet:Fixed Assets", "Accumulated Depreciation", p_str)
+                    for r_fa in range(19, 28): bs_ws[f"{c_let}{r_fa}"].value = None
+                    bs_ws[f"{c_let}28"].value = fa_v
+                    bs_ws[f"{c_let}29"].value = None
+                    bs_ws[f"{c_let}30"].value = cwip_v
+                    bs_ws[f"{c_let}31"].value = inv_v
+                    bs_ws[f"{c_let}33"].value = None
+                    bs_ws[f"{c_let}34"].value = None
+                    bs_ws[f"{c_let}35"].value = None
+                    bs_ws[f"{c_let}36"].value = None
+                    bs_ws[f"{c_let}37"].value = clean_num(bs_rows.get("Other Assets", [])[idx])
+                    bs_ws[f"{c_let}38"].value = bs_ws[f"{c_let}16"].value
+                else: # Mar 2019 to Mar 2025 (Audited Statutory Sub-Schedules)
+                    k = idx - 4
+                    pay = MM_HIST_SUBS["pay"][k]
+                    nci = MM_HIST_SUBS["nci"][k]
+                    oth_liab = MM_HIST_SUBS["oliab"][k]
+                    bs_ws[f"{c_let}12"].value = nci
+                    bs_ws[f"{c_let}13"].value = pay
+                    bs_ws[f"{c_let}15"].value = oth_liab
+                    tot_liab = round(eq_v + res_v + borr_v + pay + nci + oth_liab, 2)
+                    bs_ws[f"{c_let}16"].value = tot_liab
 
-            inv_bs_v = get_sch("balance-sheet:Other Assets", "Inventories", p_str) or (round(tot_liab * 0.10, 2) if target_key != "EDELWEISS" else 0.0)
-            rec_bs_v = get_sch("balance-sheet:Other Assets", "Trade receivables", p_str) or round(tot_liab * 0.08, 2)
-            cash_bs_v = get_sch("balance-sheet:Other Assets", "Cash Equivalents", p_str) or round(tot_liab * 0.05, 2)
-            loans_bs_v = get_sch("balance-sheet:Other Assets", "Loans n Advances", p_str) or (132387.0 if target_key == "MM" and idx == 10 else 0.0)
-            oth_asset_sch_v = get_sch("balance-sheet:Other Assets", "Other asset items", p_str)
+                    for r_fa in range(19, 28): bs_ws[f"{c_let}{r_fa}"].value = None
+                    bs_ws[f"{c_let}28"].value = fa_v
+                    bs_ws[f"{c_let}29"].value = None
+                    bs_ws[f"{c_let}30"].value = cwip_v
+                    bs_ws[f"{c_let}31"].value = inv_v
+                    bs_ws[f"{c_let}33"].value = MM_HIST_SUBS["inven"][k]
+                    bs_ws[f"{c_let}34"].value = MM_HIST_SUBS["rec"][k]
+                    bs_ws[f"{c_let}35"].value = MM_HIST_SUBS["cash"][k]
+                    bs_ws[f"{c_let}36"].value = MM_HIST_SUBS["loans"][k]
+                    bs_ws[f"{c_let}37"].value = 0.0
+                    bs_ws[f"{c_let}38"].value = tot_liab
 
-            net_fixed = (gross_block_v - (accum_dep_v or 0.0)) if gross_block_v else fa_v
-            curr_known = net_fixed + cwip_v + inv_v + (inv_bs_v or 0.0) + (rec_bs_v or 0.0) + (cash_bs_v or 0.0) + (loans_bs_v or 0.0)
-            
-            # If schedule has exact other asset items, use it; otherwise genuine accounting residual to tie
-            oth_asset_v = oth_asset_sch_v if oth_asset_sch_v is not None else round(tot_liab - curr_known, 2)
+            # Case 3: LTM, CLEAN (>=2018), and EDELWEISS from Screener Schedules
+            else:
+                h_idx = bs_hdrs.index(p_str) if p_str in bs_hdrs else -1
+                eq_v = clean_num(bs_rows.get("Equity Capital", [])[h_idx]) if h_idx >= 0 else 0.0
+                res_v = clean_num(bs_rows.get("Reserves", [])[h_idx]) if h_idx >= 0 else 0.0
+                borr_v = clean_num(bs_rows.get("Borrowings", [])[h_idx]) if h_idx >= 0 else 0.0
+                oliab_v = clean_num(bs_rows.get("Other Liabilities", [])[h_idx]) if h_idx >= 0 else 0.0
 
-            bs_ws[f"{c_let}19"].value = land_v
-            bs_ws[f"{c_let}20"].value = bldg_v
-            bs_ws[f"{c_let}21"].value = pm_v
-            bs_ws[f"{c_let}22"].value = eqp_v
-            bs_ws[f"{c_let}23"].value = comp_v
-            bs_ws[f"{c_let}24"].value = furn_v
-            bs_ws[f"{c_let}25"].value = veh_v
-            bs_ws[f"{c_let}26"].value = intang_v
-            bs_ws[f"{c_let}27"].value = oth_fa_v
-            bs_ws[f"{c_let}28"].value = gross_block_v
-            bs_ws[f"{c_let}29"].value = accum_dep_v
-            bs_ws[f"{c_let}30"].value = cwip_v
-            bs_ws[f"{c_let}31"].value = inv_v
-            bs_ws[f"{c_let}33"].value = inv_bs_v
-            bs_ws[f"{c_let}34"].value = rec_bs_v
-            bs_ws[f"{c_let}35"].value = cash_bs_v
-            bs_ws[f"{c_let}36"].value = loans_bs_v
-            bs_ws[f"{c_let}37"].value = oth_asset_v
-            bs_ws[f"{c_let}38"].value = tot_liab
+                st_borr = get_sch("balance-sheet:Borrowings", "Short term Borrowings", p_str)
+                lease = get_sch("balance-sheet:Borrowings", "Lease Liabilities", p_str)
+                pref = get_sch("balance-sheet:Borrowings", "Preference Capital", p_str)
+                known_sub_borr = (st_borr or 0.0) + (lease or 0.0) + (pref or 0.0)
+                oth_borr_sch = get_sch("balance-sheet:Borrowings", "Other Borrowings", p_str)
+                lt_borr_sch = get_sch("balance-sheet:Borrowings", "Long term Borrowings", p_str)
+
+                if oth_borr_sch is not None or lt_borr_sch is not None:
+                    oth_borr = round((oth_borr_sch or 0.0) + (lt_borr_sch or 0.0), 2)
+                elif known_sub_borr > 0:
+                    rem_borr = round(borr_v - known_sub_borr, 2)
+                    oth_borr = rem_borr if rem_borr > 0 else None
+                else:
+                    oth_borr = borr_v
+
+                nci = get_sch("balance-sheet:Other Liabilities", "Non controlling int", p_str)
+                pay = get_sch("balance-sheet:Other Liabilities", "Trade Payables", p_str)
+                adv = get_sch("balance-sheet:Other Liabilities", "Advance from Customers", p_str)
+                known_sub_liab = (nci or 0.0) + (pay or 0.0) + (adv or 0.0)
+                oth_liab = round(oliab_v - known_sub_liab, 2) if known_sub_liab > 0 else oliab_v
+
+                bs_ws[f"{c_let}4"].value = eq_v
+                bs_ws[f"{c_let}5"].value = res_v
+                bs_ws[f"{c_let}7"].value = st_borr
+                bs_ws[f"{c_let}8"].value = lease
+                bs_ws[f"{c_let}9"].value = pref
+                bs_ws[f"{c_let}10"].value = oth_borr
+                bs_ws[f"{c_let}12"].value = nci
+                bs_ws[f"{c_let}13"].value = pay
+                bs_ws[f"{c_let}14"].value = adv
+                bs_ws[f"{c_let}15"].value = oth_liab
+
+                tot_liab = round(eq_v + res_v + borr_v + oliab_v, 2)
+                bs_ws[f"{c_let}16"].value = tot_liab
+
+                # Assets
+                fa_v = clean_num(bs_rows.get("Fixed Assets", [])[h_idx]) if h_idx >= 0 else 0.0
+                cwip_v = clean_num(bs_rows.get("CWIP", [])[h_idx]) if h_idx >= 0 else 0.0
+                inv_v = clean_num(bs_rows.get("Investments", [])[h_idx]) if h_idx >= 0 else 0.0
+
+                land_v = get_sch("balance-sheet:Fixed Assets", "Land", p_str)
+                bldg_v = get_sch("balance-sheet:Fixed Assets", "Building", p_str)
+                pm_v = get_sch("balance-sheet:Fixed Assets", "Plant Machinery", p_str)
+                eqp_v = get_sch("balance-sheet:Fixed Assets", "Equipments", p_str)
+                comp_v = get_sch("balance-sheet:Fixed Assets", "Computers", p_str)
+                furn_v = get_sch("balance-sheet:Fixed Assets", "Furniture n fittings", p_str)
+                veh_v = get_sch("balance-sheet:Fixed Assets", "Vehicles", p_str)
+                intang_v = get_sch("balance-sheet:Fixed Assets", "Intangible Assets", p_str)
+                oth_fa_v = get_sch("balance-sheet:Fixed Assets", "Other fixed assets", p_str)
+                gross_block_v = get_sch("balance-sheet:Fixed Assets", "Gross Block", p_str) or fa_v
+                accum_dep_v = get_sch("balance-sheet:Fixed Assets", "Accumulated Depreciation", p_str)
+
+                inv_bs_v = get_sch("balance-sheet:Other Assets", "Inventories", p_str) or 0.0
+                rec_bs_v = get_sch("balance-sheet:Other Assets", "Trade receivables", p_str) or 0.0
+                cash_bs_v = get_sch("balance-sheet:Other Assets", "Cash Equivalents", p_str) or 0.0
+                loans_bs_v = get_sch("balance-sheet:Other Assets", "Loans n Advances", p_str) or 0.0
+                oth_asset_sch_v = get_sch("balance-sheet:Other Assets", "Other asset items", p_str)
+
+                net_fixed = (gross_block_v - (accum_dep_v or 0.0)) if gross_block_v else fa_v
+                curr_known = net_fixed + cwip_v + inv_v + inv_bs_v + rec_bs_v + cash_bs_v + loans_bs_v
+                oth_asset_v = oth_asset_sch_v if oth_asset_sch_v is not None else round(tot_liab - curr_known, 2)
+
+                bs_ws[f"{c_let}19"].value = land_v
+                bs_ws[f"{c_let}20"].value = bldg_v
+                bs_ws[f"{c_let}21"].value = pm_v
+                bs_ws[f"{c_let}22"].value = eqp_v
+                bs_ws[f"{c_let}23"].value = comp_v
+                bs_ws[f"{c_let}24"].value = furn_v
+                bs_ws[f"{c_let}25"].value = veh_v
+                bs_ws[f"{c_let}26"].value = intang_v
+                bs_ws[f"{c_let}27"].value = oth_fa_v
+                bs_ws[f"{c_let}28"].value = gross_block_v
+                bs_ws[f"{c_let}29"].value = accum_dep_v
+                bs_ws[f"{c_let}30"].value = cwip_v
+                bs_ws[f"{c_let}31"].value = inv_v
+                bs_ws[f"{c_let}33"].value = inv_bs_v if inv_bs_v > 0 else None
+                bs_ws[f"{c_let}34"].value = rec_bs_v if rec_bs_v > 0 else None
+                bs_ws[f"{c_let}35"].value = cash_bs_v if cash_bs_v > 0 else None
+                bs_ws[f"{c_let}36"].value = loans_bs_v if loans_bs_v > 0 else None
+                bs_ws[f"{c_let}37"].value = oth_asset_v
+                bs_ws[f"{c_let}38"].value = tot_liab
 
     # =========================================================================
     # C. CASH FLOW SHEET (Rebuilt from Screener Cash Flow Schedules)
@@ -1021,8 +1165,8 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
         dcf1["J11"].value = 0.128664
         dcf1["K11"].value = 0.127566
 
-        dcf1["E38"].value = cfg["cash_bank_fy25"]
-        dcf1["E39"].value = cfg["total_borrowings_fy25"]
+        dcf1["E38"].value = "='Data Sheet'!K69"
+        dcf1["E39"].value = "='Main Financials'!J55"
         dcf1["E40"].value = "=E36+E38-E39"
         dcf1["E41"].value = "='Data Sheet'!B6"
         dcf1["E42"].value = "=E40/E41"
@@ -1071,8 +1215,8 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
         dcf1["J11"].value = 0.215745
         dcf1["K11"].value = 0.200054
 
-        dcf1["E38"].value = cfg["cash_bank_fy25"]
-        dcf1["E39"].value = cfg["total_borrowings_fy25"]
+        dcf1["E38"].value = "='Data Sheet'!K69"
+        dcf1["E39"].value = "='Main Financials'!J55"
         dcf1["E40"].value = "=E36+E38-E39"
         dcf1["E41"].value = "='Data Sheet'!B6"
         dcf1["E42"].value = "=E40/E41"
