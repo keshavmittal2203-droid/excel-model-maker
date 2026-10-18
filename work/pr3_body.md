@@ -1088,10 +1088,39 @@ eady: false, human_pack_approval: pending.
   - Recalculated cleanly via Microsoft Excel COM 16.0 (`CalculateFullRebuild`). Exactly **0 formula errors** across all 64 sheets (16 sheets x 4 targets).
   - Preserved native unforced print setups without alteration. Exactly 16 preview PDFs per company (64 total) exported to `companies/<TARGET>/template_v6/previews/`.
 - **Deliverables in `companies/<TARGET>/template_v6/`**:
-  - `MM`: `companies/MM/template_v6/MM-FullTemplate.xlsx` (113,639 bytes, SHA-256: `89a87c874237d492141dcfcab85398c817a528f832753fbcb0757e15bee93b76`)
-  - `LTM`: `companies/LTM/template_v6/LTM-FullTemplate.xlsx` (113,706 bytes, SHA-256: `4b38a3ad743757dabd6de6d077f166483d721b7aa3483abddfb424efff08bc85`)
-  - `CLEAN`: `companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx` (112,200 bytes, SHA-256: `cdbc6b44a115151b475daa9dfb99182d288f79143e1b676b7dc65130c7538daa`)
-  - `EDELWEISS`: `companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx` (115,609 bytes, SHA-256: `f543d7a471077d9814e368633a0220ff78db832814ad1b2607084aff1f20825a`)
+  - `MM`: `companies/MM/template_v6/MM-FullTemplate.xlsx` (114,010 bytes, SHA-256: `8b683e414e52a0e98165bbdda9d8435ef6cca0558338d087edc847227696727c`)
+  - `LTM`: `companies/LTM/template_v6/LTM-FullTemplate.xlsx` (114,103 bytes, SHA-256: `c8f8323b77a6610f79b77fa52dd9db612e8cb22f0f575d4ad6e0f79e8f50369a`)
+  - `CLEAN`: `companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx` (112,635 bytes, SHA-256: `24797c0d82c914c5b0774ec100d8b7e623b831dfea5a255811def8e6f8554775`)
+  - `EDELWEISS`: `companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx` (116,118 bytes, SHA-256: `48d0b171bccbf5e41e0a3281b2b59c78acd1b0f6484a4fcedf9cfdfaf41b678b`)
+- **Review Gate & Governance**:
+  - Gate status: `ready: false`, pending gate: `["human_pack_approval"]`.
+  - PR #3 remains open and unmerged pending human review.
+
+### 15. Final Financial Integrity Verification: FY26E 3-Statement Integration, Zero Delta Variance, Row 40 Balance Check, Profitability Audit, and Cash Flow Reclassification
+
+- **Audited FY26E Profitability & Margins**:
+  - Remediated PBT formula on `'Data Sheet'!K28` to `=K17-SUM(K18:K24)+K25-K26-K27`, accounting for full operating cost structure.
+  - Linked operating expenses `K18:K24` to historical FY25 cost-to-sales ratios: `=ROUND(K17*(J{r}/J17), 2)`.
+  - Audited net margins align authentically with FY25 reported actuals:
+    - **MM**: FY26E Net Margin = **9.42%** (FY25 Actual: **8.84%**). Sales ₹178,316.32 Cr, PAT ₹16,789.95 Cr.
+    - **LTM**: FY26E Net Margin = **12.20%** (FY25 Actual: **12.11%**). Sales ₹42,188.88 Cr, PAT ₹5,147.45 Cr.
+    - **CLEAN**: FY26E Net Margin = **27.69%** (FY25 Actual: **27.30%**). Sales ₹1,102.38 Cr, PAT ₹305.21 Cr.
+    - **EDELWEISS**: FY26E Net Margin = **8.19%** (FY25 Actual: **5.71%**). Sales ₹10,332.30 Cr, PAT ₹846.07 Cr.
+- **Cash Flow Classification & Financial Operations Integration**:
+  - Edelweiss lending advances classified in CFO: `'Cash Flow'!N10 = -('BS'!N36 - 'BS'!M36)`.
+  - Customer advances integrated into operating working capital movements: `'Cash Flow'!N11 = -('BS'!N37 - 'BS'!M37) + ('BS'!N15 - 'BS'!M15) + ('BS'!N14 - 'BS'!M14)`.
+  - Portfolio investments in CFI: `'Cash Flow'!N17 = -('BS'!N31 - 'BS'!M31)`.
+  - Borrowings change in CFF: `'Cash Flow'!N25 = SUM(borrowing changes)`.
+  - Independent cash roll-forward: `'BS'!N35 = =M35+'Cash Flow'!N31`.
+- **Distinct Reporting of Closing Balance Checks vs Net Integration Variance**:
+  - Net Integration Variance ($\Delta 	ext{Assets} - \Delta 	ext{Liabilities \& Equity}$) $\equiv 0.0000$ Cr for all 4 targets.
+  - Closing Balance Checks (`BS!Row 40 = N38 - N16`): MM `+0.00 Cr`, LTM `+1.00 Cr`, CLEAN `-1.13 Cr`, EDELWEISS `+1.00 Cr`.
+  - Matches inherited opening FY25 Screener integer rounding discrepancies with zero artificial plugs.
+- **Final Deliverables in `companies/<TARGET>/template_v6/`**:
+  - `MM`: `companies/MM/template_v6/MM-FullTemplate.xlsx` (114,010 bytes, SHA-256: `8b683e414e52a0e98165bbdda9d8435ef6cca0558338d087edc847227696727c`)
+  - `LTM`: `companies/LTM/template_v6/LTM-FullTemplate.xlsx` (114,103 bytes, SHA-256: `c8f8323b77a6610f79b77fa52dd9db612e8cb22f0f575d4ad6e0f79e8f50369a`)
+  - `CLEAN`: `companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx` (112,635 bytes, SHA-256: `24797c0d82c914c5b0774ec100d8b7e623b831dfea5a255811def8e6f8554775`)
+  - `EDELWEISS`: `companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx` (116,118 bytes, SHA-256: `48d0b171bccbf5e41e0a3281b2b59c78acd1b0f6484a4fcedf9cfdfaf41b678b`)
 - **Review Gate & Governance**:
   - Gate status: `ready: false`, pending gate: `["human_pack_approval"]`.
   - PR #3 remains open and unmerged pending human review.

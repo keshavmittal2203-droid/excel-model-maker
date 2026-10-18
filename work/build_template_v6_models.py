@@ -383,10 +383,10 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
             ds[f"{col_letter}25"].value = f"={ds_cols[col_idx-1]}25"
             ds[f"{col_letter}26"].value = f"={ds_cols[col_idx-1]}26*(1+0.05)"
             ds[f"{col_letter}27"].value = f"={ds_cols[col_idx-1]}27"
-            ds[f"{col_letter}28"].value = f"={col_letter}17-{col_letter}24+{col_letter}25-{col_letter}26-{col_letter}27"
-            ds[f"{col_letter}29"].value = f"={col_letter}28*{cfg['marginal_tax_rate']}"
+            ds[f"{col_letter}28"].value = f"={col_letter}17-SUM({col_letter}18:{col_letter}24)+{col_letter}25-{col_letter}26-{col_letter}27"
+            ds[f"{col_letter}29"].value = f"=ROUND({col_letter}28*{cfg['marginal_tax_rate']}, 2)"
             ds[f"{col_letter}30"].value = f"={col_letter}28-{col_letter}29"
-            ds[f"{col_letter}31"].value = f"={col_letter}30*0.20"
+            ds[f"{col_letter}31"].value = f"=ROUND({col_letter}30*0.20, 2)"
         else:
             ds[f"{col_letter}16"].value = f"{date_strs[col_idx]} 00:00:00"
             ds[f"{col_letter}17"].value = sales
@@ -420,13 +420,15 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
             ds[f"{col_letter}23"].value = None # Combined in other expenses
             ds[f"{col_letter}24"].value = oth_val
         else:
-            ds[f"{col_letter}18"].value = f"={col_letter}17*0.45" if target_key in ("MM", "CLEAN") else None
+            prev_col_ds = ds_cols[col_idx-1]
+            for r_exp in [18, 21, 22, 24]:
+                if ds[f"{prev_col_ds}{r_exp}"].value is not None:
+                    ds[f"{col_letter}{r_exp}"].value = f"=ROUND({col_letter}17*({prev_col_ds}{r_exp}/{prev_col_ds}17), 2)"
+                else:
+                    ds[f"{col_letter}{r_exp}"].value = None
             ds[f"{col_letter}19"].value = None
             ds[f"{col_letter}20"].value = None
-            ds[f"{col_letter}21"].value = f"={col_letter}17*0.12"
-            ds[f"{col_letter}22"].value = f"={col_letter}17*0.10" if target_key != "LTM" else f"={col_letter}17*0.64"
             ds[f"{col_letter}23"].value = None
-            ds[f"{col_letter}24"].value = f"={col_letter}17*0.15"
 
         # Clear quarterly rows
         for qr in range(42, 51):
@@ -811,10 +813,14 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
             cf_ws[f"{c_let}8"].value = f"=-('BS'!{c_let}33-'BS'!{prev_col}33)" if bs_ws[f"{c_let}33"].value is not None else 0.0
             cf_ws[f"{c_let}9"].value = f"='BS'!{c_let}13-'BS'!{prev_col}13" if bs_ws[f"{c_let}13"].value is not None else 0.0
             cf_ws[f"{c_let}10"].value = f"=-('BS'!{c_let}36-'BS'!{prev_col}36)" if bs_ws[f"{c_let}36"].value is not None else 0.0
+            add_comment(cf_ws[f"{c_let}10"], "Forecast Loans & Advances Cash Flow = -('BS'!N36 - 'BS'!M36). For financial services (Edelweiss) and finance subsidiary exposure (M&M MMFS), lending portfolio disbursements/recoveries are classified under Operating Activity.")
+            
+            adv_term = f"+('BS'!{c_let}14-'BS'!{prev_col}14)" if bs_ws[f"{c_let}14"].value is not None else ""
             if target_key == "MM":
-                cf_ws[f"{c_let}11"].value = f"='BS'!{c_let}15-'BS'!{prev_col}15"
+                cf_ws[f"{c_let}11"].value = f"='BS'!{c_let}15-'BS'!{prev_col}15{adv_term}"
             else:
-                cf_ws[f"{c_let}11"].value = f"=-('BS'!{c_let}37-'BS'!{prev_col}37)+('BS'!{c_let}15-'BS'!{prev_col}15)"
+                cf_ws[f"{c_let}11"].value = f"=-('BS'!{c_let}37-'BS'!{prev_col}37)+('BS'!{c_let}15-'BS'!{prev_col}15){adv_term}"
+            add_comment(cf_ws[f"{c_let}11"], "Forecast Other Working Capital Items = -Delta Other Assets + Delta Other Liabilities + Delta Customer Advances.")
             cf_ws[f"{c_let}12"].value = f"=SUM({c_let}7:{c_let}11)"
             cf_ws[f"{c_let}13"].value = 0.0
 
@@ -827,24 +833,30 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
             cf_ws[f"{c_let}15"].value = f"=-ROUND('Data Sheet'!K26*{capex_mult:.2f}, 2)"
             add_comment(cf_ws[f"{c_let}15"], f"Forecast CapEx driver = {capex_mult:.2f}x Depreciation Expense ('Data Sheet'!K26).")
             cf_ws[f"{c_let}16"].value = 0.0
-            cf_ws[f"{c_let}17"].value = 0.0
+            cf_ws[f"{c_let}17"].value = f"=-('BS'!{c_let}31-'BS'!{prev_col}31)" if bs_ws[f"{c_let}31"].value is not None else 0.0
+            add_comment(cf_ws[f"{c_let}17"], "Forecast Net Investments Cash Flow = -('BS'!N31 - 'BS'!M31), explicitly modeling financial and strategic portfolio movements.")
             cf_ws[f"{c_let}18"].value = 0.0
             cf_ws[f"{c_let}19"].value = 0.0
             cf_ws[f"{c_let}20"].value = 0.0
             cf_ws[f"{c_let}21"].value = 0.0
             cf_ws[f"{c_let}22"].value = 0.0
-            cf_ws[f"{c_let}14"].value = f"={c_let}15"
+            cf_ws[f"{c_let}14"].value = f"={c_let}15+{c_let}17"
 
             # 3. Financing Activity (CFF) Integration
-            cf_ws[f"{c_let}24"].value = 0.0
-            cf_ws[f"{c_let}25"].value = f"='BS'!{c_let}10-'BS'!{prev_col}10" if bs_ws[f"{c_let}10"].value is not None else 0.0
+            cf_ws[f"{c_let}24"].value = f"='BS'!{c_let}4-'BS'!{prev_col}4"
+            borr_terms = []
+            for r_b in [7, 8, 9, 10]:
+                if bs_ws[f"{c_let}{r_b}"].value is not None:
+                    borr_terms.append(f"('BS'!{c_let}{r_b}-'BS'!{prev_col}{r_b})")
+            cf_ws[f"{c_let}25"].value = f"={'+'.join(borr_terms)}" if borr_terms else 0.0
+            add_comment(cf_ws[f"{c_let}25"], "Forecast Borrowings Cash Flow = Net change in total borrowings across short-term, lease, preference, and other debt.")
             cf_ws[f"{c_let}26"].value = 0.0
             cf_ws[f"{c_let}27"].value = 0.0
             cf_ws[f"{c_let}28"].value = "=-'Data Sheet'!K31"
             add_comment(cf_ws[f"{c_let}28"], "Forecast Dividends Paid = -'Data Sheet'!K31.")
             cf_ws[f"{c_let}29"].value = 0.0
             cf_ws[f"{c_let}30"].value = 0.0
-            cf_ws[f"{c_let}23"].value = f"={c_let}25+{c_let}28"
+            cf_ws[f"{c_let}23"].value = f"={c_let}24+{c_let}25+{c_let}28"
 
             # 4. Cash Flow Summary & Ratios
             cf_ws[f"{c_let}31"].value = f"={c_let}5+{c_let}14+{c_let}23"
