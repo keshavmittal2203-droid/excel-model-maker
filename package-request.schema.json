@@ -3,7 +3,7 @@
   "title": "Package Build Request",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "package_id", "workbook", "presentation"],
+  "required": ["schema_version", "package_id", "workbook"],
   "properties": {
     "$schema": { "type": "string" },
     "schema_version": { "const": 1 },
@@ -77,29 +77,10 @@
         "adapter": { "type": "string" }
       }
     },
-    "presentation": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["template", "template_sha256", "deck_pack", "deck_inputs", "output_name"],
-      "properties": {
-        "template": { "type": "string", "minLength": 1 },
-        "template_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
-        "deck_pack": { "type": "string", "minLength": 1 },
-        "deck_inputs": { "type": "string", "minLength": 1 },
-        "output_name": { "type": "string", "minLength": 1 },
-        "selected_slides": {
-          "type": "array",
-          "items": { "type": "integer" }
-        }
-      }
-    },
     "exports": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "export_slide_pngs": { "type": "boolean" },
-        "png_width": { "type": "integer", "minimum": 100 },
-        "png_height": { "type": "integer", "minimum": 100 },
         "export_sheet_pdfs": { "type": "boolean" },
         "pdf_sheets": {
           "type": "array",

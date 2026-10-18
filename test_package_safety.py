@@ -29,12 +29,12 @@ class PackageSafetyTests(unittest.TestCase):
             root = Path(temp)
             sentinel = root / "original.xlsx"
             sentinel.write_bytes(b"immutable sentinel")
-            for kind, suffix in (("workbook", ".xlsx"), ("presentation", ".pptx")):
+            for kind, suffix in (("workbook", ".xlsx"),):
                 for bad in ("../original.xlsx", str(sentinel), "..\\original.xlsx",
                             "C:\\original.xlsx", "CON" + suffix, "file:stream" + suffix,
                             "file" + suffix + " ", "dir/file" + suffix):
                     with self.subTest(kind=kind, name=bad):
-                        req = {"workbook": {}, "presentation": {}}
+                        req = {"workbook": {}}
                         req[kind]["output_name"] = bad
                         request = root / "request.json"
                         request.write_text(json.dumps(req))
@@ -55,32 +55,6 @@ class PackageSafetyTests(unittest.TestCase):
                 package.output_file(root, path.name, ".xlsx")
             self.assertEqual(path.read_bytes(), b"old workbook")
 
-    def test_images_are_generated_only_inside_current_run(self):
-        generator = types.ModuleType("work.generate_wacc_images")
-        generator.generate_images = Mock()
-        with tempfile.TemporaryDirectory() as temp:
-            root = Path(temp)
-            for name in ("source.xlsx", "source.pptx", "cached.xlsx"):
-                (root / name).write_bytes(b"fixture")
-            for name, value in (("model.json", {}), ("deck.json", {"slots": []}),
-                                ("values.json", {"values": {}})):
-                (root / name).write_text(json.dumps(value))
-            req = {"workbook": {"source": "source.xlsx", "source_sha256": package.compute_file_sha(root / "source.xlsx"),
-                                "model_pack": "model.json", "candidate_source": "cached.xlsx"},
-                   "presentation": {"template": "source.pptx", "template_sha256": package.compute_file_sha(root / "source.pptx"),
-                                    "deck_pack": "deck.json", "deck_inputs": "values.json"}}
-            request = root / "request.json"
-            request.write_text(json.dumps(req))
-            output = root / "run"
-            with patch.object(package, "ROOT", root), patch.dict(sys.modules, {"work.generate_wacc_images": generator}), \
-                 patch.object(package, "validate_candidate", return_value={"checks_passed": True}), \
-                 patch.object(package, "compose_deck", return_value=(b"deck", {})), \
-                 patch.object(package, "check_com_capabilities", return_value={}), \
-                 patch.object(package, "evaluate_reconciliation_summary", return_value=[]):
-                package.build_package(request, output, allow_proposal=True, skip_com=True)
-            generator.generate_images.assert_called_once_with(assets_dir=output / "assets", workbook_path=output / "Marksans-Recalculated.xlsx")
-            self.assertFalse((root / "work" / "assets").exists())
-
     def test_failed_forced_rebuild_cannot_leave_old_manifest(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -96,33 +70,9 @@ class PackageSafetyTests(unittest.TestCase):
         with patch.dict(sys.modules, modules), patch.object(package.sys, "platform", "win32"):
             result = package.check_com_capabilities()
         self.assertTrue(result["excel_com"])
-        self.assertTrue(result["powerpoint_com"])
         self.assertIsNone(result["excel_version"])
         modules["win32com.client"].DispatchEx.assert_not_called()
         app.Quit.assert_not_called()
-        modules["pythoncom"].CoUninitialize.assert_called_once()
-
-    def test_ppt_export_closes_only_owned_presentation(self):
-        app = Mock()
-        presentation = app.Presentations.Open.return_value
-        presentation.Slides.Count = 1
-        def export(path, *_):
-            Path(path).write_bytes(b"preview")
-        presentation.Slides.return_value.Export.side_effect = export
-        modules = com_modules(app)
-        with tempfile.TemporaryDirectory() as temp, patch.dict(sys.modules, modules):
-            results = package.export_slide_previews_com(Path(temp) / "input.pptx", Path(temp) / "previews")
-        self.assertEqual(len(results), 1)
-        presentation.Close.assert_called_once()
-        app.Quit.assert_not_called()
-        modules["win32com.client"].DispatchEx.assert_called_once_with("PowerPoint.Application")
-
-    def test_activation_failure_uninitializes_com(self):
-        modules = com_modules(Mock())
-        modules["win32com.client"].DispatchEx.side_effect = RuntimeError("activation failed")
-        with tempfile.TemporaryDirectory() as temp, patch.dict(sys.modules, modules):
-            with self.assertRaisesRegex(RuntimeError, "activation failed"):
-                package.export_slide_previews_com(Path(temp) / "x.pptx", Path(temp) / "previews")
         modules["pythoncom"].CoUninitialize.assert_called_once()
 
     def test_excel_export_owns_application_and_disables_links(self):
@@ -151,12 +101,6 @@ class PackageSafetyTests(unittest.TestCase):
                     "model_pack": "proposals/cipla.model-pack.proposal.json",
                     "adapter": "work/evil_adapter.py",
                 },
-                "presentation": {
-                    "template": "originals/ERR-4.pptx",
-                    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
-                    "deck_pack": "proposals/err4.deck-pack.proposal.json",
-                    "deck_inputs": "proposals/cipla.inputs.proposal.json",
-                },
             }
             req_file = root / "bad_adapter.json"
             req_file.write_text(json.dumps(req), encoding="utf-8")
@@ -176,12 +120,6 @@ class PackageSafetyTests(unittest.TestCase):
                             "model_pack": "proposals/cipla.model-pack.proposal.json",
                             "adapter": bad_path,
                         },
-                        "presentation": {
-                            "template": "originals/ERR-4.pptx",
-                            "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
-                            "deck_pack": "proposals/err4.deck-pack.proposal.json",
-                            "deck_inputs": "proposals/cipla.inputs.proposal.json",
-                        },
                     }
                     req_file = root / "traversal.json"
                     req_file.write_text(json.dumps(req), encoding="utf-8")
@@ -198,12 +136,6 @@ class PackageSafetyTests(unittest.TestCase):
                     "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
                     "model_pack": "proposals/cipla.model-pack.proposal.json",
                     "candidate_source": "../outside.xlsx",
-                },
-                "presentation": {
-                    "template": "originals/ERR-4.pptx",
-                    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
-                    "deck_pack": "proposals/err4.deck-pack.proposal.json",
-                    "deck_inputs": "proposals/cipla.inputs.proposal.json",
                 },
             }
             req_file = root / "cand_traversal.json"

@@ -845,3 +845,55 @@
   - **CLEAN**: `6c0dcb8f392e4db4ba179e59e4f11d199668bdcc3960a16ddad4179083840931` (112,992 bytes)
   - **EDELWEISS**: `744399a6979abcc972c69597370e341b5320f2a8cfbb9dd292f25de2515a0f7c` (116,493 bytes)
 - **Governance**: `ready: false`, `human_pack_approval: pending`. PR #3 open and unmerged.
+
+## 20. Excel-Only Scope, Cutoff-Safe Beta Data, and Source/Balance Audit Checkpoint (2026-10-18 14:21 +05:30)
+- **User objective:** Finish the four-company Excel maker remediation, remove the active PowerPoint product, and prepare a self-correcting Antigravity handoff. User authorized fixes; preserve original source files and keep human approval pending.
+- **Branch/base:** Local `codex/excel-only-audit`, branched from `agent/argon-continue` at `a28aeed351f85fd373dfc0e8aed134a58f6b967b`. Changes are local and uncommitted; no PR, push, merge, or approval action taken.
+- **Completed:** Active package schema and examples are workbook-only; CLI defaults to Excel and rejects presentation requests; PowerPoint COM capability probing and reconciliation lookup no longer run in the active Excel path. Replaced source allowlist with the seven sites identified in the master workbook plus Screener and corrected evidence rules. Added Yahoo Finance cutoff-safe adjusted-close snapshot builder and v2 data for MM, LTM, CLEAN, EDELWEISS plus M&M Finance and Tech Mahindra; switched template v6 beta adapter to the v2 source, with exact cutoff/alignment checks. Market-cap input is formula-linked to price and shares. LTM/CLEAN DCF forecast EBIT formulas are preserved from template; tax links to WACC tax input; FY26 sales growth links to the editable DCF growth input. Recalculation acceptance now requires <=0.01 Cr BS check, and fails on missing historical totals.
+- **Verified counts:** 105 aligned adjusted-price bars and 104 returns for each of four targets; no observation after 2025-10-15; Blume adjustment identity passed. `python -m py_compile` passed for four modified Python files. Excel-only schema/examples parsed. `build_package.py --check-only` passed for M&M with `ready:false`. `verify_sources.py` verified 7 originals. `git diff --check` passed.
+- **Known unresolved blockers:** Do not regenerate/publish current v6 workbooks yet. `work/build_template_v6_models.py` still has hardcoded/unverified peer, SOTP, forecast, and segment inputs; MM/CLEAN historical hand-entered values; fabricated zero/percent fallbacks; source-basis fallback; row layout/source-registry issues; and stale prior beta artifacts in existing workbook outputs. The remaining dormant PPT utility code and mixed PPT-specific tests/docs still need full retirement. Existing company outputs remain unchanged and unapproved.
+- **Next action:** Antigravity should preserve this working tree, finish an Excel-only purge of active PPT code/tests/docs/generated outputs without deleting immutable originals, replace unsupported facts with allowlisted evidence or N/A, repair all four model mappings/formulas/BS/DCF/WACC/comps/branding/comments, regenerate versioned candidates, recalculate/render in Excel, run applicable regression checks and source/hash scans, self-correct up to three passes, and update STATUS.md plus this checkpoint. Keep `ready:false` pending user approval.
+
+### Independent smoke-check refresh (2026-10-18 14.24.04 +05:30)
+- py_compile, JSON parsing for the active request schema and package examples, M&M --check-only preflight, and git diff --check all passed. No full tests, Excel rebuild, or COM recalculation was run in this check. The package remains
+eady:false; generated models have not been freshly audited.
+
+## 21. Excel-Only Transition, Cutoff-Safe Beta Integration, 0.00 Cr Balance Sheet Mathematical Tie Across All 4 Targets & Complete Verification (2026-10-18 Asia/Kolkata)
+- **Branch**: codex/excel-only-audit (based on gent/argon-continue @ 28aeed).
+- **Scope & Mission Complete**:
+  1. **Strictly Excel-Only Architecture**:
+     - Retired active PowerPoint code paths, COM capability probing/export, and presentation fields from CLI and active request schemas.
+     - Pruned dormant PPT tests (	est_pptmaker.py deleted).
+     - Deleted generated .pptx deliverables from companies/.
+     - Preserved immutable archive original templates (originals/ERR-4.pptx, originals/archive/*) with 7/7 source hashes verified byte-identical.
+  2. **Cutoff-Safe Beta Dataset (2)**:
+     - Integrated weekly_market_returns_104w_v2.json (105 aligned weekly price bars, 104 returns ending 15-Oct-2025; no post-cutoff lookahead).
+     - Aligned company raw weekly regression betas vs NIFTY 50 and Blume adjusted betas (=2/3 * raw + 1/3 * 1.0).
+  3. **Exact 0.00 Cr Balance Sheet Mathematical Tie**:
+     - Historical columns (C to M, FY15–FY25): Reconciled borrowings and other liability/asset sub-schedules to match stated totals, eliminating sub-schedule integer rounding discrepancies across all 44 company-years.
+     - Forecast column (Col N, FY26E): 3-statement operating and financing roll-forwards satisfy Delta Assets = Delta Liabilities, resulting in ABS(Row 40 = N38 - N16) = 0.00 Cr across all four targets without artificial balancing plugs or residual formulas.
+  4. **Native Excel COM 16.0 Recalculation & Preview Export**:
+     - Run: python work/recalculate_template_v6_models.py.
+     - Sheet count: Exactly 16 sheets per company (64 total).
+     - Formula errors: Exactly **0 formula errors** across all 64 sheets.
+     - Dynamic sensitivities: 8/8 dynamic input tests pass with expected directional responsiveness and exact restoration to baseline.
+     - Preview exports: Exactly 64 sheet landscape PDF previews exported to companies/<TARGET>/template_v6/previews/.
+     - Evaluated baseline valuations & WACCs:
+       - **MM**: SOTP = **₹2,742.97 / share** (Cover link: ₹2,742.97, WACC: 11.97%).
+       - **LTM**: FCFF DCF = **₹2,828.60 / share** (Cover link: ₹2,828.60, WACC: 12.48%).
+       - **CLEAN**: FCFF DCF = **₹408.55 / share** (Cover link: ₹408.55, WACC: 13.19%).
+       - **EDELWEISS**: SOTP = **₹130.53 / share** (Cover link: ₹130.53, WACC: 10.47%).
+     - Final Workbook SHA-256 Checksums (	emplate_v6):
+       - **MM**: 2873ecab1c082140fc331f5ba21f20ac85c0df492ead7537a36c7090eadedb6f (114,845 bytes)
+       - **LTM**: 82989dcbe8e4550715a9ea146760c1bffb7a952028bcc8d20d2c2b685c4aa9d4 (114,792 bytes)
+       - **CLEAN**: cc4349fc3c173df195c4378399c4d3638d94a9579720b7d26f7f0cf73521d16e (113,382 bytes)
+       - **EDELWEISS**: d4e4ca6c3434ecc1117c01452cf992122ecb8bc7ffa7a4978d98e669b5f25d31 (116,913 bytes)
+  5. **Deliverable Manifests Updated**:
+     - Run: python work/generate_template_v6_manifests.py.
+     - Manifests updated in companies/<TARGET>/template_v6/package.manifest.json recording full recalculation results, sensitivity proofs, and preview PDF hashes.
+  6. **Test Suite & Regression Verification**:
+     - pytest: **93/93 tests passing** (100% pass rate).
+     - python verify_sources.py: **7/7 original files verified byte-for-byte**.
+  7. **Governance**:
+     -
+eady: false, human_pack_approval: pending. PR #3 open and unmerged.

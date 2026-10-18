@@ -3,7 +3,7 @@
   "schema_version": 1,
   "package_id": "cipla-overview-fy25",
   "name": "Cipla Limited Financial Model & Executive Overview",
-  "description": "Second-company demonstration of template-based package generation for Cipla Limited using ERR-4.pptx design and uploaded workbook valuation methodology.",
+  "description": "Historical Excel template adaptation example for Cipla Limited. It is not one of the current four priority targets.",
   "company": {
     "name": "Cipla Limited",
     "ticker": "CIPLA",
@@ -39,42 +39,41 @@
     ],
     "source_data": {
       "user_supplied_facts": {
-        "current_market_price": 1301.00,
+        "current_market_price": 1301.0,
         "shares_outstanding_cr": 80.79,
         "market_capitalization_cr": 105107.79,
         "total_borrowings_cr": 613.77
       },
       "source_extracted_facts": {
-        "revenue_operations_fy25_cr": 27548.00,
-        "operating_ebitda_fy25_cr": 7123.00,
-        "depreciation_fy25_cr": 1107.00,
-        "ebit_fy25_cr": 6016.00,
-        "pbt_fy25_cr": 6660.00,
-        "pat_net_profit_fy25_cr": 4873.00,
-        "cash_from_operations_fy25_cr": 5005.00,
-        "capex_net_fy25_cr": -1240.00,
+        "revenue_operations_fy25_cr": 27548.0,
+        "operating_ebitda_fy25_cr": 7123.0,
+        "depreciation_fy25_cr": 1107.0,
+        "ebit_fy25_cr": 6016.0,
+        "pbt_fy25_cr": 6660.0,
+        "pat_net_profit_fy25_cr": 4873.0,
+        "cash_from_operations_fy25_cr": 5005.0,
+        "capex_net_fy25_cr": -1240.0,
         "current_ratio_fy25": 3.85,
         "quick_ratio_fy25": 2.84
       },
       "analyst_assumptions": {
-        "risk_free_rate_pct": 7.30,
+        "risk_free_rate_pct": 7.3,
         "equity_risk_premium_pct": 9.07,
         "total_market_return_pct": 16.37,
         "peer_beta": 0.547,
-        "pre_tax_cost_of_debt_pct": 7.50,
-        "marginal_tax_rate_pct": 30.00,
+        "pre_tax_cost_of_debt_pct": 7.5,
+        "marginal_tax_rate_pct": 30.0,
         "target_debt_weight_pct": 2.24,
         "target_equity_weight_pct": 97.76
       },
       "calculated_outputs": {
         "cost_of_equity_pct": 12.26,
         "post_tax_cost_of_debt_pct": 5.25,
-        "weighted_average_cost_of_capital_pct": 12.10,
+        "weighted_average_cost_of_capital_pct": 12.1,
         "target_d_to_e_ratio": 0.0229
       },
       "unresolved_inputs": {
-        "historical_cash_flow_detail_fy18_fy21": "Granular 15-row cash flow schedule detail for FY18–FY21 requires manual digitizing of Cipla 84th–87th Annual Reports; not fabricated per repository policy.",
-        "slide1_regional_revenue_chart": "Regional mix (India 44%, North America 28%, SAGA 12%, RoW 16%) sourced from FY25 presentation p. 8; requires verified vector chart asset."
+        "historical_cash_flow_detail_fy18_fy21": "Granular 15-row cash flow schedule detail for FY18–FY21 requires manual digitizing of Cipla 84th–87th Annual Reports; not fabricated per repository policy."
       }
     },
     "forecast_assumptions": {
@@ -92,18 +91,7 @@
     "model_pack": "proposals/cipla.model-pack.proposal.json",
     "output_name": "Cipla-Recalculated.xlsx"
   },
-  "presentation": {
-    "template": "originals/ERR-4.pptx",
-    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
-    "deck_pack": "proposals/err4.deck-pack.proposal.json",
-    "deck_inputs": "proposals/cipla.inputs.proposal.json",
-    "output_name": "Cipla-Executive-Overview.pptx",
-    "selected_slides": [1, 2, 14, 16, 23]
-  },
   "exports": {
-    "export_slide_pngs": true,
-    "png_width": 1080,
-    "png_height": 1440,
     "export_sheet_pdfs": true,
     "pdf_sheets": [
       "Data Sheet",

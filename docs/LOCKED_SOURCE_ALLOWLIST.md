@@ -1,40 +1,25 @@
-# Locked Source Allowlist Derived from `originals/Marksans Keshav.xlsx`
+# Locked Source Allowlist
 
-> [!IMPORTANT]
-> **STRICT SOURCE GOVERNANCE INVARIANT**: Only websites and data providers explicitly identified, hyperlinked, or cited within the master reference workbook `originals/Marksans Keshav.xlsx` (SHA-256 `5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a`) are permitted for target company data population. No external website, API, or downloaded dataset outside this allowlist is permitted.
->
-> **MODELING METHODOLOGY REFERENCE EXCLUSION**: The YouTube course [Financial Modeling Course by Keshav](https://youtube.com/playlist?list=PL3uUjzLk6PulhRop_ffNeHyK0kprzO4cT&si=HtwfdWpNk-a0KSp7) is recognized solely as an analytical modeling-methodology reference; it is strictly **NOT** a numerical data source.
+This Excel-only project may use company data only from websites named in the active master workbook `originals/Marksans Keshav.xlsx` or from Screener. Do not broaden the list based on links shown by those websites, generic web search results, filings, or model-provider suggestions.
 
----
+The approved websites are:
 
-## 1. Inventory of Allowed Data Providers & In-Workbook Citations
+1. **Screener** — `https://www.screener.in/` (company financial statements, ratios, and market data displayed on the relevant company page).
+2. **Yahoo Finance** — `https://finance.yahoo.com/` (historical prices and market-index observations; the 2025-10-15 snapshot is explicitly historical).
+3. **NSE India** — `https://www.nseindia.com/` (only where the master workbook explicitly identifies NSE data).
+4. **Trading Economics** — `https://tradingeconomics.com/` (only the macroeconomic series identified in the master workbook; record the observation date and whether a cited value is a proxy).
+5. **Top Stock Research** — `https://www.topstockresearch.com/` (only the beta reference identified in the master workbook).
+6. **Investing.com** — `https://www.investing.com/` (only the risk-free-rate reference identified in the master workbook).
+7. **Prime Investor** — `https://primeinvestor.in/` (only the market-return / dividend-yield references identified in the master workbook).
 
-| # | Data Provider / Website | Canonical URL / Domain | Exact Location in Template | Data Sourced in Model | Allowlist Classification |
-|---|---|---|---|---|---|
-| 1 | **Screener.in (Mittal Analytics Pvt Ltd)** | `https://www.screener.in/excel/`<br>`https://www.screener.in/company/<TICKER>/` | `'Data Sheet'!E1 (Hyperlink)`<br>`'Data Sheet'!Rows 16–31 (P&L)`<br>`'Data Sheet'!Rows 56–72 (Balance Sheet)`<br>`'BS'!Rows 4–37`<br>`'Cash Flow'!Rows 5–31` | Multi-year historical P&L, balance sheets, cash flows, CMP, market cap, equity face value, and segment sub-schedules. | **Secondary Data Compiler / Aggregator** (Subject to Screener compilation conventions; aggregate statements verified against statutory filings). |
-| 2 | **Yahoo Finance** | `https://finance.yahoo.com` | `'WACC-DCF'!P10`: `(Yahoo Finance / NSE website)`<br>`'WACC-DCF'!T10`: `year returns - company + nse` | 105-week historical weekly adjusted closing prices for target equity and NIFTY 50 index for OLS regression beta calculation on `'Beta'`. | **Market Pricing & Weekly Returns Provider**. |
-| 3 | **National Stock Exchange of India (NSE)** | `https://www.nseindia.com` | `'WACC-DCF'!P10`: `(Yahoo Finance / NSE website)`<br>`'WACC-DCF'!T10`: `year returns - company + nse`<br>`'WACC-DCF'!T13`: `div yeild nse` | Official unadjusted closing price on valuation snapshot date (15-Oct-2025), NIFTY 50 index historical returns, index dividend yield. | **Primary Stock Exchange Quotation & Benchmark Provider**. |
-| 4 | **Investing.com** | `https://www.investing.com` | `'WACC-DCF'!P12`: `(investing.com)`<br>`'WACC-DCF'!T12`: `risk free rate` | India 10-Year Government Bond Yield (Risk-Free Rate $R_f$: 6.78% as of 15-Oct-2025). | **Sovereign Fixed Income Benchmark Provider**. |
-| 5 | **Trading Economics** | `https://www.tradingeconomics.com` | `'WACC-DCF'!P9`: `(Trading Economics)` | India 10Y Benchmark Sovereign Yield and macroeconomic indicators. | **Macroeconomic Benchmark Provider**. |
-| 6 | **Top Stock Research** | `https://www.topstockresearch.com` | `'WACC-DCF'!P11`: `( top stock research)`<br>`'WACC-DCF'!T11`: `beta` | Sector and peer beta reference benchmarks. | **Secondary Equity Analytics Provider**. |
-| 7 | **Prime Investor** | `https://primeinvestor.in` | `'WACC-DCF'!P13`: `(prime investor.in)` | Equity risk premium, NIFTY historical annualized market returns ($R_m$), dividend yield benchmarks. | **Market Return & Risk Premium Provider**. |
-| 8 | **Statutory Audited Filings (BSE / NSE)** | `https://www.bseindia.com`<br>`https://www.nseindia.com` | Referenced in statutory registries and verified in `'Data Sheet'!A3` | Audited statutory annual reports (FY19–FY25), note disclosures, auditor reports, and segment breakouts. | **Primary Statutory Audited Filing Provider** (Audited by B S R & Co. LLP / S.R. Batliboi & Co. LLP). |
+The YouTube financial-modeling course is a **methodology reference only**, not a source of company or market data: [Financial Modeling Course by Keshav](https://youtube.com/playlist?list=PL3uUjzLk6PulhRop_ffNeHyK0kprzO4cT).
 
----
+## Evidence and modeling rules
 
-## 2. In-Workbook Data Classification Rules
-
-In accordance with the project instructions, every material numeric value in each target workbook is classified into one of three strict categories or marked unavailable:
-
-1. **Website-Sourced Input**:
-   - Directly ingested from one of the 8 allowlisted websites above.
-   - Sourced cells contain cell comments or notes documenting: URL, retrieval date, reporting period, units, and accounting basis.
-   - Screener figures are explicitly disclosed as secondary compiled data; aggregate primary numbers are cross-referenced to statutory BSE/NSE filings.
-2. **Formula-Derived**:
-   - Calculated dynamically using Excel formulas (`SUM`, `AVERAGE`, `SLOPE`, `INTERCEPT`, discounting present values, growth rates).
-   - Zero hardcoded calculation results; formula cells point directly to inputs or dependent schedules.
-3. **Explicit Assumption**:
-   - Clearly labeled, editable inputs with economic rationale, units, and applicable forecast period.
-   - Examples include: Expected 5Y Growth Rate (`'DCF 1st way'!E19`), Long-Term Terminal Growth Rate (`'DCF 1st way'!E20`), Reinvestment Rates (`'DCF 1st way'!F11:K11`), Valuation Multiples, and Pre-Tax Cost of Debt (`'WACC-DCF'!E22`).
-4. **Unavailable / N/A**:
-   - Where an allowlisted website does not report a specific sub-item (e.g. Clean Science pre-FY18 financials prior to public conversion, or IT services raw material costs), the item is left unpopulated or explicitly marked `0.0` as an additive component. No synthetic interpolation or arbitrary multiplier splits are permitted.
+- Record the exact source URL, retrieval date, observation/reporting date, units, fiscal period, and consolidated/standalone basis for every external input.
+- Screener is an allowed source. Do not claim that its values were independently verified against BSE/NSE statutory filings unless those filings are later added to the allowlist by the user.
+- APIs may be used only when they are an access method for an approved website (for example, Yahoo Finance historical prices); name the provider and retain the request parameters and response snapshot.
+- A formula-derived value must link to evidenced inputs. A forecast or valuation driver that is not reported on an approved website must be labeled as an explicit, editable analyst assumption.
+- If an approved source does not provide a required line item, leave the cell blank or mark the affected analysis unavailable. Do not substitute zeros, percentages of sales, guessed peer values, other providers, or standalone values for missing consolidated data.
+- Never present a prior-session observation as the exact valuation-date observation. Label it as a dated proxy and show the source evidence.
+- Preserve the workbook's existing source list and its structure. Do not add BSE, statutory filings, RBI, Damodaran, company investor-relations sites, or other sources without the user's explicit authorization.

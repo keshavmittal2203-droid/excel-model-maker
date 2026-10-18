@@ -1,4 +1,4 @@
-"""Repeatable orchestrator to build a verified Excel and PowerPoint package from template and pack specifications."""
+"""Repeatable Excel-only workbook build and validation from template and pack specifications."""
 from __future__ import annotations
 
 import argparse
@@ -22,7 +22,6 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
 from modelmaker import sha, read_json, compose
-from pptmaker import compose_deck, DeckError
 from validate_workbook import validate_candidate
 
 FORBIDDEN_OUTPUT_ROOTS = {
@@ -76,8 +75,6 @@ def check_com_capabilities() -> dict[str, Any]:
         "platform": sys.platform,
         "excel_com": False,
         "excel_version": None,
-        "powerpoint_com": False,
-        "powerpoint_version": None,
     }
     if sys.platform != "win32":
         return capabilities
@@ -102,16 +99,6 @@ def check_com_capabilities() -> dict[str, Any]:
         except Exception as e:
             capabilities["excel_error"] = str(e)
 
-        try:
-            if hasattr(pythoncom, "CLSIDFromProgID"):
-                pythoncom.CLSIDFromProgID("PowerPoint.Application")
-            else:
-                import winreg
-                with winreg.OpenKey(winreg.HKEY_CLASSES_ROOT, "PowerPoint.Application"):
-                    pass
-            capabilities["powerpoint_com"] = True
-        except Exception as e:
-            capabilities["powerpoint_error"] = str(e)
         finally:
             pythoncom.CoUninitialize()
     except Exception as e:
@@ -160,74 +147,6 @@ def verify_output_directory(output_dir: Path, force: bool = False) -> None:
             )
         raise RuntimeError("Output directory already exists and is not empty; --force cannot safely reuse a run. Choose a fresh output directory.")
 
-
-def get_presentation_dimensions(pres_path: Path) -> tuple[int, int]:
-    """Derive presentation dimensions dynamically from presentation.xml <p:sldSz>."""
-    try:
-        with zipfile.ZipFile(pres_path, "r") as z:
-            tree = ET.fromstring(z.read("ppt/presentation.xml"))
-            sld_sz = tree.find("{http://schemas.openxmlformats.org/presentationml/2006/main}sldSz")
-            if sld_sz is not None:
-                cx = int(sld_sz.get("cx", "0"))
-                cy = int(sld_sz.get("cy", "0"))
-                if cx > 0 and cy > 0:
-                    if cx < cy:
-                        # Portrait orientation (e.g. ERR-4)
-                        return 1080, int(round(1080 * cy / cx))
-                    else:
-                        # Landscape orientation
-                        return 1920, int(round(1920 * cy / cx))
-    except Exception:
-        pass
-    return 1080, 1440
-
-
-def export_slide_previews_com(
-    presentation_path: Path,
-    previews_dir: Path,
-    width: int = 1080,
-    height: int = 1440,
-) -> list[dict[str, Any]]:
-    """Export PPTX slides to high-resolution PNG previews using PowerPoint COM."""
-    previews_dir.mkdir(parents=True, exist_ok=True)
-    exported = []
-    try:
-        import pythoncom
-        import win32com.client
-    except ImportError:
-        print("Warning: win32com not available, skipping PowerPoint slide preview export.")
-        return exported
-
-    pythoncom.CoInitialize()
-    ppt_app = None
-    pres = None
-    try:
-        ppt_app = win32com.client.DispatchEx("PowerPoint.Application")
-        pres = ppt_app.Presentations.Open(
-            str(presentation_path.resolve()),
-            ReadOnly=True,
-            Untitled=False,
-            WithWindow=False,
-        )
-        slide_count = pres.Slides.Count
-        for i in range(1, slide_count + 1):
-            out_png = (previews_dir / f"slide_{i}.png").resolve()
-            pres.Slides(i).Export(str(out_png), "PNG", width, height)
-            exported.append({
-                "slide": i,
-                "file": f"previews/{out_png.name}",
-                "size_bytes": out_png.stat().st_size,
-                "sha256": compute_file_sha(out_png),
-            })
-    finally:
-        try:
-            if pres is not None:
-                pres.Close()
-        finally:
-            # PowerPoint may share one process even with DispatchEx. Close only
-            # our presentation, never the user's other presentations via Quit.
-            pythoncom.CoUninitialize()
-    return exported
 
 
 def export_sheet_previews_com(
@@ -304,9 +223,8 @@ def _parse_finite_float(val: Any, cell_ref: str) -> float:
 
 def evaluate_reconciliation_summary(
     workbook_path: Path,
-    presentation_path: Path | None = None,
 ) -> list[dict[str, Any]]:
-    """Dynamically evaluate reconciliation metrics and mathematical identities from validated candidate workbook."""
+    """Evaluate Excel workbook metrics and identities without presentation dependencies."""
     import openpyxl
     wb = openpyxl.load_workbook(str(workbook_path), data_only=True)
     if "WACC-DCF" not in wb.sheetnames and "Cover & Notes" in wb.sheetnames:
@@ -330,7 +248,7 @@ def evaluate_reconciliation_summary(
                 "displayed": f"₹{cmp_val:,.2f}",
                 "tolerance": "0.01",
                 "status": "historical_market_snapshot",
-                "verification_method": "NSE/BSE closing quotation dated October 15, 2025.",
+                "verification_method": "Historical close; provider and valuation date must be identified in the workbook source registry.",
             },
             {
                 "metric": "Market Capitalization (15-Oct-2025)",
@@ -348,7 +266,7 @@ def evaluate_reconciliation_summary(
                 "displayed": f"₹{rev_fy25:,.0f} Cr",
                 "tolerance": "1.0",
                 "status": "primary_sourced",
-                "verification_method": "Audited FY25 Consolidated Statement of Profit & Loss.",
+                "verification_method": "FY25 consolidated value; source URL and basis must be identified in the workbook source registry.",
             },
             {
                 "metric": "FY25 Consolidated Net Profit (PAT)",
@@ -357,7 +275,7 @@ def evaluate_reconciliation_summary(
                 "displayed": f"₹{pat_fy25:,.0f} Cr",
                 "tolerance": "1.0",
                 "status": "primary_sourced",
-                "verification_method": "Audited FY25 Consolidated Statement of Profit & Loss.",
+                "verification_method": "FY25 consolidated value; source URL and basis must be identified in the workbook source registry.",
             },
             {
                 "metric": "FY25 Balance Sheet Identity Check",
@@ -413,41 +331,16 @@ def evaluate_reconciliation_summary(
 
     # Independent mathematical checks (non-circular)
     rm_sum_check = abs(rm_f12 - (rm_f10 + rm_f11)) <= 0.0001
-    erp_check = abs(erp - (rm_f12 - rf)) <= 0.0001
-    rm_check = rm_sum_check and erp_check and (abs(rm - (rf + erp)) <= 0.0001)
+    rm_check = rm_sum_check
 
     ke_check = abs(ke - (rf + beta * erp)) <= 0.0001
     kd_check = abs(post_tax_kd - (pre_tax_kd * (1.0 - tax_rate))) <= 0.0001
     target_weights_sum_check = abs((w_equity + w_debt) - 1.0) <= 0.0001
     wacc_check = abs(wacc - (w_equity * ke + w_debt * post_tax_kd)) <= 0.0001
 
-    # Verify destination presentation cells if presentation is provided
-    cr_pres_verified = False
-    qr_pres_verified = False
-    beta_pres_verified = False
-
-    if presentation_path is None:
-        cand_pres = workbook_path.parent / "Marksans-Pharma-Overview.pptx"
-        if cand_pres.exists():
-            presentation_path = cand_pres
-
-    if presentation_path is not None and presentation_path.exists():
-        try:
-            from pptmaker import PptxPackage
-            pres_pkg = PptxPackage(presentation_path.read_bytes())
-            summary = pres_pkg.summary()
-            for s_info in summary.get("slides", []):
-                for tbl in s_info.get("tables", []):
-                    for row in tbl.get("cells", []):
-                        for cell_text in row:
-                            if f"{cr:.2f}" in cell_text or "4.95" in cell_text:
-                                cr_pres_verified = True
-                            if f"{qr:.2f}" in cell_text or "3.07" in cell_text:
-                                qr_pres_verified = True
-            # WACC schedule image on Slide 5 (orig slide 23) is generated from validated candidate J24
-            beta_pres_verified = True
-        except Exception as e:
-            print(f"Warning: presentation destination verification failed: {e}")
+    beta_sheet = wb["Beta"]
+    beta_sheet_adjusted = _parse_finite_float(beta_sheet["K13"].value, "Beta!K13")
+    beta_link_check = abs(beta - beta_sheet_adjusted) <= 0.0001
 
     return [
         {
@@ -457,7 +350,7 @@ def evaluate_reconciliation_summary(
             "displayed": f"{rf*100:.2f}%",
             "tolerance": "0.0001",
             "status": "sourced_assumption",
-            "verification_method": "Inherited 10-year Indian G-Sec benchmark assumption; tied to Slide 5 DCF schedule.",
+            "verification_method": "Allowlisted observation or dated prior-session proxy, explicitly identified in the workbook source registry.",
         },
         {
             "metric": "Market Return (Rm)",
@@ -466,10 +359,7 @@ def evaluate_reconciliation_summary(
             "displayed": f"{rm*100:.2f}%",
             "tolerance": "0.0001",
             "status": "verified_identity" if rm_check else "unreconciled",
-            "verification_method": (
-                "Verified non-circular identity: RM!F12 (16.37%) = RM!F10 (15.15% Nifty 50 PR average) + "
-                "RM!F11 (1.22% dividend yield assumption), and WACC-DCF!J23 (ERP) = RM!F12 - Rf."
-            ),
+            "verification_method": "Market-return schedule identity: RM!F12 = RM!F10 + RM!F11. The ERP cell is an independent analyst assumption, not asserted equal to Rm - Rf.",
         },
         {
             "metric": "Levered Beta (Hamada)",
@@ -477,8 +367,8 @@ def evaluate_reconciliation_summary(
             "exact_value": f"{beta:.6f}",
             "displayed": f"{beta:.3f}",
             "tolerance": "0.001",
-            "status": "tied_to_presentation" if beta_pres_verified else "unreconciled",
-            "verification_method": "Hamada peer unlevered/relevered beta; verified in Slide 5 valuation schedule table.",
+            "status": "verified_identity" if beta_link_check else "unreconciled",
+            "verification_method": "WACC-DCF beta equals the adjusted beta displayed on the Beta worksheet.",
         },
         {
             "metric": "Cost of Equity (Ke)",
@@ -487,7 +377,7 @@ def evaluate_reconciliation_summary(
             "displayed": f"{ke*100:.2f}%",
             "tolerance": "0.0001",
             "status": "verified_identity" if ke_check else "unreconciled",
-            "verification_method": "Verified CAPM identity: Ke = Rf + Beta * (Rm - Rf).",
+            "verification_method": "CAPM identity using the workbook's stated ERP input: Ke = Rf + Beta * ERP.",
         },
         {
             "metric": "Pre-tax Cost of Debt",
@@ -496,7 +386,7 @@ def evaluate_reconciliation_summary(
             "displayed": f"{pre_tax_kd*100:.2f}%",
             "tolerance": "0.0001",
             "status": "sourced_assumption",
-            "verification_method": "Forward marginal borrowing rate assumption; tied to Slide 5 DCF schedule.",
+            "verification_method": "Forward marginal borrowing-rate assumption documented in the workbook source registry.",
         },
         {
             "metric": "Effective Tax Rate",
@@ -504,8 +394,8 @@ def evaluate_reconciliation_summary(
             "exact_value": f"{tax_rate:.6f}",
             "displayed": f"{tax_rate*100:.2f}%",
             "tolerance": "0.0001",
-            "status": "statutory_assumption",
-            "verification_method": "Statutory Indian corporate tax rate assumption (30.00%).",
+            "status": "analyst_assumption",
+            "verification_method": "Editable tax-rate modeling assumption; not represented as a quoted statutory rate.",
         },
         {
             "metric": "Post-tax Cost of Debt (Kd)",
@@ -517,40 +407,40 @@ def evaluate_reconciliation_summary(
             "verification_method": "Verified tax shield identity: PostTax_Kd = PreTax_Kd * (1 - TaxRate).",
         },
         {
-            "metric": "Market Capitalization (Current)",
+            "metric": "Market Capitalization (Historical Snapshot)",
             "source_cell": "WACC-DCF!C31",
             "exact_value": f"{mcap:.2f}",
             "displayed": f"₹{mcap:,.0f} Cr",
             "tolerance": "1.0",
             "status": "calculated_estimate",
-            "verification_method": "Derived from Sunday Screener snapshot price (₹309.10) * 45.316 Cr shares.",
+            "verification_method": "Derived from the workbook's dated market-price and diluted-share inputs.",
         },
         {
-            "metric": "Total Debt / Borrowings (Current)",
+            "metric": "Total Debt / Borrowings (Historical Basis)",
             "source_cell": "Data Sheet!K59 / WACC-DCF!C30",
             "exact_value": f"{debt:.2f}",
             "displayed": f"₹{debt:,.0f} Cr",
             "tolerance": "1.0",
             "status": "inherited_template_value",
-            "verification_method": "Screener audited FY25 total borrowings; tied to Slide 5 current capital structure.",
+            "verification_method": "Reported or modeled debt input; period, basis, and source must be visible in the workbook source registry.",
         },
         {
-            "metric": "Target Weight of Equity (Peer Median)",
+            "metric": "Target Weight of Equity",
             "source_cell": "WACC-DCF!E31",
             "exact_value": f"{w_equity:.6f}",
             "displayed": f"{w_equity*100:.2f}%",
             "tolerance": "0.0001",
             "status": "verified_identity" if target_weights_sum_check else "unreconciled",
-            "verification_method": "Verified pure-play peer median target weight; Target_We + Target_Wd = 100%.",
+            "verification_method": "Calculated from the documented debt and equity weights; Target_We + Target_Wd = 100%.",
         },
         {
-            "metric": "Target Weight of Debt (Peer Median)",
+            "metric": "Target Weight of Debt",
             "source_cell": "WACC-DCF!E30",
             "exact_value": f"{w_debt:.6f}",
             "displayed": f"{w_debt*100:.2f}%",
             "tolerance": "0.0001",
             "status": "verified_identity" if target_weights_sum_check else "unreconciled",
-            "verification_method": "Verified pure-play peer median target weight; Target_We + Target_Wd = 100%.",
+            "verification_method": "Calculated from the documented debt and equity weights; Target_We + Target_Wd = 100%.",
         },
         {
             "metric": "WACC (Target-Weighted)",
@@ -567,8 +457,8 @@ def evaluate_reconciliation_summary(
             "exact_value": f"{cr:.4f}",
             "displayed": f"{cr:.2f}",
             "tolerance": "0.01",
-            "status": "tied_to_presentation" if cr_pres_verified else "unreconciled",
-            "verification_method": "Calculated from Balance Sheet current assets / liabilities; verified in Slide 4 Table 0 & chart.",
+            "status": "calculated_from_workbook",
+            "verification_method": "Calculated from the workbook's current assets and current liabilities.",
         },
         {
             "metric": "FY25 Quick Ratio",
@@ -576,8 +466,8 @@ def evaluate_reconciliation_summary(
             "exact_value": f"{qr:.4f}",
             "displayed": f"{qr:.2f}",
             "tolerance": "0.01",
-            "status": "tied_to_presentation" if qr_pres_verified else "unreconciled",
-            "verification_method": "Calculated from Balance Sheet quick assets / liabilities; verified in Slide 4 Table 0 & chart.",
+            "status": "calculated_from_workbook",
+            "verification_method": "Calculated from the workbook's quick assets and current liabilities.",
         },
     ]
 
@@ -688,26 +578,24 @@ def generate_source_assumption_coverage(
     return cov_json_path, cov_md_path
 
 
-def validate_package_request(req: dict[str, Any], request_path: Path, *, excel_only: bool = False) -> None:
+def validate_package_request(req: dict[str, Any], request_path: Path, *, excel_only: bool = True) -> None:
     """Validate package build request before any directory creation or Office activation."""
+    if not excel_only:
+        raise ValueError("This project is Excel-only; presentation requests are no longer supported.")
+    if "presentation" in req:
+        raise ValueError("The 'presentation' request field has been retired; submit a workbook-only request.")
     if req.get("schema_version") is not None and req.get("schema_version") != 1:
         raise ValueError(f"Unsupported schema_version: {req.get('schema_version')}")
     if "package_id" in req and not req.get("package_id"):
         raise ValueError("Missing required field 'package_id'")
-    if "workbook" not in req or (not excel_only and "presentation" not in req):
-        raise ValueError("Request must contain 'workbook' and 'presentation' sections")
+    if "workbook" not in req:
+        raise ValueError("Excel-only request must contain a 'workbook' section")
 
     wb_spec = req["workbook"]
-    pres_spec = req.get("presentation", {})
-
     # Validate output filenames if specified
     wb_out_name = wb_spec.get("output_name")
     if wb_out_name is not None and (not wb_out_name or not isinstance(wb_out_name, str)):
         raise ValueError("Workbook output_name must be a non-empty string")
-    if not excel_only:
-        pres_out_name = pres_spec.get("output_name")
-        if pres_out_name is not None and (not pres_out_name or not isinstance(pres_out_name, str)):
-            raise ValueError("Presentation output_name must be a non-empty string")
 
     # Validate template existence and integrity if specified
     if "source" in wb_spec:
@@ -722,28 +610,11 @@ def validate_package_request(req: dict[str, Any], request_path: Path, *, excel_o
             else:
                 raise ValueError(f"Workbook source SHA mismatch: expected {wb_spec.get('source_sha256')}, got {actual_wb_sha}")
 
-    if not excel_only and "template" in pres_spec:
-        pres_tpl_path = (ROOT / pres_spec["template"]).resolve()
-        if not pres_tpl_path.exists():
-            raise FileNotFoundError(f"Presentation template not found: {pres_tpl_path}")
-        actual_tpl_sha = compute_file_sha(pres_tpl_path)
-        if actual_tpl_sha != pres_spec.get("template_sha256"):
-            raise ValueError(f"Presentation template SHA mismatch: expected {pres_spec.get('template_sha256')}, got {actual_tpl_sha}")
-
     # Validate packs and inputs existence if specified
     if "model_pack" in wb_spec:
         model_pack_path = (ROOT / wb_spec["model_pack"]).resolve()
         if not model_pack_path.exists():
             raise FileNotFoundError(f"Model pack not found: {model_pack_path}")
-    if not excel_only:
-        if "deck_pack" in pres_spec:
-            deck_pack_path = (ROOT / pres_spec["deck_pack"]).resolve()
-            if not deck_pack_path.exists():
-                raise FileNotFoundError(f"Deck pack not found: {deck_pack_path}")
-        if "deck_inputs" in pres_spec:
-            deck_inputs_path = (ROOT / pres_spec["deck_inputs"]).resolve()
-            if not deck_inputs_path.exists():
-                raise FileNotFoundError(f"Deck inputs not found: {deck_inputs_path}")
 
     if "inputs" in wb_spec:
         wb_inputs_path = (ROOT / wb_spec["inputs"]).resolve()
@@ -762,40 +633,6 @@ def validate_package_request(req: dict[str, Any], request_path: Path, *, excel_o
 
         if comp["currency"] not in ("INR", "USD", "EUR", "GBP"):
             raise ValueError(f"Unsupported currency: {comp['currency']}")
-
-    # Validate slot mapping completeness (only when building presentation)
-    if not excel_only and "deck_pack" in pres_spec and "deck_inputs" in pres_spec:
-        deck_pack_path = (ROOT / pres_spec["deck_pack"]).resolve()
-        deck_inputs_path = (ROOT / pres_spec["deck_inputs"]).resolve()
-        if deck_pack_path.exists() and deck_inputs_path.exists():
-            deck_pack = read_json(str(deck_pack_path))
-            deck_inputs = read_json(str(deck_inputs_path))
-            supplied_vals = deck_inputs.get("values", {})
-
-            for slot in deck_pack.get("slots", []):
-                s_name = slot.get("name")
-                has_binding = "workbook_binding" in slot
-                has_val = s_name in supplied_vals
-                if not has_binding and not has_val:
-                    raise ValueError(
-                        f"Missing mapping for deck slot {s_name!r}: slot is not in supplied values "
-                        f"and has no workbook binding. Missing values must never silently become zero or retain another company's data."
-                    )
-                if has_val:
-                    val_entry = supplied_vals[s_name]
-                    v_val = val_entry.get("value") if isinstance(val_entry, dict) else val_entry
-                    if v_val is None or (isinstance(v_val, str) and not v_val.strip()):
-                        raise ValueError(f"Unmapped or empty value for deck slot {s_name!r}")
-
-            # Check company consistency between request and deck inputs
-            if "company" in req and "slide1_company_name" in supplied_vals:
-                req_comp_name = comp["name"].lower()
-                deck_comp_val = str(supplied_vals["slide1_company_name"].get("value", "")).lower()
-                if ("cipla" in req_comp_name and "marksans" in deck_comp_val) or \
-                   ("marksans" in req_comp_name and "cipla" in deck_comp_val):
-                    raise ValueError(
-                        f"Company mismatch: request company is {comp['name']!r} but deck inputs specify {deck_comp_val!r}"
-                    )
 
     # Validate workbook adapter registration and path safety
     if "adapter" in wb_spec:
@@ -837,9 +674,11 @@ def build_package(
     clean: bool = False,
     skip_com: bool = False,
     check_only: bool = False,
-    excel_only: bool = False,
+    excel_only: bool = True,
 ) -> dict[str, Any]:
-    """Execute repeatable build according to request specification."""
+    """Execute an Excel-only build. Presentation generation has been retired."""
+    if not excel_only:
+        raise ValueError("This project is Excel-only; presentation generation has been retired.")
     req_text = request_path.read_text(encoding="utf-8")
     req = json.loads(req_text)
 
@@ -875,14 +714,11 @@ def build_package(
     # Validate output names before directory writes or Office activation.
     wb_out_name = req["workbook"].get("output_name", "Marksans-Recalculated.xlsx")
     wb_out_path = output_file(output_dir, wb_out_name, ".xlsx", check_exists=not check_only)
-    pres_out_name = req.get("presentation", {}).get("output_name", "Marksans-Pharma-Overview.pptx")
-    pres_out_path = output_file(output_dir, pres_out_name, ".pptx", check_exists=not check_only) if not excel_only else None
 
     # Validate request before directory creation or Office activation
     validate_package_request(req, request_path, excel_only=excel_only)
 
     wb_spec = req["workbook"]
-    pres_spec = req.get("presentation", {})
     exp_spec = req.get("exports", {})
 
     wb_src_path = (ROOT / wb_spec["source"]).resolve()
@@ -894,11 +730,6 @@ def build_package(
             wb_src_path = archive_path
             actual_wb_src_sha = compute_file_sha(wb_src_path)
 
-    pres_tpl_path = (ROOT / pres_spec["template"]).resolve() if (not excel_only and "template" in pres_spec) else None
-    deck_pack_path = (ROOT / pres_spec["deck_pack"]).resolve() if (not excel_only and "deck_pack" in pres_spec) else None
-    deck_inputs_path = (ROOT / pres_spec["deck_inputs"]).resolve() if (not excel_only and "deck_inputs" in pres_spec) else None
-    actual_tpl_sha = compute_file_sha(pres_tpl_path) if pres_tpl_path else None
-
     com_caps = check_com_capabilities()
 
     # Pre-flight only mode: verifies request validity, hashes, and COM capabilities without disk writes
@@ -908,10 +739,6 @@ def build_package(
             "workbook_source": actual_wb_src_sha,
             "model_pack": compute_file_sha(model_pack_path),
         }
-        if not excel_only and pres_tpl_path and deck_pack_path and deck_inputs_path:
-            src_hashes["presentation_template"] = actual_tpl_sha
-            src_hashes["deck_pack"] = compute_file_sha(deck_pack_path)
-            src_hashes["deck_inputs"] = compute_file_sha(deck_inputs_path)
         return {
             "status": "preflight_passed",
             "ready": False,
@@ -927,9 +754,6 @@ def build_package(
     output_dir.mkdir(parents=True, exist_ok=True)
     previews_dir = output_dir / "previews"
     previews_dir.mkdir(parents=True, exist_ok=True)
-    if not excel_only:
-        assets_dir = output_dir / "assets"
-        assets_dir.mkdir(parents=True, exist_ok=True)
 
     # 2. Pin and verify source hashes
     if not wb_src_path.exists():
@@ -938,14 +762,6 @@ def build_package(
         raise ValueError(
             f"Workbook source SHA mismatch: expected {wb_spec['source_sha256']}, got {actual_wb_src_sha}"
         )
-
-    if not excel_only and pres_tpl_path is not None:
-        if not pres_tpl_path.exists():
-            raise FileNotFoundError(f"Presentation template not found: {pres_tpl_path}")
-        if actual_tpl_sha != pres_spec["template_sha256"]:
-            raise ValueError(
-                f"Presentation template SHA mismatch: expected {pres_spec['template_sha256']}, got {actual_tpl_sha}"
-            )
 
     # 3. Handle Workbook Composition and Recalculation
     expected_recalc_sha = wb_spec.get("expected_recalculated_sha256")
@@ -1037,73 +853,12 @@ def build_package(
     cov_json_path, cov_md_path = generate_source_assumption_coverage(wb_out_path, output_dir, req)
 
     wb_out_sha = compute_file_sha(wb_out_path)
-    pres_out_sha = None
 
-    if not excel_only and pres_out_path is not None and pres_tpl_path is not None and deck_pack_path is not None and deck_inputs_path is not None:
-        # 4. Generate Replacement WACC Schedule Assets from validated workbook
-        from work.generate_wacc_images import generate_images
-        generate_images(assets_dir=assets_dir, workbook_path=wb_out_path)
-
-        # 5. Compose Presentation Deck
-        tpl_bytes = pres_tpl_path.read_bytes()
-        deck_pack = read_json(str(deck_pack_path))
-        deck_inputs = read_json(str(deck_inputs_path))
-
-        for slot in deck_pack.get("slots", []):
-            if "workbook_binding" in slot and "workbook_sha256" in slot["workbook_binding"]:
-                slot["workbook_binding"]["workbook_sha256"] = wb_out_sha
-
-        deck_inputs_copy = copy.deepcopy(deck_inputs)
-        for k, v in deck_inputs_copy.get("values", {}).items():
-            if isinstance(v, dict) and "value" in v:
-                val_str = str(v["value"])
-                filename = Path(val_str).name
-                if filename in [
-                    "image22_marksans.png", "image23_marksans.png", "image24_marksans.png",
-                    "image22_cipla.png", "image23_cipla.png", "image24_cipla.png",
-                    "image22.png", "image23.png", "image24.png",
-                ] or ("image2" in filename and filename.endswith(".png")):
-                    target_asset = (assets_dir / filename).resolve()
-                    if not target_asset.is_relative_to(assets_dir.resolve()):
-                        raise ValueError(f"Asset path {target_asset} escapes run assets directory {assets_dir}")
-                    if target_asset.exists():
-                        v["value"] = str(target_asset.resolve())
-
-        wb_bytes = wb_out_path.read_bytes()
-
-        print(f"Composing presentation to {pres_out_path}...")
-        composed_bytes, compose_manifest = compose_deck(
-            template=tpl_bytes,
-            pack=deck_pack,
-            supplied=deck_inputs_copy,
-            workbook_bytes=wb_bytes,
-            allow_proposal=allow_proposal,
-        )
-        with pres_out_path.open("xb") as destination:
-            destination.write(composed_bytes)
-        pres_out_sha = compute_file_sha(pres_out_path)
-
-    # 6. Export Previews (Slide PNGs and Sheet PDFs)
-    slide_previews = []
+    # 4. Export Previews (Sheet PDFs via Excel COM)
     sheet_previews = []
     com_caps = check_com_capabilities()
 
     if not skip_com:
-        if not excel_only and pres_out_path is not None and pres_tpl_path is not None and exp_spec.get("export_slide_pngs", True):
-            if com_caps["powerpoint_com"]:
-                dyn_w, dyn_h = get_presentation_dimensions(pres_tpl_path)
-                p_w = exp_spec.get("png_width", dyn_w)
-                p_h = exp_spec.get("png_height", dyn_h)
-                print(f"Exporting slide previews ({p_w}x{p_h}) via PowerPoint COM...")
-                slide_previews = export_slide_previews_com(
-                    presentation_path=pres_out_path,
-                    previews_dir=previews_dir,
-                    width=p_w,
-                    height=p_h,
-                )
-            else:
-                print("PowerPoint COM not available; skipping slide preview export.")
-
         if exp_spec.get("export_sheet_pdfs", True):
             if com_caps["excel_com"]:
                 pdf_sheets = exp_spec.get("pdf_sheets", [
@@ -1125,10 +880,10 @@ def build_package(
             else:
                 print("Excel COM not available; skipping sheet PDF export.")
 
-    # 7. Package Reconciliation Summary Table (dynamically evaluated from candidate workbook)
-    reconciliation_table = evaluate_reconciliation_summary(wb_out_path, presentation_path=pres_out_path)
+    # 5. Package Reconciliation Summary Table (dynamically evaluated from candidate workbook)
+    reconciliation_table = evaluate_reconciliation_summary(wb_out_path)
 
-    # 8. Compile Package Manifest (explicitly excludes self-referential manifest hash)
+    # 6. Compile Package Manifest (explicitly excludes self-referential manifest hash)
     artifacts = [
         {
             "file": wb_out_name,
@@ -1155,20 +910,6 @@ def build_package(
             "sha256": compute_file_sha(cov_md_path),
         },
     ]
-    if not excel_only and pres_out_path is not None and pres_out_sha is not None:
-        artifacts.append({
-            "file": pres_out_name,
-            "type": "presentation",
-            "size_bytes": pres_out_path.stat().st_size,
-            "sha256": pres_out_sha,
-        })
-    for sp in slide_previews:
-        artifacts.append({
-            "file": sp["file"],
-            "type": "slide_preview",
-            "size_bytes": sp["size_bytes"],
-            "sha256": sp["sha256"],
-        })
     for shp in sheet_previews:
         artifacts.append({
             "file": shp["file"],
@@ -1181,10 +922,6 @@ def build_package(
         "workbook_source": actual_wb_src_sha,
         "model_pack": compute_file_sha(model_pack_path),
     }
-    if not excel_only and pres_tpl_path and deck_pack_path and deck_inputs_path:
-        src_hashes_out["presentation_template"] = actual_tpl_sha
-        src_hashes_out["deck_pack"] = compute_file_sha(deck_pack_path)
-        src_hashes_out["deck_inputs"] = compute_file_sha(deck_inputs_path)
 
     manifest = {
         "package_id": req.get("package_id", "marksans-package"),
@@ -1259,9 +996,11 @@ def build_package_batch(
     clean: bool = False,
     skip_com: bool = False,
     check_only: bool = False,
-    excel_only: bool = False,
+    excel_only: bool = True,
 ) -> dict[str, Any]:
     """Execute batch build across multiple package requests into target subdirectories under output_base."""
+    if not excel_only:
+        raise ValueError("This project is Excel-only; presentation generation has been retired.")
     output_base = output_base.resolve()
     if output_base in FORBIDDEN_OUTPUT_ROOTS or output_base == ROOT.resolve().parent or output_base.parent == output_base:
         raise RuntimeError(f"Target output base {output_base} is a protected root and cannot be used as batch output base.")
@@ -1329,17 +1068,16 @@ def build_package_batch(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description="Excel-only financial workbook builder")
     parser.add_argument("--request", help="Path to package request JSON (single build mode)")
     parser.add_argument("--requests", nargs="+", help="Multiple package request JSON paths for batch build")
     parser.add_argument("--batch", action="store_true", help="Batch build mode across multiple requests")
     parser.add_argument("--output-dir", help="Target output directory for single package build")
     parser.add_argument("--output-base", help="Base output directory for batch package builds (defaults to candidates/)")
     parser.add_argument("--clean", action="store_true", help="Safely clean candidate run output directory before building (only allowed for verified directories inside candidates/ or temp, or with existing package.manifest.json)")
-    parser.add_argument("--allow-proposal", action="store_true", help="Allow building with proposal model/deck packs")
+    parser.add_argument("--allow-proposal", action="store_true", help="Allow building with a proposal model pack")
     parser.add_argument("--force", action="store_true", help="Legacy option; non-empty run directories are never overwritten")
-    parser.add_argument("--skip-com", action="store_true", help="Skip Microsoft Office COM activation entirely (builds packages without Excel COM recalculation or PowerPoint COM slide rendering)")
-    parser.add_argument("--excel-only", action="store_true", help="Build, recalculate, validate, and export PDF previews for the Excel workbook only without PowerPoint")
+    parser.add_argument("--skip-com", action="store_true", help="Skip Excel COM recalculation and PDF preview export")
     parser.add_argument("--check-only", "--preflight-only", action="store_true", help="Fast preflight request and template validation without Office COM activation or file generation")
     args = parser.parse_args()
 
@@ -1364,7 +1102,7 @@ def main() -> int:
                 clean=args.clean,
                 skip_com=args.skip_com,
                 check_only=args.check_only,
-                excel_only=args.excel_only,
+                excel_only=True,
             )
             print(json.dumps(summary, indent=2))
             return 0 if summary["failed_count"] == 0 else 1
@@ -1384,7 +1122,7 @@ def main() -> int:
             clean=args.clean,
             skip_com=args.skip_com,
             check_only=args.check_only,
-            excel_only=args.excel_only,
+            excel_only=True,
         )
         if args.check_only:
             print(json.dumps({

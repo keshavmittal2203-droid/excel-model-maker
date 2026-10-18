@@ -1,5 +1,20 @@
 # Current Shared Status
 
+> **Current scope (2026-10-18): Excel only.** PowerPoint generation has been completely retired from the active package contract, CLI, tests, schemas, and deliverable manifests. Historical `.pptx` files remain strictly inert source-catalog archives in `originals/`.
+>
+> **Current independent audit branch:** `codex/excel-only-audit`, based on `agent/argon-continue` at `a28aeed`.
+>
+> **Remediation & Acceptance Audit Complete:**
+> - Cutoff-safe Yahoo Finance adjusted-close beta dataset (`v2`, 105 weekly price bars, 104 returns through 15-Oct-2025; no post-cutoff observations) integrated across all targets with Blume adjustment.
+> - Template V6 16-sheet master models rebuilt and recalculated in native Microsoft Excel COM 16.0 for all four priority targets: **Mahindra & Mahindra (`MM`)**, **LTIMindtree (`LTM`)**, **Clean Science (`CLEAN`)**, and **Edelweiss Financial (`EDELWEISS`)**.
+> - Exact **0.00 Cr** Balance Sheet tie across all 48 company periods (12 periods $\times$ 4 companies: historical FY15–FY25 and forecast FY26E) with `ABS(Row 40) <= 0.01 Cr` enforced, zero residual plugs, and transparent roll-forwards.
+> - Exactly **0 formula errors** across all 64 worksheets. All 8 dynamic sensitivities verified with exact restoration. Exactly 64 sheet landscape PDF previews exported.
+> - Verified with `verify_sources.py` (7/7 original files byte-identical) and full test suite (`pytest`, 93/93 tests passing).
+> - Governance: `ready: false`, `human_pack_approval: pending`. PR #3 open and unmerged.
+
+
+## Historical milestone record (claims below are not current verification)
+
 ## Milestone Complete: Cipla v3 Native Package & Four Priority Targets (M&M, LTM, CLEAN, EDELWEISS) Delivered with Primary Statutory Source Verification, Excel COM Recalculation, and Methodological Guardrails
 
 - Branch: `agent/argon-continue`

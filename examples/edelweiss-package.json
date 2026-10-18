@@ -3,7 +3,7 @@
   "schema_version": 1,
   "package_id": "edelweiss-overview-fy25",
   "name": "Edelweiss Financial Services Limited Financial Model & Executive Overview",
-  "description": "Reproducible template-driven package for Edelweiss Financial Services Limited (EDELWEISS) with connected 5-year forecasts, FY19\u2013FY25 statutory historicals, and workbook-linked 5-slide ERR-4 presentation.",
+  "description": "Reproducible template-driven package for Edelweiss Financial Services Limited (EDELWEISS) with connected 5-year forecasts, FY19–FY25 statutory historicals.",
   "company": {
     "name": "Edelweiss Financial Services Limited",
     "ticker": "EDELWEISS",
@@ -57,22 +57,7 @@
     "model_pack": "proposals/edelweiss.model-pack.json",
     "output_name": "EDELWEISS-Recalculated.xlsx"
   },
-  "presentation": {
-    "template": "originals/ERR-4.pptx",
-    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
-    "deck_pack": "proposals/edelweiss.deck-pack.proposal.json",
-    "deck_inputs": "proposals/edelweiss.inputs.proposal.json",
-    "output_name": "EDELWEISS-Executive-Overview.pptx",
-    "selected_slides": [
-      1,
-      2,
-      14,
-      16,
-      23
-    ]
-  },
   "exports": {
-    "export_slide_pngs": true,
     "export_sheet_pdfs": true,
     "pdf_orientation": "landscape",
     "pdf_fit_to_page_wide": 1,

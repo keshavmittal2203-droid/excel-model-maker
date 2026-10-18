@@ -3,7 +3,7 @@
   "schema_version": 1,
   "package_id": "clean-overview-fy25",
   "name": "Clean Science and Technology Limited Financial Model & Executive Overview",
-  "description": "Reproducible template-driven package for Clean Science and Technology Limited (CLEAN) with connected 5-year forecasts, FY19\u2013FY25 statutory historicals, and workbook-linked 5-slide ERR-4 presentation.",
+  "description": "Reproducible template-driven package for Clean Science and Technology Limited (CLEAN) with connected 5-year forecasts, FY19–FY25 statutory historicals.",
   "company": {
     "name": "Clean Science and Technology Limited",
     "ticker": "CLEAN",
@@ -57,22 +57,7 @@
     "model_pack": "proposals/clean.model-pack.json",
     "output_name": "CLEAN-Recalculated.xlsx"
   },
-  "presentation": {
-    "template": "originals/ERR-4.pptx",
-    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
-    "deck_pack": "proposals/clean.deck-pack.proposal.json",
-    "deck_inputs": "proposals/clean.inputs.proposal.json",
-    "output_name": "CLEAN-Executive-Overview.pptx",
-    "selected_slides": [
-      1,
-      2,
-      14,
-      16,
-      23
-    ]
-  },
   "exports": {
-    "export_slide_pngs": true,
     "export_sheet_pdfs": true,
     "pdf_orientation": "landscape",
     "pdf_fit_to_page_wide": 1,

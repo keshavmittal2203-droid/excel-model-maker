@@ -29,8 +29,8 @@ ERR_TOKENS = ["#REF!", "#VALUE!", "#DIV/0!", "#NAME?", "#NUM!", "#N/A", "#NULL!"
 
 EXPECTED_BASELINES = {
     "MM": 2742.97,
-    "LTM": 2497.80,
-    "CLEAN": 487.28,
+    "LTM": 2828.60,
+    "CLEAN": 408.55,
     "EDELWEISS": 130.53,
 }
 
@@ -74,12 +74,12 @@ SENSITIVITY_SPECS = {
     ],
     "CLEAN": [
         {
-            "name": "Terminal Operating EBIT",
+            "name": "Terminal Growth Rate",
             "sheet": "DCF 1st way",
-            "cell": "K5",
-            "base_val": 693.0,
-            "test_val": 743.0,
-            "expected_dir": "up", # Higher EBIT -> higher share value
+            "cell": "E20",
+            "base_val": 0.0500,
+            "test_val": 0.0550,
+            "expected_dir": "up", # Higher g -> higher share value
         },
         {
             "name": "Equity Risk Premium (WACC)",
@@ -192,9 +192,11 @@ def run_recalculation_and_verification():
                 assets = bs_ws.Range(f"{c_let}38").Value
                 if liab is not None and assets is not None:
                     d_bs = abs(float(liab) - float(assets))
-                    if d_bs > 2.5:
+                    if d_bs > 0.01:
                         print(f"  BS MISMATCH Historical Col {c_let}: Liab={liab}, Assets={assets}, Diff={d_bs}")
                         bs_reconciled = False
+                else:
+                    raise AssertionError(f"Historical BS totals are missing in column {c_let}: liabilities={liab!r}, assets={assets!r}")
 
             # Col N (FY26E) check: verify no plug in N37, verify Row 40 balance check within standard integer rounding
             fy26_liab = bs_ws.Range("N16").Value
@@ -206,10 +208,10 @@ def run_recalculation_and_verification():
             print(f"  Col N (FY26E) N37 Driver Formula: {n37_formula}")
             print(f"  Col N (FY26E) Row 40 Balance Check (N38 - N16): {float(row40_n):+.2f} Cr")
             assert "16" not in n37_formula, f"Col N Row 37 contains plug reference to liabilities (Row 16): {n37_formula}"
-            assert abs(float(row40_n)) <= 1.50, f"Col N Row 40 balance check exceeds standard integer rounding: {row40_n}"
+            assert abs(float(row40_n)) <= 0.01, f"Col N Row 40 closing balance does not reconcile to zero: {row40_n}"
             assert abs(float(row40_n) - fy26_diff) < 0.01, f"N40 {row40_n} does not match N38-N16 {fy26_diff}"
 
-            print(f"Historical Balance Sheet (BS) Reconciled (Columns C-M, Max diff <= 2.0 Cr): {bs_reconciled}")
+            print(f"Historical Balance Sheet (BS) Reconciled (Columns C-M, absolute difference <= 0.01 Cr): {bs_reconciled}")
             assert bs_reconciled, f"Historical BS failed reconciliation in {target}"
 
             # 5. Check Comps denominators

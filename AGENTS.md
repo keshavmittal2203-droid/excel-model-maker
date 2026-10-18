@@ -1,6 +1,6 @@
 # AGENTS.md — operating manual for this repository
 
-Read this file first, then README.md, STATUS.md, QUALITY.md, and the current issue or PR. This repository holds two workstreams that share one history; each has its own rules. Do not mix them.
+Read this file first, then README.md, STATUS.md, QUALITY.md, and the current issue or PR. The active product is an **Excel-only financial workbook maker**. Do not add or revive PowerPoint generation; historical deck files are inert archived sources.
 
 ## 1. What this repository does
 
@@ -120,6 +120,6 @@ Format rules that matter:
 
 ## 7. Current status
 
-Package safety: build_package.py accepts plain output filenames only and requires a fresh run directory; --force does not allow nonempty run reuse. Capability probing checks COM registration without activating Office. Excel preview export uses DispatchEx with links/macros disabled; PowerPoint export closes only the presentation opened by the exporter, never the application. Replacement assets remain inside each run. See docs/CRITICAL_SAFETY_REVIEW.md and test_package_safety.py.
+Package safety: `build_package.py` accepts plain `.xlsx` output filenames and requires a fresh run directory; `--force` does not allow nonempty run reuse. Excel capability probing does not activate Office. Excel recalculation and PDF preview export use an isolated Excel COM instance with links and macros disabled. PowerPoint generation has been retired from the active request schema and CLI; do not load its archived templates in the Excel workflow.
 
 STATUS.md is the current truth for what is implemented and what is blocked; ROADMAP.md is the plan; QUALITY.md is the release policy. To start from any coding assistant: connect it to this GitHub repository, ask it to read this file, then give it a separate issue.

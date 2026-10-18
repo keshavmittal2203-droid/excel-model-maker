@@ -3,7 +3,7 @@
   "schema_version": 1,
   "package_id": "marksans-scenario-b-stress-2025",
   "name": "Marksans Pharma Scenario B: Fictional Stress Forecast Model & Executive Overview",
-  "description": "Repeatable template-driven package generating reconciled Excel financial model and 5-slide PowerPoint deck under Scenario B (Rf=8.0%, pre-tax Kd=9.0%, Expected Growth=12.0%).",
+  "description": "Repeatable template-driven package generating reconciled Excel financial model.",
   "workbook": {
     "source": "originals/Marksans Keshav.xlsx",
     "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
@@ -11,17 +11,7 @@
     "inputs": "proposals/scenario-b.inputs.json",
     "output_name": "Marksans-Scenario-B-Recalculated.xlsx"
   },
-  "presentation": {
-    "template": "originals/ERR-4.pptx",
-    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
-    "deck_pack": "proposals/err4.deck-pack.proposal.json",
-    "deck_inputs": "proposals/err4.inputs.proposal.json",
-    "output_name": "Marksans-Scenario-B-Overview.pptx"
-  },
   "exports": {
-    "export_slide_pngs": true,
-    "png_width": 1080,
-    "png_height": 1440,
     "export_sheet_pdfs": true,
     "pdf_sheets": [
       "Data Sheet",

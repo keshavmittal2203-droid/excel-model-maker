@@ -132,32 +132,22 @@ A package build request is defined in a JSON file conforming to `package-request
 - Stressed Scenario B: `examples/scenario-b-package.json`
 
 ### Baseline Request Format (`examples/marksans-package.json`)
-The request format uses nested `workbook`, `presentation`, and `exports` objects:
+The request format uses nested `workbook` and `exports` objects:
 ```json
 {
   "$schema": "../package-request.schema.json",
   "schema_version": 1,
   "package_id": "marksans-curated-overview-2025",
-  "name": "Marksans Pharma Financial Model & 5-Slide Executive Overview",
-  "description": "Repeatable template-driven package generating reconciled Excel financial model and 5-slide PowerPoint deck from originals/ERR-4.pptx.",
+  "name": "Marksans Pharma Financial Model",
+  "description": "Repeatable template-driven package generating reconciled Excel financial model.",
   "workbook": {
     "source": "originals/Marksans Keshav.xlsx",
     "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
     "model_pack": "proposals/marksans.model-pack.proposal.json",
     "output_name": "Marksans-Recalculated.xlsx",
-    "expected_recalculated_sha256": "9c1fa6e39d88d3bb597de8e4cf6208170471751cb87580aa7c8b6255dd6054e8"
-  },
-  "presentation": {
-    "template": "originals/ERR-4.pptx",
-    "template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
-    "deck_pack": "proposals/err4.deck-pack.proposal.json",
-    "deck_inputs": "proposals/err4.inputs.proposal.json",
-    "output_name": "Marksans-Pharma-Overview.pptx"
+    "expected_recalculated_sha256": "ef5d6d5acb66e771abcb23df8151ff7835958d7a3c7e79452d088e314cbddd85"
   },
   "exports": {
-    "export_slide_pngs": true,
-    "png_width": 1080,
-    "png_height": 1440,
     "export_sheet_pdfs": true,
     "pdf_sheets": [
       "Data Sheet",

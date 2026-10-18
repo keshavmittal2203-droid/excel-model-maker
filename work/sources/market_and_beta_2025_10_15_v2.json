@@ -1,0 +1,53 @@
+{
+  "metadata": {
+    "schema_version": "2.0.0",
+    "valuation_cutoff_date": "2025-10-15",
+    "data_provider": "Yahoo Finance historical chart data for NSE-listed securities",
+    "price_field": "quote.close (unadjusted closing price)",
+    "all_observations_at_or_before_cutoff": true
+  },
+  "securities": {
+    "M&M.NS": {
+      "provider_symbol": "M%26M.NS",
+      "close_2025_10_15": 3497.199951171875,
+      "adjclose_2025_10_15": 3460.855712890625,
+      "price_field": "Yahoo Finance chart API quote.close (unadjusted close)",
+      "source_url": "https://finance.yahoo.com/quote/M%26M.NS/history/"
+    },
+    "LTM.NS": {
+      "provider_symbol": "LTM.NS",
+      "close_2025_10_15": 5609.5,
+      "adjclose_2025_10_15": 5513.638671875,
+      "price_field": "Yahoo Finance chart API quote.close (unadjusted close)",
+      "source_url": "https://finance.yahoo.com/quote/LTM.NS/history/"
+    },
+    "CLEAN.NS": {
+      "provider_symbol": "CLEAN.NS",
+      "close_2025_10_15": 1041.4000244140625,
+      "adjclose_2025_10_15": 1033.955810546875,
+      "price_field": "Yahoo Finance chart API quote.close (unadjusted close)",
+      "source_url": "https://finance.yahoo.com/quote/CLEAN.NS/history/"
+    },
+    "EDELWEISS.NS": {
+      "provider_symbol": "EDELWEISS.NS",
+      "close_2025_10_15": 108.8499984741211,
+      "adjclose_2025_10_15": 107.65594482421875,
+      "price_field": "Yahoo Finance chart API quote.close (unadjusted close)",
+      "source_url": "https://finance.yahoo.com/quote/EDELWEISS.NS/history/"
+    },
+    "M&MFIN.NS": {
+      "provider_symbol": "M%26MFIN.NS",
+      "close_2025_10_15": 293.8500061035156,
+      "adjclose_2025_10_15": 287.3841857910156,
+      "price_field": "Yahoo Finance chart API quote.close (unadjusted close)",
+      "source_url": "https://finance.yahoo.com/quote/M%26MFIN.NS/history/"
+    },
+    "TECHM.NS": {
+      "provider_symbol": "TECHM.NS",
+      "close_2025_10_15": 1459.0,
+      "adjclose_2025_10_15": 1407.309814453125,
+      "price_field": "Yahoo Finance chart API quote.close (unadjusted close)",
+      "source_url": "https://finance.yahoo.com/quote/TECHM.NS/history/"
+    }
+  }
+}

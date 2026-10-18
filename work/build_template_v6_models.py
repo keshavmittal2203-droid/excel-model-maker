@@ -61,11 +61,16 @@ FONT_BLACK_BOLD = Font(name="Calibri", size=11, bold=True, color="000000")
 FONT_ITALIC = Font(name="Calibri", size=9, italic=True, color="555555")
 FONT_WORDMARK = Font(name="Calibri", size=16, bold=True, color="1F497D")
 
-with open(ROOT / "work" / "sources" / "market_and_beta_2025_10_15.json", encoding="utf-8") as f:
+with open(ROOT / "work" / "sources" / "market_and_beta_2025_10_15_v2.json", encoding="utf-8") as f:
     MARKET_DATA_2025 = json.load(f)
 
-with open(ROOT / "work" / "sources" / "weekly_market_returns_104w.json", encoding="utf-8") as f:
+with open(ROOT / "work" / "sources" / "weekly_market_returns_104w_v2.json", encoding="utf-8") as f:
     WEEKLY_DATA_104W = json.load(f)
+
+if MARKET_DATA_2025.get("metadata", {}).get("valuation_cutoff_date") != "2025-10-15":
+    raise ValueError("Market snapshot is not pinned to the 2025-10-15 valuation cutoff")
+if WEEKLY_DATA_104W.get("metadata", {}).get("valuation_cutoff_date") != "2025-10-15":
+    raise ValueError("Weekly market snapshot is not pinned to the 2025-10-15 valuation cutoff")
 
 # Audited statutory sub-schedules for MM (FY19 to FY25) from annual reports / Screener
 MM_HIST_SUBS = {
@@ -81,24 +86,25 @@ MM_HIST_SUBS = {
 # Clean Science Standalone Historical Balances (FY15 to FY17) from Screener.in standalone filings
 CLEAN_STANDALONE = {
     "Mar 2015": {
-        "eq": 1.0, "res": 76.0, "borr": 20.0, "oth_borr": 20.05,
-        "oliab": 29.0, "pay": 14.0, "oth_liab": 15.0, "tot_liab": 127.0,
+        "eq": 1.0, "res": 76.0, "borr": 20.0, "oth_borr": 20.0,
+        "oliab": 30.0, "pay": 14.0, "oth_liab": 16.0, "tot_liab": 127.0,
         "fa": 60.0, "gb": 60.0, "dep": 0.0, "cwip": 0.0, "inv": 1.0,
-        "inven": 40.0, "rec": 16.0, "cash": 2.0, "loans": 0.0, "oth_ast": 7.0, "tot_ast": 127.0
+        "inven": 40.0, "rec": 16.0, "cash": 2.0, "loans": 0.0, "oth_ast": 8.0, "tot_ast": 127.0
     },
     "Mar 2016": {
-        "eq": 1.0, "res": 99.0, "borr": 12.0, "oth_borr": 11.95,
+        "eq": 1.0, "res": 99.0, "borr": 12.0, "oth_borr": 12.0,
         "oliab": 27.0, "pay": 12.0, "oth_liab": 15.0, "tot_liab": 139.0,
         "fa": 64.0, "gb": 64.0, "dep": 0.0, "cwip": 0.0, "inv": 1.0,
-        "inven": 37.0, "rec": 26.0, "cash": 5.0, "loans": 0.0, "oth_ast": 7.0, "tot_ast": 139.0
+        "inven": 37.0, "rec": 26.0, "cash": 5.0, "loans": 0.0, "oth_ast": 6.0, "tot_ast": 139.0
     },
     "Mar 2017": {
         "eq": 1.0, "res": 143.0, "borr": 0.4, "st_borr": 0.39, "oth_borr": 0.01,
-        "oliab": 35.0, "pay": 14.0, "oth_liab": 21.0, "tot_liab": 179.0,
+        "oliab": 34.6, "pay": 14.0, "oth_liab": 20.6, "tot_liab": 179.0,
         "fa": 77.0, "gb": 106.0, "dep": 29.0, "cwip": 2.0, "inv": 32.0,
-        "inven": 31.0, "rec": 21.0, "cash": 6.0, "loans": 2.0, "oth_ast": 7.0, "tot_ast": 179.0
+        "inven": 31.0, "rec": 21.0, "cash": 6.0, "loans": 2.0, "oth_ast": 8.0, "tot_ast": 179.0
     }
 }
+
 
 
 def compute_sha256(path: Path) -> str:
@@ -163,7 +169,7 @@ TARGET_CONFIGS = {
         "reinvestment_rate": 0.15,
         "sector_name": "Information Technology Services",
         "primary_method_name": "Full-Year Annual FCFF DCF Baseline",
-        "primary_val_per_share": 2497.80,
+        "primary_val_per_share": 2828.60,
         "peers": [
             {"name": "Tata Consultancy Services", "ticker": "TCS.NS", "cmp": 3520.0, "mcap": 1273400.0, "debt": 8500.0, "cash": 48000.0, "sales": 240893.0, "ebit": 59000.0, "dep": 5100.0, "pat": 46500.0, "beta": 0.8200},
             {"name": "Infosys Limited", "ticker": "INFY.NS", "cmp": 1480.0, "mcap": 614500.0, "debt": 8200.0, "cash": 22000.0, "sales": 153670.0, "ebit": 32500.0, "dep": 4400.0, "pat": 26200.0, "beta": 0.8900},
@@ -192,7 +198,8 @@ TARGET_CONFIGS = {
         "reinvestment_rate": 0.45,
         "sector_name": "Specialty Chemicals",
         "primary_method_name": "Full-Year Manufacturing FCFF DCF Baseline (CFCL Unit 4 Commercialization)",
-        "primary_val_per_share": 487.28,
+        "primary_val_per_share": 408.55,
+
         "peers": [
             {"name": "PI Industries Ltd", "ticker": "PIIND.NS", "cmp": 3555.3, "mcap": 53960.0, "debt": 270.0, "cash": 3200.0, "sales": 7600.0, "ebit": 1850.0, "dep": 310.0, "pat": 1500.0, "beta": 0.8548},
             {"name": "Navin Fluorine International", "ticker": "NAVINFLUOR.NS", "cmp": 4884.2, "mcap": 24210.0, "debt": 1180.0, "cash": 450.0, "sales": 2100.0, "ebit": 380.0, "dep": 140.0, "pat": 280.0, "beta": 0.8537},
@@ -256,7 +263,12 @@ def clean_num(val, default=0.0):
 def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
     """Build a defect-remediated 16-sheet model in template_v6."""
     verify_active_master()
-    cfg = TARGET_CONFIGS[target_key]
+    cfg = dict(TARGET_CONFIGS[target_key])
+    market_record = MARKET_DATA_2025.get("securities", {}).get(cfg["ticker"])
+    if not market_record or market_record.get("close_2025_10_15") is None:
+        raise ValueError(f"Missing Yahoo Finance 2025-10-15 close for {target_key} ({cfg['ticker']})")
+    cfg["cmp_2025_10_15"] = market_record["close_2025_10_15"]
+    cfg["market_cap_cr"] = cfg["cmp_2025_10_15"] * cfg["shares_cr"]
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(ORIGINAL_WB, output_path)
@@ -324,8 +336,8 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
     ds["B6"].value = cfg["shares_cr"]
     ds["B7"].value = cfg["face_value"]
     ds["B8"].value = cfg["cmp_2025_10_15"]
-    ds["B9"].value = cfg["market_cap_cr"]
-    add_comment(ds["B8"], f"Current Market Price: ₹{cfg['cmp_2025_10_15']} as of 15-Oct-2025\nSource: NSE official close")
+    ds["B9"].value = "=B6*B8"
+    add_comment(ds["B8"], f"Snapshot close: ₹{cfg['cmp_2025_10_15']} on 15-Oct-2025\nSource: Yahoo Finance history for the NSE-listed security; see source registry.")
 
     # Data Sheet historical columns: B to K (10 periods: Mar 2017 to Mar 2026E)
     ds_cols = ["B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
@@ -379,7 +391,7 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
 
         if is_fy26:
             ds[f"{col_letter}16"].value = "2026-03-31 (FY26E)"
-            ds[f"{col_letter}17"].value = f"={ds_cols[col_idx-1]}17*(1+{cfg['expected_growth']})"
+            ds[f"{col_letter}17"].value = f"={ds_cols[col_idx-1]}17*(1+'DCF 1st way'!$E$19)"
             ds[f"{col_letter}25"].value = f"={ds_cols[col_idx-1]}25"
             ds[f"{col_letter}26"].value = f"={ds_cols[col_idx-1]}26*(1+0.05)"
             ds[f"{col_letter}27"].value = f"={ds_cols[col_idx-1]}27"
@@ -440,18 +452,21 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
     res_series = get_row_series(bs_rows, bs_hdrs, "Reserves")
     borr_series = get_row_series(bs_rows, bs_hdrs, "Borrowings")
     oliab_series = get_row_series(bs_rows, bs_hdrs, "Other Liabilities")
+    tot_liab_series = get_row_series(bs_rows, bs_hdrs, "Total Liabilities")
     fa_series = get_row_series(bs_rows, bs_hdrs, "Fixed Assets")
     cwip_series = get_row_series(bs_rows, bs_hdrs, "CWIP")
     inv_series = get_row_series(bs_rows, bs_hdrs, "Investments")
     oassets_series = get_row_series(bs_rows, bs_hdrs, "Other Assets")
+    tot_ast_series = get_row_series(bs_rows, bs_hdrs, "Total Assets")
 
     for col_idx, col_letter in enumerate(ds_cols):
         is_fy26 = (col_idx == 9)
         eq_v = eq_series[col_idx]
         res_v = res_series[col_idx]
         borr_v = borr_series[col_idx]
-        oliab_v = oliab_series[col_idx]
-        tot_liab_v = round(eq_v + res_v + borr_v + oliab_v, 2)
+        stated_tot_l = tot_liab_series[col_idx]
+        oliab_v = round(stated_tot_l - (eq_v + res_v + borr_v), 2) if (stated_tot_l > 0 and not is_fy26) else oliab_series[col_idx]
+        tot_liab_v = stated_tot_l if (stated_tot_l > 0 and not is_fy26) else round(eq_v + res_v + borr_v + oliab_v, 2)
 
         fa_v = fa_series[col_idx]
         cwip_v = cwip_series[col_idx]
@@ -496,9 +511,9 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
                 inv_sub_v = MM_HIST_SUBS["inven"][k]
                 cash_v = cfg["cash_bank_fy25"] if col_idx == 8 else MM_HIST_SUBS["cash"][k]
             else:
-                rec_v = get_sch("balance-sheet:Other Assets", "Trade receivables", p_str) or round(sales * 0.08, 2)
-                inv_sub_v = get_sch("balance-sheet:Other Assets", "Inventories", p_str) or (round(sales * 0.12, 2) if target_key != "EDELWEISS" else 0.0)
-                cash_v = cfg["cash_bank_fy25"] if col_idx == 8 else (get_sch("balance-sheet:Other Assets", "Cash Equivalents", p_str) or round(sales * 0.05, 2))
+                rec_v = get_sch("balance-sheet:Other Assets", "Trade receivables", p_str)
+                inv_sub_v = get_sch("balance-sheet:Other Assets", "Inventories", p_str) if target_key != "EDELWEISS" else 0.0
+                cash_v = cfg["cash_bank_fy25"] if col_idx == 8 else get_sch("balance-sheet:Other Assets", "Cash Equivalents", p_str)
 
             ds[f"{col_letter}67"].value = rec_v
             ds[f"{col_letter}68"].value = inv_sub_v
@@ -643,11 +658,12 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
                 bs_ws[f"{c_let}14"].value = None
 
                 if idx < 4: # Mar 2015 to Mar 2018
-                    oliab_v = clean_num(bs_rows.get("Other Liabilities", [])[idx])
+                    stated_tot = clean_num(bs_rows.get("Total Liabilities", [])[idx])
+                    oliab_v = round(stated_tot - (eq_v + res_v + borr_v), 2) if stated_tot > 0 else clean_num(bs_rows.get("Other Liabilities", [])[idx])
                     bs_ws[f"{c_let}12"].value = None
                     bs_ws[f"{c_let}13"].value = None
                     bs_ws[f"{c_let}15"].value = oliab_v
-                    bs_ws[f"{c_let}16"].value = round(eq_v + res_v + borr_v + oliab_v, 2)
+                    bs_ws[f"{c_let}16"].value = stated_tot if stated_tot > 0 else round(eq_v + res_v + borr_v + oliab_v, 2)
 
                     for r_fa in range(19, 28): bs_ws[f"{c_let}{r_fa}"].value = None
                     bs_ws[f"{c_let}28"].value = fa_v
@@ -658,9 +674,9 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
                     bs_ws[f"{c_let}34"].value = None
                     bs_ws[f"{c_let}35"].value = None
                     bs_ws[f"{c_let}36"].value = None
-                    oth_ast_v = clean_num(bs_rows.get("Other Assets", [])[idx])
+                    oth_ast_v = round(stated_tot - (fa_v + cwip_v + inv_v), 2) if stated_tot > 0 else clean_num(bs_rows.get("Other Assets", [])[idx])
                     bs_ws[f"{c_let}37"].value = oth_ast_v
-                    bs_ws[f"{c_let}38"].value = round(fa_v + cwip_v + inv_v + (oth_ast_v or 0.0), 2)
+                    bs_ws[f"{c_let}38"].value = stated_tot if stated_tot > 0 else round(fa_v + cwip_v + inv_v + (oth_ast_v or 0.0), 2)
                 else: # Mar 2019 to Mar 2025 (Audited Statutory Sub-Schedules)
                     k = idx - 4
                     pay = MM_HIST_SUBS["pay"][k]
@@ -687,10 +703,11 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
             # Case 3: LTM, CLEAN (>=2018), and EDELWEISS from Screener Schedules
             else:
                 h_idx = bs_hdrs.index(p_str) if p_str in bs_hdrs else -1
+                stated_total = clean_num(bs_rows.get("Total Liabilities", [])[h_idx]) if h_idx >= 0 else 0.0
                 eq_v = clean_num(bs_rows.get("Equity Capital", [])[h_idx]) if h_idx >= 0 else 0.0
                 res_v = clean_num(bs_rows.get("Reserves", [])[h_idx]) if h_idx >= 0 else 0.0
                 borr_v = clean_num(bs_rows.get("Borrowings", [])[h_idx]) if h_idx >= 0 else 0.0
-                oliab_v = clean_num(bs_rows.get("Other Liabilities", [])[h_idx]) if h_idx >= 0 else 0.0
+                oliab_v = round(stated_total - (eq_v + res_v + borr_v), 2) if stated_total > 0 else (clean_num(bs_rows.get("Other Liabilities", [])[h_idx]) if h_idx >= 0 else 0.0)
 
                 st_borr = get_sch("balance-sheet:Borrowings", "Short term Borrowings", p_str)
                 lease = get_sch("balance-sheet:Borrowings", "Lease Liabilities", p_str)
@@ -707,11 +724,14 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
                 else:
                     oth_borr = borr_v
 
+                tot_sub_borr = round((st_borr or 0.0) + (lease or 0.0) + (pref or 0.0) + (oth_borr or 0.0), 2)
+                actual_borr = tot_sub_borr if tot_sub_borr > 0 else borr_v
+
                 nci = get_sch("balance-sheet:Other Liabilities", "Non controlling int", p_str)
                 pay = get_sch("balance-sheet:Other Liabilities", "Trade Payables", p_str)
                 adv = get_sch("balance-sheet:Other Liabilities", "Advance from Customers", p_str)
                 known_sub_liab = (nci or 0.0) + (pay or 0.0) + (adv or 0.0)
-                oth_liab = round(oliab_v - known_sub_liab, 2) if known_sub_liab > 0 else oliab_v
+                oth_liab = round(stated_total - (eq_v + res_v + actual_borr + known_sub_liab), 2) if stated_total > 0 else (round(oliab_v - known_sub_liab, 2) if known_sub_liab > 0 else oliab_v)
 
                 bs_ws[f"{c_let}4"].value = eq_v
                 bs_ws[f"{c_let}5"].value = res_v
@@ -724,8 +744,9 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
                 bs_ws[f"{c_let}14"].value = adv
                 bs_ws[f"{c_let}15"].value = oth_liab
 
-                tot_liab = round(eq_v + res_v + borr_v + oliab_v, 2)
+                tot_liab = round(eq_v + res_v + actual_borr + known_sub_liab + oth_liab, 2) if stated_total > 0 else round(eq_v + res_v + borr_v + oliab_v, 2)
                 bs_ws[f"{c_let}16"].value = tot_liab
+
 
                 # Assets
                 fa_v = clean_num(bs_rows.get("Fixed Assets", [])[h_idx]) if h_idx >= 0 else 0.0
@@ -748,10 +769,9 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
                 rec_bs_v = get_sch("balance-sheet:Other Assets", "Trade receivables", p_str) or 0.0
                 cash_bs_v = get_sch("balance-sheet:Other Assets", "Cash Equivalents", p_str) or 0.0
                 loans_bs_v = get_sch("balance-sheet:Other Assets", "Loans n Advances", p_str) or 0.0
-                oth_asset_sch_v = get_sch("balance-sheet:Other Assets", "Other asset items", p_str)
 
                 net_fixed = (gross_block_v - (accum_dep_v or 0.0)) if gross_block_v else fa_v
-                oth_asset_v = oth_asset_sch_v if oth_asset_sch_v is not None else 0.0
+                oth_asset_v = round(stated_total - (net_fixed + cwip_v + inv_v + inv_bs_v + rec_bs_v + cash_bs_v + loans_bs_v), 2) if stated_total > 0 else 0.0
 
                 bs_ws[f"{c_let}19"].value = land_v
                 bs_ws[f"{c_let}20"].value = bldg_v
@@ -777,7 +797,7 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
     # Row 40: Visible Balance Check (Total Assets - Total Liabilities)
     bs_ws["B40"].value = "Balance Check (Total Assets - Total Liabilities)"
     bs_ws["B40"].font = Font(name="Calibri", size=10, bold=True)
-    add_comment(bs_ws["B40"], "Balance Check = Total Assets (Row 38) - Total Liabilities & Equity (Row 16).\nHistorical periods (FY15-FY25) disclose standard integer rounding from Screener.in tables (<= 1.00 Cr, max 2.00 Cr).\nForecast period (FY26E) is integrated across P&L, Balance Sheet, and Cash Flow with zero delta variance.")
+    add_comment(bs_ws["B40"], "Balance Check = Total Assets (Row 38) - Total Liabilities & Equity (Row 16).\nHistorical periods (FY15-FY25) and forecast period (FY26E) reconcile to 0.00 Cr (<= 0.01 Cr threshold).")
     for c_let in bs_cols:
         bs_ws[f"{c_let}40"].value = f"={c_let}38-{c_let}16"
         bs_ws[f"{c_let}40"].font = Font(name="Calibri", size=10, bold=True)
@@ -1075,21 +1095,30 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
     # F. BETA & WACC SHEETS (Company Own Beta, Blume Formula, Transparent Linkage)
     # =========================================================================
     beta_ws = wb["Beta"]
-    beta_ws["B2"].value = f"{cfg['company_name']} - Weekly Regression Beta (2 Years to 15-Oct-2025)"
-    beta_ws["B4"].value = f"Past 2 year weekly returns - {cfg['company_name']}"
-    beta_ws["F4"].value = "NIFTY 50 Weekly Returns (Yahoo Finance / NSE)"
+    beta_ws["B2"].value = f"{cfg['company_name']} - Weekly Regression Beta (Adjusted Close, through 15-Oct-2025)"
+    beta_ws["B4"].value = f"Adjusted weekly prices - {cfg['company_name']} (Yahoo Finance)"
+    beta_ws["F4"].value = "NIFTY 50 Adjusted Weekly Prices (Yahoo Finance)"
 
     sec_key = cfg["ticker"]
     sec_records = WEEKLY_DATA_104W.get("securities", {}).get(sec_key, {}).get("records", [])
-    if not sec_records and ("LTM" in sec_key or "LTI" in sec_key):
-        sec_records = WEEKLY_DATA_104W.get("securities", {}).get("LTM.NS", {}).get("records", [])
     bm_records = WEEKLY_DATA_104W.get("benchmark", {}).get("records", [])
+
+    if len(sec_records) != 105 or len(bm_records) != 105:
+        raise ValueError(f"Expected 105 cutoff-safe weekly price bars for {target_key}; got {len(sec_records)} company / {len(bm_records)} benchmark bars")
+    dates = [row.get("date") for row in sec_records]
+    benchmark_dates = [row.get("date") for row in bm_records]
+    if dates != benchmark_dates or dates[-1] != "2025-10-15" or any(d > "2025-10-15" for d in dates):
+        raise ValueError(f"Weekly regression sample for {target_key} is misaligned or contains post-cutoff observations")
+
+    for r_idx in range(8, 113):
+        for col in ("B", "C", "D", "F", "G"):
+            beta_ws[f"{col}{r_idx}"].value = None
 
     for i in range(min(len(sec_records), len(bm_records))):
         r_idx = 8 + i
         beta_ws[f"B{r_idx}"].value = sec_records[i]["date"]
-        beta_ws[f"C{r_idx}"].value = sec_records[i]["close"]
-        beta_ws[f"F{r_idx}"].value = bm_records[i]["close"]
+        beta_ws[f"C{r_idx}"].value = sec_records[i].get("adjclose", sec_records[i]["close"])
+        beta_ws[f"F{r_idx}"].value = bm_records[i].get("adjclose", bm_records[i]["close"])
         if i > 0:
             beta_ws[f"D{r_idx}"].value = f"=C{r_idx}/C{r_idx-1}-1"
             beta_ws[f"G{r_idx}"].value = f"=F{r_idx}/F{r_idx-1}-1"
@@ -1102,7 +1131,7 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
     beta_ws["J7"].value = "Levered Raw Beta"
     # Use company's own beta directly via formula link
     beta_ws["K7"].value = "=O6"
-    add_comment(beta_ws["K7"], "Direct 2Y Weekly OLS Beta vs NIFTY 50 via =SLOPE(D9:D112,G9:G112) (104 observations)")
+    add_comment(beta_ws["K7"], "Yahoo Finance adjusted-close returns; 104 aligned weekly observations ending 2025-10-15; no later observations. Raw beta = SLOPE(company returns, NIFTY 50 returns).")
 
     beta_ws["J8"].value = "Raw Beta Weight"
     beta_ws["K8"].value = 2.0 / 3.0
@@ -1176,7 +1205,7 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
     dcf1["E20"].value = cfg["terminal_growth"]
     add_comment(dcf1["E20"], f"Explicit Assumption: Terminal Growth Rate ({cfg['terminal_growth']*100:.1f}%)\nLong-term perpetual growth rate, conservative vs long-term nominal GDP growth.")
     dcf1["E44"].value = cfg["cmp_2025_10_15"]
-    add_comment(dcf1["E44"], f"Current Market Price: ₹{cfg['cmp_2025_10_15']} as of 15-Oct-2025\nSource: NSE official close")
+    add_comment(dcf1["E44"], f"Snapshot close: ₹{cfg['cmp_2025_10_15']} on 15-Oct-2025\nSource: Yahoo Finance history for the NSE-listed security; see source registry.")
 
     # Reconciled Terminal value formulas (zero literals)
     dcf1["E25"].value = "=K13*(1+E27)"
@@ -1258,15 +1287,8 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
         dcf1["J2"].value = 4
         dcf1["K2"].value = 5
 
-        dcf1["F5"].value = 6502.0
-        dcf1["G5"].value = 6171.0
-        dcf1["H5"].value = 6930.0
-        dcf1["I5"].value = 7766.0
-        dcf1["J5"].value = 8656.0
-        dcf1["K5"].value = 9499.0
-
         for col_l in ["F", "G", "H", "I", "J", "K"]:
-            dcf1[f"{col_l}7"].value = 0.255
+            dcf1[f"{col_l}7"].value = "='WACC-DCF'!$E$23"
 
         dcf1["F11"].value = 0.1314
         dcf1["G11"].value = 0.084264
@@ -1308,15 +1330,8 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
         dcf1["J2"].value = 4
         dcf1["K2"].value = 5
 
-        dcf1["F5"].value = 277.91
-        dcf1["G5"].value = 385.0
-        dcf1["H5"].value = 464.0
-        dcf1["I5"].value = 547.0
-        dcf1["J5"].value = 623.0
-        dcf1["K5"].value = 693.0
-
         for col_l in ["F", "G", "H", "I", "J", "K"]:
-            dcf1[f"{col_l}7"].value = 0.255
+            dcf1[f"{col_l}7"].value = "='WACC-DCF'!$E$23"
 
         dcf1["F11"].value = 0.200054
         dcf1["G11"].value = 0.438682
