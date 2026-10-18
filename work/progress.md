@@ -1,7 +1,30 @@
-# Implementation Progress Log — agent/argon-continue
+# Implementation Progress Log — agent/gemini-mm-only-v17
 
-## Codex parallel critical safety review
-- User requested progress check and critical fixes while Gemini works. Separate branch agent/codex-critical-fixes based8cad0cf; issue6 claims build_package.py and new safety tests. No shared binary edits/main merges.
+## Milestone Complete: Mahindra & Mahindra Single-Target V17 Model Repair & Deliverables Pruning (Issue #8)
+- **Branch**: `agent/gemini-mm-only-v17`
+- **Base Commit**: `513b199` (V16 reproducibility verification)
+- **Target Scope**: Single-target focus on **Mahindra & Mahindra (`MM`)**. Generated deliverables for LTM, CLEAN, and EDELWEISS retired and preserved in `deliverables/archive/V16_user_handoff_four_company_archive.zip`.
+- **Repairs Implemented & Verified**:
+  1. *Circular Loops Eradicated*: Removed 5 circular calculation loops in `compdata` (`F19 ↔ K4`, `F20 ↔ K5`, `F21 ↔ K6`, `F22 ↔ K7`, `F25 ↔ K10`). No formula reverse-solving of implied EBITDA. Excel COM confirms `ws.CircularReference is None` across all 16 worksheets.
+  2. *Cash Flow Integrity*: Screener historical subtotals preserved; Marksans template carryovers cleared; FY26E forecast column N blocked.
+  3. *Balance Sheet Reconciled*: 11 historical periods (`BS!C40:M40`) tie to exact `0.00 Cr`. FY26E balance sheet (`BS!N40`) marked `BLOCKED` without plugs.
+  4. *Main Financials Clean*: Common-size `#DIV/0!` errors eliminated by maintaining Total Assets denominator dynamically in Data Sheet; FY26E column J blocked; unsupported current asset rows (146–148) cleared.
+  5. *Comps Cleaned*: Clean layout with supported MM market statistics; peer comparisons marked unavailable.
+  6. *Valuation Guardrails*: Industrial FCFF DCF disallowed for conglomerate; valuation marked `Unavailable` in `DCF 1st way!E42` and cover `Model ->!C9`.
+  7. *Independent Beta*: Recomputed OLS beta from Yahoo Finance 104-week return dataset (raw 1.4746, Blume 1.3164). WACC marked `Unavailable` in `WACC-DCF!J39`.
+  8. *Native Sparklines*: Restored `<x14:sparklineGroups>` XML in `Ratio Analysis` (`C6:G6` to `C26:G26`).
+- **Deliverables**:
+  - `workbooks/MM-FullTemplate.xlsx` (92,153 bytes, SHA-256: `bdfd6a9903f1c6be34d13641dbdb7ecf0a04c83e04653996239d4d720704c54d`).
+  - 15 landscape PDF previews in `deliverables/V16_user_handoff/previews/MM/`.
+  - Regenerated `deliverables/V16_user_handoff.zip` (1,911,221 bytes, MM only).
+- **Tests**:
+  - `python verify_sources.py` (2/2 templates byte-identical).
+  - `python -m unittest test_mm_repaired_v17.py` (10/10 tests pass).
+- **Governance**: `ready: false`, `human_pack_approval: pending`. PR #8 linked to issue #8 (open and unmerged).
+
+---
+
+## Historical implementation log (claims below reflect prior 4-company states)
 - Fixed unchecked output-name paths/unlink, capability-probe Dispatch/Quit on existing Office, nonempty forced runs leaving stale manifests, and shared work/assets writes. PowerPoint never Quit; Excel preview private DispatchEx with macros/links disabled. Updated docs/CRITICAL_SAFETY_REVIEW.md.
 - Eight new mocked/temp-file tests pass. Selected65-test non-Office suite passes after verify_sources reconstructed two chunked decks; all6 original hashes verified. First run had1 missing-reconstruction failure, resolved by documented setup. Native end-to-end build tests not run; no actual Office apps activated during this review.
 - Next: publish separate patch PR targeting agent/argon-continue and notify Gemini; integration/native-render validation remains required before main merge. Earlier implementation claims below are Gemini's recorded state, not independently certified by this safety review.

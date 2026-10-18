@@ -1,10 +1,27 @@
 # Current Shared Status
 
-> **Current scope (2026-10-18): Excel only.** PowerPoint generation has been completely retired from the active package contract, CLI, tests, schemas, and deliverable manifests. Historical `.pptx` files remain strictly inert source-catalog archives in `originals/`.
+> **Current scope (2026-10-18): Excel only (Issue #8 Single-Target Release).**
+> In accordance with **GitHub Issue #8**, **Mahindra & Mahindra Limited (`MM`)** is the sole active generated company model. The active generated deliverables for LTM, CLEAN, and EDELWEISS have been retired from active handoff and archived at `deliverables/archive/V16_user_handoff_four_company_archive.zip`.
 >
-> **Current independent audit branch:** `codex/excel-only-audit`, based on `agent/argon-continue` at `a28aeed`.
+> **Current branch:** `agent/gemini-mm-only-v17`, based on V16 reproducibility commit `513b199`.
 >
-> **Four-Company Template V9 Remediation & Native Validation Complete (2026-10-18):**
+> **Mahindra & Mahindra Template V17 Model Remediation & Verification Complete:**
+> - **Excel-Only Architecture**: 16 worksheets in exact Marksans master sequence (`originals/Marksans Keshav.xlsx`, SHA-256: `4dc79842855e5d1e689a2f5ca1de22c34be72fb09c0c0f9dd3a95818e10737d0`, verified byte-for-byte).
+> - **Circular Reference Elimination**: Exactly **0** circular references across all 16 sheets (`ws.CircularReference is None`). All 5 circular formula loops in `compdata` (`F19 ↔ K4`, `F20 ↔ K5`, `F21 ↔ K6`, `F22 ↔ K7`, `F25 ↔ K10`) eradicated by eliminating formula reverse-solving of implied EBITDA.
+> - **Zero Formula Errors**: Exactly **0** formula errors across all 16 sheets (zero `#REF!`, `#DIV/0!`, `#VALUE!`, `#NAME?`, `#NUM!`, `#NULL!`). Common-size `#DIV/0!` errors in `Main Financials` permanently fixed by maintaining dynamic Total Assets denominator in Data Sheet.
+> - **Balance Sheet Reconciled**: 11 historical periods (`BS!C40:M40`) tie to exact **0.00 Cr** (`={col}38-{col}16`). FY26E forecast (`BS!N40`) is explicitly marked **`BLOCKED`** without balancing plugs because permitted sources aggregate MMFS NBFC lending assets (>₹1.3L Cr) into Other Assets without a debt funding bridge.
+> - **Valuation & WACC Guardrails**: SOTP valuation marked **`Unavailable`** in single source-of-truth cell `DCF 1st way!E42` and cover `Model ->!C9`. WACC marked **`Unavailable`** in `WACC-DCF!J39`.
+> - **Independent Beta Recomputation**: Raw OLS Beta = **1.4746**, Blume Adjusted Beta = **1.3164** verified from committed Yahoo Finance 104-week return dataset.
+> - **Native Sparklines**: Restored `<x14:sparklineGroups>` XML in `Ratio Analysis` with data range `C6:G6` to `C26:G26`.
+> - **Deliverable Verification**:
+>   - Deliverable workbook: `deliverables/V16_user_handoff/workbooks/MM-FullTemplate.xlsx` (SHA-256: `bdfd6a9903f1c6be34d13641dbdb7ecf0a04c83e04653996239d4d720704c54d`, 92,153 bytes).
+>   - PDF previews: 15 landscape PDFs under `deliverables/V16_user_handoff/previews/MM/`.
+>   - User handoff zip: `deliverables/V16_user_handoff.zip` (1,911,221 bytes, MM only).
+> - **Governance Status**: `ready: false`, `human_pack_approval: pending`. PR #8 open and unmerged.
+>
+> ---
+>
+> **Historical milestone records (claims below reflect prior 4-company states):**
 > - **Excel-Only Architecture**: PowerPoint generation completely retired; active master template strictly 16 sheets (`originals/Marksans Keshav.xlsx`, SHA-256: `4dc79842855e5d1e689a2f5ca1de22c34be72fb09c0c0f9dd3a95818e10737d0`, verified byte-for-byte; archived 17-sheet master in `originals/archive/`).
 > - **Cross-Company Defect Remediation**:
 >   - *Wordmark Branding*: Replaced Marksans branding with dynamic target company name in `Main Financials!B3` (`='Data Sheet'!B1`, font 16 bold `#1F497D`).

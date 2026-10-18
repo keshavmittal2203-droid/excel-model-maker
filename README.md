@@ -1,6 +1,6 @@
 # Excel Model Maker
 
-Excel-only tools for building professional financial workbooks from the user's supplied Excel template. The four current priority targets are Mahindra & Mahindra (MM), LTIMindtree (LTM), Clean Science (CLEAN), and Edelweiss Financial Services (EDELWEISS).
+Excel-only tools for building professional financial workbooks from the user's supplied Excel template. In accordance with **GitHub Issue #8**, **Mahindra & Mahindra (`MM`)** is the sole active generated company model for current delivery and review.
 
 ## Product rules
 
@@ -13,18 +13,28 @@ Excel-only tools for building professional financial workbooks from the user's s
 
 ## Excel workflows
 
-### Reproduce Four Template V16 Models from Committed Inputs
-A single repeatable command builds the four priority models (MM, LTM, CLEAN, EDELWEISS) directly from the unchanged 16-sheet master template (`originals/Marksans Keshav.xlsx`) and committed delta inputs in `work/sources/`, executes native Microsoft Excel COM 16.0 recalculation, verifies zero formula errors across all 64 sheets, validates dynamic `BS!C40:N40` balance checks and valuation outputs, and exports 15 landscape PDF previews per company (60 total):
+### Build Single-Target Mahindra & Mahindra Template V17 Model (Issue #8)
+A repeatable command builds the repaired Mahindra & Mahindra workbook directly from the unchanged 16-sheet master template (`originals/Marksans Keshav.xlsx`), executes native Microsoft Excel COM 16.0 recalculation, verifies zero circular references and zero formula errors across all 16 sheets, validates dynamic `BS!C40:M40` balance ties (0.00 Cr across all 11 periods), marks FY26E forecast explicitly blocked without plugs, and exports 15 landscape PDF previews:
 
 ```powershell
-python work/build_template_v16_models.py --output-dir staging/v16_reproducibility
+python work/build_template_v17_mm.py --clean
 # OR via package builder:
-python build_package.py --template-v16 --output-dir staging/v16_reproducibility
+python build_package.py --template-v17 --clean
 ```
 
 For environments without Microsoft Excel COM, add `--skip-com` to perform the structural 16-sheet openpyxl build and formula checks without activating Office:
 ```powershell
-python work/build_template_v16_models.py --output-dir staging/v16_reproducibility --skip-com
+python work/build_template_v17_mm.py --clean --skip-com
+# OR via package builder:
+python build_package.py --template-v17 --clean --skip-com
+```
+
+### Reproduce Four Template V16 Models (Archive Milestone)
+To reproduce the historical four-target baseline (MM, LTM, CLEAN, EDELWEISS):
+```powershell
+python work/build_template_v16_models.py --output-dir staging/v16_reproducibility
+# OR via package builder:
+python build_package.py --template-v16 --output-dir staging/v16_reproducibility
 ```
 
 ### Environment & Tool Requirements
@@ -35,17 +45,22 @@ python work/build_template_v16_models.py --output-dir staging/v16_reproducibilit
 - **Verification Suite**:
   ```powershell
   python verify_sources.py
-  pytest
+  python -m unittest test_mm_repaired_v17.py
   ```
 
-### Target Models, Balance Checks & Valuation Status
-All four models preserve the authentic 16-sheet template structure and allowlisted sources only (Screener.in + 6 original web sources). Dynamic balance checks in `BS!C40:N40` (`={col}38-{col}16`) are exposed without balancing plugs:
-- **Mahindra & Mahindra (MM)**: Historical model complete (`FY15–FY25 = 0.00 Cr`). FY26E balance check exposes authentic conglomerate gap of `+₹7,677.49 Cr` (`BS!N40`) because Screener consolidates the MMFS NBFC loan book (>₹1.3L Cr) into Other Assets without sub-schedules; forecast is **BLOCKED**. Valuation is **Unavailable** (`N/A`) because required segment EBITDA and standalone net cash disclosures are absent from permitted sources.
-- **LTIMindtree (LTM)**: Historical model reconciles (`FY15–FY25 = 0.00 Cr`). FY26E balance check is `+₹1.00 Cr` (`BS!N40`), reflecting Screener's integer-rounded sub-schedule delta preserved without plugs (**UNRECONCILED**). Valuation is supported at **₹2,620.24 / share** (WACC 12.48%, adjusted beta 1.1018).
-- **Clean Science (CLEAN)**: Historical model reconciles (`FY15–FY25 = 0.00 Cr`). FY26E balance check is `−₹1.13 Cr` (`BS!N40`), reflecting Screener's integer/decimal sub-schedule delta preserved without plugs (**UNRECONCILED**). Valuation is supported at **₹393.03 / share** (WACC 13.19%, adjusted beta 1.2141).
-- **Edelweiss Financial Services (EDELWEISS)**: Historical model reconciles (`FY15–FY25 = 0.00 Cr`). FY26E balance check is `+₹1.00 Cr` (`BS!N40`), reflecting Screener's integer-rounded sub-schedule delta preserved without plugs (**UNRECONCILED**). Valuation is **Unavailable** (`N/A`) because industrial DCF is prohibited for financial institutions and vertical SOTP facts are absent from permitted sources.
+### Active Model Status & Issue #8 Repairs
+The active generated model preserves the authentic 16-sheet template structure and allowlisted sources only (Screener.in + 6 original web sources):
+- **Mahindra & Mahindra (MM)**:
+  - 16 sheets in exact master sequence; exactly 0 circular references and 0 formula errors.
+  - 11 historical balance ties verified: `BS!C40:M40 = 0.00 Cr` (`={col}38-{col}16`).
+  - FY26E balance sheet marked `BLOCKED` (`BS!N40 = "BLOCKED"`) without artificial balancing plugs. Consolidated Other Assets includes the systemic NBFC loan book of MMFS (>₹1.3L Cr) without a published funding bridge.
+  - All 5 circular formula loops in `compdata` (`F19:F25` ↔ `K4:K10`) eliminated; formula reverse-solving of EBITDA removed.
+  - Valuation marked `Unavailable` in `DCF 1st way!E42` and cover `Model ->!C9`. SOTP segment facts are unavailable on approved sources; industrial FCFF DCF is prohibited for conglomerates.
+  - Cost of capital: Raw OLS beta 1.4746, Blume adjusted beta 1.3164 (recomputed from Yahoo Finance 104-week return series). WACC marked `Unavailable` in `WACC-DCF!J39`.
+  - Native `<x14:sparklineGroups>` XML restored in `Ratio Analysis` with data ranges `C6:G6` through `C26:G26`.
+- **LTM, CLEAN, EDELWEISS**: Retired from active generated deliverables pursuant to Issue #8. Prior four-company delivery safely archived at `deliverables/archive/V16_user_handoff_four_company_archive.zip`. Source snapshots and registries remain preserved in repo.
 
-Governance: All packages remain `ready: false` with `human_pack_approval: pending`. PR #3 remains open and unmerged.
+Governance: All packages remain `ready: false` with `human_pack_approval: pending`. PR #8 remains open and unmerged.
 
 ## Project files
 

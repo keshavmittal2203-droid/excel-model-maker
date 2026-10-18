@@ -1078,9 +1078,21 @@ def main() -> int:
     parser.add_argument("--allow-proposal", action="store_true", help="Allow building with a proposal model pack")
     parser.add_argument("--force", action="store_true", help="Legacy option; non-empty run directories are never overwritten")
     parser.add_argument("--template-v16", "--v16", action="store_true", help="Reproduce 16-sheet Template V16 models from master template and committed inputs")
+    parser.add_argument("--template-v17", "--v17", action="store_true", help="Build single-target Mahindra & Mahindra Template V17 model from master template and committed inputs")
     parser.add_argument("--skip-com", action="store_true", help="Skip Excel COM recalculation and PDF preview export")
     parser.add_argument("--check-only", "--preflight-only", action="store_true", help="Fast preflight request and template validation without Office COM activation or file generation")
     args = parser.parse_args()
+
+    if args.template_v17:
+        out_dir = Path(args.output_dir) if args.output_dir else (Path(args.output_base) if args.output_base else ROOT / "companies" / "MM" / "template_v17")
+        from work.build_template_v17_mm import build as build_v17_mm
+        report = build_v17_mm(
+            output_dir=out_dir,
+            skip_com=args.skip_com,
+            clean=args.clean,
+        )
+        print(json.dumps(report, indent=2))
+        return 0 if (report.get("checks", {}).get("formula_errors", 1) == 0 and report.get("engine", {}).get("circular_references", 1) == 0) else 1
 
     if args.template_v16:
         out_dir = args.output_dir if args.output_dir else (args.output_base if args.output_base else "staging/v16_reproducibility")
@@ -1096,9 +1108,6 @@ def main() -> int:
     if args.batch or args.requests:
         default_reqs = [
             "examples/mm-package.json",
-            "examples/ltm-package.json",
-            "examples/clean-package.json",
-            "examples/edelweiss-package.json",
         ]
         raw_reqs = args.requests if args.requests else default_reqs
         req_paths = [Path(r) for r in raw_reqs]

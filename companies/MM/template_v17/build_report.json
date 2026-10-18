@@ -1,0 +1,32 @@
+{
+  "target": "MM",
+  "version": "V17",
+  "ready": false,
+  "status": "blocked_forecast_and_valuation",
+  "source_audit": {
+    "historical_years": 11,
+    "source_cutoff": "2025-10-15",
+    "beta_raw_independent": "1.4746023202",
+    "beta_blume_independent": "1.3164015468",
+    "master_sha256": "4dc79842855e5d1e689a2f5ca1de22c34be72fb09c0c0f9dd3a95818e10737d0"
+  },
+  "engine": {
+    "engine": "Microsoft Excel COM",
+    "version": "16.0",
+    "previews": 15,
+    "circular_references": 0
+  },
+  "checks": {
+    "formula_errors": 0,
+    "formula_cells": 876,
+    "historical_balance_checks_passed": 11,
+    "historical_balance_checks_total": 11,
+    "fy26_balance": "BLOCKED",
+    "valuation": "Unavailable",
+    "raw_beta": 1.4746023202100549,
+    "blume_beta": 1.3164015468067032,
+    "native_sparklines": true
+  },
+  "workbook_sha256": "bdfd6a9903f1c6be34d13641dbdb7ecf0a04c83e04653996239d4d720704c54d",
+  "workbook_bytes": 92153
+}
