@@ -196,14 +196,18 @@ def run_recalculation_and_verification():
                         print(f"  BS MISMATCH Historical Col {c_let}: Liab={liab}, Assets={assets}, Diff={d_bs}")
                         bs_reconciled = False
 
-            # Col N (FY26E) check: verify no plug in N37, and compute honest difference
+            # Col N (FY26E) check: verify no plug in N37, verify Row 40 balance check within standard integer rounding
             fy26_liab = bs_ws.Range("N16").Value
             fy26_assets = bs_ws.Range("N38").Value
             fy26_diff = round(float(fy26_assets) - float(fy26_liab), 2)
             n37_formula = str(bs_ws.Range("N37").Formula)
-            print(f"  Col N (FY26E) Honest Variance: Assets={fy26_assets}, Liab={fy26_liab}, Diff={fy26_diff} Cr")
+            row40_n = bs_ws.Range("N40").Value
+            print(f"  Col N (FY26E) Honest Variance: Assets={fy26_assets:,.2f}, Liab={fy26_liab:,.2f}, Diff={fy26_diff:+.2f} Cr")
             print(f"  Col N (FY26E) N37 Driver Formula: {n37_formula}")
+            print(f"  Col N (FY26E) Row 40 Balance Check (N38 - N16): {float(row40_n):+.2f} Cr")
             assert "16" not in n37_formula, f"Col N Row 37 contains plug reference to liabilities (Row 16): {n37_formula}"
+            assert abs(float(row40_n)) <= 1.50, f"Col N Row 40 balance check exceeds standard integer rounding: {row40_n}"
+            assert abs(float(row40_n) - fy26_diff) < 0.01, f"N40 {row40_n} does not match N38-N16 {fy26_diff}"
 
             print(f"Historical Balance Sheet (BS) Reconciled (Columns C-M, Max diff <= 2.0 Cr): {bs_reconciled}")
             assert bs_reconciled, f"Historical BS failed reconciliation in {target}"

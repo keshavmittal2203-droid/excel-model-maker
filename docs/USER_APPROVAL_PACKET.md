@@ -25,31 +25,31 @@
 All four priority targets have been delivered as uncompressed 16-sheet master template workbooks under `companies/<TARGET>/template_v6/`. Prior versions (`template_v5`, `template_v4`, `template_v3`, `template_v2`, and 6-sheet workbooks) are preserved intact in their respective directories.
 
 | Target Company | Primary Valuation Methodology | Source-of-Truth Cell (`'DCF 1st way'`) | Cover Link Cell (`'Model ->'`) | Implied Value per Share | 15-Oct-2025 Market Close | Linked WACC (`E26`) | Formula Errors (64 Sheets) | Verified Workbook SHA-256 Checksum |
-| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | `E42` (`=G60`) | `C9` (`=E42`) | **₹2,742.97** | ₹3,497.20 | 13.00% | **0 errors** | `94836ca99f21bfd9db2de34872b23fdeb78ec8de7587daf4745c2fc1ce6a0756` |
-| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹2,428.22** | ₹5,609.50 | **13.12%** | **0 errors** | `5023c00f030596fc4d38e90885ebc228d5b3581b0d472e5b6b1dd42eec6fdffa` |
-| **Clean Science and Technology** (`CLEAN`) | Manufacturing FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹468.61** | ₹1,041.40 | **11.91%** | **0 errors** | `2b2b0c858b50a71f02d57c00a9cd72b09c9d2ef602cec4179eae4411c2f1f194` |
-| **Edelweiss Financial Services** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF N/A) | `E42` (`=G60`) | `C9` (`=E42`) | **₹130.53** | ₹108.85 | 9.70% | **0 errors** | `3973ee38b7c67d64848896c0d24060eed2bd773e3075fbf29b740a6beb2b8fd6` |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | `E42` (`=G60`) | `C9` (`=E42`) | **₹2,742.97** | ₹3,497.20 | 13.00% | **0 errors** | `89a87c874237d492141dcfcab85398c817a528f832753fbcb0757e15bee93b76` |
+| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹2,428.22** | ₹5,609.50 | **13.12%** | **0 errors** | `4b38a3ad743757dabd6de6d077f166483d721b7aa3483abddfb424efff08bc85` |
+| **Clean Science and Technology** (`CLEAN`) | Manufacturing FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹468.61** | ₹1,041.40 | **11.91%** | **0 errors** | `cdbc6b44a115151b475daa9dfb99182d288f79143e1b676b7dc65130c7538daa` |
+| **Edelweiss Financial Services** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF N/A) | `E42` (`=G60`) | `C9` (`=E42`) | **₹130.53** | ₹108.85 | 9.70% | **0 errors** | `f543d7a471077d9814e368633a0220ff78db832814ad1b2607084aff1f20825a` |
 
 ### Clickable Absolute Deliverable Paths
 
 1. **Mahindra & Mahindra Limited (`MM`)**:
-   - 16-Sheet Workbook: [`companies/MM/template_v6/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/MM-FullTemplate.xlsx) (109,009 bytes)
+   - 16-Sheet Workbook: [`companies/MM/template_v6/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/MM-FullTemplate.xlsx) (113,639 bytes)
    - Package Manifest: [`companies/MM/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/MM/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/previews/)
 
 2. **LTIMindtree Limited (`LTM`)**:
-   - 16-Sheet Workbook: [`companies/LTM/template_v6/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/LTM-FullTemplate.xlsx) (108,846 bytes)
+   - 16-Sheet Workbook: [`companies/LTM/template_v6/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/LTM-FullTemplate.xlsx) (113,706 bytes)
    - Package Manifest: [`companies/LTM/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/LTM/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/previews/)
 
 3. **Clean Science and Technology Limited (`CLEAN`)**:
-   - 16-Sheet Workbook: [`companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx) (109,075 bytes)
+   - 16-Sheet Workbook: [`companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx) (112,200 bytes)
    - Package Manifest: [`companies/CLEAN/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/CLEAN/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/previews/)
 
 4. **Edelweiss Financial Services Limited (`EDELWEISS`)**:
-   - 16-Sheet Workbook: [`companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx) (110,912 bytes)
+   - 16-Sheet Workbook: [`companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx) (115,609 bytes)
    - Package Manifest: [`companies/EDELWEISS/template_v6/package.manifest.json`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/package.manifest.json)
    - Sheet Previews (16 PDFs): [`companies/EDELWEISS/template_v6/previews/`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/previews/)
 
@@ -78,18 +78,31 @@ All four priority targets have been delivered as uncompressed 16-sheet master te
 - Historical actuals strictly end at FY25 (31-Mar-2025). No FY26 actuals exist.
 - FY26 and later periods (`Mar 2026E`) are formula-driven explicit forecasts or marked unavailable.
 
-### Requirement 4: Financial Statement Mapping & Non-Plug Balance Sheet (BS) Integrity
+### Requirement 4: Financial Statement Mapping & Non-Plug 3-Statement Integration
 - **Expenses Mapping**: Reported aggregate expenses mapped accurately without fabricated splits (`Sales - Expenses = Operating Profit` verified across all historical periods).
 - **Historical Component Integrity (Columns C–M, FY15–FY25)**:
   - Total Assets (Row 38) is calculated strictly as the independent sum of asset components (`Net Fixed Assets + CWIP + Investments + Inventories + Receivables + Cash + Loans + Other Asset Items`).
   - Total Liabilities (Row 16) is calculated strictly as the independent sum of liability components (`Equity Capital + Reserves + Borrowings + Other Liabilities`).
   - Across all 44 company-years (11 years x 4 targets), component sums reconcile to Screener stated totals within standard integer rounding ($\le 1.0$ Cr, max 2.0 Cr for LTM FY22).
-  - Row 37 ("Other asset items") is sourced directly from Screener's `balance-sheet:Other Assets` schedule (or 0.0 for MM where Screener reports no Other Asset Items), with zero residual fallback (`tot_liab - curr_known` eliminated).
-- **Forecast Col N (FY26E) Non-Plug Methodology**:
-  - Row 37 ("Other asset items") is projected independently from its own operational driver (`=M37*1.05` for LTM, CLEAN, EDELWEISS; `0` for MM), containing zero references to Total Liabilities (`N16`) or any balancing check.
-  - Row 16 ("Total Liabilities & Equity") is calculated as `=N4+N5+N10+...` (sum of liability components).
-  - Row 38 ("Total Assets") is calculated as `=(N28-N29)+N30+N31+...` (sum of asset components).
-  - The honest, un-plugged forecast variance (`Total Assets - Total Liabilities`) is reported visibly: MM (-₹6,197.04 Cr), LTM (+₹784.54 Cr), CLEAN (-₹69.86 Cr), EDELWEISS (-₹373.62 Cr). In an unintegrated balance-sheet projection where Reserves grow with net income but Cash and Debt are held constant, reporting this discrepancy honestly is the only method that eliminates artificial balancing plugs.
+  - Row 37 ("Other asset items") is sourced directly from Screener's `balance-sheet:Other Assets` schedule (or 0.0 for MM where Screener reports no Other Asset Items), with zero residual fallback.
+- **Forecast Col N (FY26E) Complete 3-Statement Integration (Zero Residual Plugs)**:
+  - **Retained Earnings**: Reserves & Surplus (`BS!N5`) links dynamically to opening reserves plus forecast Net Profit less Dividends: `=M5+'Data Sheet'!K30-'Data Sheet'!K31`.
+  - **Fixed Assets Roll-Forward**: Gross Block (`BS!N28`) rolls forward from opening gross block plus CapEx (`=-'Cash Flow'!N15`); Accumulated Depreciation (`BS!N29`) rolls forward with forecast depreciation (`='Data Sheet'!K26`). Net Fixed Assets equals `(N28 - N29)` (or for MM, Net Block directly rolls forward via `=M28-'Cash Flow'!N15-'Data Sheet'!K26`).
+  - **Working Capital Drivers**: Operating working capital lines roll forward via explicit 5% drivers (Trade Payables `N13`, Other Liabilities `N15`, Inventories `N33`, Receivables `N34`, Other Assets `N37`).
+  - **Cash Flow Statement Integration**:
+    - CFO (`Cash Flow!N5`) integrates Net Profit (`K30`) + Depreciation (`K26`) + Working Capital Changes (`N12 = SUM(N7:N11)`).
+    - CFI (`Cash Flow!N14`) links to explicit CapEx driver (`N15 = -ROUND('Data Sheet'!K26*1.20, 2)`, 1.25x for MM).
+    - CFF (`Cash Flow!N23`) links to Borrowings change (`N25 = 'BS'!N10-'BS'!M10`) + Dividends Paid (`N28 = -'Data Sheet'!K31`).
+    - Net Cash Flow (`Cash Flow!N31`) equals `=N5+N14+N23`.
+  - **Cash Roll-Forward**: Closing Cash on Balance Sheet (`BS!N35`) is forecast strictly from the independent cash roll-forward: `=M35+'Cash Flow'!N31` (never calculated as a balance-sheet plug).
+  - **Visible Balance Check (`BS!Row 40`)**:
+    - Row 40 is explicitly added across all columns C..N: `=C38-C16` through `=N38-N16`.
+    - Evaluates to:
+      - **MM**: `+0.00 Cr`
+      - **LTM**: `+1.00 Cr` (exact carryover of historical Screener integer rounding)
+      - **CLEAN**: `-1.13 Cr` (exact carryover of historical Screener integer rounding and sub-schedule decimals)
+      - **EDELWEISS**: `+1.00 Cr` (exact carryover of historical Screener integer rounding)
+    - $\Delta Assets - \Delta Liabilities \equiv 0.0000\text{ Cr}$ across all four models! All forecast balance sheets balance with zero delta variance through transparent operating and financing schedules.
 - **Borrowings Sub-Schedule Integrity**:
   - LTM & Edelweiss borrowing sub-schedules neither omit nor double-count debt: `ST Borrowings (R7) + Lease Liabilities (R8) + Preference Capital (R9) + Other/LT Borrowings (R10)` ties to Screener Total Borrowings with zero discrepancy.
 - **Clean Science Standalone Distinction**:

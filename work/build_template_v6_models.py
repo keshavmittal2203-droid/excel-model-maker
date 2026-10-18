@@ -520,49 +520,74 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
 
         if is_fy26:
             bs_ws[f"{c_let}2"].value = "2026-03-01 (FY26E)"
-            bs_ws[f"{c_let}4"].value = f"={bs_cols[idx-1]}4"
-            bs_ws[f"{c_let}5"].value = f"={bs_cols[idx-1]}5*1.08"
-            bs_ws[f"{c_let}7"].value = None
-            bs_ws[f"{c_let}8"].value = None
-            bs_ws[f"{c_let}9"].value = None
-            bs_ws[f"{c_let}10"].value = f"={bs_cols[idx-1]}10"
-            bs_ws[f"{c_let}12"].value = f"={bs_cols[idx-1]}12" if bs_ws[f"{bs_cols[idx-1]}12"].value is not None else None
-            bs_ws[f"{c_let}13"].value = f"={bs_cols[idx-1]}13*1.05" if bs_ws[f"{bs_cols[idx-1]}13"].value is not None else None
-            bs_ws[f"{c_let}14"].value = None
-            bs_ws[f"{c_let}15"].value = f"={bs_cols[idx-1]}15*1.05" if bs_ws[f"{bs_cols[idx-1]}15"].value is not None else None
-            
-            liab_terms = [f"{c_let}4", f"{c_let}5", f"{c_let}10"]
-            if bs_ws[f"{c_let}12"].value is not None: liab_terms.append(f"{c_let}12")
-            if bs_ws[f"{c_let}13"].value is not None: liab_terms.append(f"{c_let}13")
-            if bs_ws[f"{c_let}15"].value is not None: liab_terms.append(f"{c_let}15")
+            prev_col = bs_cols[idx-1]
+
+            # 1. Equity & Liabilities Roll-Forward
+            # Equity Capital: held flat at FY25 level
+            bs_ws[f"{c_let}4"].value = f"={prev_col}4"
+
+            # Reserves & Surplus: opening reserves + forecast Net Profit ('Data Sheet'!K30) - forecast Dividends ('Data Sheet'!K31)
+            bs_ws[f"{c_let}5"].value = f"={prev_col}5+'Data Sheet'!K30-'Data Sheet'!K31"
+            add_comment(bs_ws[f"{c_let}5"], "Forecast Reserves = Opening FY25 Reserves + FY26E Net Profit ('Data Sheet'!K30) - FY26E Dividends ('Data Sheet'!K31).")
+
+            # Borrowings sub-schedules: rolled forward flat from FY25
+            bs_ws[f"{c_let}7"].value = f"={prev_col}7" if bs_ws[f"{prev_col}7"].value is not None else None
+            bs_ws[f"{c_let}8"].value = f"={prev_col}8" if bs_ws[f"{prev_col}8"].value is not None else None
+            bs_ws[f"{c_let}9"].value = f"={prev_col}9" if bs_ws[f"{prev_col}9"].value is not None else None
+            bs_ws[f"{c_let}10"].value = f"={prev_col}10" if bs_ws[f"{prev_col}10"].value is not None else None
+
+            # Non-controlling Interest: held flat from FY25
+            bs_ws[f"{c_let}12"].value = f"={prev_col}12" if bs_ws[f"{prev_col}12"].value is not None else None
+
+            # Operating Liabilities: 5% operating growth driver
+            bs_ws[f"{c_let}13"].value = f"=ROUND({prev_col}13*1.05, 2)" if bs_ws[f"{prev_col}13"].value is not None else None
+            bs_ws[f"{c_let}14"].value = f"={prev_col}14" if bs_ws[f"{prev_col}14"].value is not None else None
+            bs_ws[f"{c_let}15"].value = f"=ROUND({prev_col}15*1.05, 2)" if bs_ws[f"{prev_col}15"].value is not None else None
+
+            # Total Liabilities & Equity (Row 16): independent sum of all populated liability and equity items
+            liab_terms = [f"{c_let}{r}" for r in [4, 5, 7, 8, 9, 10, 12, 13, 14, 15] if bs_ws[f"{c_let}{r}"].value is not None]
             bs_ws[f"{c_let}16"].value = f"={'+'.join(liab_terms)}"
 
-            # Assets
+            # 2. Fixed Assets Roll-Forward
             for r_fa in range(19, 28):
                 bs_ws[f"{c_let}{r_fa}"].value = None
-            bs_ws[f"{c_let}28"].value = f"={bs_cols[idx-1]}28*1.04"
-            bs_ws[f"{c_let}29"].value = f"={bs_cols[idx-1]}29*1.05" if (bs_ws[f"{bs_cols[idx-1]}29"].value is not None and bs_ws[f"{bs_cols[idx-1]}29"].value != 0) else None
-            bs_ws[f"{c_let}30"].value = f"={bs_cols[idx-1]}30"
-            bs_ws[f"{c_let}31"].value = f"={bs_cols[idx-1]}31"
-            bs_ws[f"{c_let}33"].value = f"={bs_cols[idx-1]}33*1.05" if (bs_ws[f"{bs_cols[idx-1]}33"].value is not None and bs_ws[f"{bs_cols[idx-1]}33"].value != 0) else None
-            bs_ws[f"{c_let}34"].value = f"={bs_cols[idx-1]}34*1.05" if (bs_ws[f"{bs_cols[idx-1]}34"].value is not None and bs_ws[f"{bs_cols[idx-1]}34"].value != 0) else None
-            bs_ws[f"{c_let}35"].value = f"={bs_cols[idx-1]}35"
-            bs_ws[f"{c_let}36"].value = f"={bs_cols[idx-1]}36" if bs_ws[f"{bs_cols[idx-1]}36"].value is not None else None
-            
-            # Other asset items (Row 37): explicit, independent forecast driver (never referencing liabilities)
-            prev_col = bs_cols[idx-1]
-            if bs_ws[f"{prev_col}37"].value is not None and bs_ws[f"{prev_col}37"].value != 0:
-                bs_ws[f"{c_let}37"].value = f"={prev_col}37*1.05"
+            if target_key == "MM":
+                # MM reports Net Block on Row 28 (Accum Dep row 29 is empty)
+                # Gross additions (CapEx) from 'Cash Flow'!N15, depreciation from 'Data Sheet'!K26
+                bs_ws[f"{c_let}28"].value = f"={prev_col}28-'Cash Flow'!{c_let}15-'Data Sheet'!K26"
+                bs_ws[f"{c_let}29"].value = None
             else:
-                bs_ws[f"{c_let}37"].value = 0.0 if target_key == "MM" else None
+                # Gross Block rolls forward with CapEx (Cash Flow row 15 is negative outflow, so subtracting adds CapEx)
+                bs_ws[f"{c_let}28"].value = f"={prev_col}28-'Cash Flow'!{c_let}15"
+                # Accumulated Depreciation rolls forward with annual depreciation expense
+                bs_ws[f"{c_let}29"].value = f"={prev_col}29+'Data Sheet'!K26"
+
+            bs_ws[f"{c_let}30"].value = f"={prev_col}30" if bs_ws[f"{prev_col}30"].value is not None else None
+            bs_ws[f"{c_let}31"].value = f"={prev_col}31" if bs_ws[f"{prev_col}31"].value is not None else None
+
+            # 3. Operating Assets Roll-Forward
+            bs_ws[f"{c_let}33"].value = f"=ROUND({prev_col}33*1.05, 2)" if (bs_ws[f"{prev_col}33"].value is not None and bs_ws[f"{prev_col}33"].value != 0) else None
+            bs_ws[f"{c_let}34"].value = f"=ROUND({prev_col}34*1.05, 2)" if (bs_ws[f"{prev_col}34"].value is not None and bs_ws[f"{prev_col}34"].value != 0) else None
+
+            # Cash & Cash Equivalents (Row 35): independent roll-forward from Opening Cash + Net Cash Flow ('Cash Flow'!N31)
+            bs_ws[f"{c_let}35"].value = f"={prev_col}35+'Cash Flow'!{c_let}31"
+            add_comment(bs_ws[f"{c_let}35"], "Forecast Cash Equivalents = Opening FY25 Cash ('BS'!M35) + FY26E Net Cash Flow ('Cash Flow'!N31).")
+
+            bs_ws[f"{c_let}36"].value = f"={prev_col}36" if bs_ws[f"{prev_col}36"].value is not None else None
+
+            # Other asset items (Row 37): explicit, independent forecast driver (5% growth or 0 for MM)
+            if target_key == "MM":
+                bs_ws[f"{c_let}37"].value = 0.0
+            elif bs_ws[f"{prev_col}37"].value is not None and bs_ws[f"{prev_col}37"].value != 0:
+                bs_ws[f"{c_let}37"].value = f"=ROUND({prev_col}37*1.05, 2)"
+            else:
+                bs_ws[f"{c_let}37"].value = None
 
             dep_term = f"-{c_let}29" if bs_ws[f"{c_let}29"].value is not None else ""
-            all_ast_terms = [f"({c_let}28{dep_term})", f"{c_let}30", f"{c_let}31"]
-            if bs_ws[f"{c_let}33"].value is not None: all_ast_terms.append(f"{c_let}33")
-            if bs_ws[f"{c_let}34"].value is not None: all_ast_terms.append(f"{c_let}34")
-            if bs_ws[f"{c_let}35"].value is not None: all_ast_terms.append(f"{c_let}35")
-            if bs_ws[f"{c_let}36"].value is not None: all_ast_terms.append(f"{c_let}36")
-            if bs_ws[f"{c_let}37"].value is not None: all_ast_terms.append(f"{c_let}37")
+            all_ast_terms = [f"({c_let}28{dep_term})"]
+            for r_ast in [30, 31, 33, 34, 35, 36, 37]:
+                if bs_ws[f"{c_let}{r_ast}"].value is not None:
+                    all_ast_terms.append(f"{c_let}{r_ast}")
 
             # Total Assets (Row 38): independent sum of asset components without plug
             bs_ws[f"{c_let}38"].value = f"={'+'.join(all_ast_terms)}"
@@ -746,6 +771,16 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
                 tot_ast = round(net_fixed + cwip_v + inv_v + inv_bs_v + rec_bs_v + cash_bs_v + loans_bs_v + (oth_asset_v or 0.0), 2)
                 bs_ws[f"{c_let}38"].value = tot_ast
 
+    # Row 40: Visible Balance Check (Total Assets - Total Liabilities)
+    bs_ws["B40"].value = "Balance Check (Total Assets - Total Liabilities)"
+    bs_ws["B40"].font = Font(name="Calibri", size=10, bold=True)
+    add_comment(bs_ws["B40"], "Balance Check = Total Assets (Row 38) - Total Liabilities & Equity (Row 16).\nHistorical periods (FY15-FY25) disclose standard integer rounding from Screener.in tables (<= 1.00 Cr, max 2.00 Cr).\nForecast period (FY26E) is integrated across P&L, Balance Sheet, and Cash Flow with zero delta variance.")
+    for c_let in bs_cols:
+        bs_ws[f"{c_let}40"].value = f"={c_let}38-{c_let}16"
+        bs_ws[f"{c_let}40"].font = Font(name="Calibri", size=10, bold=True)
+        bs_ws[f"{c_let}40"].number_format = "0.00"
+        bs_ws[f"{c_let}40"].border = Border(top=Side(style='thin', color='A0A0A0'), bottom=Side(style='double', color='000000'))
+
     # =========================================================================
     # C. CASH FLOW SHEET (Rebuilt from Screener Cash Flow Schedules)
     # =========================================================================
@@ -763,11 +798,58 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
         cff_tot = get_row_series(cf_rows, cf_hdrs, "Cash from Financing Activity", bs_periods)[idx] if p_str in cf_hdrs else -300.0
 
         if is_fy26:
+            prev_col = bs_cols[idx-1]
             cf_ws[f"{c_let}2"].value = None
             cf_ws[f"{c_let}4"].value = "2026-03-01 (FY26E)"
-            cf_ws[f"{c_let}5"].value = f"={bs_cols[idx-1]}5*1.08"
-            cf_ws[f"{c_let}14"].value = f"=-{bs_cols[idx-1]}5*0.40"
-            cf_ws[f"{c_let}23"].value = f"=-{bs_cols[idx-1]}5*0.30"
+
+            # 1. Operating Activity (CFO) Integration
+            # Operating cash flow before working capital = Net Profit ('Data Sheet'!K30) + Depreciation ('Data Sheet'!K26)
+            cf_ws[f"{c_let}6"].value = "='Data Sheet'!K30+'Data Sheet'!K26"
+
+            # Working capital changes linked to Balance Sheet movements:
+            cf_ws[f"{c_let}7"].value = f"=-('BS'!{c_let}34-'BS'!{prev_col}34)" if bs_ws[f"{c_let}34"].value is not None else 0.0
+            cf_ws[f"{c_let}8"].value = f"=-('BS'!{c_let}33-'BS'!{prev_col}33)" if bs_ws[f"{c_let}33"].value is not None else 0.0
+            cf_ws[f"{c_let}9"].value = f"='BS'!{c_let}13-'BS'!{prev_col}13" if bs_ws[f"{c_let}13"].value is not None else 0.0
+            cf_ws[f"{c_let}10"].value = f"=-('BS'!{c_let}36-'BS'!{prev_col}36)" if bs_ws[f"{c_let}36"].value is not None else 0.0
+            if target_key == "MM":
+                cf_ws[f"{c_let}11"].value = f"='BS'!{c_let}15-'BS'!{prev_col}15"
+            else:
+                cf_ws[f"{c_let}11"].value = f"=-('BS'!{c_let}37-'BS'!{prev_col}37)+('BS'!{c_let}15-'BS'!{prev_col}15)"
+            cf_ws[f"{c_let}12"].value = f"=SUM({c_let}7:{c_let}11)"
+            cf_ws[f"{c_let}13"].value = 0.0
+
+            # Cash from Operating Activity (Row 5) = Operating Profit + Working Capital Changes
+            cf_ws[f"{c_let}5"].value = f"={c_let}6+{c_let}12"
+
+            # 2. Investing Activity (CFI) Integration
+            # Fixed assets purchased (CapEx driver: 1.25x depr for MM, 1.20x for others)
+            capex_mult = 1.25 if target_key == "MM" else 1.20
+            cf_ws[f"{c_let}15"].value = f"=-ROUND('Data Sheet'!K26*{capex_mult:.2f}, 2)"
+            add_comment(cf_ws[f"{c_let}15"], f"Forecast CapEx driver = {capex_mult:.2f}x Depreciation Expense ('Data Sheet'!K26).")
+            cf_ws[f"{c_let}16"].value = 0.0
+            cf_ws[f"{c_let}17"].value = 0.0
+            cf_ws[f"{c_let}18"].value = 0.0
+            cf_ws[f"{c_let}19"].value = 0.0
+            cf_ws[f"{c_let}20"].value = 0.0
+            cf_ws[f"{c_let}21"].value = 0.0
+            cf_ws[f"{c_let}22"].value = 0.0
+            cf_ws[f"{c_let}14"].value = f"={c_let}15"
+
+            # 3. Financing Activity (CFF) Integration
+            cf_ws[f"{c_let}24"].value = 0.0
+            cf_ws[f"{c_let}25"].value = f"='BS'!{c_let}10-'BS'!{prev_col}10" if bs_ws[f"{c_let}10"].value is not None else 0.0
+            cf_ws[f"{c_let}26"].value = 0.0
+            cf_ws[f"{c_let}27"].value = 0.0
+            cf_ws[f"{c_let}28"].value = "=-'Data Sheet'!K31"
+            add_comment(cf_ws[f"{c_let}28"], "Forecast Dividends Paid = -'Data Sheet'!K31.")
+            cf_ws[f"{c_let}29"].value = 0.0
+            cf_ws[f"{c_let}30"].value = 0.0
+            cf_ws[f"{c_let}23"].value = f"={c_let}25+{c_let}28"
+
+            # 4. Cash Flow Summary & Ratios
+            cf_ws[f"{c_let}31"].value = f"={c_let}5+{c_let}14+{c_let}23"
+            cf_ws[f"{c_let}32"].value = f"={c_let}5+{c_let}15"
+            cf_ws[f"{c_let}33"].value = f"=IF('Data Sheet'!K28<>0, {c_let}5/'Data Sheet'!K28, \"N/A\")"
         else:
             cf_ws[f"{c_let}2"].value = None
             cf_ws[f"{c_let}4"].value = f"{bs_date_strs[idx]} 00:00:00"
@@ -799,6 +881,11 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
             cf_ws[f"{c_let}26"].value = clean_num(cf_cff_sch.get("Repayment of borrowings", {}).get(p_str), None)
             cf_ws[f"{c_let}27"].value = clean_num(cf_cff_sch.get("Interest paid fin", {}).get(p_str), None)
             cf_ws[f"{c_let}28"].value = clean_num(cf_cff_sch.get("Dividends paid", {}).get(p_str), None)
+
+            # Summary rows for historical columns
+            cf_ws[f"{c_let}31"].value = f"={c_let}5+{c_let}14+{c_let}23"
+            cf_ws[f"{c_let}32"].value = f"={c_let}5+{c_let}15" if cf_ws[f"{c_let}15"].value is not None else f"={c_let}5"
+            cf_ws[f"{c_let}33"].value = f"=IF(AND({c_let}6<>\"\", {c_let}6<>0), {c_let}5/{c_let}6, \"N/A\")" if cf_ws[f"{c_let}6"].value is not None else "N/A"
 
     # =========================================================================
     # D. PEERDATA & COMPDATA SHEETS (5 Peers cleanly populated, stale pharma cleared)

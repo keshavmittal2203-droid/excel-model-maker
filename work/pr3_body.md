@@ -1088,10 +1088,10 @@ eady: false, human_pack_approval: pending.
   - Recalculated cleanly via Microsoft Excel COM 16.0 (`CalculateFullRebuild`). Exactly **0 formula errors** across all 64 sheets (16 sheets x 4 targets).
   - Preserved native unforced print setups without alteration. Exactly 16 preview PDFs per company (64 total) exported to `companies/<TARGET>/template_v6/previews/`.
 - **Deliverables in `companies/<TARGET>/template_v6/`**:
-  - `MM`: `companies/MM/template_v6/MM-FullTemplate.xlsx` (123,687 bytes, SHA-256: `0c2e6ff3859c7e58dee8fd62ea4746e7e5e48623a03d40be9de790c5583f9cec`)
-  - `LTM`: `companies/LTM/template_v6/LTM-FullTemplate.xlsx` (122,095 bytes, SHA-256: `97d8ab867d5fe80de1c659a155d3b562a0fb11f7fbecb63764e62220def425f2`)
-  - `CLEAN`: `companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx` (121,138 bytes, SHA-256: `e81bac61de00ce61f4fc26b7376014aaa67d51df8e4f4699ebd7a1eeed1fdc3f`)
-  - `EDELWEISS`: `companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx` (124,018 bytes, SHA-256: `3f63d5079141749c0d10addfe52594e893dffcbf9e2de1099af67c4b5366424d`)
+  - `MM`: `companies/MM/template_v6/MM-FullTemplate.xlsx` (113,639 bytes, SHA-256: `89a87c874237d492141dcfcab85398c817a528f832753fbcb0757e15bee93b76`)
+  - `LTM`: `companies/LTM/template_v6/LTM-FullTemplate.xlsx` (113,706 bytes, SHA-256: `4b38a3ad743757dabd6de6d077f166483d721b7aa3483abddfb424efff08bc85`)
+  - `CLEAN`: `companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx` (112,200 bytes, SHA-256: `cdbc6b44a115151b475daa9dfb99182d288f79143e1b676b7dc65130c7538daa`)
+  - `EDELWEISS`: `companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx` (115,609 bytes, SHA-256: `f543d7a471077d9814e368633a0220ff78db832814ad1b2607084aff1f20825a`)
 - **Review Gate & Governance**:
   - Gate status: `ready: false`, pending gate: `["human_pack_approval"]`.
   - PR #3 remains open and unmerged pending human review.
