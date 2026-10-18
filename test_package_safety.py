@@ -256,5 +256,84 @@ class PackageSafetyTests(unittest.TestCase):
         self.assertTrue(all(e["sheet"] == "Beta" for e in errors_all))
 
 
+    def test_no_disallowed_domains_in_active_source_registries_or_manifests(self):
+        """Active source registries, coverage reports, and manifests must not reference disallowed domains."""
+        import re
+        from urllib.parse import urlparse
+
+        allowed_hosts = {
+            "screener.in",
+            "www.screener.in",
+            "finance.yahoo.com",
+            "yahoo.com",
+            "query1.finance.yahoo.com",
+            "nseindia.com",
+            "www.nseindia.com",
+            "tradingeconomics.com",
+            "www.tradingeconomics.com",
+            "topstockresearch.com",
+            "www.topstockresearch.com",
+            "investing.com",
+            "www.investing.com",
+            "in.investing.com",
+            "primeinvestor.in",
+            "www.primeinvestor.in",
+            "youtube.com",
+            "www.youtube.com",
+            "youtu.be",
+            "github.com",
+        }
+
+        targets = ["MM", "LTM", "CLEAN", "EDELWEISS"]
+        check_paths: list[Path] = [
+            package.ROOT / "docs" / "locked_source_allowlist.json",
+            package.ROOT / "docs" / "LOCKED_SOURCE_ALLOWLIST.md",
+            package.ROOT / "docs" / "template_source_coverage.json",
+            package.ROOT / "docs" / "TEMPLATE_SOURCE_COVERAGE.md",
+        ]
+
+        for t in targets:
+            comp_dir = package.ROOT / "companies" / t
+            check_paths.extend([
+                comp_dir / "source_registry.json",
+                comp_dir / "source_assumption_coverage.json",
+                comp_dir / "SOURCE_REGISTRY.md",
+                package.ROOT / "docs" / f"{t.lower()}_source_registry.json",
+                package.ROOT / "docs" / f"{t}_SOURCE_REGISTRY.md",
+            ])
+            for v in ["template_v6", "template_v7", "template_v8"]:
+                manifest = comp_dir / v / "package.manifest.json"
+                if manifest.exists():
+                    check_paths.append(manifest)
+
+        url_regex = re.compile(r"https?://[^\s\"\'<>)\],]+")
+        disallowed_found: list[dict[str, str]] = []
+
+        for p in check_paths:
+            if not p.exists():
+                continue
+            text = p.read_text(encoding="utf-8", errors="ignore")
+            for line_no, line in enumerate(text.splitlines(), 1):
+                urls = url_regex.findall(line)
+                for u in urls:
+                    u_clean = u.rstrip(".,);]`\"'")
+                    parsed = urlparse(u_clean)
+                    host = parsed.netloc.lower()
+                    if host and host not in allowed_hosts:
+                        disallowed_found.append({
+                            "file": str(p.relative_to(package.ROOT)).replace("\\", "/"),
+                            "line": str(line_no),
+                            "host": host,
+                            "url": u_clean,
+                        })
+
+        if disallowed_found:
+            msg = "\n".join(
+                f"  [{d['file']}:{d['line']}] Disallowed domain '{d['host']}': {d['url']}"
+                for d in disallowed_found
+            )
+            self.fail(f"Found {len(disallowed_found)} disallowed URLs in active source/manifest files:\n{msg}")
+
+
 if __name__ == "__main__":
     unittest.main()

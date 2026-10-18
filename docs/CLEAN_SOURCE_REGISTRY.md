@@ -1,68 +1,54 @@
-# Primary Statutory & Evidence Source Registry: Clean Science and Technology Limited (CLEAN)
+# Source Registry & Provenance Ledger: CLEAN (Template V8)
 
-- **Target Legal Entity**: Clean Science and Technology Limited
-- **BSE Scrip Code**: `543318` | **NSE Ticker**: `CLEAN` | **ISIN**: `INE227W01023`
-- **Reporting Basis & Scope**: Ind AS Consolidated (FY19–FY25 Audited, March 31 fiscal close; Equity Share Capital increased from ₹1.06 Cr in FY20 to ₹10.62 Cr in FY21 via pre-IPO bonus issue).
-- **Local Primary Data Extract**: [`work/sources/CLEAN_consolidated.json`](../work/sources/CLEAN_consolidated.json) (`SHA-256: 571a25896b1ae7cdb68ab63ab4a524a3e04b517f7f615f363007ebf3d83ed182`)
-- **Local Statutory Sub-Schedules Cache**: [`work/sources/CLEAN_schedules.json`](../work/sources/CLEAN_schedules.json) (`SHA-256: b469d4d19ee41bc2323e70cd2dade60fd309bf9b6201260c4fbda7be5db97ea7`)
-- **Local 15-Oct-2025 Market & Empirical Beta Cache**: [`work/sources/market_and_beta_2025_10_15.json`](../work/sources/market_and_beta_2025_10_15.json) (`SHA-256: de04dac2fc4a73be3d596fe5aec37ff070e4dc0a4d2abe22b11b340206c3f823`)
-- **Local 104-Week Empirical Weekly Market Returns Cache**: [`work/sources/weekly_market_returns_104w.json`](../work/sources/weekly_market_returns_104w.json) (`SHA-256: 109e1f9726130ffc6fc9121e941b6bedb66a90b3a8d249d8beca40bc0bd50eef`)
-- **Official BSE Filing PDF**: [BSE Statutory Filing PDF](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4718abdb-ef9c-4cd4-9cef-9f1c769f96b7.pdf)
-- **Official IR Portal**: [Clean Science and Technology Limited Investor Relations](https://cleanscience.co.in/investor-relations/)
-- **Historical Cutoff & Snapshot Discipline**: Historical columns (`B`–`H`, `FY19`–`FY25`) contain strictly audited `Mar 2019`–`Mar 2025` figures predating the **October 15, 2025** market snapshot (`NSE Official Unadjusted Close: ₹1,041.40`). Post-cutoff `Mar 2026` figures are excluded from historical columns, and all 5 forecast years (`I`–`M`, `FY26E`–`FY30E`) are dynamic formulas with double-entry Balance Sheet cash closure (`Cash_t = Cash_{t-1} + Net_Cash_Flow_t`).
+## 1. Executive Summary
+- **Entity**: `CLEAN`
+- **Active Deliverable**: `companies/CLEAN/template_v8/CLEAN-FullTemplate.xlsx`
+- **Workbook SHA-256**: `b868ea5e0b1350219ebd28a1e276d135898abf4d5e87e430ea5c05c5118e1796`
+- **Master Template**: `originals/Marksans Keshav.xlsx` (SHA-256 `4dc79842855e5d1e689a2f5ca1de22c34be72fb09c0c0f9dd3a95818e10737d0`)
+- **Valuation Status**: `SUPPORTED`
+- **Fair Value per Share**: `408.55` (linked from `'DCF 1st way'!E42` to `'Model ->'!C9`)
+- **Evaluated Cost of Capital**: WACC = `13.19%` (Raw Beta = `1.3212`, Blume-Adjusted Beta = `1.2141`)
+- **Beta Source**: Yahoo Finance 104-week weekly price regression ending 15-Oct-2025 (`work/sources/weekly_market_returns_104w_v2.json`, SHA-256 `19bd51f0ce6bcadfd4a7bfa7e0432532251bbcda6812486411300d6df9f16fb0`)
+- **Risk-Free Rate**: 6.51% (Trading Economics dated prior-session proxy as of 14-Oct-2025 preceding 15-Oct-2025 cutoff)
+- **Balance Sheet Integrity**: Historical FY15–FY25 and forecast FY26E reconcile to exact `0.00 Cr` (Row 40 = Row 38 - Row 16 = 0.00 Cr) with zero plugs.
 
-## 1. Line-by-Line Historical & Sub-Schedule Evidence Ledger (FY19–FY25)
+## 2. Valuation Provenance & Acceptance Audit
+Fully supported from allowlisted Screener.in statements, Yahoo Finance 104-week regression beta (1.2141), and Trading Economics 6.51% Rf proxy. Unverified 10,500 MTPA capacity figure is removed from forecast calculation and labels; forecast is driven strictly by explicit analyst revenue growth and reinvestment assumptions applied to Screener historical financials.
 
-| Line Item & Workbook Range | Unit | FY19 | FY20 | FY21 | FY22 | FY23 | FY24 | FY25 | Source Basis & Status |
-|:---|:---:|---:|---:|---:|---:|---:|---:|---:|:---|
-| **Revenue from Operations ('Income Statement'!B5:H5)** | ₹ Cr | 393 | 419 | 512 | 685 | 936 | 791 | **967** | `primary_sourced` |
-| **Raw Material, Power & Operating Expenses ('Income Statement'!B6:H6)** | ₹ Cr | 257 | 234 | 253 | 385 | 533 | 459 | **579** | `primary_sourced` |
-| **Operating Profit / EBITDA ('Income Statement'!B7:H7)** | ₹ Cr | 136 | 185 | 259 | 300 | 403 | 332 | **388** | `primary_sourced` |
-| **Depreciation & Amortization ('Income Statement'!B9:H9)** | ₹ Cr | 11 | 14 | 17 | 25 | 36 | 46 | **69** | `primary_sourced` |
-| **Finance Costs ('Income Statement'!B10:H10)** | ₹ Cr | 0 | 0 | 0 | 0 | 1 | 1 | **1** | `primary_sourced` |
-| **Other Income ('Income Statement'!B11:H11)** | ₹ Cr | 11 | 11 | 25 | 30 | 30 | 41 | **39** | `primary_sourced` |
-| **Tax Expense ('Income Statement'!B13:H13)** | ₹ Cr | 38 | 42 | 69 | 77 | 101 | 82 | **93** | `primary_sourced` |
-| **Reported Consolidated PAT ('Income Statement'!B14:H14)** | ₹ Cr | 98 | 140 | 198 | 228 | 295 | 244 | **264** | `primary_sourced` |
-| **Equity Share Capital ('Balance Sheet'!B5:H5)** | ₹ Cr | 1 | 1 | 11 | 11 | 11 | 11 | **11** | `primary_sourced` |
-| **Reserves & Surplus ('Balance Sheet'!B6:H6)** | ₹ Cr | 271 | 341 | 529 | 758 | 999 | 1,193 | **1,406** | `primary_sourced` |
-| **Borrowings ('Balance Sheet'!B7:H7)** | ₹ Cr | 3 | 3 | 0 | 0 | 2 | 2 | **2** | `primary_sourced` |
-| **Other Liabilities ('Balance Sheet'!B8:H8)** | ₹ Cr | 53 | 85 | 120 | 156 | 140 | 191 | **181** | `primary_sourced` |
-| **Net Block / Fixed Assets ('Balance Sheet'!B10:H10)** | ₹ Cr | 127 | 166 | 186 | 296 | 460 | 636 | **715** | `primary_sourced` |
-| **Capital Work in Progress ('Balance Sheet'!B11:H11)** | ₹ Cr | 4 | 3 | 55 | 44 | 20 | 57 | **30** | `primary_sourced` |
-| **Treasury Investments ('Balance Sheet'!B12:H12)** | ₹ Cr | 75 | 133 | 232 | 191 | 353 | 339 | **381** | `primary_sourced` |
-| **Other Assets ('Balance Sheet'!B13:H13)** | ₹ Cr | 122 | 128 | 187 | 394 | 319 | 365 | **474** | `primary_sourced` |
-| **Sub-Schedule: Inventories ('Balance Sheet'!B19:H19)** | ₹ Cr | 37 | 35 | 53 | 88 | 109 | 130 | **149** | `primary_sourced` |
-| **Sub-Schedule: Trade Receivables ('Balance Sheet'!B20:H20)** | ₹ Cr | 60 | 70 | 74 | 153 | 146 | 165 | **203** | `primary_sourced` |
-| **Sub-Schedule: Cash & Equivalents ('Balance Sheet'!B21:H21)** | ₹ Cr | 9 | 9 | 16 | 75 | 12 | 12 | **20** | `primary_sourced` |
-| **Sub-Schedule: Loans & Advances ('Balance Sheet'!B22:H22)** | ₹ Cr | 0 | 1 | 0 | 1 | 2 | 3 | **4** | `primary_sourced` |
-| **Sub-Schedule: Trade Payables ('Balance Sheet'!B25:H25)** | ₹ Cr | 23 | 36 | 61 | 102 | 65 | 101 | **99** | `primary_sourced` |
-| **Sub-Schedule: Non-Controlling Interest ('Balance Sheet'!B26:H26)** | ₹ Cr | 0 | 0 | 0 | 0 | 0 | 0 | **0** | `primary_sourced` |
-| **Cash from Operating Activity ('Cash Flow'!B4:H4)** | ₹ Cr | 85 | 160 | 193 | 127 | 279 | 236 | **214** | `primary_sourced` |
-| **Cash from Investing Activity ('Cash Flow'!B5:H5)** | ₹ Cr | -94 | -105 | -187 | -79 | -270 | -185 | **-152** | `primary_sourced` |
-| **Cash from Financing Activity ('Cash Flow'!B6:H6)** | ₹ Cr | -11 | -55 | -6 | 0 | -55 | -53 | **-53** | `primary_sourced` |
-| **Sub-Schedule: Fixed Assets Purchased / CapEx ('Cash Flow'!B9:H9)** | ₹ Cr | -50 | -50 | -84 | -140 | -180 | -235 | **-181** | `primary_sourced` |
-| **Debtor Days ('Manufacturing & Capacity'!B25:H25)** | Days | 55 | 61 | 53 | 82 | 57 | 76 | **77** | `primary_sourced` |
-| **Inventory Days ('Manufacturing & Capacity'!B26:H26)** | Days | 79 | 98 | 156 | 143 | 122 | 163 | **156** | `primary_sourced` |
-| **Days Payable ('Manufacturing & Capacity'!B27:H27)** | Days | 48 | 101 | 180 | 166 | 90 | 139 | **103** | `primary_sourced` |
-
-## 2. Prior vs. Current Valuation Reconciliation (Audit Contradiction Resolution)
-
-| Valuation Metric | Prior Build (`9d357b8`) | Current Audited Build | Change (`Δ`) | Root-Cause Explanation |
-|:---|---:|---:|---:|:---|
-| **Implied Fair Value / Share (₹)** | ₹415.69 | **₹480.89** | ₹+65.20 (+15.68%) | Held CFCL Unit 4 HALS installed capacity at verified 10,500 MTPA across FY24–FY30E in Base Case (replacing unsourced 12,000–15,000 MTPA step-ups with commercial utilization ramp from 15% in FY24 and 21% in FY25 to 88% in FY30E), replaced reverse-solved 0.904 beta (12.00% round WACC) with empirical 2-Year Weekly OLS Beta vs Nifty 50 (0.9006 -> Ke = 11.73%, WACC = 11.73%), and removed the +₹45 Cr hardcoded cash bridge offset (Cash & Liquid Investments = ₹20 Cr Cash + ₹381 Cr Investments = ₹401 Cr). Implied DCF value is ₹480.89/share vs verified 15-Oct-2025 NSE Official Close ₹1,041.40. |
-| **Snapshot Market Price (15-Oct-2025 NSE Official Close)** | — | **₹1,041.40** | Verified | Official NSE unadjusted closing quotation dated Wednesday, October 15, 2025 (`2025-10-15`). |
-| **Implied Upside / (Downside) vs. Snapshot** | — | **-53.82%** | Reconciled | Reconciled across Workbook, Registry, Manifest, and Coverage Report. |
-
-## 3. Empirical 104-Week OLS Regression Diagnostics (vs. Nifty 50, N=104 Weeks)
-
-| Statistical Metric / Regression Parameter | Value | Unit / Format | Benchmark / Regression Methodology | Statistical Interpretation |
-|:---|---:|:---:|:---|:---|
-| **Raw OLS Beta Slope** | **0.9006** | Ratio | Covariance(R_i, R_m) / Variance(R_m) | Direct empirical slope over 104 paired weekly returns |
-| **Blume Adjusted Beta** | **0.9337** | Ratio | 2/3 Raw Beta + 1/3 * 1.0000 | Institutional mean-reverting adjusted beta |
-| **Weekly Covariance with Nifty 50** | 0.00040192 | Covariance | Sample covariance over 104 weekly return bars | Measure of systematic co-movement with broad index |
-| **Nifty 50 Weekly Return Variance** | 0.00044626 | Variance | Sample variance of Nifty 50 weekly returns | Annualized benchmark volatility ~15.2% |
-| **Pearson Correlation (R)** | 0.3724 | Correlation | Cov(R_i, R_m) / [Std(R_i) * Std(R_m)] | Systematic directional co-movement |
-| **Coefficient of Determination (R²)** | 0.1387 | R-Squared | Explained return variance / Total variance | Proportion of systematic variance explained |
-| **Standard Error of Regression (SE)** | 0.0298 | Std Error | Residual standard error of regression line | Idiosyncratic return dispersion |
-| **Regression t-Statistic** | 4.05 | t-Stat | Beta / SE_Beta (p < 0.0001) | Statistically significant at >99.9% confidence |
-| **Peer Cohort Reference** | — | Peer Median | Specialty Chemical Peer Hamada Relevered Beta: 0.9469 (Unlevered Median 0.9468) | Contextual industry benchmark |
+## 3. Audited Source Entries
+| Index | Metric | Stated / Evaluated Value | Status | Sourced Cell | Official Allowlisted URL |
+|:-----:|:-------|:------------------------:|:------:|:------------:|:-------------------------|
+| 1 | Revenue from Operations (FY19–FY25 Historical Series) | 967 | `primary_sourced` | `'Income Statement'!B5:H5` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 2 | Raw Material, Power & Operating Expenses (FY19–FY25 Historical Series) | 579 | `primary_sourced` | `'Income Statement'!B6:H6` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 3 | Operating Profit / EBITDA (FY19–FY25 Historical Series) | 388 | `primary_sourced` | `'Income Statement'!B7:H7` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 4 | Depreciation & Amortization (FY19–FY25 Historical Series) | 69 | `primary_sourced` | `'Income Statement'!B9:H9` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 5 | Finance Costs (FY19–FY25 Historical Series) | 1 | `primary_sourced` | `'Income Statement'!B10:H10` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 6 | Other Income (FY19–FY25 Historical Series) | 39 | `primary_sourced` | `'Income Statement'!B11:H11` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 7 | Tax Expense (FY19–FY25 Historical Series) | 93 | `primary_sourced` | `'Income Statement'!B13:H13` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 8 | Reported Consolidated PAT (FY19–FY25 Historical Series) | 264 | `primary_sourced` | `'Income Statement'!B14:H14` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 9 | Equity Share Capital (FY19–FY25 Historical Series) | 11 | `primary_sourced` | `'Balance Sheet'!B5:H5` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 10 | Reserves & Surplus (FY19–FY25 Historical Series) | 1406 | `primary_sourced` | `'Balance Sheet'!B6:H6` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 11 | Borrowings (FY19–FY25 Historical Series) | 2 | `primary_sourced` | `'Balance Sheet'!B7:H7` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 12 | Other Liabilities (FY19–FY25 Historical Series) | 181 | `primary_sourced` | `'Balance Sheet'!B8:H8` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 13 | Net Block / Fixed Assets (FY19–FY25 Historical Series) | 715 | `primary_sourced` | `'Balance Sheet'!B10:H10` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 14 | Capital Work in Progress (FY19–FY25 Historical Series) | 30 | `primary_sourced` | `'Balance Sheet'!B11:H11` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 15 | Treasury Investments (FY19–FY25 Historical Series) | 381 | `primary_sourced` | `'Balance Sheet'!B12:H12` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 16 | Other Assets (FY19–FY25 Historical Series) | 474 | `primary_sourced` | `'Balance Sheet'!B13:H13` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 17 | Sub-Schedule: Inventories (FY19–FY25 Historical Series) | 149 | `primary_sourced` | `'Balance Sheet'!B19:H19` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 18 | Sub-Schedule: Trade Receivables (FY19–FY25 Historical Series) | 203 | `primary_sourced` | `'Balance Sheet'!B20:H20` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 19 | Sub-Schedule: Cash & Equivalents (FY19–FY25 Historical Series) | 20 | `primary_sourced` | `'Balance Sheet'!B21:H21` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 20 | Sub-Schedule: Loans & Advances (FY19–FY25 Historical Series) | 4 | `primary_sourced` | `'Balance Sheet'!B22:H22` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 21 | Sub-Schedule: Trade Payables (FY19–FY25 Historical Series) | 99 | `primary_sourced` | `'Balance Sheet'!B25:H25` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 22 | Sub-Schedule: Non-Controlling Interest (FY19–FY25 Historical Series) | 0 | `primary_sourced` | `'Balance Sheet'!B26:H26` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 23 | Cash from Operating Activity (FY19–FY25 Historical Series) | 214 | `primary_sourced` | `'Cash Flow'!B4:H4` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 24 | Cash from Investing Activity (FY19–FY25 Historical Series) | -152 | `primary_sourced` | `'Cash Flow'!B5:H5` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 25 | Cash from Financing Activity (FY19–FY25 Historical Series) | -53 | `primary_sourced` | `'Cash Flow'!B6:H6` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 26 | Sub-Schedule: Fixed Assets Purchased / CapEx (FY19–FY25 Historical Series) | -181 | `primary_sourced` | `'Cash Flow'!B9:H9` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 27 | Debtor Days (FY19–FY25 Historical Series) | 77 | `primary_sourced` | `'Manufacturing & Capacity'!B25:H25` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 28 | Inventory Days (FY19–FY25 Historical Series) | 156 | `primary_sourced` | `'Manufacturing & Capacity'!B26:H26` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 29 | Days Payable (FY19–FY25 Historical Series) | 103 | `primary_sourced` | `'Manufacturing & Capacity'!B27:H27` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 30 | Diluted Equity Share Count (FY25 Close) | 10.63 | `primary_sourced` | `'Cover & Notes'!B12` | https://www.screener.in/company/CLEAN/consolidated/ |
+| 31 | Historical Market Snapshot Price (15-Oct-2025 NSE Official Unadjusted Close) | 1041.4 | `historical_market_snapshot` | `'Cover & Notes'!B10` | https://www.nseindia.com |
+| 32 | 2-Year Weekly OLS Regression Beta vs Nifty 50 (^NSEI) (Raw & Blume-Adjusted) | 1.2141 | `empirical_regression_derived` | `'Beta'!K13 (Adjusted) / 'Beta'!K7 (Raw)` | https://finance.yahoo.com |
+| 33 | 104-Week Empirical Weekly Market Returns & OLS Regression Dataset | 104 | `empirical_market_dataset` | `'Beta'!B8:G112` | https://finance.yahoo.com |
+| 34 | Primary Valuation Output (Manufacturing FCFF DCF & CAPM WACC) | 408.55 | `supported` | `'DCF 1st way'!E42` | None (Unavailable on allowed sources) |

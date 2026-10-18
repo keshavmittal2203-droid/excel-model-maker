@@ -1,7 +1,12 @@
 {
   "allowlist_version": "1.0-locked",
-  "master_template": {
+  "active_master_template": {
     "file": "originals/Marksans Keshav.xlsx",
+    "sha256": "4dc79842855e5d1e689a2f5ca1de22c34be72fb09c0c0f9dd3a95818e10737d0",
+    "note": "sectordata sheet removed as authorized"
+  },
+  "archived_original_template": {
+    "file": "originals/archive/Marksans Keshav.xlsx",
     "sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a"
   },
   "methodology_reference_only": {
@@ -65,14 +70,6 @@
       "template_location": "'WACC-DCF'!P13",
       "classification": "Market Return & Risk Premium Provider",
       "data_role": "Equity risk premium, NIFTY historical annualized market returns (Rm), dividend yield benchmarks."
-    },
-    {
-      "id": 8,
-      "provider": "Statutory Audited Filings (BSE / NSE)",
-      "url": "https://www.bseindia.com",
-      "template_location": "Referenced in statutory source registries and 'Data Sheet'!A3 disclosure",
-      "classification": "Primary Statutory Audited Filing Provider",
-      "data_role": "Audited statutory annual reports (FY19-FY25), note disclosures, auditor reports, and segment breakouts."
     }
   ]
 }
