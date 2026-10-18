@@ -14,6 +14,8 @@ artifacts/
 scratch/
 candidates/
 generated/
+staging/
+deliverables/
 *.manifest.json
 
 # Generated report outputs and Excel lock files

@@ -1,0 +1,13795 @@
+[
+ {
+  "s": "Model ->",
+  "c": "C4",
+  "t": "s",
+  "v": "CLEAN SCIENCE AND TECHNOLOGY LIMITED"
+ },
+ {
+  "s": "Model ->",
+  "c": "C5",
+  "t": "s",
+  "v": "Specialty Chemicals"
+ },
+ {
+  "s": "Model ->",
+  "c": "C6",
+  "t": "s",
+  "v": "CLEAN.NS"
+ },
+ {
+  "s": "Model ->",
+  "c": "C9",
+  "t": "f",
+  "v": "='DCF 1st way'!E42"
+ },
+ {
+  "s": "Model ->",
+  "c": "C10",
+  "t": "f",
+  "v": "=IF(ISNUMBER(C9),(C9-C11)/C11,\"N/A\")"
+ },
+ {
+  "s": "Model ->",
+  "c": "C11",
+  "t": "n",
+  "v": 1041.400024414062
+ },
+ {
+  "s": "Model ->",
+  "c": "C13",
+  "t": "s",
+  "v": "Valuation: Supported; see source registry and assumptions."
+ },
+ {
+  "s": "Model ->",
+  "c": "C16",
+  "t": "s",
+  "v": "Valuation Basis: Full-Year Manufacturing FCFF DCF Baseline. Status: Fully Supported from Allowlisted Sources (Screener.in financials, Yahoo Finance 104-week regression beta, Trading Economics Rf proxy 6.51%)."
+ },
+ {
+  "s": "Main Financials",
+  "c": "B3",
+  "t": "f",
+  "v": "='Data Sheet'!B1"
+ },
+ {
+  "s": "Main Financials",
+  "c": "D8",
+  "t": "f",
+  "v": "=TEXT('Data Sheet'!E16,\"mmm-yy\")",
+  "nf": "mmm/yy\" A\""
+ },
+ {
+  "s": "Main Financials",
+  "c": "E8",
+  "t": "f",
+  "v": "=TEXT('Data Sheet'!F16,\"mmm-yy\")",
+  "nf": "mmm/yy\" A\""
+ },
+ {
+  "s": "Main Financials",
+  "c": "F8",
+  "t": "f",
+  "v": "=TEXT('Data Sheet'!G16,\"mmm-yy\")",
+  "nf": "mmm/yy\" A\""
+ },
+ {
+  "s": "Main Financials",
+  "c": "G8",
+  "t": "f",
+  "v": "=TEXT('Data Sheet'!H16,\"mmm-yy\")",
+  "nf": "mmm/yy\" A\""
+ },
+ {
+  "s": "Main Financials",
+  "c": "H8",
+  "t": "f",
+  "v": "=TEXT('Data Sheet'!I16,\"mmm-yy\")",
+  "nf": "mmm/yy\" A\""
+ },
+ {
+  "s": "Main Financials",
+  "c": "I8",
+  "t": "f",
+  "v": "=TEXT('Data Sheet'!J16,\"mmm-yy\")",
+  "nf": "mmm/yy\" A\""
+ },
+ {
+  "s": "Main Financials",
+  "c": "J8",
+  "t": "s",
+  "v": "FY26E",
+  "nf": "mmm/yy\" A\""
+ },
+ {
+  "s": "Main Financials",
+  "c": "B10",
+  "t": "f",
+  "v": "=\"Income Statement - \" & 'Data Sheet'!B1"
+ },
+ {
+  "s": "Main Financials",
+  "c": "D112",
+  "t": "f",
+  "v": "=D8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "E112",
+  "t": "f",
+  "v": "=E8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "F112",
+  "t": "f",
+  "v": "=F8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "G112",
+  "t": "f",
+  "v": "=G8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "H112",
+  "t": "f",
+  "v": "=H8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "I112",
+  "t": "f",
+  "v": "=I8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "J112",
+  "t": "f",
+  "v": "=J8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "D132",
+  "t": "f",
+  "v": "=D8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "E132",
+  "t": "f",
+  "v": "=E8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "F132",
+  "t": "f",
+  "v": "=F8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "G132",
+  "t": "f",
+  "v": "=G8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "H132",
+  "t": "f",
+  "v": "=H8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "I132",
+  "t": "f",
+  "v": "=I8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "J132",
+  "t": "f",
+  "v": "=J8"
+ },
+ {
+  "s": "Main Financials",
+  "c": "D135",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!E61=\"\", 'Data Sheet'!E61=0), \"N/A\", 'Data Sheet'!E61/'Data Sheet'!E$61)",
+  "nf": "0%"
+ },
+ {
+  "s": "Main Financials",
+  "c": "E135",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!F61=\"\", 'Data Sheet'!F61=0), \"N/A\", 'Data Sheet'!F61/'Data Sheet'!F$61)",
+  "nf": "0%"
+ },
+ {
+  "s": "Main Financials",
+  "c": "F135",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!G61=\"\", 'Data Sheet'!G61=0), \"N/A\", 'Data Sheet'!G61/'Data Sheet'!G$61)",
+  "nf": "0%"
+ },
+ {
+  "s": "Main Financials",
+  "c": "G135",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!H61=\"\", 'Data Sheet'!H61=0), \"N/A\", 'Data Sheet'!H61/'Data Sheet'!H$61)",
+  "nf": "0%"
+ },
+ {
+  "s": "Main Financials",
+  "c": "H135",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!I61=\"\", 'Data Sheet'!I61=0), \"N/A\", 'Data Sheet'!I61/'Data Sheet'!I$61)",
+  "nf": "0%"
+ },
+ {
+  "s": "Main Financials",
+  "c": "I135",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!J61=\"\", 'Data Sheet'!J61=0), \"N/A\", 'Data Sheet'!J61/'Data Sheet'!J$61)",
+  "nf": "0%"
+ },
+ {
+  "s": "Main Financials",
+  "c": "J135",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!K61=\"\", 'Data Sheet'!K61=0), \"N/A\", 'Data Sheet'!K61/'Data Sheet'!K$61)",
+  "nf": "0%"
+ },
+ {
+  "s": "Main Financials",
+  "c": "D141",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!E75=\"\", 'Data Sheet'!E75=0), \"N/A\", 'Data Sheet'!E75/'Data Sheet'!E$75)",
+  "nf": "0%"
+ },
+ {
+  "s": "Main Financials",
+  "c": "E141",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!F75=\"\", 'Data Sheet'!F75=0), \"N/A\", 'Data Sheet'!F75/'Data Sheet'!F$75)",
+  "nf": "0%"
+ },
+ {
+  "s": "Main Financials",
+  "c": "F141",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!G75=\"\", 'Data Sheet'!G75=0), \"N/A\", 'Data Sheet'!G75/'Data Sheet'!G$75)",
+  "nf": "0%"
+ },
+ {
+  "s": "Main Financials",
+  "c": "G141",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!H75=\"\", 'Data Sheet'!H75=0), \"N/A\", 'Data Sheet'!H75/'Data Sheet'!H$75)",
+  "nf": "0%"
+ },
+ {
+  "s": "Main Financials",
+  "c": "H141",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!I75=\"\", 'Data Sheet'!I75=0), \"N/A\", 'Data Sheet'!I75/'Data Sheet'!I$75)",
+  "nf": "0%"
+ },
+ {
+  "s": "Main Financials",
+  "c": "I141",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!J75=\"\", 'Data Sheet'!J75=0), \"N/A\", 'Data Sheet'!J75/'Data Sheet'!J$75)",
+  "nf": "0%"
+ },
+ {
+  "s": "Main Financials",
+  "c": "J141",
+  "t": "f",
+  "v": "=IF(OR('Data Sheet'!K75=\"\", 'Data Sheet'!K75=0), \"N/A\", 'Data Sheet'!K75/'Data Sheet'!K$75)",
+  "nf": "0%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "B3",
+  "t": "f",
+  "v": "=\"Ratio Analysis of - \" & 'Data Sheet'!B1"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J6",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C6:H6), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K6",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C6:H6), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "C7",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!E23-'Main Financials'!D23)/'Main Financials'!D23, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "D7",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!F23-'Main Financials'!E23)/'Main Financials'!E23, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "E7",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!G23-'Main Financials'!F23)/'Main Financials'!F23, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "F7",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!H23-'Main Financials'!G23)/'Main Financials'!G23, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "G7",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!I23-'Main Financials'!H23)/'Main Financials'!H23, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "H7",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!J23-'Main Financials'!I23)/'Main Financials'!I23, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J7",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C7:H7), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K7",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C7:H7), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "C8",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!E38-'Main Financials'!D38)/'Main Financials'!D38, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "D8",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!F38-'Main Financials'!E38)/'Main Financials'!E38, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "E8",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!G38-'Main Financials'!F38)/'Main Financials'!F38, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "F8",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!H38-'Main Financials'!G38)/'Main Financials'!G38, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "G8",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!I38-'Main Financials'!H38)/'Main Financials'!H38, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "H8",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!J38-'Main Financials'!I38)/'Main Financials'!I38, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J8",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C8:H8), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K8",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C8:H8), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "C9",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!E46-'Main Financials'!D46)/'Main Financials'!D46, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "D9",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!F46-'Main Financials'!E46)/'Main Financials'!E46, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "E9",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!G46-'Main Financials'!F46)/'Main Financials'!F46, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "F9",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!H46-'Main Financials'!G46)/'Main Financials'!G46, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "G9",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!I46-'Main Financials'!H46)/'Main Financials'!H46, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "H9",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!J46-'Main Financials'!I46)/'Main Financials'!I46, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J9",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C9:H9), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K9",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C9:H9), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J11",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C11:H11), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K11",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C11:H11), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J12",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C12:H12), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K12",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C12:H12), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "C13",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!E23-'Main Financials'!E29)/'Main Financials'!E11, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "D13",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!F23-'Main Financials'!F29)/'Main Financials'!F11, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "E13",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!G23-'Main Financials'!G29)/'Main Financials'!G11, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "F13",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!H23-'Main Financials'!H29)/'Main Financials'!H11, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "G13",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!I23-'Main Financials'!I29)/'Main Financials'!I11, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "H13",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!J23-'Main Financials'!J29)/'Main Financials'!J11, \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J13",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C13:H13), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K13",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C13:H13), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J14",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C14:H14), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K14",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C14:H14), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J15",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C15:H15), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K15",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C15:H15), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J17",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C17:H17), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K17",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C17:H17), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J18",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C18:H18), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K18",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C18:H18), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J19",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C19:H19), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K19",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C19:H19), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "C21",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!E23-'Main Financials'!E29)/(SUM('Main Financials'!E53:E54)+'Main Financials'!E55), \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "D21",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!F23-'Main Financials'!F29)/(SUM('Main Financials'!F53:F54)+'Main Financials'!F55), \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "E21",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!G23-'Main Financials'!G29)/(SUM('Main Financials'!G53:G54)+'Main Financials'!G55), \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "F21",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!H23-'Main Financials'!H29)/(SUM('Main Financials'!H53:H54)+'Main Financials'!H55), \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "G21",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!I23-'Main Financials'!I29)/(SUM('Main Financials'!I53:I54)+'Main Financials'!I55), \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "H21",
+  "t": "f",
+  "v": "=IFERROR(('Main Financials'!J23-'Main Financials'!J29)/(SUM('Main Financials'!J53:J54)+'Main Financials'!J55), \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J21",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C21:H21), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K21",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C21:H21), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J22",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C22:H22), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K22",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C22:H22), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "C23",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!E38/(SUM('Main Financials'!E53:E54)), \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "D23",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!F38/(SUM('Main Financials'!F53:F54)), \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "E23",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!G38/(SUM('Main Financials'!G53:G54)), \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "F23",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!H38/(SUM('Main Financials'!H53:H54)), \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "G23",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!I38/(SUM('Main Financials'!I53:I54)), \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "H23",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!J38/(SUM('Main Financials'!J53:J54)), \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J23",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C23:H23), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K23",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C23:H23), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J24",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C24:H24), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K24",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C24:H24), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "C26",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!E11/'Main Financials'!E65, \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "D26",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!F11/'Main Financials'!F65, \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "E26",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!G11/'Main Financials'!G65, \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "F26",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!H11/'Main Financials'!H65, \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "G26",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!I11/'Main Financials'!I65, \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "H26",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!J11/'Main Financials'!J65, \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J26",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C26:H26), \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K26",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C26:H26), \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "C27",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!E11/'Main Financials'!E59, \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "D27",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!F11/'Main Financials'!F59, \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "E27",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!G11/'Main Financials'!G59, \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "F27",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!H11/'Main Financials'!H59, \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "G27",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!I11/'Main Financials'!I59, \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "H27",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!J11/'Main Financials'!J59, \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J27",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C27:H27), \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K27",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C27:H27), \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "C28",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!E11/SUM('Main Financials'!E53:E54), \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "D28",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!F11/SUM('Main Financials'!F53:F54), \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "E28",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!G11/SUM('Main Financials'!G53:G54), \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "F28",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!H11/SUM('Main Financials'!H53:H54), \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "G28",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!I11/SUM('Main Financials'!I53:I54), \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "H28",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!J11/SUM('Main Financials'!J53:J54), \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J28",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C28:H28), \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K28",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C28:H28), \"N/A\")",
+  "nf": "0.00\"x\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "C30",
+  "t": "f",
+  "v": "=IFERROR(365/C26, \"N/A\")",
+  "nf": "0\" days\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "D30",
+  "t": "f",
+  "v": "=IFERROR(365/D26, \"N/A\")",
+  "nf": "0\" days\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "E30",
+  "t": "f",
+  "v": "=IFERROR(365/E26, \"N/A\")",
+  "nf": "0\" days\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "F30",
+  "t": "f",
+  "v": "=IFERROR(365/F26, \"N/A\")",
+  "nf": "0\" days\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "G30",
+  "t": "f",
+  "v": "=IFERROR(365/G26, \"N/A\")",
+  "nf": "0\" days\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "H30",
+  "t": "f",
+  "v": "=IFERROR(365/H26, \"N/A\")",
+  "nf": "0\" days\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J30",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C30:H30), \"N/A\")",
+  "nf": "0\" days\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K30",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C30:H30), \"N/A\")",
+  "nf": "0\" days\""
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "C32",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!E85/'Main Financials'!E11, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "D32",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!F85/'Main Financials'!F11, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "E32",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!G85/'Main Financials'!G11, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "F32",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!H85/'Main Financials'!H11, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "G32",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!I85/'Main Financials'!I11, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "H32",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!J85/'Main Financials'!J11, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J32",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C32:H32), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K32",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C32:H32), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "C33",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!E85/'Main Financials'!E70, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "D33",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!F85/'Main Financials'!F70, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "E33",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!G85/'Main Financials'!G70, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "F33",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!H85/'Main Financials'!H70, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "G33",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!I85/'Main Financials'!I70, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "H33",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!J85/'Main Financials'!J70, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J33",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C33:H33), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K33",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C33:H33), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "C34",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!E85/'Main Financials'!E55, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "D34",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!F85/'Main Financials'!F55, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "E34",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!G85/'Main Financials'!G55, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "F34",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!H85/'Main Financials'!H55, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "G34",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!I85/'Main Financials'!I55, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "H34",
+  "t": "f",
+  "v": "=IFERROR('Main Financials'!J85/'Main Financials'!J55, \"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "J34",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(C34:H34), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Ratio Analysis",
+  "c": "K34",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(C34:H34), \"N/A\")",
+  "nf": "0.00%;\\(0.00%\\)"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "B4",
+  "t": "s",
+  "v": "Calculation of ROIC"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "E32",
+  "t": "f",
+  "v": "=BS!J28",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "F32",
+  "t": "n",
+  "v": 595,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "G32",
+  "t": "n",
+  "v": 815,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "H32",
+  "t": "n",
+  "v": 962,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "I32",
+  "t": "n",
+  "v": 1048.94,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "E34",
+  "t": "f",
+  "v": "=BS!J28-BS!J29",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "F34",
+  "t": "n",
+  "v": 460,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "G34",
+  "t": "n",
+  "v": 636,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "H34",
+  "t": "n",
+  "v": 715,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "I34",
+  "t": "n",
+  "v": 729.49,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "E39",
+  "t": "f",
+  "v": "=IFERROR(E48/E36,\"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "F39",
+  "t": "f",
+  "v": "=IFERROR(F48/F36,\"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "G39",
+  "t": "f",
+  "v": "=IFERROR(G48/G36,\"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "H39",
+  "t": "f",
+  "v": "=IFERROR(H48/H36,\"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "I39",
+  "t": "f",
+  "v": "=IFERROR(I48/I36,\"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "E41",
+  "t": "d",
+  "v": "2022-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "F41",
+  "t": "d",
+  "v": "2023-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "G41",
+  "t": "d",
+  "v": "2024-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "H41",
+  "t": "d",
+  "v": "2025-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "I41",
+  "t": "d",
+  "v": "2026-03-31",
+  "nf": "mmm\\-yy\" E\""
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "F52",
+  "t": "f",
+  "v": "=IFERROR(F50/F48,\"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "G52",
+  "t": "f",
+  "v": "=IFERROR(G50/G48,\"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "H52",
+  "t": "f",
+  "v": "=IFERROR(H50/H48,\"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "I52",
+  "t": "f",
+  "v": "=IFERROR(I50/I48,\"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "E57",
+  "t": "d",
+  "v": "2022-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "F57",
+  "t": "d",
+  "v": "2023-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "G57",
+  "t": "d",
+  "v": "2024-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "H57",
+  "t": "d",
+  "v": "2025-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "I57",
+  "t": "d",
+  "v": "2026-03-31",
+  "nf": "mmm\\-yy\" E\""
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "F62",
+  "t": "f",
+  "v": "=IFERROR(F59*F60,\"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "G62",
+  "t": "f",
+  "v": "=IFERROR(G59*G60,\"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "H62",
+  "t": "f",
+  "v": "=IFERROR(H59*H60,\"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Intrinsic Growth",
+  "c": "I62",
+  "t": "f",
+  "v": "=IFERROR(I59*I60,\"N/A\")",
+  "nf": "0.00%"
+ },
+ {
+  "s": "Comps",
+  "c": "N8",
+  "t": "f",
+  "v": "=IFERROR(H8/J8,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O8",
+  "t": "f",
+  "v": "=IFERROR(H8/K8,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P8",
+  "t": "f",
+  "v": "=IFERROR(F8/L8,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "N9",
+  "t": "f",
+  "v": "=IFERROR(H9/J9,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O9",
+  "t": "f",
+  "v": "=IFERROR(H9/K9,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P9",
+  "t": "f",
+  "v": "=IFERROR(F9/L9,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "N10",
+  "t": "f",
+  "v": "=IFERROR(H10/J10,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O10",
+  "t": "f",
+  "v": "=IFERROR(H10/K10,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P10",
+  "t": "f",
+  "v": "=IFERROR(F10/L10,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "N11",
+  "t": "f",
+  "v": "=IFERROR(H11/J11,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O11",
+  "t": "f",
+  "v": "=IFERROR(H11/K11,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P11",
+  "t": "f",
+  "v": "=IFERROR(F11/L11,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "N12",
+  "t": "f",
+  "v": "=IFERROR(H12/J12,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O12",
+  "t": "f",
+  "v": "=IFERROR(H12/K12,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P12",
+  "t": "f",
+  "v": "=IFERROR(F12/L12,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "N13",
+  "t": "f",
+  "v": "=IFERROR(H13/J13,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O13",
+  "t": "f",
+  "v": "=IFERROR(H13/K13,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P13",
+  "t": "f",
+  "v": "=IFERROR(F13/L13,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "B14",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Comps",
+  "c": "D14",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "Comps",
+  "c": "E14",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "Comps",
+  "c": "G14",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "Comps",
+  "c": "H14",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "J14",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "K14",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "L14",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "N14",
+  "t": "f",
+  "v": "=IFERROR(H14/J14,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O14",
+  "t": "f",
+  "v": "=IFERROR(H14/K14,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P14",
+  "t": "f",
+  "v": "=IFERROR(F14/L14,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "B15",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Comps",
+  "c": "D15",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "Comps",
+  "c": "E15",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "Comps",
+  "c": "G15",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "Comps",
+  "c": "H15",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "J15",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "K15",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "L15",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "N15",
+  "t": "f",
+  "v": "=IFERROR(H15/J15,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O15",
+  "t": "f",
+  "v": "=IFERROR(H15/K15,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P15",
+  "t": "f",
+  "v": "=IFERROR(F15/L15,\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "N17",
+  "t": "f",
+  "v": "=IFERROR(MAX(N9:N13),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O17",
+  "t": "f",
+  "v": "=IFERROR(MAX(O9:O13),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P17",
+  "t": "f",
+  "v": "=IFERROR(MAX(P9:P13),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "N18",
+  "t": "f",
+  "v": "=IFERROR(QUARTILE(N9:N13,3),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O18",
+  "t": "f",
+  "v": "=IFERROR(QUARTILE(O9:O13,3),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P18",
+  "t": "f",
+  "v": "=IFERROR(QUARTILE(P9:P13,3),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "N19",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(N9:N13),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O19",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(O9:O13),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P19",
+  "t": "f",
+  "v": "=IFERROR(AVERAGE(P9:P13),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "N20",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(N9:N13),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O20",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(O9:O13),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P20",
+  "t": "f",
+  "v": "=IFERROR(MEDIAN(P9:P13),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "N21",
+  "t": "f",
+  "v": "=IFERROR(QUARTILE(N9:N13,1),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O21",
+  "t": "f",
+  "v": "=IFERROR(QUARTILE(O9:O13,1),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P21",
+  "t": "f",
+  "v": "=IFERROR(QUARTILE(P9:P13,1),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "N22",
+  "t": "f",
+  "v": "=IFERROR(MIN(N9:N13),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "O22",
+  "t": "f",
+  "v": "=IFERROR(MIN(O9:O13),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "P22",
+  "t": "f",
+  "v": "=IFERROR(MIN(P9:P13),\"N/A\")",
+  "nf": "0.00\" x\""
+ },
+ {
+  "s": "Comps",
+  "c": "B24",
+  "t": "f",
+  "v": "='Data Sheet'!B1 & \" Comparable Valuation\""
+ },
+ {
+  "s": "Comps",
+  "c": "N26",
+  "t": "f",
+  "v": "=IFERROR(N20*J8, \"N/A\")",
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "O26",
+  "t": "f",
+  "v": "=IFERROR(O20*K8, \"N/A\")",
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "P26",
+  "t": "f",
+  "v": "=IFERROR(P27+P28, \"N/A\")",
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "N28",
+  "t": "f",
+  "v": "=IFERROR(N26-N27, \"N/A\")",
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "O28",
+  "t": "f",
+  "v": "=IFERROR(O26-O27, \"N/A\")",
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "P28",
+  "t": "f",
+  "v": "=IFERROR(P20*L8, \"N/A\")",
+  "nf": "#,##0"
+ },
+ {
+  "s": "Comps",
+  "c": "N31",
+  "t": "f",
+  "v": "=IFERROR(N28/N29, \"N/A\")",
+  "nf": "0.000"
+ },
+ {
+  "s": "Comps",
+  "c": "O31",
+  "t": "f",
+  "v": "=IFERROR(O28/O29, \"N/A\")",
+  "nf": "0.000"
+ },
+ {
+  "s": "Comps",
+  "c": "P31",
+  "t": "f",
+  "v": "=IFERROR(P28/P29, \"N/A\")",
+  "nf": "0.000"
+ },
+ {
+  "s": "Comps",
+  "c": "O34",
+  "t": "af",
+  "ref": "O34",
+  "v": "=IF(OR(NOT(ISNUMBER(O31)),NOT(ISNUMBER(D8))),\"N/A\",IF(O31>D8,\"Undervalued\",IF(O31<D8,\"Overvalued\",\"Fair Value\")))"
+ },
+ {
+  "s": "Comps",
+  "c": "P34",
+  "t": "af",
+  "ref": "P34",
+  "v": "=IF(OR(NOT(ISNUMBER(P31)),NOT(ISNUMBER(D8))),\"N/A\",IF(P31>D8,\"Undervalued\",IF(P31<D8,\"Overvalued\",\"Fair Value\")))"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "B4",
+  "t": "s",
+  "v": "Capital Structure & Cost of Capital - CLEAN SCIENCE AND TECHNOLOGY LIMITED"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "I9",
+  "t": "s",
+  "v": "Beta"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "J9",
+  "t": "s",
+  "v": "Beta"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "B11",
+  "t": "f",
+  "v": "=peerdata!C5"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "I11",
+  "t": "n",
+  "v": 0.8548
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "B12",
+  "t": "f",
+  "v": "=peerdata!C6"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "I12",
+  "t": "n",
+  "v": 0.8537
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "B13",
+  "t": "f",
+  "v": "=peerdata!C7"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "I13",
+  "t": "n",
+  "v": 0.931
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "T13",
+  "t": "s",
+  "v": "div yeild nse"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "B14",
+  "t": "f",
+  "v": "=peerdata!C8"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "I14",
+  "t": "n",
+  "v": 1.0797
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "B15",
+  "t": "f",
+  "v": "=peerdata!C9"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "I15",
+  "t": "n",
+  "v": 0.691
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "J22",
+  "t": "n",
+  "v": 0.0651,
+  "nf": "0.00%"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "E23",
+  "t": "n",
+  "v": 0.2517,
+  "nf": "0.00%"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "J23",
+  "t": "n",
+  "v": 0.055,
+  "nf": "0.00%"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "J25",
+  "t": "f",
+  "v": "=J22+J24*J23",
+  "nf": "0.00%"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "C30",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "E30",
+  "t": "f",
+  "v": "=D30",
+  "nf": "0.00%"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "C31",
+  "t": "f",
+  "v": "=compdata!F10",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "J32",
+  "t": "f",
+  "v": "=Beta!K13",
+  "nf": "0.00"
+ },
+ {
+  "s": "WACC-DCF",
+  "c": "J39",
+  "t": "f",
+  "v": "=ROUND(SUMPRODUCT(I37:I38,J37:J38),4)",
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G2",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "H2",
+  "t": "n",
+  "v": 2
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "I2",
+  "t": "n",
+  "v": 3
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "J2",
+  "t": "n",
+  "v": 4
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "K2",
+  "t": "n",
+  "v": 5
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "F3",
+  "t": "f",
+  "v": "='Intrinsic Growth'!I41",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G3",
+  "t": "f",
+  "v": "=DATE(YEAR(F3)+1,MONTH(F3),DAY(F3))",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "H3",
+  "t": "f",
+  "v": "=DATE(YEAR(G3)+1,MONTH(G3),DAY(G3))",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "I3",
+  "t": "f",
+  "v": "=DATE(YEAR(H3)+1,MONTH(H3),DAY(H3))",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "J3",
+  "t": "f",
+  "v": "=DATE(YEAR(I3)+1,MONTH(I3),DAY(I3))",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "K3",
+  "t": "f",
+  "v": "=DATE(YEAR(J3)+1,MONTH(J3),DAY(J3))",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "F7",
+  "t": "f",
+  "v": "='WACC-DCF'!$E$23",
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G7",
+  "t": "f",
+  "v": "='WACC-DCF'!$E$23",
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "H7",
+  "t": "f",
+  "v": "='WACC-DCF'!$E$23",
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "I7",
+  "t": "f",
+  "v": "='WACC-DCF'!$E$23",
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "J7",
+  "t": "f",
+  "v": "='WACC-DCF'!$E$23",
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "K7",
+  "t": "f",
+  "v": "='WACC-DCF'!$E$23",
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "F11",
+  "t": "n",
+  "v": 0.200054,
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G11",
+  "t": "n",
+  "v": 0.438682,
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "H11",
+  "t": "n",
+  "v": 0.328859,
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "I11",
+  "t": "n",
+  "v": 0.2761,
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "J11",
+  "t": "n",
+  "v": 0.215745,
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "K11",
+  "t": "n",
+  "v": 0.200054,
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "E19",
+  "t": "n",
+  "v": 0.14,
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G24",
+  "t": "f",
+  "v": "=E42",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "J24",
+  "t": "f",
+  "v": "=$E$20",
+  "nf": "0%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "I25",
+  "t": "n",
+  "v": 556.9831805592353,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "J25",
+  "t": "n",
+  "v": 648.2860697246247,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "K25",
+  "t": "n",
+  "v": 785.2404034727087,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "H26",
+  "t": "n",
+  "v": 428.80958114809954,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "I26",
+  "t": "n",
+  "v": 475.98291540183294,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "J26",
+  "t": "n",
+  "v": 538.8806944068109,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "K26",
+  "t": "n",
+  "v": 626.9375850137799,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G27",
+  "t": "f",
+  "v": "=$E$26",
+  "nf": "0.00%"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "H27",
+  "t": "n",
+  "v": 428.80958114809954,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "I27",
+  "t": "n",
+  "v": 475.98291540183294,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "J27",
+  "t": "n",
+  "v": 538.8806944068109,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "K27",
+  "t": "n",
+  "v": 626.9375850137799,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "H28",
+  "t": "n",
+  "v": 341.01165719775753,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "I28",
+  "t": "n",
+  "v": 368.34043643653894,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "J28",
+  "t": "n",
+  "v": 402.50141048501564,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "K28",
+  "t": "n",
+  "v": 446.42266283305713,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "H29",
+  "t": "n",
+  "v": 309.231495910589,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "I29",
+  "t": "n",
+  "v": 330.81711083932714,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "J29",
+  "t": "n",
+  "v": 357.19952908556263,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "K29",
+  "t": "n",
+  "v": 390.1775518933571,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "H30",
+  "t": "n",
+  "v": 282.83222492913495,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "I30",
+  "t": "n",
+  "v": 300.2026810780386,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "J30",
+  "t": "n",
+  "v": 321.04722845672296,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "K30",
+  "t": "n",
+  "v": 346.5238974751149,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "H31",
+  "t": "n",
+  "v": 260.5687131310923,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "I31",
+  "t": "n",
+  "v": 274.76647738075053,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "J31",
+  "t": "n",
+  "v": 291.5456533121648,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "K31",
+  "t": "n",
+  "v": 311.6806644298619,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "B42",
+  "t": "s",
+  "v": "Primary Fair Value per Share (Manufacturing DCF Source-of-Truth)"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "E44",
+  "t": "n",
+  "v": 1041.400024414062
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "B48",
+  "t": "s",
+  "v": "PRIMARY VALUATION SCHEDULE: CLEAN SCIENCE \u2014 MANUFACTURING FCFF DCF BASELINE"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "B50",
+  "t": "s",
+  "v": "Cumulative PV of Explicit FCFF (FY26E\u2013FY30E) (\u20b9 Cr)"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G50",
+  "t": "f",
+  "v": "=E34"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "B51",
+  "t": "s",
+  "v": "PV of Terminal Value (Empirical WACC linked to E26 & Terminal g linked to E20) (\u20b9 Cr)"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G51",
+  "t": "f",
+  "v": "=E35"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "B52",
+  "t": "s",
+  "v": "Implied Enterprise Value (EV) (\u20b9 Cr)"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G52",
+  "t": "f",
+  "v": "=G50+G51"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "B54",
+  "t": "s",
+  "v": "Add: Audited Total Cash & Liquid Treasury Investments (Cash \u20b928 Cr + Liquid Inv \u20b9373 Cr)"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G54",
+  "t": "f",
+  "v": "=E38"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "B55",
+  "t": "s",
+  "v": "Less: Audited Total Borrowings (FY25 Audited Close)"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G55",
+  "t": "f",
+  "v": "=E39"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "B58",
+  "t": "s",
+  "v": "Implied Equity Value (\u20b9 Cr)"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G58",
+  "t": "f",
+  "v": "=G52+G54-G55"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "B59",
+  "t": "s",
+  "v": "Diluted Equity Shares Outstanding (Cr)"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G59",
+  "t": "f",
+  "v": "=E41"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "B60",
+  "t": "s",
+  "v": "PRIMARY MANUFACTURING FCFF FAIR VALUE PER SHARE (\u20b9)"
+ },
+ {
+  "s": "DCF 1st way",
+  "c": "G60",
+  "t": "f",
+  "v": "=G58/G59"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C4",
+  "t": "f",
+  "v": "='Data Sheet'!B1"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J12",
+  "t": "n",
+  "v": 2027
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "K12",
+  "t": "n",
+  "v": 2028
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "L12",
+  "t": "n",
+  "v": 2029
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "M12",
+  "t": "n",
+  "v": 2030
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "N12",
+  "t": "n",
+  "v": 2031
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "K13",
+  "t": "n",
+  "v": 1242.5800000000002,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "L13",
+  "t": "n",
+  "v": 1329.1560000000002,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "M13",
+  "t": "n",
+  "v": 1415.7320000000002,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "N13",
+  "t": "n",
+  "v": 1502.3080000000002,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "G14",
+  "t": "n",
+  "v": -0.1549145299145299,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "H14",
+  "t": "n",
+  "v": 0.222503160556258,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "I14",
+  "t": "n",
+  "v": 0.1400000000000001,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J14",
+  "t": "n",
+  "v": 0.04864384332081495,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "K16",
+  "t": "n",
+  "v": 380.0700000000001,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "L16",
+  "t": "n",
+  "v": 394.24400000000014,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "M16",
+  "t": "n",
+  "v": 408.4180000000002,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "N16",
+  "t": "n",
+  "v": 422.5920000000002,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "F17",
+  "t": "n",
+  "v": 0.3920940170940171,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J17",
+  "t": "n",
+  "v": 0.3165179359240972,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "K19",
+  "t": "n",
+  "v": 108.45999999999998,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "L19",
+  "t": "n",
+  "v": 112.79199999999999,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "M19",
+  "t": "n",
+  "v": 117.124,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "N19",
+  "t": "n",
+  "v": 121.45599999999999,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "F20",
+  "t": "n",
+  "v": 0.2752043596730245,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J20",
+  "t": "n",
+  "v": 0.2845835975249797,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "K23",
+  "t": "n",
+  "v": 100.85,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "L23",
+  "t": "n",
+  "v": 113.64,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "M23",
+  "t": "n",
+  "v": 126.43,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "N23",
+  "t": "n",
+  "v": 139.22,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "F24",
+  "t": "n",
+  "v": 0.03846153846153846,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J24",
+  "t": "n",
+  "v": 0.07617620700274393,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "K26",
+  "t": "n",
+  "v": 499.14,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "L26",
+  "t": "n",
+  "v": 468.62799999999993,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "M26",
+  "t": "n",
+  "v": 438.11599999999993,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "N26",
+  "t": "n",
+  "v": 407.6039999999999,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "F27",
+  "t": "n",
+  "v": 0.8707264957264957,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J27",
+  "t": "n",
+  "v": 0.4581748852080096,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "F30",
+  "t": "n",
+  "v": 0.003985042735042754,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J30",
+  "t": "n",
+  "v": 0.01173006321777433,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J33",
+  "t": "n",
+  "v": 1156.004,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "G34",
+  "t": "n",
+  "v": -0.1549145299145299,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "H34",
+  "t": "n",
+  "v": 0.222503160556258,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "I34",
+  "t": "n",
+  "v": 0.1400000000000001,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J34",
+  "t": "n",
+  "v": 0.04864384332081495,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J36",
+  "t": "n",
+  "v": 365.8960000000001,
+  "nf": "#,##0"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "G40",
+  "t": "n",
+  "v": 0.2867132867132868,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "H40",
+  "t": "n",
+  "v": 0.2915360501567398,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "I40",
+  "t": "n",
+  "v": 0.2775569794792764,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J40",
+  "t": "n",
+  "v": 0.2845835975249797,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J45",
+  "t": "n",
+  "v": 0.07617620700274393,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J48",
+  "t": "n",
+  "v": 0.4581748852080096,
+  "nf": "0.0%"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "J51",
+  "t": "n",
+  "v": 0.01173006321777433,
+  "nf": "0.0%;\\(0.0%\\)"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C70",
+  "t": "f",
+  "v": "='Data Sheet'!G16",
+  "nf": "yyyy"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C71",
+  "t": "f",
+  "v": "=DATE(YEAR(C70)+1,MONTH(C70),DAY(C70))",
+  "nf": "yyyy"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C72",
+  "t": "f",
+  "v": "=DATE(YEAR(C71)+1,MONTH(C71),DAY(C71))",
+  "nf": "yyyy"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "I72",
+  "t": "n",
+  "v": 367.00000000000006
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "L72",
+  "t": "n",
+  "v": 101
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C73",
+  "t": "f",
+  "v": "=DATE(YEAR(C72)+1,MONTH(C72),DAY(C72))",
+  "nf": "yyyy"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "I73",
+  "t": "n",
+  "v": 285.99999999999994
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "L73",
+  "t": "n",
+  "v": 82
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C74",
+  "t": "f",
+  "v": "=DATE(YEAR(C73)+1,MONTH(C73),DAY(C73))",
+  "nf": "yyyy"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "I74",
+  "t": "n",
+  "v": 319
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "L74",
+  "t": "n",
+  "v": 93
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C75",
+  "t": "f",
+  "v": "=DATE(YEAR(C74)+1,MONTH(C74),DAY(C74))",
+  "nf": "yyyy"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "I75",
+  "t": "n",
+  "v": 369.8700000000002
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "L75",
+  "t": "n",
+  "v": 102.66
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C76",
+  "t": "f",
+  "v": "=DATE(YEAR(C75)+1,MONTH(C75),DAY(C75))",
+  "nf": "yyyy"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C77",
+  "t": "f",
+  "v": "=DATE(YEAR(C76)+1,MONTH(C76),DAY(C76))",
+  "nf": "yyyy"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C78",
+  "t": "f",
+  "v": "=DATE(YEAR(C77)+1,MONTH(C77),DAY(C77))",
+  "nf": "yyyy"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C79",
+  "t": "f",
+  "v": "=DATE(YEAR(C78)+1,MONTH(C78),DAY(C78))",
+  "nf": "yyyy"
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C86",
+  "t": "n",
+  "v": 36
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "F86",
+  "t": "n",
+  "v": 815
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C87",
+  "t": "n",
+  "v": 46
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "F87",
+  "t": "n",
+  "v": 935
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C88",
+  "t": "n",
+  "v": 69
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "F88",
+  "t": "n",
+  "v": 958
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "C89",
+  "t": "n",
+  "v": 72.45
+ },
+ {
+  "s": "DCF 2nd way",
+  "c": "F89",
+  "t": "n",
+  "v": 86.94
+ },
+ {
+  "s": "compdata",
+  "c": "C3",
+  "t": "s",
+  "v": "PI Industries Ltd"
+ },
+ {
+  "s": "compdata",
+  "c": "D3",
+  "t": "n",
+  "v": 3555.3,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "E3",
+  "t": "n",
+  "v": 15.18,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "G3",
+  "t": "n",
+  "v": 270,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "H3",
+  "t": "n",
+  "v": 3200,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "J3",
+  "t": "f",
+  "v": "=F3+I3",
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "K3",
+  "t": "n",
+  "v": 2160,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "L3",
+  "t": "n",
+  "v": 7600,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "M3",
+  "t": "n",
+  "v": 1500,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "C4",
+  "t": "s",
+  "v": "Navin Fluorine International"
+ },
+ {
+  "s": "compdata",
+  "c": "D4",
+  "t": "n",
+  "v": 4884.2,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "E4",
+  "t": "n",
+  "v": 4.96,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "G4",
+  "t": "n",
+  "v": 1180,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "H4",
+  "t": "n",
+  "v": 450,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "J4",
+  "t": "f",
+  "v": "=F4+I4",
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "L4",
+  "t": "n",
+  "v": 2100,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "M4",
+  "t": "n",
+  "v": 280,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "C5",
+  "t": "s",
+  "v": "Vinati Organics Ltd"
+ },
+ {
+  "s": "compdata",
+  "c": "D5",
+  "t": "n",
+  "v": 1692.5,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "E5",
+  "t": "n",
+  "v": 10.31,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "G5",
+  "t": "n",
+  "v": 45,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "H5",
+  "t": "n",
+  "v": 280,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "J5",
+  "t": "f",
+  "v": "=F5+I5",
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "L5",
+  "t": "n",
+  "v": 2050,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "M5",
+  "t": "n",
+  "v": 360,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "C6",
+  "t": "s",
+  "v": "Fine Organic Industries"
+ },
+ {
+  "s": "compdata",
+  "c": "D6",
+  "t": "n",
+  "v": 4497,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "E6",
+  "t": "n",
+  "v": 3.07,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "G6",
+  "t": "n",
+  "v": 0,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "H6",
+  "t": "n",
+  "v": 950,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "J6",
+  "t": "f",
+  "v": "=F6+I6",
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "L6",
+  "t": "n",
+  "v": 2200,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "M6",
+  "t": "n",
+  "v": 390,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "C7",
+  "t": "s",
+  "v": "SRF Limited"
+ },
+ {
+  "s": "compdata",
+  "c": "D7",
+  "t": "n",
+  "v": 3088.6,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "E7",
+  "t": "n",
+  "v": 29.64,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "G7",
+  "t": "n",
+  "v": 5100,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "H7",
+  "t": "n",
+  "v": 1800,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "J7",
+  "t": "f",
+  "v": "=F7+I7",
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "L7",
+  "t": "n",
+  "v": 13500,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "M7",
+  "t": "n",
+  "v": 1600,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "B8",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "C8",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "D8",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "E8",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "G8",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "H8",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "J8",
+  "t": "f",
+  "v": "=F8+I8",
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "K8",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "L8",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "M8",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "B9",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "C9",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "D9",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "E9",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "G9",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "H9",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "J9",
+  "t": "f",
+  "v": "=F9+I9",
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "K9",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "L9",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "M9",
+  "t": "z",
+  "v": null,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "C10",
+  "t": "s",
+  "v": "CLEAN SCIENCE AND TECHNOLOGY LIMITED"
+ },
+ {
+  "s": "compdata",
+  "c": "D10",
+  "t": "n",
+  "v": 1041.400024414062,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "E10",
+  "t": "n",
+  "v": 10.63,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "G10",
+  "t": "n",
+  "v": 2,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "H10",
+  "t": "n",
+  "v": 401,
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "J10",
+  "t": "f",
+  "v": "=F10+I10",
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "L10",
+  "t": "f",
+  "v": "='Main Financials'!I11",
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "M10",
+  "t": "f",
+  "v": "='Main Financials'!I38",
+  "nf": "0.00"
+ },
+ {
+  "s": "compdata",
+  "c": "C18",
+  "t": "s",
+  "v": "PI Industries Ltd"
+ },
+ {
+  "s": "compdata",
+  "c": "D18",
+  "t": "n",
+  "v": 3555.3
+ },
+ {
+  "s": "compdata",
+  "c": "E18",
+  "t": "n",
+  "v": 1850
+ },
+ {
+  "s": "compdata",
+  "c": "F18",
+  "t": "f",
+  "v": "=J3/K3"
+ },
+ {
+  "s": "compdata",
+  "c": "G18",
+  "t": "n",
+  "v": 310
+ },
+ {
+  "s": "compdata",
+  "c": "H18",
+  "t": "f",
+  "v": "=J3/E18"
+ },
+ {
+  "s": "compdata",
+  "c": "I18",
+  "t": "f",
+  "v": "=J3/L3"
+ },
+ {
+  "s": "compdata",
+  "c": "J18",
+  "t": "f",
+  "v": "=F3/M3"
+ },
+ {
+  "s": "compdata",
+  "c": "C19",
+  "t": "s",
+  "v": "Navin Fluorine International"
+ },
+ {
+  "s": "compdata",
+  "c": "D19",
+  "t": "n",
+  "v": 4884.2
+ },
+ {
+  "s": "compdata",
+  "c": "E19",
+  "t": "n",
+  "v": 380
+ },
+ {
+  "s": "compdata",
+  "c": "F19",
+  "t": "f",
+  "v": "=J4/K4"
+ },
+ {
+  "s": "compdata",
+  "c": "G19",
+  "t": "n",
+  "v": 140
+ },
+ {
+  "s": "compdata",
+  "c": "H19",
+  "t": "f",
+  "v": "=J4/E19"
+ },
+ {
+  "s": "compdata",
+  "c": "I19",
+  "t": "f",
+  "v": "=J4/L4"
+ },
+ {
+  "s": "compdata",
+  "c": "J19",
+  "t": "f",
+  "v": "=F4/M4"
+ },
+ {
+  "s": "compdata",
+  "c": "C20",
+  "t": "s",
+  "v": "Vinati Organics Ltd"
+ },
+ {
+  "s": "compdata",
+  "c": "D20",
+  "t": "n",
+  "v": 1692.5
+ },
+ {
+  "s": "compdata",
+  "c": "E20",
+  "t": "n",
+  "v": 460
+ },
+ {
+  "s": "compdata",
+  "c": "F20",
+  "t": "f",
+  "v": "=J5/K5"
+ },
+ {
+  "s": "compdata",
+  "c": "G20",
+  "t": "n",
+  "v": 70
+ },
+ {
+  "s": "compdata",
+  "c": "H20",
+  "t": "f",
+  "v": "=J5/E20"
+ },
+ {
+  "s": "compdata",
+  "c": "I20",
+  "t": "f",
+  "v": "=J5/L5"
+ },
+ {
+  "s": "compdata",
+  "c": "J20",
+  "t": "f",
+  "v": "=F5/M5"
+ },
+ {
+  "s": "compdata",
+  "c": "C21",
+  "t": "s",
+  "v": "Fine Organic Industries"
+ },
+ {
+  "s": "compdata",
+  "c": "D21",
+  "t": "n",
+  "v": 4497
+ },
+ {
+  "s": "compdata",
+  "c": "E21",
+  "t": "n",
+  "v": 480
+ },
+ {
+  "s": "compdata",
+  "c": "F21",
+  "t": "f",
+  "v": "=J6/K6"
+ },
+ {
+  "s": "compdata",
+  "c": "G21",
+  "t": "n",
+  "v": 65
+ },
+ {
+  "s": "compdata",
+  "c": "H21",
+  "t": "f",
+  "v": "=J6/E21"
+ },
+ {
+  "s": "compdata",
+  "c": "I21",
+  "t": "f",
+  "v": "=J6/L6"
+ },
+ {
+  "s": "compdata",
+  "c": "J21",
+  "t": "f",
+  "v": "=F6/M6"
+ },
+ {
+  "s": "compdata",
+  "c": "C22",
+  "t": "s",
+  "v": "SRF Limited"
+ },
+ {
+  "s": "compdata",
+  "c": "D22",
+  "t": "n",
+  "v": 3088.6
+ },
+ {
+  "s": "compdata",
+  "c": "E22",
+  "t": "n",
+  "v": 2300
+ },
+ {
+  "s": "compdata",
+  "c": "F22",
+  "t": "f",
+  "v": "=J7/K7"
+ },
+ {
+  "s": "compdata",
+  "c": "G22",
+  "t": "n",
+  "v": 720
+ },
+ {
+  "s": "compdata",
+  "c": "H22",
+  "t": "f",
+  "v": "=J7/E22"
+ },
+ {
+  "s": "compdata",
+  "c": "I22",
+  "t": "f",
+  "v": "=J7/L7"
+ },
+ {
+  "s": "compdata",
+  "c": "J22",
+  "t": "f",
+  "v": "=F7/M7"
+ },
+ {
+  "s": "compdata",
+  "c": "B23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "C23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "D23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "E23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "F23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "G23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "B24",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "C24",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "D24",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "E24",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "F24",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "G24",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "compdata",
+  "c": "B25",
+  "t": "n",
+  "v": 6
+ },
+ {
+  "s": "compdata",
+  "c": "C25",
+  "t": "f",
+  "v": "='Data Sheet'!B1"
+ },
+ {
+  "s": "compdata",
+  "c": "D25",
+  "t": "f",
+  "v": "=D10"
+ },
+ {
+  "s": "compdata",
+  "c": "E25",
+  "t": "f",
+  "v": "='Main Financials'!I24"
+ },
+ {
+  "s": "compdata",
+  "c": "F25",
+  "t": "f",
+  "v": "=J10/K10"
+ },
+ {
+  "s": "compdata",
+  "c": "G25",
+  "t": "f",
+  "v": "='Main Financials'!I25"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B1",
+  "t": "s",
+  "v": "CLEAN SCIENCE AND TECHNOLOGY LIMITED",
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "A3",
+  "t": "s",
+  "v": "Data Source: Screener.in Export (As of 15-Oct-2025); historical actuals through FY25; FY26E forecast.",
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B6",
+  "t": "n",
+  "v": 10.63,
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B8",
+  "t": "n",
+  "v": 1041.400024414062
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B9",
+  "t": "f",
+  "v": "=B6*B8"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B16",
+  "t": "d",
+  "v": "2017-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C16",
+  "t": "d",
+  "v": "2018-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D16",
+  "t": "d",
+  "v": "2019-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E16",
+  "t": "d",
+  "v": "2020-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F16",
+  "t": "d",
+  "v": "2021-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G16",
+  "t": "d",
+  "v": "2022-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H16",
+  "t": "d",
+  "v": "2023-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I16",
+  "t": "d",
+  "v": "2024-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J16",
+  "t": "d",
+  "v": "2025-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K16",
+  "t": "s",
+  "v": "FY26E",
+  "nf": "[$-409]mmm\\-yy;@"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B17",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C17",
+  "t": "n",
+  "v": 241
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D17",
+  "t": "n",
+  "v": 393
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E17",
+  "t": "n",
+  "v": 419
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F17",
+  "t": "n",
+  "v": 512
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G17",
+  "t": "n",
+  "v": 685
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H17",
+  "t": "n",
+  "v": 936
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I17",
+  "t": "n",
+  "v": 791
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J17",
+  "t": "n",
+  "v": 967
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K17",
+  "t": "f",
+  "v": "=J17*(1+'DCF 1st way'!$E$19)"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B18",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C18",
+  "t": "n",
+  "v": 113.39
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D18",
+  "t": "n",
+  "v": 171.11
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E18",
+  "t": "n",
+  "v": 129.14
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F18",
+  "t": "n",
+  "v": 123.49
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G18",
+  "t": "n",
+  "v": 224.68
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H18",
+  "t": "n",
+  "v": 326.01
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I18",
+  "t": "n",
+  "v": 276.93
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J18",
+  "t": "n",
+  "v": 350.83
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K18",
+  "t": "f",
+  "v": "=ROUND(K17*(J18/J17), 2)"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B19",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C19",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D19",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E19",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F19",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G19",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H19",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I19",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J19",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K19",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B20",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C20",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D20",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E20",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F20",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G20",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H20",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I20",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J20",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K20",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B21",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C21",
+  "t": "n",
+  "v": 28.8
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D21",
+  "t": "n",
+  "v": 47.63
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E21",
+  "t": "n",
+  "v": 53.38
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F21",
+  "t": "n",
+  "v": 59.03
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G21",
+  "t": "n",
+  "v": 88.5
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H21",
+  "t": "n",
+  "v": 118.03
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I21",
+  "t": "n",
+  "v": 94.37
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J21",
+  "t": "n",
+  "v": 124.45
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K21",
+  "t": "f",
+  "v": "=ROUND(K17*(J21/J17), 2)"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B22",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C22",
+  "t": "n",
+  "v": 16
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D22",
+  "t": "n",
+  "v": 24.84
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E22",
+  "t": "n",
+  "v": 31.01
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F22",
+  "t": "n",
+  "v": 43.52
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G22",
+  "t": "n",
+  "v": 34.52
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H22",
+  "t": "n",
+  "v": 45.21
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I22",
+  "t": "n",
+  "v": 48.41
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J22",
+  "t": "n",
+  "v": 56.38
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K22",
+  "t": "f",
+  "v": "=ROUND(K17*(J22/J17), 2)"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B24",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C24",
+  "t": "n",
+  "v": 8.81
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D24",
+  "t": "n",
+  "v": 13.42
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E24",
+  "t": "n",
+  "v": 20.47
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F24",
+  "t": "n",
+  "v": 26.96
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G24",
+  "t": "n",
+  "v": 37.3
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H24",
+  "t": "n",
+  "v": 43.75
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I24",
+  "t": "n",
+  "v": 39.29
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J24",
+  "t": "n",
+  "v": 47.34
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K24",
+  "t": "f",
+  "v": "=ROUND(K17*(J24/J17), 2)"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B25",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C25",
+  "t": "n",
+  "v": 5
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D25",
+  "t": "n",
+  "v": 11
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E25",
+  "t": "n",
+  "v": 11
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F25",
+  "t": "n",
+  "v": 25
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G25",
+  "t": "n",
+  "v": 30
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H25",
+  "t": "n",
+  "v": 30
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I25",
+  "t": "n",
+  "v": 41
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J25",
+  "t": "n",
+  "v": 39
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K25",
+  "t": "f",
+  "v": "=J25"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B26",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C26",
+  "t": "n",
+  "v": 8
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D26",
+  "t": "n",
+  "v": 11
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E26",
+  "t": "n",
+  "v": 14
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F26",
+  "t": "n",
+  "v": 17
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G26",
+  "t": "n",
+  "v": 25
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H26",
+  "t": "n",
+  "v": 36
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I26",
+  "t": "n",
+  "v": 46
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J26",
+  "t": "n",
+  "v": 69
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K26",
+  "t": "f",
+  "v": "=J26*(1+0.05)"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C27",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H27",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I27",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J27",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K27",
+  "t": "f",
+  "v": "=J27"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B28",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C28",
+  "t": "n",
+  "v": 70
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D28",
+  "t": "n",
+  "v": 137
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E28",
+  "t": "n",
+  "v": 182
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F28",
+  "t": "n",
+  "v": 267
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G28",
+  "t": "n",
+  "v": 305
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H28",
+  "t": "n",
+  "v": 396
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I28",
+  "t": "n",
+  "v": 326
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J28",
+  "t": "n",
+  "v": 357
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K28",
+  "t": "f",
+  "v": "=K17-SUM(K18:K24)+K25-K26-K27"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B29",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C29",
+  "t": "n",
+  "v": 21
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D29",
+  "t": "n",
+  "v": 39
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E29",
+  "t": "n",
+  "v": 42
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F29",
+  "t": "n",
+  "v": 69
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G29",
+  "t": "n",
+  "v": 77
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H29",
+  "t": "n",
+  "v": 101
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I29",
+  "t": "n",
+  "v": 82
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J29",
+  "t": "n",
+  "v": 93
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K29",
+  "t": "f",
+  "v": "=ROUND(K28*0.2517, 2)"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B30",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C30",
+  "t": "n",
+  "v": 49
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D30",
+  "t": "n",
+  "v": 98
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E30",
+  "t": "n",
+  "v": 140
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F30",
+  "t": "n",
+  "v": 198
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G30",
+  "t": "n",
+  "v": 228
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H30",
+  "t": "n",
+  "v": 295
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I30",
+  "t": "n",
+  "v": 244
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J30",
+  "t": "n",
+  "v": 264
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K30",
+  "t": "f",
+  "v": "=K28-K29"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B31",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C31",
+  "t": "n",
+  "v": 5.88
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D31",
+  "t": "n",
+  "v": 14.7
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E31",
+  "t": "n",
+  "v": 2.8
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F31",
+  "t": "n",
+  "v": 265.32
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G31",
+  "t": "n",
+  "v": 34.2
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H31",
+  "t": "n",
+  "v": 53.1
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I31",
+  "t": "n",
+  "v": 53.68
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J31",
+  "t": "n",
+  "v": 63.36
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K31",
+  "t": "f",
+  "v": "=ROUND(K30*0.2, 2)"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B42",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C42",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D42",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E42",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F42",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G42",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H42",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I42",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J42",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K42",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B43",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C43",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D43",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E43",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F43",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G43",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H43",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I43",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J43",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K43",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B44",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C44",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D44",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E44",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F44",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G44",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H44",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I44",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J44",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K44",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B45",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C45",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D45",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E45",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F45",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G45",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H45",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I45",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J45",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K45",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B46",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C46",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D46",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E46",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F46",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G46",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H46",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I46",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J46",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K46",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B47",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C47",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D47",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E47",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F47",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G47",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H47",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I47",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J47",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K47",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B48",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C48",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D48",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E48",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F48",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G48",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H48",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I48",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J48",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K48",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B49",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C49",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D49",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E49",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F49",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G49",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H49",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I49",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J49",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K49",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B50",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C50",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D50",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E50",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F50",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G50",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H50",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I50",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J50",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K50",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B56",
+  "t": "d",
+  "v": "2017-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C56",
+  "t": "d",
+  "v": "2018-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D56",
+  "t": "d",
+  "v": "2019-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E56",
+  "t": "d",
+  "v": "2020-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F56",
+  "t": "d",
+  "v": "2021-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G56",
+  "t": "d",
+  "v": "2022-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H56",
+  "t": "d",
+  "v": "2023-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I56",
+  "t": "d",
+  "v": "2024-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J56",
+  "t": "d",
+  "v": "2025-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K56",
+  "t": "s",
+  "v": "FY26E",
+  "nf": "[$-409]mmm\\-yy;@"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B57",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C57",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D57",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E57",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F57",
+  "t": "n",
+  "v": 11
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G57",
+  "t": "n",
+  "v": 11
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H57",
+  "t": "n",
+  "v": 11
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I57",
+  "t": "n",
+  "v": 11
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J57",
+  "t": "n",
+  "v": 11
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K57",
+  "t": "f",
+  "v": "=BS!N4"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B58",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C58",
+  "t": "n",
+  "v": 186
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D58",
+  "t": "n",
+  "v": 271
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E58",
+  "t": "n",
+  "v": 341
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F58",
+  "t": "n",
+  "v": 529
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G58",
+  "t": "n",
+  "v": 758
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H58",
+  "t": "n",
+  "v": 999
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I58",
+  "t": "n",
+  "v": 1193
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J58",
+  "t": "n",
+  "v": 1406
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K58",
+  "t": "f",
+  "v": "=BS!N5"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B59",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C59",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D59",
+  "t": "n",
+  "v": 3
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E59",
+  "t": "n",
+  "v": 3
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F59",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G59",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H59",
+  "t": "n",
+  "v": 2
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I59",
+  "t": "n",
+  "v": 2
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J59",
+  "t": "n",
+  "v": 2
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K59",
+  "t": "f",
+  "v": "=SUM(BS!N7:N10)"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B60",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C60",
+  "t": "n",
+  "v": 48
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D60",
+  "t": "n",
+  "v": 53
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E60",
+  "t": "n",
+  "v": 85
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F60",
+  "t": "n",
+  "v": 120
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G60",
+  "t": "n",
+  "v": 156
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H60",
+  "t": "n",
+  "v": 140
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I60",
+  "t": "n",
+  "v": 191
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J60",
+  "t": "n",
+  "v": 181
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K60",
+  "t": "f",
+  "v": "=SUM(BS!N12:N15)"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B61",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C61",
+  "t": "n",
+  "v": 236
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D61",
+  "t": "n",
+  "v": 327
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E61",
+  "t": "n",
+  "v": 430
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F61",
+  "t": "n",
+  "v": 660
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G61",
+  "t": "n",
+  "v": 925
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H61",
+  "t": "n",
+  "v": 1152
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I61",
+  "t": "n",
+  "v": 1396
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J61",
+  "t": "n",
+  "v": 1600
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K61",
+  "t": "f",
+  "v": "=SUM(K57:K60)"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B62",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C62",
+  "t": "n",
+  "v": 102
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D62",
+  "t": "n",
+  "v": 127
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E62",
+  "t": "n",
+  "v": 166
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F62",
+  "t": "n",
+  "v": 186
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G62",
+  "t": "n",
+  "v": 296
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H62",
+  "t": "n",
+  "v": 460
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I62",
+  "t": "n",
+  "v": 636
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J62",
+  "t": "n",
+  "v": 715
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K62",
+  "t": "f",
+  "v": "=BS!N28-BS!N29"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B63",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C63",
+  "t": "n",
+  "v": 2
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D63",
+  "t": "n",
+  "v": 4
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E63",
+  "t": "n",
+  "v": 3
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F63",
+  "t": "n",
+  "v": 55
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G63",
+  "t": "n",
+  "v": 44
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H63",
+  "t": "n",
+  "v": 20
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I63",
+  "t": "n",
+  "v": 57
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J63",
+  "t": "n",
+  "v": 30
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K63",
+  "t": "f",
+  "v": "=BS!N30"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C64",
+  "t": "n",
+  "v": 18
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D64",
+  "t": "n",
+  "v": 75
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E64",
+  "t": "n",
+  "v": 133
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F64",
+  "t": "n",
+  "v": 232
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G64",
+  "t": "n",
+  "v": 191
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H64",
+  "t": "n",
+  "v": 353
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I64",
+  "t": "n",
+  "v": 339
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J64",
+  "t": "n",
+  "v": 381
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K64",
+  "t": "f",
+  "v": "=BS!N31"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B65",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C65",
+  "t": "n",
+  "v": 114
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D65",
+  "t": "n",
+  "v": 121
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E65",
+  "t": "n",
+  "v": 128
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F65",
+  "t": "n",
+  "v": 187
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G65",
+  "t": "n",
+  "v": 394
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H65",
+  "t": "n",
+  "v": 318
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I65",
+  "t": "n",
+  "v": 364
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J65",
+  "t": "n",
+  "v": 474
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K65",
+  "t": "f",
+  "v": "=SUM(BS!N33:N37)"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B66",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C66",
+  "t": "n",
+  "v": 236
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D66",
+  "t": "n",
+  "v": 327
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E66",
+  "t": "n",
+  "v": 430
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F66",
+  "t": "n",
+  "v": 660
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G66",
+  "t": "n",
+  "v": 925
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H66",
+  "t": "n",
+  "v": 1152
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I66",
+  "t": "n",
+  "v": 1396
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J66",
+  "t": "n",
+  "v": 1600
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K66",
+  "t": "f",
+  "v": "=SUM(K62:K65)"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B67",
+  "t": "n",
+  "v": 21
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C67",
+  "t": "n",
+  "v": 40
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D67",
+  "t": "n",
+  "v": 60
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E67",
+  "t": "n",
+  "v": 70
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F67",
+  "t": "n",
+  "v": 74
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G67",
+  "t": "n",
+  "v": 154
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H67",
+  "t": "n",
+  "v": 146
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I67",
+  "t": "n",
+  "v": 164
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J67",
+  "t": "n",
+  "v": 203
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K67",
+  "t": "f",
+  "v": "=BS!N34"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B68",
+  "t": "n",
+  "v": 31
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C68",
+  "t": "n",
+  "v": 29
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D68",
+  "t": "n",
+  "v": 37
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E68",
+  "t": "n",
+  "v": 35
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F68",
+  "t": "n",
+  "v": 53
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G68",
+  "t": "n",
+  "v": 88
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H68",
+  "t": "n",
+  "v": 109
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I68",
+  "t": "n",
+  "v": 124
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J68",
+  "t": "n",
+  "v": 149
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K68",
+  "t": "f",
+  "v": "=BS!N33"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B69",
+  "t": "n",
+  "v": 6
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C69",
+  "t": "n",
+  "v": 30
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D69",
+  "t": "n",
+  "v": 9
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E69",
+  "t": "n",
+  "v": 9
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F69",
+  "t": "n",
+  "v": 16
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G69",
+  "t": "n",
+  "v": 75
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H69",
+  "t": "n",
+  "v": 12
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I69",
+  "t": "n",
+  "v": 11
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J69",
+  "t": "n",
+  "v": 20
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K69",
+  "t": "f",
+  "v": "=BS!N35"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B70",
+  "t": "n",
+  "v": 10.63
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C70",
+  "t": "n",
+  "v": 10.63
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D70",
+  "t": "n",
+  "v": 10.63
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E70",
+  "t": "n",
+  "v": 10.63
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F70",
+  "t": "n",
+  "v": 10.63
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G70",
+  "t": "n",
+  "v": 10.63
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H70",
+  "t": "n",
+  "v": 10.63
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I70",
+  "t": "n",
+  "v": 10.63
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J70",
+  "t": "n",
+  "v": 10.63
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K70",
+  "t": "f",
+  "v": "=K93"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K72",
+  "t": "f",
+  "v": "=B7"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B75",
+  "t": "f",
+  "v": "=B66",
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C75",
+  "t": "f",
+  "v": "=C66",
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D75",
+  "t": "f",
+  "v": "=D66",
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E75",
+  "t": "f",
+  "v": "=E66",
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F75",
+  "t": "f",
+  "v": "=F66",
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G75",
+  "t": "f",
+  "v": "=G66",
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H75",
+  "t": "f",
+  "v": "=H66",
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I75",
+  "t": "f",
+  "v": "=I66",
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J75",
+  "t": "f",
+  "v": "=J66",
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K75",
+  "t": "f",
+  "v": "=K66",
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B81",
+  "t": "d",
+  "v": "2017-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C81",
+  "t": "d",
+  "v": "2018-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D81",
+  "t": "d",
+  "v": "2019-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E81",
+  "t": "d",
+  "v": "2020-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F81",
+  "t": "d",
+  "v": "2021-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G81",
+  "t": "d",
+  "v": "2022-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H81",
+  "t": "d",
+  "v": "2023-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I81",
+  "t": "d",
+  "v": "2024-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J81",
+  "t": "d",
+  "v": "2025-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K81",
+  "t": "s",
+  "v": "FY26E",
+  "nf": "[$-409]mmm\\-yy;@"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B82",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C82",
+  "t": "n",
+  "v": 45
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D82",
+  "t": "n",
+  "v": 85
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E82",
+  "t": "n",
+  "v": 160
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F82",
+  "t": "n",
+  "v": 193
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G82",
+  "t": "n",
+  "v": 127
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H82",
+  "t": "n",
+  "v": 279
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I82",
+  "t": "n",
+  "v": 236
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J82",
+  "t": "n",
+  "v": 214
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K82",
+  "t": "f",
+  "v": "='Cash Flow'!N5"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B83",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C83",
+  "t": "n",
+  "v": -17
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D83",
+  "t": "n",
+  "v": -94
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E83",
+  "t": "n",
+  "v": -105
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F83",
+  "t": "n",
+  "v": -187
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G83",
+  "t": "n",
+  "v": -79
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H83",
+  "t": "n",
+  "v": -270
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I83",
+  "t": "n",
+  "v": -185
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J83",
+  "t": "n",
+  "v": -152
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K83",
+  "t": "f",
+  "v": "='Cash Flow'!N14"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B84",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C84",
+  "t": "n",
+  "v": -5
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D84",
+  "t": "n",
+  "v": -11
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E84",
+  "t": "n",
+  "v": -55
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F84",
+  "t": "n",
+  "v": -6
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G84",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H84",
+  "t": "n",
+  "v": -55
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I84",
+  "t": "n",
+  "v": -53
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J84",
+  "t": "n",
+  "v": -53
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K84",
+  "t": "f",
+  "v": "='Cash Flow'!N23"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B85",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C85",
+  "t": "n",
+  "v": 23
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D85",
+  "t": "n",
+  "v": -20
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E85",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F85",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G85",
+  "t": "n",
+  "v": 49
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H85",
+  "t": "n",
+  "v": -45
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I85",
+  "t": "n",
+  "v": -2
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J85",
+  "t": "n",
+  "v": 9
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K85",
+  "t": "f",
+  "v": "='Cash Flow'!N31"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "A90",
+  "t": "s",
+  "v": "PRICE (15-Oct-2025 snapshot)",
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B90",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C90",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D90",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E90",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F90",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G90",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H90",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I90",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J90",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K90",
+  "t": "f",
+  "v": "=B8"
+ },
+ {
+  "s": "Data Sheet",
+  "c": "B93",
+  "t": "n",
+  "v": 10.63,
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "C93",
+  "t": "n",
+  "v": 10.63,
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "D93",
+  "t": "n",
+  "v": 10.63,
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "E93",
+  "t": "n",
+  "v": 10.63,
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "F93",
+  "t": "n",
+  "v": 10.63,
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "G93",
+  "t": "n",
+  "v": 10.63,
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "H93",
+  "t": "n",
+  "v": 10.63,
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "I93",
+  "t": "n",
+  "v": 10.63,
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "J93",
+  "t": "n",
+  "v": 10.63,
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "Data Sheet",
+  "c": "K93",
+  "t": "n",
+  "v": 10.63,
+  "nf": "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ "
+ },
+ {
+  "s": "BS",
+  "c": "C2",
+  "t": "d",
+  "v": "2015-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "BS",
+  "c": "D2",
+  "t": "d",
+  "v": "2016-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "BS",
+  "c": "E2",
+  "t": "d",
+  "v": "2017-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "BS",
+  "c": "F2",
+  "t": "d",
+  "v": "2018-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "BS",
+  "c": "G2",
+  "t": "d",
+  "v": "2019-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "BS",
+  "c": "H2",
+  "t": "d",
+  "v": "2020-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "BS",
+  "c": "I2",
+  "t": "d",
+  "v": "2021-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "BS",
+  "c": "J2",
+  "t": "d",
+  "v": "2022-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "BS",
+  "c": "K2",
+  "t": "d",
+  "v": "2023-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "BS",
+  "c": "L2",
+  "t": "d",
+  "v": "2024-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "BS",
+  "c": "M2",
+  "t": "d",
+  "v": "2025-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "BS",
+  "c": "N2",
+  "t": "s",
+  "v": "FY26E",
+  "nf": "mmm-yy"
+ },
+ {
+  "s": "BS",
+  "c": "C4",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D4",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E4",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F4",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G4",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H4",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I4",
+  "t": "n",
+  "v": 11,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J4",
+  "t": "n",
+  "v": 11,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K4",
+  "t": "n",
+  "v": 11,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L4",
+  "t": "n",
+  "v": 11,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M4",
+  "t": "n",
+  "v": 11,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N4",
+  "t": "f",
+  "v": "=M4",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C5",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D5",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E5",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F5",
+  "t": "n",
+  "v": 186,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G5",
+  "t": "n",
+  "v": 271,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H5",
+  "t": "n",
+  "v": 341,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I5",
+  "t": "n",
+  "v": 529,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J5",
+  "t": "n",
+  "v": 758,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K5",
+  "t": "n",
+  "v": 999,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L5",
+  "t": "n",
+  "v": 1193,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M5",
+  "t": "n",
+  "v": 1406,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N5",
+  "t": "f",
+  "v": "=M5+'Data Sheet'!K30-'Data Sheet'!K31",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C7",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D7",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E7",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F7",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G7",
+  "t": "n",
+  "v": 2.47,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H7",
+  "t": "n",
+  "v": 2.4,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I7",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J7",
+  "t": "n",
+  "v": 0.07,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K7",
+  "t": "n",
+  "v": 0.05,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L7",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M7",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N7",
+  "t": "f",
+  "v": "=M7",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H8",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I8",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J8",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K8",
+  "t": "n",
+  "v": 2.01,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L8",
+  "t": "n",
+  "v": 2.03,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M8",
+  "t": "n",
+  "v": 2.12,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N8",
+  "t": "f",
+  "v": "=M8",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C9",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D9",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E9",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F9",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G9",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H9",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I9",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J9",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K9",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L9",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M9",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N9",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "B10",
+  "t": "s",
+  "v": "Long term / other borrowings"
+ },
+ {
+  "s": "BS",
+  "c": "C10",
+  "t": "n",
+  "v": 20.05,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D10",
+  "t": "n",
+  "v": 11.95,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E10",
+  "t": "n",
+  "v": 0.4,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F10",
+  "t": "n",
+  "v": 0.5599999999999999,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G10",
+  "t": "n",
+  "v": 0.13,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H10",
+  "t": "n",
+  "v": 0.29,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I10",
+  "t": "n",
+  "v": 0.33,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J10",
+  "t": "n",
+  "v": 0.26,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M10",
+  "t": "n",
+  "v": 0.01,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N10",
+  "t": "f",
+  "v": "=M10",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C12",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D12",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E12",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F12",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G12",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H12",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I12",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J12",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K12",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L12",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M12",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N12",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C13",
+  "t": "n",
+  "v": 14,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D13",
+  "t": "n",
+  "v": 12,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E13",
+  "t": "n",
+  "v": 14,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F13",
+  "t": "n",
+  "v": 26,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G13",
+  "t": "n",
+  "v": 22,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H13",
+  "t": "n",
+  "v": 36,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I13",
+  "t": "n",
+  "v": 61,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J13",
+  "t": "n",
+  "v": 102,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K13",
+  "t": "n",
+  "v": 81,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L13",
+  "t": "n",
+  "v": 106,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M13",
+  "t": "n",
+  "v": 99,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N13",
+  "t": "f",
+  "v": "=ROUND(M13*1.05, 2)",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J14",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K14",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L14",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M14",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N14",
+  "t": "f",
+  "v": "=M14",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "B15",
+  "t": "s",
+  "v": "Other liability items / aggregate where detail unavailable"
+ },
+ {
+  "s": "BS",
+  "c": "C15",
+  "t": "n",
+  "v": 15,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D15",
+  "t": "n",
+  "v": 15,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E15",
+  "t": "n",
+  "v": 21,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F15",
+  "t": "n",
+  "v": 21,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G15",
+  "t": "n",
+  "v": 30,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H15",
+  "t": "n",
+  "v": 49,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I15",
+  "t": "n",
+  "v": 58,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J15",
+  "t": "n",
+  "v": 53,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K15",
+  "t": "n",
+  "v": 59,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L15",
+  "t": "n",
+  "v": 85,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M15",
+  "t": "n",
+  "v": 80,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N15",
+  "t": "f",
+  "v": "=ROUND(M15*1.05, 2)",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "B16",
+  "t": "s",
+  "v": "Total Liabilities (Screener reported; forecast calculated)"
+ },
+ {
+  "s": "BS",
+  "c": "C16",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "BS",
+  "c": "D16",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "BS",
+  "c": "E16",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "BS",
+  "c": "F16",
+  "t": "n",
+  "v": 236
+ },
+ {
+  "s": "BS",
+  "c": "G16",
+  "t": "n",
+  "v": 327
+ },
+ {
+  "s": "BS",
+  "c": "H16",
+  "t": "n",
+  "v": 430
+ },
+ {
+  "s": "BS",
+  "c": "I16",
+  "t": "n",
+  "v": 660,
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "J16",
+  "t": "n",
+  "v": 925,
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "K16",
+  "t": "n",
+  "v": 1152,
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "L16",
+  "t": "n",
+  "v": 1396,
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "M16",
+  "t": "n",
+  "v": 1600,
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "N16",
+  "t": "f",
+  "v": "=N4+N5+SUM(N7:N10)+SUM(N12:N15)",
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "C19",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D19",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E19",
+  "t": "n",
+  "v": 3,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F19",
+  "t": "n",
+  "v": 4,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G19",
+  "t": "n",
+  "v": 5,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H19",
+  "t": "n",
+  "v": 5,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I19",
+  "t": "n",
+  "v": 7,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J19",
+  "t": "n",
+  "v": 7,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K19",
+  "t": "n",
+  "v": 43,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L19",
+  "t": "n",
+  "v": 42,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M19",
+  "t": "n",
+  "v": 41,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N19",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C20",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D20",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E20",
+  "t": "n",
+  "v": 20,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F20",
+  "t": "n",
+  "v": 35,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G20",
+  "t": "n",
+  "v": 40,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H20",
+  "t": "n",
+  "v": 46,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I20",
+  "t": "n",
+  "v": 48,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J20",
+  "t": "n",
+  "v": 92,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K20",
+  "t": "n",
+  "v": 140,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L20",
+  "t": "n",
+  "v": 218,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M20",
+  "t": "n",
+  "v": 254,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N20",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C21",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D21",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E21",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F21",
+  "t": "n",
+  "v": 92,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G21",
+  "t": "n",
+  "v": 120,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H21",
+  "t": "n",
+  "v": 162,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I21",
+  "t": "n",
+  "v": 195,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J21",
+  "t": "n",
+  "v": 284,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K21",
+  "t": "n",
+  "v": 397,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L21",
+  "t": "n",
+  "v": 535,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M21",
+  "t": "n",
+  "v": 640,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N21",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C22",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D22",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E22",
+  "t": "n",
+  "v": 76,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F22",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I22",
+  "t": "n",
+  "v": 5,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J22",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K22",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L22",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M22",
+  "t": "n",
+  "v": 3,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N22",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C23",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D23",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E23",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F23",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G23",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H23",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I23",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J23",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K23",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L23",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M23",
+  "t": "n",
+  "v": 3,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N23",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C24",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D24",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E24",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F24",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G24",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H24",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I24",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J24",
+  "t": "n",
+  "v": 4,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K24",
+  "t": "n",
+  "v": 5,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L24",
+  "t": "n",
+  "v": 9,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M24",
+  "t": "n",
+  "v": 10,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N24",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C25",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D25",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E25",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F25",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G25",
+  "t": "n",
+  "v": 3,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H25",
+  "t": "n",
+  "v": 4,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I25",
+  "t": "n",
+  "v": 3,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J25",
+  "t": "n",
+  "v": 4,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K25",
+  "t": "n",
+  "v": 5,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L25",
+  "t": "n",
+  "v": 6,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M25",
+  "t": "n",
+  "v": 6,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N25",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C26",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D26",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E26",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F26",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G26",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H26",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I26",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J26",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K26",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L26",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M26",
+  "t": "n",
+  "v": 3,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N26",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C27",
+  "t": "n",
+  "v": 60,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D27",
+  "t": "n",
+  "v": 64,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E27",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F27",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G27",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H27",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I27",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J27",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K27",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L27",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M27",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N27",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C28",
+  "t": "n",
+  "v": 60,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D28",
+  "t": "n",
+  "v": 64,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E28",
+  "t": "n",
+  "v": 106,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F28",
+  "t": "n",
+  "v": 137,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G28",
+  "t": "n",
+  "v": 172,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H28",
+  "t": "n",
+  "v": 225,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I28",
+  "t": "n",
+  "v": 261,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J28",
+  "t": "n",
+  "v": 395,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K28",
+  "t": "n",
+  "v": 595,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L28",
+  "t": "n",
+  "v": 815,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M28",
+  "t": "n",
+  "v": 962,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N28",
+  "t": "f",
+  "v": "=M28-'Cash Flow'!N15",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C29",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D29",
+  "t": "n",
+  "v": 0,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E29",
+  "t": "n",
+  "v": 29,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F29",
+  "t": "n",
+  "v": 35,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G29",
+  "t": "n",
+  "v": 45,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H29",
+  "t": "n",
+  "v": 59,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I29",
+  "t": "n",
+  "v": 75,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J29",
+  "t": "n",
+  "v": 99,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K29",
+  "t": "n",
+  "v": 135,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L29",
+  "t": "n",
+  "v": 179,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M29",
+  "t": "n",
+  "v": 247,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N29",
+  "t": "f",
+  "v": "=M29+'Data Sheet'!K26",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C30",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D30",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E30",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F30",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G30",
+  "t": "n",
+  "v": 4,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H30",
+  "t": "n",
+  "v": 3,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I30",
+  "t": "n",
+  "v": 55,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J30",
+  "t": "n",
+  "v": 44,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K30",
+  "t": "n",
+  "v": 20,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L30",
+  "t": "n",
+  "v": 57,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M30",
+  "t": "n",
+  "v": 30,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N30",
+  "t": "f",
+  "v": "=M30",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C31",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D31",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E31",
+  "t": "z",
+  "v": null,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F31",
+  "t": "n",
+  "v": 18,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G31",
+  "t": "n",
+  "v": 75,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H31",
+  "t": "n",
+  "v": 133,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I31",
+  "t": "n",
+  "v": 232,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J31",
+  "t": "n",
+  "v": 191,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K31",
+  "t": "n",
+  "v": 353,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L31",
+  "t": "n",
+  "v": 339,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M31",
+  "t": "n",
+  "v": 381,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N31",
+  "t": "f",
+  "v": "=M31",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C33",
+  "t": "n",
+  "v": 40,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D33",
+  "t": "n",
+  "v": 37,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E33",
+  "t": "n",
+  "v": 31,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F33",
+  "t": "n",
+  "v": 29,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G33",
+  "t": "n",
+  "v": 37,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H33",
+  "t": "n",
+  "v": 35,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I33",
+  "t": "n",
+  "v": 53,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J33",
+  "t": "n",
+  "v": 88,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K33",
+  "t": "n",
+  "v": 109,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L33",
+  "t": "n",
+  "v": 124,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M33",
+  "t": "n",
+  "v": 149,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N33",
+  "t": "f",
+  "v": "=ROUND(M33*1.05, 2)",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C34",
+  "t": "n",
+  "v": 16,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D34",
+  "t": "n",
+  "v": 26,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E34",
+  "t": "n",
+  "v": 21,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F34",
+  "t": "n",
+  "v": 40,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G34",
+  "t": "n",
+  "v": 60,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H34",
+  "t": "n",
+  "v": 70,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I34",
+  "t": "n",
+  "v": 74,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J34",
+  "t": "n",
+  "v": 154,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K34",
+  "t": "n",
+  "v": 146,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L34",
+  "t": "n",
+  "v": 164,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M34",
+  "t": "n",
+  "v": 203,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N34",
+  "t": "f",
+  "v": "=ROUND(M34*1.05, 2)",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C35",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D35",
+  "t": "n",
+  "v": 5,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E35",
+  "t": "n",
+  "v": 6,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F35",
+  "t": "n",
+  "v": 30,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G35",
+  "t": "n",
+  "v": 9,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H35",
+  "t": "n",
+  "v": 9,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I35",
+  "t": "n",
+  "v": 16,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J35",
+  "t": "n",
+  "v": 75,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K35",
+  "t": "n",
+  "v": 12,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L35",
+  "t": "n",
+  "v": 11,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M35",
+  "t": "n",
+  "v": 20,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N35",
+  "t": "f",
+  "v": "=M35+'Cash Flow'!N31",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E36",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F36",
+  "t": "n",
+  "v": 3,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H36",
+  "t": "n",
+  "v": 1,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J36",
+  "t": "n",
+  "v": 2,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K36",
+  "t": "n",
+  "v": 5,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L36",
+  "t": "n",
+  "v": 5,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M36",
+  "t": "n",
+  "v": 4,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N36",
+  "t": "f",
+  "v": "=M36",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "C37",
+  "t": "n",
+  "v": 7,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "D37",
+  "t": "n",
+  "v": 7,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "E37",
+  "t": "n",
+  "v": 7,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "F37",
+  "t": "n",
+  "v": 13,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "G37",
+  "t": "n",
+  "v": 15,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "H37",
+  "t": "n",
+  "v": 13,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "I37",
+  "t": "n",
+  "v": 43,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "J37",
+  "t": "n",
+  "v": 76,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "K37",
+  "t": "n",
+  "v": 46,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "L37",
+  "t": "n",
+  "v": 61,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "M37",
+  "t": "n",
+  "v": 97,
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "N37",
+  "t": "f",
+  "v": "=ROUND(M37*1.05, 2)",
+  "nf": "#,##0.00"
+ },
+ {
+  "s": "BS",
+  "c": "B38",
+  "t": "s",
+  "v": "Total Assets (Screener reported; forecast calculated)"
+ },
+ {
+  "s": "BS",
+  "c": "C38",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "BS",
+  "c": "D38",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "BS",
+  "c": "E38",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "BS",
+  "c": "F38",
+  "t": "n",
+  "v": 236
+ },
+ {
+  "s": "BS",
+  "c": "G38",
+  "t": "n",
+  "v": 327
+ },
+ {
+  "s": "BS",
+  "c": "H38",
+  "t": "n",
+  "v": 430
+ },
+ {
+  "s": "BS",
+  "c": "I38",
+  "t": "n",
+  "v": 660,
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "J38",
+  "t": "n",
+  "v": 925,
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "K38",
+  "t": "n",
+  "v": 1152,
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "L38",
+  "t": "n",
+  "v": 1396,
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "M38",
+  "t": "n",
+  "v": 1600,
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "N38",
+  "t": "f",
+  "v": "=N28-N29+N30+N31+SUM(N33:N37)",
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "B40",
+  "t": "s",
+  "v": "Balance Check (Total Assets - Total Liabilities)"
+ },
+ {
+  "s": "BS",
+  "c": "C40",
+  "t": "f",
+  "v": "=C38-C16"
+ },
+ {
+  "s": "BS",
+  "c": "D40",
+  "t": "f",
+  "v": "=D38-D16"
+ },
+ {
+  "s": "BS",
+  "c": "E40",
+  "t": "f",
+  "v": "=E38-E16"
+ },
+ {
+  "s": "BS",
+  "c": "F40",
+  "t": "f",
+  "v": "=F38-F16"
+ },
+ {
+  "s": "BS",
+  "c": "G40",
+  "t": "f",
+  "v": "=G38-G16"
+ },
+ {
+  "s": "BS",
+  "c": "H40",
+  "t": "f",
+  "v": "=H38-H16"
+ },
+ {
+  "s": "BS",
+  "c": "I40",
+  "t": "f",
+  "v": "=I38-I16",
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "J40",
+  "t": "f",
+  "v": "=J38-J16",
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "K40",
+  "t": "f",
+  "v": "=K38-K16",
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "L40",
+  "t": "f",
+  "v": "=L38-L16",
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "M40",
+  "t": "f",
+  "v": "=M38-M16",
+  "nf": "#,##0"
+ },
+ {
+  "s": "BS",
+  "c": "N40",
+  "t": "f",
+  "v": "=N38-N16",
+  "nf": "#,##0"
+ },
+ {
+  "s": "Beta",
+  "c": "B2",
+  "t": "s",
+  "v": "CLEAN SCIENCE AND TECHNOLOGY LIMITED - Weekly Regression Beta (Adjusted Close, through 15-Oct-2025)"
+ },
+ {
+  "s": "Beta",
+  "c": "B4",
+  "t": "s",
+  "v": "Adjusted weekly prices - CLEAN SCIENCE AND TECHNOLOGY LIMITED (Yahoo Finance)"
+ },
+ {
+  "s": "Beta",
+  "c": "F4",
+  "t": "s",
+  "v": "NIFTY 50 Adjusted Weekly Prices (Yahoo Finance)"
+ },
+ {
+  "s": "Beta",
+  "c": "D7",
+  "t": "s",
+  "v": "Returns"
+ },
+ {
+  "s": "Beta",
+  "c": "K7",
+  "t": "f",
+  "v": "=O6"
+ },
+ {
+  "s": "Beta",
+  "c": "B8",
+  "t": "d",
+  "v": "2023-10-18",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C8",
+  "t": "n",
+  "v": 1354.921752929688,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F8",
+  "t": "n",
+  "v": 19671.099609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "K8",
+  "t": "n",
+  "v": 0.6666666666666666,
+  "nf": "0.00%"
+ },
+ {
+  "s": "Beta",
+  "c": "B9",
+  "t": "d",
+  "v": "2023-10-25",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C9",
+  "t": "n",
+  "v": 1310.410766601562,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F9",
+  "t": "n",
+  "v": 19122.150390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B10",
+  "t": "d",
+  "v": "2023-11-01",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C10",
+  "t": "n",
+  "v": 1324.788208007812,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F10",
+  "t": "n",
+  "v": 18989.150390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B11",
+  "t": "d",
+  "v": "2023-11-08",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C11",
+  "t": "n",
+  "v": 1351.721069335938,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F11",
+  "t": "n",
+  "v": 19443.5,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "K11",
+  "t": "n",
+  "v": 0.3333333333333333,
+  "nf": "0.00%"
+ },
+ {
+  "s": "Beta",
+  "c": "B12",
+  "t": "d",
+  "v": "2023-11-15",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C12",
+  "t": "n",
+  "v": 1351.868896484375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F12",
+  "t": "n",
+  "v": 19675.44921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B13",
+  "t": "d",
+  "v": "2023-11-22",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C13",
+  "t": "n",
+  "v": 1327.988647460938,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F13",
+  "t": "n",
+  "v": 19811.849609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B14",
+  "t": "d",
+  "v": "2023-11-29",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C14",
+  "t": "n",
+  "v": 1324.344848632812,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F14",
+  "t": "n",
+  "v": 20096.599609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B15",
+  "t": "d",
+  "v": "2023-12-06",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C15",
+  "t": "n",
+  "v": 1408.048828125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F15",
+  "t": "n",
+  "v": 20937.69921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B16",
+  "t": "d",
+  "v": "2023-12-13",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C16",
+  "t": "n",
+  "v": 1482.200805664062,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F16",
+  "t": "n",
+  "v": 20926.349609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B17",
+  "t": "d",
+  "v": "2023-12-20",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C17",
+  "t": "n",
+  "v": 1425.92236328125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F17",
+  "t": "n",
+  "v": 21150.150390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B18",
+  "t": "d",
+  "v": "2023-12-27",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C18",
+  "t": "n",
+  "v": 1521.98486328125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F18",
+  "t": "n",
+  "v": 21654.75,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B19",
+  "t": "d",
+  "v": "2024-01-03",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C19",
+  "t": "n",
+  "v": 1546.603759765625,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F19",
+  "t": "n",
+  "v": 21517.349609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "O19",
+  "t": "n",
+  "v": 0.05510813763838533
+ },
+ {
+  "s": "Beta",
+  "c": "B20",
+  "t": "d",
+  "v": "2024-01-10",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C20",
+  "t": "n",
+  "v": 1474.569091796875,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F20",
+  "t": "n",
+  "v": 21618.69921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B21",
+  "t": "d",
+  "v": "2024-01-17",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C21",
+  "t": "n",
+  "v": 1451.525634765625,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F21",
+  "t": "n",
+  "v": 21571.94921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B22",
+  "t": "d",
+  "v": "2024-01-24",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C22",
+  "t": "n",
+  "v": 1421.24462890625,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F22",
+  "t": "n",
+  "v": 21453.94921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B23",
+  "t": "d",
+  "v": "2024-01-31",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C23",
+  "t": "n",
+  "v": 1470.77783203125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F23",
+  "t": "n",
+  "v": 21725.69921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B24",
+  "t": "d",
+  "v": "2024-02-07",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C24",
+  "t": "n",
+  "v": 1386.7783203125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F24",
+  "t": "n",
+  "v": 21930.5,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "P24",
+  "t": "n",
+  "v": 0.04927248205262708
+ },
+ {
+  "s": "Beta",
+  "c": "Q24",
+  "t": "n",
+  "v": 0.04927248205262708
+ },
+ {
+  "s": "Beta",
+  "c": "R24",
+  "t": "n",
+  "v": 16.22456161692512
+ },
+ {
+  "s": "Beta",
+  "c": "S24",
+  "t": "n",
+  "v": 0.0001084372064159917
+ },
+ {
+  "s": "Beta",
+  "c": "B25",
+  "t": "d",
+  "v": "2024-02-14",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C25",
+  "t": "n",
+  "v": 1362.7197265625,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F25",
+  "t": "n",
+  "v": 21840.05078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "Q25",
+  "t": "n",
+  "v": 0.003036906833971221
+ },
+ {
+  "s": "Beta",
+  "c": "B26",
+  "t": "d",
+  "v": "2024-02-21",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C26",
+  "t": "n",
+  "v": 1445.31005859375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F26",
+  "t": "n",
+  "v": 22055.05078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "P26",
+  "t": "n",
+  "v": 0.3590369791176917
+ },
+ {
+  "s": "Beta",
+  "c": "B27",
+  "t": "d",
+  "v": "2024-02-28",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C27",
+  "t": "n",
+  "v": 1400.045532226562,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F27",
+  "t": "n",
+  "v": 21951.150390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B28",
+  "t": "d",
+  "v": "2024-03-06",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C28",
+  "t": "n",
+  "v": 1360.106323242188,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F28",
+  "t": "n",
+  "v": 22474.05078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B29",
+  "t": "d",
+  "v": "2024-03-13",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C29",
+  "t": "n",
+  "v": 1272.289184570312,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F29",
+  "t": "n",
+  "v": 21997.69921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "T29",
+  "t": "n",
+  "v": 0.01408804811248321
+ },
+ {
+  "s": "Beta",
+  "c": "V29",
+  "t": "n",
+  "v": 0.01408804811248321
+ },
+ {
+  "s": "Beta",
+  "c": "B30",
+  "t": "d",
+  "v": "2024-03-20",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C30",
+  "t": "n",
+  "v": 1282.791748046875,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F30",
+  "t": "n",
+  "v": 21839.099609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "P30",
+  "t": "n",
+  "v": 0.3000130888201223
+ },
+ {
+  "s": "Beta",
+  "c": "R30",
+  "t": "n",
+  "v": 0.0001084372064159911
+ },
+ {
+  "s": "Beta",
+  "c": "T30",
+  "t": "n",
+  "v": 1.803518979163741
+ },
+ {
+  "s": "Beta",
+  "c": "V30",
+  "t": "n",
+  "v": 1.803518979163741
+ },
+ {
+  "s": "Beta",
+  "c": "B31",
+  "t": "d",
+  "v": "2024-03-27",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C31",
+  "t": "n",
+  "v": 1329.584838867188,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F31",
+  "t": "n",
+  "v": 22123.650390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B32",
+  "t": "d",
+  "v": "2024-04-03",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C32",
+  "t": "n",
+  "v": 1324.555419921875,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F32",
+  "t": "n",
+  "v": 22434.650390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B33",
+  "t": "d",
+  "v": "2024-04-10",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C33",
+  "t": "n",
+  "v": 1341.517333984375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F33",
+  "t": "n",
+  "v": 22753.80078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B34",
+  "t": "d",
+  "v": "2024-04-16",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C34",
+  "t": "n",
+  "v": 1316.715576171875,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F34",
+  "t": "n",
+  "v": 22147.900390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B35",
+  "t": "d",
+  "v": "2024-04-24",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C35",
+  "t": "n",
+  "v": 1281.75634765625,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F35",
+  "t": "n",
+  "v": 22402.400390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B36",
+  "t": "d",
+  "v": "2024-04-30",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C36",
+  "t": "n",
+  "v": 1302.416137695312,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F36",
+  "t": "n",
+  "v": 22604.849609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B37",
+  "t": "d",
+  "v": "2024-05-08",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C37",
+  "t": "n",
+  "v": 1275.789916992188,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F37",
+  "t": "n",
+  "v": 22302.5,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B38",
+  "t": "d",
+  "v": "2024-05-15",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C38",
+  "t": "n",
+  "v": 1309.17138671875,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F38",
+  "t": "n",
+  "v": 22200.55078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B39",
+  "t": "d",
+  "v": "2024-05-22",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C39",
+  "t": "n",
+  "v": 1375.194458007812,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F39",
+  "t": "n",
+  "v": 22597.80078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B40",
+  "t": "d",
+  "v": "2024-05-29",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C40",
+  "t": "n",
+  "v": 1320.906616210938,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F40",
+  "t": "n",
+  "v": 22704.69921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B41",
+  "t": "d",
+  "v": "2024-06-05",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C41",
+  "t": "n",
+  "v": 1280.720703125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F41",
+  "t": "n",
+  "v": 22620.349609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B42",
+  "t": "d",
+  "v": "2024-06-12",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C42",
+  "t": "n",
+  "v": 1357.04931640625,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F42",
+  "t": "n",
+  "v": 23322.94921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B43",
+  "t": "d",
+  "v": "2024-06-19",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C43",
+  "t": "n",
+  "v": 1374.800048828125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F43",
+  "t": "n",
+  "v": 23516,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B44",
+  "t": "d",
+  "v": "2024-06-26",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C44",
+  "t": "n",
+  "v": 1411.632934570312,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F44",
+  "t": "n",
+  "v": 23868.80078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B45",
+  "t": "d",
+  "v": "2024-07-03",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C45",
+  "t": "n",
+  "v": 1477.21240234375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F45",
+  "t": "n",
+  "v": 24286.5,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B46",
+  "t": "d",
+  "v": "2024-07-10",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C46",
+  "t": "n",
+  "v": 1438.801513671875,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F46",
+  "t": "n",
+  "v": 24324.44921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B47",
+  "t": "d",
+  "v": "2024-07-16",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C47",
+  "t": "n",
+  "v": 1455.763427734375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F47",
+  "t": "n",
+  "v": 24613,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B48",
+  "t": "d",
+  "v": "2024-07-24",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C48",
+  "t": "n",
+  "v": 1455.862182617188,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F48",
+  "t": "n",
+  "v": 24413.5,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B49",
+  "t": "d",
+  "v": "2024-07-31",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C49",
+  "t": "n",
+  "v": 1599.150512695312,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F49",
+  "t": "n",
+  "v": 24951.150390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B50",
+  "t": "d",
+  "v": "2024-08-07",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C50",
+  "t": "n",
+  "v": 1567.248413085938,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F50",
+  "t": "n",
+  "v": 24297.5,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B51",
+  "t": "d",
+  "v": "2024-08-14",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C51",
+  "t": "n",
+  "v": 1568.283935546875,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F51",
+  "t": "n",
+  "v": 24143.75,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B52",
+  "t": "d",
+  "v": "2024-08-21",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C52",
+  "t": "n",
+  "v": 1543.038208007812,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F52",
+  "t": "n",
+  "v": 24770.19921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B53",
+  "t": "d",
+  "v": "2024-08-28",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C53",
+  "t": "n",
+  "v": 1493.138793945312,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F53",
+  "t": "n",
+  "v": 25052.349609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B54",
+  "t": "d",
+  "v": "2024-09-04",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C54",
+  "t": "n",
+  "v": 1488.642944335938,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F54",
+  "t": "n",
+  "v": 25198.69921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B55",
+  "t": "d",
+  "v": "2024-09-11",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C55",
+  "t": "n",
+  "v": 1544.026611328125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F55",
+  "t": "n",
+  "v": 24918.44921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B56",
+  "t": "d",
+  "v": "2024-09-18",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C56",
+  "t": "n",
+  "v": 1542.692626953125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F56",
+  "t": "n",
+  "v": 25377.55078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B57",
+  "t": "d",
+  "v": "2024-09-25",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C57",
+  "t": "n",
+  "v": 1511.7646484375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F57",
+  "t": "n",
+  "v": 26004.150390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B58",
+  "t": "d",
+  "v": "2024-10-01",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C58",
+  "t": "n",
+  "v": 1607.5625,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F58",
+  "t": "n",
+  "v": 25796.900390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B59",
+  "t": "d",
+  "v": "2024-10-09",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C59",
+  "t": "n",
+  "v": 1539.777709960938,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F59",
+  "t": "n",
+  "v": 24981.94921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B60",
+  "t": "d",
+  "v": "2024-10-16",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C60",
+  "t": "n",
+  "v": 1595.408569335938,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F60",
+  "t": "n",
+  "v": 24971.30078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B61",
+  "t": "d",
+  "v": "2024-10-23",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C61",
+  "t": "n",
+  "v": 1505.391479492188,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F61",
+  "t": "n",
+  "v": 24435.5,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B62",
+  "t": "d",
+  "v": "2024-10-30",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C62",
+  "t": "n",
+  "v": 1481.874267578125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F62",
+  "t": "n",
+  "v": 24340.849609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B63",
+  "t": "d",
+  "v": "2024-11-06",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C63",
+  "t": "n",
+  "v": 1526.191162109375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F63",
+  "t": "n",
+  "v": 24484.05078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B64",
+  "t": "d",
+  "v": "2024-11-13",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C64",
+  "t": "n",
+  "v": 1293.095092773438,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F64",
+  "t": "n",
+  "v": 23559.05078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B65",
+  "t": "d",
+  "v": "2024-11-19",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C65",
+  "t": "n",
+  "v": 1275.407958984375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F65",
+  "t": "n",
+  "v": 23518.5,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B66",
+  "t": "d",
+  "v": "2024-11-27",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C66",
+  "t": "n",
+  "v": 1283.41162109375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F66",
+  "t": "n",
+  "v": 24274.900390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B67",
+  "t": "d",
+  "v": "2024-12-04",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C67",
+  "t": "n",
+  "v": 1271.8505859375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F67",
+  "t": "n",
+  "v": 24467.44921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B68",
+  "t": "d",
+  "v": "2024-12-11",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C68",
+  "t": "n",
+  "v": 1422.488647460938,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F68",
+  "t": "n",
+  "v": 24641.80078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B69",
+  "t": "d",
+  "v": "2024-12-18",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C69",
+  "t": "n",
+  "v": 1453.663696289062,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F69",
+  "t": "n",
+  "v": 24198.849609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B70",
+  "t": "d",
+  "v": "2024-12-24",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C70",
+  "t": "n",
+  "v": 1413.29931640625,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F70",
+  "t": "n",
+  "v": 23727.650390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B71",
+  "t": "d",
+  "v": "2025-01-01",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C71",
+  "t": "n",
+  "v": 1524.709106445312,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F71",
+  "t": "n",
+  "v": 23742.900390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B72",
+  "t": "d",
+  "v": "2025-01-08",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C72",
+  "t": "n",
+  "v": 1397.736328125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F72",
+  "t": "n",
+  "v": 23688.94921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B73",
+  "t": "d",
+  "v": "2025-01-15",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C73",
+  "t": "n",
+  "v": 1355.543823242188,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F73",
+  "t": "n",
+  "v": 23213.19921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B74",
+  "t": "d",
+  "v": "2025-01-22",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C74",
+  "t": "n",
+  "v": 1406.036499023438,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F74",
+  "t": "n",
+  "v": 23155.349609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B75",
+  "t": "d",
+  "v": "2025-01-29",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C75",
+  "t": "n",
+  "v": 1316.167602539062,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F75",
+  "t": "n",
+  "v": 23163.099609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B76",
+  "t": "d",
+  "v": "2025-02-05",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C76",
+  "t": "n",
+  "v": 1474.265869140625,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F76",
+  "t": "n",
+  "v": 23696.30078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B77",
+  "t": "d",
+  "v": "2025-02-12",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C77",
+  "t": "n",
+  "v": 1311.194702148438,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F77",
+  "t": "n",
+  "v": 23045.25,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B78",
+  "t": "d",
+  "v": "2025-02-19",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C78",
+  "t": "n",
+  "v": 1311.194702148438,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F78",
+  "t": "n",
+  "v": 22932.900390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B79",
+  "t": "d",
+  "v": "2025-02-25",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C79",
+  "t": "n",
+  "v": 1276.068725585938,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F79",
+  "t": "n",
+  "v": 22547.55078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B80",
+  "t": "d",
+  "v": "2025-03-05",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C80",
+  "t": "n",
+  "v": 1230.157348632812,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F80",
+  "t": "n",
+  "v": 22337.30078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B81",
+  "t": "d",
+  "v": "2025-03-12",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C81",
+  "t": "n",
+  "v": 1179.5458984375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F81",
+  "t": "n",
+  "v": 22470.5,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B82",
+  "t": "d",
+  "v": "2025-03-19",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C82",
+  "t": "n",
+  "v": 1209.032104492188,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F82",
+  "t": "n",
+  "v": 22907.599609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B83",
+  "t": "d",
+  "v": "2025-03-26",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C83",
+  "t": "n",
+  "v": 1187.956420898438,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F83",
+  "t": "n",
+  "v": 23486.849609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B84",
+  "t": "d",
+  "v": "2025-04-02",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C84",
+  "t": "n",
+  "v": 1202.550903320312,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F84",
+  "t": "n",
+  "v": 23332.349609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B85",
+  "t": "d",
+  "v": "2025-04-09",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C85",
+  "t": "n",
+  "v": 1132.64501953125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F85",
+  "t": "n",
+  "v": 22399.150390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B86",
+  "t": "d",
+  "v": "2025-04-16",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C86",
+  "t": "n",
+  "v": 1171.53125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F86",
+  "t": "n",
+  "v": 23437.19921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B87",
+  "t": "d",
+  "v": "2025-04-23",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C87",
+  "t": "n",
+  "v": 1203.98583984375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F87",
+  "t": "n",
+  "v": 24328.94921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B88",
+  "t": "d",
+  "v": "2025-04-30",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C88",
+  "t": "n",
+  "v": 1162.428100585938,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F88",
+  "t": "n",
+  "v": 24334.19921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B89",
+  "t": "d",
+  "v": "2025-05-07",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C89",
+  "t": "n",
+  "v": 1167.474365234375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F89",
+  "t": "n",
+  "v": 24414.400390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B90",
+  "t": "d",
+  "v": "2025-05-14",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C90",
+  "t": "n",
+  "v": 1249.798217773438,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F90",
+  "t": "n",
+  "v": 24666.900390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B91",
+  "t": "d",
+  "v": "2025-05-21",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C91",
+  "t": "n",
+  "v": 1261.078125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F91",
+  "t": "n",
+  "v": 24813.44921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B92",
+  "t": "d",
+  "v": "2025-05-28",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C92",
+  "t": "n",
+  "v": 1410.685913085938,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F92",
+  "t": "n",
+  "v": 24752.44921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B93",
+  "t": "d",
+  "v": "2025-06-04",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C93",
+  "t": "n",
+  "v": 1473.6162109375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F93",
+  "t": "n",
+  "v": 24620.19921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B94",
+  "t": "d",
+  "v": "2025-06-11",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C94",
+  "t": "n",
+  "v": 1490.832763671875,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F94",
+  "t": "n",
+  "v": 25141.400390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B95",
+  "t": "d",
+  "v": "2025-06-18",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C95",
+  "t": "n",
+  "v": 1430.178344726562,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F95",
+  "t": "n",
+  "v": 24812.05078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B96",
+  "t": "d",
+  "v": "2025-06-25",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C96",
+  "t": "n",
+  "v": 1486.875,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F96",
+  "t": "n",
+  "v": 25244.75,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B97",
+  "t": "d",
+  "v": "2025-07-02",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C97",
+  "t": "n",
+  "v": 1438.885620117188,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F97",
+  "t": "n",
+  "v": 25453.400390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B98",
+  "t": "d",
+  "v": "2025-07-09",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C98",
+  "t": "n",
+  "v": 1449.769775390625,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F98",
+  "t": "n",
+  "v": 25476.099609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B99",
+  "t": "d",
+  "v": "2025-07-16",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C99",
+  "t": "n",
+  "v": 1443.734130859375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F99",
+  "t": "n",
+  "v": 25212.05078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B100",
+  "t": "d",
+  "v": "2025-07-23",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C100",
+  "t": "n",
+  "v": 1291.05908203125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F100",
+  "t": "n",
+  "v": 25219.900390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B101",
+  "t": "d",
+  "v": "2025-07-30",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C101",
+  "t": "n",
+  "v": 1233.373046875,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F101",
+  "t": "n",
+  "v": 24855.05078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B102",
+  "t": "d",
+  "v": "2025-08-06",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C102",
+  "t": "n",
+  "v": 1184.196533203125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F102",
+  "t": "n",
+  "v": 24574.19921875,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B103",
+  "t": "d",
+  "v": "2025-08-13",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C103",
+  "t": "n",
+  "v": 1216.947875976562,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F103",
+  "t": "n",
+  "v": 24619.349609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B104",
+  "t": "d",
+  "v": "2025-08-20",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C104",
+  "t": "n",
+  "v": 1168.364990234375,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F104",
+  "t": "n",
+  "v": 25050.55078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B105",
+  "t": "d",
+  "v": "2025-08-26",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C105",
+  "t": "n",
+  "v": 1122.552368164062,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F105",
+  "t": "n",
+  "v": 24712.05078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B106",
+  "t": "d",
+  "v": "2025-09-03",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C106",
+  "t": "n",
+  "v": 1161.636596679688,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F106",
+  "t": "n",
+  "v": 24715.05078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B107",
+  "t": "d",
+  "v": "2025-09-10",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C107",
+  "t": "n",
+  "v": 1148.332275390625,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F107",
+  "t": "n",
+  "v": 24973.099609375,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B108",
+  "t": "d",
+  "v": "2025-09-17",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C108",
+  "t": "n",
+  "v": 1187.15283203125,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F108",
+  "t": "n",
+  "v": 25330.25,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B109",
+  "t": "d",
+  "v": "2025-09-24",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C109",
+  "t": "n",
+  "v": 1119.638916015625,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F109",
+  "t": "n",
+  "v": 25056.900390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B110",
+  "t": "d",
+  "v": "2025-10-01",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C110",
+  "t": "n",
+  "v": 1089.356811523438,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F110",
+  "t": "n",
+  "v": 24836.30078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B111",
+  "t": "d",
+  "v": "2025-10-08",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C111",
+  "t": "n",
+  "v": 1043.685668945312,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F111",
+  "t": "n",
+  "v": 25046.150390625,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "Beta",
+  "c": "B112",
+  "t": "d",
+  "v": "2025-10-15",
+  "nf": "yyyy\\-mm\\-dd"
+ },
+ {
+  "s": "Beta",
+  "c": "C112",
+  "t": "n",
+  "v": 1033.955810546875,
+  "nf": "0.00"
+ },
+ {
+  "s": "Beta",
+  "c": "F112",
+  "t": "n",
+  "v": 25323.55078125,
+  "nf": "#,##0.0"
+ },
+ {
+  "s": "RM",
+  "c": "E11",
+  "t": "s",
+  "v": "Dividend Yeild"
+ },
+ {
+  "s": "RM",
+  "c": "C13",
+  "t": "n",
+  "v": 0.1068,
+  "nf": "0.00%"
+ },
+ {
+  "s": "RM",
+  "c": "C14",
+  "t": "n",
+  "v": 0.3634000000000001,
+  "nf": "0.00%"
+ },
+ {
+  "s": "RM",
+  "c": "C21",
+  "t": "n",
+  "v": 0.277,
+  "nf": "0.00%"
+ },
+ {
+  "s": "peerdata",
+  "c": "C5",
+  "t": "s",
+  "v": "PI Industries Ltd"
+ },
+ {
+  "s": "peerdata",
+  "c": "D5",
+  "t": "n",
+  "v": 3555.3
+ },
+ {
+  "s": "peerdata",
+  "c": "E5",
+  "t": "n",
+  "v": 53960
+ },
+ {
+  "s": "peerdata",
+  "c": "F5",
+  "t": "n",
+  "v": 0.005
+ },
+ {
+  "s": "peerdata",
+  "c": "G5",
+  "t": "n",
+  "v": 270
+ },
+ {
+  "s": "peerdata",
+  "c": "C6",
+  "t": "s",
+  "v": "Navin Fluorine International"
+ },
+ {
+  "s": "peerdata",
+  "c": "D6",
+  "t": "n",
+  "v": 4884.2
+ },
+ {
+  "s": "peerdata",
+  "c": "E6",
+  "t": "n",
+  "v": 24210
+ },
+ {
+  "s": "peerdata",
+  "c": "F6",
+  "t": "n",
+  "v": 0.0487
+ },
+ {
+  "s": "peerdata",
+  "c": "G6",
+  "t": "n",
+  "v": 1180
+ },
+ {
+  "s": "peerdata",
+  "c": "C7",
+  "t": "s",
+  "v": "Vinati Organics Ltd"
+ },
+ {
+  "s": "peerdata",
+  "c": "D7",
+  "t": "n",
+  "v": 1692.5
+ },
+ {
+  "s": "peerdata",
+  "c": "E7",
+  "t": "n",
+  "v": 17450
+ },
+ {
+  "s": "peerdata",
+  "c": "F7",
+  "t": "n",
+  "v": 0.0026
+ },
+ {
+  "s": "peerdata",
+  "c": "G7",
+  "t": "n",
+  "v": 45
+ },
+ {
+  "s": "peerdata",
+  "c": "C8",
+  "t": "s",
+  "v": "Fine Organic Industries"
+ },
+ {
+  "s": "peerdata",
+  "c": "D8",
+  "t": "n",
+  "v": 4497
+ },
+ {
+  "s": "peerdata",
+  "c": "E8",
+  "t": "n",
+  "v": 13790
+ },
+ {
+  "s": "peerdata",
+  "c": "F8",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "peerdata",
+  "c": "G8",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "peerdata",
+  "c": "C9",
+  "t": "s",
+  "v": "SRF Limited"
+ },
+ {
+  "s": "peerdata",
+  "c": "D9",
+  "t": "n",
+  "v": 3088.6
+ },
+ {
+  "s": "peerdata",
+  "c": "E9",
+  "t": "n",
+  "v": 91550
+ },
+ {
+  "s": "peerdata",
+  "c": "F9",
+  "t": "n",
+  "v": 0.0557
+ },
+ {
+  "s": "peerdata",
+  "c": "G9",
+  "t": "n",
+  "v": 5100
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C4",
+  "t": "d",
+  "v": "2015-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D4",
+  "t": "d",
+  "v": "2016-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E4",
+  "t": "d",
+  "v": "2017-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F4",
+  "t": "d",
+  "v": "2018-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G4",
+  "t": "d",
+  "v": "2019-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H4",
+  "t": "d",
+  "v": "2020-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I4",
+  "t": "d",
+  "v": "2021-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J4",
+  "t": "d",
+  "v": "2022-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K4",
+  "t": "d",
+  "v": "2023-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L4",
+  "t": "d",
+  "v": "2024-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M4",
+  "t": "d",
+  "v": "2025-03-31",
+  "nf": "mmm\\-yy"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N4",
+  "t": "s",
+  "v": "FY26E",
+  "nf": "mmm-yy"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C5",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D5",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E5",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F5",
+  "t": "n",
+  "v": 45
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G5",
+  "t": "n",
+  "v": 85
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H5",
+  "t": "n",
+  "v": 160
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I5",
+  "t": "n",
+  "v": 193
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J5",
+  "t": "n",
+  "v": 127
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K5",
+  "t": "n",
+  "v": 279
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L5",
+  "t": "n",
+  "v": 236
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M5",
+  "t": "n",
+  "v": 214
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N5",
+  "t": "f",
+  "v": "=N6+N12"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C6",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D6",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E6",
+  "t": "n",
+  "v": 75
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F6",
+  "t": "n",
+  "v": 76
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G6",
+  "t": "n",
+  "v": 141
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H6",
+  "t": "n",
+  "v": 189
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I6",
+  "t": "n",
+  "v": 274
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J6",
+  "t": "n",
+  "v": 317
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K6",
+  "t": "n",
+  "v": 417
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L6",
+  "t": "n",
+  "v": 340
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M6",
+  "t": "n",
+  "v": 398
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N6",
+  "t": "f",
+  "v": "='Data Sheet'!K30+'Data Sheet'!K26"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C7",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D7",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E7",
+  "t": "n",
+  "v": 5
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F7",
+  "t": "n",
+  "v": -18
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G7",
+  "t": "n",
+  "v": -20
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H7",
+  "t": "n",
+  "v": -8
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I7",
+  "t": "n",
+  "v": -4
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J7",
+  "t": "n",
+  "v": -78
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K7",
+  "t": "n",
+  "v": 8
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L7",
+  "t": "n",
+  "v": -16
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M7",
+  "t": "n",
+  "v": -40
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N7",
+  "t": "f",
+  "v": "=-(BS!N34-BS!M34)"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C8",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D8",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E8",
+  "t": "n",
+  "v": 6
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F8",
+  "t": "n",
+  "v": 2
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G8",
+  "t": "n",
+  "v": -8
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H8",
+  "t": "n",
+  "v": 2
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I8",
+  "t": "n",
+  "v": -18
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J8",
+  "t": "n",
+  "v": -35
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K8",
+  "t": "n",
+  "v": -21
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L8",
+  "t": "n",
+  "v": -15
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M8",
+  "t": "n",
+  "v": -26
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N8",
+  "t": "f",
+  "v": "=-(BS!N33-BS!M33)"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C9",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D9",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E9",
+  "t": "n",
+  "v": 2
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F9",
+  "t": "n",
+  "v": 13
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G9",
+  "t": "n",
+  "v": -4
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H9",
+  "t": "n",
+  "v": 13
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I9",
+  "t": "n",
+  "v": 25
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J9",
+  "t": "n",
+  "v": 41
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K9",
+  "t": "n",
+  "v": -21
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L9",
+  "t": "n",
+  "v": 25
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M9",
+  "t": "n",
+  "v": -6
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N9",
+  "t": "f",
+  "v": "=BS!N13-BS!M13"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C10",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D10",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N10",
+  "t": "f",
+  "v": "=-(BS!N36-BS!M36)"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C11",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D11",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E11",
+  "t": "n",
+  "v": 2
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F11",
+  "t": "n",
+  "v": -5
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G11",
+  "t": "n",
+  "v": 11
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H11",
+  "t": "n",
+  "v": 6
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I11",
+  "t": "n",
+  "v": -18
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J11",
+  "t": "n",
+  "v": -49
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K11",
+  "t": "n",
+  "v": -10
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L11",
+  "t": "n",
+  "v": -22
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M11",
+  "t": "n",
+  "v": -17
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N11",
+  "t": "f",
+  "v": "=-(BS!N37-BS!M37)+(BS!N15-BS!M15)+(BS!N14-BS!M14)"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C12",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D12",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E12",
+  "t": "n",
+  "v": 14
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F12",
+  "t": "n",
+  "v": -9
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G12",
+  "t": "n",
+  "v": -21
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H12",
+  "t": "n",
+  "v": 13
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I12",
+  "t": "n",
+  "v": -15
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J12",
+  "t": "n",
+  "v": -121
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K12",
+  "t": "n",
+  "v": -43
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L12",
+  "t": "n",
+  "v": -28
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M12",
+  "t": "n",
+  "v": -88
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N12",
+  "t": "f",
+  "v": "=SUM(N7:N11)"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C13",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D13",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E13",
+  "t": "n",
+  "v": -20
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F13",
+  "t": "n",
+  "v": -22
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G13",
+  "t": "n",
+  "v": -36
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H13",
+  "t": "n",
+  "v": -42
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I13",
+  "t": "n",
+  "v": -66
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J13",
+  "t": "n",
+  "v": -69
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K13",
+  "t": "n",
+  "v": -94
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L13",
+  "t": "n",
+  "v": -75
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M13",
+  "t": "n",
+  "v": -95
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N13",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C14",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D14",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E14",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F14",
+  "t": "n",
+  "v": -17
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G14",
+  "t": "n",
+  "v": -94
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H14",
+  "t": "n",
+  "v": -105
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I14",
+  "t": "n",
+  "v": -187
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J14",
+  "t": "n",
+  "v": -79
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K14",
+  "t": "n",
+  "v": -270
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L14",
+  "t": "n",
+  "v": -185
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M14",
+  "t": "n",
+  "v": -152
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N14",
+  "t": "f",
+  "v": "=N15+N17"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C15",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D15",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E15",
+  "t": "n",
+  "v": -102
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F15",
+  "t": "n",
+  "v": -32
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G15",
+  "t": "n",
+  "v": -39
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H15",
+  "t": "n",
+  "v": -50
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I15",
+  "t": "n",
+  "v": -84
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J15",
+  "t": "n",
+  "v": -140
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K15",
+  "t": "n",
+  "v": -183
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L15",
+  "t": "n",
+  "v": -232
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M15",
+  "t": "n",
+  "v": -142
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N15",
+  "t": "f",
+  "v": "=-ROUND('Data Sheet'!K26*1.2, 2)"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C16",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D16",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I16",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L16",
+  "t": "n",
+  "v": 6
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M16",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N16",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C17",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D17",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F17",
+  "t": "n",
+  "v": -91
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G17",
+  "t": "n",
+  "v": -136
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H17",
+  "t": "n",
+  "v": -398
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I17",
+  "t": "n",
+  "v": -314
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J17",
+  "t": "n",
+  "v": -171
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K17",
+  "t": "n",
+  "v": -632
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L17",
+  "t": "n",
+  "v": -703
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M17",
+  "t": "n",
+  "v": -816
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N17",
+  "t": "f",
+  "v": "=-(BS!N31-BS!M31)"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C18",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D18",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F18",
+  "t": "n",
+  "v": 104
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G18",
+  "t": "n",
+  "v": 79
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H18",
+  "t": "n",
+  "v": 342
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I18",
+  "t": "n",
+  "v": 228
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J18",
+  "t": "n",
+  "v": 225
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K18",
+  "t": "n",
+  "v": 491
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L18",
+  "t": "n",
+  "v": 743
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M18",
+  "t": "n",
+  "v": 804
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N18",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C19",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D19",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I19",
+  "t": "n",
+  "v": 2
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J19",
+  "t": "n",
+  "v": 3
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K19",
+  "t": "n",
+  "v": 6
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L19",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M19",
+  "t": "n",
+  "v": 2
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N19",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C20",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D20",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E20",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F20",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G20",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I20",
+  "t": "n",
+  "v": 3
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C21",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D21",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E21",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F21",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G21",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H21",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I21",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J21",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K21",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L21",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M21",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C22",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D22",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E22",
+  "t": "n",
+  "v": 51
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F22",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G22",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H22",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I22",
+  "t": "n",
+  "v": -21
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J22",
+  "t": "n",
+  "v": 5
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K22",
+  "t": "n",
+  "v": 48
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L22",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M22",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N22",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E23",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F23",
+  "t": "n",
+  "v": -5
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G23",
+  "t": "n",
+  "v": -11
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H23",
+  "t": "n",
+  "v": -55
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I23",
+  "t": "n",
+  "v": -6
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J23",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K23",
+  "t": "n",
+  "v": -55
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L23",
+  "t": "n",
+  "v": -53
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M23",
+  "t": "n",
+  "v": -53
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N23",
+  "t": "f",
+  "v": "=N24+N25+N28"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C24",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D24",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K24",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L24",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M24",
+  "t": "n",
+  "v": 1
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N24",
+  "t": "f",
+  "v": "=BS!N4-BS!M4"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C25",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D25",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G25",
+  "t": "n",
+  "v": 2
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H25",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J25",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K25",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N25",
+  "t": "f",
+  "v": "=(BS!N7-BS!M7)+(BS!N8-BS!M8)+(BS!N10-BS!M10)"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C26",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D26",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E26",
+  "t": "n",
+  "v": -12
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G26",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H26",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I26",
+  "t": "n",
+  "v": -2
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L26",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M26",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C27",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D27",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L27",
+  "t": "n",
+  "v": -1
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N27",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C28",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D28",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E28",
+  "t": "n",
+  "v": -3
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F28",
+  "t": "n",
+  "v": -4
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G28",
+  "t": "n",
+  "v": -11
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H28",
+  "t": "n",
+  "v": -13
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I28",
+  "t": "n",
+  "v": -3
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J28",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K28",
+  "t": "n",
+  "v": -56
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L28",
+  "t": "n",
+  "v": -53
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M28",
+  "t": "n",
+  "v": -53
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N28",
+  "t": "f",
+  "v": "=-'Data Sheet'!K31"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C29",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D29",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I29",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J29",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K29",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L29",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M29",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N29",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C30",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D30",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E30",
+  "t": "n",
+  "v": -1
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F30",
+  "t": "n",
+  "v": -1
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G30",
+  "t": "n",
+  "v": -2
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H30",
+  "t": "n",
+  "v": -43
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J30",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K30",
+  "t": "n",
+  "v": 0
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C31",
+  "t": "f",
+  "v": "=C5+C14+C23"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D31",
+  "t": "f",
+  "v": "=D5+D14+D23"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E31",
+  "t": "f",
+  "v": "=E5+E14+E23"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F31",
+  "t": "f",
+  "v": "=F5+F14+F23"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G31",
+  "t": "f",
+  "v": "=G5+G14+G23"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H31",
+  "t": "f",
+  "v": "=H5+H14+H23"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I31",
+  "t": "f",
+  "v": "=I5+I14+I23"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J31",
+  "t": "f",
+  "v": "=J5+J14+J23"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K31",
+  "t": "f",
+  "v": "=K5+K14+K23"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L31",
+  "t": "f",
+  "v": "=L5+L14+L23"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M31",
+  "t": "f",
+  "v": "=M5+M14+M23"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N31",
+  "t": "f",
+  "v": "=N5+N14+N23"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C32",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D32",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E32",
+  "t": "z",
+  "v": null
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F32",
+  "t": "n",
+  "v": 13
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G32",
+  "t": "n",
+  "v": 46
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H32",
+  "t": "n",
+  "v": 110
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I32",
+  "t": "n",
+  "v": 109
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J32",
+  "t": "n",
+  "v": -12
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K32",
+  "t": "n",
+  "v": 96
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L32",
+  "t": "n",
+  "v": 10
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M32",
+  "t": "n",
+  "v": 72
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N32",
+  "t": "n",
+  "v": 277.1600000000001
+ },
+ {
+  "s": "Cash Flow",
+  "c": "B33",
+  "t": "s",
+  "v": "CFO / EBITDA (Screener)"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "C33",
+  "t": "z",
+  "v": null,
+  "nf": "0.00%"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "D33",
+  "t": "z",
+  "v": null,
+  "nf": "0.00%"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "E33",
+  "t": "z",
+  "v": null,
+  "nf": "0.00%"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "F33",
+  "t": "n",
+  "v": 0.91,
+  "nf": "0.00%"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "G33",
+  "t": "n",
+  "v": 0.88,
+  "nf": "0.00%"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "H33",
+  "t": "n",
+  "v": 1.09,
+  "nf": "0.00%"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "I33",
+  "t": "n",
+  "v": 1,
+  "nf": "0.00%"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "J33",
+  "t": "n",
+  "v": 0.65,
+  "nf": "0.00%"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "K33",
+  "t": "n",
+  "v": 0.93,
+  "nf": "0.00%"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "L33",
+  "t": "n",
+  "v": 0.94,
+  "nf": "0.00%"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "M33",
+  "t": "n",
+  "v": 0.8,
+  "nf": "0.00%"
+ },
+ {
+  "s": "Cash Flow",
+  "c": "N33",
+  "t": "f",
+  "v": "=IF('Data Sheet'!K28<>0, N5/'Data Sheet'!K28, \"N/A\")",
+  "nf": "0.00%"
+ }
+]

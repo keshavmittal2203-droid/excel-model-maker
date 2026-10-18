@@ -1125,25 +1125,45 @@ eady: false, human_pack_approval: pending.
   - Gate status: `ready: false`, pending gate: `["human_pack_approval"]`.
   - PR #3 remains open and unmerged pending human review.
 
-### 16. Source Evidence & Valuation Alignment: Evidenced 6.51% Risk-Free Rate Proxy, Assumption Classification & PBT Valuation Trace
+### 16. Source Evidence & Valuation Alignment: Evidenced 6.51% Risk-Free Rate Proxy, Assumption Classification & Fact Boundary
 
 - **Risk-Free Rate Evidenced Proxy**:
-  - Cell `'WACC-DCF'!J22`: Updated from unevidenced 6.78% to **6.51%** (0.0651).
-  - Sourced from allowlisted provider **Trading Economics** (`https://tradingeconomics.com/india/government-bond-yield`), supported by its 14-Oct-2025 published reading ("India 10-Year Bond Yield Eases to Near 1-Week Low") reporting the 10-year benchmark yield just below 6.51% (6.51%) as the exact dated prior-session proxy preceding the 15-Oct-2025 cutoff.
+  - Cell `'WACC-DCF'!J22`: Updated to **6.51%** (0.0651), sourced from allowlisted provider **Trading Economics** (`https://tradingeconomics.com/india/government-bond-yield`), supported by its 14-Oct-2025 published reading reporting the 10-year benchmark yield just below 6.51% as the dated prior-session proxy preceding the 15-Oct-2025 cutoff.
 - **Strict Classification of Modeling Assumptions**:
   - **Equity Risk Premium (ERP, `'WACC-DCF'!J23` = 5.50%)**: Classified as **Analyst Macroeconomic Assumption**; not attributed to Trading Economics.
   - **Marginal Corporate Tax Rate (`'WACC-DCF'!E23` and `'Data Sheet'!K29` = 25.17%)**: Classified as **Analyst Modeling Assumption** (22% base + 10% surcharge + 4% cess).
-- **PBT-to-Valuation Mathematical Proof**:
-  - **M&M & EDELWEISS**: Valuation is driven by Sum-of-the-Parts (SOTP) of business segments, listed subsidiaries, and standalone net debt/cash; consolidated forward 3-statement PBT does not enter the SOTP schedule by methodological design. MM SOTP = **₹2,742.97 / share**; EDELWEISS SOTP = **₹130.53 / share**.
-  - **LTM & CLEAN**: Valuation is driven by unlevered FCFF DCF starting from Operating EBIT (`Row 5`), not levered PBT (`'Data Sheet'!K28`) or PAT (`'Data Sheet'!K30`). PBT includes interest expense, which must not be subtracted in unlevered FCFF.
-  - Updating $R_f$ to 6.51% reduces WACC:
-    - **LTM**: WACC 13.12% -> **12.86%**, FCFF DCF fair value moves from ₹2,428.22 to **₹2,497.80 / share** (+₹69.57).
-    - **CLEAN**: WACC 11.91% -> **11.65%**, FCFF DCF fair value moves from ₹468.61 to **₹487.28 / share** (+₹18.67).
-- **Final Deliverables in `companies/<TARGET>/template_v6/`**:
-  - `MM`: `companies/MM/template_v6/MM-FullTemplate.xlsx` (114,551 bytes, SHA-256: `a0763519d1be2094efbfd47111c03ea4e26d2bb3a935d38e02eb37286870cb15`)
-  - `LTM`: `companies/LTM/template_v6/LTM-FullTemplate.xlsx` (114,540 bytes, SHA-256: `28f4dc2fa0b603d777af10cc6ad54960407cd6ee4071f7a04b0ea5894f56a6e7`)
-  - `CLEAN`: `companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx` (112,992 bytes, SHA-256: `6c0dcb8f392e4db4ba179e59e4f11d199668bdcc3960a16ddad4179083840931`)
-  - `EDELWEISS`: `companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx` (116,493 bytes, SHA-256: `744399a6979abcc972c69597370e341b5320f2a8cfbb9dd292f25de2515a0f7c`)
+- **Fact vs Assumption Governance**:
+  - Company-specific factual inputs absent from allowlisted sources cannot be relabeled as analyst assumptions.
+  - **MM & EDELWEISS**: Valuation marked **Unavailable (`N/A`)** because required factual segment/subsidiary inputs are absent from allowed sources.
+  - **LTM & CLEAN**: Unlevered FCFF DCF valuations are fully supported by allowed sources (LTM: **₹2,620.24 / share**; CLEAN: **₹393.03 / share**).
+
+### 17. Final Template V16 Accounting Closeout & Deliverables Handoff
+
+- **Final Deliverables in `companies/<TARGET>/template_v16/` & `deliverables/V16_user_handoff/`**:
+  - `MM`: `companies/MM/template_v16/MM-FullTemplate.xlsx` (112,365 bytes, SHA-256: `2b5536e08a17d4b0f2a53afe4c39a84345a6a179ce6c7bd75a636e6bc452daf2`) — Forecast: **BLOCKED** (+₹7,677.49 Cr exposed gap); Valuation: **Unavailable (`N/A`)**.
+  - `LTM`: `companies/LTM/template_v16/LTM-FullTemplate.xlsx` (114,500 bytes, SHA-256: `edbd6ba745a6a25de7f5308d3ef68d6d39f6440ada2e524244319895fd8cb769`) — Forecast: **UNRECONCILED** (+₹1.00 Cr source integer rounding delta); Valuation: **₹2,620.24 / share** (Supported).
+  - `CLEAN`: `companies/CLEAN/template_v16/CLEAN-FullTemplate.xlsx` (112,841 bytes, SHA-256: `9bc682eed4885eb7fe32feb5bdc06f6fb5d8f096351d57dd1a76d5b4b08f4616`) — Forecast: **UNRECONCILED** (−₹1.13 Cr source rounding delta); Valuation: **₹393.03 / share** (Supported).
+  - `EDELWEISS`: `companies/EDELWEISS/template_v16/EDELWEISS-FullTemplate.xlsx` (111,803 bytes, SHA-256: `899b1e9e3ca9c39c84b75364111736917e1fc72e15ea80598f494b6ea68ed2ed`) — Forecast: **UNRECONCILED** (+₹1.00 Cr source integer rounding delta); Valuation: **Unavailable (`N/A`)**.
+- **Consolidated User Handoff Package**:
+  - Handoff directory: `deliverables/V16_user_handoff/`
+  - Handoff ZIP: `deliverables/V16_user_handoff.zip` (9,682,773 bytes; 67 files: 4 workbooks, 60 landscape PDFs, README_FIRST.md, USER_APPROVAL_PACKET.md, TEMPLATE_V16_SHEET_AUDIT_LEDGER.md).
 - **Review Gate & Governance**:
   - Gate status: `ready: false`, pending gate: `["human_pack_approval"]`.
   - PR #3 remains open and unmerged pending human review.
+
+### 18. Template V16 Clean-Checkout Reproducibility Verification
+
+- **Single Documented Command Reproducibility**:
+  - Implemented self-contained builder `work/build_template_v16_models.py` and `--template-v16` flag in `build_package.py`.
+  - Deterministically reproduces all four company workbooks into a clean staging directory (`staging/v16_reproducibility/`) from the unchanged 16-sheet master template (`originals/Marksans Keshav.xlsx`, SHA: `4dc79842...`) and committed inputs in `work/sources/` without external folder dependencies.
+- **Verification Results**:
+  - **Zero formula errors** across all 64 sheets.
+  - Dynamic `BS!C40:N40 = ={col}38-{col}16` verified in all 12 periods.
+  - Exposed balance checks: MM `+₹7,677.49 Cr` (**BLOCKED**), LTM `+₹1.00 Cr` (**UNRECONCILED**), CLEAN `−₹1.13 Cr` (**UNRECONCILED**), EDELWEISS `+₹1.00 Cr` (**UNRECONCILED**).
+  - Valuations: MM `N/A`, EDELWEISS `N/A`, LTM `₹2,620.24`, CLEAN `₹393.03`.
+  - Dynamic sensitivity responsiveness and exact baseline restoration confirmed for LTM and CLEAN.
+  - 15 landscape PDF previews generated per target (60 total).
+  - Cell-by-cell comparison against delivered handoff workbooks: **0 cell value mismatches** across all 4 workbooks.
+  - Test suite: **95/95 passed cleanly** (`pytest`).
+  - Master template: **2/2 verified byte-for-byte** (`python verify_sources.py`).
+  - Review Gate: `ready: false`, `human_pack_approval: pending`. PR #3 remains open and unmerged.

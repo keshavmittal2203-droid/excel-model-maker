@@ -301,7 +301,7 @@ class PackageSafetyTests(unittest.TestCase):
                 package.ROOT / "docs" / f"{t.lower()}_source_registry.json",
                 package.ROOT / "docs" / f"{t}_SOURCE_REGISTRY.md",
             ])
-            for v in ["template_v6", "template_v7", "template_v8"]:
+            for v in ["template_v6", "template_v7", "template_v8", "template_v16"]:
                 manifest = comp_dir / v / "package.manifest.json"
                 if manifest.exists():
                     check_paths.append(manifest)

@@ -1077,9 +1077,20 @@ def main() -> int:
     parser.add_argument("--clean", action="store_true", help="Safely clean candidate run output directory before building (only allowed for verified directories inside candidates/ or temp, or with existing package.manifest.json)")
     parser.add_argument("--allow-proposal", action="store_true", help="Allow building with a proposal model pack")
     parser.add_argument("--force", action="store_true", help="Legacy option; non-empty run directories are never overwritten")
+    parser.add_argument("--template-v16", "--v16", action="store_true", help="Reproduce 16-sheet Template V16 models from master template and committed inputs")
     parser.add_argument("--skip-com", action="store_true", help="Skip Excel COM recalculation and PDF preview export")
     parser.add_argument("--check-only", "--preflight-only", action="store_true", help="Fast preflight request and template validation without Office COM activation or file generation")
     args = parser.parse_args()
+
+    if args.template_v16:
+        out_dir = args.output_dir if args.output_dir else (args.output_base if args.output_base else "staging/v16_reproducibility")
+        from work.build_template_v16_models import build_all_reproducible_models
+        summary = build_all_reproducible_models(
+            output_dir=out_dir,
+            skip_com=args.skip_com,
+            clean=args.clean,
+        )
+        return 0 if summary.get("all_passed", False) or args.skip_com else 1
 
     # Determine execution mode: batch vs single
     if args.batch or args.requests:

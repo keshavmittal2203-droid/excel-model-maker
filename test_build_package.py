@@ -365,6 +365,37 @@ class BuildPackageTests(unittest.TestCase):
         self.assertEqual(manifest["package_id"], "cipla-overview-fy25")
         self.assertEqual(manifest["workbook_validation"]["status"], "recalculated_checks_passed")
 
+    def test_template_v16_reproducible_batch_build_skip_com(self):
+        """Verify Template V16 reproducible batch builder reproduces all 4 targets from committed inputs."""
+        import openpyxl
+        from work.build_template_v16_models import build_all_reproducible_models, TARGETS, EXPECTED_MASTER_SHA
+
+        repro_dir = self.test_dir / "repro_v16_test"
+        summary = build_all_reproducible_models(output_dir=repro_dir, skip_com=True)
+
+        self.assertEqual(summary["master_template_sha256"], EXPECTED_MASTER_SHA)
+        self.assertTrue((repro_dir / "reproducibility_summary.json").exists())
+
+        for target in TARGETS:
+            wb_path = repro_dir / target / f"{target}-FullTemplate.xlsx"
+            self.assertTrue(wb_path.exists(), f"Missing reproduced workbook for {target}")
+            wb = openpyxl.load_workbook(wb_path, data_only=False)
+            self.assertEqual(len(wb.sheetnames), 16, f"{target} must have 16 sheets")
+
+            # Verify balance check formulas
+            bs = wb["BS"]
+            for col in ["C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"]:
+                self.assertEqual(bs[f"{col}40"].value, f"={col}38-{col}16")
+
+            # Verify Cash Flow N31 formula
+            cf = wb["Cash Flow"]
+            self.assertEqual(cf["N31"].value, "=N5+N14+N23")
+
+            # Verify zero comments
+            for ws in wb.worksheets:
+                if hasattr(ws, "_comments"):
+                    self.assertEqual(len(ws._comments), 0)
+
 
 if __name__ == "__main__":
     unittest.main()

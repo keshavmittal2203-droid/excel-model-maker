@@ -470,3 +470,73 @@
   - Master source files: **7/7 verified byte-for-byte** (`python verify_sources.py`).
 - **Governance**:
   - Prior versioned deliverables preserved intact; `ready: false`, `human_pack_approval: pending`. PR #3 remains open and unmerged.
+
+---
+
+## 16. Template V16 Milestone: Independent Audit, Removal of Balancing Plugs, Exposed Genuine Source Rounding Gaps, and Full Verification
+
+- **Audit & Removal of Balancing Plugs**:
+  - Independent audit confirmed that earlier candidate adjustments to FY25 BS!M37 or BS!M15 (e.g. LTM -1 Cr, EDELWEISS -1 Cr, CLEAN +1 Cr / -0.13 Cr) were calculated solely to force sub-schedules to tie to Screener's stated totals.
+  - In strict compliance with human instructions, **all balancing plugs have been completely removed**.
+  - Exact source-reported values are restored across all cells:
+    - **LTM**: BS!M37 = 4,558 Cr (Screener schedule).
+    - **CLEAN**: BS!M37 = 97 Cr, BS!M15 = 80 Cr (Screener schedule).
+    - **EDELWEISS**: BS!M37 = 15,548 Cr (Screener schedule).
+    - **MM**: BS!M37 = 191,771 Cr, BS!M15 = 69,950 Cr (Screener consolidated).
+  - Cash Flow Statement identity restored natively: Cash Flow!N31 = =N5+N14+N23 and BS!N35 = =M35+'Cash Flow'!N31.
+- **Evaluated Balance Check Results (BS!C40:N40)**:
+  - Across all four companies, BS!Row 40 evaluates dynamically in native Excel as =Row 38 - Row 16.
+  - Historical periods (FY15–FY25, columns C through M): **0.00 Cr across all 11 periods for all 4 targets**.
+  - Forecast FY26E (column N):
+    - **MM**: +7,677.49 Cr exposed gap visible in BS!N40. Status: **BLOCKED / UNAVAILABLE** (Screener consolidates MMFS >₹1.3L Cr NBFC loan book into aggregate Other Assets without sub-schedules; allowed sources lack the subsidiary debt/funding bridge).
+    - **LTM**: +1.00 Cr exposed gap visible in BS!N40. Status: **UNRECONCILED** (Screener published sub-schedule for Other Assets sums to ₹14,788 Cr with Other asset items = 4,558 Cr vs stated ₹14,787 Cr; transparently reported without plugs). Primary valuation: **₹2,620.24 / share**.
+    - **CLEAN**: -1.13 Cr exposed gap visible in BS!N40. Status: **UNRECONCILED** (Screener published schedules have Borrowings at 2.13 Cr vs stated 2.00 Cr, and Other Assets at 473 Cr vs stated 474 Cr; net -1.13 Cr rounding delta transparently reported without plugs). Primary valuation: **₹393.03 / share**.
+    - **EDELWEISS**: +1.00 Cr exposed gap visible in BS!N40. Status: **UNRECONCILED** (Screener published sub-schedule for Other Assets sums to ₹22,420 Cr with Other asset items = 15,548 Cr vs stated ₹22,419 Cr; transparently reported without plugs). Valuation remains Unavailable (N/A) due to prohibited industrial FCFF and absent SOTP subsidiary facts.
+- **Defects Audited & Cleared Across All 16 Sheets (64 Total)**:
+  - Exactly **0 formula errors** across all 64 sheets in native Microsoft Excel COM 16.0.
+  - True date formats on all headers (BS!C2:M2, Cash Flow!C4:M4, Data Sheet!B16:J16, Intrinsic Growth!E41:I41, Beta!B8:B112, etc.).
+  - Target wordmark branding in Main Financials!B3 (='Data Sheet'!B1), font Calibri 16pt bold; stale drawings deleted.
+  - Zero cell-comment clutter: 100% of cell comments cleared across all sheets (0 comments everywhere).
+  - Intrinsic Growth: Gross Block row 32 linked to BS!N28; Net Non-Current Assets positive; EDELWEISS cleared to N/A without formula errors.
+  - Comps: Preserved sheet borders; portable nested IF statements; blank peer slots guarded.
+  - WACC & Beta: Cutoff-safe v2 weekly regression dataset ending 15-Oct-2025; standard =SLOPE(D9:D112, G9:G112) formula on Beta; Blume adjusted beta active.
+  - Sensitivity: Per-share units and formulas verified; dynamic ERP and terminal growth perturbations tested with exact restoration.
+  - Landscape layout: All sheets formatted to Orientation = xlLandscape, PaperSize = xlPaperA4, FitToPagesWide = 1, FitToPagesTall = False. 15 landscape PDFs exported per company (60 total).
+- **Verified Deliverables & SHA-256 Checksums (template_v16)**:
+  - **MM**: [companies/MM/template_v16/MM-FullTemplate.xlsx](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v16/MM-FullTemplate.xlsx) — SHA-256: 2b5536e08a17d4b0f2a53afe4c39a84345a6a179ce6c7bd75a636e6bc452daf2 (112,365 bytes; 15 landscape PDFs; manifest verified; Forecast: BLOCKED; BS Check: +7,677.49 Cr)
+  - **LTM**: [companies/LTM/template_v16/LTM-FullTemplate.xlsx](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v16/LTM-FullTemplate.xlsx) — SHA-256: edbd6ba745a6a25de7f5308d3ef68d6d39f6440ada2e524244319895fd8cb769 (114,500 bytes; 15 landscape PDFs; manifest verified; Valuation: **₹2,620.24 / sh**; BS Check: +1.00 Cr [UNRECONCILED])
+  - **CLEAN**: [companies/CLEAN/template_v16/CLEAN-FullTemplate.xlsx](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v16/CLEAN-FullTemplate.xlsx) — SHA-256: 9bc682eed4885eb7fe32feb5bdc06f6fb5d8f096351d57dd1a76d5b4b08f4616 (112,841 bytes; 15 landscape PDFs; manifest verified; Valuation: **₹393.03 / sh**; BS Check: -1.13 Cr [UNRECONCILED])
+  - **EDELWEISS**: [companies/EDELWEISS/template_v16/EDELWEISS-FullTemplate.xlsx](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v16/EDELWEISS-FullTemplate.xlsx) — SHA-256: 899b1e9e3ca9c39c84b75364111736917e1fc72e15ea80598f494b6ea68ed2ed (111,803 bytes; 15 landscape PDFs; manifest verified; Valuation: Unavailable; BS Check: +1.00 Cr [UNRECONCILED])
+- **Regression Suite & Original Preservation**:
+  - Full test suite: **95/95 passed cleanly** (pytest).
+  - Master source files: **2/2 verified byte-for-byte** (python verify_sources.py).
+- **Governance**:
+  - Prior versioned deliverables preserved intact; ready: false, human_pack_approval: pending. PR #3 remains open and unmerged.
+
+---
+
+## 17. Template V16 Milestone: Clean-Checkout Reproducibility Verification
+
+- **Single Repeatable Command Verification**:
+  - Self-contained builder `work/build_template_v16_models.py` (and `build_package.py --template-v16`) reproduces all four priority target models directly from `originals/Marksans Keshav.xlsx` (SHA-256: `4dc79842855e5d1e689a2f5ca1de22c34be72fb09c0c0f9dd3a95818e10737d0`) and committed deltas in `work/sources/` into fresh staging directory `staging/v16_reproducibility/`.
+  - Zero references to temporary external paths or candidate folders.
+- **Native Microsoft Excel COM 16.0 Recalculation Results**:
+  - **Zero formula errors** across all 64 worksheets (16 sheets × 4 companies).
+  - Dynamic `BS!C40:N40 = ={col}38-{col}16` verified in all 12 periods.
+  - Historical balance checks (`FY15–FY25`): **0.00 Cr** across all targets.
+  - Authentic exposed FY26E balance differences verified without plugs:
+    - **MM**: `+₹7,677.49 Cr` (`BS!N40`), forecast **BLOCKED**, valuation **Unavailable** (`N/A`).
+    - **LTM**: `+₹1.00 Cr` (`BS!N40`), **UNRECONCILED**, valuation supported at **₹2,620.24 / share**.
+    - **CLEAN**: `−₹1.13 Cr` (`BS!N40`), **UNRECONCILED**, valuation supported at **₹393.03 / share**.
+    - **EDELWEISS**: `+₹1.00 Cr` (`BS!N40`), **UNRECONCILED**, industrial DCF prohibited, valuation **Unavailable** (`N/A`).
+  - Cost of capital: MM WACC 11.97% (beta 1.3164), LTM WACC 12.48% (beta 1.1018), CLEAN WACC 13.19% (beta 1.2141), EDELWEISS WACC 10.47% (beta 1.7487).
+  - Dynamic sensitivity responsiveness and exact baseline restoration verified for LTM and CLEAN.
+  - 15 landscape PDF previews generated per target (60 total) in `staging/v16_reproducibility/<TARGET>/previews/`.
+  - Comparison against delivered handoff workbooks (`deliverables/V16_user_handoff/workbooks/`): **0 cell value mismatches** across all 4 workbooks.
+  - Package manifests and summary report generated (`staging/v16_reproducibility/reproducibility_summary.json`: `all_passed: true`).
+- **Regression Suite & Deliverables Safety**:
+  - Full automated test suite: **95/95 tests passing cleanly** (`pytest`).
+  - Master template verification: **2/2 verified byte-for-byte** (`python verify_sources.py`).
+  - Handoff archive preserved intact: `deliverables/V16_user_handoff.zip` (SHA-256: `b5c235e3...`, 9,682,773 bytes) and packaged workbooks untouched.
+- **Governance**:
+  - `ready: false`, `human_pack_approval: pending`. PR #3 remains open and unmerged.
