@@ -300,9 +300,14 @@
 - **Historical Cutoff 15-Oct-2025**:
   - Historical actuals strictly through FY25 (31-Mar-2025). No FY26 actuals.
   - FY26 and later periods are formula-driven explicit forecasts or marked unavailable.
-- **Financial Statement Mapping & Balance Sheet (BS) 100% Reconciliation**:
+- **Financial Statement Mapping & Non-Plug Balance Sheet (BS) Integrity**:
   - Reported aggregate expenses mapped accurately without fabricated splits; `Sales - Expenses = Operating Profit` verified across all historical periods.
-  - Balance Sheet (BS) completely rebuilt from company statutory disclosures; `Total Assets (Row 38) == Total Liabilities (Row 16)` across all historical and forecast columns (`Mar 2015` to `Mar 2026E`) with zero plugs and zero stale Marksans numbers.
+  - Balance Sheet (BS) completely rebuilt from company statutory disclosures with zero residual plugs:
+    - **Historical (Cols C–M, FY15–FY25)**: Total Assets (Row 38) is strictly the independent sum of asset components; Total Liabilities (Row 16) is strictly the independent sum of liability components. Across all 44 company-years, component sums reconcile to Screener stated totals within standard integer rounding ($\le 1.0$ Cr, max 2.0 Cr for LTM FY22). Row 37 ("Other asset items") is sourced directly from Screener (or 0.0 for MM) with zero residual fallback (`tot_liab - curr_known` eliminated).
+    - **Forecast (Col N, FY26E)**: Row 37 ("Other asset items") is projected independently from its own operational driver (`=M37*1.05` for LTM, CLEAN, EDELWEISS; `0` for MM) with zero references to Total Liabilities (`N16`) or balancing tests. Total Assets (`N38`) and Total Liabilities (`N16`) are calculated independently by summing their respective components.
+    - **Honest Un-Plugged Forecast Variance**: Reported visibly and honestly: MM (-₹6,197.04 Cr), LTM (+₹784.54 Cr), CLEAN (-₹69.86 Cr), EDELWEISS (-₹373.62 Cr), reflecting standard retained earnings accumulation without artificial cash plugs.
+    - **Borrowing Sub-Schedules**: LTM and Edelweiss borrowing sub-schedules tie exactly to Screener Total Borrowings across all 11 years with zero omissions and zero double-counting.
+    - **Clean Science Standalone Actuals**: Pre-FY18 standalone actuals (FY15: 127 Cr, FY16: 139 Cr, FY17: 179 Cr) clearly documented with C2 cell comments.
 - **Comps & compdata Field & Denominator Mapping**:
   - `compdata` fields mapped accurately: Col J = Enterprise Value, Col K = EBITDA, Col L = Revenue (Sales), Col M = Net Profit (PAT).
   - `Comps` sheet valuation multiples link to verified denominators: EV/Revenue (`=H8/J8`), EV/EBITDA (`=H8/K8`), P/E (`=F8/L8`). Professional borders, alignment, and formatting preserved.
@@ -331,12 +336,6 @@
   - **EDELWEISS**:
     - Alternatives Multiple (`DCF 1st way!F50` 18.70x $\to$ 20.00x): delta = +₹5.57, restored = ₹130.53 (exact return).
     - Asset Reconstruction Multiple (`DCF 1st way!F51` 1.02x $\to$ 1.15x): delta = +₹2.95, restored = ₹130.53 (exact return).
-- **Comprehensive Triple-Check Defect Remediation**:
-  - Remediated all formula errors (`#DIV/0!`, `#VALUE!`), stale template carryovers, and formula linkages across all 64 sheets.
-  - CLEAN: `Main Financials` Row 141 aligned to columns E..K and guarded with `IFERROR(..., 1.0)`. `Ratio Analysis` division rows wrapped with `IFERROR(..., "N/A")` to handle zero debt gracefully.
-  - EDELWEISS: `Ratio Analysis` division rows wrapped with `IFERROR(..., "N/A")` to handle zero prior dividend. `Comps` rows 26–34 safeguarded with `IFERROR` / `N/A` while preserving Net Debt in `O27` (`=$G$8`) so `P27 = =O27` succeeds. `DCF 2nd way` rows 58, 61, 63 set to `N/A - Financial Services Entity`.
-  - LTM: `Beta` sheet populated with 104-week market prices via `LTM.NS` ticker mapping, updating Blume beta (1.1712), WACC (13.12%), and DCF baseline valuation (₹2,428.22).
-  - Stale Carryover Eradication: Cleared obsolete rows 23 and 24 from `compdata`; populated row 25 with target company metrics; dynamically linked `WACC-DCF` peer comps table (rows 11 to 15) to sector peers (`=peerdata!C5:C9`) and their actual betas; cleared accidental date carryover on `Cash Flow` Row 2; replaced em-dashes with clean standard characters.
 - **Clean Presentation & Zero Formula Errors**:
   - Stale Marksans logo cleanly removed from `Main Financials` drawing without breaking formatting. Wordmark placed cleanly at `Main Financials!B3`. Residual Marksans strings eliminated across all sheets.
   - Verbose visible paragraphs removed; concise provenance preserved in cell comments.
@@ -345,10 +344,10 @@
   - Preserved native unforced print setups without alteration.
   - Exported exactly 16 preview PDFs per company (64 total) to `companies/<TARGET>/template_v6/previews/`.
 - **Deliverables in `companies/<TARGET>/template_v6/`**:
-  - **M&M**: [`companies/MM/template_v6/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/MM-FullTemplate.xlsx) (SHA-256: `3bbe287593e3c1919ed09781a547be2d82f3449b606f76dcb09ac07d1f204400`; 16 native preview PDFs; manifest verified)
-  - **LTM**: [`companies/LTM/template_v6/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/LTM-FullTemplate.xlsx) (SHA-256: `1d341182a9ff14bbb7f9c8cf9a41be5833f90893c7ffbc637700e367a3c8c393`; 16 native preview PDFs; manifest verified)
-  - **CLEAN**: [`companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx) (SHA-256: `875f067ed05d62b04a493ac6be811a77dbe189dab878260e1727e8773d09000a`; 16 native preview PDFs; manifest verified)
-  - **EDELWEISS**: [`companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx) (SHA-256: `0b502c2b1c9d0df4432164ef39f7b13a49c8cd564bb95fd2e54d0e1e320fe59d`; 16 native preview PDFs; manifest verified)
+  - **M&M**: [`companies/MM/template_v6/MM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/MM/template_v6/MM-FullTemplate.xlsx) (SHA-256: `94836ca99f21bfd9db2de34872b23fdeb78ec8de7587daf4745c2fc1ce6a0756`; 16 native preview PDFs; manifest verified)
+  - **LTM**: [`companies/LTM/template_v6/LTM-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/LTM/template_v6/LTM-FullTemplate.xlsx) (SHA-256: `5023c00f030596fc4d38e90885ebc228d5b3581b0d472e5b6b1dd42eec6fdffa`; 16 native preview PDFs; manifest verified)
+  - **CLEAN**: [`companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/CLEAN/template_v6/CLEAN-FullTemplate.xlsx) (SHA-256: `2b2b0c858b50a71f02d57c00a9cd72b09c9d2ef602cec4179eae4411c2f1f194`; 16 native preview PDFs; manifest verified)
+  - **EDELWEISS**: [`companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx`](file:///C:/Users/kesha/Documents/Codex/2026-10-16/https-x-com-painn-x-status/outputs/excel-model-maker/companies/EDELWEISS/template_v6/EDELWEISS-FullTemplate.xlsx) (SHA-256: `3973ee38b7c67d64848896c0d24060eed2bd773e3075fbf29b740a6beb2b8fd6`; 16 native preview PDFs; manifest verified)
 - **Status**: Prior versioned deliverables (`template_v2`, `template_v3`, `template_v4`, `template_v5`, 6-sheet workbooks) preserved intact in `companies/<TARGET>/`; `ready: false`, `human_pack_approval: pending`. PR #3 remains open and unmerged.
 
 

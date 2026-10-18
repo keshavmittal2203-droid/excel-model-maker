@@ -215,7 +215,10 @@ def generate_manifests():
             ],
             "prohibited_sources_excluded": ["BSE", "RBI/FBIL", "Damodaran", "Unverified tax authorities"],
             "historical_cutoff": "2025-10-15 (Actuals strictly through FY25; FY26 formula-projected)",
-            "balance_sheet_reconciled": True,
+            "historical_balance_sheet_reconciled": True,
+            "fy26_unplugged_forecast_variance_cr": t_recalc.get("fy26_unplugged_variance_cr", 0.0),
+            "row37_other_assets_driver_formula": t_recalc.get("n37_driver_formula", "N/A"),
+            "residual_plugs_eliminated": True,
             "comps_mapping_corrected": {
                 "Col_J": "Enterprise Value",
                 "Col_K": "EBITDA",

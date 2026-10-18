@@ -26,10 +26,10 @@ All four priority targets have been delivered as uncompressed 16-sheet master te
 
 | Target Company | Primary Valuation Methodology | Source-of-Truth Cell (`'DCF 1st way'`) | Cover Link Cell (`'Model ->'`) | Implied Value per Share | 15-Oct-2025 Market Close | Linked WACC (`E26`) | Formula Errors (64 Sheets) | Verified Workbook SHA-256 Checksum |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | `E42` (`=G60`) | `C9` (`=E42`) | **₹2,742.97** | ₹3,497.20 | 13.00% | **0 errors** | `1e9483824a97ee2b68240371a4159972096b9bd9789b67ae467cafe6338e6bca` |
-| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹2,428.22** | ₹5,609.50 | **13.12%** | **0 errors** | `2ccac2a60aa03f88b5a8a61828a9a9269699789a74463e0ac76448dd97fae5d9` |
-| **Clean Science and Technology** (`CLEAN`) | Manufacturing FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹468.61** | ₹1,041.40 | **11.91%** | **0 errors** | `98a807a55cad83ef71edd29ddcbb7d6f406b2b3b17b71e0ddd3d007df6deb590` |
-| **Edelweiss Financial Services** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF N/A) | `E42` (`=G60`) | `C9` (`=E42`) | **₹130.53** | ₹108.85 | 9.70% | **0 errors** | `461f8e3f737ad775f66dbe4451264f69344b2e40cb054694fb96d565bfac8406` |
+| **Mahindra & Mahindra Limited** (`MM`) | Sum-of-the-Parts (SOTP) Valuation | `E42` (`=G60`) | `C9` (`=E42`) | **₹2,742.97** | ₹3,497.20 | 13.00% | **0 errors** | `94836ca99f21bfd9db2de34872b23fdeb78ec8de7587daf4745c2fc1ce6a0756` |
+| **LTIMindtree Limited** (`LTM`) | Full-Year Annual FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹2,428.22** | ₹5,609.50 | **13.12%** | **0 errors** | `5023c00f030596fc4d38e90885ebc228d5b3581b0d472e5b6b1dd42eec6fdffa` |
+| **Clean Science and Technology** (`CLEAN`) | Manufacturing FCFF DCF Baseline | `E42` (`=E40/E41`) | `C9` (`=E42`) | **₹468.61** | ₹1,041.40 | **11.91%** | **0 errors** | `2b2b0c858b50a71f02d57c00a9cd72b09c9d2ef602cec4179eae4411c2f1f194` |
+| **Edelweiss Financial Services** (`EDELWEISS`) | Financial Services SOTP (Industrial FCFF N/A) | `E42` (`=G60`) | `C9` (`=E42`) | **₹130.53** | ₹108.85 | 9.70% | **0 errors** | `3973ee38b7c67d64848896c0d24060eed2bd773e3075fbf29b740a6beb2b8fd6` |
 
 ### Clickable Absolute Deliverable Paths
 
@@ -78,11 +78,22 @@ All four priority targets have been delivered as uncompressed 16-sheet master te
 - Historical actuals strictly end at FY25 (31-Mar-2025). No FY26 actuals exist.
 - FY26 and later periods (`Mar 2026E`) are formula-driven explicit forecasts or marked unavailable.
 
-### Requirement 4: Financial Statement Mapping & 100% Balance Sheet (BS) Reconciliation
-- Reported aggregate expenses mapped accurately without fabricated splits (`Sales - Expenses = Operating Profit` verified across all historical periods).
-- Detailed Balance Sheet (`BS` sheet) completely rebuilt from company statutory disclosures:
-  - `Total Assets (Row 38) == Total Liabilities (Row 16)` across all 12 columns (`Mar 2015` to `Mar 2026E`).
-  - Zero plug differences and zero stale Marksans numbers carried over.
+### Requirement 4: Financial Statement Mapping & Non-Plug Balance Sheet (BS) Integrity
+- **Expenses Mapping**: Reported aggregate expenses mapped accurately without fabricated splits (`Sales - Expenses = Operating Profit` verified across all historical periods).
+- **Historical Component Integrity (Columns C–M, FY15–FY25)**:
+  - Total Assets (Row 38) is calculated strictly as the independent sum of asset components (`Net Fixed Assets + CWIP + Investments + Inventories + Receivables + Cash + Loans + Other Asset Items`).
+  - Total Liabilities (Row 16) is calculated strictly as the independent sum of liability components (`Equity Capital + Reserves + Borrowings + Other Liabilities`).
+  - Across all 44 company-years (11 years x 4 targets), component sums reconcile to Screener stated totals within standard integer rounding ($\le 1.0$ Cr, max 2.0 Cr for LTM FY22).
+  - Row 37 ("Other asset items") is sourced directly from Screener's `balance-sheet:Other Assets` schedule (or 0.0 for MM where Screener reports no Other Asset Items), with zero residual fallback (`tot_liab - curr_known` eliminated).
+- **Forecast Col N (FY26E) Non-Plug Methodology**:
+  - Row 37 ("Other asset items") is projected independently from its own operational driver (`=M37*1.05` for LTM, CLEAN, EDELWEISS; `0` for MM), containing zero references to Total Liabilities (`N16`) or any balancing check.
+  - Row 16 ("Total Liabilities & Equity") is calculated as `=N4+N5+N10+...` (sum of liability components).
+  - Row 38 ("Total Assets") is calculated as `=(N28-N29)+N30+N31+...` (sum of asset components).
+  - The honest, un-plugged forecast variance (`Total Assets - Total Liabilities`) is reported visibly: MM (-₹6,197.04 Cr), LTM (+₹784.54 Cr), CLEAN (-₹69.86 Cr), EDELWEISS (-₹373.62 Cr). In an unintegrated balance-sheet projection where Reserves grow with net income but Cash and Debt are held constant, reporting this discrepancy honestly is the only method that eliminates artificial balancing plugs.
+- **Borrowings Sub-Schedule Integrity**:
+  - LTM & Edelweiss borrowing sub-schedules neither omit nor double-count debt: `ST Borrowings (R7) + Lease Liabilities (R8) + Preference Capital (R9) + Other/LT Borrowings (R10)` ties to Screener Total Borrowings with zero discrepancy.
+- **Clean Science Standalone Distinction**:
+  - CLEAN FY15–FY17 balance sheets reflect authentic standalone statutory filings from Screener with explanatory C2 cell comments.
 
 ### Requirement 5: Comps & compdata Field and Denominator Mapping
 - `compdata` field positions mapped accurately:

@@ -549,15 +549,23 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
             bs_ws[f"{c_let}35"].value = f"={bs_cols[idx-1]}35"
             bs_ws[f"{c_let}36"].value = f"={bs_cols[idx-1]}36" if bs_ws[f"{bs_cols[idx-1]}36"].value is not None else None
             
+            # Other asset items (Row 37): explicit, independent forecast driver (never referencing liabilities)
+            prev_col = bs_cols[idx-1]
+            if bs_ws[f"{prev_col}37"].value is not None and bs_ws[f"{prev_col}37"].value != 0:
+                bs_ws[f"{c_let}37"].value = f"={prev_col}37*1.05"
+            else:
+                bs_ws[f"{c_let}37"].value = 0.0 if target_key == "MM" else None
+
             dep_term = f"-{c_let}29" if bs_ws[f"{c_let}29"].value is not None else ""
-            known_ast_terms = [f"({c_let}28{dep_term})", f"{c_let}30", f"{c_let}31"]
-            if bs_ws[f"{c_let}33"].value is not None: known_ast_terms.append(f"{c_let}33")
-            if bs_ws[f"{c_let}34"].value is not None: known_ast_terms.append(f"{c_let}34")
-            if bs_ws[f"{c_let}35"].value is not None: known_ast_terms.append(f"{c_let}35")
-            if bs_ws[f"{c_let}36"].value is not None: known_ast_terms.append(f"{c_let}36")
-            
-            bs_ws[f"{c_let}37"].value = f"={c_let}16-({'+'.join(known_ast_terms)})"
-            bs_ws[f"{c_let}38"].value = f"={'+'.join(known_ast_terms)}+{c_let}37"
+            all_ast_terms = [f"({c_let}28{dep_term})", f"{c_let}30", f"{c_let}31"]
+            if bs_ws[f"{c_let}33"].value is not None: all_ast_terms.append(f"{c_let}33")
+            if bs_ws[f"{c_let}34"].value is not None: all_ast_terms.append(f"{c_let}34")
+            if bs_ws[f"{c_let}35"].value is not None: all_ast_terms.append(f"{c_let}35")
+            if bs_ws[f"{c_let}36"].value is not None: all_ast_terms.append(f"{c_let}36")
+            if bs_ws[f"{c_let}37"].value is not None: all_ast_terms.append(f"{c_let}37")
+
+            # Total Assets (Row 38): independent sum of asset components without plug
+            bs_ws[f"{c_let}38"].value = f"={'+'.join(all_ast_terms)}"
         else:
             bs_ws[f"{c_let}2"].value = f"{bs_date_strs[idx]} 00:00:00"
 
@@ -622,8 +630,9 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
                     bs_ws[f"{c_let}34"].value = None
                     bs_ws[f"{c_let}35"].value = None
                     bs_ws[f"{c_let}36"].value = None
-                    bs_ws[f"{c_let}37"].value = clean_num(bs_rows.get("Other Assets", [])[idx])
-                    bs_ws[f"{c_let}38"].value = bs_ws[f"{c_let}16"].value
+                    oth_ast_v = clean_num(bs_rows.get("Other Assets", [])[idx])
+                    bs_ws[f"{c_let}37"].value = oth_ast_v
+                    bs_ws[f"{c_let}38"].value = round(fa_v + cwip_v + inv_v + (oth_ast_v or 0.0), 2)
                 else: # Mar 2019 to Mar 2025 (Audited Statutory Sub-Schedules)
                     k = idx - 4
                     pay = MM_HIST_SUBS["pay"][k]
@@ -645,7 +654,7 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
                     bs_ws[f"{c_let}35"].value = MM_HIST_SUBS["cash"][k]
                     bs_ws[f"{c_let}36"].value = MM_HIST_SUBS["loans"][k]
                     bs_ws[f"{c_let}37"].value = 0.0
-                    bs_ws[f"{c_let}38"].value = tot_liab
+                    bs_ws[f"{c_let}38"].value = round(fa_v + cwip_v + inv_v + MM_HIST_SUBS["inven"][k] + MM_HIST_SUBS["rec"][k] + MM_HIST_SUBS["cash"][k] + MM_HIST_SUBS["loans"][k], 2)
 
             # Case 3: LTM, CLEAN (>=2018), and EDELWEISS from Screener Schedules
             else:
@@ -714,8 +723,7 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
                 oth_asset_sch_v = get_sch("balance-sheet:Other Assets", "Other asset items", p_str)
 
                 net_fixed = (gross_block_v - (accum_dep_v or 0.0)) if gross_block_v else fa_v
-                curr_known = net_fixed + cwip_v + inv_v + inv_bs_v + rec_bs_v + cash_bs_v + loans_bs_v
-                oth_asset_v = oth_asset_sch_v if oth_asset_sch_v is not None else round(tot_liab - curr_known, 2)
+                oth_asset_v = oth_asset_sch_v if oth_asset_sch_v is not None else 0.0
 
                 bs_ws[f"{c_let}19"].value = land_v
                 bs_ws[f"{c_let}20"].value = bldg_v
@@ -735,7 +743,8 @@ def build_template_v6(target_key: str, output_path: Path) -> dict[str, Any]:
                 bs_ws[f"{c_let}35"].value = cash_bs_v if cash_bs_v > 0 else None
                 bs_ws[f"{c_let}36"].value = loans_bs_v if loans_bs_v > 0 else None
                 bs_ws[f"{c_let}37"].value = oth_asset_v
-                bs_ws[f"{c_let}38"].value = tot_liab
+                tot_ast = round(net_fixed + cwip_v + inv_v + inv_bs_v + rec_bs_v + cash_bs_v + loans_bs_v + (oth_asset_v or 0.0), 2)
+                bs_ws[f"{c_let}38"].value = tot_ast
 
     # =========================================================================
     # C. CASH FLOW SHEET (Rebuilt from Screener Cash Flow Schedules)
