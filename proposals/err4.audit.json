@@ -1,0 +1,3777 @@
+{
+  "deck_file": "originals/ERR-4.pptx",
+  "deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+  "slide_count": 25,
+  "slides": [
+    {
+      "slide": 1,
+      "part": "ppt/slides/slide1.xml",
+      "header": "INTRODUCTION",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 12,
+      "table_count": 0,
+      "chart_count": 1,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 7,
+          "name": "object 18",
+          "paragraphs": [
+            "INTRODUCTION",
+            "Sun Pharma started as a domestic branded-formulations player and scaled largely through acquisitions: US entry via Caraco (1998), Taro for US dermatology (FY10, fully absorbed FY24), DUSA for innovative medicines entry (FY13), and Odomzo and Cequa access via the Novartis and Ocular Technologies deals (FY17). Its 2014 Ranbaxy acquisition remains its largest deal to date, giving it generics scale and its OTC entry through Volini and Revital. Since the mid-2010s it has deliberately pivoted from commodity US generics toward patent-protected specialty medicines, a shift continuing through Leqselvi, Unloxcyt, and now Organon."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 12,
+          "name": "object 18",
+          "paragraphs": [
+            "BUSINESS MODEL",
+            "\u2022 India Branded Formulations: Prescription-led, highest-margin business with strong market leadership.\u2022 US Formulations: Generics and higher-margin Innovative Medicines, now the larger segment.\u2022 Global Innovative Medicines: Patent-protected portfolio driving high growth and margins.\u2022 Emerging Markets & ROW: Branded generics across 100+ countries, ensuring diversification.\u2022 API Business: Internal supply and external sales with backward integration."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 11,
+          "name": "object 18",
+          "paragraphs": [
+            "BRAND PORTFOLIO",
+            "\u2022 Specialty Portfolio: Ilumya (psoriasis), Winlevi (acne), Cequa (dry eye), Odomzo (oncology), Leqselvi (alopecia areata), and Unloxcyt (cutaneous squamous cell carcinoma).\u2022 Consumer/OTC Portfolio: Revital (nutritionals), Volini (topical analgesics), Faringosept (sore throat).\u2022 Core Portfolio: 2,000+ molecules across psychiatry, cardiology, diabetology, dermatology, oncology, gastroenterology, and other therapeutic areas."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 14,
+          "name": "object 18",
+          "paragraphs": [
+            "PRODUCT ECOSYSTEM",
+            "\u2022 Dosage Forms: Tablets, capsules, injectables, inhalers, ointments, creams, and liquids.\u2022 Product Categories: Generics, branded generics, specialty, OTC, ARVs, and APIs.\u2022 Pipeline: Fibromun and Nidlegy nearing regulatory filing; GL0034 and MM-II in clinical trials.\u2022 Post-Organon: Expands portfolio with women's health, fertility, and biosimilars."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 18,
+          "name": "TextBox 17",
+          "paragraphs": [
+            "Strategic Approach"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 20,
+          "name": "TextBox 19",
+          "paragraphs": [
+            "\u2022 Specialty-led Mix Shift: Focus on expanding higher-margin Innovative Medicines to offset US generic pricing pressure.\u2022 Large-scale M&A: Organon acquisition strengthens the specialty portfolio with minimal product overlap.\u2022 Domestic Leadership: 37 new launches and market share growth to 8.4%, supported by global diversification."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 13,
+          "name": "TextBox 12",
+          "paragraphs": [
+            "About The Company"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [
+        {
+          "rid": "rId3",
+          "part": "ppt/charts/chart1.xml",
+          "title": "Revenue Mix (in %)",
+          "series": [
+            "",
+            "",
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet.xlsx"
+        }
+      ],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 2,
+      "part": "ppt/slides/slide2.xml",
+      "header": "Sun Pharmaceutical Industries Ltd. (NSE: SUNPHARMA) is India's largest pharma company and the largest Indian player in the US market. FY26 consolidated revenue grew 11.9% YoY to ~\u20b958,220 crore, EBITDA rose 16.1% to ~\u20b917,700 crore, and net profit grew 5% to ~\u20b911,479 crore. Stock trades at ~\u20b91,880\u20131,900 (market cap ~\u20b94.6 lakh crore, mid-July 2026), 52-week range \u20b91,548\u20131,963, P/E ~38\u201339x, near debt-free, dividend payout ~34%.",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 9,
+      "table_count": 0,
+      "chart_count": 2,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 7,
+          "name": "object 18",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd. (NSE: SUNPHARMA) is India's largest pharma company and the largest Indian player in the US market. FY26 consolidated revenue grew 11.9% YoY to ~\u20b958,220 crore, EBITDA rose 16.1% to ~\u20b917,700 crore, and net profit grew 5% to ~\u20b911,479 crore. Stock trades at ~\u20b91,880\u20131,900 (market cap ~\u20b94.6 lakh crore, mid-July 2026), 52-week range \u20b91,548\u20131,963, P/E ~38\u201339x, near debt-free, dividend payout ~34%.",
+            "Thesis: a structural shift from commoditized US generics toward a higher-margin Global Innovative Medicines franchise (~21% of sales, scaling), anchored by a defensive India branded-formulations base (~33% of sales, #1 market share). The $11.75bn Organon acquisition, Sun Pharma's largest deal since Ranbaxy, is the key swing factor. It adds women's health, fertility, and biosimilars, and expands reach into Europe, China, and Latin America."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 12,
+          "name": "object 18",
+          "paragraphs": [
+            "\u2022 Revenue: \u20b958,220 crore (+11.9% YoY); Net Profit: \u20b911,479 crore (+5% YoY)\u2022 India Formulations: \u20b919,290 crore (+14%), contributing 33% of sales\u2022 US Formulations: ~\u20b916,370 crore (-0.9%), contributing ~28.8% of sales\u2022 Emerging Markets: ~\u20b910,840 crore (+13.6%); Rest of World: ~\u20b98,330 crore (+14.4%)\u2022 Innovative Medicines: ~\u20b912,210 crore (20.7% of FY26 sales); US business crossed \u20b98,600 crore\u2022 Leqselvi and Unloxcyt launched in the US during FY26\u2022 India market share increased from 8.1% to 8.4%; 37 new products launched\u2022 R&D Spend: \u20b93,554 crore (vs. \u20b93,248 crore in FY25)\u2022 Organon acquisition: ~\u20b91.01 lakh crore deal; ~\u20b934,300 crore cash equity investment at US$14/share"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 9,
+          "name": "TextBox 8",
+          "paragraphs": [
+            "Executive Summary"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 14,
+          "name": "TextBox 13",
+          "paragraphs": [
+            "Key Highlights"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [
+        {
+          "rid": "rId3",
+          "part": "ppt/charts/chart2.xml",
+          "title": "Revenue by Segment (\u20b9 Crore)",
+          "series": [
+            "",
+            "",
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx"
+        },
+        {
+          "rid": "rId4",
+          "part": "ppt/charts/chart3.xml",
+          "title": "FY26 Snapshot (\u20b9 Crore)",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx"
+        }
+      ],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 3,
+      "part": "ppt/slides/slide3.xml",
+      "header": "Industry Overview",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 10,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 9,
+          "name": "TextBox 8",
+          "paragraphs": [
+            "Industry Overview"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 13,
+          "name": "TextBox 12",
+          "paragraphs": [
+            "The global pharmaceutical industry, typically analysed across branded, generic, and specialty medicine segments, is projected to reach an estimated market size of approximately US 1.76 trillion in 2026 based on direct industry estimates. More recent industry tracking values the baseline market at US 2.225 to US 60.32 billion in 2026. This specific figure is sourced from Mordor Intelligence, a reputable market research firm that provides a direct estimate for 2026.",
+            "The global pharmaceutical industry's expanding size in 2026 reflects its critical role in worldwide disease management and healthcare. Original branded medicines dominate the market value, accounting for approximately 66% of the total global spending, primarily due to high-income developed markets. Additionally, specialty medicines\u2014used to treat chronic, complex, and rare diseases\u2014make up a rapidly surging segment of the market and are expected to account for 43% of total global spending by 2027 and 2028.",
+            "Generic medicines and Active Pharmaceutical Ingredients (APIs) make up a highly significant portion of the market's volume, driven by global cost-containment pressures and the need for affordable healthcare access. The \"Pharmerging\" markets' growth is particularly notable, as they are projected to expand at a rapid 10-13% CAGR to reach US$ 400-430 billion by 2028, with China and India being the largest global volume contributors. This regional strength is underpinned by demographic shifts such as an aging population, rising per capita incomes, and robust government initiatives like India's Production Linked Incentive (PLI) scheme to boost domestic manufacturing capabilities."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 15,
+          "name": "TextBox 14",
+          "paragraphs": [
+            "Industry Size (2026)"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 17,
+          "name": "TextBox 16",
+          "paragraphs": [
+            "The global pharmaceutical industry is projected to grow at a CAGR of approximately 6%\u20139% from 2024 to 2028. This range is derived from recent global pharmaceutical market estimates, which reflect an upward revision in the outlook for medicine spending as the pandemic transitioned to an endemic phase and global medicine usage steadily expanded.",
+            "The growth is underpinned by the increasing demand for chronic care, specialty treatments, and innovative therapies across various applications, with the market size expected to expand significantly. For instance, the global pharmaceutical market was valued at US 2.225 trillion and US$ 2.255 trillion by 2028. These figures indicate a robust market trajectory, driven by global demographic shifts such as an aging population, the rising prevalence of chronic lifestyle diseases, and sustained investments in high-value innovative treatments like oncology and immunology."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 19,
+          "name": "TextBox 18",
+          "paragraphs": [
+            "Industry Growth Projections"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 4,
+      "part": "ppt/slides/slide4.xml",
+      "header": "Industry Overview",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 10,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 3,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 9,
+          "name": "TextBox 8",
+          "paragraphs": [
+            "Industry Overview"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 8,
+          "name": "TextBox 7",
+          "paragraphs": [
+            "The \"Pharmerging\" markets, led by India, China, and other Asian and Latin American nations, are the primary volume growth engines, while mature markets like North America and Western Europe see slower volume growth due to already high per capita usage. Pharmerging markets are projected to grow at an impressive 10%\u201313% CAGR, accounting for US 38\u201342 billion by 2028, reflecting a strong 7%\u201310% CAGR. This regional strength is underpinned by rising per capita incomes, improving healthcare affordability, expanding distribution networks, and robust government support, such as the Production Linked Incentive (PLI) scheme."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 26,
+          "name": "TextBox 25",
+          "paragraphs": [
+            "Industry Overview"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 28,
+          "name": "object 17",
+          "paragraphs": [
+            "Global Market Share by Region (2025)"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 34,
+          "name": "object 17",
+          "paragraphs": [
+            "Indian Pharmaceutical Market Size ( 2025 vs. 2026)"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        },
+        {
+          "id": 30,
+          "name": "Picture 29",
+          "rid": "rId3",
+          "media": "ppt/media/image2.png",
+          "geometry": {
+            "x": 194701,
+            "y": 4263650,
+            "cx": 3501952,
+            "cy": 2241647
+          },
+          "is_logo": true
+        },
+        {
+          "id": 32,
+          "name": "Picture 31",
+          "rid": "rId4",
+          "media": "ppt/media/image3.png",
+          "geometry": {
+            "x": 3724011,
+            "y": 4138951,
+            "cx": 2994252,
+            "cy": 2491046
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 5,
+      "part": "ppt/slides/slide5.xml",
+      "header": "Some Major Indian Players",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 8,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 9,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 12,
+          "name": "TextBox 11",
+          "paragraphs": [
+            "Key Growth Drivers"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 17,
+          "name": "TextBox 16",
+          "paragraphs": [
+            "Aging Population & Demographics: The expanding global geriatric population is a primary growth engine for the industry. By 2030, 1 in 6 people globally will be aged 60 or older, and the population of those aged 80 years or older is projected to triple to 426 million between 2020 and 2050, heavily driving the demand for age-related and chronic medications.",
+            "Rise of Chronic & Lifestyle Diseases: Sedentary lifestyles, urbanization, and changing dietary habits are driving a rapid surge in Non-Communicable Diseases (NCDs) like cardiovascular ailments and hypertension. Medicines to treat NCDs are projected to account for 85% of global spending, with diabetes care alone expected to reach nearly US$ 168 billion in revenues to become the third-largest therapy area globally by 2027.",
+            "Specialty Medicines & Innovative Therapies: There is a massive shift toward advanced treatments for complex, chronic, and rare conditions, particularly in oncology, immunology, and endocrinology. Specialty medicines are expected to account for 43% of total global pharmaceutical spending by 2028, and will command over 55% of the total spending in developed markets",
+            ".",
+            "Government Support & Infrastructure Push: In India, robust government incentives are bolstering domestic manufacturing and reducing import dependence to solidify its position as the \"pharmacy of the world\". Key drivers include a Rs. 15,000 crore (US 7 billion) strategic push to elevate local Active Pharmaceutical Ingredient (API) production capacity.",
+            "Digital Health & AI Integration: The adoption of artificial intelligence, machine learning, and advanced analytics is revolutionizing the pharmaceutical value chain. These technologies are optimizing clinical trial designs, accelerating drug discovery, predicting supply chain models, and enabling personalized medicine, thereby driving immense productivity and new care outcomes."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 9,
+          "name": "TextBox 8",
+          "paragraphs": [
+            "Some Major Indian Players"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        },
+        {
+          "id": 13,
+          "name": "Picture 12",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 0,
+            "y": 6725386,
+            "cx": 1662992,
+            "cy": 1129231
+          },
+          "is_logo": false
+        },
+        {
+          "id": 15,
+          "name": "Picture 14",
+          "rid": "rId3",
+          "media": "ppt/media/image4.png",
+          "geometry": {
+            "x": 1494871,
+            "y": 6900347,
+            "cx": 1467348,
+            "cy": 771541
+          },
+          "is_logo": false
+        },
+        {
+          "id": 24,
+          "name": "Picture 23",
+          "rid": "rId4",
+          "media": "ppt/media/image5.png",
+          "geometry": {
+            "x": 3249469,
+            "y": 7065340,
+            "cx": 1371600,
+            "cy": 474971
+          },
+          "is_logo": false
+        },
+        {
+          "id": 26,
+          "name": "Picture 25",
+          "rid": "rId5",
+          "media": "ppt/media/image6.png",
+          "geometry": {
+            "x": 641659,
+            "y": 7867442,
+            "cx": 994693,
+            "cy": 753555
+          },
+          "is_logo": false
+        },
+        {
+          "id": 28,
+          "name": "Picture 27",
+          "rid": "rId6",
+          "media": "ppt/media/image7.png",
+          "geometry": {
+            "x": 4980378,
+            "y": 6887676,
+            "cx": 1371600,
+            "cy": 748699
+          },
+          "is_logo": false
+        },
+        {
+          "id": 30,
+          "name": "Picture 29",
+          "rid": "rId7",
+          "media": "ppt/media/image8.png",
+          "geometry": {
+            "x": 5130377,
+            "y": 7926204,
+            "cx": 1371600,
+            "cy": 569194
+          },
+          "is_logo": false
+        },
+        {
+          "id": 32,
+          "name": "Picture 31",
+          "rid": "rId8",
+          "media": "ppt/media/image9.png",
+          "geometry": {
+            "x": 3888055,
+            "y": 7702502,
+            "cx": 843168,
+            "cy": 1025315
+          },
+          "is_logo": false
+        },
+        {
+          "id": 34,
+          "name": "Picture 33",
+          "rid": "rId9",
+          "media": "ppt/media/image10.png",
+          "geometry": {
+            "x": 1845426,
+            "y": 8003906,
+            "cx": 1719048,
+            "cy": 662817
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 6,
+      "part": "ppt/slides/slide6.xml",
+      "header": "PORTER\u2019S FIVE FORCES",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 15,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 6,
+          "name": "TextBox 5",
+          "paragraphs": [
+            "PORTER\u2019S FIVE FORCES"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 31,
+          "name": "TextBox 30",
+          "paragraphs": [
+            "High Capital and Regulatory Requirement: Entering the global pharmaceutical market requires massive financial investments in R&D (Sun Pharma consistently invests 6-8% of its annual revenues), complex manufacturing infrastructure, and strict, continuous adherence to global cGMP regulatory standards (like USFDA and EMA), which acts as a massive deterrent for new players."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 37,
+          "name": "TextBox 36",
+          "paragraphs": [
+            "Economies of Scale and Vertical Integration: Established leaders possess extensive vertically integrated operations\u2014manufacturing both finished formulations and their own Active Pharmaceutical Ingredients (APIs)\u2014which provides unmatched cost competitiveness and supply reliability that new entrants cannot easily replicate."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 39,
+          "name": "TextBox 38",
+          "paragraphs": [
+            "Bargaining Power of Suppliers: Low to Medium"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 45,
+          "name": "TextBox 44",
+          "paragraphs": [
+            "Strategic Backward Integration: Sun Pharma manufactures over 400 APIs in-house across 14 dedicated global facilities. This strategic backward integration significantly reduces its reliance on external suppliers for critical raw materials, ensuring supply reliability and insulating profit margins."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 47,
+          "name": "TextBox 46",
+          "paragraphs": [
+            "Global Supply Chain Vulnerabilities: While the company's massive scale allows for diversified sourcing, suppliers of non-substitutable and critical raw materials still hold some power, especially when global supply chains are disrupted by geopolitical tensions and economic downturns."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 30,
+          "name": "TextBox 29",
+          "paragraphs": [
+            "Threat of New Entrants: Low"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 58,
+          "name": "TextBox 57",
+          "paragraphs": [
+            "Competitive Rivalry: High"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 67,
+          "name": "TextBox 66",
+          "paragraphs": [
+            "Hyper-Competitive US Generics Market: The global generics space, particularly the US, is fiercely competitive. A faster pace of generic drug approvals by the USFDA, combined with multiple manufacturers targeting the same off-patent molecules, results in severe price erosion, forcing companies to continuously optimize costs and withdraw non-remunerative products."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 70,
+          "name": "TextBox 69",
+          "paragraphs": [
+            "Fierce Battles in Emerging Markets: In pharmerging markets (including India), competitive intensity between multinational pharmaceutical giants and deeply entrenched local players is incredibly high. Companies must continuously innovate, build strong brand equity with doctors, and rapidly launch complex or specialty products to defend and grow their market share."
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 7,
+      "part": "ppt/slides/slide7.xml",
+      "header": "PORTER\u2019S FIVE FORCES",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 12,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 3,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 6,
+          "name": "TextBox 5",
+          "paragraphs": [
+            "PORTER\u2019S FIVE FORCES"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 20,
+          "name": "TextBox 19",
+          "paragraphs": [
+            "Threat of Substitute Products: Medium to High"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 22,
+          "name": "TextBox 21",
+          "paragraphs": [
+            "Competitive Rivalry: High"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 24,
+          "name": "TextBox 23",
+          "paragraphs": [
+            "Severe Customer Consolidation: In key developed markets like the US, the consolidation of buying consortiums, wholesalers, and chain drugstores has significantly increased buyer power. This leads to an intensely competitive pricing environment characterized by severe off-invoice discounts and rebates"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 26,
+          "name": "TextBox 25",
+          "paragraphs": [
+            "Government-Mandated Price Controls: Governments and institutional payers globally act as massive buyers. Faced with soaring healthcare deficits, they frequently enforce strict drug price controls, mandate periodic price cuts (as seen in Japan), and promote aggressive generic substitution to force down pharmaceutical prices."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 28,
+          "name": "TextBox 27",
+          "paragraphs": [
+            "Generic and Biosimilar Competition: For patented and specialty medicines, the loss of patent exclusivity immediately exposes them to highly affordable generic and biosimilar substitutes. Furthermore, the rapid pace of FDA approvals continuously introduces competing generic substitutes into the market."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 35,
+          "name": "TextBox 34",
+          "paragraphs": [
+            "Shift Towards Preventative Care: There is a growing global consumer shift towards self-care, wellness, and over-the-counter (OTC) alternative products, which can act as substitutes for traditional prescription therapeutics, though Sun Pharma actively mitigates this by aggressively expanding its own Global Consumer Healthcare business."
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 9,
+          "name": "Picture 8",
+          "rid": "rId2",
+          "media": "ppt/media/image11.jpeg",
+          "geometry": {
+            "x": 526350,
+            "y": 5925652,
+            "cx": 3094484,
+            "cy": 3094484
+          },
+          "is_logo": false
+        },
+        {
+          "id": 12,
+          "name": "Picture 11",
+          "rid": "rId3",
+          "media": "ppt/media/image12.jpeg",
+          "geometry": {
+            "x": 3865358,
+            "y": 6289214,
+            "cx": 2467026,
+            "cy": 2463674
+          },
+          "is_logo": false
+        },
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId4",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 8,
+      "part": "ppt/slides/slide8.xml",
+      "header": "EXPLOSIVE GROWTH IN SPECIALTY MARKETS",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 24,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 74,
+          "name": "object 31",
+          "paragraphs": [
+            "STRENGTHS"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 78,
+          "name": "object 35",
+          "paragraphs": [
+            "OPPORTUNITIES"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 82,
+          "name": "object 39",
+          "paragraphs": [
+            "THREATS"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 84,
+          "name": "object 48",
+          "paragraphs": [
+            "ROBUST R&D CAPABLITY AND INNOVATION",
+            "Backed by over 3,000 global scientists, Sun Pharma consistently invests 6% to 8% of its annual revenues into R&D to develop complex generics, expand its specialty pipeline, and successfully challenge",
+            "global patents."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 86,
+          "name": "object 48",
+          "paragraphs": [
+            "STRONG FINANCIAL POSITION FOR INORGANIC GROWTH",
+            "A highly resilient balance sheet with strong cash reserves empowers Sun Pharma to pursue strategic, value-accretive M&A and in-licensing opportunities without taking on significant debt."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 88,
+          "name": "object 48",
+          "paragraphs": [
+            "Building a global specialty pipeline requires massive upfront capital. The strategic increase in Specialty R&D spending (reaching US$ 148 million in FY24) actively pressures profit margins as the company waits for these long-term clinical trials and market access teams to yield returns."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 90,
+          "name": "TextBox 89",
+          "paragraphs": [
+            "SHORT-TERM PROFITABILITY PRESSURES FROM SPECIALTY"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 100,
+          "name": "object 48",
+          "paragraphs": [
+            "Specialty medicines are transforming",
+            "global healthcare and are projected to account for 43% of total global pharmaceutical spending by 2028. In developed markets, this share will exceed 55%. Sun Pharma is perfectly positioned to capture this, with its own Global Specialty revenues already growing to 20% to 22% of total sales."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 104,
+          "name": "object 48",
+          "paragraphs": [
+            "Driven by a rapidly aging population (the global 80+ demographic is expected to triple by 2050), \"Pharmerging\" markets are projected to reach US400toUS 430 Billion by 2028 at a 10-13% CAGR. Concurrently, the domestic Indian market will mirror this strong growth, reaching US38toUS 42 Billion by 2028 (7-10% CAGR)."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 112,
+          "name": "object 48",
+          "paragraphs": [
+            "As a heavily regulated manufacturer, operational safety and product quality deviations present direct financial and reputational threats. Quantifiably, the company had to execute 91 voluntary product recalls in the recent fiscal year alone, primarily due to product quality complaints, process deviations, and out-of-specification/out-of-trend test results."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 114,
+          "name": "TextBox 113",
+          "paragraphs": [
+            "PRODUCT QUALITY AND RECALL RISKS"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 116,
+          "name": "TextBox 115",
+          "paragraphs": [
+            "GOVERNMENT PRICE CONTROLS (JAPAN & EUROPE)"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 120,
+          "name": "object 48",
+          "paragraphs": [
+            "Japan's continuous price cuts will restrict market growth to -2% to 1%, while strict European budget constraints will compound a massive US$ 32.2 Billion patent cliff."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 9,
+          "name": "TextBox 8",
+          "paragraphs": [
+            "EXPLOSIVE GROWTH IN SPECIALTY MARKETS"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 11,
+          "name": "TextBox 10",
+          "paragraphs": [
+            "FAVOURABLE EMERGING MARKET DEMOGRAPHICS:"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 13,
+          "name": "TextBox 12",
+          "paragraphs": [
+            "Ongoing regulatory actions at three major plants-Halol (Import Alert/Warning Letter), Mohali (mandated independent batch certifications), and Dadra (Warning Letter)-restrict new U.S. product approvals and persistently pressure the company's supply chain"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 15,
+          "name": "TextBox 14",
+          "paragraphs": [
+            "USFDA COMPLIANCE HURDLES:"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 27,
+          "name": "object 31",
+          "paragraphs": [
+            "WEAKNESS"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 39,
+          "name": "TextBox 38",
+          "paragraphs": [
+            "SWOT",
+            "ANALYSIS"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId3",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17283,
+            "cx": 1445251,
+            "cy": 981377
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": "8"
+    },
+    {
+      "slide": 9,
+      "part": "ppt/slides/slide9.xml",
+      "header": "Sun Pharma delivered a strong Q4 FY25, with Revenue from Operations rising 8.96% YoY to \u20b9129,588 million. Profit Before Tax grew 15.59% YoY to \u20b932,544 million, while Net Profit After Tax increased 18.62% YoY to \u20b931,539 million  profit growth outpacing revenue growth, reflecting improved operating leverage and cost efficiency even within a single quarter.",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 7,
+      "table_count": 0,
+      "chart_count": 1,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "7"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 17,
+          "name": "object 13",
+          "paragraphs": [
+            "QUARTERLY PERFORMANCE"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 6,
+          "name": "TextBox 5",
+          "paragraphs": [
+            "Sun Pharma delivered a strong Q4 FY25, with Revenue from Operations rising 8.96% YoY to \u20b9129,588 million. Profit Before Tax grew 15.59% YoY to \u20b932,544 million, while Net Profit After Tax increased 18.62% YoY to \u20b931,539 million  profit growth outpacing revenue growth, reflecting improved operating leverage and cost efficiency even within a single quarter."
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [
+        {
+          "rid": "rId3",
+          "part": "ppt/charts/chart4.xml",
+          "title": "Q4 FY24 vs Q4 FY25 Performance",
+          "series": [
+            "",
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx"
+        }
+      ],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image13.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 10,
+      "part": "ppt/slides/slide10.xml",
+      "header": "INCOME STATEMENT ANALYSIS",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 7,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 4,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "7"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 16,
+          "name": "object 13",
+          "paragraphs": [
+            "INCOME STATEMENT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 7,
+          "name": "TextBox 6",
+          "paragraphs": [
+            "INCOME STATEMENT ANALYSIS"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image13.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        },
+        {
+          "id": 19,
+          "name": "Picture 18",
+          "rid": "rId3",
+          "media": "ppt/media/image14.png",
+          "geometry": {
+            "x": 116238,
+            "y": 1905000,
+            "cx": 6634129,
+            "cy": 805954
+          },
+          "is_logo": false
+        },
+        {
+          "id": 21,
+          "name": "Picture 20",
+          "rid": "rId4",
+          "media": "ppt/media/image15.png",
+          "geometry": {
+            "x": 141830,
+            "y": 3287536,
+            "cx": 6608537,
+            "cy": 1614816
+          },
+          "is_logo": false
+        },
+        {
+          "id": 23,
+          "name": "Picture 22",
+          "rid": "rId5",
+          "media": "ppt/media/image16.png",
+          "geometry": {
+            "x": 141830,
+            "y": 5374917,
+            "cx": 6608537,
+            "cy": 1178283
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 11,
+      "part": "ppt/slides/slide11.xml",
+      "header": "INCOME STATEMENT ANALYSIS",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 9,
+      "table_count": 0,
+      "chart_count": 3,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "7"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 15,
+          "name": "object 35",
+          "paragraphs": [
+            "Sales Volume",
+            "Sun Pharma's revenue growth has been primarily driven by higher sales volumes across its branded formulations, specialty products, and international businesses rather than price-led expansion alone. The company continued strengthening its specialty portfolio while maintaining leadership in the Indian pharmaceutical market, enabling sustained growth despite industry pricing pressures and regulatory challenges."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 16,
+          "name": "object 14",
+          "paragraphs": [
+            "Revenue",
+            "Revenue from operations has demonstrated a strong and consistent upward trajectory, increasing from \u20b9264,895 million in FY2018 to \u20b9584,620 million in FY2026, reflecting a CAGR of approximately 10%. Growth was supported by strong performance in the specialty business, increased domestic formulations sales, robust global generics demand, and strategic acquisitions. The acceleration after FY2022 highlights improved execution and expanding international presence"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 17,
+          "name": "object 53",
+          "paragraphs": [
+            "Profitability",
+            "Profitability improved significantly over the study period. Net Profit After Tax increased from \u20b921,616 million in FY2018 to approximately \u20b9118,762 million in FY2026, while Profit Before Tax rose from \u20b934,790 million to \u20b9151,189 million. After a temporary moderation during FY2021, earnings recovered strongly due to better operating leverage, improving product mix, specialty business expansion, and efficient cost management."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 7,
+          "name": "TextBox 6",
+          "paragraphs": [
+            "INCOME STATEMENT ANALYSIS"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [
+        {
+          "rid": "rId3",
+          "part": "ppt/charts/chart5.xml",
+          "title": "RFO",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet4.xlsx"
+        },
+        {
+          "rid": "rId4",
+          "part": "ppt/charts/chart6.xml",
+          "title": "",
+          "series": [
+            "",
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet5.xlsx"
+        },
+        {
+          "rid": "rId5",
+          "part": "ppt/charts/chart7.xml",
+          "title": "Revenue Growth Momentum",
+          "series": [
+            "",
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet6.xlsx"
+        }
+      ],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image13.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 12,
+      "part": "ppt/slides/slide12.xml",
+      "header": "BALANCE SHEET ANALYSIS",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 7,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 2,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "7"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 14,
+          "name": "object 13",
+          "paragraphs": [
+            "BALANCE SHEET ANALYSIS"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 8,
+          "name": "TextBox 7",
+          "paragraphs": [
+            "BALANCE SHEET"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image13.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        },
+        {
+          "id": 7,
+          "name": "Picture 6",
+          "rid": "rId3",
+          "media": "ppt/media/image17.jpg",
+          "geometry": {
+            "x": 141830,
+            "y": 1793711,
+            "cx": 6608537,
+            "cy": 6963954
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 13,
+      "part": "ppt/slides/slide13.xml",
+      "header": "EQUITY RESEARCH REPORT",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 10,
+      "table_count": 0,
+      "chart_count": 4,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "7"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 23,
+          "name": "object 2",
+          "paragraphs": [
+            "Borrowings",
+            "Borrowings declined substantially from \u20b997,518 million in FY2018 to \u20b940,504 million in FY2026. Although borrowings temporarily increased during FY2023 due to financing requirements related to the Concert Pharmaceuticals acquisition, the company rapidly reduced debt thereafter, demonstrating prudent financial management and a strong balance sheet."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 58,
+          "name": "object 60",
+          "paragraphs": [
+            "Current Assets",
+            "Current assets grew significantly from \u20b9316,359 million in FY2018 to \u20b9491,435.20 million in FY2026, mainly driven by higher cash & cash equivalents and healthy working capital. This improvement enhances the company's liquidity position and provides financial flexibility for future growth initiatives."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 60,
+          "name": "object 61",
+          "paragraphs": [
+            "Equity & Liabilities",
+            "Total Equity increased consistently from \u20b9419,847 million in FY2018 to \u20b9838,797 million in FY2026, reflecting sustained profitability and strong retained earnings. The continuous growth in shareholders' equity indicates effective capital allocation and increasing shareholder value."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 97,
+          "name": "object 33",
+          "paragraphs": [
+            "Non \u2013 Current Assets",
+            "Sun Pharma's non-current assets increased from \u20b9326,669 million in FY2018 to \u20b9430,226 million in FY2026, reflecting continued investments in manufacturing facilities, research & development infrastructure, and strategic acquisitions. The steady rise highlights the company's long-term expansion strategy and commitment to strengthening its production capabilities."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 99,
+          "name": "object 13",
+          "paragraphs": [
+            "BALANCE SHEET ANALYSIS"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [
+        {
+          "rid": "rId3",
+          "part": "ppt/charts/chart8.xml",
+          "title": "Non-Current Assets",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet7.xlsx"
+        },
+        {
+          "rid": "rId4",
+          "part": "ppt/charts/chart9.xml",
+          "title": "Current Assets",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet8.xlsx"
+        },
+        {
+          "rid": "rId5",
+          "part": "ppt/charts/chart10.xml",
+          "title": "Total Equity",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet9.xlsx"
+        },
+        {
+          "rid": "rId6",
+          "part": "ppt/charts/chart11.xml",
+          "title": "Total Borrowings",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet10.xlsx"
+        }
+      ],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image13.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 14,
+      "part": "ppt/slides/slide14.xml",
+      "header": "CASH FLOW STATEMENT ANALYSIS",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 8,
+      "table_count": 1,
+      "chart_count": 0,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 15,
+          "name": "object 18",
+          "paragraphs": [
+            "Sun Pharma's consolidated cash flow from operating activities has grown from \u20b93,907 crore in FY18 to \u20b914,072 crore in FY25, a more than 3.6x increase, driven primarily by strong growth in profit before tax (from \u20b93,479 crore to \u20b913,752 crore over the same period). Working capital movements have been volatile year to year, notably a large outflow in FY23 (\u20b95,662 crore) tied to elevated receivables and inventory build-up from acquisitions, and a smaller outflow in FY19 (\u20b92,696 crore) while FY21 and FY22 saw working capital release cash instead. Direct taxes paid have generally scaled with rising profits, aside from an unusual net refund in FY22. Despite this year-to-year noise, the underlying earnings growth has consistently outpaced these swings, with operating cash flow nearly tripling between FY23 and FY25 alone, pointing to steadily improving cash conversion."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 11,
+          "name": "object 6",
+          "paragraphs": [
+            "CASH FLOW STATEMENT ANALYSIS"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 7,
+          "name": "TextBox 6",
+          "paragraphs": [
+            "CASH FLOW FROM OPERATING ACTIVITY"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "id": 8,
+          "name": "Table 0",
+          "rows": 22,
+          "cols": 9,
+          "cells": [
+            [
+              "Particulars (\u20b9 Crore)",
+              "FY18",
+              "FY19",
+              "FY20",
+              "FY21",
+              "FY22",
+              "FY23",
+              "FY24",
+              "FY25"
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Operating Activities",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Profit before tax",
+              "3,479.0",
+              "3,810.2",
+              "5,009.6",
+              "2,799.4",
+              "4,481.3",
+              "9,408.4",
+              "11,087.9",
+              "13,752.1"
+            ],
+            [
+              "Non-cash adjustments (net)",
+              "1,382.2",
+              "1,968.7",
+              "1,992.5",
+              "1,809.9",
+              "1,975.0",
+              "2,722.6",
+              "1,554.4",
+              "1,120.4"
+            ],
+            [
+              "Working capital changes, net",
+              "(212.3)",
+              "(2,696.0)",
+              "898.6",
+              "2,564.1",
+              "1,559.1",
+              "(5,661.8)",
+              "1,062.1",
+              "(323.6)"
+            ],
+            [
+              "Direct taxes paid",
+              "(741.7)",
+              "(886.4)",
+              "(1,345.9)",
+              "(1,002.9)",
+              "969.2",
+              "(1,509.8)",
+              "(1,569.4)",
+              "(476.8)"
+            ],
+            [
+              "Cash From Operating Activities",
+              "3,907.1",
+              "2,196.5",
+              "6,554.8",
+              "6,170.4",
+              "8,984.5",
+              "4,959.3",
+              "12,135.0",
+              "14,072.1"
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Investing Activities",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Capital expenditure, net",
+              "(1,894.3)",
+              "(3,162.4)",
+              "(1,450.0)",
+              "(1,073.0)",
+              "(1,434.4)",
+              "(2,064.6)",
+              "(2,171.0)",
+              "(2,067.6)"
+            ],
+            [
+              "Net purchase/(sale) of investments",
+              "(676.8)",
+              "1,752.4",
+              "(1,701.9)",
+              "1,373.3",
+              "(3,791.1)",
+              "(1,643.6)",
+              "932.5",
+              "(3,864.2)"
+            ],
+            [
+              "Other investing items, net",
+              "(799.7)",
+              "728.7",
+              "563.1",
+              "236.0",
+              "(499.2)",
+              "(4,235.5)",
+              "548.3",
+              "625.6"
+            ],
+            [
+              "Cash From Investing Activities",
+              "(3,370.8)",
+              "(681.3)",
+              "(2,588.8)",
+              "536.2",
+              "(5,724.7)",
+              "(7,943.7)",
+              "(690.2)",
+              "(5,306.2)"
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Financing Activities",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "Net borrowings (proceeds/repay.)",
+              "587.6",
+              "(237.2)",
+              "(3,123.0)",
+              "(4,489.6)",
+              "(2,765.4)",
+              "5,028.3",
+              "(3,513.0)",
+              "(1,164.9)"
+            ],
+            [
+              "Finance costs paid",
+              "(476.5)",
+              "(460.7)",
+              "(271.9)",
+              "(144.3)",
+              "(73.2)",
+              "(132.5)",
+              "(219.0)",
+              "(223.8)"
+            ],
+            [
+              "Dividends paid",
+              "(975.8)",
+              "(1,424.2)",
+              "(1,682.8)",
+              "(1,586.2)",
+              "(2,169.2)",
+              "(2,519.7)",
+              "(2,900.7)",
+              "(3,617.3)"
+            ],
+            [
+              "Other financing items, net",
+              "(674.5)",
+              "(608.4)",
+              "(637.5)",
+              "239.6",
+              "(185.7)",
+              "-",
+              "(77.4)",
+              "(2,899.9)"
+            ],
+            [
+              "Cash From Financing Activities",
+              "(1,539.3)",
+              "(2,730.5)",
+              "(5,715.1)",
+              "(5,980.5)",
+              "(5,193.5)",
+              "2,376.1",
+              "(6,710.2)",
+              "(7,905.8)"
+            ],
+            [
+              "Net Cash Flow",
+              "(1,002.9)",
+              "(1,215.3)",
+              "(1,749.2)",
+              "726.1",
+              "(1,933.7)",
+              "(608.3)",
+              "4,734.6",
+              "860.1"
+            ]
+          ]
+        }
+      ],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 15,
+      "part": "ppt/slides/slide15.xml",
+      "header": "Sun Pharma recorded a net cash outflow of \u20b95,306 crore from investing activities in FY25, mainly driven by capital expenditure of \u20b92,068 crore towards manufacturing capacity and R&D infrastructure, alongside net investment purchases (largely mutual funds and other financial instruments) of \u20b93,864 crore. Capex has stayed in the \u20b91,000\u20133,200 crore range through the period, with FY19 seeing the highest spend at \u20b93,162 crore, reflecting continued but disciplined reinvestment even as the business scaled. Investing outflows have also included acquisitions of subsidiaries in select years, most notably FY23 (\u20b94,686 crore) and FY25, supporting Sun Pharma's push into specialty and global branded generics. A few years, like FY21 and FY24, saw comparatively modest net outflows as investment sales and maturing deposits partly offset fresh deployments, underscoring an investing strategy that balances growth spending with liquidity management.",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 9,
+      "table_count": 0,
+      "chart_count": 2,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 7,
+          "name": "object 18",
+          "paragraphs": [
+            "Sun Pharma recorded a net cash outflow of \u20b95,306 crore from investing activities in FY25, mainly driven by capital expenditure of \u20b92,068 crore towards manufacturing capacity and R&D infrastructure, alongside net investment purchases (largely mutual funds and other financial instruments) of \u20b93,864 crore. Capex has stayed in the \u20b91,000\u20133,200 crore range through the period, with FY19 seeing the highest spend at \u20b93,162 crore, reflecting continued but disciplined reinvestment even as the business scaled. Investing outflows have also included acquisitions of subsidiaries in select years, most notably FY23 (\u20b94,686 crore) and FY25, supporting Sun Pharma's push into specialty and global branded generics. A few years, like FY21 and FY24, saw comparatively modest net outflows as investment sales and maturing deposits partly offset fresh deployments, underscoring an investing strategy that balances growth spending with liquidity management."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 12,
+          "name": "object 18",
+          "paragraphs": [
+            "Financing activities used \u20b97,906 crore of cash in FY25, primarily on account of \u20b93,617 crore in dividend payments and \u20b92,900 crore towards buy-back of shares held by non-controlling interests in subsidiaries. Sun Pharma has been a consistent net repayer of borrowings across most of the period, with FY21 and FY22 seeing the largest deleveraging at over \u20b92,700\u20134,500 crore each, reflecting a deliberate strategy to pare down debt as profitability strengthened. FY23 was a notable exception, with net borrowings turning positive (\u20b95,028 crore) even as overall financing cash flow stayed positive that year. Dividend payouts have risen steadily and substantially, from \u20b9976 crore in FY18 to \u20b93,617 crore in FY25, underscoring the company's growing commitment to shareholder returns as free cash flow generation has strengthened well ahead of financing needs."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 9,
+          "name": "TextBox 8",
+          "paragraphs": [
+            "CASH FLOW FROM INVESTING ACTIVITY"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 14,
+          "name": "TextBox 13",
+          "paragraphs": [
+            "CASH FLOW FROM INVESTING ACTIVITY"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [
+        {
+          "rid": "rId3",
+          "part": "ppt/charts/chart12.xml",
+          "title": "Cash Flow (\u20b9 Crore)",
+          "series": [
+            "",
+            "",
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet11.xlsx"
+        },
+        {
+          "rid": "rId4",
+          "part": "ppt/charts/chart13.xml",
+          "title": "Net Cash Flow (\u20b9 Crore)",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet12.xlsx"
+        }
+      ],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 16,
+      "part": "ppt/slides/slide16.xml",
+      "header": "Sun Pharma's current ratio has improved steadily from 1.59x in FY18 to 2.89x in FY25, reflecting a consistent build-up of current assets; particularly investments and cash relative to current liabilities. The ratio has remained comfortably above 1.5x throughout, indicating strong short-term liquidity and a low reliance on external working capital funding.",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 10,
+      "table_count": 1,
+      "chart_count": 2,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 11,
+          "name": "object 18",
+          "paragraphs": [
+            "Sun Pharma's current ratio has improved steadily from 1.59x in FY18 to 2.89x in FY25, reflecting a consistent build-up of current assets; particularly investments and cash relative to current liabilities. The ratio has remained comfortably above 1.5x throughout, indicating strong short-term liquidity and a low reliance on external working capital funding."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 15,
+          "name": "object 10",
+          "paragraphs": [
+            "The quick ratio, which excludes inventory, has more than doubled from 1.25x in FY18 to 2.33x in FY25. Even excluding stock-in-trade, Sun Pharma has held enough liquid current assets to cover short-term liabilities well above 1x since FY19, pointing to a strong and improving liquidity cushion."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 7,
+          "name": "TextBox 6",
+          "paragraphs": [
+            "RATIO ANALYSIS"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 12,
+          "name": "TextBox 11",
+          "paragraphs": [
+            "CURRENT RATIO"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 16,
+          "name": "TextBox 15",
+          "paragraphs": [
+            "QUICK RATIO"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "id": 9,
+          "name": "Table 0",
+          "rows": 9,
+          "cols": 9,
+          "cells": [
+            [
+              "Ratio Analysis \u2013 SUN PHARMA (Consolidated)",
+              "FY18",
+              "FY19",
+              "FY20",
+              "FY21",
+              "FY22",
+              "FY23",
+              "FY24",
+              "FY25"
+            ],
+            [
+              "Current Ratio (x)",
+              "1.59",
+              "1.79",
+              "2.02",
+              "1.89",
+              "2.04",
+              "2.00",
+              "2.56",
+              "2.89"
+            ],
+            [
+              "Quick Ratio (x)",
+              "1.25",
+              "1.34",
+              "1.51",
+              "1.33",
+              "1.51",
+              "1.47",
+              "1.98",
+              "2.33"
+            ],
+            [
+              "Debt-to-Equity (x)",
+              "0.23",
+              "0.22",
+              "0.15",
+              "0.07",
+              "0.02",
+              "0.10",
+              "0.04",
+              "0.03"
+            ],
+            [
+              "Interest Coverage Ratio (x)",
+              "7.72",
+              "7.86",
+              "17.55",
+              "20.80",
+              "36.19",
+              "55.70",
+              "47.49",
+              "60.44"
+            ],
+            [
+              "Debtor Days",
+              "108",
+              "112",
+              "105",
+              "99",
+              "100",
+              "95",
+              "85",
+              "91"
+            ],
+            [
+              "Payable Days",
+              "242",
+              "182",
+              "167",
+              "156",
+              "156",
+              "183",
+              "199",
+              "213"
+            ],
+            [
+              "Inventory Days",
+              "349",
+              "347",
+              "322",
+              "352",
+              "314",
+              "338",
+              "347",
+              "353"
+            ],
+            [
+              "Cash Conversion Cycle (Days)",
+              "215",
+              "276",
+              "259",
+              "295",
+              "258",
+              "250",
+              "233",
+              "230"
+            ]
+          ]
+        }
+      ],
+      "charts": [
+        {
+          "rid": "rId3",
+          "part": "ppt/charts/chart14.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet13.xlsx"
+        },
+        {
+          "rid": "rId4",
+          "part": "ppt/charts/chart15.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet14.xlsx"
+        }
+      ],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 17,
+      "part": "ppt/slides/slide17.xml",
+      "header": "Sun Pharma has sharply deleveraged over the period, with debt-to-equity falling from 0.23x in FY18 to just 0.03x in FY25. Total borrowings have shrunk in absolute terms even as equity has nearly doubled on the back of retained profits, leaving the balance sheet almost debt-free by FY22 onward.",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 11,
+      "table_count": 0,
+      "chart_count": 3,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 6,
+          "name": "object 18",
+          "paragraphs": [
+            "Sun Pharma has sharply deleveraged over the period, with debt-to-equity falling from 0.23x in FY18 to just 0.03x in FY25. Total borrowings have shrunk in absolute terms even as equity has nearly doubled on the back of retained profits, leaving the balance sheet almost debt-free by FY22 onward."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 9,
+          "name": "object 18",
+          "paragraphs": [
+            "Sun Pharma's Interest Coverage Ratio has improved dramatically, rising from 7.72x in FY18 to 60.44x in FY25, nearly an eightfold increase  as falling finance costs and rapidly expanding EBIT worked together. The ratio stayed modest through FY18-FY19 before climbing sharply from FY20 onward, crossing 55x by FY23 and holding comfortably above 45x every year since. This consistently high, rising coverage reflects very low financial risk and ample headroom to service debt or absorb earnings volatility."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 11,
+          "name": "object 18",
+          "paragraphs": [
+            "Unlike consumer-facing businesses, Sun Pharma's Cash Conversion Cycle is structurally high and positive, ranging between 215 and 295 days, driven mainly by long inventory holding periods (314-353 days) typical of pharma manufacturing and regulatory cycles. The CCC peaked at 295 days in FY21 before easing to 230 days by FY25, helped by extending payable days from 156 to 213 even as inventory days stayed elevated. This gradual improvement reflects better working capital discipline, though the cycle remains inherently long given the industry's manufacturing timelines."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 13,
+          "name": "TextBox 12",
+          "paragraphs": [
+            "DEBT TO EQUITY RATIO"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 15,
+          "name": "TextBox 14",
+          "paragraphs": [
+            "INTEREST COVERAGE RATIO"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 17,
+          "name": "TextBox 16",
+          "paragraphs": [
+            "CASH CONVERSION CYCLE"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [
+        {
+          "rid": "rId4",
+          "part": "ppt/charts/chart16.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet15.xlsx"
+        },
+        {
+          "rid": "rId5",
+          "part": "ppt/charts/chart17.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet16.xlsx"
+        },
+        {
+          "rid": "rId6",
+          "part": "ppt/charts/chart18.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": "ppt/embeddings/Microsoft_Excel_Worksheet17.xlsx"
+        }
+      ],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId3",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": "17"
+    },
+    {
+      "slide": 18,
+      "part": "ppt/slides/slide18.xml",
+      "header": "EQUITY RESEARCH REPORT",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 12,
+      "table_count": 0,
+      "chart_count": 5,
+      "picture_count": 3,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 7,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 8,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 9,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 10,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 13,
+          "name": "TextBox 12",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 47,
+          "name": "object 65",
+          "paragraphs": [
+            "Net Profit"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 49,
+          "name": "object 74",
+          "paragraphs": [
+            "Average Total Assets"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 37,
+          "name": "object 42",
+          "paragraphs": [
+            "ROE(%)"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 38,
+          "name": "object 48",
+          "paragraphs": [
+            "ROA(%)"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 52",
+          "paragraphs": [
+            "Financial Leverage"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 45,
+          "name": "object 39",
+          "paragraphs": [
+            "Revenues"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 54,
+          "name": "TextBox 53",
+          "paragraphs": [
+            "DUPONT ANALYSIS"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [
+        {
+          "rid": "rId3",
+          "part": "ppt/charts/chart19.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": null
+        },
+        {
+          "rid": "rId4",
+          "part": "ppt/charts/chart20.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": null
+        },
+        {
+          "rid": "rId5",
+          "part": "ppt/charts/chart21.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": null
+        },
+        {
+          "rid": "rId6",
+          "part": "ppt/charts/chart22.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": null
+        },
+        {
+          "rid": "rId7",
+          "part": "ppt/charts/chart23.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": null
+        }
+      ],
+      "pictures": [
+        {
+          "id": 11,
+          "name": "Picture 10",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        },
+        {
+          "id": 44,
+          "name": "Picture 43",
+          "rid": "rId8",
+          "media": "ppt/media/image18.png",
+          "geometry": {
+            "x": 4628168,
+            "y": 3924867,
+            "cx": 2199560,
+            "cy": 1402752
+          },
+          "is_logo": false
+        },
+        {
+          "id": 53,
+          "name": "Picture 52",
+          "rid": "rId10",
+          "media": "ppt/media/image19.png",
+          "geometry": {
+            "x": 88496,
+            "y": 5486400,
+            "cx": 6642734,
+            "cy": 3236949
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 19,
+      "part": "ppt/slides/slide19.xml",
+      "header": "The ROE of Sun Pharma has remained resilient over the last decade, recovering from a low of 5.60% in FY18 to 14.74% in FY26. This improvement reflects stronger shareholder value creation, supported primarily by expanding profitability, improving asset utilization, and disciplined capital allocation following the successful scale-up of the Global Specialty business. The improvement in ROE has been driven by a steady increase in the Asset Turnover Ratio, which improved from 0.42x in FY18 to 0.58x in FY26, indicating more efficient utilization of assets to generate revenue. At the same time, the Net Profit Margin strengthened significantly from 7.90% in FY18 to 19.72% in FY26, reflecting higher profitability driven by an improved product mix and operational efficiency. Financial Leverage has steadily declined from 1.99x in FY16 to 1.29x in FY26, highlighting the company's conservative capital structure and lower dependence on debt. Despite lower leverage, Sun Pharma has continued to deliver healthy equity returns, demonstrating that profitability growth rather than financial leverage has been the key driver of ROE. The Capital Turnover Ratio improved from 0.53x in FY18 to 0.72x in FY26, while EBIT Margin expanded from 15.09% to 28.92% during the same period. Consequently, ROCE increased from 7.98% in FY18 to 20.70% in FY26, reflecting significantly better capital utilization and reinforcing management's ability to generate stronger returns on invested capital.",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 7,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 2,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 9,
+          "name": "TextBox 8",
+          "paragraphs": [
+            "The ROE of Sun Pharma has remained resilient over the last decade, recovering from a low of 5.60% in FY18 to 14.74% in FY26. This improvement reflects stronger shareholder value creation, supported primarily by expanding profitability, improving asset utilization, and disciplined capital allocation following the successful scale-up of the Global Specialty business. The improvement in ROE has been driven by a steady increase in the Asset Turnover Ratio, which improved from 0.42x in FY18 to 0.58x in FY26, indicating more efficient utilization of assets to generate revenue. At the same time, the Net Profit Margin strengthened significantly from 7.90% in FY18 to 19.72% in FY26, reflecting higher profitability driven by an improved product mix and operational efficiency. Financial Leverage has steadily declined from 1.99x in FY16 to 1.29x in FY26, highlighting the company's conservative capital structure and lower dependence on debt. Despite lower leverage, Sun Pharma has continued to deliver healthy equity returns, demonstrating that profitability growth rather than financial leverage has been the key driver of ROE. The Capital Turnover Ratio improved from 0.53x in FY18 to 0.72x in FY26, while EBIT Margin expanded from 15.09% to 28.92% during the same period. Consequently, ROCE increased from 7.98% in FY18 to 20.70% in FY26, reflecting significantly better capital utilization and reinforcing management's ability to generate stronger returns on invested capital."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 8,
+          "name": "TextBox 7",
+          "paragraphs": [
+            "COMMENTARY"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        },
+        {
+          "id": 7,
+          "name": "Picture 6",
+          "rid": "rId3",
+          "media": "ppt/media/image20.png",
+          "geometry": {
+            "x": 141831,
+            "y": 970413,
+            "cx": 6563770,
+            "cy": 4857688
+          },
+          "is_logo": true
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 20,
+      "part": "ppt/slides/slide20.xml",
+      "header": "COFFEE CAN INVESTMENT FRAMEWORK",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 12,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 40,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 41,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 57,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 63,
+          "name": "TextBox 62",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 11,
+          "name": "TextBox 10",
+          "paragraphs": [
+            "COFFEE CAN INVESTMENT FRAMEWORK"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 75,
+          "name": "TextBox 74",
+          "paragraphs": [
+            "The \"Coffee Can Investing Strategy\" focuses on holding fundamentally strong companies for the long term with minimal intervention. It emphasizes consistent growth, efficient capital allocation, strong profitability, and durable competitive advantages.",
+            "."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 7,
+          "name": "TextBox 6",
+          "paragraphs": [
+            "Sun Pharma: Non-Coffee Can but a Quality Structural Compounder",
+            "Sun Pharma does not qualify as a strict Coffee Can stock due to inconsistent Revenue Growth and ROCE during FY18\u2013FY21. However, its successful Specialty transformation has strengthened profitability, capital efficiency, and long-term growth.",
+            "Recommendation: ACCUMULATE on dips as a high-quality long-term structural compounder"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 9,
+          "name": "TextBox 8",
+          "paragraphs": [
+            "1. The company should have been in existence for at least 10 years.",
+            "Sun Pharma satisfies this criterion with a continuous 10-year financial track record (FY16\u2013FY25).",
+            "2. Revenue should have grown at least 10% every year over 10 years.",
+            "Revenue grew from \u20b9315,784 Mn (FY17) to \u20b9582,201 Mn (FY26). However, a 16.1% decline in FY18 resulted in a 10-year CAGR of 6.3%, below the Coffee Can benchmark.",
+            "3. ROCE should be at least 15% for 10 years.",
+            "Sun Pharma delivered an average ROCE of 16.44%, crossing 15% in 6 of 10 years. ROCE dipped during FY18\u2013FY21 due to Specialty investments but recovered to 20.4% in FY25.",
+            "4. Earnings should demonstrate long-term quality.",
+            "Although FY18 was impacted by the Specialty transition, profitability recovered steadily, with Adjusted Net Profit reaching \u20b9124,015 Mn in FY26.",
+            "5. The company should generate strong cash flows.",
+            "Sun Pharma generates over US$1 billion in operating cash flow annually and held a net cash position of US$3.1 billion as of March 2026.",
+            "6. The company should have a competitive edge / MOAT.",
+            "Its Global Specialty portfolio, No. 1 domestic leadership, presence in 100+ countries, and 40+ manufacturing facilities provide a durable competitive advantage."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 13,
+          "name": "TextBox 12",
+          "paragraphs": [
+            "Principal Rules of Philosophy",
+            "Long-term Perspective \u2013 Invest with a horizon of 10 years or more.",
+            "Quality Businesses \u2013 Focus on companies with strong fundamentals and competitive advantages.",
+            "Minimal Intervention \u2013 Stay invested through market cycles.",
+            "Diversification \u2013 Build a portfolio of high-quality businesses."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 15,
+          "name": "TextBox 14",
+          "paragraphs": [
+            "Comparing Conditions with Sun Pharma"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 19,
+          "name": "TextBox 18",
+          "paragraphs": [
+            "Conclusion"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 59,
+          "name": "Picture 58",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 21,
+      "part": "ppt/slides/slide21.xml",
+      "header": "EQUITY RESEARCH REPORT",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 10,
+      "table_count": 0,
+      "chart_count": 1,
+      "picture_count": 2,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 21,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 22,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 23,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 24,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 27,
+          "name": "TextBox 26",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 31,
+          "name": "TextBox 30",
+          "paragraphs": [
+            "WARREN BUFFETT'S $1 TEST"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 38,
+          "name": "TextBox 37",
+          "paragraphs": [
+            "The \"One Dollar Test\" is a concept attributed to Warren Buffett that evaluates whether management creates shareholder value through retained earnings. The principle states that for every \u20b91 retained instead of being distributed as dividends, the company's market value should increase by at least \u20b91. A ratio above 1 indicates efficient capital allocation and value creation.",
+            "Implications of the $1 Test",
+            "Buffett used this test to assess whether management reinvests retained earnings effectively to create long-term shareholder wealth.",
+            "A ratio greater than 1 suggests retained earnings have generated value beyond their cost, while a ratio below 1 indicates poor capital allocation."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 3,
+          "name": "TextBox 2",
+          "paragraphs": [
+            "\u27a4 Cumulative Retained Earnings = \u20b9413,112 Mn",
+            "\u27a4 Increase in Market Capitalisation = \u20b92,566,000 Mn",
+            "$1 Test Value",
+            "Test Statistic = Change in Market Capitalisation \u00f7 Retained Earnings"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 5,
+          "name": "TextBox 4",
+          "paragraphs": [
+            "Conclusion",
+            "Sun Pharmaceutical Industries Ltd. successfully passes Warren Buffett's $1 Test.",
+            "Sun Pharma generated \u20b96.21 of market value for every \u20b91 of retained earnings, far exceeding Buffett's benchmark of \u20b91. The high ratio reflects disciplined capital allocation through investments in the Global Specialty business, R&D, and strategic acquisitions, resulting in significant long-term shareholder value creation. Despite temporary challenges during FY18\u2013FY21, management successfully transformed the business into an innovation-led pharmaceutical company.",
+            "Recommendation: MAINTAIN POSITIVE OUTLOOK for long-term investors."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 4,
+          "name": "TextBox 3",
+          "paragraphs": [
+            "Key Figures"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [
+        {
+          "rid": "rId5",
+          "part": "ppt/charts/chart24.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "embedded_workbook": null
+        }
+      ],
+      "pictures": [
+        {
+          "id": 25,
+          "name": "Picture 24",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        },
+        {
+          "id": 7,
+          "name": "Picture 6",
+          "rid": "rId4",
+          "media": "ppt/media/image21.png",
+          "geometry": {
+            "x": 133568,
+            "y": 3297685,
+            "cx": 6642734,
+            "cy": 1012039
+          },
+          "is_logo": true
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 22,
+      "part": "ppt/slides/slide22.xml",
+      "header": "MARKET INDEX ANALYSIS",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 8,
+      "table_count": 0,
+      "chart_count": 1,
+      "picture_count": 1,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 21,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 22,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 23,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 24,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 27,
+          "name": "TextBox 26",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 31,
+          "name": "TextBox 30",
+          "paragraphs": [
+            "Key Takeaways",
+            "Sun Pharma delivered strong long-term outperformance driven by its successful Global Specialty strategy and resilient domestic business. While the pharmaceutical sector faced pricing pressure and supply chain challenges, Sun Pharma consistently outperformed through specialty-led growth, volume-driven market leadership, and a strong balance sheet.",
+            "FY22-23 highlighted the company's resilience, remaining positive despite weakness in the broader pharmaceutical sector. FY23-24 was the standout year with a 64.08% return, supported by strong specialty sales and 16.5% growth in adjusted net profit. In FY25-26, although the stock declined 4.10%, it significantly outperformed the broader market, reinforcing its defensive characteristics."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 34,
+          "name": "TextBox 33",
+          "paragraphs": [
+            "MARKET INDEX ANALYSIS"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 3,
+          "name": "TextBox 2",
+          "paragraphs": [
+            "Sun Pharma Alpha",
+            "The company's long-term outperformance has been driven by the successful transition from traditional generics to a Global Specialty business, reducing dependence on pricing-sensitive products and strengthening its competitive position. Volume-led growth in the domestic business, supported by prescription leadership and new product launches, has created a resilient revenue base. A de-leveraged balance sheet with a net cash position of approximately US$2.9 billion has provided downside protection during volatile market conditions while supporting future growth initiatives."
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [
+        {
+          "rid": "rId3",
+          "part": "ppt/charts/chart25.xml",
+          "title": "NIFTY Pharma Vs NIFTY 50 Vs Sun Pharma",
+          "series": [
+            "",
+            "",
+            ""
+          ],
+          "embedded_workbook": null
+        }
+      ],
+      "pictures": [
+        {
+          "id": 25,
+          "name": "Picture 24",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 23,
+      "part": "ppt/slides/slide23.xml",
+      "header": "DISCOUNTED CASHFLOW VALUATION - WAC\u0421",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 6,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 4,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 21,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 22,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 23,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 24,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 27,
+          "name": "TextBox 26",
+          "paragraphs": [
+            "1"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 34,
+          "name": "TextBox 33",
+          "paragraphs": [
+            "DISCOUNTED CASHFLOW VALUATION - WAC\u0421"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 25,
+          "name": "Picture 24",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        },
+        {
+          "id": 7,
+          "name": "Picture 6",
+          "rid": "rId3",
+          "media": "ppt/media/image22.png",
+          "geometry": {
+            "x": 88496,
+            "y": 1514087,
+            "cx": 6642734,
+            "cy": 1611218
+          },
+          "is_logo": true
+        },
+        {
+          "id": 9,
+          "name": "Picture 8",
+          "rid": "rId4",
+          "media": "ppt/media/image23.png",
+          "geometry": {
+            "x": 156659,
+            "y": 3505200,
+            "cx": 6551125,
+            "cy": 1282587
+          },
+          "is_logo": true
+        },
+        {
+          "id": 11,
+          "name": "Picture 10",
+          "rid": "rId5",
+          "media": "ppt/media/image24.png",
+          "geometry": {
+            "x": 156659,
+            "y": 5277842,
+            "cx": 6551125,
+            "cy": 2418358
+          },
+          "is_logo": true
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 24,
+      "part": "ppt/slides/slide24.xml",
+      "header": "Sun Pharmaceutical Industries Ltd.",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 5,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 5,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 12,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 13,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 14,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 15,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 18,
+          "name": "TextBox 17",
+          "paragraphs": [
+            "1"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 16,
+          "name": "Picture 15",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        },
+        {
+          "id": 33,
+          "name": "Picture 32",
+          "rid": "rId3",
+          "media": "ppt/media/image25.png",
+          "geometry": {
+            "x": 141831,
+            "y": 6077512,
+            "cx": 6639969,
+            "cy": 1999688
+          },
+          "is_logo": true
+        },
+        {
+          "id": 35,
+          "name": "Picture 34",
+          "rid": "rId4",
+          "media": "ppt/media/image26.png",
+          "geometry": {
+            "x": 141831,
+            "y": 2023412,
+            "cx": 6639969,
+            "cy": 1615634
+          },
+          "is_logo": true
+        },
+        {
+          "id": 37,
+          "name": "Picture 36",
+          "rid": "rId5",
+          "media": "ppt/media/image27.png",
+          "geometry": {
+            "x": 117906,
+            "y": 1762186,
+            "cx": 6687820,
+            "cy": 229437
+          },
+          "is_logo": true
+        },
+        {
+          "id": 39,
+          "name": "Picture 38",
+          "rid": "rId6",
+          "media": "ppt/media/image28.png",
+          "geometry": {
+            "x": 141831,
+            "y": 3782324,
+            "cx": 6639969,
+            "cy": 2097904
+          },
+          "is_logo": true
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "slide": 25,
+      "part": "ppt/slides/slide25.xml",
+      "header": "EQUITY RESEARCH REPORT",
+      "is_hidden": false,
+      "has_sun_pharma_mentions": true,
+      "shape_count": 5,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 4,
+      "shapes": [
+        {
+          "kind": "sp",
+          "id": 7,
+          "name": "object 5",
+          "paragraphs": [
+            "EQUITY RESEARCH REPORT"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 8,
+          "name": "object 40",
+          "paragraphs": [
+            "Sun Pharmaceutical Industries Ltd."
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 9,
+          "name": "object 41",
+          "paragraphs": [
+            "NSE : SUNPHARMA | BSE Code: 524715"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 10,
+          "name": "object 41",
+          "paragraphs": [
+            "Pharmaceuticals & Drugs"
+          ]
+        },
+        {
+          "kind": "sp",
+          "id": 13,
+          "name": "TextBox 12",
+          "paragraphs": [
+            "1"
+          ]
+        }
+      ],
+      "tables": [],
+      "charts": [],
+      "pictures": [
+        {
+          "id": 11,
+          "name": "Picture 10",
+          "rid": "rId2",
+          "media": "ppt/media/image1.png",
+          "geometry": {
+            "x": 5704126,
+            "y": 17284,
+            "cx": 1295705,
+            "cy": 879830
+          },
+          "is_logo": false
+        },
+        {
+          "id": 24,
+          "name": "Picture 23",
+          "rid": "rId3",
+          "media": "ppt/media/image29.png",
+          "geometry": {
+            "x": 141831,
+            "y": 1752601,
+            "cx": 6563769,
+            "cy": 1777492
+          },
+          "is_logo": true
+        },
+        {
+          "id": 26,
+          "name": "Picture 25",
+          "rid": "rId4",
+          "media": "ppt/media/image30.png",
+          "geometry": {
+            "x": 152400,
+            "y": 3776543,
+            "cx": 6563769,
+            "cy": 2159094
+          },
+          "is_logo": false
+        },
+        {
+          "id": 28,
+          "name": "Picture 27",
+          "rid": "rId5",
+          "media": "ppt/media/image31.png",
+          "geometry": {
+            "x": 141831,
+            "y": 6214944,
+            "cx": 6574338,
+            "cy": 1603176
+          },
+          "is_logo": false
+        }
+      ],
+      "notes": ""
+    }
+  ]
+}

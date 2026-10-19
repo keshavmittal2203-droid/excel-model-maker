@@ -1,0 +1,108 @@
+{
+  "MM": {
+    "sha256": "57ab161c7c85c9258e1d6d57b5babe513c33cb7a84683d91273c9557c7e902d1",
+    "baseline_val": "Unavailable",
+    "cover_val": "Unavailable",
+    "valuation_status": "unavailable",
+    "formula_errors": 0,
+    "historical_bs_reconciled": true,
+    "fy26_unplugged_variance_cr": 0.0,
+    "wacc": 0.1197,
+    "beta_raw": 1.4746023202100549,
+    "beta_adj": 1.3164015468067032,
+    "sensitivities": [],
+    "preview_count": 15
+  },
+  "LTM": {
+    "sha256": "9189d9c663d16bf160f3b3a32925c18dd18571007b1fa1ef1fafa092b11c9b5d",
+    "baseline_val": 2828.604106764949,
+    "cover_val": 2828.604106764949,
+    "valuation_status": "supported",
+    "formula_errors": 0,
+    "historical_bs_reconciled": true,
+    "fy26_unplugged_variance_cr": 0.0,
+    "wacc": 0.1248,
+    "beta_raw": 1.1526488155593406,
+    "beta_adj": 1.1017658770395604,
+    "sensitivities": [
+      {
+        "name": "Equity Risk Premium (WACC)",
+        "parameter": "WACC-DCF!J23",
+        "base": 0.055,
+        "perturbed": 0.06,
+        "base_output": 2828.604106764949,
+        "perturbed_output": 2659.648788485475,
+        "delta": -168.9553182794739,
+        "direction": "down",
+        "restored": 2828.604106764949,
+        "passed": true
+      },
+      {
+        "name": "Terminal Growth Rate",
+        "parameter": "DCF 1st way!E20",
+        "base": 0.05,
+        "perturbed": 0.055,
+        "base_output": 2828.604106764949,
+        "perturbed_output": 2965.655807049586,
+        "delta": 137.05170028463726,
+        "direction": "up",
+        "restored": 2828.604106764949,
+        "passed": true
+      }
+    ],
+    "preview_count": 15
+  },
+  "CLEAN": {
+    "sha256": "c37fbb8935112e534f4f614bda9ec98b90ece60bbd73ed7258013ccd93ea033c",
+    "baseline_val": 408.55157045464546,
+    "cover_val": 408.55157045464546,
+    "valuation_status": "supported",
+    "formula_errors": 0,
+    "historical_bs_reconciled": true,
+    "fy26_unplugged_variance_cr": 0.0,
+    "wacc": 0.1319,
+    "beta_raw": 1.3211935879152312,
+    "beta_adj": 1.214129058610154,
+    "sensitivities": [
+      {
+        "name": "Terminal Growth Rate",
+        "parameter": "DCF 1st way!E20",
+        "base": 0.05,
+        "perturbed": 0.055,
+        "base_output": 408.55157045464546,
+        "perturbed_output": 427.94720707236087,
+        "delta": 19.39563661771541,
+        "direction": "up",
+        "restored": 408.55157045464546,
+        "passed": true
+      },
+      {
+        "name": "Equity Risk Premium (WACC)",
+        "parameter": "WACC-DCF!J23",
+        "base": 0.055,
+        "perturbed": 0.06,
+        "base_output": 408.55157045464546,
+        "perturbed_output": 381.3667429744836,
+        "delta": -27.184827480161857,
+        "direction": "down",
+        "restored": 408.55157045464546,
+        "passed": true
+      }
+    ],
+    "preview_count": 15
+  },
+  "EDELWEISS": {
+    "sha256": "5b8a544f153f85a395d9af767ed8cd622ca38b23417c870d69133e13cdd06429",
+    "baseline_val": "Unavailable",
+    "cover_val": "Unavailable",
+    "valuation_status": "unavailable",
+    "formula_errors": 0,
+    "historical_bs_reconciled": true,
+    "fy26_unplugged_variance_cr": 0.0,
+    "wacc": 0.1047,
+    "beta_raw": 2.123112861798665,
+    "beta_adj": 1.7487419078657767,
+    "sensitivities": [],
+    "preview_count": 15
+  }
+}

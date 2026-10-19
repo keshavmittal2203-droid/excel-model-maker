@@ -10,3 +10,8 @@ report = ["openpyxl>=3.1,<4"]
 
 [tool.unittest]
 start-directory = "."
+
+[tool.pytest.ini_options]
+testpaths = ["."]
+python_files = ["test_*.py"]
+norecursedirs = ["work", "originals", "candidates", "companies"]

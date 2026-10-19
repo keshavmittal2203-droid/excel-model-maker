@@ -32,3 +32,36 @@ Use a different client name/suffix in each assistant. Both checks may run at the
 ## After connectivity succeeds
 
 Assign independent issues with different file scopes. An agent adds acceptance tests for its change and submits a PR. The shared product API, object store, job leases, and automatic workbook release service remain planned; they are not yet deployed. See STATUS.md before assigning runtime integration work.
+
+## End-to-End Operation & Clean Checkout Guide
+
+For comprehensive instructions on building packages, preparing canonical requests, selecting template layouts, understanding gate semantics, and running regression checks, see [docs/AI_CLEAN_CHECKOUT_GUIDE.md](docs/AI_CLEAN_CHECKOUT_GUIDE.md).
+
+## Template V16 Clean-Checkout Model Reproduction
+
+To reproduce all four company models (MM, LTM, CLEAN, EDELWEISS) from committed source inputs in a fresh or clean checkout:
+
+1. **Verify Master Template Integrity**:
+   ```powershell
+   python verify_sources.py
+   ```
+   Both Excel master files must report `VERIFIED` byte-for-byte (`originals/Marksans Keshav.xlsx` SHA-256: `4dc79842855e5d1e689a2f5ca1de22c34be72fb09c0c0f9dd3a95818e10737d0`). Never modify files in `originals/`.
+
+2. **Execute Single-Command Reproduction**:
+   ```powershell
+   python work/build_template_v16_models.py --output-dir staging/v16_reproducibility
+   # OR:
+   python build_package.py --template-v16 --output-dir staging/v16_reproducibility
+   ```
+   In headless or non-Windows environments without Microsoft Excel COM, add `--skip-com`.
+
+3. **Verify Results**:
+   - Exactly **0 formula errors** across all 64 sheets.
+   - Dynamic `BS!C40:N40 = ={col}38-{col}16` in all 12 periods.
+   - Authentic balance check results exposed without plugs:
+     - MM: `+₹7,677.49 Cr` (`BS!N40`), forecast **BLOCKED**, valuation **Unavailable**.
+     - LTM: `+₹1.00 Cr` (`BS!N40`), **UNRECONCILED**, valuation supported at **₹2,620.24**.
+     - CLEAN: `−₹1.13 Cr` (`BS!N40`), **UNRECONCILED**, valuation supported at **₹393.03**.
+     - EDELWEISS: `+₹1.00 Cr` (`BS!N40`), **UNRECONCILED**, valuation **Unavailable**.
+   - 15 landscape PDF previews generated per target (60 total) in `staging/v16_reproducibility/<TARGET>/previews/`.
+   - Governance: `ready: false`, `human_pack_approval: pending`. PR #3 remains open and unmerged.

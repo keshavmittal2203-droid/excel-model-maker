@@ -1,0 +1,5 @@
+{
+  "status": "superseded",
+  "active_report": "companies/MM/template_v17/build_report.json",
+  "notice": "This legacy validation report refers to a prior V8 workbook. Use the V17 build report and manifest for the active M&M candidate."
+}

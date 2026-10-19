@@ -20,9 +20,14 @@ REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 PKG_REL = "http://schemas.openxmlformats.org/package/2006/relationships"
 CELL = re.compile(rb"<c\b[^>]*?/>|<c\b[^>]*>.*?</c>", re.S)
 VALUE = re.compile(rb"<v\b[^>]*?/>|<v\b[^>]*>.*?</v>", re.S)
+FORMULA = re.compile(rb"<f\b[^>]*?/>|<f\b[^>]*>.*?</f>", re.S)
 ADDRESS = re.compile(r"([A-Z]{1,3})([1-9][0-9]{0,6})\Z")
 MAX_SIZE = 100 * 1024 * 1024
 MAX_ENTRIES = 5000
+DISALLOWED_REVIEWER_TOKENS = frozenset({
+    "unapproved", "pending", "proposal", "todo", "tbd", "none", "null", "n/a",
+    "agent", "ai", "argon", "gemini", "deepseek", "claude", "openai", "antigravity", "codex",
+})
 
 
 class ModelError(ValueError):
@@ -63,6 +68,32 @@ def coordinate(address: str) -> tuple[int, int]:
     if col > 16384 or row > 1048576:
         raise ModelError("Cell address outside Excel bounds")
     return col, row
+
+
+def cell_range(ref: str) -> set[str]:
+    if not isinstance(ref, str) or not ref:
+        raise ModelError(f"Invalid range reference: {ref!r}")
+    parts = ref.split(":")
+    if len(parts) == 1:
+        coordinate(parts[0])
+        return {parts[0]}
+    if len(parts) == 2:
+        (c1, r1), (c2, r2) = coordinate(parts[0]), coordinate(parts[1])
+        if c1 > c2 or r1 > r2:
+            raise ModelError(f"Reversed range reference: {ref}")
+        if (c2 - c1 + 1) * (r2 - r1 + 1) > 100000:
+            raise ModelError(f"Formula range too large: {ref}")
+        cells = set()
+        for c in range(c1, c2 + 1):
+            letters = ""
+            temp = c
+            while temp > 0:
+                temp, rem = divmod(temp - 1, 26)
+                letters = chr(65 + rem) + letters
+            for r in range(r1, r2 + 1):
+                cells.add(f"{letters}{r}")
+        return cells
+    raise ModelError(f"Invalid range reference: {ref}")
 
 
 def xml(data: bytes) -> ET.Element:
@@ -156,9 +187,150 @@ class Package:
             self.sheets[name] = (part, tree)
         if not self.sheets:
             raise ModelError("Workbook has no worksheets")
+        self.formula_cells: set[tuple[str, str]] = set()
+        self.formula_followers: dict[str, set[str]] = {}
+        self.special_formulas: dict[str, list[dict]] = {}
+        self.formula_blockers: list[str] = []
+        for sheet_name, (_, tree) in self.sheets.items():
+            followers: set[str] = set()
+            protected_zone_cells: set[str] = set()
+            shared_masters: dict[str, tuple[str, set[str]]] = {}
+            sheet_formulas: list[dict] = []
+            for c in tree.findall(f".//{{{NS}}}sheetData/{{{NS}}}row/{{{NS}}}c"):
+                ref = c.get("r")
+                f = c.find(f"{{{NS}}}f")
+                if f is None:
+                    continue
+                t = f.get("t", "normal")
+                text = f.text or ""
+                if "#REF!" in text.upper():
+                    self.formula_blockers.append(f"Broken formula reference: {sheet_name}")
+                if t == "normal":
+                    if set(f.attrib) - {"t"}:
+                        self.formula_blockers.append(f"Unsupported attributes on normal formula: {sheet_name}!{ref}")
+                    if not text.strip():
+                        self.formula_blockers.append(f"Empty normal formula: {sheet_name}!{ref}")
+                    self.formula_cells.add((sheet_name, ref))
+                elif t == "shared":
+                    si = f.get("si")
+                    if si is None or not si.isdigit():
+                        self.formula_blockers.append(f"Malformed shared formula missing si: {sheet_name}!{ref}")
+                        continue
+                    if "ref" in f.attrib:
+                        if set(f.attrib) - {"t", "si", "ref"}:
+                            self.formula_blockers.append(f"Unsupported attributes on shared master: {sheet_name}!{ref}")
+                            continue
+                        if not text.strip():
+                            self.formula_blockers.append(f"Shared formula master missing formula text: {sheet_name}!{ref}")
+                            continue
+                        if si in shared_masters:
+                            self.formula_blockers.append(f"Duplicate shared formula group index: {sheet_name}")
+                            continue
+                        raw_ref = f.get("ref", "")
+                        try:
+                            rng = cell_range(raw_ref)
+                        except ModelError:
+                            self.formula_blockers.append(f"Invalid shared formula range: {sheet_name}!{ref}")
+                            continue
+                        top_left = raw_ref.partition(":")[0]
+                        if top_left != ref:
+                            self.formula_blockers.append(f"Shared formula master not at top-left of ref range: {sheet_name}!{ref}")
+                            continue
+                        shared_masters[si] = (ref, rng)
+                        for cr in rng:
+                            self.formula_cells.add((sheet_name, cr))
+                        self.formula_cells.add((sheet_name, ref))
+                        sheet_formulas.append({"type": "shared_master", "cell": ref, "si": si, "ref": raw_ref})
+                    else:
+                        if set(f.attrib) - {"t", "si"}:
+                            self.formula_blockers.append(f"Unsupported attributes on shared follower: {sheet_name}!{ref}")
+                            continue
+                        if text.strip():
+                            self.formula_blockers.append(f"Shared formula follower contains unexpected formula text: {sheet_name}!{ref}")
+                            continue
+                        self.formula_cells.add((sheet_name, ref))
+                        sheet_formulas.append({"type": "shared_follower", "cell": ref, "si": si})
+                elif t == "array":
+                    if set(f.attrib) - {"t", "ref"}:
+                        self.formula_blockers.append(f"Unsupported attributes on array formula: {sheet_name}!{ref}")
+                        continue
+                    if not text.strip():
+                        self.formula_blockers.append(f"Array formula missing formula text: {sheet_name}!{ref}")
+                        continue
+                    array_ref = f.get("ref")
+                    if not array_ref:
+                        self.formula_blockers.append(f"Malformed array formula missing ref: {sheet_name}")
+                        continue
+                    try:
+                        rng = cell_range(array_ref)
+                    except ModelError:
+                        self.formula_blockers.append(f"Invalid array formula range: {sheet_name}")
+                        continue
+                    if array_ref.partition(":")[0] != ref:
+                        self.formula_blockers.append(f"Array formula master not at top-left of ref range: {sheet_name}!{ref}")
+                        continue
+                    if protected_zone_cells & rng:
+                        self.formula_blockers.append(f"Overlapping special formula range: {sheet_name}!{ref}")
+                        continue
+                    protected_zone_cells.update(rng)
+                    for cr in rng:
+                        self.formula_cells.add((sheet_name, cr))
+                        if cr != ref:
+                            followers.add(cr)
+                    sheet_formulas.append({"type": "array", "cell": ref, "ref": array_ref})
+                elif t == "dataTable":
+                    allowed_dt_attrs = {"t", "ref", "dt2D", "dtr", "r1", "r2", "ca"}
+                    required_dt_attrs = {"t", "ref", "dt2D", "dtr", "r1", "r2"}
+                    if set(f.attrib) - allowed_dt_attrs or not required_dt_attrs.issubset(set(f.attrib)):
+                        self.formula_blockers.append(f"Malformed dataTable attributes: {sheet_name}!{ref}")
+                        continue
+                    if text.strip():
+                        self.formula_blockers.append(f"dataTable formula must not contain text: {sheet_name}!{ref}")
+                        continue
+                    if f.get("dt2D") != "1" or f.get("dtr") != "1":
+                        self.formula_blockers.append(f"Unsupported dataTable flags: {sheet_name}!{ref}")
+                        continue
+                    dt_ref = f.get("ref", "")
+                    try:
+                        coordinate(f.get("r1", ""))
+                        coordinate(f.get("r2", ""))
+                        rng = cell_range(dt_ref)
+                    except ModelError:
+                        self.formula_blockers.append(f"Invalid dataTable range or input cell reference: {sheet_name}!{ref}")
+                        continue
+                    if dt_ref.partition(":")[0] != ref:
+                        self.formula_blockers.append(f"dataTable master not at top-left of ref range: {sheet_name}!{ref}")
+                        continue
+                    if protected_zone_cells & rng:
+                        self.formula_blockers.append(f"Overlapping dataTable range: {sheet_name}!{ref}")
+                        continue
+                    protected_zone_cells.update(rng)
+                    for cr in rng:
+                        self.formula_cells.add((sheet_name, cr))
+                        if cr != ref:
+                            followers.add(cr)
+                    sheet_formulas.append({"type": "dataTable", "cell": ref, "ref": dt_ref})
+                else:
+                    self.formula_blockers.append(f"Unsupported formula type: {sheet_name} ({t})")
+
+            for item in sheet_formulas:
+                if item["type"] == "shared_follower":
+                    master = shared_masters.get(item["si"])
+                    if master is None:
+                        self.formula_blockers.append(f"Shared formula follower references missing group: {sheet_name}")
+                    else:
+                        master_ref, master_rng = master
+                        if item["cell"] == master_ref or item["cell"] not in master_rng:
+                            self.formula_blockers.append(
+                                f"Shared formula follower outside master ref range: {sheet_name}!{item['cell']}"
+                            )
+
+            self.formula_followers[sheet_name] = followers
+            if sheet_formulas:
+                self.special_formulas[sheet_name] = sheet_formulas
 
     def blockers(self) -> list[str]:
-        blockers = []
+        blockers = list(self.formula_blockers)
         calc = self.workbook.find(f"{{{NS}}}calcPr")
         if calc is not None and calc.get("iterate") in ("1", "true"):
             blockers.append("Iterative calculation requires a dedicated compatibility adapter")
@@ -169,11 +341,6 @@ class Package:
         for sheet, (_, tree) in self.sheets.items():
             if tree.find(f"{{{NS}}}sheetProtection") is not None:
                 blockers.append(f"Protected worksheet: {sheet}")
-            for formula in tree.iter(f"{{{NS}}}f"):
-                if formula.get("t", "normal") != "normal" or formula.attrib:
-                    blockers.append(f"Special formula requires compatibility adapter: {sheet}")
-                if "#REF!" in (formula.text or "").upper():
-                    blockers.append(f"Broken formula reference: {sheet}")
         return sorted(set(blockers))
 
     def summary(self) -> dict:
@@ -183,24 +350,33 @@ class Package:
             errors = [{"cell": c.get("r"), "error": c.findtext(f"{{{NS}}}v")} for c in cells if c.get("t") == "e"]
             formulas = [c for c in cells if c.find(f"{{{NS}}}f") is not None]
             sheets.append({"name": name, "cells": len(cells), "formulas": len(formulas), "cached_errors": errors})
-        return {"sha256": sha(self.data), "sheets": sheets, "unsupported_features": self.blockers(), "financial_correctness": "not_evaluated"}
+        special = {s: len(items) for s, items in self.special_formulas.items()}
+        return {"sha256": sha(self.data), "sheets": sheets, "special_formulas": special, "unsupported_features": self.blockers(), "financial_correctness": "not_evaluated"}
 
 
-def validate_pack(pack: dict, package: Package) -> list[dict]:
+def validate_pack(pack: dict, package: Package, *, allow_proposal: bool = False) -> list[dict]:
     if not isinstance(pack, dict) or type(pack.get("schema_version")) is not int or pack["schema_version"] != 1:
         raise ModelError("Unsupported model-pack version")
     digest = sha(package.data)
     if pack.get("template_sha256") != digest:
         raise ModelError("Template hash does not match the approved pack")
+    pack_status = pack.get("status", "approved")
     approval = pack.get("approval")
-    if not isinstance(approval, dict) or approval.get("template_sha256") != digest or not all(isinstance(approval.get(k), str) and approval[k].strip() for k in ("reviewer", "approved_at")):
-        raise ModelError("Pack requires recorded approval tied to this template hash")
-    try:
-        approved_at = datetime.fromisoformat(approval["approved_at"].replace("Z", "+00:00"))
-        if approved_at.tzinfo is None or "T" not in approval["approved_at"]:
-            raise ValueError("Timezone is required")
-    except ValueError as exc:
-        raise ModelError("Approval time must be an ISO datetime with timezone") from exc
+    if pack_status == "proposal" or approval is None:
+        if not allow_proposal:
+            raise ModelError("Pack is an unapproved proposal; independent human approval is required (or pass --allow-proposal for non-ready candidate testing)")
+    else:
+        if not isinstance(approval, dict) or approval.get("template_sha256") != digest or not all(isinstance(approval.get(k), str) and approval[k].strip() for k in ("reviewer", "approved_at")):
+            raise ModelError("Pack requires recorded approval tied to this template hash")
+        reviewer_words = set(re.findall(r"[a-z0-9/]+", approval["reviewer"].lower()))
+        if reviewer_words & DISALLOWED_REVIEWER_TOKENS:
+            raise ModelError(f"Pack approval reviewer cannot be an agent or placeholder: {approval['reviewer']!r}")
+        try:
+            approved_at = datetime.fromisoformat(approval["approved_at"].replace("Z", "+00:00"))
+            if approved_at.tzinfo is None or "T" not in approval["approved_at"]:
+                raise ValueError("Timezone is required")
+        except ValueError as exc:
+            raise ModelError("Approval time must be an ISO datetime with timezone") from exc
     fields = pack.get("inputs")
     checks = pack.get("checks")
     if not isinstance(fields, list) or not fields or not isinstance(checks, list) or not checks:
@@ -234,6 +410,8 @@ def validate_pack(pack: dict, package: Package) -> list[dict]:
         numeric(check.get("expected"))
         if numeric(check.get("abs_tolerance")) < 0:
             raise ModelError("Check tolerance must be nonnegative")
+        if "rel_tolerance" in check and numeric(check.get("rel_tolerance")) < 0:
+            raise ModelError("Check relative tolerance must be nonnegative")
         tree = package.sheets[check["sheet"]][1]
         if not any(c.get("r") == check["cell"] for c in tree.iter(f"{{{NS}}}c")):
             raise ModelError("Check cell is missing")
@@ -249,11 +427,17 @@ def input_cells(package: Package, fields: list[dict], supplied: dict) -> tuple[d
     edits, audit = {}, []
     for field in fields:
         item = values[field["name"]]
-        if not isinstance(item, dict) or set(item) != {"value", "source"} or not isinstance(item["source"], str) or not item["source"].strip():
+        if not isinstance(item, dict) or not {"value", "source"}.issubset(set(item)) or set(item) - {"value", "source", "unit", "period"} or not isinstance(item["source"], str) or not item["source"].strip():
             raise ModelError("Every input requires a number and a non-empty source reference")
+        if "unit" in item and item["unit"] != field["unit"]:
+            raise ModelError(f"Input unit mismatch for {field['name']}: expected {field['unit']!r}, got {item['unit']!r}")
+        if "period" in item and "period" in field and item["period"] != field["period"]:
+            raise ModelError(f"Input period mismatch for {field['name']}: expected {field['period']!r}, got {item['period']!r}")
         number = numeric(item["value"])
         if "minimum" in field and number < numeric(field["minimum"]) or "maximum" in field and number > numeric(field["maximum"]):
             raise ModelError(f"Input outside approved bounds: {field['name']}")
+        if (field["sheet"], field["cell"]) in package.formula_cells:
+            raise ModelError(f"Mapped input intersects a formula or formula range: {field['sheet']}!{field['cell']}")
         part, tree = package.sheets[field["sheet"]]
         cell = next((c for c in tree.iter(f"{{{NS}}}c") if c.get("r") == field["cell"]), None)
         if cell is None or cell.find(f"{{{NS}}}f") is not None or cell.get("t", "n") != "n":
@@ -268,14 +452,26 @@ def input_cells(package: Package, fields: list[dict], supplied: dict) -> tuple[d
             if a[0] <= col <= b[0] and a[1] <= row <= b[1]:
                 raise ModelError("Mapped input intersects a merged range")
         edits.setdefault(part, {})[field["cell"]] = str(number).encode("ascii")
-        audit.append({"name": field["name"], "sheet": field["sheet"], "cell": field["cell"], "value_decimal": str(number), "unit": field["unit"], "source": item["source"]})
+        audit_entry = {"name": field["name"], "sheet": field["sheet"], "cell": field["cell"], "value_decimal": str(number), "unit": field["unit"], "source": item["source"]}
+        if "period" in field:
+            audit_entry["period"] = field["period"]
+        if "role" in field:
+            audit_entry["role"] = field["role"]
+        audit.append(audit_entry)
     return edits, audit
 
 
-def edit_sheet(data: bytes, edits: dict[str, bytes]) -> bytes:
-    if b"<worksheet" not in data or re.search(rb"<[A-Za-z_][\w.-]*:(?:c|f|v)\b", data) or b"<!--" in data or b"<![CDATA[" in data:
+def edit_sheet(data: bytes, edits: dict[str, bytes], followers: set[str] | None = None) -> bytes:
+    if b"<worksheet" not in data or b"<!--" in data or b"<![CDATA[" in data:
         raise ModelError("Nonstandard worksheet XML requires a dedicated adapter")
+    sheet_data = list(re.finditer(rb"<sheetData\b[^>]*?/>|<sheetData\b[^>]*>.*?</sheetData>", data, re.S))
+    if len(sheet_data) != 1:
+        raise ModelError("Worksheet must contain exactly one supported sheetData element")
+    region = sheet_data[0]
+    if re.search(rb"<[A-Za-z_][\w.-]*:(?:c|f|v)\b", region[0]):
+        raise ModelError("Nonstandard worksheet cell XML requires a dedicated adapter")
     found = set()
+    follower_set = followers or set()
 
     def replace(match):
         fragment = match[0]
@@ -291,15 +487,11 @@ def edit_sheet(data: bytes, edits: dict[str, bytes]) -> bytes:
             if VALUE.search(fragment):
                 return VALUE.sub(lambda _: value, fragment)
             return fragment[:-4] + value + b"</c>"
-        if re.search(rb"<f(?:\s|/?>)", fragment):
+        if re.search(rb"<f(?:\s|/?>)", fragment) or ref in follower_set:
             opening = set_attribute(opening, "t", None)
             return opening + VALUE.sub(b"", fragment[opening_end:])
         return fragment
 
-    sheet_data = list(re.finditer(rb"<sheetData\b[^>]*?/>|<sheetData\b[^>]*>.*?</sheetData>", data, re.S))
-    if len(sheet_data) != 1:
-        raise ModelError("Worksheet must contain exactly one supported sheetData element")
-    region = sheet_data[0]
     replacement = CELL.sub(replace, region[0])
     result = data[:region.start()] + replacement + data[region.end():]
     if found != set(edits):
@@ -307,12 +499,15 @@ def edit_sheet(data: bytes, edits: dict[str, bytes]) -> bytes:
     return result
 
 
-def verify_sheet_changes(original: bytes, candidate: bytes, edited: set[str]) -> None:
+def verify_sheet_changes(original: bytes, candidate: bytes, edited: set[str], followers: set[str] | None = None) -> None:
     """Compare all worksheet XML semantics except explicitly allowed value/cache edits."""
+    if FORMULA.findall(original) != FORMULA.findall(candidate):
+        raise ModelError("Formula XML was modified during sheet editing")
+    follower_set = followers or set()
     trees = [deepcopy(xml(original)), deepcopy(xml(candidate))]
     for index, tree in enumerate(trees):
         for cell in tree.findall(f"{{{NS}}}sheetData/{{{NS}}}row/{{{NS}}}c"):
-            is_formula = cell.find(f"{{{NS}}}f") is not None
+            is_formula = cell.find(f"{{{NS}}}f") is not None or cell.get("r") in follower_set
             if index == 1 and is_formula and cell.find(f"{{{NS}}}v") is not None:
                 raise ModelError("A formula cache survived invalidation")
             if is_formula or cell.get("r") in edited:
@@ -332,7 +527,10 @@ def verify_sheet_changes(original: bytes, candidate: bytes, edited: set[str]) ->
 def calculation_flags(data: bytes) -> bytes:
     if b"<workbook" not in data:
         raise ModelError("Prefixed workbook XML requires a dedicated adapter")
-    pattern = re.compile(rb"<calcPr\b[^>]*?/>|<calcPr\b[^>]*>.*?</calcPr>", re.S)
+    pattern = re.compile(
+        rb"<(?:[A-Za-z_][\w.-]*:)?calcPr\b[^>]*?/>|<(?:[A-Za-z_][\w.-]*:)?calcPr\b[^>]*>.*?</(?:[A-Za-z_][\w.-]*:)?calcPr>",
+        re.S,
+    )
     matches = list(pattern.finditer(data))
     if len(matches) > 1:
         raise ModelError("Duplicate calculation properties")
@@ -344,7 +542,7 @@ def calculation_flags(data: bytes) -> bytes:
             tag = set_attribute(tag, key, value)
         return data[:matches[0].start()] + tag + data[matches[0].end():]
     tag = b'<calcPr calcMode="auto" fullCalcOnLoad="1" forceFullCalc="1"/>'
-    successor = re.search(rb"<(?:oleSize|customWorkbookViews|pivotCaches|smartTagPr|smartTagTypes|webPublishing|fileRecoveryPr|webPublishObjects|extLst)\b|</workbook>", data)
+    successor = re.search(rb"<(?:[A-Za-z_][\w.-]*:)?(?:oleSize|customWorkbookViews|pivotCaches|smartTagPr|smartTagTypes|webPublishing|fileRecoveryPr|webPublishObjects|extLst)\b|</(?:[A-Za-z_][\w.-]*:)?workbook>", data)
     if not successor:
         raise ModelError("Could not insert calculation properties")
     return data[:successor.start()] + tag + data[successor.start():]
@@ -355,17 +553,18 @@ def without_chain_entry(data: bytes, element: str, key: str, value: bytes) -> by
     return pattern.sub(lambda m: b"" if attribute(m[0], key) == value else m[0], data)
 
 
-def compose(template: bytes, pack: dict, supplied: dict) -> tuple[bytes, dict]:
+def compose(template: bytes, pack: dict, supplied: dict, *, allow_proposal: bool = False) -> tuple[bytes, dict]:
     package = Package(template)
     blockers = package.blockers()
     if blockers:
         raise ModelError("; ".join(blockers))
-    fields = validate_pack(pack, package)
+    fields = validate_pack(pack, package, allow_proposal=allow_proposal)
     edits, audit = input_cells(package, fields, supplied)
     changed = dict(package.parts)
-    for part, _ in package.sheets.values():
-        changed[part] = edit_sheet(changed[part], edits.get(part, {}))
-        verify_sheet_changes(package.parts[part], changed[part], set(edits.get(part, {})))
+    for sheet_name, (part, _) in package.sheets.items():
+        followers = package.formula_followers.get(sheet_name, set())
+        changed[part] = edit_sheet(changed[part], edits.get(part, {}), followers)
+        verify_sheet_changes(package.parts[part], changed[part], set(edits.get(part, {})), followers)
     changed["xl/workbook.xml"] = calculation_flags(changed["xl/workbook.xml"])
     changed.pop("xl/calcChain.xml", None)
     rel_name = "xl/_rels/workbook.xml.rels"
@@ -389,15 +588,20 @@ def compose(template: bytes, pack: dict, supplied: dict) -> tuple[bytes, dict]:
         cell = next(c for c in tree.iter(f"{{{NS}}}c") if c.get("r") == field["cell"])
         if Decimal(cell.findtext(f"{{{NS}}}v")) != Decimal(event["value_decimal"]):
             raise ModelError("Post-write input verification failed")
+    is_proposal = pack.get("status") == "proposal" or pack.get("approval") is None
+    pending_gates = ["engine_recalculation", "formula_error_scan", "independent_model_checks", "input_perturbation_and_restoration", "render_review"]
+    if is_proposal:
+        pending_gates.insert(0, "human_pack_approval")
     manifest = {
         "status": "needs_recalculation", "ready": False,
+        "pack_status": "proposal" if is_proposal else "approved",
         "template_sha256": sha(template), "output_sha256": sha(output),
         "pack_sha256": sha(json.dumps(pack, sort_keys=True, default=str).encode()),
         "input_sha256": sha(json.dumps(supplied, sort_keys=True, default=str).encode()),
         "changed_inputs": audit,
         "changed_parts": sorted(k for k, v in changed.items() if v != package.parts.get(k)),
         "removed_parts": sorted(set(package.parts) - set(changed)),
-        "pending_gates": ["engine_recalculation", "formula_error_scan", "independent_model_checks", "input_perturbation_and_restoration", "render_review"],
+        "pending_gates": pending_gates,
     }
     return output, manifest
 
@@ -428,18 +632,51 @@ def main() -> int:
     build = commands.add_parser("build")
     for name in ("template", "pack", "inputs", "output"):
         build.add_argument("--" + name, required=True)
+    build.add_argument("--allow-proposal", action="store_true", help="Allow building a non-ready candidate from an unapproved proposal pack")
+    validate = commands.add_parser("validate")
+    validate.add_argument("workbook")
+    validate.add_argument("--pack", required=True)
+    validate.add_argument("--recalculate", action="store_true")
+    validate.add_argument("--recalculated-output")
+    validate.add_argument("--perturb-check", action="store_true")
+    validate.add_argument("--template")
+    validate.add_argument("--inputs")
+    validate.add_argument("--report")
+    validate.add_argument("--allow-proposal", action="store_true", help="Allow validating a candidate against an unapproved proposal pack")
     args = parser.parse_args()
     try:
-        data = Path(args.template).read_bytes()
         if args.command == "inspect":
+            data = Path(args.template).read_bytes()
             print(json.dumps(Package(data).summary(), indent=2))
-        else:
+        elif args.command == "build":
+            data = Path(args.template).read_bytes()
             if Path(args.template).resolve() == Path(args.output).resolve():
                 raise ModelError("Output must be different from the original template")
-            output, manifest = compose(data, read_json(args.pack), read_json(args.inputs))
+            output, manifest = compose(data, read_json(args.pack), read_json(args.inputs), allow_proposal=args.allow_proposal)
             with Path(args.output).open("xb") as destination:
                 destination.write(output)
             print(json.dumps(manifest, indent=2))
+        elif args.command == "validate":
+            from validate_workbook import validate_candidate
+
+            if args.report and Path(args.report).exists():
+                raise ModelError(f"Report output already exists and will not be overwritten: {args.report}")
+            report = validate_candidate(
+                workbook_path=Path(args.workbook),
+                pack_path=Path(args.pack),
+                recalculate=args.recalculate,
+                recalculated_output=Path(args.recalculated_output) if args.recalculated_output else None,
+                perturb_check=args.perturb_check,
+                template_path=Path(args.template) if args.template else None,
+                inputs_path=Path(args.inputs) if args.inputs else None,
+                allow_proposal=args.allow_proposal,
+            )
+            text = json.dumps(report, indent=2)
+            if args.report:
+                with Path(args.report).open("x", encoding="utf-8") as report_file:
+                    report_file.write(text + "\n")
+            print(text)
+            return 0 if report.get("checks_passed") else 1
         return 0
     except (ModelError, OSError, KeyError, TypeError) as exc:
         print(json.dumps({"status": "blocked", "ready": False, "error": str(exc)}))
@@ -448,3 +685,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

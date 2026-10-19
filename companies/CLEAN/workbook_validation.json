@@ -1,0 +1,155 @@
+{
+  "run_id": "9d8bd2de5ef34788b6d2fb2748cb6781",
+  "timestamp_utc": "2026-10-17T09:18:43.351046+00:00",
+  "status": "recalculated_checks_passed",
+  "ready": false,
+  "checks_passed": true,
+  "pack_status": "proposal",
+  "calculation_engine": "none (cached values inspected)",
+  "calculation_engine_version": null,
+  "template_sha256": null,
+  "pack_sha256": "955df1a13880740be53b6384a4735ebceecf6be9cb259abc882ad8e10b51153c",
+  "inputs_sha256": null,
+  "candidate_input_workbook_sha256": "3b783bee179114fcd5abe25a0d5d3c3d9ed401d4e7ce24eb66bcf7f6807689ed",
+  "workbook_sha256": "3b783bee179114fcd5abe25a0d5d3c3d9ed401d4e7ce24eb66bcf7f6807689ed",
+  "recalculation": null,
+  "excluded_schedules": [],
+  "formula_error_count": 0,
+  "formula_errors": [],
+  "uncalculated_formula_count": 0,
+  "uncalculated_formula_sample": [],
+  "pack_checks_passed": 4,
+  "pack_checks_total": 4,
+  "pack_checks": [
+    {
+      "name": "balance_sheet_identity_fy25",
+      "passed": true,
+      "computed": "0",
+      "expected": "0.0",
+      "abs_diff": "0.0",
+      "abs_tolerance": "0.01",
+      "sheet": "Balance Sheet",
+      "cell": "H17"
+    },
+    {
+      "name": "consolidated_revenue_fy25",
+      "passed": true,
+      "computed": "967",
+      "expected": "967.0",
+      "abs_diff": "0.0",
+      "abs_tolerance": "1.0",
+      "sheet": "Income Statement",
+      "cell": "H5"
+    },
+    {
+      "name": "consolidated_pat_fy25",
+      "passed": true,
+      "computed": "264",
+      "expected": "264.0",
+      "abs_diff": "0.0",
+      "abs_tolerance": "1.0",
+      "sheet": "Income Statement",
+      "cell": "H14"
+    },
+    {
+      "name": "implied_fair_value_per_share",
+      "passed": true,
+      "computed": "480.88753961350159",
+      "expected": "480.89",
+      "abs_diff": "0.00246038649841",
+      "abs_tolerance": "0.05",
+      "sheet": "Cover & Notes",
+      "cell": "E8"
+    }
+  ],
+  "independent_identities_passed": 10,
+  "independent_identities_total": 10,
+  "independent_identities": [
+    {
+      "name": "bs_total_assets_eq_liabilities_all_12_periods",
+      "passed": true,
+      "computed": "0",
+      "expected": "0",
+      "abs_diff": "0",
+      "abs_tolerance": "0.05"
+    },
+    {
+      "name": "bs_forecast_double_entry_cash_closure",
+      "passed": true,
+      "computed": "0",
+      "expected": "0",
+      "abs_diff": "0",
+      "abs_tolerance": "0.05"
+    },
+    {
+      "name": "cover_market_cap_identity",
+      "passed": true,
+      "computed": "11070.082000000002",
+      "expected": "11070.082000000001063",
+      "abs_diff": "9.37E-13",
+      "abs_tolerance": "1.0"
+    },
+    {
+      "name": "dcf_wacc_linked_to_schedule",
+      "passed": true,
+      "computed": "0.1173",
+      "expected": "0.1173",
+      "abs_diff": "0.0000",
+      "abs_tolerance": "0.000001"
+    },
+    {
+      "name": "dcf_capm_cost_of_equity",
+      "passed": true,
+      "computed": "0.11733299999999999",
+      "expected": "0.11733299999999999680",
+      "abs_diff": "6.80E-18",
+      "abs_tolerance": "0.00001"
+    },
+    {
+      "name": "dcf_enterprise_value_sum",
+      "passed": true,
+      "computed": "4712.8345460915225",
+      "expected": "4712.8345460915225",
+      "abs_diff": "0E-13",
+      "abs_tolerance": "0.5"
+    },
+    {
+      "name": "dcf_cash_bridge_matches_balance_sheet_exact",
+      "passed": true,
+      "computed": "401",
+      "expected": "401",
+      "abs_diff": "0",
+      "abs_tolerance": "0.5"
+    },
+    {
+      "name": "dcf_equity_value_bridge",
+      "passed": true,
+      "computed": "5111.8345460915225",
+      "expected": "5111.8345460915225",
+      "abs_diff": "0E-13",
+      "abs_tolerance": "0.5"
+    },
+    {
+      "name": "dcf_per_share_value",
+      "passed": true,
+      "computed": "480.88753961350159",
+      "expected": "480.8875396135016462841015992",
+      "abs_diff": "5.62841015992E-14",
+      "abs_tolerance": "0.05"
+    },
+    {
+      "name": "dcf_sensitivity_base_case_reconciliation",
+      "passed": true,
+      "computed": "0",
+      "expected": "0",
+      "abs_diff": "0",
+      "abs_tolerance": "0.05"
+    }
+  ],
+  "perturbation_and_restoration": null,
+  "pending_gates": [
+    "human_pack_approval",
+    "input_perturbation_and_restoration",
+    "render_review"
+  ]
+}

@@ -1,0 +1,1428 @@
+{
+  "audit_schema_version": 1,
+  "source_template": "originals/ERR-4.pptx",
+  "source_template_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+  "total_slides_audited": 25,
+  "retained_slides_count": 5,
+  "retained_slide_numbers": [
+    1,
+    2,
+    14,
+    16,
+    23
+  ],
+  "pruned_slides_count": 20,
+  "missing_verified_assets": [
+    {
+      "asset_id": "marksans_corporate_logo",
+      "description": "High-resolution official Marksans corporate logo vector/PNG",
+      "reason": "Not present in uploaded originals/ assets; inventing or relabeling is forbidden by policy",
+      "handling": "Flagged explicitly in audit and manifest; Sun Pharma header logo blocked/suppressed"
+    }
+  ],
+  "slides": [
+    {
+      "slide": 1,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "INTRODUCTION",
+      "is_retained": true,
+      "narrative_role": "Slide 1: Title & Company Profile",
+      "status": "retained_for_marksans_narrative",
+      "stale_element_count": 6,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 7,
+          "shape_name": "object 18",
+          "excerpt": "Sun Pharma started as a domestic branded-formulations player and scaled largely through acquisitions",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 14,
+          "shape_name": "object 18",
+          "excerpt": "\u2022 Dosage Forms: Tablets, capsules, injectables, inhalers, ointments, creams, and liquids.\u2022 Product C",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 20,
+          "shape_name": "TextBox 19",
+          "excerpt": "\u2022 Specialty-led Mix Shift: Focus on expanding higher-margin Innovative Medicines to offset US generi",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId3",
+          "part": "ppt/charts/chart1.xml",
+          "title": "Revenue Mix (in %)",
+          "series": [
+            "",
+            "",
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        }
+      ],
+      "shape_count": 12,
+      "table_count": 0,
+      "chart_count": 1,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 2,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "Sun Pharmaceutical Industries Ltd. (NSE: SUNPHARMA) is India's largest pharma company and the largest Indian player in the US market. FY26 consolidated revenue grew 11.9% YoY to ~\u20b958,220 crore, EBITDA rose 16.1% to ~\u20b917,700 crore, and net profit grew 5% to ~\u20b911,479 crore. Stock trades at ~\u20b91,880\u20131,900 (market cap ~\u20b94.6 lakh crore, mid-July 2026), 52-week range \u20b91,548\u20131,963, P/E ~38\u201339x, near debt-free, dividend payout ~34%.",
+      "is_retained": true,
+      "narrative_role": "Slide 2: Executive Summary, Investment Thesis & Key Highlights",
+      "status": "retained_for_marksans_narrative",
+      "stale_element_count": 7,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 7,
+          "shape_name": "object 18",
+          "excerpt": "Sun Pharmaceutical Industries Ltd. (NSE: SUNPHARMA) is India's largest pharma company and the larges",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 7,
+          "shape_name": "object 18",
+          "excerpt": "Thesis: a structural shift from commoditized US generics toward a higher-margin Global Innovative Me",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 12,
+          "shape_name": "object 18",
+          "excerpt": "\u2022 Revenue: \u20b958,220 crore (+11.9% YoY); Net Profit: \u20b911,479 crore (+5% YoY)\u2022 India Formulations: \u20b919,",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId3",
+          "part": "ppt/charts/chart2.xml",
+          "title": "Revenue by Segment (\u20b9 Crore)",
+          "series": [
+            "",
+            "",
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId4",
+          "part": "ppt/charts/chart3.xml",
+          "title": "FY26 Snapshot (\u20b9 Crore)",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        }
+      ],
+      "shape_count": 9,
+      "table_count": 0,
+      "chart_count": 2,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 3,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "Industry Overview",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 3) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 2,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        }
+      ],
+      "shape_count": 10,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 4,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "Industry Overview",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 4) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 3,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "picture_logo",
+          "picture_id": 30,
+          "media": "ppt/media/image2.png",
+          "issue": "Sun Pharma corporate logo in slide header"
+        }
+      ],
+      "shape_count": 10,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 3,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 5,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "Some Major Indian Players",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 5) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 2,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        }
+      ],
+      "shape_count": 8,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 9,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 6,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "PORTER\u2019S FIVE FORCES",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 6) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 4,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 31,
+          "shape_name": "TextBox 30",
+          "excerpt": "High Capital and Regulatory Requirement: Entering the global pharmaceutical market requires massive ",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 45,
+          "shape_name": "TextBox 44",
+          "excerpt": "Strategic Backward Integration: Sun Pharma manufactures over 400 APIs in-house across 14 dedicated g",
+          "issue": "Sun Pharma specific corporate text"
+        }
+      ],
+      "shape_count": 15,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 7,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "PORTER\u2019S FIVE FORCES",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 7) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 3,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 35,
+          "shape_name": "TextBox 34",
+          "excerpt": "Shift Towards Preventative Care: There is a growing global consumer shift towards self-care, wellnes",
+          "issue": "Sun Pharma specific corporate text"
+        }
+      ],
+      "shape_count": 12,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 3,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 8,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "EXPLOSIVE GROWTH IN SPECIALTY MARKETS",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 8) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 5,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 84,
+          "shape_name": "object 48",
+          "excerpt": "Backed by over 3,000 global scientists, Sun Pharma consistently invests 6% to 8% of its annual reven",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 86,
+          "shape_name": "object 48",
+          "excerpt": "A highly resilient balance sheet with strong cash reserves empowers Sun Pharma to pursue strategic, ",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 100,
+          "shape_name": "object 48",
+          "excerpt": "global healthcare and are projected to account for 43% of total global pharmaceutical spending by 20",
+          "issue": "Sun Pharma specific corporate text"
+        }
+      ],
+      "shape_count": 24,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": "8"
+    },
+    {
+      "slide": 9,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "Sun Pharma delivered a strong Q4 FY25, with Revenue from Operations rising 8.96% YoY to \u20b9129,588 million. Profit Before Tax grew 15.59% YoY to \u20b932,544 million, while Net Profit After Tax increased 18.62% YoY to \u20b931,539 million  profit growth outpacing revenue growth, reflecting improved operating leverage and cost efficiency even within a single quarter.",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 9) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 4,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 6,
+          "shape_name": "TextBox 5",
+          "excerpt": "Sun Pharma delivered a strong Q4 FY25, with Revenue from Operations rising 8.96% YoY to \u20b9129,588 mil",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId3",
+          "part": "ppt/charts/chart4.xml",
+          "title": "Q4 FY24 vs Q4 FY25 Performance",
+          "series": [
+            "",
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        }
+      ],
+      "shape_count": 7,
+      "table_count": 0,
+      "chart_count": 1,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 10,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "INCOME STATEMENT ANALYSIS",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 10) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 2,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        }
+      ],
+      "shape_count": 7,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 4,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 11,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "INCOME STATEMENT ANALYSIS",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 11) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 6,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 15,
+          "shape_name": "object 35",
+          "excerpt": "Sun Pharma's revenue growth has been primarily driven by higher sales volumes across its branded for",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId3",
+          "part": "ppt/charts/chart5.xml",
+          "title": "RFO",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId4",
+          "part": "ppt/charts/chart6.xml",
+          "title": "",
+          "series": [
+            "",
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId5",
+          "part": "ppt/charts/chart7.xml",
+          "title": "Revenue Growth Momentum",
+          "series": [
+            "",
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        }
+      ],
+      "shape_count": 9,
+      "table_count": 0,
+      "chart_count": 3,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 12,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "BALANCE SHEET ANALYSIS",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 12) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 2,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        }
+      ],
+      "shape_count": 7,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 2,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 13,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "EQUITY RESEARCH REPORT",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 13) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 7,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 97,
+          "shape_name": "object 33",
+          "excerpt": "Sun Pharma's non-current assets increased from \u20b9326,669 million in FY2018 to \u20b9430,226 million in FY2",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId3",
+          "part": "ppt/charts/chart8.xml",
+          "title": "Non-Current Assets",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId4",
+          "part": "ppt/charts/chart9.xml",
+          "title": "Current Assets",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId5",
+          "part": "ppt/charts/chart10.xml",
+          "title": "Total Equity",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId6",
+          "part": "ppt/charts/chart11.xml",
+          "title": "Total Borrowings",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        }
+      ],
+      "shape_count": 10,
+      "table_count": 0,
+      "chart_count": 4,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 14,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "CASH FLOW STATEMENT ANALYSIS",
+      "is_retained": true,
+      "narrative_role": "Slide 3: Cash Flow Statement Analysis (Consolidated FY18-FY25)",
+      "status": "retained_for_marksans_narrative",
+      "stale_element_count": 3,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 15,
+          "shape_name": "object 18",
+          "excerpt": "Sun Pharma's consolidated cash flow from operating activities has grown from \u20b93,907 crore in FY18 to",
+          "issue": "Sun Pharma specific corporate text"
+        }
+      ],
+      "shape_count": 8,
+      "table_count": 1,
+      "chart_count": 0,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 15,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "Sun Pharma recorded a net cash outflow of \u20b95,306 crore from investing activities in FY25, mainly driven by capital expenditure of \u20b92,068 crore towards manufacturing capacity and R&D infrastructure, alongside net investment purchases (largely mutual funds and other financial instruments) of \u20b93,864 crore. Capex has stayed in the \u20b91,000\u20133,200 crore range through the period, with FY19 seeing the highest spend at \u20b93,162 crore, reflecting continued but disciplined reinvestment even as the business scaled. Investing outflows have also included acquisitions of subsidiaries in select years, most notably FY23 (\u20b94,686 crore) and FY25, supporting Sun Pharma's push into specialty and global branded generics. A few years, like FY21 and FY24, saw comparatively modest net outflows as investment sales and maturing deposits partly offset fresh deployments, underscoring an investing strategy that balances growth spending with liquidity management.",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 15) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 6,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 7,
+          "shape_name": "object 18",
+          "excerpt": "Sun Pharma recorded a net cash outflow of \u20b95,306 crore from investing activities in FY25, mainly dri",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 12,
+          "shape_name": "object 18",
+          "excerpt": "Financing activities used \u20b97,906 crore of cash in FY25, primarily on account of \u20b93,617 crore in divi",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId3",
+          "part": "ppt/charts/chart12.xml",
+          "title": "Cash Flow (\u20b9 Crore)",
+          "series": [
+            "",
+            "",
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId4",
+          "part": "ppt/charts/chart13.xml",
+          "title": "Net Cash Flow (\u20b9 Crore)",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        }
+      ],
+      "shape_count": 9,
+      "table_count": 0,
+      "chart_count": 2,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 16,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "Sun Pharma's current ratio has improved steadily from 1.59x in FY18 to 2.89x in FY25, reflecting a consistent build-up of current assets; particularly investments and cash relative to current liabilities. The ratio has remained comfortably above 1.5x throughout, indicating strong short-term liquidity and a low reliance on external working capital funding.",
+      "is_retained": true,
+      "narrative_role": "Slide 4: Balance Sheet & Liquidity Ratio Analysis (FY18-FY25)",
+      "status": "retained_for_marksans_narrative",
+      "stale_element_count": 7,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 11,
+          "shape_name": "object 18",
+          "excerpt": "Sun Pharma's current ratio has improved steadily from 1.59x in FY18 to 2.89x in FY25, reflecting a c",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 15,
+          "shape_name": "object 10",
+          "excerpt": "The quick ratio, which excludes inventory, has more than doubled from 1.25x in FY18 to 2.33x in FY25",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "table_cell",
+          "table_id": 9,
+          "row": 0,
+          "col": 0,
+          "excerpt": "Ratio Analysis \u2013 SUN PHARMA (Consolidated)",
+          "issue": "Sun Pharma label in table"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId3",
+          "part": "ppt/charts/chart14.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId4",
+          "part": "ppt/charts/chart15.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        }
+      ],
+      "shape_count": 10,
+      "table_count": 1,
+      "chart_count": 2,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 17,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "Sun Pharma has sharply deleveraged over the period, with debt-to-equity falling from 0.23x in FY18 to just 0.03x in FY25. Total borrowings have shrunk in absolute terms even as equity has nearly doubled on the back of retained profits, leaving the balance sheet almost debt-free by FY22 onward.",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 17) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 8,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 6,
+          "shape_name": "object 18",
+          "excerpt": "Sun Pharma has sharply deleveraged over the period, with debt-to-equity falling from 0.23x in FY18 t",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 9,
+          "shape_name": "object 18",
+          "excerpt": "Sun Pharma's Interest Coverage Ratio has improved dramatically, rising from 7.72x in FY18 to 60.44x ",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 11,
+          "shape_name": "object 18",
+          "excerpt": "Unlike consumer-facing businesses, Sun Pharma's Cash Conversion Cycle is structurally high and posit",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId4",
+          "part": "ppt/charts/chart16.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId5",
+          "part": "ppt/charts/chart17.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId6",
+          "part": "ppt/charts/chart18.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        }
+      ],
+      "shape_count": 11,
+      "table_count": 0,
+      "chart_count": 3,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": "17"
+    },
+    {
+      "slide": 18,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "EQUITY RESEARCH REPORT",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 18) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 7,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 8,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 9,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId3",
+          "part": "ppt/charts/chart19.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId4",
+          "part": "ppt/charts/chart20.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId5",
+          "part": "ppt/charts/chart21.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId6",
+          "part": "ppt/charts/chart22.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId7",
+          "part": "ppt/charts/chart23.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        }
+      ],
+      "shape_count": 12,
+      "table_count": 0,
+      "chart_count": 5,
+      "picture_count": 3,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 19,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "The ROE of Sun Pharma has remained resilient over the last decade, recovering from a low of 5.60% in FY18 to 14.74% in FY26. This improvement reflects stronger shareholder value creation, supported primarily by expanding profitability, improving asset utilization, and disciplined capital allocation following the successful scale-up of the Global Specialty business. The improvement in ROE has been driven by a steady increase in the Asset Turnover Ratio, which improved from 0.42x in FY18 to 0.58x in FY26, indicating more efficient utilization of assets to generate revenue. At the same time, the Net Profit Margin strengthened significantly from 7.90% in FY18 to 19.72% in FY26, reflecting higher profitability driven by an improved product mix and operational efficiency. Financial Leverage has steadily declined from 1.99x in FY16 to 1.29x in FY26, highlighting the company's conservative capital structure and lower dependence on debt. Despite lower leverage, Sun Pharma has continued to deliver healthy equity returns, demonstrating that profitability growth rather than financial leverage has been the key driver of ROE. The Capital Turnover Ratio improved from 0.53x in FY18 to 0.72x in FY26, while EBIT Margin expanded from 15.09% to 28.92% during the same period. Consequently, ROCE increased from 7.98% in FY18 to 20.70% in FY26, reflecting significantly better capital utilization and reinforcing management's ability to generate stronger returns on invested capital.",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 19) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 4,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 9,
+          "shape_name": "TextBox 8",
+          "excerpt": "The ROE of Sun Pharma has remained resilient over the last decade, recovering from a low of 5.60% in",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "picture_logo",
+          "picture_id": 7,
+          "media": "ppt/media/image20.png",
+          "issue": "Sun Pharma corporate logo in slide header"
+        }
+      ],
+      "shape_count": 7,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 2,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 20,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "COFFEE CAN INVESTMENT FRAMEWORK",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 20) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 8,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 40,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 41,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 7,
+          "shape_name": "TextBox 6",
+          "excerpt": "Sun Pharma: Non-Coffee Can but a Quality Structural Compounder",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 7,
+          "shape_name": "TextBox 6",
+          "excerpt": "Sun Pharma does not qualify as a strict Coffee Can stock due to inconsistent Revenue Growth and ROCE",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 9,
+          "shape_name": "TextBox 8",
+          "excerpt": "Sun Pharma satisfies this criterion with a continuous 10-year financial track record (FY16\u2013FY25).",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 9,
+          "shape_name": "TextBox 8",
+          "excerpt": "Sun Pharma delivered an average ROCE of 16.44%, crossing 15% in 6 of 10 years. ROCE dipped during FY",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 9,
+          "shape_name": "TextBox 8",
+          "excerpt": "Sun Pharma generates over US$1 billion in operating cash flow annually and held a net cash position ",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 15,
+          "shape_name": "TextBox 14",
+          "excerpt": "Comparing Conditions with Sun Pharma",
+          "issue": "Sun Pharma specific corporate text"
+        }
+      ],
+      "shape_count": 12,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 21,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "EQUITY RESEARCH REPORT",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 21) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 6,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 22,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 23,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 5,
+          "shape_name": "TextBox 4",
+          "excerpt": "Sun Pharmaceutical Industries Ltd. successfully passes Warren Buffett's $1 Test.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 5,
+          "shape_name": "TextBox 4",
+          "excerpt": "Sun Pharma generated \u20b96.21 of market value for every \u20b91 of retained earnings, far exceeding Buffett'",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "picture_logo",
+          "picture_id": 7,
+          "media": "ppt/media/image21.png",
+          "issue": "Sun Pharma corporate logo in slide header"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId5",
+          "part": "ppt/charts/chart24.xml",
+          "title": "",
+          "series": [
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        }
+      ],
+      "shape_count": 10,
+      "table_count": 0,
+      "chart_count": 1,
+      "picture_count": 2,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 22,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "MARKET INDEX ANALYSIS",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 22) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 5,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 22,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 23,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 31,
+          "shape_name": "TextBox 30",
+          "excerpt": "Sun Pharma delivered strong long-term outperformance driven by its successful Global Specialty strat",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 3,
+          "shape_name": "TextBox 2",
+          "excerpt": "Sun Pharma Alpha",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "chart",
+          "chart_rid": "rId3",
+          "part": "ppt/charts/chart25.xml",
+          "title": "NIFTY Pharma Vs NIFTY 50 Vs Sun Pharma",
+          "series": [
+            "",
+            "",
+            ""
+          ],
+          "issue": "Native chart with Sun Pharma cached data and embedded workbook"
+        }
+      ],
+      "shape_count": 8,
+      "table_count": 0,
+      "chart_count": 1,
+      "picture_count": 1,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 23,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "DISCOUNTED CASHFLOW VALUATION - WAC\u0421",
+      "is_retained": true,
+      "narrative_role": "Slide 5: DCF Valuation & WACC Calculation",
+      "status": "retained_for_marksans_narrative",
+      "stale_element_count": 6,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 22,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 23,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "picture_financial_screenshot",
+          "picture_id": 25,
+          "media": "ppt/media/image1.png",
+          "issue": "Embedded raster screenshot of Sun Pharma financial schedule"
+        },
+        {
+          "kind": "picture_logo",
+          "picture_id": 7,
+          "media": "ppt/media/image22.png",
+          "issue": "Sun Pharma corporate logo in slide header"
+        },
+        {
+          "kind": "picture_logo",
+          "picture_id": 9,
+          "media": "ppt/media/image23.png",
+          "issue": "Sun Pharma corporate logo in slide header"
+        },
+        {
+          "kind": "picture_logo",
+          "picture_id": 11,
+          "media": "ppt/media/image24.png",
+          "issue": "Sun Pharma corporate logo in slide header"
+        }
+      ],
+      "shape_count": 6,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 4,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 24,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "Sun Pharmaceutical Industries Ltd.",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 24) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 7,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 13,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 14,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "picture_financial_screenshot",
+          "picture_id": 16,
+          "media": "ppt/media/image1.png",
+          "issue": "Embedded raster screenshot of Sun Pharma financial schedule"
+        },
+        {
+          "kind": "picture_logo",
+          "picture_id": 33,
+          "media": "ppt/media/image25.png",
+          "issue": "Sun Pharma corporate logo in slide header"
+        },
+        {
+          "kind": "picture_logo",
+          "picture_id": 35,
+          "media": "ppt/media/image26.png",
+          "issue": "Sun Pharma corporate logo in slide header"
+        },
+        {
+          "kind": "picture_logo",
+          "picture_id": 37,
+          "media": "ppt/media/image27.png",
+          "issue": "Sun Pharma corporate logo in slide header"
+        },
+        {
+          "kind": "picture_logo",
+          "picture_id": 39,
+          "media": "ppt/media/image28.png",
+          "issue": "Sun Pharma corporate logo in slide header"
+        }
+      ],
+      "shape_count": 5,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 5,
+      "is_hidden": false,
+      "notes_excerpt": null
+    },
+    {
+      "slide": 25,
+      "source_deck": "originals/ERR-4.pptx",
+      "source_deck_sha256": "9d41ec99b9a4d0426ce4e2ab6174604859bb6a406aa82a2cd690431a36c298ba",
+      "original_header": "EQUITY RESEARCH REPORT",
+      "is_retained": false,
+      "narrative_role": "Sun Pharma specific detailed slide (Slide 25) excluded to maintain coherent Marksans narrative",
+      "status": "pruned_unrelated_content",
+      "stale_element_count": 6,
+      "stale_elements": [
+        {
+          "kind": "shape_text",
+          "shape_id": 8,
+          "shape_name": "object 40",
+          "excerpt": "Sun Pharmaceutical Industries Ltd.",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "shape_text",
+          "shape_id": 9,
+          "shape_name": "object 41",
+          "excerpt": "NSE : SUNPHARMA | BSE Code: 524715",
+          "issue": "Sun Pharma specific corporate text"
+        },
+        {
+          "kind": "picture_financial_screenshot",
+          "picture_id": 11,
+          "media": "ppt/media/image1.png",
+          "issue": "Embedded raster screenshot of Sun Pharma financial schedule"
+        },
+        {
+          "kind": "picture_logo",
+          "picture_id": 24,
+          "media": "ppt/media/image29.png",
+          "issue": "Sun Pharma corporate logo in slide header"
+        },
+        {
+          "kind": "picture_financial_screenshot",
+          "picture_id": 26,
+          "media": "ppt/media/image30.png",
+          "issue": "Embedded raster screenshot of Sun Pharma financial schedule"
+        },
+        {
+          "kind": "picture_financial_screenshot",
+          "picture_id": 28,
+          "media": "ppt/media/image31.png",
+          "issue": "Embedded raster screenshot of Sun Pharma financial schedule"
+        }
+      ],
+      "shape_count": 5,
+      "table_count": 0,
+      "chart_count": 0,
+      "picture_count": 4,
+      "is_hidden": false,
+      "notes_excerpt": null
+    }
+  ]
+}

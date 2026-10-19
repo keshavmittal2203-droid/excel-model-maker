@@ -1,0 +1,66 @@
+{
+  "version_tag": "template_v8",
+  "targets": {
+    "MM": {
+      "total_entries": 36,
+      "primary_sourced": 27,
+      "formula_output": 0,
+      "unavailable_on_allowed_sources": 9,
+      "zero_disallowed_urls": true,
+      "reconciled_beta_wacc": {
+        "raw_beta": 1.4746,
+        "blume_adjusted_beta": 1.3164,
+        "evaluated_wacc": 0.1197
+      },
+      "valuation_status": "unavailable",
+      "fair_value_per_share": null
+    },
+    "LTM": {
+      "total_entries": 33,
+      "primary_sourced": 32,
+      "formula_output": 1,
+      "unavailable_on_allowed_sources": 0,
+      "zero_disallowed_urls": true,
+      "reconciled_beta_wacc": {
+        "raw_beta": 1.1526,
+        "blume_adjusted_beta": 1.1018,
+        "evaluated_wacc": 0.1248
+      },
+      "valuation_status": "supported",
+      "fair_value_per_share": 2828.6
+    },
+    "CLEAN": {
+      "total_entries": 34,
+      "primary_sourced": 33,
+      "formula_output": 1,
+      "unavailable_on_allowed_sources": 0,
+      "zero_disallowed_urls": true,
+      "reconciled_beta_wacc": {
+        "raw_beta": 1.3212,
+        "blume_adjusted_beta": 1.2141,
+        "evaluated_wacc": 0.1319
+      },
+      "valuation_status": "supported",
+      "fair_value_per_share": 408.55
+    },
+    "EDELWEISS": {
+      "total_entries": 35,
+      "primary_sourced": 33,
+      "formula_output": 0,
+      "unavailable_on_allowed_sources": 2,
+      "zero_disallowed_urls": true,
+      "reconciled_beta_wacc": {
+        "raw_beta": 2.1231,
+        "blume_adjusted_beta": 1.7487,
+        "evaluated_wacc": 0.1047
+      },
+      "valuation_status": "unavailable",
+      "fair_value_per_share": null
+    }
+  },
+  "allowlist_audit": {
+    "strict_seven_sources_only": true,
+    "disallowed_domains_count": 0,
+    "historical_cutoff": "2025-10-15"
+  }
+}

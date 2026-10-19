@@ -1,0 +1,9 @@
+{
+  "source_org": "Screener",
+  "source_url": "https://www.screener.in/company/M%26M/",
+  "retrieved_on": "2026-10-19",
+  "field": "Company profile / About and Business Positioning",
+  "scope": "Descriptive label only; not used as a financial input or valuation driver.",
+  "summary": "The profile describes M&M as a diversified automotive company, notes financial-services presence through group companies, and identifies mobility products and farm solutions as core businesses.",
+  "workbook_cell": "'Model ->'!C5"
+}

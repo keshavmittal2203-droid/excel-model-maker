@@ -1,0 +1,139 @@
+{
+  "run_id": "752c4ae025214decb630ab5142fc7ae1",
+  "timestamp_utc": "2026-10-17T09:19:01.456000+00:00",
+  "status": "recalculated_checks_passed",
+  "ready": false,
+  "checks_passed": true,
+  "pack_status": "proposal",
+  "calculation_engine": "none (cached values inspected)",
+  "calculation_engine_version": null,
+  "template_sha256": null,
+  "pack_sha256": "07023f73202af0a3204018dc62d499164a72a995e29d4b82ad26d8515e53db2f",
+  "inputs_sha256": null,
+  "candidate_input_workbook_sha256": "62fb554c61624d837345a125fe75ee6e2a3f5b076f1f8a4380f50504041a62db",
+  "workbook_sha256": "62fb554c61624d837345a125fe75ee6e2a3f5b076f1f8a4380f50504041a62db",
+  "recalculation": null,
+  "excluded_schedules": [],
+  "formula_error_count": 0,
+  "formula_errors": [],
+  "uncalculated_formula_count": 0,
+  "uncalculated_formula_sample": [],
+  "pack_checks_passed": 4,
+  "pack_checks_total": 4,
+  "pack_checks": [
+    {
+      "name": "balance_sheet_identity_fy25",
+      "passed": true,
+      "computed": "0",
+      "expected": "0.0",
+      "abs_diff": "0.0",
+      "abs_tolerance": "0.01",
+      "sheet": "Balance Sheet",
+      "cell": "H17"
+    },
+    {
+      "name": "consolidated_revenue_fy25",
+      "passed": true,
+      "computed": "9393",
+      "expected": "9393.0",
+      "abs_diff": "0.0",
+      "abs_tolerance": "1.0",
+      "sheet": "Income Statement",
+      "cell": "H5"
+    },
+    {
+      "name": "consolidated_pat_fy25",
+      "passed": true,
+      "computed": "536",
+      "expected": "536.0",
+      "abs_diff": "0.0",
+      "abs_tolerance": "1.0",
+      "sheet": "Income Statement",
+      "cell": "H14"
+    },
+    {
+      "name": "implied_fair_value_per_share",
+      "passed": true,
+      "computed": "130.52910052910053",
+      "expected": "130.53",
+      "abs_diff": "0.00089947089947",
+      "abs_tolerance": "0.05",
+      "sheet": "Cover & Notes",
+      "cell": "E8"
+    }
+  ],
+  "independent_identities_passed": 8,
+  "independent_identities_total": 8,
+  "independent_identities": [
+    {
+      "name": "bs_total_assets_eq_liabilities_all_12_periods",
+      "passed": true,
+      "computed": "0",
+      "expected": "0",
+      "abs_diff": "0",
+      "abs_tolerance": "0.05"
+    },
+    {
+      "name": "bs_forecast_double_entry_cash_closure",
+      "passed": true,
+      "computed": "0",
+      "expected": "0",
+      "abs_diff": "0",
+      "abs_tolerance": "0.05"
+    },
+    {
+      "name": "cover_market_cap_identity",
+      "passed": true,
+      "computed": "10286.324999999999",
+      "expected": "10286.325",
+      "abs_diff": "1E-12",
+      "abs_tolerance": "1.0"
+    },
+    {
+      "name": "sotp_edelweiss_vertical_sum",
+      "passed": true,
+      "computed": "15402",
+      "expected": "15402",
+      "abs_diff": "0",
+      "abs_tolerance": "0.5"
+    },
+    {
+      "name": "sotp_edelweiss_standalone_holdco_debt_bridge_tie",
+      "passed": true,
+      "computed": "-3067",
+      "expected": "-3067",
+      "abs_diff": "0",
+      "abs_tolerance": "0.5"
+    },
+    {
+      "name": "sotp_edelweiss_equity_value",
+      "passed": true,
+      "computed": "12335",
+      "expected": "12335",
+      "abs_diff": "0",
+      "abs_tolerance": "0.5"
+    },
+    {
+      "name": "sotp_edelweiss_per_share",
+      "passed": true,
+      "computed": "130.52910052910053",
+      "expected": "130.5291005291005291005291005",
+      "abs_diff": "8.994708995E-16",
+      "abs_tolerance": "0.05"
+    },
+    {
+      "name": "sotp_edelweiss_sensitivity_base_case_reconciliation",
+      "passed": true,
+      "computed": "0",
+      "expected": "0",
+      "abs_diff": "0",
+      "abs_tolerance": "0.05"
+    }
+  ],
+  "perturbation_and_restoration": null,
+  "pending_gates": [
+    "human_pack_approval",
+    "input_perturbation_and_restoration",
+    "render_review"
+  ]
+}

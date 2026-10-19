@@ -7,10 +7,15 @@ __pycache__/
 *.xlsx
 *.xlsm
 *.xlsb
+*.pptx
 *.pdf
 *.mp4
 artifacts/
 scratch/
+candidates/
+generated/
+staging/
+deliverables/
 *.manifest.json
 
 # Generated report outputs and Excel lock files
@@ -28,3 +33,4 @@ dist/
 *.egg-info/
 
 # Binary source/output assets belong in versioned cloud object storage.
+

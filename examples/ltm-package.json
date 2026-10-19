@@ -1,0 +1,73 @@
+{
+  "$schema": "../package-request.schema.json",
+  "schema_version": 1,
+  "package_id": "ltm-overview-fy25",
+  "name": "LTIMindtree Limited Financial Model & Executive Overview",
+  "description": "Reproducible template-driven package for LTIMindtree Limited (LTM) with connected 5-year forecasts, FY19–FY25 statutory historicals.",
+  "company": {
+    "name": "LTIMindtree Limited",
+    "ticker": "LTIM",
+    "exchange": "NSE / BSE",
+    "bse_code": "540005",
+    "valuation_date": "2025-10-15",
+    "historical_cutoff": "FY25",
+    "currency": "INR",
+    "reporting_unit": "INR_Cr",
+    "fiscal_year_convention": "April-March",
+    "source_documents": [
+      {
+        "title": "LTIMindtree Limited Integrated Annual Report FY 2024-25",
+        "type": "Annual Report",
+        "period": "FY25 (ended 2025-03-31)",
+        "basis": "consolidated",
+        "url_or_path": "work/sources/LTM_consolidated.json"
+      },
+      {
+        "title": "LTIMindtree Limited Primary Source Registry (FY19-FY25)",
+        "type": "Source Evidence Registry",
+        "period": "FY19-FY25",
+        "basis": "consolidated",
+        "url_or_path": "docs/LTM_SOURCE_REGISTRY.md"
+      }
+    ],
+    "source_data": {
+      "user_supplied_facts": {
+        "current_market_price": 5609.5,
+        "shares_outstanding_cr": 29.62,
+        "market_capitalization_cr": 166153.39
+      },
+      "source_extracted_facts": {
+        "revenue_operations_fy25_cr": 38008.0,
+        "operating_ebitda_fy25_cr": 6495.0,
+        "pbt_fy25_cr": 6214.0,
+        "pat_net_profit_fy25_cr": 4602.0,
+        "cash_from_operations_fy25_cr": 4546.0
+      },
+      "calculated_outputs": {
+        "implied_fair_value_per_share_inr": 2811.09
+      }
+    }
+  },
+  "workbook": {
+    "source": "originals/Marksans Keshav.xlsx",
+    "source_sha256": "5a1f9af7d1be9f5a68c9be5927017f3be6fd421399b6951a5b9c17d6455b462a",
+    "candidate_source": "candidates/run_native_ltm/LTM-Recalculated.xlsx",
+    "expected_recalculated_sha256": "7cc9d2bd1f8b195fa10570f9813eb3b5fca64236cc25d39537b4e02e94ead9ce",
+    "adapter": "work/models_ltm.py",
+    "model_pack": "proposals/ltm.model-pack.json",
+    "output_name": "LTM-Recalculated.xlsx"
+  },
+  "exports": {
+    "export_sheet_pdfs": true,
+    "pdf_orientation": "landscape",
+    "pdf_fit_to_page_wide": 1,
+    "pdf_sheets": [
+      "Cover & Notes",
+      "Income Statement",
+      "Balance Sheet",
+      "Cash Flow",
+      "IT Services Operations",
+      "FCFF Valuation"
+    ]
+  }
+}

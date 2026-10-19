@@ -1,0 +1,562 @@
+{
+  "values": {
+    "meta_face_value": {
+      "value": 1,
+      "unit": "INR per share",
+      "period": "Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!B7, row=A7: 'Face Value' (sst[46]), col=B1: 'MARKSANS PHARMA LTD' (sst[52])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "meta_current_price": {
+      "value": 325.6,
+      "unit": "INR per share",
+      "period": "Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!B8, row=A8: 'Current Price' (sst[45]), col=B1: 'MARKSANS PHARMA LTD' (sst[52])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "meta_market_cap": {
+      "value": 14755.01,
+      "unit": "INR Cr",
+      "period": "Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!B9, row=A9: 'Market Capitalization' (sst[44]), col=B1: 'MARKSANS PHARMA LTD' (sst[52])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_sales_y1": {
+      "value": 1490.84,
+      "unit": "INR Cr",
+      "period": "FY2022 (2022-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!G17, row=A17: 'Sales' (sst[33]), col=G16: 44651 (2022-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_sales_y2": {
+      "value": 1852.14,
+      "unit": "INR Cr",
+      "period": "FY2023 (2023-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!H17, row=A17: 'Sales' (sst[33]), col=H16: 45016 (2023-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_sales_y3": {
+      "value": 2177.41,
+      "unit": "INR Cr",
+      "period": "FY2024 (2024-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!I17, row=A17: 'Sales' (sst[33]), col=I16: 45382 (2024-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_sales_y4": {
+      "value": 2622.85,
+      "unit": "INR Cr",
+      "period": "FY2025 (2025-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!J17, row=A17: 'Sales' (sst[33]), col=J16: 45747 (2025-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_sales_y5": {
+      "value": 2950.94,
+      "unit": "INR Cr",
+      "period": "FY2026 (2026-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!K17, row=A17: 'Sales' (sst[33]), col=K16: 46112 (2026-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_depreciation_y1": {
+      "value": 44.78,
+      "unit": "INR Cr",
+      "period": "FY2022 (2022-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!G26, row=A26: 'Depreciation' (sst[0]), col=G16: 44651 (2022-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_depreciation_y2": {
+      "value": 51.85,
+      "unit": "INR Cr",
+      "period": "FY2023 (2023-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!H26, row=A26: 'Depreciation' (sst[0]), col=H16: 45016 (2023-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_depreciation_y3": {
+      "value": 74.27,
+      "unit": "INR Cr",
+      "period": "FY2024 (2024-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!I26, row=A26: 'Depreciation' (sst[0]), col=I16: 45382 (2024-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_depreciation_y4": {
+      "value": 83.39,
+      "unit": "INR Cr",
+      "period": "FY2025 (2025-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!J26, row=A26: 'Depreciation' (sst[0]), col=J16: 45747 (2025-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_depreciation_y5": {
+      "value": 98.63,
+      "unit": "INR Cr",
+      "period": "FY2026 (2026-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!K26, row=A26: 'Depreciation' (sst[0]), col=K16: 46112 (2026-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_tax_y1": {
+      "value": 60.7,
+      "unit": "INR Cr",
+      "period": "FY2022 (2022-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!G29, row=A29: 'Tax' (sst[29]), col=G16: 44651 (2022-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_tax_y2": {
+      "value": 72.33,
+      "unit": "INR Cr",
+      "period": "FY2023 (2023-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!H29, row=A29: 'Tax' (sst[29]), col=H16: 45016 (2023-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_tax_y3": {
+      "value": 108.63,
+      "unit": "INR Cr",
+      "period": "FY2024 (2024-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!I29, row=A29: 'Tax' (sst[29]), col=I16: 45382 (2024-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_tax_y4": {
+      "value": 121.35,
+      "unit": "INR Cr",
+      "period": "FY2025 (2025-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!J29, row=A29: 'Tax' (sst[29]), col=J16: 45747 (2025-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_tax_y5": {
+      "value": 140.49,
+      "unit": "INR Cr",
+      "period": "FY2026 (2026-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!K29, row=A29: 'Tax' (sst[29]), col=K16: 46112 (2026-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_net_profit_y1": {
+      "value": 184.57,
+      "unit": "INR Cr",
+      "period": "FY2022 (2022-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!G30, row=A30: 'Net profit' (sst[28]), col=G16: 44651 (2022-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_net_profit_y2": {
+      "value": 266.31,
+      "unit": "INR Cr",
+      "period": "FY2023 (2023-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!H30, row=A30: 'Net profit' (sst[28]), col=H16: 45016 (2023-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_net_profit_y3": {
+      "value": 313.7,
+      "unit": "INR Cr",
+      "period": "FY2024 (2024-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!I30, row=A30: 'Net profit' (sst[28]), col=I16: 45382 (2024-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_net_profit_y4": {
+      "value": 380.58,
+      "unit": "INR Cr",
+      "period": "FY2025 (2025-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!J30, row=A30: 'Net profit' (sst[28]), col=J16: 45747 (2025-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_net_profit_y5": {
+      "value": 417.9,
+      "unit": "INR Cr",
+      "period": "FY2026 (2026-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!K30, row=A30: 'Net profit' (sst[28]), col=K16: 46112 (2026-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_borrowings_y5": {
+      "value": 343.38,
+      "unit": "INR Cr",
+      "period": "FY2026 (2026-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!K59, row=A59: 'Borrowings' (sst[23]), col=K56: 46112 (2026-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "hist_cash_bank_y5": {
+      "value": 989.65,
+      "unit": "INR Cr",
+      "period": "FY2026 (2026-03-31)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Data Sheet!K69, row=A69: 'Cash & Bank' (sst[14]), col=K56: 46112 (2026-03-31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "bs_inventories_y4": {
+      "value": 846,
+      "unit": "INR Cr",
+      "period": "FY2025 (2025-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (BS!M33, row=B33: 'Inventories' (sst[266]), col=M2: 45717 (2025-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "bs_inventories_y5": {
+      "value": 972,
+      "unit": "INR Cr",
+      "period": "FY2026 (2026-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (BS!N33, row=B33: 'Inventories' (sst[266]), col=N2: 46082 (2026-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "bs_receivables_y4": {
+      "value": 540,
+      "unit": "INR Cr",
+      "period": "FY2025 (2025-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (BS!M34, row=B34: 'Trade receivables' (sst[267]), col=M2: 45717 (2025-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "bs_receivables_y5": {
+      "value": 645,
+      "unit": "INR Cr",
+      "period": "FY2026 (2026-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (BS!N34, row=B34: 'Trade receivables' (sst[267]), col=N2: 46082 (2026-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "bs_payables_y4": {
+      "value": 306,
+      "unit": "INR Cr",
+      "period": "FY2025 (2025-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (BS!M13, row=B13: 'Trade Payables' (sst[251]), col=M2: 45717 (2025-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "bs_payables_y5": {
+      "value": 337,
+      "unit": "INR Cr",
+      "period": "FY2026 (2026-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (BS!N13, row=B13: 'Trade Payables' (sst[251]), col=N2: 46082 (2026-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "bs_total_liabilities_y5": {
+      "value": 3856,
+      "unit": "INR Cr",
+      "period": "FY2026 (2026-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (BS!N16, row=B16: 'Total Liabilities' (sst[80]), col=N2: 46082 (2026-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "bs_total_assets_y5": {
+      "value": 3856,
+      "unit": "INR Cr",
+      "period": "FY2026 (2026-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (BS!N38, row=B38: 'Total Assets' (sst[81]), col=N2: 46082 (2026-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "cf_cfo_y5": {
+      "value": 458,
+      "unit": "INR Cr",
+      "period": "FY2026 (2026-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Cash Flow!N5, row=B5: 'Cash from Operating Activity -' (sst[109]), col=N4: 46082 (2026-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "cf_fixed_assets_purchased_y1": {
+      "value": -46,
+      "unit": "INR Cr",
+      "period": "FY2022 (2022-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Cash Flow!J15, row=B15: 'Fixed assets purchased' (sst[92]), col=J4: 44621 (2022-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "cf_fixed_assets_purchased_y2": {
+      "value": -54,
+      "unit": "INR Cr",
+      "period": "FY2023 (2023-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Cash Flow!K15, row=B15: 'Fixed assets purchased' (sst[92]), col=K4: 44986 (2023-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "cf_fixed_assets_purchased_y3": {
+      "value": -209,
+      "unit": "INR Cr",
+      "period": "FY2024 (2024-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Cash Flow!L15, row=B15: 'Fixed assets purchased' (sst[92]), col=L4: 45352 (2024-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "cf_fixed_assets_purchased_y4": {
+      "value": -173,
+      "unit": "INR Cr",
+      "period": "FY2025 (2025-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Cash Flow!M15, row=B15: 'Fixed assets purchased' (sst[92]), col=M4: 45717 (2025-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "cf_fixed_assets_purchased_y5": {
+      "value": -131,
+      "unit": "INR Cr",
+      "period": "FY2026 (2026-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Cash Flow!N15, row=B15: 'Fixed assets purchased' (sst[92]), col=N4: 46082 (2026-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer1_mar_cap": {
+      "value": 424041.97,
+      "unit": "INR Cr",
+      "period": "Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (peerdata!E5, row=C5: 'Sun Pharma.Inds.' (sst[229]), col=E4: 'Mar Cap Rs.Cr.' (sst[235])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer1_debt": {
+      "value": 4627.32,
+      "unit": "INR Cr",
+      "period": "Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (peerdata!G5, row=C5: 'Sun Pharma.Inds.' (sst[229]), col=G4: 'Debt Rs.Cr.' (sst[236])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer2_mar_cap": {
+      "value": 247208.22,
+      "unit": "INR Cr",
+      "period": "Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (peerdata!E6, row=C6: \"Divi's Lab.\" (sst[230]), col=E4: 'Mar Cap Rs.Cr.' (sst[235])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer2_debt": {
+      "value": 7,
+      "unit": "INR Cr",
+      "period": "Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (peerdata!G6, row=C6: \"Divi's Lab.\" (sst[230]), col=G4: 'Debt Rs.Cr.' (sst[236])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer3_mar_cap": {
+      "value": 174939.7,
+      "unit": "INR Cr",
+      "period": "Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (peerdata!E7, row=C7: 'Torrent Pharma.' (sst[231]), col=E4: 'Mar Cap Rs.Cr.' (sst[235])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer3_debt": {
+      "value": 15025.5,
+      "unit": "INR Cr",
+      "period": "Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (peerdata!G7, row=C7: 'Torrent Pharma.' (sst[231]), col=G4: 'Debt Rs.Cr.' (sst[236])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer4_mar_cap": {
+      "value": 111151.2,
+      "unit": "INR Cr",
+      "period": "Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (peerdata!E8, row=C8: 'Zydus Lifesci.' (sst[232]), col=E4: 'Mar Cap Rs.Cr.' (sst[235])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer4_debt": {
+      "value": 12496,
+      "unit": "INR Cr",
+      "period": "Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (peerdata!G8, row=C8: 'Zydus Lifesci.' (sst[232]), col=G4: 'Debt Rs.Cr.' (sst[236])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer5_mar_cap": {
+      "value": 109924.45,
+      "unit": "INR Cr",
+      "period": "Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (peerdata!E9, row=C9: 'Laurus Labs' (sst[233]), col=E4: 'Mar Cap Rs.Cr.' (sst[235])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer5_debt": {
+      "value": 2518.48,
+      "unit": "INR Cr",
+      "period": "Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (peerdata!G9, row=C9: 'Laurus Labs' (sst[233]), col=G4: 'Debt Rs.Cr.' (sst[236])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "comp_target_cmp": {
+      "value": 309.1,
+      "unit": "INR per share",
+      "period": "TTM / Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (compdata!D10, row=C10: 'Marksans Pharma' (sst[242]), col=D2: 'CMP Rs.' (sst[234])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "comp_target_shares": {
+      "value": 45.32,
+      "unit": "Cr shares",
+      "period": "TTM / Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (compdata!E10, row=C10: 'Marksans Pharma' (sst[242]), col=E2: 'No. Eq. Shares Cr.' (sst[756])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "comp_target_debt": {
+      "value": 343.38,
+      "unit": "INR Cr",
+      "period": "TTM / Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (compdata!G10, row=C10: 'Marksans Pharma' (sst[242]), col=G2: 'Debt Rs.Cr.' (sst[236])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "comp_target_cash": {
+      "value": 989.65,
+      "unit": "INR Cr",
+      "period": "TTM / Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (compdata!H10, row=C10: 'Marksans Pharma' (sst[242]), col=H2: 'Cash End Rs.Cr.' (sst[757])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "comp_target_sales_ttm": {
+      "value": 3171.75,
+      "unit": "INR Cr",
+      "period": "TTM / Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (compdata!L10, row=C10: 'Marksans Pharma' (sst[242]), col=L2: 'Sales Rs.Cr.' (sst[758])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "comp_target_np_ttm": {
+      "value": 521.27,
+      "unit": "INR Cr",
+      "period": "TTM / Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (compdata!M10, row=C10: 'Marksans Pharma' (sst[242]), col=M2: 'NP 12M Rs.Cr.' (sst[759])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "comp_target_ev_ebitda": {
+      "value": 16.37,
+      "unit": "multiple",
+      "period": "TTM / Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (compdata!F25, row=C25: 'Marksans Pharma' (sst[242]), col=F17: 'EV / EBITDA' (sst[763])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "sector_pharma_reinvestment_rate": {
+      "value": 1.0765,
+      "unit": "ratio",
+      "period": "Damodaran Sector Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (sectordata!L29, row=B29: 'Drugs (Pharmaceutical)' (sst[437]), col=L4: 'Reinvestment Rate' (sst[290])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "sector_healthcare_reinvestment_rate": {
+      "value": 0.6395,
+      "unit": "ratio",
+      "period": "Damodaran Sector Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (sectordata!L47, row=B47: 'Hospitals/Healthcare Facilities' (sst[515]), col=L4: 'Reinvestment Rate' (sst[290])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer1_tax_rate": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!F11, row=B11: 'Sun Pharma.Inds.' (sst[229]), col=F9: 'Tax Rate 1' (sst[157])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer2_tax_rate": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!F12, row=B12: \"Divi's Lab.\" (sst[230]), col=F9: 'Tax Rate 1' (sst[157])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer3_tax_rate": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!F13, row=B13: 'Torrent Pharma.' (sst[231]), col=F9: 'Tax Rate 1' (sst[157])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer4_tax_rate": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!F14, row=B14: 'Zydus Lifesci.' (sst[232]), col=F9: 'Tax Rate 1' (sst[157])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer5_tax_rate": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!F15, row=B15: 'Laurus Labs' (sst[233]), col=F9: 'Tax Rate 1' (sst[157])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer1_levered_beta": {
+      "value": 0.542,
+      "unit": "beta",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!I11, row=B11: 'Sun Pharma.Inds.' (sst[229]), col=I9: 'Beta ' (sst[237])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer2_levered_beta": {
+      "value": 0.901,
+      "unit": "beta",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!I12, row=B12: \"Divi's Lab.\" (sst[230]), col=I9: 'Beta ' (sst[237])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer3_levered_beta": {
+      "value": 0.49,
+      "unit": "beta",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!I13, row=B13: 'Torrent Pharma.' (sst[231]), col=I9: 'Beta ' (sst[237])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer4_levered_beta": {
+      "value": 0.513,
+      "unit": "beta",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!I14, row=B14: 'Zydus Lifesci.' (sst[232]), col=I9: 'Beta ' (sst[237])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "peer5_levered_beta": {
+      "value": 1.07,
+      "unit": "beta",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!I15, row=B15: 'Laurus Labs' (sst[233]), col=I9: 'Beta ' (sst[237])); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "pre_tax_cost_of_debt": {
+      "value": 0.08,
+      "unit": "ratio",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!E22, row=B22: 'Pre-tax Cost of Debt' (sst[163]), col=E21: Cost of Debt block); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "risk_free_rate": {
+      "value": 0.073,
+      "unit": "ratio",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!J22, row=H22: 'Risk Free Rate' (sst[166]), col=J21: Cost of Equity block); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "wacc_current_total_debt": {
+      "value": 343.38,
+      "unit": "INR Cr",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!C30, row=B30: 'Total Debt' (sst[155]), col=C29: 'Current' capital structure weight block); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "wacc_current_market_cap": {
+      "value": 14002.74,
+      "unit": "INR Cr",
+      "period": "Valuation Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (WACC-DCF!C31, row=B31: 'Market Capitalization' (sst[44]), col=C29: 'Current' capital structure weight block); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "ig_marginal_tax_rate_y1": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "FY2022 (2022-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Intrinsic Growth!E47, row=B47: 'Marginal Tax Rate' (sst[287]), col=E41: 44621 (2022-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "ig_marginal_tax_rate_y2": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "FY2023 (2023-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Intrinsic Growth!F47, row=B47: 'Marginal Tax Rate' (sst[287]), col=F41: 44986 (2023-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "ig_marginal_tax_rate_y3": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "FY2024 (2024-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Intrinsic Growth!G47, row=B47: 'Marginal Tax Rate' (sst[287]), col=G41: 45352 (2024-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "ig_marginal_tax_rate_y4": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "FY2025 (2025-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Intrinsic Growth!H47, row=B47: 'Marginal Tax Rate' (sst[287]), col=H41: 45717 (2025-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "ig_marginal_tax_rate_y5": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "FY2026 (2026-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (Intrinsic Growth!I47, row=B47: 'Marginal Tax Rate' (sst[287]), col=I41: 46082 (2026-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_tax_rate_base": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "FY2026 (Base, t=0) (2026-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!F7, row=B7: 'Tax Rate' (sst[164]), col=F3: 46082 (2026-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_tax_rate_y1": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "FY2027E (t=0.5) (2027-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!G7, row=B7: 'Tax Rate' (sst[164]), col=G3: 46447 (2027-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_tax_rate_y2": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "FY2028E (t=1.5) (2028-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!H7, row=B7: 'Tax Rate' (sst[164]), col=H3: 46813 (2028-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_tax_rate_y3": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "FY2029E (t=2.5) (2029-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!I7, row=B7: 'Tax Rate' (sst[164]), col=I3: 47178 (2029-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_tax_rate_y4": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "FY2030E (t=3.5) (2030-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!J7, row=B7: 'Tax Rate' (sst[164]), col=J3: 47543 (2030-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_tax_rate_y5": {
+      "value": 0.3,
+      "unit": "ratio",
+      "period": "FY2031E (t=4.5) (2031-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!K7, row=B7: 'Tax Rate' (sst[164]), col=K3: 47908 (2031-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_reinvestment_rate_base": {
+      "value": 0.6395,
+      "unit": "ratio",
+      "period": "FY2026 (Base, t=0) (2026-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!F11, row=B11: 'Less: Reinvestment Rate' (sst[297]), col=F3: 46082 (2026-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_reinvestment_rate_y1": {
+      "value": 0.6395,
+      "unit": "ratio",
+      "period": "FY2027E (t=0.5) (2027-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!G11, row=B11: 'Less: Reinvestment Rate' (sst[297]), col=G3: 46447 (2027-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_reinvestment_rate_y2": {
+      "value": 0.6395,
+      "unit": "ratio",
+      "period": "FY2028E (t=1.5) (2028-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!H11, row=B11: 'Less: Reinvestment Rate' (sst[297]), col=H3: 46813 (2028-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_reinvestment_rate_y3": {
+      "value": 0.6395,
+      "unit": "ratio",
+      "period": "FY2029E (t=2.5) (2029-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!I11, row=B11: 'Less: Reinvestment Rate' (sst[297]), col=I3: 47178 (2029-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_reinvestment_rate_y4": {
+      "value": 0.6395,
+      "unit": "ratio",
+      "period": "FY2030E (t=3.5) (2030-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!J11, row=B11: 'Less: Reinvestment Rate' (sst[297]), col=J3: 47543 (2030-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_reinvestment_rate_y5": {
+      "value": 0.6395,
+      "unit": "ratio",
+      "period": "FY2031E (t=4.5) (2031-03-01)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!K11, row=B11: 'Less: Reinvestment Rate' (sst[297]), col=K3: 47908 (2031-03-01)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_expected_growth_rate": {
+      "value": 0.15,
+      "unit": "ratio",
+      "period": "FY2027E-FY2031E",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!E19, row=B19: 'Expected Growth' (sst[301]), col=E19: Forecast assumption cell); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_terminal_growth_rate": {
+      "value": 0.05,
+      "unit": "ratio",
+      "period": "Terminal (Post-FY2031E)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!E20, row=B20: 'Terminal Growth' (sst[302]), col=E20: Forecast assumption cell (also row-input cell r1 of 2D dataTable H25:K31)); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf1_reference_market_price": {
+      "value": 309,
+      "unit": "INR per share",
+      "period": "Market Snapshot",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 1st way!E44, row=B44: 'Market Price' (sst[728]), col=E44: Valuation summary block); UNVERIFIED_EXTERNAL_SOURCE"
+    },
+    "dcf2_terminal_growth_rate": {
+      "value": 0.06,
+      "unit": "ratio",
+      "period": "Terminal (Post-Forecast)",
+      "source": "Template baseline extraction from originals/Marksans Keshav.xlsx (DCF 2nd way!D10, row=B10: 'TGR' (sst[784]), col=D10: Defined name 'tgr'); UNVERIFIED_EXTERNAL_SOURCE"
+    }
+  }
+}

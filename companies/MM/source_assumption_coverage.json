@@ -1,0 +1,6 @@
+{
+  "status": "superseded_archived",
+  "version": "pre-v17",
+  "active_replacement": "docs/mm_source_registry.json",
+  "notice": "This legacy V16 coverage report is not valid evidence for V17. It contained BSE/statutory/standalone claims outside the current approved source scope. Earlier content remains in Git history."
+}

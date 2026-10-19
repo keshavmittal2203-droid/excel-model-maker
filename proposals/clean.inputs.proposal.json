@@ -1,0 +1,974 @@
+{
+  "values": {
+    "slide1_company_name": {
+      "value": "CLEAN SCIENCE AND TECHNOLOGY LIMITED",
+      "source": "Clean Science and Technology Limited FY25 Annual Report"
+    },
+    "slide1_ticker": {
+      "value": "BSE: 543318 | NSE: CLEAN | Specialty Chemicals",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide1_sector": {
+      "value": "Specialty & Performance Chemicals",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide1_company_intro": {
+      "value": "Clean Science and Technology Limited (NSE: CLEAN | BSE: 543318), headquartered in Pune, is a global specialty chemical manufacturer pioneering clean, catalytic vapor-phase manufacturing processes. It is the world's #1 producer of MEHQ, BHA, Anisole, and 4-MAP, and India's first commercial manufacturer of Hindered Amine Light Stabilizers (HALS).",
+      "source": "Clean Science and Technology Limited FY25 Annual Report"
+    },
+    "slide1_brand_portfolio": {
+      "value": "Three core verticals: Performance Chemicals (MEHQ, BHA, Ascorbyl Palmitate, HALS 701/770/622/944), Pharma & Agro Intermediates (Guaiacol, DCC, p-Benzoquinone), and FMCG Chemicals (4-MAP, Anisole).",
+      "source": "Clean Science and Technology Limited FY25 Annual Report"
+    },
+    "slide1_business_model": {
+      "value": "Proprietary atom-efficient catalytic processes rooted in backward integration from basic phenol/methanol feedstocks into high-purity specialty stabilizers, generating structural 40%+ EBITDA margins with zero commercial debt.",
+      "source": "Clean Science and Technology Limited FY25 Annual Report"
+    },
+    "slide1_product_ecosystem": {
+      "value": "Three established manufacturing units at Kurkumbh MIDC (29,900 MTPA) plus the newly commissioned 34-acre Unit 4 under wholly-owned subsidiary Clean Fino-Chem Limited (CFCL, 10,500 MTPA expanding to 15,000 MTPA).",
+      "source": "Clean Science and Technology Limited FY25 Annual Report"
+    },
+    "slide1_strategic_approach": {
+      "value": "Scaling commercial utilization of CFCL Unit 4 HALS series from 35% in FY24 and 55% in FY25 to 90% by FY30E alongside new performance intermediates, self-funded entirely through internal operating cash flows.",
+      "source": "Clean Science and Technology Limited FY25 Annual Report"
+    },
+    "slide1_chart_revenue_mix": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template geographic chart"
+    },
+    "slide1_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide2_company_name": {
+      "value": "CLEAN SCIENCE AND TECHNOLOGY LIMITED",
+      "source": "Clean Science and Technology Limited FY25 Annual Report"
+    },
+    "slide2_ticker": {
+      "value": "BSE: 543318 | NSE: CLEAN | Specialty Chemicals",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide2_sector": {
+      "value": "Specialty & Performance Chemicals",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide2_executive_summary": {
+      "value": "In FY25, Clean Science delivered Consolidated Revenue from Operations of ₹967 Cr (+22.3% YoY), Operating Profit (EBITDA) of ₹388 Cr (40.1% margin), and Net Profit (PAT) of ₹264 Cr (+8.2% YoY, EPS ₹24.86). Parent Units 1–3 generated ₹857 Cr while CFCL Unit 4 HALS contributed ₹110 Cr at 55% utilization.",
+      "source": "CLEAN-Recalculated.xlsx!Income Statement"
+    },
+    "slide2_thesis": {
+      "value": "Separating Parent Kurkumbh Units 1–3 (10%–11% steady growth) from CFCL Unit 4 (capacity expanding from 10,500 to 15,000 MTPA and utilization ramping from 55% in FY25 to 90% by FY30E) drives consolidated revenue to ₹1,711 Cr by FY30E. Discounting 5-year FCFF at a 12.00% CAPM WACC (Rf 7.30%, Beta 0.904, ERP 5.20%, 100% Equity) with 5.00% terminal growth and adding ₹424 Cr net cash yields ₹4,419 Cr Equity Value or ₹415.69/share (vs ₹1,039.00 snapshot CMP).",
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing DCF Valuation"
+    },
+    "slide2_key_highlights": {
+      "value": "• FY25 Consolidated Revenue: ₹967 Cr (+22.3% YoY); EBITDA: ₹388 Cr (40.1% margin); PAT: ₹264 Cr\n• Capacity Split: Parent Units 1–3 (29,900 MTPA, ₹857 Cr) + Subsidiary CFCL Unit 4 HALS (10,500 MTPA, ₹110 Cr @ 55% util)\n• Connected 5Y Ramp: CFCL Unit 4 expands to 15,000 MTPA @ 90% utilization -> FY30E Consolidated Revenue ₹1,711 Cr\n• CAPM WACC Schedule: 100% Equity-funded (Ke = WACC = 12.00%); Terminal Growth = 5.00%\n• Implied DCF Equity Value: ₹4,419 Cr (₹415.69 / share vs ₹1,039.00 15-Oct-2025 CMP)",
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing DCF Valuation"
+    },
+    "slide2_chart_revenue": {
+      "value": [
+        512.0,
+        685.0,
+        936.0,
+        791.0,
+        967.0
+      ],
+      "categories": [
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Total Revenue",
+      "chart_title": "Historical Revenue (₹ Crore)",
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!D5:H5"
+    },
+    "slide2_chart_snapshot": {
+      "value": [
+        967.0,
+        388.0,
+        264.0,
+        214.0
+      ],
+      "categories": [
+        "Revenue",
+        "EBITDA",
+        "Net Profit",
+        "CFO"
+      ],
+      "series_name": "FY25 Actual (₹ Cr)",
+      "chart_title": "FY25 Financial Snapshot (₹ Crore)",
+      "source": "CLEAN-Recalculated.xlsx!Income Statement & Cash Flow (FY25)"
+    },
+    "slide2_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide14_company_name": {
+      "value": "CLEAN SCIENCE AND TECHNOLOGY LIMITED",
+      "source": "Clean Science and Technology Limited FY25 Annual Report"
+    },
+    "slide14_ticker": {
+      "value": "BSE: 543318 | NSE: CLEAN | Specialty Chemicals",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide14_sector": {
+      "value": "Specialty & Performance Chemicals",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide14_narrative": {
+      "value": "Clean Science has funded its entire CFCL Unit 4 greenfield expansion through internal cash accruals with zero debt. In FY25, Cash from Operating Activities was ₹214 Cr against Investing outflows of -₹152 Cr (including ~₹145 Cr CapEx) and Dividend outflows of -₹53 Cr.",
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow"
+    },
+    "slide14_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide16_company_name": {
+      "value": "CLEAN SCIENCE AND TECHNOLOGY LIMITED",
+      "source": "Clean Science and Technology Limited FY25 Annual Report"
+    },
+    "slide16_ticker": {
+      "value": "BSE: 543318 | NSE: CLEAN | Specialty Chemicals",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide16_sector": {
+      "value": "Specialty & Performance Chemicals",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide16_current_ratio_narrative": {
+      "value": "With zero commercial borrowings (₹2 Cr lease/working capital facility) and ₹1,417 Cr Net Worth in FY25, Clean Science maintains exceptional balance sheet liquidity. Debtor days stood at 77 days and Inventory days at 156 days in FY25.",
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet & Manufacturing & Capacity"
+    },
+    "slide16_quick_ratio_narrative": {
+      "value": "Cash Conversion Cycle was 130 days in FY25 (Debtor Days 77 + Inventory Days 156 - Payable Days 103) as CFCL built initial HALS raw material and finished goods inventory; consolidated ROCE stood at 27.0% and ROE at 18.6%.",
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet & Manufacturing & Capacity"
+    },
+    "slide16_table_header": {
+      "value": "Ratio Analysis & Working Capital",
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_chart_cr": {
+      "value": [
+        2.8,
+        3.1,
+        3.25,
+        3.4,
+        3.55,
+        4.1,
+        4.35,
+        4.5
+      ],
+      "categories": [
+        "FY18",
+        "FY19",
+        "FY20",
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Current Ratio",
+      "chart_title": "Current Ratio (x)",
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet Liquidity Series"
+    },
+    "slide16_chart_qr": {
+      "value": [
+        2.1,
+        2.35,
+        2.45,
+        2.5,
+        2.65,
+        3.1,
+        3.2,
+        3.35
+      ],
+      "categories": [
+        "FY18",
+        "FY19",
+        "FY20",
+        "FY21",
+        "FY22",
+        "FY23",
+        "FY24",
+        "FY25"
+      ],
+      "series_name": "Quick Ratio",
+      "chart_title": "Quick Ratio (x)",
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet Liquidity Series"
+    },
+    "slide16_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide23_company_name": {
+      "value": "CLEAN SCIENCE AND TECHNOLOGY LIMITED",
+      "source": "Clean Science and Technology Limited FY25 Annual Report"
+    },
+    "slide23_ticker": {
+      "value": "BSE: 543318 | NSE: CLEAN | Specialty Chemicals",
+      "source": "BSE / NSE Ticker Registration"
+    },
+    "slide23_sector": {
+      "value": "Specialty & Performance Chemicals",
+      "source": "BSE / NSE Industry Classification"
+    },
+    "slide23_valuation_title": {
+      "value": "MANUFACTURING DCF VALUATION & WACC",
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing DCF Valuation"
+    },
+    "slide23_table_ke": {
+      "value": "work/assets/image22_clean.png",
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing DCF Valuation"
+    },
+    "slide23_table_kd": {
+      "value": "work/assets/image23_clean.png",
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing DCF Valuation"
+    },
+    "slide23_table_wacc": {
+      "value": "work/assets/image24_clean.png",
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing DCF Valuation"
+    },
+    "slide23_logo_suppress": {
+      "value": "suppress",
+      "source": "Repository Quality Policy: suppress template corporate logo"
+    },
+    "slide14_pbt_fy18": {
+      "value": 72,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 PBT)"
+    },
+    "slide14_non_cash_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy18": {
+      "value": -23,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 Tax)"
+    },
+    "slide14_cfo_fy18": {
+      "value": 43,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 CFO)"
+    },
+    "slide14_capex_fy18": {
+      "value": -34,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 CapEx)"
+    },
+    "slide14_net_inv_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy18": {
+      "value": -34,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 CFI)"
+    },
+    "slide14_net_borrow_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy18": {
+      "value": 0,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 Interest)"
+    },
+    "slide14_dividends_fy18": {
+      "value": -3,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 Dividends)"
+    },
+    "slide14_other_financing_fy18": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy18": {
+      "value": -8,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 CFF)"
+    },
+    "slide14_net_cf_fy18": {
+      "value": 1,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 Net CF)"
+    },
+    "slide16_cr_fy18": {
+      "value": 2.8,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 CR)"
+    },
+    "slide16_qr_fy18": {
+      "value": 2.1,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 QR)"
+    },
+    "slide16_de_fy18": {
+      "value": 0.01,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 D/E)"
+    },
+    "slide16_icr_fy18": {
+      "value": 72.0,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 ICR)"
+    },
+    "slide16_debtor_days_fy18": {
+      "value": 64,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 Debtor Days)"
+    },
+    "slide16_inventory_days_fy18": {
+      "value": 98,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 Inventory Days)"
+    },
+    "slide16_payable_days_fy18": {
+      "value": 108,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 Payable Days)"
+    },
+    "slide16_ccc_fy18": {
+      "value": 54,
+      "source": "work/sources/CLEAN_consolidated.json (Mar 2018 CCC)"
+    },
+    "slide14_pbt_fy19": {
+      "value": 136,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!B12"
+    },
+    "slide14_non_cash_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy19": {
+      "value": -38,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!B13"
+    },
+    "slide14_cfo_fy19": {
+      "value": 85,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!B4"
+    },
+    "slide14_capex_fy19": {
+      "value": -59,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!B9"
+    },
+    "slide14_net_inv_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy19": {
+      "value": -94,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!B5"
+    },
+    "slide14_net_borrow_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy19": {
+      "value": 0,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!B10"
+    },
+    "slide14_dividends_fy19": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy19": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy19": {
+      "value": -11,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!B6"
+    },
+    "slide14_net_cf_fy19": {
+      "value": -20,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!B7"
+    },
+    "slide16_cr_fy19": {
+      "value": 3.1,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY19)"
+    },
+    "slide16_qr_fy19": {
+      "value": 2.35,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY19)"
+    },
+    "slide16_de_fy19": {
+      "value": 0.01,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet!B6/(B4+B5)"
+    },
+    "slide16_icr_fy19": {
+      "value": 136.0,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!B7/B10"
+    },
+    "slide16_debtor_days_fy19": {
+      "value": 55,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity!B24"
+    },
+    "slide16_inventory_days_fy19": {
+      "value": 79,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_payable_days_fy19": {
+      "value": 48,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_ccc_fy19": {
+      "value": 86,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide14_pbt_fy20": {
+      "value": 182,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!C12"
+    },
+    "slide14_non_cash_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy20": {
+      "value": -42,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!C13"
+    },
+    "slide14_cfo_fy20": {
+      "value": 160,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!C4"
+    },
+    "slide14_capex_fy20": {
+      "value": -63,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!C9"
+    },
+    "slide14_net_inv_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy20": {
+      "value": -105,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!C5"
+    },
+    "slide14_net_borrow_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy20": {
+      "value": 0,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!C10"
+    },
+    "slide14_dividends_fy20": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy20": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy20": {
+      "value": -55,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!C6"
+    },
+    "slide14_net_cf_fy20": {
+      "value": 0,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!C7"
+    },
+    "slide16_cr_fy20": {
+      "value": 3.25,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY20)"
+    },
+    "slide16_qr_fy20": {
+      "value": 2.45,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY20)"
+    },
+    "slide16_de_fy20": {
+      "value": 0.01,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet!C6/(C4+C5)"
+    },
+    "slide16_icr_fy20": {
+      "value": 185.0,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!C7/C10"
+    },
+    "slide16_debtor_days_fy20": {
+      "value": 61,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity!C24"
+    },
+    "slide16_inventory_days_fy20": {
+      "value": 98,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_payable_days_fy20": {
+      "value": 101,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_ccc_fy20": {
+      "value": 58,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide14_pbt_fy21": {
+      "value": 267,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!D12"
+    },
+    "slide14_non_cash_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy21": {
+      "value": -69,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!D13"
+    },
+    "slide14_cfo_fy21": {
+      "value": 193,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!D4"
+    },
+    "slide14_capex_fy21": {
+      "value": -77,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!D9"
+    },
+    "slide14_net_inv_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy21": {
+      "value": -187,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!D5"
+    },
+    "slide14_net_borrow_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy21": {
+      "value": 0,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!D10"
+    },
+    "slide14_dividends_fy21": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy21": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy21": {
+      "value": -6,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!D6"
+    },
+    "slide14_net_cf_fy21": {
+      "value": 0,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!D7"
+    },
+    "slide16_cr_fy21": {
+      "value": 3.4,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY21)"
+    },
+    "slide16_qr_fy21": {
+      "value": 2.5,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY21)"
+    },
+    "slide16_de_fy21": {
+      "value": 0.0,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet!D6/(D4+D5)"
+    },
+    "slide16_icr_fy21": {
+      "value": 259.0,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!D7/D10"
+    },
+    "slide16_debtor_days_fy21": {
+      "value": 53,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity!D24"
+    },
+    "slide16_inventory_days_fy21": {
+      "value": 156,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_payable_days_fy21": {
+      "value": 180,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_ccc_fy21": {
+      "value": 29,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide14_pbt_fy22": {
+      "value": 305,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!E12"
+    },
+    "slide14_non_cash_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy22": {
+      "value": -77,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!E13"
+    },
+    "slide14_cfo_fy22": {
+      "value": 127,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!E4"
+    },
+    "slide14_capex_fy22": {
+      "value": -103,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!E9"
+    },
+    "slide14_net_inv_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy22": {
+      "value": -79,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!E5"
+    },
+    "slide14_net_borrow_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy22": {
+      "value": 0,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!E10"
+    },
+    "slide14_dividends_fy22": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy22": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy22": {
+      "value": 0,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!E6"
+    },
+    "slide14_net_cf_fy22": {
+      "value": 48,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!E7"
+    },
+    "slide16_cr_fy22": {
+      "value": 3.55,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY22)"
+    },
+    "slide16_qr_fy22": {
+      "value": 2.65,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY22)"
+    },
+    "slide16_de_fy22": {
+      "value": 0.0,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet!E6/(E4+E5)"
+    },
+    "slide16_icr_fy22": {
+      "value": 300.0,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!E7/E10"
+    },
+    "slide16_debtor_days_fy22": {
+      "value": 82,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity!E24"
+    },
+    "slide16_inventory_days_fy22": {
+      "value": 143,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_payable_days_fy22": {
+      "value": 166,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_ccc_fy22": {
+      "value": 59,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide14_pbt_fy23": {
+      "value": 396,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!F12"
+    },
+    "slide14_non_cash_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy23": {
+      "value": -101,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!F13"
+    },
+    "slide14_cfo_fy23": {
+      "value": 279,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!F4"
+    },
+    "slide14_capex_fy23": {
+      "value": -140,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!F9"
+    },
+    "slide14_net_inv_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy23": {
+      "value": -270,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!F5"
+    },
+    "slide14_net_borrow_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy23": {
+      "value": -1,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!F10"
+    },
+    "slide14_dividends_fy23": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy23": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy23": {
+      "value": -55,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!F6"
+    },
+    "slide14_net_cf_fy23": {
+      "value": -46,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!F7"
+    },
+    "slide16_cr_fy23": {
+      "value": 4.1,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY23)"
+    },
+    "slide16_qr_fy23": {
+      "value": 3.1,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY23)"
+    },
+    "slide16_de_fy23": {
+      "value": 0.0,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet!F6/(F4+F5)"
+    },
+    "slide16_icr_fy23": {
+      "value": 403.0,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!F7/F10"
+    },
+    "slide16_debtor_days_fy23": {
+      "value": 57,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity!F24"
+    },
+    "slide16_inventory_days_fy23": {
+      "value": 122,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_payable_days_fy23": {
+      "value": 90,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_ccc_fy23": {
+      "value": 89,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide14_pbt_fy24": {
+      "value": 326,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!G12"
+    },
+    "slide14_non_cash_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy24": {
+      "value": -82,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!G13"
+    },
+    "slide14_cfo_fy24": {
+      "value": 236,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!G4"
+    },
+    "slide14_capex_fy24": {
+      "value": -119,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!G9"
+    },
+    "slide14_net_inv_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy24": {
+      "value": -185,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!G5"
+    },
+    "slide14_net_borrow_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy24": {
+      "value": -1,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!G10"
+    },
+    "slide14_dividends_fy24": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy24": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy24": {
+      "value": -53,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!G6"
+    },
+    "slide14_net_cf_fy24": {
+      "value": -2,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!G7"
+    },
+    "slide16_cr_fy24": {
+      "value": 4.35,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY24)"
+    },
+    "slide16_qr_fy24": {
+      "value": 3.2,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY24)"
+    },
+    "slide16_de_fy24": {
+      "value": 0.0,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet!G6/(G4+G5)"
+    },
+    "slide16_icr_fy24": {
+      "value": 332.0,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!G7/G10"
+    },
+    "slide16_debtor_days_fy24": {
+      "value": 76,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity!G24"
+    },
+    "slide16_inventory_days_fy24": {
+      "value": 163,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_payable_days_fy24": {
+      "value": 139,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_ccc_fy24": {
+      "value": 100,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide14_pbt_fy25": {
+      "value": 357,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!H12"
+    },
+    "slide14_non_cash_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_wc_changes_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_direct_taxes_fy25": {
+      "value": -93,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!H13"
+    },
+    "slide14_cfo_fy25": {
+      "value": 214,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!H4"
+    },
+    "slide14_capex_fy25": {
+      "value": -145,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!H9"
+    },
+    "slide14_net_inv_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_other_investing_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cfi_fy25": {
+      "value": -152,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!H5"
+    },
+    "slide14_net_borrow_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_finance_costs_fy25": {
+      "value": -1,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!H10"
+    },
+    "slide14_dividends_fy25": {
+      "value": "—",
+      "source": "Included in Consolidated Financing Cash Flows (CFF)"
+    },
+    "slide14_other_financing_fy25": {
+      "value": "—",
+      "source": "Unevidenced granular sub-schedule; primary statutory filing required"
+    },
+    "slide14_cff_fy25": {
+      "value": -53,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!H6"
+    },
+    "slide14_net_cf_fy25": {
+      "value": 9,
+      "source": "CLEAN-Recalculated.xlsx!Cash Flow!H7"
+    },
+    "slide16_cr_fy25": {
+      "value": 4.5,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY25)"
+    },
+    "slide16_qr_fy25": {
+      "value": 3.35,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet (FY25)"
+    },
+    "slide16_de_fy25": {
+      "value": 0.0,
+      "source": "CLEAN-Recalculated.xlsx!Balance Sheet!H6/(H4+H5)"
+    },
+    "slide16_icr_fy25": {
+      "value": 388.0,
+      "source": "CLEAN-Recalculated.xlsx!Income Statement!H7/H10"
+    },
+    "slide16_debtor_days_fy25": {
+      "value": 77,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity!H24"
+    },
+    "slide16_inventory_days_fy25": {
+      "value": 156,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_payable_days_fy25": {
+      "value": 103,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    },
+    "slide16_ccc_fy25": {
+      "value": 130,
+      "source": "CLEAN-Recalculated.xlsx!Manufacturing & Capacity"
+    }
+  }
+}
