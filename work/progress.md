@@ -14,13 +14,13 @@
   7. *Independent Beta*: Recomputed OLS beta from Yahoo Finance 104-week return dataset (raw 1.4746, Blume 1.3164). WACC marked `Unavailable` in `WACC-DCF!J39`.
   8. *Native Sparklines*: Restored `<x14:sparklineGroups>` XML in `Ratio Analysis` (`C6:G6` to `C26:G26`).
 - **Deliverables**:
-  - `workbooks/MM-FullTemplate.xlsx` (92,153 bytes, SHA-256: `bdfd6a9903f1c6be34d13641dbdb7ecf0a04c83e04653996239d4d720704c54d`).
-  - 15 landscape PDF previews in `deliverables/V16_user_handoff/previews/MM/`.
-  - Regenerated `deliverables/V16_user_handoff.zip` (1,911,221 bytes, MM only).
+  - `workbooks/MM-FullTemplate.xlsx` (95,145 bytes, SHA-256: `29dd8df546ffe916003675891e3db96be4939138a92c37586d554ba8274b58ae`).
+  - 15 landscape PDF previews in `deliverables/V16_user_handoff/previews/MM/` (100% clean, 0 clipped numbers).
+  - Regenerated `deliverables/V16_user_handoff.zip` (2,067,884 bytes, MM only).
 - **Tests**:
   - `python verify_sources.py` (2/2 templates byte-identical).
-  - `python -m unittest test_mm_repaired_v17.py` (10/10 tests pass).
-- **Governance**: `ready: false`, `human_pack_approval: pending`. PR #8 linked to issue #8 (open and unmerged).
+  - `python -m unittest test_mm_repaired_v17.py` (13/13 tests pass).
+- **Governance**: `ready: false`, `human_pack_approval: pending`. PR #9 linked to issue #8 (open and unmerged).
 
 ---
 

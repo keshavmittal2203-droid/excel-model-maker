@@ -3,7 +3,7 @@
 ## 1. Executive Summary
 - **Entity**: `MM` (Mahindra & Mahindra Limited)
 - **Active Deliverable**: `companies/MM/template_v17/MM-FullTemplate.xlsx` (also packaged at `deliverables/V16_user_handoff/workbooks/MM-FullTemplate.xlsx`)
-- **Workbook SHA-256**: `bdfd6a9903f1c6be34d13641dbdb7ecf0a04c83e04653996239d4d720704c54d` (92,153 bytes)
+- **Workbook SHA-256**: `29dd8df546ffe916003675891e3db96be4939138a92c37586d554ba8274b58ae` (95,145 bytes)
 - **Master Template**: `originals/Marksans Keshav.xlsx` (SHA-256 `4dc79842855e5d1e689a2f5ca1de22c34be72fb09c0c0f9dd3a95818e10737d0`, 16 sheets)
 - **Valuation Status**: `UNAVAILABLE`
 - **Fair Value per Share**: `Unavailable` (linked dynamically from `'DCF 1st way'!E42` to `'Model ->'!C9`)

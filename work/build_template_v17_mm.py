@@ -18,8 +18,10 @@ import zipfile
 from pathlib import Path
 from typing import Any
 
+import openpyxl
 from openpyxl import load_workbook
 from openpyxl.cell.cell import MergedCell
+from openpyxl.utils import get_column_letter
 
 ROOT = Path(__file__).resolve().parent.parent
 MASTER = ROOT / "originals" / "Marksans Keshav.xlsx"
@@ -157,7 +159,7 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
     for offset, year in enumerate(range(2017, 2026), start=2):
         ds.cell(16, offset).value = dt.date(year, 3, 31)
         ds.cell(16, offset).number_format = "mmm-yy"
-    ds["K16"] = "FY26E — blocked"
+    ds["K16"] = "FY26E (Blocked)"
     pnl_map = {17: "Sales", 18: "Expenses", 25: "Other Income", 26: "Depreciation", 27: "Interest", 28: "Profit before tax", 30: "Net Profit"}
     labels = {17: "Sales (Screener reported)", 18: "Operating expenses (Screener reported)", 25: "Other income (Screener reported)", 26: "Depreciation (Screener reported)", 27: "Interest (Screener reported)", 28: "Profit before tax (Screener reported)", 29: "Tax (derived: PBT less net profit)", 30: "Net profit (Screener reported)", 31: "Dividend payout ratio (Screener reported)", 32: "EPS (Screener reported)", 33: "Operating profit / EBITDA proxy (Sales less expenses)"}
     for row, label in labels.items():
@@ -212,7 +214,7 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
     ds.cell(75, 11).value = None
 
     # Income statement: actuals only, with a visible blocked FY26E column.
-    mf["J8"] = "FY26E — blocked"
+    mf["J8"] = "FY26E (Blocked)"
     for col in range(4, 10):  # D:I = FY20-FY25
         ds_col = col + 1
         for row in (11, 14, 23, 26, 29, 32, 35, 38, 43, 47):
@@ -248,8 +250,10 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
         # Historical balance sheet values and direct reported totals.
         for mf_row, ds_row in {53:57, 54:58, 55:59, 56:60, 57:61, 59:62, 60:63, 61:64, 70:66}.items():
             mf.cell(mf_row, col).value = f"='Data Sheet'!{ds.cell(ds_row,ds_col).coordinate}"
-        mf.cell(62, col).value = None
-        mf.cell(63, col).value = None
+        ds_col_letter = openpyxl.utils.get_column_letter(ds_col)
+        col_letter = openpyxl.utils.get_column_letter(col)
+        mf.cell(62, col).value = f"='Data Sheet'!{ds_col_letter}65"
+        mf.cell(63, col).value = f"=SUM({col_letter}59:{col_letter}62)"
         for r in (65, 66, 67, 68):
             mf.cell(r, col).value = None
         mf.cell(72, col).value = f"={mf.cell(70,col).coordinate}={mf.cell(57,col).coordinate}"
@@ -270,13 +274,13 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
     mf["B43"] = "EPS (Screener reported)"
     mf["B46"] = "Dividend per share (not separately sourced)"
     mf["B47"] = "Dividend payout ratio"
-    mf["B62"] = "Other assets (current/non-current split unavailable)"
-    mf["B63"] = "Non-current assets total (unavailable)"
-    mf["B65"] = "Current asset detail (unavailable)"
-    mf["B66"] = None
-    mf["B67"] = None
-    mf["B68"] = "Current assets total (unavailable)"
-    mf["B70"] = "Total assets (Screener reported)"
+    mf["B62"] = "Other Assets (Screener reported)"
+    mf["B63"] = "Total Non-Current Assets"
+    mf["B65"] = "Receivables (breakdown unavailable)"
+    mf["B66"] = "Inventory (breakdown unavailable)"
+    mf["B67"] = "Cash & Bank (breakdown unavailable)"
+    mf["B68"] = "Total Current Assets (breakdown unavailable)"
+    mf["B70"] = "Total Assets (Screener reported)"
     mf["B72"] = "Balance check (reported total assets = total liabilities)"
     mf["B85"] = "Cash from Operating Activities (Screener aggregate)"
     mf["B96"] = "Cash from Investing Activities (Screener aggregate)"
@@ -287,7 +291,7 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
         mf.cell(r,2).value = None
     # Block every FY26E projection/output across the entire sheet (rows 11 through 150):
     _clear(mf, range(11, 150), [10])
-    mf["J8"] = "FY26E — blocked"
+    mf["J8"] = "FY26E (Blocked)"
     mf["J72"] = "BLOCKED"
     # Clear rows 146-148 for all columns (Receivables, Inventory, Cash % not separately reported):
     _clear(mf, (146, 147, 148), range(2, 11))
@@ -308,7 +312,7 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
         for row in (7,8,9,12,13,14,19,20,21,22,23,24,25,26,27,29,33,34,35,36):
             bsws.cell(row,col).value = None
         bsws.cell(40,col).value = f"={bsws.cell(38,col).coordinate}-{bsws.cell(16,col).coordinate}"
-    bsws["N2"] = "FY26E — blocked"
+    bsws["N2"] = "FY26E (Blocked)"
     for row in range(4, 41):
         bsws.cell(row,14).value = None
     bsws["N40"] = "BLOCKED"
@@ -331,7 +335,7 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
         cfws.cell(row,2).value = None
         for col in range(3,15):
             cfws.cell(row,col).value = None
-    cfws["N4"] = "FY26E — blocked"
+    cfws["N4"] = "FY26E (Blocked)"
     for row in (5,14,23,31,32,33):
         cfws.cell(row,14).value = None
 
@@ -359,7 +363,7 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
     _clear(wb["peerdata"], range(5,10), range(2,8))
 
     comps = wb["Comps"]
-    comps["B4"] = "M&M company snapshot — peer comparison unavailable"
+    comps["B4"] = "M&M company snapshot - peer comparison unavailable"
     comps["C8"] = "M&M"
     comps["B8"] = "='Data Sheet'!B1"
     comps["D8"] = "=compdata!D10"
@@ -401,10 +405,119 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
     dcf2["B4"] = "Regression DCF forecast unavailable for conglomerate entity"
     dcf2["N63"] = "Unavailable"
 
-    # No supported industrial ROIC / reinvestment series exists from the aggregate statements.
+    # Historical ROIC and intrinsic growth calculations (FY22-FY25; FY26E blocked).
     growth = wb["Intrinsic Growth"]
-    growth["B3"] = "ROIC and intrinsic growth unavailable from aggregate consolidated statements"
-    _clear(growth, range(4,67), range(2,11))
+    growth["B3"] = "Historical ROIC and Intrinsic Growth (FY22-FY25; FY26E Blocked)"
+
+    # Clean fiscal year headers linking to BS row 2
+    for c in ["E", "F", "G", "H", "I"]:
+        bsc = {"E": "J", "F": "K", "G": "L", "H": "M", "I": "N"}[c]
+        growth[f"{c}4"] = f"=BS!{bsc}2"
+        growth[f"{c}41"] = f"=BS!{bsc}2"
+        growth[f"{c}57"] = f"=BS!{bsc}2"
+    for c in ["E", "F", "G", "H"]:
+        for r in (4, 41, 57):
+            growth[f"{c}{r}"].number_format = "mmm-yy"
+
+    # Master template section labels
+    growth["B4"] = "Calculation of ROIC"
+    growth["B6"] = "Current Assets"
+    growth["B7"] = "=BS!B33"
+    growth["B8"] = "=BS!B34"
+    growth["B9"] = "=BS!B36"
+    growth["B10"] = "=BS!B37"
+    growth["B11"] = "Total Current Assets"
+    growth["B13"] = "Current Liabilities"
+    growth["B14"] = "=BS!B13"
+    growth["B15"] = "=BS!B14"
+    growth["B16"] = "=BS!B15"
+    growth["B17"] = "Total Current Liabilities"
+    growth["B19"] = "Net Working Capital"
+    growth["B21"] = "Non Current Assets"
+    growth["B22"] = "Land"
+    growth["B23"] = "Building"
+    growth["B24"] = "Plant Machinery"
+    growth["B25"] = "=BS!B23"
+    growth["B26"] = "Equipments"
+    growth["B27"] = "Furniture n fittings"
+    growth["B28"] = "Vehicles"
+    growth["B29"] = "Intangible Assets"
+    growth["B30"] = "Other fixed assets"
+    growth["B32"] = "Gross Block"
+    growth["B33"] = "Accumulated Depreciation"
+    growth["B34"] = "Net Non Current Assets"
+    growth["B36"] = "Invested Capital"
+    growth["B37"] = "EBIT"
+    growth["B39"] = "ROIC"
+    growth["B41"] = "Calculation of Reinvestment Rate"
+    growth["B43"] = "Net Capex"
+    growth["B44"] = "Change in Working Capital"
+    growth["B46"] = "EBIT"
+    growth["B47"] = "Marginal Tax Rate"
+    growth["B48"] = "EBIT(1-T)"
+    growth["B50"] = "Reinvestment"
+    growth["B52"] = "Reinvestment Rate"
+    growth["B57"] = "Calculation of Growth Rate"
+    growth["B59"] = "Reinvestment Rate"
+    growth["B60"] = "ROIC"
+    growth["B62"] = "Intrinsic Growth"
+
+    cols_ig = {"E": ("J", "F"), "F": ("K", "G"), "G": ("L", "H"), "H": ("M", "I")}
+    for c, (bsc, mfc) in cols_ig.items():
+        growth[f"{c}7"] = f"=BS!{bsc}33"
+        growth[f"{c}8"] = f"=BS!{bsc}34"
+        growth[f"{c}9"] = f"=BS!{bsc}36"
+        growth[f"{c}10"] = f"=BS!{bsc}37"
+        growth[f"{c}11"] = f"=SUM({c}7:{c}10)"
+        growth[f"{c}14"] = f"=BS!{bsc}13"
+        growth[f"{c}15"] = f"=BS!{bsc}14"
+        growth[f"{c}16"] = f"=BS!{bsc}15"
+        growth[f"{c}17"] = f"=SUM({c}14:{c}16)"
+        growth[f"{c}19"] = f"={c}11-{c}17"
+        growth[f"{c}22"] = f"=BS!{bsc}19"
+        growth[f"{c}23"] = f"=BS!{bsc}20"
+        growth[f"{c}24"] = f"=BS!{bsc}21"
+        growth[f"{c}25"] = f"=BS!{bsc}23"
+        growth[f"{c}26"] = f"=BS!{bsc}22"
+        growth[f"{c}27"] = f"=BS!{bsc}24"
+        growth[f"{c}28"] = f"=BS!{bsc}25"
+        growth[f"{c}29"] = f"=BS!{bsc}26"
+        growth[f"{c}30"] = f"=BS!{bsc}27"
+        growth[f"{c}32"] = f"=IF(SUM({c}22:{c}31)>0, SUM({c}22:{c}31), BS!{bsc}28)"
+        growth[f"{c}33"] = f"=BS!{bsc}29"
+        growth[f"{c}34"] = f"={c}32-{c}33"
+        growth[f"{c}36"] = f"={c}34+{c}19"
+        growth[f"{c}37"] = f"='Main Financials'!{mfc}23-'Main Financials'!{mfc}29"
+        growth[f"{c}43"] = f"=IF('Cash Flow'!{bsc}15<>\"\", -('Cash Flow'!{bsc}15+'Cash Flow'!{bsc}16)-'Main Financials'!{mfc}29, ('Cash Flow'!{bsc}5-'Cash Flow'!{bsc}32)-'Main Financials'!{mfc}29)"
+        growth[f"{c}46"] = f"={c}37"
+        growth[f"{c}47"] = 0.3
+        growth[f"{c}48"] = f"={c}46*(1-{c}47)"
+        growth[f"{c}39"] = f"={c}48/{c}36"
+
+    # Historical change in WC, reinvestment, and intrinsic growth
+    for c, prev in [("F", "E"), ("G", "F"), ("H", "G")]:
+        growth[f"{c}44"] = f"={c}19-{prev}19"
+        growth[f"{c}50"] = f"={c}43+{c}44"
+        growth[f"{c}52"] = f"={c}50/{c}48"
+        growth[f"{c}59"] = f"={c}52"
+        growth[f"{c}60"] = f"={c}39"
+        growth[f"{c}62"] = f"={c}59*{c}60"
+
+    # Clear Column I forecast cells
+    for r in [7,8,9,10,11,14,15,16,17,19,22,23,24,25,26,27,28,29,30,32,33,34,36,37,39,43,44,46,47,48,50,52,59,60,62]:
+        growth.cell(r, 9).value = None
+
+    growth["H54"] = "Historical Average"
+    growth["H55"] = "Historical Median"
+    growth["I54"] = "=AVERAGE(F52:H52)"
+    growth["I55"] = "=MEDIAN(F52:H52)"
+    growth["H64"] = "Historical Average"
+    growth["H65"] = "Historical Median"
+    growth["I64"] = "=AVERAGE(F62:H62)"
+    growth["I65"] = "=MEDIAN(F62:H62)"
+    growth.column_dimensions["B"].width = 32.0
+    for col in ["E", "F", "G", "H", "I"]:
+        growth.column_dimensions[col].width = 16.0
 
     # Keep the audited market beta, but do not display a made-up WACC or peer-derived capital structure.
     records = beta["securities"]["M&M.NS"]["records"]
@@ -456,7 +569,7 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
     for row in range(6, ratio.max_row+1):
         ratio.cell(row,8).value = None
         ratio.cell(row,9).value = None
-    ratio["H4"] = "FY26E — blocked"
+    ratio["H4"] = "FY26E (Blocked)"
 
     # Preserve mapped template geometry and request native Excel full recalculation.
     for ws in wb.worksheets:

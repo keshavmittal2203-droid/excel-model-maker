@@ -14,10 +14,10 @@
 > - **Independent Beta Recomputation**: Raw OLS Beta = **1.4746**, Blume Adjusted Beta = **1.3164** verified from committed Yahoo Finance 104-week return dataset.
 > - **Native Sparklines**: Restored `<x14:sparklineGroups>` XML in `Ratio Analysis` with data range `C6:G6` to `C26:G26`.
 > - **Deliverable Verification**:
->   - Deliverable workbook: `deliverables/V16_user_handoff/workbooks/MM-FullTemplate.xlsx` (SHA-256: `bdfd6a9903f1c6be34d13641dbdb7ecf0a04c83e04653996239d4d720704c54d`, 92,153 bytes).
->   - PDF previews: 15 landscape PDFs under `deliverables/V16_user_handoff/previews/MM/`.
->   - User handoff zip: `deliverables/V16_user_handoff.zip` (1,911,221 bytes, MM only).
-> - **Governance Status**: `ready: false`, `human_pack_approval: pending`. PR #8 open and unmerged.
+>   - Deliverable workbook: `deliverables/V16_user_handoff/workbooks/MM-FullTemplate.xlsx` (SHA-256: `29dd8df546ffe916003675891e3db96be4939138a92c37586d554ba8274b58ae`, 95,145 bytes).
+>   - PDF previews: 15 landscape PDFs under `deliverables/V16_user_handoff/previews/MM/` (100% clean, 0 clipped numbers).
+>   - User handoff zip: `deliverables/V16_user_handoff.zip` (2,067,884 bytes, MM only).
+> - **Governance Status**: `ready: false`, `human_pack_approval: pending`. PR #9 open and unmerged (closes issue #8).
 >
 > ---
 >

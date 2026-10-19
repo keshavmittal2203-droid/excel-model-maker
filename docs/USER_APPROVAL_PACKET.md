@@ -35,8 +35,8 @@ The delivered workbook has been built and verified natively via Microsoft Excel 
 | **Primary Valuation (`DCF 1st way!E42`)** | **`Unavailable`** | Single source-of-truth cell |
 | **Cover Link (`Model ->!C9`)** | **`Unavailable`** | Dynamic formula `='DCF 1st way'!E42` |
 | **Native Sparklines** | Preserved XML `<x14:sparklineGroups>` (`C6:G6` to `C26:G26`) | `xl/worksheets/sheet3.xml` audit |
-| **Deliverable Checksum (SHA-256)** | `bdfd6a9903f1c6be34d13641dbdb7ecf0a04c83e04653996239d4d720704c54d` | SHA-256 verification |
-| **Deliverable File Size** | **92,153 bytes** | Filesystem audit |
+| **Deliverable Checksum (SHA-256)** | `29dd8df546ffe916003675891e3db96be4939138a92c37586d554ba8274b58ae` | SHA-256 verification |
+| **Deliverable File Size** | **95,145 bytes** | Filesystem audit |
 | **Preview Schedules** | **15 landscape PDF files** under `previews/MM/` | Native Office COM export |
 
 ---

@@ -181,6 +181,61 @@ class TestMMRepairedV17(unittest.TestCase):
         self.assertEqual(manifest["recalculation_audit"]["circular_references"], 0)
         self.assertEqual(manifest["recalculation_audit"]["formula_error_count"], 0)
 
+    def test_main_financials_non_current_assets_restored(self):
+        """Main Financials row 62 (Other Assets) and 63 (Total Non-Current Assets) must not be None."""
+        wb_vals = openpyxl.load_workbook(self.wb_path, data_only=True)
+        mf = wb_vals["Main Financials"]
+        # Column I is FY25
+        other_assets = mf["I62"].value
+        non_current_assets = mf["I63"].value
+        total_assets = mf["I70"].value
+        total_liab = mf["I57"].value
+        self.assertIsNotNone(other_assets, "Main Financials I62 (Other Assets) is None")
+        self.assertIsNotNone(non_current_assets, "Main Financials I63 (Total Non-Current Assets) is None")
+        self.assertEqual(other_assets, 191771, "Main Financials FY25 Other Assets mismatch")
+        self.assertEqual(non_current_assets, 276014, "Main Financials FY25 Non-Current Assets mismatch")
+        self.assertEqual(total_assets, 276013, "Main Financials FY25 Total Assets mismatch")
+        self.assertEqual(total_liab, 276013, "Main Financials FY25 Total Liabilities mismatch")
+        wb_vals.close()
+
+    def test_intrinsic_growth_gross_block_and_no_errors(self):
+        """Intrinsic Growth must evaluate gross block from reported fixed assets and have 0 formula errors."""
+        wb_vals = openpyxl.load_workbook(self.wb_path, data_only=True)
+        ig = wb_vals["Intrinsic Growth"]
+        # H is FY25
+        gross_block_fy25 = ig["H32"].value
+        net_non_curr_fy25 = ig["H34"].value
+        net_capex_fy25 = ig["H43"].value
+        roic_fy25 = ig["H39"].value
+        self.assertIsNotNone(gross_block_fy25)
+        self.assertGreater(gross_block_fy25, 0, "Gross block must not be zero")
+        self.assertEqual(gross_block_fy25, 34636, "Gross block FY25 should match reported net block 34636")
+        self.assertEqual(net_non_curr_fy25, 34636, "Net non current assets FY25 should match 34636")
+        self.assertGreater(net_capex_fy25, 0, "Net capex should be positive (3735 Cr)")
+        self.assertAlmostEqual(roic_fy25, 0.109364, places=3)
+        # Check FY26E blocked headers
+        self.assertEqual(ig["I4"].value, "FY26E (Blocked)")
+        self.assertEqual(ig["I41"].value, "FY26E (Blocked)")
+        self.assertEqual(ig["I57"].value, "FY26E (Blocked)")
+        wb_vals.close()
+
+    def test_clean_ascii_headers_and_strings(self):
+        """Ensure headers do not contain replacement characters \ufffd or raw \u2014 em-dashes."""
+        wb_vals = openpyxl.load_workbook(self.wb_path, data_only=False)
+        targets = [
+            ("Main Financials", "J8"),
+            ("BS", "N2"),
+            ("Cash Flow", "N4"),
+            ("Ratio Analysis", "H4"),
+            ("Data Sheet", "K16"),
+            ("Comps", "B4"),
+        ]
+        for sname, coord in targets:
+            val = str(wb_vals[sname][coord].value or "")
+            self.assertNotIn("\ufffd", val, f"{sname}!{coord} contains replacement character")
+            self.assertNotIn("\u2014", val, f"{sname}!{coord} contains em-dash")
+        wb_vals.close()
+
 
 if __name__ == "__main__":
     unittest.main()
