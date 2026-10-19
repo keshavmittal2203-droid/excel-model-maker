@@ -2,7 +2,7 @@
 
 > **Active scope:** Excel-only; one active company model, Mahindra & Mahindra (`MM`), under Issue #8 / PR #9. LTM, CLEAN, and EDELWEISS generated workbooks are archived and excluded from the current release.
 >
-> **Branch:** `agent/gemini-mm-only-v17` (starting commit `c7b7670`). The current working changes are not yet committed or pushed.
+> **Branch:** `agent/gemini-mm-only-v17`; the M&M cleanup and source-provenance changes are committed as `12cfe98` and pushed to `origin`.
 >
 > **Active candidate:** `companies/MM/template_v17/MM-FullTemplate.xlsx` from the immutable 16-sheet master (`originals/Marksans Keshav.xlsx`, SHA-256 `4dc79842855e5d1e689a2f5ca1de22c34be72fb09c0c0f9dd3a95818e10737d0`).
 >
@@ -10,9 +10,9 @@
 >
 > **Latest workbook:** SHA-256 `6c23ac772337f1553b8e0983bffe09b1cf7bf19a265ab391c98f3cbdf2d1d910`, 94,457 bytes. Fifteen landscape PDF previews are generated in `companies/MM/template_v17/previews/`.
 >
-> **Source and display cleanup in this pass:** unused peer EBIT rows removed and hidden in `compdata`; unsupported inherited market-return series and stray `100` removed from `RM`; cover description traced to Screener; historical close is labeled and formula-linked with two-decimal display. The V17 test suite and both immutable template hash checks passed; the full repository suite remains pending.
+> **Source and display cleanup in this pass:** unused peer EBIT rows removed and hidden in `compdata`; unsupported inherited market-return series and stray `100` removed from `RM`; cover description traced to Screener; historical close is labeled and formula-linked with two-decimal display. The full repository suite passed: 124 passed, 26 legacy/out-of-scope checks skipped. Both immutable template hashes verified.
 >
-> **Governance:** `ready: false`; `human_pack_approval: pending`. PR #9 remains open and unmerged.
+> **Governance:** `ready: false`; `human_pack_approval: pending`. PR #9 is open and unmerged; its description is synchronized to the verified M&M-only delivery.
 
 ---
 

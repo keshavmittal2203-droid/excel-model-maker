@@ -19,6 +19,8 @@ The active deliverable is `companies/MM/template_v17/MM-FullTemplate.xlsx`, buil
 | Raw beta / Blume beta | 1.4746 / 1.3164, calculated from the saved 104-week Yahoo Finance series |
 | WACC and fair value | Unavailable; no supported conglomerate capital structure and SOTP segment inputs |
 | Excel previews | 15 landscape PDF previews |
+| Regression suite | 124 passed; 26 skipped (legacy or out-of-scope artifacts) |
+| Original template hashes | 2/2 verified byte-for-byte |
 | Workbook SHA-256 | `6c23ac772337f1553b8e0983bffe09b1cf7bf19a265ab391c98f3cbdf2d1d910` |
 | Workbook size | 94,457 bytes |
 | Governance | `ready: false`; human approval remains pending |
