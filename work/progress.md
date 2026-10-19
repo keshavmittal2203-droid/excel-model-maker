@@ -1,3 +1,15 @@
+## Active Checkpoint â€” Excel Model Maker M&M V17 (2026-10-19 16:51 Asia/Kolkata)
+
+- **User objective / scope:** Continue the Excel Model Maker only. M&M is the sole active target; no SignalDesk work. Excel-only; no PowerPoint generation. Preserve the 16-sheet master and the prior three-company archive. Keep `ready: false` and human approval pending.
+- **Repository:** `C:\Users\kesha\Documents\Codex\2026-10-18\excel-model-maker-gemini-mm-v17`; branch `agent/gemini-mm-only-v17`; starting HEAD `c7b7670e0363ffca3c8757ab173f535c9da54623`. Local changes are not committed or pushed yet. `origin/agent/gemini-mm-only-v17` still points to `c7b7670`; PR #9 is open and unmerged.
+- **Current M&M workbook:** `companies/MM/template_v17/MM-FullTemplate.xlsx`; SHA-256 `6c23ac772337f1553b8e0983bffe09b1cf7bf19a265ab391c98f3cbdf2d1d910`; 94,457 bytes. Native Excel COM 16.0 full rebuild: 932 formula cells, 0 formula errors, 0 circular references, 11/11 FY15-FY25 balance ties. FY26E remains `BLOCKED`; WACC and fair value remain unavailable; no plug or guessed valuation.
+- **Current deliverables:** `deliverables/MM_V17_user_handoff/workbooks/MM-FullTemplate.xlsx` is byte-identical to the active workbook. `deliverables/MM_V17_user_handoff.zip` contains 21 files, 1,914,154 bytes, SHA-256 `3246b4011be8c13b220b1c004ed5edc34f14b46970ba74dd628000a5dbbb8535`; ZIP CRC check passes. Handoff includes 15 one-page sheet PDFs, README, approval packet, source registry, build report, and manifest.
+- **Fixes in this pass:** Cover includes Financial Services and labels/formula-links the 15-Oct-2025 close with two-decimal currency display; Screener profile snapshot/source registry updated. Cleared and hid unsupported peer EBIT rows in `compdata`; shortened the company label to M&M. Removed inherited unsupported annual-return data and stray `100` from `RM`, marked that schedule unused, and removed old PowerPoint preview PNGs from active company folders. Kept all three other targets' source/history archived.
+- **Verification:** `python -m unittest -v` â€” 124 passed, 26 skipped (legacy/out-of-scope); `python verify_sources.py` â€” both Excel masters verified; `git diff --check` passed. Native Excel COM build and PDF render review passed. Cover, Comps, compdata, and RM previews checked; labels readable, no clipped text.
+- **Pending actions:** Commit the current scoped changes, push to `origin/agent/gemini-mm-only-v17`, and update PR #9 body. PR #9 body still has stale claims about market capitalization, old checksum, and old test count. Do not merge; do not close the human approval gate.
+
+---
+
 # Implementation Progress Log — agent/gemini-mm-only-v17
 
 ## Milestone Complete: Mahindra & Mahindra Single-Target V17 Model Repair & Deliverables Pruning (Issue #8)

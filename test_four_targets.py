@@ -1,6 +1,7 @@
 """Comprehensive unit and regression tests for the four priority target packages (M&M, LTM, CLEAN, EDELWEISS)."""
 import json
 import unittest
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -15,6 +16,8 @@ from validate_workbook import (
 TARGET_KEYS = ["MM", "LTM", "CLEAN", "EDELWEISS"]
 
 
+@unittest.skip("Four-company generated outputs are archived under Issue #8; M&M V17 is the sole active release.")
+@unittest.skip("Four-company generated outputs are archived under Issue #8; M&M V17 is the sole active release.")
 class FourTargetsTests(unittest.TestCase):
     def test_all_four_workbooks_recalculate_with_zero_errors_and_pass_36_identities(self):
         """All four candidate workbooks must calculate with zero formula errors, zero missing caches, and pass all 36 independent identities."""
@@ -559,6 +562,52 @@ class FourTargetsTests(unittest.TestCase):
             self.assertTrue(preview_dir.exists(), f"Preview directory missing for {key}")
             pdfs = list(preview_dir.glob("*.pdf"))
             self.assertEqual(len(pdfs), 17, f"{key} must have exactly 17 preview PDFs, found {len(pdfs)}")
+
+
+class ArchivedTargetsTests(unittest.TestCase):
+    def test_four_company_handoff_is_archived_and_recoverable(self):
+        archive = ROOT / "deliverables" / "archive" / "V16_user_handoff_four_company_archive.zip"
+        self.assertTrue(archive.exists(), "Historical four-company handoff archive is missing")
+        with zipfile.ZipFile(archive) as z:
+            names = set(z.namelist())
+        for company in TARGET_KEYS:
+            self.assertIn(f"workbooks/{company}-FullTemplate.xlsx", names)
+
+    def test_non_mm_source_inputs_remain_but_generated_v16_outputs_are_parked(self):
+        expected_inputs = {
+            "LTM": ("source_registry.json", "ltm.inputs.json"),
+            "CLEAN": ("source_registry.json", "clean.inputs.json"),
+            "EDELWEISS": ("source_registry.json", "edelweiss.inputs.json"),
+        }
+        for company, filenames in expected_inputs.items():
+            base = ROOT / "companies" / company
+            for filename in filenames:
+                self.assertTrue((base / filename).exists(), f"Preserved source/config file missing: {company}/{filename}")
+            self.assertFalse((base / "template_v16").exists(), f"Inactive generated workbook still active for {company}")
+            self.assertFalse((base / "previews").exists(), f"Inactive generated previews still active for {company}")
+
+
+class ArchivedTargetsTests(unittest.TestCase):
+    def test_four_company_handoff_is_archived_and_recoverable(self):
+        archive = ROOT / "deliverables" / "archive" / "V16_user_handoff_four_company_archive.zip"
+        self.assertTrue(archive.exists(), "Historical four-company handoff archive is missing")
+        with zipfile.ZipFile(archive) as z:
+            names = set(z.namelist())
+        for company in TARGET_KEYS:
+            self.assertIn(f"workbooks/{company}-FullTemplate.xlsx", names)
+
+    def test_non_mm_source_inputs_remain_but_generated_v16_outputs_are_parked(self):
+        expected_inputs = {
+            "LTM": ("source_registry.json", "ltm.inputs.json"),
+            "CLEAN": ("source_registry.json", "clean.inputs.json"),
+            "EDELWEISS": ("source_registry.json", "edelweiss.inputs.json"),
+        }
+        for company, filenames in expected_inputs.items():
+            base = ROOT / "companies" / company
+            for filename in filenames:
+                self.assertTrue((base / filename).exists(), f"Preserved source/config file missing: {company}/{filename}")
+            self.assertFalse((base / "template_v16").exists(), f"Inactive generated workbook still active for {company}")
+            self.assertFalse((base / "previews").exists(), f"Inactive generated previews still active for {company}")
 
 
 if __name__ == "__main__":

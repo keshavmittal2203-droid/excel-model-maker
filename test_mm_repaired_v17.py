@@ -7,10 +7,11 @@ import unittest
 import zipfile
 
 import openpyxl
+from work.build_template_v17_mm import _validate_output_dir
 
 ROOT = Path(__file__).resolve().parent
 MM_DIR = ROOT / "companies" / "MM" / "template_v17"
-DELIVERABLES_DIR = ROOT / "deliverables" / "V16_user_handoff"
+DELIVERABLES_DIR = ROOT / "deliverables" / "MM_V17_user_handoff"
 MASTER_WB = ROOT / "originals" / "Marksans Keshav.xlsx"
 BETA_SOURCE = ROOT / "work" / "sources" / "weekly_market_returns_104w_v2.json"
 ERRORS = {"#REF!", "#DIV/0!", "#VALUE!", "#NAME?", "#N/A", "#NUM!", "#NULL!"}
@@ -144,9 +145,11 @@ class TestMMRepairedV17(unittest.TestCase):
 
     def test_deliverables_contain_only_mm(self):
         """User handoff deliverables must contain only MM workbook and previews."""
+        import hashlib
         workbooks = [p for p in (DELIVERABLES_DIR / "workbooks").glob("*.xlsx") if not p.name.startswith("~$")]
         self.assertEqual(len(workbooks), 1)
         self.assertEqual(workbooks[0].name, "MM-FullTemplate.xlsx")
+        self.assertEqual(hashlib.sha256(workbooks[0].read_bytes()).hexdigest(), hashlib.sha256(self.wb_path.read_bytes()).hexdigest())
 
         preview_dirs = [d.name for d in (DELIVERABLES_DIR / "previews").iterdir() if d.is_dir()]
         self.assertEqual(preview_dirs, ["MM"])
@@ -181,43 +184,223 @@ class TestMMRepairedV17(unittest.TestCase):
         self.assertEqual(manifest["recalculation_audit"]["circular_references"], 0)
         self.assertEqual(manifest["recalculation_audit"]["formula_error_count"], 0)
 
-    def test_main_financials_non_current_assets_restored(self):
-        """Main Financials row 62 (Other Assets) and 63 (Total Non-Current Assets) must not be None."""
+    def test_main_financials_asset_subtotal_and_rounding_delta(self):
+        """Source totals remain intact and the one-crore component-rounding delta is visible."""
         wb_vals = openpyxl.load_workbook(self.wb_path, data_only=True)
+        wb_forms = openpyxl.load_workbook(self.wb_path, data_only=False)
         mf = wb_vals["Main Financials"]
-        # Column I is FY25
+        mf_forms = wb_forms["Main Financials"]
+        # Column I is FY25. Components are rounded by the source, so expose the delta.
         other_assets = mf["I62"].value
-        non_current_assets = mf["I63"].value
+        asset_subtotal = mf["I63"].value
+        rounding_delta = mf["I69"].value
         total_assets = mf["I70"].value
         total_liab = mf["I57"].value
         self.assertIsNotNone(other_assets, "Main Financials I62 (Other Assets) is None")
-        self.assertIsNotNone(non_current_assets, "Main Financials I63 (Total Non-Current Assets) is None")
         self.assertEqual(other_assets, 191771, "Main Financials FY25 Other Assets mismatch")
-        self.assertEqual(non_current_assets, 276014, "Main Financials FY25 Non-Current Assets mismatch")
+        self.assertEqual(asset_subtotal, 276014, "Main Financials asset component subtotal mismatch")
         self.assertEqual(total_assets, 276013, "Main Financials FY25 Total Assets mismatch")
         self.assertEqual(total_liab, 276013, "Main Financials FY25 Total Liabilities mismatch")
+        self.assertEqual(rounding_delta, -1, "Source rounding difference must remain visible, not plugged")
+        self.assertEqual(mf_forms["I69"].value, "=I70-I63")
+        self.assertEqual(mf["I72"].value, "TIED")
+        self.assertTrue(all(mf[f"I{r}"].value is None for r in (65,66,67,68)))
         wb_vals.close()
+        wb_forms.close()
 
-    def test_intrinsic_growth_gross_block_and_no_errors(self):
-        """Intrinsic Growth must evaluate gross block from reported fixed assets and have 0 formula errors."""
+    def test_intrinsic_growth_blocks_unsupported_asset_classification(self):
+        """Keep the reported net block but do not calculate ROIC from undisclosed asset splits."""
         wb_vals = openpyxl.load_workbook(self.wb_path, data_only=True)
+        wb_forms = openpyxl.load_workbook(self.wb_path, data_only=False)
         ig = wb_vals["Intrinsic Growth"]
-        # H is FY25
-        gross_block_fy25 = ig["H32"].value
-        net_non_curr_fy25 = ig["H34"].value
-        net_capex_fy25 = ig["H43"].value
-        roic_fy25 = ig["H39"].value
-        self.assertIsNotNone(gross_block_fy25)
-        self.assertGreater(gross_block_fy25, 0, "Gross block must not be zero")
-        self.assertEqual(gross_block_fy25, 34636, "Gross block FY25 should match reported net block 34636")
-        self.assertEqual(net_non_curr_fy25, 34636, "Net non current assets FY25 should match 34636")
-        self.assertGreater(net_capex_fy25, 0, "Net capex should be positive (3735 Cr)")
-        self.assertAlmostEqual(roic_fy25, 0.109364, places=3)
+        self.assertEqual(ig["H32"].value, 34636, "FY25 reported net block must remain visible")
+        self.assertEqual(wb_forms["Intrinsic Growth"]["H32"].value, "=BS!M28")
+        for coord in ("H7","H8","H9","H11","H14","H15","H17","H19","H22","H23","H24","H25","H26","H27","H28","H29","H30","H33","H34","H36","H39","H43","H44","H50","H52","H59","H60","H62"):
+            self.assertIsNone(ig[coord].value, f"Unsupported split or derived metric must not display zero: {coord}")
+        self.assertIn("unavailable", str(ig["B3"].value).lower())
+        self.assertIn("not disclosed", str(ig["B6"].value).lower())
+        self.assertEqual(ig["H10"].value, 191771)
+        self.assertEqual(ig["H16"].value, 69950)
+        self.assertIsNotNone(ig["H47"].value)
         # Check FY26E blocked headers
         self.assertEqual(ig["I4"].value, "FY26E (Blocked)")
         self.assertEqual(ig["I41"].value, "FY26E (Blocked)")
         self.assertEqual(ig["I57"].value, "FY26E (Blocked)")
         wb_vals.close()
+        wb_forms.close()
+
+    def test_unverified_share_count_and_market_cap_are_not_used(self):
+        wb = openpyxl.load_workbook(self.wb_path, data_only=True)
+        formulas = openpyxl.load_workbook(self.wb_path, data_only=False)
+        ds = wb["Data Sheet"]
+        self.assertIsNone(ds["B6"].value)
+        self.assertIsNone(ds["B9"].value)
+        self.assertIn("unavailable",str(ds["A6"].value).lower())
+        self.assertIn("unavailable",str(ds["A9"].value).lower())
+        comps = wb["Comps"]
+        for coord in ("E8","F8","G8","H8"):
+            self.assertIsNone(comps[coord].value, f"Unsupported market field {coord} must be blank, not zero/N/A")
+        self.assertAlmostEqual(float(comps["P8"].value), 3497.2 / 103.97, places=3)
+        self.assertIn("Data Sheet", formulas["Comps"]["P8"].value)
+        wb.close()
+        formulas.close()
+
+    def test_cash_flow_labels_are_short_and_reported_detail_stays_blank(self):
+        wb = openpyxl.load_workbook(self.wb_path, data_only=True)
+        ws = wb["Cash Flow"]
+        self.assertEqual(ws["B5"].value, "Operating cash flow (Screener)")
+        self.assertEqual(ws["B14"].value, "Investing cash flow (Screener)")
+        self.assertEqual(ws["B23"].value, "Financing cash flow (Screener)")
+        source=json.loads((ROOT/"work"/"sources"/"MM_consolidated.json").read_text(encoding="utf-8"))
+        table=source["sections"]["cash-flow"]["tables"][0]
+        years={int(h[-4:]):i for i,h in enumerate(table["headers"]) if h[-4:].isdigit()}
+        for year in range(2015,2026):
+            col=year-2012
+            idx=years[year]
+            for row,key in ((5,"Cash from Operating Activity"),(14,"Cash from Investing Activity"),(23,"Cash from Financing Activity"),(32,"Free Cash Flow")):
+                self.assertEqual(ws.cell(row,col).value,table["rows"][key][idx],f"Cash Flow!{ws.cell(row,col).coordinate} does not match Screener source")
+            self.assertEqual(ws.cell(31,col).value,sum(table["rows"][key][idx] for key in ("Cash from Operating Activity","Cash from Investing Activity","Cash from Financing Activity")))
+        for row in list(range(6,14)) + list(range(15,23)) + list(range(24,31)):
+            for col in range(3,14):
+                self.assertIsNone(ws.cell(row,col).value, f"Unsupported cash-flow detail {ws.cell(row,col).coordinate} must be blank")
+        wb.close()
+
+    def test_comps_empty_peer_rows_have_no_grid_clutter(self):
+        wb = openpyxl.load_workbook(self.wb_path, data_only=False)
+        ws = wb["Comps"]
+        self.assertIn("peer ev multiples unavailable", str(ws["B10"].value).lower())
+        self.assertIn("$B$3:$P$10", str(ws.print_area))
+        for row in list(range(9,10)) + list(range(11,35)):
+            for col in range(2,17):
+                cell=ws.cell(row,col)
+                self.assertIsNone(cell.value, f"Unused Comps cell {cell.coordinate} must be blank")
+                self.assertTrue(all(getattr(cell.border,side).style is None for side in ("left","right","top","bottom")), f"Unused Comps cell {cell.coordinate} has border clutter")
+        wb.close()
+
+    def test_dcf_has_no_stale_sotp_component_claims(self):
+        wb = openpyxl.load_workbook(self.wb_path, data_only=False)
+        ws = wb["DCF 1st way"]
+        self.assertIn("sotp unavailable", str(ws["B47"].value).lower())
+        stale_terms = ("core automotive", "core farm", "standalone net cash bridge", "listed stake in mmfs", "listed stake in tech mahindra")
+        for row in ws.iter_rows(min_row=47,max_row=61,min_col=2,max_col=13):
+            for cell in row:
+                val=str(cell.value or "").lower()
+                self.assertFalse(any(term in val for term in stale_terms), f"Stale SOTP text remains in {cell.coordinate}: {val}")
+        wb.close()
+
+    def test_data_sheet_banner_is_not_an_internal_warning(self):
+        wb = openpyxl.load_workbook(self.wb_path, data_only=False)
+        text = str(wb["Data Sheet"]["E2"].value or "")
+        self.assertNotIn("please do not make any changes", text.lower())
+        self.assertIn("historical sourced inputs", text.lower())
+        wb.close()
+
+    def test_cover_business_description_includes_financial_services(self):
+        wb = openpyxl.load_workbook(self.wb_path, data_only=False)
+        cover = wb["Model ->"]
+        self.assertEqual(cover["C5"].value, "Automotive, Farm Equipment & Financial Services")
+        self.assertEqual(cover["B11"].value, "Historical close (15-Oct-2025)")
+        self.assertEqual(cover["C11"].value, "='Data Sheet'!B8")
+        self.assertIn("0.00", cover["C11"].number_format)
+        self.assertGreaterEqual(cover.column_dimensions["B"].width, 32)
+        wb.close()
+
+    def test_unused_peer_data_and_unverified_rm_series_are_removed(self):
+        wb = openpyxl.load_workbook(self.wb_path, data_only=False)
+        compdata = wb["compdata"]
+        self.assertEqual(compdata["C10"].value, "M&M")
+        for row in range(18, 26):
+            for col in range(2, 14):
+                self.assertIsNone(compdata.cell(row, col).value)
+        for row in range(17, 26):
+            self.assertTrue(compdata.row_dimensions[row].hidden)
+        self.assertIn("$B$2:$M$10", str(compdata.print_area))
+
+        rm = wb["RM"]
+        self.assertIn("not used in v17", str(rm["C8"].value).lower())
+        self.assertIn("no approved-source evidence", str(rm["E8"].value).lower())
+        for row in range(9, 36):
+            for col in range(2, 10):
+                self.assertIsNone(rm.cell(row, col).value, f"Unverified inherited RM data remains in {rm.cell(row,col).coordinate}")
+            self.assertTrue(rm.row_dimensions[row].hidden)
+        self.assertIn("$B$8:$I$8", str(rm.print_area))
+        wb.close()
+
+    def test_business_description_source_registry_is_screener(self):
+        entries = json.loads((ROOT / "docs" / "mm_source_registry.json").read_text(encoding="utf-8"))
+        entry = next(e for e in entries if e["metric"] == "Business profile summary")
+        self.assertEqual(entry["source_org"], "Screener")
+        self.assertEqual(entry["workbook_cell"], "'Model ->'!C5")
+        self.assertEqual(entry["status"], "profile_sourced")
+        self.assertIn("screener.in/company/M%26M", entry["official_url"])
+        local = ROOT / entry["local_source_file"]
+        self.assertTrue(local.exists())
+        import hashlib
+        self.assertEqual(hashlib.sha256(local.read_bytes()).hexdigest(), entry["local_source_sha256"])
+
+    def test_source_registry_matches_v17_used_cells_and_unavailable_data(self):
+        entries = json.loads((ROOT / "docs" / "mm_source_registry.json").read_text(encoding="utf-8"))
+        by_metric = {entry["metric"]: entry for entry in entries}
+        capex = by_metric["CapEx / fixed asset purchases (FY15-FY25)"]
+        self.assertEqual(capex["status"], "unavailable_on_allowed_sources")
+        self.assertIsNone(capex["workbook_cell"])
+        shares = by_metric["Shares outstanding at 2025-10-15 cutoff"]
+        self.assertEqual(shares["status"], "unavailable_on_allowed_sources")
+        self.assertIn("'Data Sheet'!B6", shares["workbook_cell"])
+        sales = by_metric["Revenue from Operations (FY17-FY25)"]
+        self.assertEqual(sales["workbook_cell"], "'Data Sheet'!B17:J17")
+        self.assertEqual(sales["source_org"], "Screener")
+        market_cap = by_metric["Market capitalization / equity value"]
+        self.assertEqual(market_cap["status"], "unavailable_on_allowed_sources")
+        self.assertIsNone(market_cap["reported_value"])
+        self.assertFalse(any("bseindia.com" in str(e.get("official_url")) for e in entries))
+        text = (ROOT / "docs" / "MM_SOURCE_REGISTRY.md").read_text(encoding="utf-8").lower()
+        self.assertIn("capex detail is unavailable", text)
+        self.assertNotIn("bse statutory sub-schedule", text)
+
+    def test_comps_uses_only_supported_market_multiples(self):
+        wb_values = openpyxl.load_workbook(self.wb_path, data_only=True)
+        wb_formulas = openpyxl.load_workbook(self.wb_path, data_only=False)
+        comps = wb_values["Comps"]
+        for coord in ("E8","F8","G8","H8"):
+            self.assertIsNone(comps[coord].value)
+        self.assertAlmostEqual(float(comps["P8"].value), 3497.2 / 103.97, places=3)
+        self.assertIn("Data Sheet", wb_formulas["Comps"]["P8"].value)
+        wb_values.close()
+        wb_formulas.close()
+
+    def test_print_preview_does_not_force_every_sheet_to_one_tiny_page(self):
+        wb = openpyxl.load_workbook(self.wb_path, data_only=False)
+        for name in ("Main Financials","Cash Flow","Data Sheet"):
+            ws=wb[name]
+            self.assertEqual(ws.page_setup.fitToHeight,0)
+            self.assertTrue(ws.page_setup.scale is None or ws.page_setup.scale >= 50, f"{name} preview is scaled too small")
+        self.assertEqual(wb["Cash Flow"].column_dimensions["B"].width,42.0)
+        self.assertIn(wb["Intrinsic Growth"].page_setup.fitToHeight,(0,None))
+        self.assertTrue(wb["Intrinsic Growth"].page_setup.scale is None or wb["Intrinsic Growth"].page_setup.scale>=50)
+        self.assertIn("$B$3:$H$40",str(wb["Intrinsic Growth"].print_area))
+        self.assertTrue(all(wb["DCF 2nd way"].row_dimensions[r].hidden for r in range(5,101)))
+        self.assertIn("$B$3:$N$4",str(wb["DCF 2nd way"].print_area))
+        wb.close()
+
+    def test_template_debug_markers_removed_from_visible_sheets(self):
+        wb=openpyxl.load_workbook(self.wb_path,data_only=False)
+        mf=wb["Main Financials"]
+        self.assertFalse(any(mf.cell(r,1).value=="#" for r in range(1,mf.max_row+1)))
+        dcf2=wb["DCF 2nd way"]
+        self.assertIsNone(dcf2["C4"].value)
+        self.assertFalse(any(dcf2.cell(r,1).value=="x" for r in range(1,dcf2.max_row+1)))
+        self.assertIn("unavailable",str(dcf2["B4"].value).lower())
+        wb.close()
+
+    def test_no_generated_powerpoint_previews_remain_active(self):
+        self.assertFalse((ROOT / "companies" / "MM" / "previews").exists())
+
+    def test_build_output_path_is_scoped_to_generated_output_roots(self):
+        self.assertEqual(_validate_output_dir(ROOT / "companies" / "MM" / "test-output"), (ROOT / "companies" / "MM" / "test-output").resolve())
+        for unsafe in (ROOT, ROOT / "originals" / "unsafe", Path("C:/outside/MM-output")):
+            with self.assertRaises(ValueError):
+                _validate_output_dir(unsafe)
 
     def test_clean_ascii_headers_and_strings(self):
         """Ensure headers do not contain replacement characters \ufffd or raw \u2014 em-dashes."""

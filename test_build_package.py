@@ -345,6 +345,8 @@ class BuildPackageTests(unittest.TestCase):
             validate_package_request(bad_req, cipla_req_path)
         self.assertIn("Unsupported reporting_unit", str(ctx.exception))
 
+    @unittest.skip("Cipla adapter targets an archived 17-sheet source; current release scope is M&M-only V17")
+    @unittest.skip("Cipla's historical adapter expects the archived 17-sheet source; current release scope is M&M V17")
     def test_build_package_cipla_end_to_end_skip_com(self):
         """Verify Cipla package builds successfully end-to-end with valid artifacts and manifest."""
         out_dir = self.test_dir / "output_cipla"

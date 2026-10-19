@@ -2,15 +2,14 @@
 
 ## Current slice
 
-- Development core: inspect templates, validate reviewed input maps, fill mapped existing numeric cells, preserve package parts, remove stale caches, request recalculation, emit provenance manifest.
-- Contracts: model-pack JSON Schema, input example, HTTP API draft, cross-agent rules, workbook release policy.
-- Verification: focused Python unit tests. No real user template or course onboarded yet.
+- The active supported example is the user's 16-sheet Marksans master adapted for M&M in V17. The template remains byte-verified and the workbook is rebuilt through native Excel COM on Windows.
+- The current M&M candidate has 0 formula errors, 0 circular references, and 11 historical balance ties. Forecast and fair value are blocked where the approved source set lacks required facts.
+- Current acceptance work is limited to a single-company Excel workbook. Other company deliverables are archived; PowerPoint is retired.
+- Keep source mappings, workbook formulas, visual previews, and regression checks synchronized before publishing another candidate.
 
-## Next: first real model pack
+## Next: finish M&M acceptance
 
-Provide one exact template, one completed example using that template, and the relevant course materials. Include one task the model maker should perform and the expected output. The original workbook should retain its formulas and native features. Explain which cells/assumptions can change and which layout/features must remain exact.
-
-Onboarding will inventory sheets, formulas, dependencies, units, timelines, named ranges, charts, tables, external links, macros, and data tables. Course rules receive page/section citations. Ambiguities become explicit decisions; missing facts are not invented. The first pack is reviewed against the completed example before generation is enabled for that model family.
+Complete the current visual and source-provenance cleanup, regenerate the M&M handoff workbook and archive, run the full repository verification, and publish only after the report and artifacts match the actual workbook. Keep `ready: false` and human approval pending.
 
 ## Cloud workspace
 

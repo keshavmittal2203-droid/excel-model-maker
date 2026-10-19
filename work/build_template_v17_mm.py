@@ -21,6 +21,7 @@ from typing import Any
 import openpyxl
 from openpyxl import load_workbook
 from openpyxl.cell.cell import MergedCell
+from openpyxl.styles import Border, PatternFill
 from openpyxl.utils import get_column_letter
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -88,6 +89,34 @@ def _clear(ws, rows, cols) -> None:
             _clear_cell(ws, r, c)
 
 
+def _validate_output_dir(output_dir: Path) -> Path:
+    """Limit replaceable build directories to dedicated generated-output roots."""
+    resolved = output_dir.resolve()
+    allowed_roots = (
+        (ROOT / "companies" / "MM").resolve(),
+        (ROOT / "staging").resolve(),
+        (ROOT / "candidates").resolve(),
+    )
+    if resolved.parent not in allowed_roots:
+        raise ValueError(
+            "Output must be a dedicated direct child of companies/MM, staging, or candidates; "
+            f"refusing unsafe path: {resolved}"
+        )
+    return resolved
+
+
+def _clear_unused_table_rows(ws, rows, columns) -> None:
+    """Remove template grid clutter from rows that have no retained peer data."""
+    for row in rows:
+        for column in columns:
+            cell = ws.cell(row, column)
+            if type(cell).__name__ == "MergedCell":
+                continue
+            cell.value = None
+            cell.border = Border()
+            cell.fill = PatternFill(fill_type=None)
+
+
 def _apply_sparkline_extension(xlsx: Path) -> None:
     """Restore the master template's native trend sparklines over FY21-FY25 only."""
     with zipfile.ZipFile(MASTER, "r") as master:
@@ -144,16 +173,28 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
 
     # One visible, concise limitation on the cover; no dispersed speculative notes.
     cover = wb["Model ->"]
+    cover["C5"] = "Automotive, Farm Equipment & Financial Services"
+    cover["B11"] = "Historical close (15-Oct-2025)"
+    cover["C11"] = "='Data Sheet'!B8"
+    cover["C11"].number_format = '"₹"#,##0.00'
+    cover.column_dimensions["B"].width = 36
     cover["C13"] = (
         "Forecast and valuation unavailable: approved sources do not split M&M's "
         "segments, consolidated cash, or NBFC funding detail."
     )
     cover["C16"] = None
     ds["A3"] = "Screener consolidated snapshot; valuation cutoff 15-Oct-2025; actuals through FY25 only."
-    ds["B6"] = 124.3
+    ds["E2"] = "Historical sourced inputs; formulas calculate derived metrics"
+    # The historical cutoff snapshot does not provide a separately verified share count.
+    # Do not reuse a prior pack's 124.3 Cr input to manufacture market capitalization.
+    ds["A6"] = "Shares outstanding (unavailable on approved snapshot)"
+    ds["B6"] = None
+    ds["A7"] = "Face value (INR/share)"
     ds["B7"] = 5
+    ds["A8"] = "Closing price (Yahoo Finance, 15-Oct-2025)"
     ds["B8"] = market["securities"]["M&M.NS"]["close_2025_10_15"]
-    ds["B9"] = "=B6*B8"
+    ds["A9"] = "Market capitalization (unavailable; share count not verified)"
+    ds["B9"] = None
 
     # Data Sheet: exact Screener historicals (FY17-FY25); every unavailable FY26E is blank.
     for offset, year in enumerate(range(2017, 2026), start=2):
@@ -254,9 +295,10 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
         col_letter = openpyxl.utils.get_column_letter(col)
         mf.cell(62, col).value = f"='Data Sheet'!{ds_col_letter}65"
         mf.cell(63, col).value = f"=SUM({col_letter}59:{col_letter}62)"
+        mf.cell(69, col).value = f"={col_letter}70-{col_letter}63"
         for r in (65, 66, 67, 68):
             mf.cell(r, col).value = None
-        mf.cell(72, col).value = f"={mf.cell(70,col).coordinate}={mf.cell(57,col).coordinate}"
+        mf.cell(72, col).value = f'=IF({col_letter}70={col_letter}57,"TIED","UNRECONCILED")'
         # Only Screener's aggregate historical cash flow lines are available.
         cf_col = col + 4  # D=H=FY20 ... I=M=FY25
         for r in list(range(77, 85)) + list(range(88, 96)) + list(range(99, 106)):
@@ -275,13 +317,17 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
     mf["B46"] = "Dividend per share (not separately sourced)"
     mf["B47"] = "Dividend payout ratio"
     mf["B62"] = "Other Assets (Screener reported)"
-    mf["B63"] = "Total Non-Current Assets"
+    mf["B63"] = "Asset component subtotal"
     mf["B65"] = "Receivables (breakdown unavailable)"
     mf["B66"] = "Inventory (breakdown unavailable)"
     mf["B67"] = "Cash & Bank (breakdown unavailable)"
     mf["B68"] = "Total Current Assets (breakdown unavailable)"
     mf["B70"] = "Total Assets (Screener reported)"
-    mf["B72"] = "Balance check (reported total assets = total liabilities)"
+    mf["B69"] = "Rounding delta vs total assets"
+    mf["B72"] = "Reported totals tie-out"
+    for row in range(1, mf.max_row + 1):
+        if mf.cell(row, 1).value == "#":
+            mf.cell(row, 1).value = None
     mf["B85"] = "Cash from Operating Activities (Screener aggregate)"
     mf["B96"] = "Cash from Investing Activities (Screener aggregate)"
     mf["B106"] = "Cash from Financing Activities (Screener aggregate)"
@@ -318,8 +364,9 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
     bsws["N40"] = "BLOCKED"
 
     # Cash flow: exact reported annual aggregates; no copied detail, assumptions, or forecast.
-    for row, label in {5:"Cash from Operating Activity (Screener reported)",14:"Cash from Investing Activity (Screener reported)",23:"Cash from Financing Activity (Screener reported)",31:"Net Cash Flow (formula)",32:"Free Cash Flow (Screener reported)",33:"CFO / Operating Profit (Screener reported)"}.items():
+    for row, label in {5:"Operating cash flow (Screener)",14:"Investing cash flow (Screener)",23:"Financing cash flow (Screener)",31:"Net cash flow (CFO + CFI + CFF)",32:"Free cash flow (Screener)",33:"CFO / operating profit"}.items():
         cfws.cell(row,2).value = label
+    cfws.column_dimensions["B"].width = 42.0
     for year in range(2015,2026):
         col = year - 2012  # C=2015 ... M=2025
         cfws.cell(4,col).value = dt.date(year,3,31)
@@ -342,43 +389,42 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
     # Remove unsupported peer records, circular EBITDA back-solves, and EV based on an invented cash bridge.
     compdata = wb["compdata"]
     _clear(compdata, range(3,10), range(2,14))
-    _clear(compdata, range(18,23), range(2,14))
+    # The second template table is a peer EBIT schedule. No date-matched peer
+    # inputs are approved for V17, so clear the entire stale peer-data region.
+    _clear(compdata, range(18,26), range(2,14))
+    compdata.print_area = "$B$2:$M$10"
+    for row in range(17,26):
+        compdata.row_dimensions[row].hidden = True
     compdata["B10"] = 1
-    compdata["C10"] = "='Data Sheet'!B1"
+    compdata["C10"] = "M&M"
     compdata["D10"] = "='Data Sheet'!B8"
-    compdata["E10"] = "='Data Sheet'!B6"
-    compdata["F10"] = "=D10*E10"
+    compdata["E10"] = None
+    compdata["F10"] = None
     for c in ("G10","H10","I10","J10"):
         compdata[c] = None
     compdata["K10"] = "='Data Sheet'!J33"
     compdata["L10"] = "='Data Sheet'!J17"
     compdata["M10"] = "='Data Sheet'!J30"
-    compdata["B10"] = 1
-    compdata["C25"] = "='Data Sheet'!B1"
-    compdata["D25"] = "=D10"
-    compdata["E25"] = "='Main Financials'!I24"
-    for c in ("F25","G25","H25","I25","J25","K25"):
-        compdata[c] = None
     # Peer tab has no date-matched verified peer operating data; clear unsupported rows.
     _clear(wb["peerdata"], range(5,10), range(2,8))
 
     comps = wb["Comps"]
-    comps["B4"] = "M&M company snapshot - peer comparison unavailable"
+    comps["B4"] = "M&M company snapshot - market capitalization and peer valuation unavailable"
     comps["C8"] = "M&M"
     comps["B8"] = "='Data Sheet'!B1"
     comps["D8"] = "=compdata!D10"
     comps["E8"] = "=compdata!E10"
     comps["F8"] = "=compdata!F10"
-    for c in ("G8","H8","N8","O8"):
+    for c in ("E8","F8","G8","H8","N8","O8"):
         comps[c] = None
     comps["J8"] = "=compdata!L10"
     comps["K8"] = "=compdata!K10"
     comps["L8"] = "=compdata!M10"
-    comps["P8"] = "=IFERROR(F8/L8,\"\")"
-    _clear(comps, range(9,16), range(2,17))
-    _clear(comps, range(17,23), range(2,17))
-    _clear(comps, range(26,35), range(2,17))
-    comps["B25"] = "Peer multiples omitted: no date-matched peer dataset is retained from approved sources."
+    comps["P8"] = '=IFERROR(D8/\'Data Sheet\'!J32,"Unavailable")'
+    _clear_unused_table_rows(comps, range(9,35), range(2,17))
+    comps["B10"] = "Peer multiples omitted; share count and market cap unavailable; peer EV multiples unavailable. P/E = 15-Oct-2025 close / FY25 EPS."
+    comps["B25"] = None
+    comps.print_area = "$B$3:$P$10"
 
     # M&M is a conglomerate with an NBFC; industrial DCF and unsupported SOTP are blocked.
     dcf = wb["DCF 1st way"]
@@ -388,26 +434,42 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
     for row in range(19,42):
         for col in range(5,12):
             dcf.cell(row,col).value = None
-    for row in range(47,63):
-        for col in range(5,8):
-            dcf.cell(row,col).value = None
     for row in range(24,32):
         for col in range(7,12):
             dcf.cell(row,col).value = None
+    # Remove the inherited SOTP schedule text and all values; none of its standalone
+    # segment or cash-bridge inputs is supported by the locked source allowlist.
+    _clear(dcf, range(47,62), range(2,14))
+    _clear_unused_table_rows(dcf, range(48,62), range(2,14))
     dcf["B23"] = "Valuation and sensitivity unavailable"
+    dcf["B47"] = "SOTP unavailable: approved sources do not disclose segment EBITDA or standalone cash."
     dcf["E42"] = "Unavailable"
     dcf["E62"] = "Unavailable"
     dcf["B62"] = "Implied fair value per share (unavailable)"
     dcf["E44"] = market["securities"]["M&M.NS"]["close_2025_10_15"]
     dcf["E45"] = None
+    dcf.print_area = "$B$3:$K$62"
     dcf2 = wb["DCF 2nd way"]
-    _clear(dcf2, range(9,100), range(2,16))
-    dcf2["B4"] = "Regression DCF forecast unavailable for conglomerate entity"
-    dcf2["N63"] = "Unavailable"
+    _clear(dcf2, range(5,101), range(2,16))
+    _clear_unused_table_rows(dcf2, range(5,101), range(2,16))
+    dcf2["B4"] = "Forecast and valuation unavailable; required source-backed inputs are missing."
+    for column in range(1, 16):
+        if dcf2.cell(4, column).coordinate != "B4":
+            dcf2.cell(4, column).value = None
+    for row in range(1, min(dcf2.max_row, 100) + 1):
+        if dcf2.cell(row, 1).value == "x":
+            dcf2.cell(row, 1).value = None
+    dcf2.print_area = "$B$3:$N$4"
+    for row in range(5,101):
+        dcf2.row_dimensions[row].hidden = True
 
-    # Historical ROIC and intrinsic growth calculations (FY22-FY25; FY26E blocked).
+    # Preserve reported aggregates, but block ROIC/growth where the approved sources do
+    # not split operating assets from the consolidated MMFS loan book.
     growth = wb["Intrinsic Growth"]
-    growth["B3"] = "Historical ROIC and Intrinsic Growth (FY22-FY25; FY26E Blocked)"
+    growth["B3"] = (
+        "ROIC / intrinsic growth unavailable: approved sources do not split operating assets "
+        "or MMFS lending balances from consolidated Other Assets."
+    )
 
     # Clean fiscal year headers linking to BS row 2
     for c in ["E", "F", "G", "H", "I"]:
@@ -419,21 +481,21 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
         for r in (4, 41, 57):
             growth[f"{c}{r}"].number_format = "mmm-yy"
 
-    # Master template section labels
-    growth["B4"] = "Calculation of ROIC"
-    growth["B6"] = "Current Assets"
+    # Keep the template's schedules, but label unavailable classifications honestly.
+    growth["B4"] = "Historical source metrics"
+    growth["B6"] = "Current asset detail (not disclosed separately)"
     growth["B7"] = "=BS!B33"
     growth["B8"] = "=BS!B34"
     growth["B9"] = "=BS!B36"
-    growth["B10"] = "=BS!B37"
-    growth["B11"] = "Total Current Assets"
-    growth["B13"] = "Current Liabilities"
+    growth["B10"] = "Other assets (aggregate; classification unavailable)"
+    growth["B11"] = "Current assets subtotal (unavailable)"
+    growth["B13"] = "Liability detail (not disclosed separately)"
     growth["B14"] = "=BS!B13"
     growth["B15"] = "=BS!B14"
-    growth["B16"] = "=BS!B15"
-    growth["B17"] = "Total Current Liabilities"
-    growth["B19"] = "Net Working Capital"
-    growth["B21"] = "Non Current Assets"
+    growth["B16"] = "Other liabilities (aggregate; classification unavailable)"
+    growth["B17"] = "Current liabilities subtotal (unavailable)"
+    growth["B19"] = "Net working capital (unavailable)"
+    growth["B21"] = "Non-current asset detail (not disclosed separately)"
     growth["B22"] = "Land"
     growth["B23"] = "Building"
     growth["B24"] = "Plant Machinery"
@@ -443,81 +505,51 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
     growth["B28"] = "Vehicles"
     growth["B29"] = "Intangible Assets"
     growth["B30"] = "Other fixed assets"
-    growth["B32"] = "Gross Block"
-    growth["B33"] = "Accumulated Depreciation"
-    growth["B34"] = "Net Non Current Assets"
-    growth["B36"] = "Invested Capital"
-    growth["B37"] = "EBIT"
-    growth["B39"] = "ROIC"
-    growth["B41"] = "Calculation of Reinvestment Rate"
-    growth["B43"] = "Net Capex"
-    growth["B44"] = "Change in Working Capital"
-    growth["B46"] = "EBIT"
-    growth["B47"] = "Marginal Tax Rate"
-    growth["B48"] = "EBIT(1-T)"
-    growth["B50"] = "Reinvestment"
-    growth["B52"] = "Reinvestment Rate"
-    growth["B57"] = "Calculation of Growth Rate"
-    growth["B59"] = "Reinvestment Rate"
-    growth["B60"] = "ROIC"
-    growth["B62"] = "Intrinsic Growth"
+    growth["B32"] = "Net block / fixed assets (Screener reported)"
+    growth["B33"] = "Accumulated depreciation (not separately reported)"
+    growth["B34"] = "Net non-current assets (unavailable)"
+    growth["B36"] = "Invested capital (unavailable)"
+    growth["B37"] = "EBIT (operating profit less D&A)"
+    growth["B39"] = "ROIC (unavailable)"
+    growth["B41"] = "Reinvestment analysis (unavailable)"
+    growth["B43"] = "CapEx / fixed-asset purchases unavailable"
+    growth["B44"] = "Change in working capital (unavailable)"
+    growth["B46"] = "EBIT (linked)"
+    growth["B47"] = "Effective tax rate (derived)"
+    growth["B48"] = "After-tax EBIT"
+    growth["B50"] = "Reinvestment (unavailable)"
+    growth["B52"] = "Reinvestment rate (unavailable)"
+    growth["B57"] = "Intrinsic growth (unavailable)"
+    growth["B59"] = "Reinvestment rate (unavailable)"
+    growth["B60"] = "ROIC (unavailable)"
+    growth["B62"] = "Intrinsic growth (unavailable)"
 
     cols_ig = {"E": ("J", "F"), "F": ("K", "G"), "G": ("L", "H"), "H": ("M", "I")}
+    unavailable_rows = [7,8,9,11,14,15,17,19,22,23,24,25,26,27,28,29,30,33,34,36,39,43,44,50,52,59,60,62]
+    _clear(growth, unavailable_rows, range(5,9))
+    _clear(growth, (54,55,64,65), (8,9))
+    for r in (54,55,64,65):
+        growth.cell(r, 2).value = None
     for c, (bsc, mfc) in cols_ig.items():
-        growth[f"{c}7"] = f"=BS!{bsc}33"
-        growth[f"{c}8"] = f"=BS!{bsc}34"
-        growth[f"{c}9"] = f"=BS!{bsc}36"
         growth[f"{c}10"] = f"=BS!{bsc}37"
-        growth[f"{c}11"] = f"=SUM({c}7:{c}10)"
-        growth[f"{c}14"] = f"=BS!{bsc}13"
-        growth[f"{c}15"] = f"=BS!{bsc}14"
         growth[f"{c}16"] = f"=BS!{bsc}15"
-        growth[f"{c}17"] = f"=SUM({c}14:{c}16)"
-        growth[f"{c}19"] = f"={c}11-{c}17"
-        growth[f"{c}22"] = f"=BS!{bsc}19"
-        growth[f"{c}23"] = f"=BS!{bsc}20"
-        growth[f"{c}24"] = f"=BS!{bsc}21"
-        growth[f"{c}25"] = f"=BS!{bsc}23"
-        growth[f"{c}26"] = f"=BS!{bsc}22"
-        growth[f"{c}27"] = f"=BS!{bsc}24"
-        growth[f"{c}28"] = f"=BS!{bsc}25"
-        growth[f"{c}29"] = f"=BS!{bsc}26"
-        growth[f"{c}30"] = f"=BS!{bsc}27"
-        growth[f"{c}32"] = f"=IF(SUM({c}22:{c}31)>0, SUM({c}22:{c}31), BS!{bsc}28)"
-        growth[f"{c}33"] = f"=BS!{bsc}29"
-        growth[f"{c}34"] = f"={c}32-{c}33"
-        growth[f"{c}36"] = f"={c}34+{c}19"
+        growth[f"{c}32"] = f"=BS!{bsc}28"
         growth[f"{c}37"] = f"='Main Financials'!{mfc}23-'Main Financials'!{mfc}29"
-        growth[f"{c}43"] = f"=IF('Cash Flow'!{bsc}15<>\"\", -('Cash Flow'!{bsc}15+'Cash Flow'!{bsc}16)-'Main Financials'!{mfc}29, ('Cash Flow'!{bsc}5-'Cash Flow'!{bsc}32)-'Main Financials'!{mfc}29)"
         growth[f"{c}46"] = f"={c}37"
-        growth[f"{c}47"] = 0.3
+        ds_col = {"E":"G", "F":"H", "G":"I", "H":"J"}[c]
+        growth[f"{c}47"] = f'=IFERROR(\'Data Sheet\'!{ds_col}29/\'Data Sheet\'!{ds_col}28,"N/A")'
         growth[f"{c}48"] = f"={c}46*(1-{c}47)"
-        growth[f"{c}39"] = f"={c}48/{c}36"
-
-    # Historical change in WC, reinvestment, and intrinsic growth
-    for c, prev in [("F", "E"), ("G", "F"), ("H", "G")]:
-        growth[f"{c}44"] = f"={c}19-{prev}19"
-        growth[f"{c}50"] = f"={c}43+{c}44"
-        growth[f"{c}52"] = f"={c}50/{c}48"
-        growth[f"{c}59"] = f"={c}52"
-        growth[f"{c}60"] = f"={c}39"
-        growth[f"{c}62"] = f"={c}59*{c}60"
 
     # Clear Column I forecast cells
     for r in [7,8,9,10,11,14,15,16,17,19,22,23,24,25,26,27,28,29,30,32,33,34,36,37,39,43,44,46,47,48,50,52,59,60,62]:
         growth.cell(r, 9).value = None
 
-    growth["H54"] = "Historical Average"
-    growth["H55"] = "Historical Median"
-    growth["I54"] = "=AVERAGE(F52:H52)"
-    growth["I55"] = "=MEDIAN(F52:H52)"
-    growth["H64"] = "Historical Average"
-    growth["H65"] = "Historical Median"
-    growth["I64"] = "=AVERAGE(F62:H62)"
-    growth["I65"] = "=MEDIAN(F62:H62)"
-    growth.column_dimensions["B"].width = 32.0
+    growth.column_dimensions["B"].width = 42.0
     for col in ["E", "F", "G", "H", "I"]:
         growth.column_dimensions[col].width = 16.0
+    growth.print_area = "$B$3:$H$40"
+    growth.page_setup.fitToWidth = 1
+    growth.page_setup.fitToHeight = 1
 
     # Keep the audited market beta, but do not display a made-up WACC or peer-derived capital structure.
     records = beta["securities"]["M&M.NS"]["records"]
@@ -557,12 +589,23 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
     wacc["J39"] = "Unavailable"
     for row in range(36,40):
         wacc.cell(row,2).value = None
-    # 2025 annual market return was not complete at the historical valuation cutoff.
+    _clear_unused_table_rows(wacc, range(11,19), range(2,11))
+    _clear_unused_table_rows(wacc, range(22,39), range(3,12))
+    wacc.print_area = "$B$3:$P$39"
+    # The inherited annual-return series has no approved-source evidence in the
+    # workbook. It is not used by V17 WACC, so remove it rather than display it
+    # as if it were verified market data.
     rm = wb["RM"]
-    rm["C34"] = None
-    rm["F10"] = "=AVERAGE(C9:C33)"
-    rm["F11"] = None
-    rm["F12"] = None
+    _clear(rm, range(8,36), range(2,10))
+    rm["B8"] = "Market returns"
+    rm["C8"] = "Not used in V17"
+    rm["E8"] = "No approved-source evidence."
+    rm.column_dimensions["B"].width = 18
+    rm.column_dimensions["C"].width = 18
+    rm.column_dimensions["E"].width = 30
+    for row in range(9,36):
+        rm.row_dimensions[row].hidden = True
+    rm.print_area = "$B$8:$I$8"
 
     # Historical ratio dashboard uses FY21-FY25 only; the restored native trends exclude forecast data.
     ratio = wb["Ratio Analysis"]
@@ -580,7 +623,7 @@ def patch_mm_workbook(xlsx: Path) -> dict[str, Any]:
         ws.page_setup.orientation = ws.ORIENTATION_LANDSCAPE
         ws.page_setup.paperSize = ws.PAPERSIZE_A4
         ws.page_setup.fitToWidth = 1
-        ws.page_setup.fitToHeight = 1
+        ws.page_setup.fitToHeight = 0
         ws.sheet_properties.pageSetUpPr.fitToPage = True
     wb.calculation.fullCalcOnLoad = True
     wb.calculation.forceFullCalc = True
@@ -634,7 +677,7 @@ def _excel_recalculate_and_preview(xlsx: Path, preview_dir: Path) -> dict[str, A
             sheet.PageSetup.PaperSize = 9
             sheet.PageSetup.Zoom = False
             sheet.PageSetup.FitToPagesWide = 1
-            sheet.PageSetup.FitToPagesTall = 1
+            sheet.PageSetup.FitToPagesTall = 1 if sname == "Intrinsic Growth" else False
             sheet.ExportAsFixedFormat(0, str(preview_dir / pdf_name), 0, True, False)
             preview_count += 1
         book.Save()
@@ -714,9 +757,7 @@ def validate_candidate(xlsx: Path, *, skip_com: bool = False) -> dict[str, Any]:
 
 
 def build(output_dir: Path, *, skip_com: bool = False, clean: bool = False) -> dict[str, Any]:
-    output_dir = output_dir.resolve()
-    if output_dir in (ROOT.resolve(), (ROOT/"originals").resolve(), (ROOT/"deliverables").resolve()):
-        raise ValueError("Refusing to write to a protected repository directory")
+    output_dir = _validate_output_dir(output_dir)
     if clean and output_dir.exists():
         shutil.rmtree(output_dir)
     elif output_dir.exists() and any(output_dir.iterdir()):

@@ -60,7 +60,7 @@ The active generated model preserves the authentic 16-sheet template structure a
   - Native `<x14:sparklineGroups>` XML restored in `Ratio Analysis` with data ranges `C6:G6` through `C26:G26`.
 - **LTM, CLEAN, EDELWEISS**: Retired from active generated deliverables pursuant to Issue #8. Prior four-company delivery safely archived at `deliverables/archive/V16_user_handoff_four_company_archive.zip`. Source snapshots and registries remain preserved in repo.
 
-Governance: All packages remain `ready: false` with `human_pack_approval: pending`. PR #8 remains open and unmerged.
+Governance: All packages remain `ready: false` with `human_pack_approval: pending`. PR #9 remains open and unmerged.
 
 ## Project files
 

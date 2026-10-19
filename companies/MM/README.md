@@ -1,24 +1,18 @@
-# Mahindra & Mahindra Limited (MM) — Financial Valuation & Research Model Package
+# Mahindra & Mahindra — active Template V17 model
 
-- **Target Entity**: Mahindra & Mahindra Limited
-- **BSE Code**: `500520` | **NSE Ticker**: `M&M` | **ISIN**: `INE146A01017`
-- **Industry Vertical**: Automotive, Farm Equipment & Financial Services
-- **Reporting Basis**: Ind AS Consolidated (FY19–FY25 Audited, March 31 fiscal close; SOTP uses Audited FY25 M&M Standalone Core Operating Profit ₹18,416 Cr [Auto ₹11,700 Cr + Farm ₹6,716 Cr] and Audited FY25 Standalone Net Cash +₹9,109 Cr to prevent MMFS NBFC debt double-counting).
-- **Candidate Recalculated Workbook**: [`MM-Recalculated.xlsx`](MM-Recalculated.xlsx)
-- **Package Manifest**: [`package.manifest.json`](package.manifest.json)
-- **Source Registry**: [`SOURCE_REGISTRY.md`](SOURCE_REGISTRY.md) & [`source_registry.json`](source_registry.json)
+The sole active M&M candidate is `template_v17/MM-FullTemplate.xlsx`. It is built from the unchanged 16-sheet Marksans master and the V17 builder, with historical input cutoffs no later than 15 October 2025.
 
-## 1. Valuation & Financial Summary (15-Oct-2025 Official NSE Snapshot Cutoff)
+## Current verified state
 
-- **Methodology**: `Sum-of-the-Parts (SOTP) Valuation` (`supported`)
-- **Implied Fair Value Per Share**: **₹2,742.97** (vs. 15-Oct-2025 NSE Official Close **₹3,497.20**, Implied `-21.57%`)
-- **Prior vs. Current Reconciliation**: Eliminated the backwards-solved ₹242,400 Cr target preservation (15,150 × 16x vs 20,200 × 12x) and replaced the unsourced -₹12,000 Cr standalone net debt plug with the Audited FY25 M&M Standalone Balance Sheet Bridge (Standalone Borrowings ₹1,682 Cr less Standalone Cash & Treasury ₹10,791 Cr = -₹9,109 Cr Net Debt / +₹9,109 Cr Standalone Net Cash). Connected FY26E Standalone Auto Core EBITDA (₹13,667 Cr @ 14.0x = ₹1,91,338 Cr) and Farm Core EBITDA (₹7,403 Cr @ 13.0x = ₹96,239 Cr) to Volume × ASP drivers, updated MMFS (52.16% of ₹36,305 Cr @ ₹293.85 15-Oct-2025 close × 80% = ₹15,149.35 Cr) and TechM (25.48% of ₹1,42,836 Cr @ ₹1,459.00 15-Oct-2025 close × 80% = ₹29,115.69 Cr), yielding ₹3,40,951.04 Cr Equity Value (₹2,742.97/share).
+- Excel COM 16.0 full recalculation; 0 formula errors and 0 circular references.
+- The 11 historical BS reported-total checks tie. Source-rounded component subtotals can differ by INR 1 crore; the difference is displayed without a plug.
+- FY26E is blocked because approved sources do not provide the consolidated MMFS funding bridge.
+- WACC and intrinsic fair value are unavailable. ROIC and intrinsic growth are unavailable because Screener does not split the operating asset base from aggregate Other Assets/MMFS lending balances.
+- No cutoff-dated diluted share count or consolidated CapEx detail is present in the approved snapshots; the old share-count and CapEx claims have been withdrawn. The Comps sheet shows only supported historical inputs and a formula-derived P/E cross-check.
+- Source policy: only websites named in the original master plus Screener. Active V17 provenance is in `SOURCE_REGISTRY.md` and `source_registry.json`.
 
-## 2. Reproducible Single-Command & Batch Build (`--excel-only`)
-```powershell
-# Single-company Excel build & validation:
-python build_package.py --request examples/mm-package.json --output-dir candidates/run_excel_mm --allow-proposal --excel-only
+## Legacy files
 
-# Batch build across all four priority targets:
-python build_package.py --batch --allow-proposal --excel-only
-```
+The pre-V17 `mm-package.json`, `mm.inputs.json`, and `mm.model-pack.json` files are archived in `archive/v16/`; they are not inputs to the active V17 builder and must not be treated as verified V17 evidence. The old source-coverage report and V8 validation report have been replaced with superseded notices. Generated PowerPoint previews are retired; original presentation templates remain inert archives only.
+
+Build and review: run `python work/build_template_v17_mm.py --clean` from the repository root. The build keeps `ready: false` and human approval pending.
